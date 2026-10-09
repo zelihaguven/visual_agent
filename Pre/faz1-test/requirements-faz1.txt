@@ -1,0 +1,6 @@
+docling
+pypdfium2
+pillow
+streamlit
+streamlit-pdf-viewer
+pytest

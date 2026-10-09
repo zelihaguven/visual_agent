@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="1000" height="620" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <style>
+      .lok { fill:#E6F4EA; stroke:#2E7D32; stroke-width:1.2; }
+      .bul { fill:#FFF1E0; stroke:#E65100; stroke-width:1.2; }
+      .bas { fill:#1E3A5F; }
+      .vur { fill:none; stroke:#1E3A5F; stroke-width:3; stroke-dasharray:8 5; }
+      .bh  { font-size:15px; fill:#FFFFFF; font-weight:700; }
+      .bs  { font-size:11.5px; fill:#DCE6F2; }
+      .r   { font-size:13px; fill:#1F2937; font-weight:600; }
+      .c   { font-size:12.5px; fill:#1F2937; }
+      .cs  { font-size:11px; fill:#4B5563; }
+      .ft  { font-size:12.5px; fill:#111827; font-weight:700; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1000" height="620" fill="#FFFFFF"/>
+
+  <!-- Başlıklar -->
+  <rect x="250" y="20" width="235" height="56" rx="6" class="bas"/>
+  <text x="367" y="45" text-anchor="middle" class="bh">A · Tamamen bulut</text>
+  <text x="367" y="64" text-anchor="middle" class="bs">şu anki test aşaması</text>
+
+  <rect x="500" y="20" width="235" height="56" rx="6" class="bas"/>
+  <text x="617" y="45" text-anchor="middle" class="bh">B · Hibrit (önerilen)</text>
+  <text x="617" y="64" text-anchor="middle" class="bs">gerçek veri, bulut izni varsa</text>
+
+  <rect x="750" y="20" width="235" height="56" rx="6" class="bas"/>
+  <text x="867" y="45" text-anchor="middle" class="bh">C · Tamamen kurum içi</text>
+  <text x="867" y="64" text-anchor="middle" class="bs">bulut yasaksa</text>
+
+  <!-- Satırlar: y başlangıç 90, satır yüksekliği 40 -->
+  <!-- satır adları -->
+  <text x="20" y="115" class="r">Ayrıştırma / OCR</text>
+  <text x="20" y="155" class="r">Şekil açıklaması (VLM)</text>
+  <text x="20" y="195" class="r">Embedding</text>
+  <text x="20" y="235" class="r">Vektör veritabanı</text>
+  <text x="20" y="275" class="r">Rerank</text>
+  <text x="20" y="315" class="r">LLM (cevap üretimi)</text>
+  <text x="20" y="355" class="r">TTS (sesli okuma)</text>
+  <text x="20" y="395" class="r">STT (gerekirse)</text>
+  <text x="20" y="435" class="r">Uygulama ve loglar</text>
+
+  <!-- A sütunu -->
+  <rect x="250" y="92"  width="235" height="34" rx="4" class="bul"/><text x="367" y="114" text-anchor="middle" class="c">bulut</text>
+  <rect x="250" y="132" width="235" height="34" rx="4" class="bul"/><text x="367" y="154" text-anchor="middle" class="c">bulut</text>
+  <rect x="250" y="172" width="235" height="34" rx="4" class="bul"/><text x="367" y="194" text-anchor="middle" class="c">bulut</text>
+  <rect x="250" y="212" width="235" height="34" rx="4" class="lok"/><text x="367" y="234" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="250" y="252" width="235" height="34" rx="4" class="lok"/><text x="367" y="274" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="250" y="292" width="235" height="34" rx="4" class="bul"/><text x="367" y="314" text-anchor="middle" class="c">bulut</text>
+  <rect x="250" y="332" width="235" height="34" rx="4" class="bul"/><text x="367" y="354" text-anchor="middle" class="c">bulut</text>
+  <rect x="250" y="372" width="235" height="34" rx="4" class="bul"/><text x="367" y="394" text-anchor="middle" class="c">bulut</text>
+  <rect x="250" y="412" width="235" height="34" rx="4" class="lok"/><text x="367" y="434" text-anchor="middle" class="c">kurum içi</text>
+
+  <!-- B sütunu -->
+  <rect x="500" y="92"  width="235" height="34" rx="4" class="lok"/><text x="617" y="114" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="500" y="132" width="235" height="34" rx="4" class="lok"/><text x="617" y="150" text-anchor="middle" class="c">kurum içi</text><text x="617" y="163" text-anchor="middle" class="cs">(izin varsa bulut)</text>
+  <rect x="500" y="172" width="235" height="34" rx="4" class="lok"/><text x="617" y="194" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="500" y="212" width="235" height="34" rx="4" class="lok"/><text x="617" y="234" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="500" y="252" width="235" height="34" rx="4" class="lok"/><text x="617" y="274" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="500" y="292" width="235" height="34" rx="4" class="bul"/><text x="617" y="310" text-anchor="middle" class="c">bulut</text><text x="617" y="323" text-anchor="middle" class="cs">kurumsal sözleşme + veri saklamama</text>
+  <rect x="500" y="332" width="235" height="34" rx="4" class="bul"/><text x="617" y="350" text-anchor="middle" class="c">bulut</text><text x="617" y="363" text-anchor="middle" class="cs">kısa cevap metni</text>
+  <rect x="500" y="372" width="235" height="34" rx="4" class="lok"/><text x="617" y="390" text-anchor="middle" class="c">kurum içi</text><text x="617" y="403" text-anchor="middle" class="cs">ses dışarı çıkmaz</text>
+  <rect x="500" y="412" width="235" height="34" rx="4" class="lok"/><text x="617" y="434" text-anchor="middle" class="c">kurum içi</text>
+
+  <!-- C sütunu -->
+  <rect x="750" y="92"  width="235" height="34" rx="4" class="lok"/><text x="867" y="114" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="750" y="132" width="235" height="34" rx="4" class="lok"/><text x="867" y="154" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="750" y="172" width="235" height="34" rx="4" class="lok"/><text x="867" y="194" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="750" y="212" width="235" height="34" rx="4" class="lok"/><text x="867" y="234" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="750" y="252" width="235" height="34" rx="4" class="lok"/><text x="867" y="274" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="750" y="292" width="235" height="34" rx="4" class="lok"/><text x="867" y="310" text-anchor="middle" class="c">kurum içi</text><text x="867" y="323" text-anchor="middle" class="cs">açık model ~27–32B</text>
+  <rect x="750" y="332" width="235" height="34" rx="4" class="lok"/><text x="867" y="350" text-anchor="middle" class="c">kurum içi</text><text x="867" y="363" text-anchor="middle" class="cs">Türkçe kalitesi doğrulanmalı</text>
+  <rect x="750" y="372" width="235" height="34" rx="4" class="lok"/><text x="867" y="394" text-anchor="middle" class="c">kurum içi</text>
+  <rect x="750" y="412" width="235" height="34" rx="4" class="lok"/><text x="867" y="434" text-anchor="middle" class="c">kurum içi</text>
+
+  <!-- Önerilen sütun çerçevesi -->
+  <rect x="494" y="14" width="247" height="438" rx="8" class="vur"/>
+
+  <!-- Alt satırlar -->
+  <line x1="20" y1="468" x2="985" y2="468" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="20" y="495" class="ft">Kurum dışına çıkan veri</text>
+  <text x="367" y="488" text-anchor="middle" class="c">dokümanların tamamı + sorular</text>
+  <text x="367" y="505" text-anchor="middle" class="c">+ cevaplar + ses</text>
+  <text x="617" y="488" text-anchor="middle" class="c">soru başına 3–5 parça</text>
+  <text x="617" y="505" text-anchor="middle" class="c">+ kısa cevap metni</text>
+  <text x="867" y="497" text-anchor="middle" class="c">yok</text>
+
+  <text x="20" y="540" class="ft">Donanım ihtiyacı</text>
+  <text x="367" y="540" text-anchor="middle" class="c">yok</text>
+  <text x="617" y="540" text-anchor="middle" class="c">orta (embedding + rerank)</text>
+  <text x="867" y="540" text-anchor="middle" class="c">yüksek (24 GB+ GPU)</text>
+
+  <text x="20" y="575" class="ft">Hukuki yük</text>
+  <text x="367" y="575" text-anchor="middle" class="c">en yüksek</text>
+  <text x="617" y="575" text-anchor="middle" class="c">orta (tek sağlayıcı sözleşmesi)</text>
+  <text x="867" y="575" text-anchor="middle" class="c">en düşük</text>
+
+  <rect x="20" y="595" width="18" height="13" rx="2" class="lok"/><text x="45" y="606" class="cs">kurum içi</text>
+  <rect x="120" y="595" width="18" height="13" rx="2" class="bul"/><text x="145" y="606" class="cs">bulut</text>
+</svg>
