@@ -1,6 +1,6 @@
 # Manual Envanteri
 
-> **Durum:** Test seti: 5 doküman (3 şartname/referans + 2 makine kılavuzu). 4'ü `Pre/manuals/public/` klasöründe, 
+> **Durum (2026-10-10):** Test seti **7 doküman, 611 sayfa**, hepsi `Pre/manuals/public/` klasöründe ve parse edildi (3 şartname/yöntem + 2 Brother makine kılavuzu + 2 alan dışı). Ölçülmüş envanter tablosu aşağıda. Gerçek (müşteri) dokümanlar için Q2, Q3, Q7 bekleniyor.
 > **İlgili plan:** [req.md, Adım 0.2 ve 2.1](../req.md) · [pdf-isleme.md](pdf-isleme.md)
 
 ## Strateji
@@ -91,11 +91,38 @@ Set, gerçek manuellerde karşılaşacağımız durumların hepsini kapsamalı:
 
 **Türkçe makine dokümanı:** Uludağ Üniversitesi'nin "Sanayi Tipi Düz Dikiş Makinesi Bakım ve Kullanım Talimatı" (Türkçe, .docx) bulundu ama link şu an 404 veriyor. Resmi üretici kılavuzlarının Türkçe versiyonu bulunamadı. Türkiye distribütörlerinin sitelerinde ayrıca aranabilir.
 
-## Envanter tablosu (parse edildikten sonra doldurulacak)
+## Envanter tablosu (ölçülmüş, 2026-10-10)
 
-| doc_id | Dosya | Marka | Versiyon | Sayfa | Dil | Tür | Metin / Tablo / Şekil | Not |
-|--------|-------|-------|----------|-------|-----|-----|-----------------------|-----|
-| | | | | | | | | |
+Kaynak: pilotta Docling parse sonuçları (`Pilot/data/parsed/`) ve PDF metin katmanı. Sayılar otomatik ölçüldü.
+
+| doc_id | Kurum / ürün | Versiyon | Sayfa | MB | Dil | Tür | Metin / tablo / şekil | Tablo satırı | Parça | Yedek yola geçen sayfa |
+|--------|--------------|----------|-------|----|-----|-----|-----------------------|--------------|-------|------------------------|
+| gl-pd-14-04a | US Army (GL-PD), Ceket | A (GL/PD 14-04A) | 56 | 2,2 | EN | Şartname, dijital | Metin + 41 tablo, 8 şekil | 385 | 529 | 0 |
+| gl-pd-07-14a | US Army (GL-PD), Pantolon | A (GL/PD 07-14A) | 48 | 1,3 | EN | Şartname, **taranmış** (PDF'te OCR katmanı) | Metin + 27 tablo, 7 şekil | 169 | 303 | 2 |
+| brother-s7300a | Brother, S-7300A | Talimat kitabı | 108 | 3,5 | EN | Makine kılavuzu, dijital | 50 tablo, **337 şekil** | 277 | 501 | 6 |
+| brother-s7300b | Brother, S-7300B | 2025-04 | 117 | 4,5 | EN | Makine kılavuzu, dijital | 59 tablo, **330 şekil** | 308 | 537 | 8 |
+| strickland-1956 | G. Strickland | 1956 | 164 | 9,3 | EN | Yöntem kitabı, **taranmış**, iki kolon | Tablo yok, çizim ağırlıklı | 0 | 307 | **121** |
+| mrcoffee-2003 | Mr. Coffee | 2003 | 22 | 1,3 | EN + ES | Ev aleti kılavuzu (alan dışı), dijital | 7 tablo, 77 şekil | 41 | 151 | 0 |
+| bosch-ra1171 | Bosch, RA1171 | 2005 | 96 | 3,9 | EN / FR / ES (s.2–31, 32–61, 62+) | Alet kılavuzu (alan dışı), dijital | 15 tablo, 281 şekil | 276 | 593 | 6 |
+| **Toplam** | | | **611** | **26** | | | | **1455** | **2921** | **143** |
+
+## Format değerlendirmesi
+
+| Doküman | Zorluk | Neden | Pilotta ne gördük |
+|---------|--------|-------|-------------------|
+| gl-pd-14-04a | 🟢 Düşük | Temiz dijital metin, düzenli tablolar | SPI ve tolerans doğru çıkıyor, paragraf sayfa 22–23'e yayılıyor ve birleşiyor |
+| gl-pd-07-14a | 🟡 Orta | Taranmış, PDF'in kendi OCR katmanı küçük hatalar içeriyor ("confOlm", "protmding") | Aranabilir ama bozuk sözcükler eşleşmeyi düşürür. Docling'in kendi OCR'ı bir satırı kaybetmişti (Faz 1) |
+| brother-s7300a / b | 🟡 Orta | Çok çizim, arıza tabloları, basılı ≠ PDF sayfa (s.90 = PDF s.101), A/B model karışıklığı | Tablo satırları iyi çıkıyor. A/B ayrımı sorgu analiziyle çözülüyor. Çizimler aranamıyor |
+| strickland-1956 | 🔴 Yüksek | Tam sayfa tarama görseli, iki kolon, kesirli ölçülerde OCR hatası (½ → V2), basılı ≠ PDF sayfa | Docling metnin %94'ünü atladı, PDF metin katmanı yedeği ile 121 sayfa kurtarıldı |
+| mrcoffee-2003 | 🟢 Düşük | Kısa. Kitapçık düzeni: bir PDF sayfasında iki basılı sayfa | Alan dışı kontrolü için kullanışlı. Basılı sayfa etiketi güvenilmez |
+| bosch-ra1171 | 🟡 Orta | Üç dil arka arkaya, çok parça çizimi | Dil etiketi sayfa aralığından atanıyor. Parse en yavaşı (578 sn, MPS) |
+
+### Sonuçlar (gerçek dokümanlara aktarılacaklar)
+
+- **Taranmış PDF'te metin katmanı olabilir ama Docling bunu görmeyebilir**: her sayfada Docling kapsamı PDF katmanıyla karşılaştırılmalı (gerçek sistemde ingestion'a girmeli).
+- **Şekil ağırlıklı sayfalar** (Brother, Bosch, Mr. Coffee: 77–337 şekil) metin aramasıyla bulunamaz: VLM açıklaması planlanmalı.
+- **Basılı ↔ PDF sayfa numarası** her dokümanda farklı davranıyor: ayrı alan olarak tutulmalı.
+- Gerçek dokümanlarda aynı sorular (taranmış oranı, görsel türleri, klasör/versiyon düzeni) bu tabloyu yeniden doldurmak için gerekli: [sorulacaklar.md](sorulacaklar.md) Q3, Q7, R3.
 
 ## Kaynaklar
 

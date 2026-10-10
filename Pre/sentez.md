@@ -1,8 +1,8 @@
 # Visual Agent: Araştırma Sentezi
 
-> **Tarih:** 2026-10-09 · **Aşama:** Araştırma (Faz 5: Sentez)
+> **Tarih:** 2026-10-09 · **Güncelleme:** 2026-10-10 (pilot sonuçları ve alınan kararlar işlendi) · **Aşama:** Araştırma (Faz 5: Sentez) + pilot
 > **Kapsam:** Manuel tabanlı soru-cevap, kaynak sayfa gösterimi ve sesli yanıt sisteminin araştırma bulguları, önerilen mimari, araç seçimleri, riskler ve bekleyen kararlar.
-> **Ayrıntılı notlar:** [Ek A](#ek-a-ayrıntılı-araştırma-notları) · **Bekleyen sorular:** [notes/sorulacaklar.md](notes/sorulacaklar.md)
+> **Ayrıntılı notlar:** [Ek A](#ek-a-ayrıntılı-araştırma-notları) · **Bekleyen sorular:** [notes/sorulacaklar.md](notes/sorulacaklar.md) · **Pilot raporu:** [../Pilot/PILOT-RAPORU.md](../Pilot/PILOT-RAPORU.md)
 
 ---
 
@@ -17,12 +17,14 @@ Araştırma aşamasının ana sonuçları:
 3. **Veri güvenliği için hibrit yapı önerilmektedir.** Dokümanların tamamını işleyen adımlar kurum içinde, yalnızca cevap üretimi (ve sesli okuma) kurumsal sözleşmeli bulut serviste çalışır. Bu yapıda soru başına yalnızca 3–5 metin parçası kurum dışına çıkar (Şekil 3). Kesin karar, müşteri sözleşmelerinin incelenmesine bağlıdır.
 4. **Model ve servis seçimi pilotta ölçülerek yapılacaktır.** Genel sıralamalar bu görevi (verilen metne sadakat, Türkçe-İngilizce geçiş, bilinmeyeni "bulunamadı" olarak bildirme) ölçmemektedir. Adaylar aynı test setiyle karşılaştırılacaktır.
 5. **Maliyet karar verdirici değildir.** Tahmini kullanımda (günde ~200 soru) bulut LLM ve sesli okuma maliyeti aylık birkaç yüz doları aşmamaktadır. Kararları doğruluk ve gizlilik belirleyecektir.
+6. **Pilot çalıştı, mimari doğrulandı, model yetersiz kaldı (2026-10-10).** 7 doküman (611 sayfa) ile tamamen lokal uçtan uca hat kuruldu: arama, kaynaklı cevap, otomatik doğrulama, vurgulu sayfa, sesli okuma. 10 soruda **5 doğru**, ortalama **14,5 sn** (hedef 5 sn). Arama ve kaynak gösterme iyi çalıştı, 7B lokal model cevap üretiminde uydurma yaptı, ama doğrulama katmanı uydurma alıntıları yakaladı. 30B model 24 GB makineye sığmadı. Ayrıntı: [Pilot raporu](../Pilot/PILOT-RAPORU.md), bölüm 10.
 
 **İlerlemek için gereken kararlar** (ayrıntı: Bölüm 9):
-- Müşteri manuelleri bulut servislerde işlenebilir mi? (Q1, müşteri sözleşmeleri)
-- Kurum içinde GPU kullanılabilir mi? Atölyede internet erişimi var mı?
-- Test soru seti (cevabı ve sayfası bilinen gerçekçi sorular) kim tarafından hazırlanacak?
-- Yanlış değer için kabul edilebilir oran nedir?
+- Müşteri sözleşmeleri bulut servislerde işlemeyi yasaklıyor mu? (Q1, 7.1. Müşteriden izin istenmeden geliştirileceği kararlaştırıldı)
+- Kurum içinde veya sunucuda GPU kullanılabilir mi? Pilot 7B modelin yetersiz, 30B modelin 24 GB makineye sığmadığını gösterdi (Q5, bütçe)
+- Yanlış değer için kabul edilebilir oran nedir? (Hata toleransı)
+
+*Karara bağlananlar:* test setini AI hazırlar, uzman kontrol eder · atölye ağı kesilebilir (yedek gerekli) · giriş e-posta/kod ile · marka bazlı yetki · ses kaydı saklanmaz · sözleşme bitince veri silinir. Tam liste: [notes/sorulacaklar.md](notes/sorulacaklar.md).
 
 ---
 
@@ -114,6 +116,30 @@ Araştırma aşamasının ana sonuçları:
 | **Orkestrasyon** | Çatısız, modüler Python + denetim izi | LlamaIndex parçaları, Haystack | Doğrusal hat, projeye özel doğrulama adımları, şeffaflık | ✅ |
 | **Değerlendirme** | Kendi ölçüm betiği (değer doğruluğu, kaynak doğruluğu, doğru reddetme) + RAGAS (Türkçe uyarlamalı) + insan değerlendirmesi | DeepEval, TruLens | En kritik metrikler kural tabanlı ölçülebiliyor | ✅ (test seti ⏳) |
 | **Yetkilendirme** | Kurumsal giriş (SSO) + rol → marka, aramadan önce zorunlu filtre, varsayılan kapalı | Marka başına ayrı koleksiyon | Sızıntı riski en düşük, esnek | ⏳ (iş kuralı) |
+
+---
+
+### 4.0 Pilotta öğrendiklerimiz (araç seçimi güncellemesi, 2026-10-10)
+
+| Bileşen | Önceki durum | Pilot sonucu | Güncel durum |
+|---------|--------------|--------------|--------------|
+| PDF ayrıştırma | 🧪 Docling, diğerleriyle karşılaştırma | Docling (OCR kapalı) 0,8–2,7 sn/sayfa, tablo satırı ve bbox çalıştı. Tam sayfa tarama görseli olan Strickland'ın %94'ü kaçırıldı, **PyMuPDF metin katmanı yedeği** eklendi (143/611 sayfa). Marker vb. ile karşılaştırma yapılmadı | ✅ Docling + yedek. Karşılaştırma 🧪 açık |
+| OCR | 🧪 Docling içi OCR | Pilotta kapalı: tüm PDF'lerde metin katmanı var. İki OCR birleştirme denenmedi | 🧪 açık (gerçek taranmış veride) |
+| Şekil / çizim anlama | 🧪 VLM açıklaması | **Yapılmadı.** Şekiller atlanıyor, çizimler aranamıyor | 🧪 açık, gerçek sistemde zorunlu (çizim olabileceği kararlaştırıldı) |
+| Bölümleme | ✅ | Başlık sınırlı, tablo satırı parçaları, uzun paragraf cümle sınırından bölme (SPI değeri uzun paragrafta sulanıyordu). 2921 parça | ✅ doğrulandı |
+| Embedding | 🧪 bge-m3 TR↔EN | CPU'da doğru (ilgili 0,65, ilgisiz 0,36–0,42). **Apple GPU'da (MPS) yanlış sonuç** (sessiz hata) | ✅ bge-m3, **CPU veya CUDA GPU**. MPS kullanılmaz |
+| Vektör DB | ✅ Qdrant | Gömülü mod, dense + sparse + RRF çalıştı | ✅ |
+| Arama | ✅ Hibrit, 🧪 kelime yöntemi | 5 soruda hibrit ve dense ilk 3 aynı: TR sorgu ile sparse kol EN dokümanda katkı vermiyor (A/B ve sorgu çevirisi yapılmadı) | ✅ Hibrit çalışıyor, 🧪 katkısı ölçülmedi |
+| Reranker | 🧪 gecikme | CPU'da soru başına 20 aday ≈ 3–7 sn. Skor kalibre değil (doğru cevap −5,4 olabiliyor) | 🧪 GPU'da veya aday azaltarak, eşik kalibrasyonu açık |
+| LLM | 🧪 3 bulut + 1 küçük + 1 açık | **Sadece lokal denendi.** 7B: 5/10, uyduruyor ve atıf yazmıyor. 30B (18 GB): GPU belleği aşıldı, kullanılamadı. Bulut denenmedi | 🧪 + ⏳ büyük model için donanım/bulut kararı gerekli |
+| Kurum içi LLM | 🧪 ~27–32B, 24 GB GPU | 24 GB birleşik bellekte 30B sığmadı (GPU çalışma belleği ~16–18 GB) | ⏳ Q5 (GPU) ve bütçe |
+| TTS | 🧪 Azure test, Chatterbox lokal | Chatterbox Multilingual (CPU) Türkçe kalite iyi (kullanıcı onayı), 4,6 sn ses için 11,6 sn üretim. MPS'te bozuk | ✅ Chatterbox adayı, 🧪 GPU/bulut ile gecikme |
+| Sesli metin hazırlığı | ✅ Kural tablosu | Sayı, tolerans, aralık, kesir kuralları çalışıyor ve testli. Kod/model okunuşu belirsiz | ✅ (Q10-a ⏳) |
+| STT | ⏳ | Karar: sesli soru isteniyor. Pilotta yok | ⏳ uygulama sonraki tur |
+| Arayüz | ✅ pilot Streamlit | Hatasız çalıştı, vurgu doğru yere düşüyor (gözle doğrulandı) | ✅ pilot, ⏳ üretim (özel web) |
+| Orkestrasyon | ✅ Çatısız | Modüler Python ~1300 satır, 83 birim test | ✅ |
+| Değerlendirme | ✅ Kendi betik | 10 soru, otomatik yargıç. Uzman puanı ve 50–100 soruluk set yok | ✅ betik, ⏳ test seti |
+| Yetkilendirme | ⏳ | Kararlar alındı (marka bazlı, e-posta/kod). Uygulanmadı | ⏳ uygulama |
 
 ---
 
@@ -229,60 +255,104 @@ Araştırma aşamasının ana sonuçları:
 | R3 | Aynı konunun farklı doküman versiyonlarında çelişen bilgi | Yanlış cevap | Versiyon metadata'sı, çelişkinin cevapta bildirilmesi | Gerçek veride versiyon düzeni sorulacak |
 | R5 | Cevabın akarak gösterilmesi/seslendirilmesi, doğrulamadan önce değer iletebilir | Yanlış değer | Doğrulamadan sonra gösterim ve seslendirme | Tasarımda çözüldü |
 | R6 | Türkçe, ticari lisanslı ve kaliteli kurum içi TTS seçeneği çok az | Bulut kullanılamazsa sesli okuma kalitesi | Chatterbox Multilingual denenecek, Azure kurum içi seçeneği araştırılacak | Pilotta ölçülecek |
-| R7 | OCR'ın bir satırı sessizce kaybetmesi (denemede görüldü) | Bilgi aranamaz hale gelir | Bozuk OCR uyarısı, iki OCR kaynağının birleştirilmesi, kullanıcıya her zaman orijinal sayfa görüntüsü | Uygulama aşamasına devredildi |
+| R7 | OCR'ın bir satırı sessizce kaybetmesi (denemede görüldü) | Bilgi aranamaz hale gelir | Bozuk OCR uyarısı, iki OCR kaynağının birleştirilmesi, kullanıcıya her zaman orijinal sayfa görüntüsü | Pilot: PDF metin katmanı yedeği kısmen çözdü, OCR birleştirme açık |
 | R8 | Yetki filtresinin bir erişim noktasında unutulması | Gizli bilginin yetkisiz kişiye gösterilmesi | Merkezi zorunlu filtre, tüm erişim noktalarının kontrolü, test setinde yetki testleri | Tasarımda tanımlandı |
 | R9 | Sesli soruda model kodunun yanlış tanınması (ör. S-7300A → S-7300B) | Yanlış makinenin kılavuzundan cevap | Tanınan metnin kullanıcı onayı, terim listesi | STT kararına bağlı |
 | R10 | Test setinin gerçek dokümanları temsil etmemesi | Pilot sonuçlarının gerçek veriye taşınmaması | Gerçek veriye geçişte test setinin yeniden kurulması ve yeniden ölçüm | Planlandı |
+| **R11** | **Donanım sınırı:** 24 GB'lık makine yeterli büyüklükte modeli taşıyamıyor (30B GPU belleğini aştı, ekran bozulması yaşandı) | 7B ile kalite yetersiz, büyük model için donanım yatırımı veya bulut gerekli | GPU sunucu veya bulut LLM, bileşenlerin GPU belleğini paylaşımının hesaplanması | Pilotta görüldü, Q5 ve bütçe cevabı bekleniyor |
+| **R12** | **Sessiz hata:** Apple GPU (MPS) üzerinde embedding ve TTS hata vermeden yanlış sonuç üretiyor | Anlamsız sıralama, bozuk ses fark edilmeden kullanılabilir | Her ortamda duman testi (benzerlik ve ses doğrulaması), MPS'in kapatılması | Pilotta görüldü, CPU'ya sabitlendi |
+| **R13** | **Model atıf yazmıyor:** hiçbir cevap tam "doğrulandı" almıyor, kullanıcı hep "kısmen" görüyor | Doğrulama rozetinin değeri düşer | Daha güçlü model, doğrulama modları (atıfsız ama alıntı ve sayı doğru), prompt iyileştirme | Pilotta görüldü, açık |
+| **R14** | **Belirsiz soruda (ürün/marka belirtilmemiş) yanlış doküman getiriliyor** ve model uydurma alıntı veriyor | Yanlış kaynaktan cevap | Belirsizlikte netleştirme sorusu, ürün başına ayrı cevap | Pilotta görüldü (Q07), açık |
 
 ---
 
 ## 9. Bekleyen kararlar ve açık sorular
 
-Ayrıntılı liste (kime sorulacağı ve cevap alanlarıyla): [notes/sorulacaklar.md](notes/sorulacaklar.md)
+Ayrıntılı liste (kime sorulacağı ve cevap alanlarıyla): [notes/sorulacaklar.md](notes/sorulacaklar.md). **Cevaplananlar** (2026-10-10, [cevaplar.md](../cevaplar.md)) listeden çıkarıldı.
 
 | Öncelik | Soru | Muhatap | Etkilediği karar |
 |---------|------|---------|------------------|
-| 🔴 | Müşteri manuelleri bulut servislerde işlenebilir mi? Hangi koşullarla? | Hukuk, müşteri | Dağıtım senaryosu (A/B/C), model seçimi |
-| 🔴 | Müşteri sözleşmelerinde üçüncü taraf, coğrafi kısıt, silme ve yapay zekâ maddeleri | Hukuk | Senaryo B'nin uygulanabilirliği |
-| 🔴 | Kurum içinde kullanılabilecek GPU var mı? | BT | Senaryo C, kurum içi modeller |
-| 🔴 | Atölyede internet erişimi var mı? | BT | Bulut servislerin kullanılabilirliği |
-| 🔴 | Test soru setini kim hazırlayacak? | Kalite ekibi | Pilot değerlendirmesi |
+| 🔴 | Müşteri sözleşmeleri bulutta işlemeyi yasaklıyor mu? (müşteriden izin istenmeyeceği kararlaştırıldı) | Hukuk | Dağıtım senaryosu (A/B/C), model seçimi |
+| 🔴 | Kurum içinde veya sunucuda GPU var mı, bütçe nedir? (pilot: 7B yetersiz, 30B 24 GB'a sığmadı) | BT, yönetim | Senaryo C, model boyutu |
 | 🔴 | Yanlış değer için kabul edilebilir oran | Kalite yönetimi | Eşik ayarı, pilot başarı kriteri |
-| 🟡 | Marka bazlı erişim kuralı | Yönetim | Yetkilendirme modeli |
-| 🟡 | Gerçek dokümanların dili, türleri, taranmış oranı, görsel türleri, dosya düzeni | Doküman sahipleri | Doküman işleme hattı |
+| 🟡 | Bağlantı kesilirse sistem hiç çalışmasın mı, yedek model mi? | BT, kullanıcılar | Yedek model, çevrimdışı davranış |
+| 🟡 | Gerçek dokümanların taranmış oranı, görsel türleri, klasör düzeni, versiyonlar | Doküman sahipleri | Doküman işleme hattı, VLM kapsamı |
 | 🟡 | Kullanım cihazı ve ortamı (PC, tablet, kiosk) | Kullanıcılar | Arayüz |
-| 🟡 | Kabul edilebilir bekleme süresi | Kullanıcılar | Pilot başarı kriteri |
-| ⚪ | Sesli soru ihtiyacı, kodların atölyede okunuşu, hoparlör/kulaklık | Kullanıcılar | STT, sesli okuma kuralları |
+| 🟡 | Genel bilgi verilebilir mi, kritik değerde kullanıcı onayı, test setini kontrol edecek uzman | Kalite yönetimi | Prompt kuralı, arayüz onayı, değerlendirme |
+| ⚪ | Kodların atölyede okunuşu (301, S-7300A, E-07), sesli cevap uzunluğu | Kullanıcılar | Sesli okuma kuralları |
+
+**Karara bağlananlar:** sözleşme sessizse izinsiz geliştirme · bitişte veri silme · aydınlatma metni ve rol bazlı log erişimi · en fazla ±1 sayfa görünür · marka bazlı yetki · ses kaydı saklanmaz · ağ kesilebilir · e-posta/kod ile giriş · harici hosting · soru TR, manual EN (çift yönlü) · dijital ve taranmış PDF, çizim olabilir · test setini AI hazırlar · sesli soru istenir · Türkçe terim karşılığı · hoparlör · "soru sor" tuşu · sesli soruda marka sorulur · bekleme süresi 5 sn.
 
 ---
 
-## 10. Pilot önerisi ve sonraki adımlar
+## 10. Pilot: planlanan ve yapılanlar
 
-**Pilot kapsamı:** Tek marka, 3–5 manuel, uçtan uca prototip: soru → arama → kaynaklı cevap → doğrulama → vurgulu sayfa → sesli okuma.
+**Pilot raporu (ayrıntı, diyagramlar, ölçümler):** [../Pilot/PILOT-RAPORU.md](../Pilot/PILOT-RAPORU.md) · **Kod:** `Pilot/`
 
-**Pilotta yapılacak ölçümler** (araştırma aşamasında ertelenenler):
+**Planlanan kapsam:** Tek marka, 3–5 manuel, uçtan uca prototip: soru → arama → kaynaklı cevap → doğrulama → vurgulu sayfa → sesli okuma.
+**Yapılan:** 7 doküman (611 sayfa, 5 kurum), tamamen lokal, yalnızca yazılı soru. Kapsam bilinçli olarak "hafif ve başka bilgisayarda çalıştırılabilir" tutuldu.
 
-| Konu | Ölçüm |
-|------|-------|
-| Arama | Türkçe soru-İngilizce manuel eşleşmesi, hibrit aramanın katkısı, kelime araması yöntemi, Türkçe kök bulma, reranker gecikmesi |
-| Doküman işleme | Docling ile diğer ayrıştırıcıların karşılaştırılması, OCR birleştirme, tablo satırı temizliği, basılı/PDF sayfa eşleme |
-| Görsel anlama | VLM açıklaması ile görsel tabanlı aramanın görsel test sorularında karşılaştırılması |
-| LLM | Bulut ve kurum içi adayların aynı test setinde karşılaştırılması, talimat dili, alıntı birebirlik oranı |
-| Sesli okuma | Adayların test cümleleriyle karşılaştırılması (kritik değer doğruluğu, atölye gürültüsü), Chatterbox'ın Türkçe kalitesi |
-| Arayüz | Vurgunun tarayıcıda gözle doğrulanması, kullanıcı tepkisi, sesli soru ihtiyacı |
+### 10.1 Planlanan ölçümler ve ne olduğu
 
-**Önerilen uygulama sırası:**
-1. Doküman işleme hattı (ayrıştırma, bölümleme, metadata, indeksleme)
-2. Arama (hibrit + filtre + rerank) ve test setiyle ölçüm
-3. Cevap üretimi, kaynak gösterme ve otomatik doğrulama
-4. Sayfa görüntüleyici ve vurgulama
-5. Sesli metin hazırlığı ve TTS
-6. Arayüzün birleştirilmesi
-7. Değerlendirme ve iyileştirme turu
-8. Yetkilendirme ve güvenlik
-9. Gerçek veriye geçiş (kontrol listesiyle) ve yeniden ölçüm
+| Konu | Planlanan | Durum | Pilotta ne oldu |
+|------|-----------|-------|-----------------|
+| **Uçtan uca hat** | Soru → arama → cevap → doğrulama → vurgulu sayfa → ses | ✅ Yapıldı | Streamlit arayüzü, `soru_cevapla()`, 83 birim test |
+| **Arama** | Türkçe soru ↔ İngilizce manuel eşleşmesi | ✅ Ölçüldü | Doğru parça ilk 5'te: 6/7 (yalnızca belirsiz soruda başarısız) |
+| | Hibrit aramanın katkısı | ⚠ Gözlem | 5 soruda hibrit = dense. Sparse kol TR sorguda katkısız. A/B deneyi yapılmadı |
+| | Kelime araması yöntemi, Türkçe kök bulma | ❌ Yapılmadı | BGE-M3 sparse kullanıldı, BM25 ve kök bulucu denenmedi |
+| | Sorgu çevirisi (TR→EN) | ❌ Yapılmadı | Q6 açık |
+| | Reranker gecikmesi | ✅ Ölçüldü | CPU'da 3–7 sn (20 aday). GPU'da denenmedi |
+| **Doküman işleme** | Docling ile diğer ayrıştırıcıların karşılaştırılması | ❌ Yapılmadı | Docling + PyMuPDF yedeği yeterli göründü |
+| | OCR birleştirme | ❌ Yapılmadı | PDF'in kendi metin katmanı kullanıldı |
+| | Tablo satırı temizliği | ⚠ Açık | Başlık tekrarı ve çizim kodları duruyor |
+| | Basılı/PDF sayfa eşleme | ⚠ Kısmen | Basılı etiket okunuyor ("s.90 (PDF s.101)"), kitapçık ve üç dilli düzenlerde güvenilir değil |
+| **Görsel anlama** | VLM açıklaması ile görsel arama karşılaştırması | ❌ Yapılmadı | Şekiller atlanıyor |
+| **LLM** | Bulut ve kurum içi adayların aynı test setinde karşılaştırılması | ⚠ Kısmen | 1 lokal aday ölçüldü (7B). 30B sığmadı. Bulut yok (karar: önce lokal) |
+| | Talimat dili, alıntı birebirlik oranı | ⚠ Kısmen | Türkçe talimat kullanıldı. Alıntı birebirliği doğrulama katmanı tarafından kontrol ediliyor, oran hesaplanmadı |
+| **Sesli okuma** | Adayların test cümleleriyle karşılaştırılması | ⚠ Kısmen | 1 aday (Chatterbox), 1 cümle, kullanıcı kulağıyla: kalite iyi. Gürültü ve diğer adaylar yok |
+| | Chatterbox Türkçe kalitesi | ✅ Ölçüldü | İyi. CPU'da gerçek zamanın ~2,5 katı |
+| **Arayüz** | Vurgunun doğrulanması | ✅ Yapıldı | Sayfa görselinde gözle doğrulandı. Tarayıcıda kullanıcı oturumu yapılmadı |
+| | Kullanıcı tepkisi, sesli soru ihtiyacı | ❌ Yapılmadı | Sesli soru isteği cevaplardan biliniyor, pilot dışı |
+| **Doğruluk güvencesi** | Altı katmanlı güvence | ⚠ Kısmen | Kod tarafı katmanları (alıntı birebirliği, sayı, tolerans, atıf) uygulandı ve testli. Eşik kalibrasyonu, kullanıcıya rozet ve denetim izi kısmen/yok |
+| **Yetkilendirme** | Marka filtresi, yetki testleri | ❌ Yapılmadı | Arayüzde marka filtresi var, yetki yok |
 
-**Pilot başarı kriterleri** (taslak, paydaşlarla kesinleştirilecek): Bölüm 5.1'deki hedefler + kabul edilebilir yanıt süresi + kullanıcı değerlendirmesi.
+### 10.2 Pilot başarı kriterleri: hedef ve sonuç
+
+| Ölçüt | Taslak hedef | Pilot sonucu | Not |
+|-------|--------------|--------------|-----|
+| Doğru sayfa ilk 5'te (Recall@5) | ≥ %90 | **6/7 (%86)** | Örneklem çok küçük |
+| Değer doğruluğu | ≥ %98 | **2/3** | 7B model, atıf ve uydurma sorunu |
+| Doğru reddetme | ≥ %90 | **1/3** | Q09 beklenen sonucu elle kontrol gerek |
+| Tuzak (S-7300A/B) | %100 | **1/1** | Tek soru |
+| Yetki testleri | %100 | Yapılmadı | |
+| Yanlış değerin "doğrulandı" diye geçmesi | 0 | **0** | Doğrulama yakaladı. Kendi kusuru (model kodu) birim testle bulundu ve düzeltildi |
+| Yanıt süresi | ≤ 5 sn | **14,5 sn** (ilk soru hariç 13,3) | Arama 5,5 + model 9,0 |
+| Genel doğruluk | — | **5/10** | |
+
+### 10.3 Uygulama sırası: durum
+
+| # | Adım | Durum |
+|---|------|-------|
+| 1 | Doküman işleme hattı (ayrıştırma, bölümleme, metadata, indeksleme) | ✅ Pilotta yapıldı (şekil açıklaması hariç) |
+| 2 | Arama (hibrit + filtre + rerank) ve test setiyle ölçüm | ⚠ Çalışıyor, ölçüm 10 soru, A/B ve eşik açık |
+| 3 | Cevap üretimi, kaynak gösterme ve otomatik doğrulama | ✅ Yapıldı, model yetersiz |
+| 4 | Sayfa görüntüleyici ve vurgulama | ✅ Yapıldı |
+| 5 | Sesli metin hazırlığı ve TTS | ✅ Yapıldı (CPU, yavaş) |
+| 6 | Arayüzün birleştirilmesi | ✅ Streamlit pilot |
+| 7 | Değerlendirme ve iyileştirme turu | ⚠ İlk tur yapıldı (10 soru), geniş test seti bekliyor |
+| 8 | Yetkilendirme ve güvenlik | ❌ Sonraki aşama |
+| 9 | Gerçek veriye geçiş ve yeniden ölçüm | ❌ Sonraki aşama |
+
+### 10.4 Sonraki adımlar (öncelik sırasıyla)
+
+1. Aynı 10 soruyu daha büyük bir modelle (bulut referansı veya GPU sunucu) çalıştırmak. Karar bekleyen: Q1, Q5, bütçe
+2. Test setini 50–100 soruya çıkarmak, uzman kontrolü
+3. Belirsiz soru akışı (ürün/marka belirtilmemişse netleştirme veya ürün başına cevap)
+4. Eşik kalibrasyonu, doğrulama modları (atıf zorunlu / ölçülü)
+5. Sorgu çevirisi ve hibrit A/B deneyi
+6. VLM ile şekil açıklaması
+7. Sesli soru (STT)
+8. Yetkilendirme, denetim izi, silme akışı, admin paneli
 
 ---
 
@@ -300,7 +370,10 @@ Ayrıntılı liste (kime sorulacağı ve cevap alanlarıyla): [notes/sorulacakla
 | Taslak sistem talimatı ve çıktı şeması | [notes/prompt-taslak.md](notes/prompt-taslak.md) |
 | Veri güvenliği ve erişim | [notes/guvenlik.md](notes/guvenlik.md) |
 | Test doküman envanteri | [notes/manual-envanteri.md](notes/manual-envanteri.md) |
+| **Görev özetleri** (her görev için karar tablosu ve önerilen sistem) | [notes/gorev-ozetleri.md](notes/gorev-ozetleri.md) |
+| Hazırlık (cevaplar, doküman listesi, test soruları) | [notes/00-hazirlik.md](notes/00-hazirlik.md) |
 | Bekleyen sorular | [notes/sorulacaklar.md](notes/sorulacaklar.md) |
+| Pilot raporu (kurulum, ölçüm, problemler, öneriler) | [../Pilot/PILOT-RAPORU.md](../Pilot/PILOT-RAPORU.md) |
 | Araştırma planı ve günlük | [req.md](req.md) |
 
 ## Ek B: Terimler

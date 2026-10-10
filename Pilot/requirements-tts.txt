@@ -1,0 +1,3 @@
+# Sesli okuma (isteğe bağlı) - ayrı ortam: Chatterbox kendi torch sürümünü sabitler
+chatterbox-tts==0.1.7
+setuptools<81

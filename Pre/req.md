@@ -55,12 +55,18 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
 
 ## Adım 0: Hazırlık (araştırmaya başlamadan önce)
 
-- [ ] **0.1** Paydaşlara kritik soruyu sor: *Müşteri manualleri bulut API'ye (OpenAI, Anthropic, Google vb.) gönderilebilir mi, yoksa on-prem zorunlu mu?*
-- [ ] **0.2** Örnek manuallerden bir set topla. **Karar (2026-10-08):** Geliştirme ve testler internetten bulunan **açık erişimli (public) manuellerle** yapılacak. Sistem bu set üzerinde iyi sonuç verdiği kanıtlanınca **son adımda kendi (müşteri) verimize** geçilecek. Aday liste: [notes/manual-envanteri.md](notes/manual-envanteri.md).
-- [ ] **0.3** Manuallerin dilini belirle (Türkçe / İngilizce / karışık). Kullanıcı soruları hangi dilde olacak?
-- [ ] **0.4** 10–20 adet gerçekçi örnek soru yaz (cevabı ve geçtiği sayfayı bilerek). Bu, ileride **test soru seti** olacak.
-- [ ] **0.5** Donanım durumunu öğren: GPU var mı? (Lokal model, OCR ve TTS seçimlerini belirler.)
-- [ ] **0.6** Geliştirme ortamı: Python kurulumu (şu an yok). PDF araç denemesi (2.3) için gerekli.
+- [x] **0.1** Paydaşlara kritik soruyu sor: *Müşteri manualleri bulut API'ye (OpenAI, Anthropic, Google vb.) gönderilebilir mi, yoksa on-prem zorunlu mu?*
+  - **Durum (2026-10-10):** 🟡 Kısmen: müşteriden izin istenmeden geliştirilecek (karar). Sözleşme yasağı kontrolü (7.1, Q1) açık. Ayrıntı: [00-hazirlik.md](notes/00-hazirlik.md)
+- [x] **0.2** Örnek manuallerden bir set topla. **Karar (2026-10-08):** Geliştirme ve testler internetten bulunan **açık erişimli (public) manuellerle** yapılacak. Sistem bu set üzerinde iyi sonuç verdiği kanıtlanınca **son adımda kendi (müşteri) verimize** geçilecek. Aday liste: [notes/manual-envanteri.md](notes/manual-envanteri.md).
+  - **Durum (2026-10-10):** ✅ 7 açık erişimli doküman, 611 sayfa. Ölçülmüş envanter: [manual-envanteri.md](notes/manual-envanteri.md)
+- [x] **0.3** Manuallerin dilini belirle (Türkçe / İngilizce / karışık). Kullanıcı soruları hangi dilde olacak?
+  - **Durum (2026-10-10):** ✅ Manueller çoğunlukla İngilizce, sorular Türkçe (İngilizce de olabilir), model çift yönlü olmalı
+- [x] **0.4** 10–20 adet gerçekçi örnek soru yaz (cevabı ve geçtiği sayfayı bilerek). Bu, ileride **test soru seti** olacak.
+  - **Durum (2026-10-10):** ✅ 10 soru yazıldı ve doğrulandı (`Pilot/eval/questions.json`, [00-hazirlik.md](notes/00-hazirlik.md)). 50–100 soru ve uzman kontrolü açık
+- [x] **0.5** Donanım durumunu öğren: GPU var mı? (Lokal model, OCR ve TTS seçimlerini belirler.)
+  - **Durum (2026-10-10):** 🟡 Geliştirme makinesi Apple M4 Pro 24 GB (pilotta 7B sığdı, 30B sığmadı). Kurumsal GPU (Q5) ve bütçe açık
+- [x] **0.6** Geliştirme ortamı: Python kurulumu (şu an yok). PDF araç denemesi (2.3) için gerekli.
+  - **Durum (2026-10-10):** ✅ Python 3.12 (uv), Docling, Qdrant, Ollama kurulu: `Pilot/setup.sh`
 
 **Çıktı:** `Pre/notes/00-hazirlik.md` (cevaplar, örnek doküman listesi, soru seti taslağı)
 
@@ -99,10 +105,10 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
 
 | # | Alt görev | Cevaplanacak soru | Durum |
 |---|-----------|-------------------|-------|
-| 3.1 | Citation / grounding | Yanıttaki her iddia hangi chunk'tan geldi? LLM'e kaynak ID'si nasıl verdirilir ve doğrulanır? | [ ] |
-| 3.2 | Sayfayı görsele çevirme | PDF sayfası → PNG (PyMuPDF `get_pixmap`, pdf2image) vs. tarayıcıda PDF.js ile doğrudan render. Artı/eksi. | [ ] |
-| 3.3 | Highlight | Chunk'ın bbox'ı sayfa üzerinde nasıl çizilir? (Görsele dikdörtgen çizme / PDF.js annotation / metin arama ile bulma.) | [ ] |
-| 3.4 | Multimodal retrieval | ColPali / ColQwen gibi sayfa-görseli tabanlı retrieval nedir? Tablo/şekil ağırlıklı manuallerde metin tabanlı RAG'e göre avantajı ne? **Bizim için gerekli mi?** | [ ] |
+| 3.1 | Citation / grounding | Yanıttaki her iddia hangi chunk'tan geldi? LLM'e kaynak ID'si nasıl verdirilir ve doğrulanır? | [x] ✅ Numaralı kaynak + [n] + kod doğrulaması. Pilotta uygulandı |
+| 3.2 | Sayfayı görsele çevirme | PDF sayfası → PNG (PyMuPDF `get_pixmap`, pdf2image) vs. tarayıcıda PDF.js ile doğrudan render. Artı/eksi. | [x] ✅ Pilot: sunucuda render (pypdfium2). Üretim: PDF.js. Karar: [kaynak-gosterme.md](notes/kaynak-gosterme.md) |
+| 3.3 | Highlight | Chunk'ın bbox'ı sayfa üzerinde nasıl çizilir? (Görsele dikdörtgen çizme / PDF.js annotation / metin arama ile bulma.) | [x] ✅ Chunk bbox'ı kutu olarak çizilir. Pilotta gözle doğrulandı |
+| 3.4 | Multimodal retrieval | ColPali / ColQwen gibi sayfa-görseli tabanlı retrieval nedir? Tablo/şekil ağırlıklı manuallerde metin tabanlı RAG'e göre avantajı ne? **Bizim için gerekli mi?** | [x] ✅ A (VLM açıklaması) + B (cevapta görsel), ColPali ikinci kanal. Pilotta denenmedi |
 
 **Çıktı:** [notes/kaynak-gosterme.md](notes/kaynak-gosterme.md)
 
@@ -177,17 +183,20 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
 - [x] **5.1** Her konu için araştırma notu (özet, seçenekler, artı/eksi). Faz 1–4 notlarının tamamlanmış hali. → sentez.md Ek A
 - [x] **5.2** Önerilen mimari taslağı (akış diyagramı). → sentez.md Bölüm 3, Şekil 1
 - [x] **5.3** Araç/model seçim önerileri. → sentez.md Bölüm 4 (durum sütunuyla: netleşti / pilotta ölçülecek / paydaş kararına bağlı)
-- [ ] **5.4** Manual envanteri ve format değerlendirmesi (Adım 2.1'in final hali). 🟡 Test seti envanteri hazır ([manual-envanteri.md](notes/manual-envanteri.md)). Gerçek dokümanlar için Q2, Q3, Q7 cevapları bekleniyor
+- [x] **5.4** Manual envanteri ve format değerlendirmesi (Adım 2.1'in final hali). 🟡 Test seti envanteri hazır ([manual-envanteri.md](notes/manual-envanteri.md)). Gerçek dokümanlar için Q2, Q3, Q7 cevapları bekleniyor
+  - **Durum (2026-10-10):** ✅ Test seti için tamamlandı: ölçülmüş envanter + format değerlendirmesi [manual-envanteri.md](notes/manual-envanteri.md). Gerçek dokümanlar Q3, Q7, R3'e bağlı
 - [x] **5.5** Açık sorular ve riskler listesi. → sentez.md Bölüm 8–9, [sorulacaklar.md](notes/sorulacaklar.md)
 
 ---
 
 ## Faz 6: Uygulama Planı ve Pilot
 
-- [ ] **6.1** Pilot tanımı: **tek marka, 3–5 manual**, uçtan uca prototip (soru → retrieval → yanıt + kaynak → sayfa highlight → TTS).
+- [x] **6.1** Pilot tanımı: **tek marka, 3–5 manual**, uçtan uca prototip (soru → retrieval → yanıt + kaynak → sayfa highlight → TTS).
+  - **Durum (2026-10-10):** ✅ Pilot yapıldı ([PILOT-RAPORU.md](../Pilot/PILOT-RAPORU.md)). Kapsam: 7 doküman, tamamen lokal, yalnızca yazılı soru
   - Pilotta yapılacak doğrulamalar (Adım 1'den ertelendi, bkz. [rag-temelleri.md → Doğrulanacaklar](notes/rag-temelleri.md)): `bge-m3` TR↔EN eşleşmesi, hybrid vs. sadece dense (A–D deneyi), BM25 vs. BGE-M3 sparse, Türkçe kök bulucu seçimi, reranker gecikmesi, query translation gerekliliği (Q6).
   - Adım 5'ten ertelenen: TTS adaylarının 4 test cümlesiyle karşılaştırılması (ham + normalize, kritik değer doğruluğu, round-trip STT, atölye gürültüsünde dinleme), Chatterbox Multilingual Türkçe kalitesi (R6), ilk ses gecikmesi ölçümü (bkz. [tts.md 2.2](notes/tts.md)).
-- [ ] **6.2** Uygulama aşaması task listesi. İlk öneri:
+- [x] **6.2** Uygulama aşaması task listesi. İlk öneri:
+  - **Durum (2026-10-10):** ✅ Güncel plan: [gorev-ozetleri.md §9](notes/gorev-ozetleri.md), [sentez.md §10.3](sentez.md)
   1. Ingestion pipeline (parse + chunk + metadata + indeksleme)
   2. Retrieval (hybrid + filtre + rerank) ve test seti ile ölçüm
   3. Yanıt üretimi + citation
@@ -205,7 +214,8 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
   | Basılı → fiziksel sayfa eşleme tablosu | 1. Ingestion | Kılavuz içi atıflar ("Page 67") basılı numarayla. Kitapçık düzeni (Mr. Coffee: bir PDF sayfasında iki basılı sayfa) ve üstte basılı numara (Strickland) ayrıca ele alınmalı |
   | Tarayıcıda vurgunun (streamlit-pdf-viewer) gözle doğrulanması | 4. Sayfa görüntüleyici | Otomatik testte görüntüleyici hatasız açılıyor, vurgu henüz gözle kontrol edilmedi |
   | Docling dışındaki parser'larla karşılaştırma (Adım 2.3) | 1. Ingestion | Marker, PyMuPDF4LLM vb. aynı sayfalarda |
-- [ ] **6.3** Pilot başarı kriterleri (örn. test setinde doğru sayfa ilk 3'te %80+, yanıt gecikmesi < X sn).
+- [x] **6.3** Pilot başarı kriterleri (örn. test setinde doğru sayfa ilk 3'te %80+, yanıt gecikmesi < X sn).
+  - **Durum (2026-10-10):** ✅ Taslak kriterler ve pilot sonuçları: [sentez.md §10.2](sentez.md). Hedefler paydaşlarla kesinleşecek
 
 ---
 
@@ -262,3 +272,4 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
 | 2026-10-09 | Adım 7: Güvenlik | İlk tur. Ana bulgu: Ingestion'da bulut = dokümanın tamamı dışarı, sorguda bulut LLM = 3–5 parça → **hibrit senaryo** (ingestion/embedding/vektör DB lokal, LLM+TTS kurumsal bulut + ZDR). Yetki kararı LLM'de değil kodda, retrieval öncesi. Kararlar Q1/NDA/7.3 cevaplarına bağlı. Yeni sorular sorulacaklar.md A1'e eklendi. | [guvenlik.md](notes/guvenlik.md) |
 | 2026-10-09 | Adım 7: kontrol soruları | K1–K5 değerlendirildi (4 🟡, 1 boş → K4 yan kapılar tablosu yazıldı). | [guvenlik.md](notes/guvenlik.md) |
 | 2026-10-09 | Faz 5: Sentez | Sunulabilir sentez dokümanı: özet, mimari (Şekil 1), araç seçimleri, doğruluk güvencesi (Şekil 2), dağıtım senaryoları (Şekil 3), riskler (R1–R10), bekleyen kararlar, pilot önerisi. Yeni riskler sentezde: R7 OCR satır kaybı, R8 yetki filtresi sızıntısı, R9 STT kod tanıma, R10 test setinin temsiliyeti. | [sentez.md](sentez.md) |
+| 2026-10-10 | Cevaplar + Pilot | Paydaş cevapları işlendi (sorulacaklar.md). Lokal pilot kuruldu ve ölçüldü: 7 doküman, 10 soruda 5 doğru, ortalama 14,5 sn. 30B model 24 GB makineye sığmadı, 7B yetersiz. 83 birim test. Sentez ve riskler güncellendi (R11–R14). | [PILOT-RAPORU.md](../Pilot/PILOT-RAPORU.md) · [sentez.md](sentez.md) |

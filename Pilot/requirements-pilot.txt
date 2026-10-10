@@ -1,0 +1,12 @@
+docling
+pypdfium2
+pillow
+pymupdf
+FlagEmbedding
+sentence-transformers
+qdrant-client
+ollama
+streamlit
+streamlit-pdf-viewer
+pydantic
+pytest

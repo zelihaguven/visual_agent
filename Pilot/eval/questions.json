@@ -1,0 +1,22 @@
+[
+  {"id": "Q01", "kind": "değer", "q": "Ceketin dış görünür dikişlerinde inç başına kaç dikiş olmalı?",
+   "expect_docs": ["gl-pd-14-04a"], "expect_pages": [22], "expect_in_answer": ["11", "± 1"]},
+  {"id": "Q02", "kind": "değer", "q": "Pantolonun dış dikişlerinde SPI kaç olmalı?",
+   "expect_docs": ["gl-pd-07-14a"], "expect_pages": [19], "expect_in_answer": ["10", "14"]},
+  {"id": "Q03", "kind": "değer", "q": "Ceketteki düğme iliklerinde dikiş sayısı kaç olmalı?",
+   "expect_docs": ["gl-pd-14-04a"], "expect_pages": [22], "expect_in_answer": ["54", "± 2"]},
+  {"id": "Q04", "kind": "arıza", "q": "S-7300A'da üst iplik gergin değil, ne yapmalıyım?",
+   "expect_docs": ["brother-s7300a"], "expect_pages": [101], "expect_in_answer": []},
+  {"id": "Q05", "kind": "tuzak", "q": "S-7300B'de dikiş atlıyor, ne yapmalıyım?",
+   "expect_docs": ["brother-s7300b"], "expect_pages": [82, 109], "expect_in_answer": [], "forbid_docs": ["brother-s7300a"]},
+  {"id": "Q06", "kind": "alan dışı", "q": "Kahve makinesi nasıl temizlenir?",
+   "expect_docs": ["mrcoffee-2003"], "expect_pages": [16, 17], "expect_in_answer": []},
+  {"id": "Q07", "kind": "belirsiz", "q": "Dış görünür dikişlerde SPI kaç olmalı?",
+   "expect_docs": ["gl-pd-14-04a", "gl-pd-07-14a"], "expect_pages": [22, 19], "expect_in_answer": [], "expect_clarify": true},
+  {"id": "Q08", "kind": "cevapsız", "q": "Nike ceketlerinde yaka dikişi kaç mm olmalı?",
+   "expect_not_found": true},
+  {"id": "Q09", "kind": "cevapsız", "q": "Pantolonun cep astarı hangi kumaştan yapılmalı ve gramajı kaç olmalı?",
+   "expect_not_found": true, "note": "gramaj kumaş bölümünde olabilir; sonuç elle kontrol edilmeli"},
+  {"id": "Q10", "kind": "cevapsız", "q": "Uçak motoru yağı kaç derecede değiştirilir?",
+   "expect_not_found": true}
+]
