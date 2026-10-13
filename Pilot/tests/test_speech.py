@@ -10,8 +10,11 @@ from pilot.speech import normalize_for_speech as say
     ("10-14 dikiş", "on ile on dört arası dikiş"),
     ("5/8 inç", "sekizde beş inç"),
     ("3/16 inç", "on altıda üç inç"),
-    ("0.5 mm", "sıfır virgül beş mm"),
-    ("0,5 mm", "sıfır virgül beş mm"),
+    ("0.5 mm", "sıfır virgül beş milimetre"),
+    ("0,5 mm", "sıfır virgül beş milimetre"),
+    ("En büyük dikiş uzunluğu 5 mm'dir.", "En büyük dikiş uzunluğu beş milimetredir."),   # Windows denemesi
+    ("10-14 SPI", "on ile on dört arası inç başına dikiş"),
+    ("5000 sti/min", "beş bin dikiş/dakika"),
     ("101 sayfa", "yüz bir sayfa"),
     ("1250 devir", "bin iki yüz elli devir"),
     ("16 dikiş", "on altı dikiş"),

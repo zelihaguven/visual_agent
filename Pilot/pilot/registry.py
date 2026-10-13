@@ -1,4 +1,4 @@
-"""Pilot doküman kaydı (metadata). Kaynak: Pre/notes/manual-envanteri.md."""
+"""Pilot doküman kaydı (metadata). Kaynak: calisma-notlari/notlar/manual-envanteri.md."""
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -29,9 +29,9 @@ class DocMeta:
 
 DOCS: tuple[DocMeta, ...] = (
     DocMeta("gl-pd-14-04a", "GL-PD-14-04A_ACU-Coat.pdf", "US Army (GL-PD)", "Ceket", "product_standard",
-            aliases=("ceket", "acucoat", "gl-pd-14-04a"),),
+            aliases=("ceket", "acucoat", "gl-pd-14-04a", "coat", "jacket"),),   # coat/jacket: İngilizce soru (Q16)
     DocMeta("gl-pd-07-14a", "GL-PD-07-14A_Combat-Trousers.pdf", "US Army (GL-PD)", "Pantolon", "product_standard",
-            aliases=("pantolon", "trouser", "gl-pd-07-14a"),),
+            aliases=("pantolon", "trouser", "gl-pd-07-14a", "pants"),),
     DocMeta("brother-s7300a", "Brother_S-7300A_Instruction.pdf", "Brother", "S-7300A düz dikiş makinesi", "machine_manual",
             aliases=("s7300a",)),
     DocMeta("brother-s7300b", "Brother_S-7300B_Instruction_2025-04.pdf", "Brother", "S-7300B düz dikiş makinesi", "machine_manual",
@@ -50,4 +50,12 @@ BY_ID = {d.doc_id: d for d in DOCS}
 # Aynı üreticinin birden çok modeli olduğunda yalnızca marka adı geçerse tüm modelleri kapsar.
 BRAND_ALIASES: dict[str, tuple[str, ...]] = {
     "brother": ("brother-s7300a", "brother-s7300b"),
+}
+
+# Müşteri (ürün sahibi) markaları ve şartnameleri. Soruda yalnız marka geçerse o markanın tüm şartnameleri kapsanır
+# ("US Army SPI?" → ceket mi pantolon mu sorulur). Gerçek sistemde bu tablo müşteri kaydından ve yetkiden gelir.
+# Dokümanı olmayan markalar (Nike ...) query.FOREIGN_BRANDS'te: aynı türden varlık, şartnamesi yok.
+CUSTOMER_BRANDS: dict[str, tuple[str, ...]] = {
+    "usarmy": ("gl-pd-14-04a", "gl-pd-07-14a"),
+    "glpd": ("gl-pd-14-04a", "gl-pd-07-14a"),
 }

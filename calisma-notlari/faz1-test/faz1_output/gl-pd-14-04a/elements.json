@@ -1,0 +1,1664 @@
+[
+  {
+    "id": "p21_e0",
+    "label": "section_header",
+    "text": "GL/PD 14-04A",
+    "page": 21,
+    "bbox_tl": [
+      268.8505,
+      38.89210000000003,
+      343.0297000000002,
+      48.71719090909096
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      21
+    ],
+    "boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          268.8505,
+          38.89210000000003,
+          343.0297000000002,
+          48.71719090909096
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e1",
+    "label": "text",
+    "text": "for side seams, shoulder seams, and sleeve seams, 3/8-inch allowance for collar and all other seams, except where otherwise specified, and 1/4-inch allowance for pocket flaps. Pockets, pocket flaps, pencil pocket, elbow patches, cuffs, collar, slide fastener, patch loop tape, other hook and loop fastener tape, and bar-tacks shall be located in accordance with marks on patterns and table references. Minor modifications to the pattern are permitted where necessary to accommodate manufacture's processes to include garment treatments and use of automatic equipment. These modifications shall not alter the final design, serviceability, appearance or final finished measurements. Table IVA and Table IVB pattern list is provided to insure that the pattern set is complete for all Types and Styles of coats (see 6.2).",
+    "page": 21,
+    "bbox_tl": [
+      72.0241,
+      74.89209999999991,
+      536.3712999999992,
+      195.13759090909048
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      21
+    ],
+    "boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          72.0241,
+          74.89209999999991,
+          536.3712999999992,
+          195.13759090909048
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e2",
+    "label": "table",
+    "text": "TABLE IVA. Style A. Unisex list of pattern parts\n\n| Material       | Nomenclature                   | Pattern Abbreviation   |   Cut Number |\n|----------------|--------------------------------|------------------------|--------------|\n| Basic Material | Back                           | PD1404A-BACK           |            1 |\n| Basic Material | Side Back                      | PD1404A-SIDE_BACK      |            2 |\n| Basic Material | Left Front                     | PD1404A-FRONT_LFT      |            1 |\n| Basic Material | Right Front                    | PD1404A-FRONT_RT       |            1 |\n| Basic Material | Top Sleeve                     | PD1404A-TOP_SLEEVE     |            2 |\n| Basic Material | Under Sleeve                   | PD1404A-UNDR_SLEEVE    |            2 |\n| Basic Material | Collar                         | PD1404A-COLLAR         |            2 |\n| Basic Material | Elbow Patch                    | PD1404A-ELBOW_PATCH    |            2 |\n| Basic Material | Sleeve Pocket                  | PD1404A-SLEEVE_PCKT    |            2 |\n| Basic Material | Sleeve Pocket Zipper Facing    | PD1404A-SLV_PKT_ZIP    |            2 |\n| Basic Material | Right Front Chest Pocket       | PD1404A-FT_CHST_PKR    |            1 |\n| Basic Material | Left Front Chest Pocket        | PD1404A-FT_CHST_PKL    |            1 |\n| Basic Material | Right Front Chest Pocket Flap  | PD1404A-FLP_CHSTPKR    |            1 |\n| Basic Material | Left Front Chest Pocket Flap   | PD1404A-FLP_CHSTPKL    |            1 |\n| Basic Material | Cuff                           | PD1404A-CUFF           |            2 |\n| Basic Material | Cuff Tab                       | PD1404A-CUFF_TAB       |            2 |\n| Basic Material | Left Pen Pocket                | PD1404A-LFT_PEN_PKT    |            1 |\n| Fusible        | Font Facing Fusible (Optional) | PD1404A-FF_FUS-OPT     |            2 |\n| Fusible        | Collar Fusible                 | PD1404A-COLLAR_FUSE    |            1 |\n| Templates      | IFF Webbing Template           | PD1404A-IFF_WEB_TEMP   |            0 |",
+    "page": 21,
+    "bbox_tl": [
+      76.54493713378906,
+      236.9348907470703,
+      534.3048095703125,
+      601.8374633789062
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      21
+    ],
+    "boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          76.54493713378906,
+          236.9348907470703,
+          534.3048095703125,
+          601.8374633789062
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "has_rows": true
+  },
+  {
+    "id": "p21_e2_r0",
+    "label": "table_row",
+    "text": "Material: Basic Material | Nomenclature: Back | Nomenclature: Side Back | Nomenclature: Left Front | Nomenclature: Right Front | Nomenclature: Top Sleeve | Nomenclature: Under Sleeve | Nomenclature: Collar | Nomenclature: Elbow Patch | Nomenclature: Sleeve Pocket | Nomenclature: Sleeve Pocket Zipper Facing | Nomenclature: Right Front Chest Pocket | Nomenclature: Left Front Chest Pocket | Nomenclature: Right Front Chest Pocket Flap | Nomenclature: Left Front Chest Pocket Flap | Nomenclature: Cuff | Nomenclature: Cuff Tab | Nomenclature: Left Pen Pocket | Pattern Abbreviation: PD1404A-BACK | Pattern Abbreviation: PD1404A-SIDE_BACK | Pattern Abbreviation: PD1404A-FRONT_LFT | Pattern Abbreviation: PD1404A-FRONT_RT | Pattern Abbreviation: PD1404A-TOP_SLEEVE | Pattern Abbreviation: PD1404A-UNDR_SLEEVE | Pattern Abbreviation: PD1404A-COLLAR | Pattern Abbreviation: PD1404A-ELBOW_PATCH | Pattern Abbreviation: PD1404A-SLEEVE_PCKT | Pattern Abbreviation: PD1404A-SLV_PKT_ZIP | Pattern Abbreviation: PD1404A-FT_CHST_PKR | Pattern Abbreviation: PD1404A-FT_CHST_PKL | Pattern Abbreviation: PD1404A-FLP_CHSTPKR | Pattern Abbreviation: PD1404A-FLP_CHSTPKL | Pattern Abbreviation: PD1404A-CUFF | Pattern Abbreviation: PD1404A-CUFF_TAB | Pattern Abbreviation: PD1404A-LFT_PEN_PKT | Cut Number: 1 | Cut Number: 2 | Cut Number: 1 | Cut Number: 1 | Cut Number: 2 | Cut Number: 2 | Cut Number: 2 | Cut Number: 2 | Cut Number: 2 | Cut Number: 2 | Cut Number: 1 | Cut Number: 1 | Cut Number: 1 | Cut Number: 1 | Cut Number: 2 | Cut Number: 2 | Cut Number: 1",
+    "page": 21,
+    "bbox_tl": [
+      82.5842,
+      273.3026,
+      510.701,
+      547.9881909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      21
+    ],
+    "boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          82.5842,
+          273.3026,
+          510.701,
+          547.9881909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e2",
+    "context_boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          76.54493713378906,
+          236.9348907470703,
+          534.3048095703125,
+          601.8374633789062
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e2_r1",
+    "label": "table_row",
+    "text": "Material: Fusible | Nomenclature: Font Facing Fusible (Optional) | Nomenclature: Collar Fusible | Pattern Abbreviation: PD1404A-FF_FUS-OPT | Pattern Abbreviation: PD1404A-COLLAR_FUSE | Cut Number: 2 | Cut Number: 1",
+    "page": 21,
+    "bbox_tl": [
+      85.5842,
+      555.4431,
+      510.701,
+      581.5881909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      21
+    ],
+    "boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          85.5842,
+          555.4431,
+          510.701,
+          581.5881909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e2",
+    "context_boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          76.54493713378906,
+          236.9348907470703,
+          534.3048095703125,
+          601.8374633789062
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e2_r2",
+    "label": "table_row",
+    "text": "Material: Templates | Nomenclature: IFF Webbing Template | Pattern Abbreviation: PD1404A-IFF_WEB_TEMP | Cut Number: 0",
+    "page": 21,
+    "bbox_tl": [
+      82.5842,
+      588.0832,
+      510.701,
+      597.908290909091
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      21
+    ],
+    "boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          82.5842,
+          588.0832,
+          510.701,
+          597.908290909091
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e2",
+    "context_boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          76.54493713378906,
+          236.9348907470703,
+          534.3048095703125,
+          601.8374633789062
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e3",
+    "label": "caption",
+    "text": "TABLE IVA. Style A. Unisex list of pattern parts",
+    "page": 21,
+    "bbox_tl": [
+      183.6205,
+      212.91249999999945,
+      428.3905000000006,
+      222.7375909090904
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      21
+    ],
+    "boxes": [
+      {
+        "page": 21,
+        "bbox_tl": [
+          183.6205,
+          212.91249999999945,
+          428.3905000000006,
+          222.7375909090904
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e4",
+    "label": "section_header",
+    "text": "GL/PD 14-04A",
+    "page": 22,
+    "bbox_tl": [
+      268.8505,
+      38.89210000000003,
+      343.0297000000002,
+      48.71719090909096
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      22
+    ],
+    "boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          268.8505,
+          38.89210000000003,
+          343.0297000000002,
+          48.71719090909096
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e5",
+    "label": "section_header",
+    "text": "TABLE IVB. Style B. Female list of pattern parts",
+    "page": 22,
+    "bbox_tl": [
+      183.74050000000003,
+      74.89209999999991,
+      428.44210000000044,
+      84.71719090909085
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      22
+    ],
+    "boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          183.74050000000003,
+          74.89209999999991,
+          428.44210000000044,
+          84.71719090909085
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e6",
+    "label": "table",
+    "text": "| Material       | Nomenclature                   | Pattern Abbreviation   |   Cut Number |\n|----------------|--------------------------------|------------------------|--------------|\n| Basic Material | Back                           | PD1404B-BACK           |            1 |\n| Basic Material | Side Back                      | PD1404B-SIDE_BACK      |            2 |\n| Basic Material | Left Front                     | PD1404B-FRONT_LFT      |            1 |\n| Basic Material | Right Front                    | PD1404B-FRONT_RT       |            1 |\n| Basic Material | Top Sleeve                     | PD1404B-TOP_SLEEVE     |            2 |\n| Basic Material | Under Sleeve                   | PD1404B-UNDR_SLEEVE    |            2 |\n| Basic Material | Collar                         | PD1404B-COLLAR         |            2 |\n| Basic Material | Elbow Patch                    | PD1404B-ELBOW_PATCH    |            2 |\n| Basic Material | Sleeve Pocket                  | PD1404B-SLEEVE_PCKT    |            2 |\n| Basic Material | Sleeve Pocket Zipper Facing    | PD1404B-SLV_PKT_ZIP    |            2 |\n| Basic Material | Right Front Chest Pocket       | PD1404B-FT_CHST_PKR    |            1 |\n| Basic Material | Left Front Chest Pocket        | PD1404B-FT_CHST_PKL    |            1 |\n| Basic Material | Right Front Chest Pocket Flap  | PD1404B-FLP_CHSTPKR    |            1 |\n| Basic Material | Left Front Chest Pocket Flap   | PD1404B-FLP_CHSTPKL    |            1 |\n| Basic Material | Cuff                           | PD1404B-CUFF           |            2 |\n| Basic Material | Cuff Tab                       | PD1404B-CUFF_TAB       |            2 |\n| Basic Material | Left Pen Pocket                | PD1404B-LFT_PEN_PKT    |            1 |\n| Fusible        | Font Facing Fusible (Optional) | PD1404B-FF_FUS-OPT     |            2 |\n| Fusible        | Collar Fusible                 | PD1404B-COLLAR_FUSE    |            1 |\n| Templates      | IFF Webbing Template           | PD1404B-IFF_WEB_TEMP   |            0 |",
+    "page": 22,
+    "bbox_tl": [
+      76.42102813720703,
+      99.1082534790039,
+      536.676025390625,
+      459.906982421875
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      22
+    ],
+    "boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          76.42102813720703,
+          99.1082534790039,
+          536.676025390625,
+          459.906982421875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "has_rows": true
+  },
+  {
+    "id": "p21_e6_r0",
+    "label": "table_row",
+    "text": "Material: Basic Material | Nomenclature: Back | Nomenclature: Side Back | Nomenclature: Left Front | Nomenclature: Right Front | Nomenclature: Top Sleeve | Nomenclature: Under Sleeve | Nomenclature: Collar | Nomenclature: Elbow Patch | Nomenclature: Sleeve Pocket | Nomenclature: Sleeve Pocket Zipper Facing | Nomenclature: Right Front Chest Pocket | Nomenclature: Left Front Chest Pocket | Nomenclature: Right Front Chest Pocket Flap | Nomenclature: Left Front Chest Pocket Flap | Nomenclature: Cuff | Nomenclature: Cuff Tab | Nomenclature: Left Pen Pocket | Pattern Abbreviation: PD1404B-BACK | Pattern Abbreviation: PD1404B-SIDE_BACK | Pattern Abbreviation: PD1404B-FRONT_LFT | Pattern Abbreviation: PD1404B-FRONT_RT | Pattern Abbreviation: PD1404B-TOP_SLEEVE | Pattern Abbreviation: PD1404B-UNDR_SLEEVE | Pattern Abbreviation: PD1404B-COLLAR | Pattern Abbreviation: PD1404B-ELBOW_PATCH | Pattern Abbreviation: PD1404B-SLEEVE_PCKT | Pattern Abbreviation: PD1404B-SLV_PKT_ZIP | Pattern Abbreviation: PD1404B-FT_CHST_PKR | Pattern Abbreviation: PD1404B-FT_CHST_PKL | Pattern Abbreviation: PD1404B-FLP_CHSTPKR | Pattern Abbreviation: PD1404B-FLP_CHSTPKL | Pattern Abbreviation: PD1404B-CUFF | Pattern Abbreviation: PD1404B-CUFF_TAB | Pattern Abbreviation: PD1404B-LFT_PEN_PKT | Cut Number: 1 | Cut Number: 2 | Cut Number: 1 | Cut Number: 1 | Cut Number: 2 | Cut Number: 2 | Cut Number: 2 | Cut Number: 2 | Cut Number: 2 | Cut Number: 2 | Cut Number: 1 | Cut Number: 1 | Cut Number: 1 | Cut Number: 1 | Cut Number: 2 | Cut Number: 2 | Cut Number: 1",
+    "page": 22,
+    "bbox_tl": [
+      82.5842,
+      135.39229999999998,
+      512.501,
+      407.4478909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      22
+    ],
+    "boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          82.5842,
+          135.39229999999998,
+          512.501,
+          407.4478909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e6",
+    "context_boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          76.42102813720703,
+          99.1082534790039,
+          536.676025390625,
+          459.906982421875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e6_r1",
+    "label": "table_row",
+    "text": "Material: Fusible | Nomenclature: Font Facing Fusible (Optional) | Nomenclature: Collar Fusible | Pattern Abbreviation: PD1404B-FF_FUS-OPT | Pattern Abbreviation: PD1404B-COLLAR_FUSE | Cut Number: 2 | Cut Number: 1",
+    "page": 22,
+    "bbox_tl": [
+      82.5842,
+      413.9428,
+      512.501,
+      440.1079909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      22
+    ],
+    "boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          82.5842,
+          413.9428,
+          512.501,
+          440.1079909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e6",
+    "context_boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          76.42102813720703,
+          99.1082534790039,
+          536.676025390625,
+          459.906982421875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e6_r2",
+    "label": "table_row",
+    "text": "Material: Templates | Nomenclature: IFF Webbing Template | Pattern Abbreviation: PD1404B-IFF_WEB_TEMP | Cut Number: 0",
+    "page": 22,
+    "bbox_tl": [
+      82.5842,
+      446.7229,
+      512.501,
+      456.5479909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      22
+    ],
+    "boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          82.5842,
+          446.7229,
+          512.501,
+          456.5479909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e6",
+    "context_boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          76.42102813720703,
+          99.1082534790039,
+          536.676025390625,
+          459.906982421875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e7",
+    "label": "text",
+    "text": "3.11 Configuration. Each coat shall conform to design, appearance (see Figures 1-5), the finished measurements in Table VIIA and VIIB and the construction methods specified in 3.11.1 through 3.11.2, and Tables V and VI in order to maintain configuration compliance.",
+    "page": 22,
+    "bbox_tl": [
+      72.0241,
+      476.7229,
+      537.0216999999994,
+      514.1480909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      22
+    ],
+    "boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          72.0241,
+          476.7229,
+          537.0216999999994,
+          514.1480909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e8",
+    "label": "text",
+    "text": "3.11.1 Seams and stitching. All seams shall be consistent and exhibit a uniform appearance and conform to the ASTM D 6193 seam and stitch types listed in Table V. The backside of seams (inside garment) shall be flat with no protruding seam allowance to create irritation or discomfort. All material edges shall be clean finished, either, turned-in, turned-under or serged. All pocket flaps shall be serged prior to setting. Needle and bobbin thread tension shall be balanced such that neither is too tight nor too loose relative to each other. The seams for all outside visible stitching shall be sewn with 11 (± 1) stitches per inch. Overedge or pre-hemming shall be 10 (± 2) stitches per inch. Buttons shall be attached with 16 stitches per button. Buttonholes shall be 54 (± 2) stitches per inch including tack. All hook and loop tape shall be sewn with 10 (± 2) stitches per inch. The IFF material shall be sewn with 8 (± 1) stitches per inch. The sewn eyelets for the bellows pockets shall have a minimum of 16 stitches. The width of the bight of stitching shall not be less than 1/16-inch. The eyelet stitching shall have at least",
+    "page": 22,
+    "bbox_tl": [
+      72.0241,
+      531.923,
+      536.9605000000004,
+      693.578190909091
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      22
+    ],
+    "boxes": [
+      {
+        "page": 22,
+        "bbox_tl": [
+          72.0241,
+          531.923,
+          536.9605000000004,
+          693.578190909091
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e9",
+    "label": "section_header",
+    "text": "GL/PD 14-04A",
+    "page": 23,
+    "bbox_tl": [
+      268.8505,
+      38.89210000000003,
+      343.0297000000002,
+      48.71719090909096
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          268.8505,
+          38.89210000000003,
+          343.0297000000002,
+          48.71719090909096
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e10",
+    "label": "text",
+    "text": "four (4) overlapping stitches with the purling on the outside. All stitches per inch and gauge requirements shall be met prior to any applicable garment treatments.",
+    "page": 23,
+    "bbox_tl": [
+      72.02410000000003,
+      74.89209999999991,
+      515.6389000000001,
+      98.5375909090908
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          72.02410000000003,
+          74.89209999999991,
+          515.6389000000001,
+          98.5375909090908
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e11",
+    "label": "section_header",
+    "text": "3.11.1.1 Repair of stitch.",
+    "page": 23,
+    "bbox_tl": [
+      87.02410000000003,
+      116.31249999999977,
+      205.96330000000023,
+      126.1375909090907
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          87.02410000000003,
+          116.31249999999977,
+          205.96330000000023,
+          126.1375909090907
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e12",
+    "label": "list_item",
+    "text": "Repairs of stitching. Repairs of stitching shall be as follows:",
+    "page": 23,
+    "bbox_tl": [
+      87.0241,
+      143.91229999999996,
+      424.33689999999945,
+      153.7373909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          87.0241,
+          143.91229999999996,
+          424.33689999999945,
+          153.7373909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e13",
+    "label": "list_item",
+    "text": "When thread breaks or bobbin run-outs occur during stitching, the stitching shall be repaired by restarting the stitching a minimum of 1/2-inch in back of the end of the stitching.",
+    "page": 23,
+    "bbox_tl": [
+      99.0242,
+      171.51239999999996,
+      514.9189999999996,
+      208.9374909090908
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          99.0242,
+          171.51239999999996,
+          514.9189999999996,
+          208.9374909090908
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e14",
+    "label": "list_item",
+    "text": "Thread breaks or two (2) or more consecutive skipped or run-off stitches noted during end item inspection shall be repaired by overstitching. The stitching shall start at a minimum of 1/2-inch in back of the defective area and continue a minimum of 1/2-inch beyond the defective area onto the existing stitching. Loose or excessively tight stitching shall be repaired by removing the defective stitching, without damaging the materials, and restitching in the required manner.",
+    "page": 23,
+    "bbox_tl": [
+      99.0242,
+      226.71239999999977,
+      532.1090000000004,
+      305.5674909090907
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          99.0242,
+          226.71239999999977,
+          532.1090000000004,
+          305.5674909090907
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e15",
+    "label": "text",
+    "text": "NOTE: When making the above repairs, the ends of the stitching are not required to be backstitched. The loose ends shall be trimmed with scissors. Caution: Pulling or breaking the loose ends is not allowed.",
+    "page": 23,
+    "bbox_tl": [
+      72.0242,
+      323.34239999999977,
+      528.2906000000003,
+      360.7674909090907
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          72.0242,
+          323.34239999999977,
+          528.2906000000003,
+          360.7674909090907
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e16",
+    "label": "list_item",
+    "text": "Repairs of type 401 stitching only. All repairs shall be in accordance with 3.11.1.1 and 3.11.1.2, except substitute 3/4-inch for 1/2-inch wherever 1/2-inch appears. Repairs to stitch Type 401 may be accomplished by use of stitching type 301.",
+    "page": 23,
+    "bbox_tl": [
+      72.02409999999998,
+      378.5423999999998,
+      537.9469,
+      415.96789090909095
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          72.02409999999998,
+          378.5423999999998,
+          537.9469,
+          415.96789090909095
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e17",
+    "label": "list_item",
+    "text": "Stitching for hook and loop tape. The hook and loop tape shall be sewn with the use of a straight stitch, box stitch or box-X stitch with special stitched corners as specified in Table V.",
+    "page": 23,
+    "bbox_tl": [
+      72.0241,
+      433.76320000000004,
+      528.9469000000008,
+      471.1879909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          72.0241,
+          433.76320000000004,
+          528.9469000000008,
+          471.1879909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e18",
+    "label": "table",
+    "text": "TABLE V. Seam and stitch types\n\n| Seam placement                                                         | Seam type   | Gauge                                    | Stitch type   |\n|------------------------------------------------------------------------|-------------|------------------------------------------|---------------|\n| Side seams, back sleeve seams, set in sleeves, armhole, shoulder seams | LSc-2       | 3/16 to 1/4-inch gauge (double lap seam) | 301 or 401    |\n| Bi-swing seam Inner seam                                               | SSa-2       | 3/8 to 1/2-inch gauge                    | 301 and 602   |\n| Outer seam (pleat)                                                     | OSf-2       | 3/16 to 1/4-inch gauge                   | 301           |\n| Top stitch pleat of bi-swing                                           | OSf-2       | Two (2) rows 3/16 to 1/4-inch gage apart | 301           |\n| Top stitching of pencil pocket, collar and front edge                  | OSf-1       | 1/16 to 1/8-inch from edge               | 301           |",
+    "page": 23,
+    "bbox_tl": [
+      71.7208480834961,
+      499.2565002441406,
+      540.3836669921875,
+      696.19775390625
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          71.7208480834961,
+          499.2565002441406,
+          540.3836669921875,
+          696.19775390625
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "has_rows": true
+  },
+  {
+    "id": "p21_e18_r0",
+    "label": "table_row",
+    "text": "Seam placement: Side seams, back sleeve seams, set in sleeves, armhole, shoulder seams | Seam type: LSc-2 | Gauge: 3/16 to 1/4-inch gauge (double lap seam) | Stitch type: 301 or 401",
+    "page": 23,
+    "bbox_tl": [
+      77.66389999999998,
+      531.323,
+      522.4777,
+      568.7481909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          77.66389999999998,
+          531.323,
+          522.4777,
+          568.7481909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e18",
+    "context_boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          71.7208480834961,
+          499.2565002441406,
+          540.3836669921875,
+          696.19775390625
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e18_r1",
+    "label": "table_row",
+    "text": "Seam placement: Bi-swing seam Inner seam | Seam type: SSa-2 | Gauge: 3/8 to 1/2-inch gauge | Stitch type: 301 and 602",
+    "page": 23,
+    "bbox_tl": [
+      77.6641,
+      573.2031,
+      526.0790000000002,
+      610.658290909091
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          77.6641,
+          573.2031,
+          526.0790000000002,
+          610.658290909091
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e18",
+    "context_boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          71.7208480834961,
+          499.2565002441406,
+          540.3836669921875,
+          696.19775390625
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e18_r2",
+    "label": "table_row",
+    "text": "Seam placement: Outer seam (pleat) | Seam type: OSf-2 | Gauge: 3/16 to 1/4-inch gauge | Stitch type: 301",
+    "page": 23,
+    "bbox_tl": [
+      83.6641,
+      628.4332,
+      515.981,
+      638.2583909090908
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          83.6641,
+          628.4332,
+          515.981,
+          638.2583909090908
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e18",
+    "context_boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          71.7208480834961,
+          499.2565002441406,
+          540.3836669921875,
+          696.19775390625
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e18_r3",
+    "label": "table_row",
+    "text": "Seam placement: Top stitch pleat of bi-swing | Seam type: OSf-2 | Gauge: Two (2) rows 3/16 to 1/4-inch gage apart | Stitch type: 301",
+    "page": 23,
+    "bbox_tl": [
+      77.6641,
+      642.7133,
+      515.981,
+      666.3383909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          77.6641,
+          642.7133,
+          515.981,
+          666.3383909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e18",
+    "context_boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          71.7208480834961,
+          499.2565002441406,
+          540.3836669921875,
+          696.19775390625
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e18_r4",
+    "label": "table_row",
+    "text": "Seam placement: Top stitching of pencil pocket, collar and front edge | Seam type: OSf-1 | Gauge: 1/16 to 1/8-inch from edge | Stitch type: 301",
+    "page": 23,
+    "bbox_tl": [
+      77.6641,
+      670.7934,
+      515.981,
+      694.4148909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          77.6641,
+          670.7934,
+          515.981,
+          694.4148909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e18",
+    "context_boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          71.7208480834961,
+          499.2565002441406,
+          540.3836669921875,
+          696.19775390625
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e19",
+    "label": "caption",
+    "text": "TABLE V. Seam and stitch types",
+    "page": 23,
+    "bbox_tl": [
+      224.2105,
+      475.1629,
+      387.63849999999985,
+      484.9879909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      23
+    ],
+    "boxes": [
+      {
+        "page": 23,
+        "bbox_tl": [
+          224.2105,
+          475.1629,
+          387.63849999999985,
+          484.9879909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e20",
+    "label": "section_header",
+    "text": "GL/PD 14-04A",
+    "page": 24,
+    "bbox_tl": [
+      268.8505,
+      38.89210000000003,
+      343.0297000000002,
+      48.71719090909096
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          268.8505,
+          38.89210000000003,
+          343.0297000000002,
+          48.71719090909096
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21",
+    "label": "table",
+    "text": "TABLE V. Seam and stitch types- Continued\n\n| Seam placement                                                                           | Seam type       | Gauge                                                                                                                         | Stitch type   |\n|------------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------|---------------|\n| Top stitching of sleeve cuff tabs                                                        | OSf-1           | 3/16 to 1/4-inch from folded edge                                                                                             | 301           |\n| Upper sleeve pocket bellows, inside pleat                                                | OSf-1           | 1/16 to 1/8-inch from edge                                                                                                    | 301           |\n| Attachment of pockets (When using automatic pocket setting equipment topstitching gauge) | LSd-1           | 1/16 to 1/8-inch from edge                                                                                                    | 301           |\n| shall be 1/6, 1/8, or 3/16 Setting of chest pocket flaps Top stitch OR Top stitch        | LSba-2 LSb1-2   | Two (2) rows 3/16 to 1/4-inch apart 3/16 to 1/4-inch from serged edge, then turn flap burying edge and top stitch one (1) row | 301 301       |\n|                                                                                          |                 | raw 1/4 to 5/16-inches from turned edge                                                                                       |               |\n| Top stitching of chest pocket flaps                                                      | OSf-1           | 3/16 to 1/4-inch from folded edge                                                                                             | 301           |\n| Attachment of elbow reinforcements                                                       | LSd-2           | Two (2) rows 3/16 to 1/4-inch apart                                                                                           | 301           |\n| Front slide fastener Placement Attachment Upper sleeve pocket slide fastener             | -------- SSak-2 | See pattern for placement of slide fastener teeth from front edge Two (2) rows 3/16 to 1/4-inch apart                         | -------- 301  |\n| Placement Attachment                                                                     | -------- SSak-2 | See pattern for placement of slide fastener teeth from edge Two (2) rows 1/8 to 1/4-inch apart                                | -------- 301  |\n| Bottom hemming                                                                           | EFb-1           | 1/2 to 3/4-inch wide hem, double turned clean finished, stitching 1/16 to 1/8-inch from hem fold                              | 301           |\n| Setting cuffs                                                                            | LSd-1           | 1/16 to 1/8-inch from edge                                                                                                    | 301           |",
+    "page": 24,
+    "bbox_tl": [
+      71.8265609741211,
+      98.52838134765625,
+      561.0955200195312,
+      679.895263671875
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "has_rows": true
+  },
+  {
+    "id": "p21_e21_r0",
+    "label": "table_row",
+    "text": "Seam placement: Top stitching of sleeve cuff tabs | Seam type: OSf-1 | Gauge: 3/16 to 1/4-inch from folded edge | Stitch type: 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      117.27229999999997,
+      536.741,
+      127.0973909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          117.27229999999997,
+          536.741,
+          127.0973909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r1",
+    "label": "table_row",
+    "text": "Seam placement: Upper sleeve pocket bellows, inside pleat | Seam type: OSf-1 | Gauge: 1/16 to 1/8-inch from edge | Stitch type: 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      131.55229999999995,
+      536.741,
+      155.17739090909083
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          131.55229999999995,
+          536.741,
+          155.17739090909083
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r2",
+    "label": "table_row",
+    "text": "Seam placement: Attachment of pockets (When using automatic pocket setting equipment topstitching gauge) | Seam type: LSd-1 | Gauge: 1/16 to 1/8-inch from edge | Stitch type: 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      159.7523,
+      536.741,
+      210.97749090909087
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          159.7523,
+          536.741,
+          210.97749090909087
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r3",
+    "label": "table_row",
+    "text": "Seam placement: shall be 1/6, 1/8, or 3/16 Setting of chest pocket flaps Top stitch OR Top stitch | Seam type: LSba-2 LSb1-2 | Gauge: Two (2) rows 3/16 to 1/4-inch apart 3/16 to 1/4-inch from serged edge, then turn flap burying edge and top stitch one (1) row | Stitch type: 301 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      201.15239999999994,
+      536.741,
+      335.6876909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          201.15239999999994,
+          536.741,
+          335.6876909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r4",
+    "label": "table_row",
+    "text": "Gauge: raw 1/4 to 5/16-inches from turned edge",
+    "page": 24,
+    "bbox_tl": [
+      324.65029999999996,
+      312.0626,
+      479.25980000000055,
+      363.2877909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          324.65029999999996,
+          312.0626,
+          479.25980000000055,
+          363.2877909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r5",
+    "label": "table_row",
+    "text": "Seam placement: Top stitching of chest pocket flaps | Seam type: OSf-1 | Gauge: 3/16 to 1/4-inch from folded edge | Stitch type: 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      367.7428,
+      536.741,
+      377.5678909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          367.7428,
+          536.741,
+          377.5678909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r6",
+    "label": "table_row",
+    "text": "Seam placement: Attachment of elbow reinforcements | Seam type: LSd-2 | Gauge: Two (2) rows 3/16 to 1/4-inch apart | Stitch type: 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      382.02279999999996,
+      536.741,
+      405.6478909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          382.02279999999996,
+          536.741,
+          405.6478909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r7",
+    "label": "table_row",
+    "text": "Seam placement: Front slide fastener Placement Attachment Upper sleeve pocket slide fastener | Seam type: -------- SSak-2 | Gauge: See pattern for placement of slide fastener teeth from front edge Two (2) rows 3/16 to 1/4-inch apart | Stitch type: -------- 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      410.1028,
+      543.6648999999995,
+      517.0280909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          410.1028,
+          543.6648999999995,
+          517.0280909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r8",
+    "label": "table_row",
+    "text": "Seam placement: Placement Attachment | Seam type: -------- SSak-2 | Gauge: See pattern for placement of slide fastener teeth from edge Two (2) rows 1/8 to 1/4-inch apart | Stitch type: -------- 301",
+    "page": 24,
+    "bbox_tl": [
+      83.6641,
+      534.803,
+      543.6648999999995,
+      613.658290909091
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          83.6641,
+          534.803,
+          543.6648999999995,
+          613.658290909091
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r9",
+    "label": "table_row",
+    "text": "Seam placement: Bottom hemming | Seam type: EFb-1 | Gauge: 1/2 to 3/4-inch wide hem, double turned clean finished, stitching 1/16 to 1/8-inch from hem fold | Stitch type: 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      618.1132,
+      536.741,
+      655.538290909091
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          618.1132,
+          536.741,
+          655.538290909091
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e21_r10",
+    "label": "table_row",
+    "text": "Seam placement: Setting cuffs | Seam type: LSd-1 | Gauge: 1/16 to 1/8-inch from edge | Stitch type: 301",
+    "page": 24,
+    "bbox_tl": [
+      77.6641,
+      659.9933,
+      536.741,
+      669.8183909090909
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          77.6641,
+          659.9933,
+          536.741,
+          669.8183909090909
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ],
+    "parent_id": "p21_e21",
+    "context_boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          71.8265609741211,
+          98.52838134765625,
+          561.0955200195312,
+          679.895263671875
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  },
+  {
+    "id": "p21_e22",
+    "label": "caption",
+    "text": "TABLE V. Seam and stitch types- Continued",
+    "page": 24,
+    "bbox_tl": [
+      195.74050000000003,
+      74.89209999999991,
+      416.4949000000004,
+      84.71719090909085
+    ],
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "pages": [
+      24
+    ],
+    "boxes": [
+      {
+        "page": 24,
+        "bbox_tl": [
+          195.74050000000003,
+          74.89209999999991,
+          416.4949000000004,
+          84.71719090909085
+        ],
+        "page_w": 612.0,
+        "page_h": 792.0
+      }
+    ]
+  }
+]

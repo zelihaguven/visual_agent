@@ -2,6 +2,7 @@
 import pytest
 
 from pilot import chunk as chunk_mod
+from pilot import parse
 from pilot.chunk import _split_long, build_chunks
 from pilot.config import CHUNK_MAX_CHARS
 from pilot.parse import group_table_rows, merge_cross_page, remove_furniture, _clean_block_text
@@ -85,6 +86,32 @@ def test_merged_cell_spanning_rows_groups_rows_together():
     rows = group_table_rows(cells)
     assert len(rows) == 1
     assert "Tension weak" in rows[0]["text"] and "Wrong threading" in rows[0]["text"]
+
+
+SHIFTED = [  # S-7300A s.98, Docling çıktısı: kod bir sonraki satırın "Remedy" hücresinde
+    "Code: E050 Machine head is detected as being tilted back start sewing. | Cause: when ・Turn off the power | Remedy: return the machine",
+    "Code: Machine head is detected as being tilted back during sewing. | Cause: Turn off the power and check P2. | Remedy: E051",
+    "Code: Machine head is detected as being tilted back when power was turned on. | Cause: Turn off the power. | Remedy: E055",
+    "Code: Touch key was being pressed when power was turned on. | Cause: Turn the power off and then back on again. | Remedy: E064",
+]
+CLEAN = [
+    "Code: E050 | Cause: Machine head is detected as being tilted back when start sewing. | Remedy: Turn off the power.",
+    "Code: E051 | Cause: Machine head is detected as being tilted back during sewing. | Remedy: Check connector P2.",
+]
+SIZES = [  # ceket beden tablosu: anahtar sütunu kod değil, kayma sayılmamalı
+    "Size: Medium | XX- Short: 27 | X- Short: 28 | Short: 29 | Regular: 30-1/2 | Tol.: + 1/2",
+    "Size: Large | XX- Short: 20-1/8 | X- Short: 21-1/8 | Short: 22-1/8 | Tol.: + 1/2",
+]
+
+
+def test_shifted_code_table_is_detected():
+    assert parse._is_misaligned(SHIFTED)
+    assert parse.misaligned_rows(SHIFTED) == 3
+
+
+@pytest.mark.parametrize("rows", [CLEAN, SIZES])
+def test_aligned_tables_are_not_flagged(rows):
+    assert not parse._is_misaligned(rows)
 
 
 def test_table_without_body_gives_no_rows():

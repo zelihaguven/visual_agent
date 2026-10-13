@@ -47,8 +47,34 @@ def _fraction(m: re.Match[str]) -> str:
     return f"{denom}{suffix} {_say(m.group(1))}"
 
 
+# Birimler: Türkçe ek gelebilir ("5 mm'dir" -> "beş milimetredir"). Kesme işareti atılır.
+_UNITS = (
+    (r"\bSPI\b", "inç başına dikiş"),
+    (r"\bsti\s*/\s*min\b", "dikiş/dakika"),
+    (r"\bmm\b", "milimetre"),
+    (r"\bcm\b", "santimetre"),
+)
+
+
+def _units(t: str) -> str:
+    for pat, word in _UNITS:
+        t = re.sub(pat + r"(?:['’](\w+))?", lambda m: word + (m.group(1) or ""), t)
+    return t
+
+
+def normalize_for_speech_en(text: str) -> str:
+    """İngilizce cevap için: atıflar atılır, tolerans okunur hale gelir. Sayıları TTS kendisi okur (İngilizce)."""
+    t = re.sub(r"\[\d+\]", "", text)
+    t = re.sub(rf"({_NUM})\s*\(\s*±\s*({_NUM})\s*\)", r"\1, plus or minus \2", t)
+    t = re.sub(rf"({_NUM})\s*±\s*({_NUM})", r"\1 plus or minus \2", t)
+    t = re.sub(r"\bSPI\b", "stitches per inch", t)
+    t = re.sub(r"\s+([.,;:!?])", r"\1", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
 def normalize_for_speech(text: str) -> str:
     t = re.sub(r"\[\d+\]", "", text)                                              # atıf numaraları okunmaz
+    t = _units(t)
     t = re.sub(rf"({_NUM})\s*\(\s*±\s*({_NUM})\s*\)", _tolerance, t)             # 11 (± 1)
     t = re.sub(rf"({_NUM})\s*±\s*({_NUM})", lambda m: f"{_say(m.group(1))} artı eksi {_say(m.group(2))}", t)
     t = re.sub(r"(?<![\w/])(\d+)\s*/\s*(\d+)(?![\w/])", _fraction, t)             # 5/8

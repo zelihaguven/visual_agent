@@ -1,0 +1,72 @@
+{
+ "model": "large-v3-turbo",
+ "load_s": 5.1,
+ "rows": [
+  {
+   "id": "S1",
+   "spoken": "Es yetmiş üç yüz A makinesinde üst iplik gergin değil, ne yapmalıyım?",
+   "text": "S-7300A makinesinde üst iplik gerginliği ne yapmalıyım?",
+   "docs": [
+    "brother-s7300a"
+   ],
+   "doc_ok": true,
+   "terms_ok": true,
+   "audio_s": 3.3,
+   "stt_s": 13.3,
+   "logprob": -0.02,
+   "low": false
+  },
+  {
+   "id": "S2",
+   "spoken": "Ceketin dış görünür dikişlerinde inç başına kaç dikiş olmalı?",
+   "text": "Ceketin dış görünür dikişlerinde inç başına kaç dikiş olmalı?",
+   "docs": [
+    "gl-pd-14-04a"
+   ],
+   "doc_ok": true,
+   "terms_ok": true,
+   "audio_s": 4.4,
+   "stt_s": 13.7,
+   "logprob": -0.04,
+   "low": false
+  },
+  {
+   "id": "S3",
+   "spoken": "Es yetmiş üç yüz B makinesinde çağanoz tipi nedir?",
+   "text": "S-7300B makinesinde çağanoz tipi nedir?",
+   "docs": [
+    "brother-s7300b"
+   ],
+   "doc_ok": true,
+   "terms_ok": true,
+   "audio_s": 3.8,
+   "stt_s": 15.0,
+   "logprob": -0.18,
+   "low": false
+  },
+  {
+   "id": "S4",
+   "spoken": "Pantolonun overlok dikişlerinde inç başına kaç dikiş olmalı?",
+   "text": "Antolonun overlock dikişlerinde inç başına kaç dikiş olmalı?",
+   "docs": [],
+   "doc_ok": false,
+   "terms_ok": false,
+   "audio_s": 4.3,
+   "stt_s": 13.7,
+   "logprob": -0.08,
+   "low": false
+  },
+  {
+   "id": "S5",
+   "spoken": "Masura kovanı nasıl takılır?",
+   "text": "Masura kovana nasıl takılır?",
+   "docs": [],
+   "doc_ok": true,
+   "terms_ok": false,
+   "audio_s": 4.0,
+   "stt_s": 13.1,
+   "logprob": -0.1,
+   "low": false
+  }
+ ]
+}

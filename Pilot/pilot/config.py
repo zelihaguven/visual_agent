@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 PILOT_DIR = Path(__file__).resolve().parent.parent
-MANUALS_DIR = PILOT_DIR.parent / "Pre" / "manuals" / "public"
+MANUALS_DIR = PILOT_DIR.parent / "test-dokumanlari"
 DATA_DIR = PILOT_DIR / "data"
 PARSED_DIR = DATA_DIR / "parsed"
 CHUNKS_PATH = DATA_DIR / "chunks.jsonl"
@@ -28,5 +28,25 @@ LLM_NUM_CTX = 4096
 LLM_NUM_PREDICT = 700
 TOP_K_SOURCES = 5             # LLM'e verilen kaynak sayısı
 MIN_RERANK_SCORE: float | None = None   # None: eşik kapalı. Test setiyle kalibre edilecek
+CLARIFY_MIN_SCORE = -7.0      # arama sonrası "hangi ürün/model?" sorusu için en düşük ilk skor (Q10 −8, Q15 −6,2)
 
-DOCLING_DEVICE = os.environ.get("PILOT_DOCLING_DEVICE", "cpu")   # "mps" Apple GPU belleğini zorlar
+# Sesli soru (faster-whisper). Ölçüm (PILOT-RAPORU §16.4, GPU'suz i5): small ve large-v3-turbo varlık doğruluğunda
+# eşit (4/5), small soru başına 4 sn, turbo 14 sn. CPU'da small; GPU'lu hedefte turbo. Değiştirmek için PILOT_STT_MODEL.
+STT_MODEL = os.environ.get("PILOT_STT_MODEL", "small")
+STT_DEVICE = "cpu"
+STT_COMPUTE = "int8"          # CPU'da hızlı, doğruluk kaybı küçük
+
+DOCLING_DEVICE =os.environ.get("PILOT_DOCLING_DEVICE", "cpu")   # "mps" Apple GPU belleğini zorlar
+
+
+def _hf_models_cached() -> bool:
+    """Embedding ve reranker modelleri yerel Hugging Face önbelleğinde var mı?"""
+    hub = Path(os.environ.get("HF_HUB_CACHE") or Path(os.environ.get("HF_HOME") or Path.home() / ".cache" / "huggingface") / "hub")
+    return all((hub / f"models--{m.replace('/', '--')}").exists() for m in (EMBED_MODEL, RERANK_MODEL))
+
+
+# Tam çevrimdışı çalışma: Modeller önbellekte varsa Hugging Face'e güncellik sorgusu yapılmaz (ağ kesilebilir kararı).
+# İlk kurulumda (model yoksa) çevrimiçi kalır. Kullanıcı ayarladıysa ona dokunulmaz.
+# Bu modül, Hugging Face kütüphanelerinden önce yüklendiği için ayar onlara ulaşır.
+if "HF_HUB_OFFLINE" not in os.environ and _hf_models_cached():
+    os.environ["HF_HUB_OFFLINE"] = "1"

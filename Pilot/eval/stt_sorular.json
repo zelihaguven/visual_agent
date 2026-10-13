@@ -1,0 +1,12 @@
+[
+  {"id": "S1", "spoken": "Es yetmiş üç yüz A makinesinde üst iplik gergin değil, ne yapmalıyım?",
+   "expect_docs": ["brother-s7300a"], "expect_terms": ["üst iplik"]},
+  {"id": "S2", "spoken": "Ceketin dış görünür dikişlerinde inç başına kaç dikiş olmalı?",
+   "expect_docs": ["gl-pd-14-04a"], "expect_terms": ["dış görünür dikiş"]},
+  {"id": "S3", "spoken": "Es yetmiş üç yüz B makinesinde çağanoz tipi nedir?",
+   "expect_docs": ["brother-s7300b"], "expect_terms": ["çağanoz"]},
+  {"id": "S4", "spoken": "Pantolonun overlok dikişlerinde inç başına kaç dikiş olmalı?",
+   "expect_docs": ["gl-pd-07-14a"], "expect_terms": ["overlok"]},
+  {"id": "S5", "spoken": "Masura kovanı nasıl takılır?",
+   "expect_docs": [], "expect_terms": ["masura kovanı"]}
+]

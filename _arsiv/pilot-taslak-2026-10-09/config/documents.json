@@ -1,0 +1,67 @@
+{
+  "_aciklama": "Pilot doküman kaydı. Gerçek veride bu bilgiler klasör/dosya adı kuralı + kapak çıkarımı ile otomatik doldurulacak (Q7). access: 'public' = herkes görür, 'brand' = sadece markaya yetkili kullanıcılar.",
+  "documents": [
+    {
+      "doc_id": "gl-pd-14-04a",
+      "file": "GL-PD-14-04A_ACU-Coat.pdf",
+      "title": "GL-PD-14-04A Army Combat Uniform Coat",
+      "brand": "GL-PD",
+      "doc_type": "product_standard",
+      "product": "Ceket",
+      "product_model": null,
+      "version": "14-04A",
+      "lang": "en",
+      "access": "brand"
+    },
+    {
+      "doc_id": "gl-pd-07-14a",
+      "file": "GL-PD-07-14A_Combat-Trousers.pdf",
+      "title": "GL-PD-07-14A Combat Trousers",
+      "brand": "GL-PD",
+      "doc_type": "product_standard",
+      "product": "Pantolon",
+      "product_model": null,
+      "version": "07-14A",
+      "lang": "en",
+      "access": "brand",
+      "scanned": true
+    },
+    {
+      "doc_id": "brother-s7300a",
+      "file": "Brother_S-7300A_Instruction.pdf",
+      "title": "Brother S-7300A Instruction Manual",
+      "brand": "Brother",
+      "doc_type": "machine_manual",
+      "product": "Düz dikiş makinesi",
+      "product_model": "S-7300A",
+      "version": null,
+      "lang": "en",
+      "access": "public"
+    },
+    {
+      "doc_id": "brother-s7300b",
+      "file": "Brother_S-7300B_Instruction_2025-04.pdf",
+      "title": "Brother S-7300B Instruction Manual (2025-04)",
+      "brand": "Brother",
+      "doc_type": "machine_manual",
+      "product": "Düz dikiş makinesi",
+      "product_model": "S-7300B",
+      "version": "2025-04",
+      "lang": "en",
+      "access": "public"
+    },
+    {
+      "doc_id": "mrcoffee-2003",
+      "file": "MrCoffee_Coffeemaker_2003.pdf",
+      "title": "Mr. Coffee Coffeemaker Manual",
+      "brand": "MrCoffee",
+      "doc_type": "machine_manual",
+      "product": "Kahve makinesi",
+      "product_model": null,
+      "version": "2003",
+      "lang": "en",
+      "access": "brand",
+      "_not": "Alan dışı doküman + yetki testi: Pilotta ikinci bir 'müşteri markası' gibi davranır. GL-PD kullanıcısı bu dokümanı görmemeli."
+    }
+  ]
+}

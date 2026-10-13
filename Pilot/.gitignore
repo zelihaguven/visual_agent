@@ -1,9 +1,0 @@
-.venv/
-.venv-tts/
-__pycache__/
-*.pyc
-.pytest_cache/
-# Yeniden üretilebilir: python run_index.py (~10 dk)
-data/qdrant/
-# Geçici ses dosyaları
-*.wav

@@ -1,0 +1,290 @@
+[
+ {
+  "id": "Q01",
+  "kind": "değer",
+  "answerable": true,
+  "top_score": 1.083,
+  "top_doc": "gl-pd-14-04a",
+  "top_page": 22,
+  "scores": [
+   1.08,
+   -0.21,
+   -2.68,
+   -3.37,
+   -3.61
+  ],
+  "seconds": 171.6
+ },
+ {
+  "id": "Q02",
+  "kind": "değer",
+  "answerable": true,
+  "top_score": -5.403,
+  "top_doc": "gl-pd-07-14a",
+  "top_page": 19,
+  "scores": [
+   -5.4,
+   -6.38,
+   -7.08,
+   -7.09,
+   -7.16
+  ],
+  "seconds": 77.4
+ },
+ {
+  "id": "Q03",
+  "kind": "değer",
+  "answerable": true,
+  "top_score": -3.033,
+  "top_doc": "gl-pd-14-04a",
+  "top_page": 22,
+  "scores": [
+   -3.03,
+   -4.4,
+   -4.51,
+   -4.52,
+   -4.56
+  ],
+  "seconds": 93.7
+ },
+ {
+  "id": "Q04",
+  "kind": "arıza",
+  "answerable": true,
+  "top_score": -1.961,
+  "top_doc": "brother-s7300a",
+  "top_page": 101,
+  "scores": [
+   -1.96,
+   -2.89,
+   -3.39,
+   -3.76,
+   -4.25
+  ],
+  "seconds": 151.9
+ },
+ {
+  "id": "Q05",
+  "kind": "tuzak",
+  "answerable": true,
+  "top_score": -4.097,
+  "top_doc": "brother-s7300b",
+  "top_page": 109,
+  "scores": [
+   -4.1,
+   -4.84,
+   -5.26,
+   -5.49,
+   -5.69
+  ],
+  "seconds": 157.9
+ },
+ {
+  "id": "Q06",
+  "kind": "alan dışı",
+  "answerable": true,
+  "top_score": 2.264,
+  "top_doc": "mrcoffee-2003",
+  "top_page": 17,
+  "scores": [
+   2.26,
+   2.2,
+   1.33,
+   1.2,
+   0.98
+  ],
+  "seconds": 46.0
+ },
+ {
+  "id": "Q07",
+  "kind": "belirsiz",
+  "answerable": true,
+  "top_score": -6.28,
+  "top_doc": "brother-s7300a",
+  "top_page": 10,
+  "scores": [
+   -6.28,
+   -7.02,
+   -7.02,
+   -7.02,
+   -7.02
+  ],
+  "seconds": 36.9
+ },
+ {
+  "id": "Q08",
+  "kind": "cevapsız",
+  "answerable": false,
+  "top_score": -6.306,
+  "top_doc": "gl-pd-14-04a",
+  "top_page": 50,
+  "scores": [
+   -6.31,
+   -6.38,
+   -6.59,
+   -6.64,
+   -6.71
+  ],
+  "seconds": 49.5
+ },
+ {
+  "id": "Q09",
+  "kind": "cevapsız",
+  "answerable": false,
+  "top_score": -5.814,
+  "top_doc": "gl-pd-07-14a",
+  "top_page": 6,
+  "scores": [
+   -5.81,
+   -5.82,
+   -5.92,
+   -6.24,
+   -6.5
+  ],
+  "seconds": 116.0
+ },
+ {
+  "id": "Q10",
+  "kind": "cevapsız",
+  "answerable": false,
+  "top_score": -8.058,
+  "top_doc": "brother-s7300b",
+  "top_page": 63,
+  "scores": [
+   -8.06,
+   -8.06,
+   -9.0,
+   -9.0,
+   -9.01
+  ],
+  "seconds": 95.9
+ },
+ {
+  "id": "Q11",
+  "kind": "değer",
+  "answerable": true,
+  "top_score": -0.792,
+  "top_doc": "gl-pd-14-04a",
+  "top_page": 22,
+  "scores": [
+   -0.79,
+   -1.7,
+   -2.96,
+   -3.0,
+   -3.12
+  ],
+  "seconds": 134.0
+ },
+ {
+  "id": "Q12",
+  "kind": "tuzak",
+  "answerable": true,
+  "top_score": -6.874,
+  "top_doc": "gl-pd-07-14a",
+  "top_page": 13,
+  "scores": [
+   -6.87,
+   -6.93,
+   -7.25,
+   -7.26,
+   -7.3
+  ],
+  "seconds": 51.4
+ },
+ {
+  "id": "Q13",
+  "kind": "değer",
+  "answerable": true,
+  "top_score": 0.019,
+  "top_doc": "gl-pd-14-04a",
+  "top_page": 22,
+  "scores": [
+   0.02,
+   -3.39,
+   -4.35,
+   -4.43,
+   -4.75
+  ],
+  "seconds": 45.2
+ },
+ {
+  "id": "Q14",
+  "kind": "kod",
+  "answerable": true,
+  "top_score": 0.967,
+  "top_doc": "brother-s7300a",
+  "top_page": 98,
+  "scores": [
+   0.97,
+   -4.15,
+   -6.95,
+   -7.27,
+   -7.34
+  ],
+  "seconds": 27.2
+ },
+ {
+  "id": "Q15",
+  "kind": "kod",
+  "answerable": true,
+  "top_score": -4.002,
+  "top_doc": "brother-s7300a",
+  "top_page": 10,
+  "scores": [
+   -4.0,
+   -6.23,
+   -6.51,
+   -6.85,
+   -7.03
+  ],
+  "seconds": 25.2
+ },
+ {
+  "id": "Q16",
+  "kind": "EN soru",
+  "answerable": true,
+  "top_score": 3.172,
+  "top_doc": "gl-pd-07-14a",
+  "top_page": 11,
+  "scores": [
+   3.17,
+   2.95,
+   0.66,
+   -0.25,
+   -0.31
+  ],
+  "seconds": 41.0
+ },
+ {
+  "id": "Q17",
+  "kind": "belirsiz",
+  "answerable": true,
+  "top_score": -1.989,
+  "top_doc": "brother-s7300a",
+  "top_page": 12,
+  "scores": [
+   -1.99,
+   -2.04,
+   -2.04,
+   -2.04,
+   -2.13
+  ],
+  "seconds": 25.2
+ },
+ {
+  "id": "Q18",
+  "kind": "cevapsız",
+  "answerable": false,
+  "top_score": -5.487,
+  "top_doc": "gl-pd-14-04a",
+  "top_page": 14,
+  "scores": [
+   -5.49,
+   -5.66,
+   -5.69,
+   -5.77,
+   -5.78
+  ],
+  "seconds": 50.4
+ }
+]

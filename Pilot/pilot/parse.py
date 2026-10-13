@@ -1,7 +1,7 @@
 """PDF -> öğe listesi (Docling, OCR kapalı: PDF'in kendi metin katmanı kullanılır).
 
 Her öğe: id, label, text, page, bbox_tl [l,t,r,b] (sol-üst orijin, point), page_w, page_h, pages, boxes.
-Faz 1 denemesindeki (Pre/faz1-test/faz1-test.py) üst/alt bilgi ayıklama, tablo satırı ve
+Faz 1 denemesindeki (calisma-notlari/faz1-test/faz1-test.py) üst/alt bilgi ayıklama, tablo satırı ve
 sayfa geçişi birleştirme mantığının pilot sürümü.
 """
 import json
@@ -285,6 +285,99 @@ def apply_text_fallback(meta: DocMeta, elements: list[dict[str, Any]]) -> tuple[
     return keep, swapped
 
 
+# --- Tablo yedeği ------------------------------------------------------------------------
+# Docling bazı tablolarda hücreleri kaydırıyor: S-7300A arıza tablosunda (s.98) kod çoğu satırda bir sonraki satırın
+# "Remedy" hücresine düşmüş, kelimeler komşu hücrelere dağılmış ("Code: Machine head is detected as being tilted back
+# during sewing. | ... | Remedy: E051"). Model bir açıklamayı yanlış koda bağlayabilir (R4, PILOT-RAPORU C2).
+# Kayma tespit edilirse o sayfanın tablosu PyMuPDF'in tablo bulucusundan yeniden okunur (bu tabloda temiz).
+
+KEY_RE = re.compile(r"[A-Za-z]{1,3}-?\d{2,4}[A-Za-z]?")       # satır anahtarı biçimi: E051, S-7300A (harf + rakam)
+
+
+def _cells(row_text: str) -> list[str]:
+    """'Code: E050 ... | Cause: ... | Remedy: ...' → hücre değerleri."""
+    return [part.split(": ", 1)[-1].strip() for part in row_text.split(" | ")]
+
+
+def misaligned_rows(rows: list[str]) -> int:
+    """İlk hücresi anahtarla başlamayan ama başka bir hücresinde tek başına anahtar duran satır sayısı."""
+    bad = 0
+    for text in rows:
+        cells = _cells(text)
+        first = cells[0].split()[:1]
+        if first and KEY_RE.fullmatch(first[0]):
+            continue
+        if any(KEY_RE.fullmatch(w) for c in cells[1:] for w in c.split()[-1:] + c.split()[:1]):
+            bad += 1
+    return bad
+
+
+def _is_misaligned(rows: list[str]) -> bool:
+    bad = misaligned_rows(rows)
+    return bad >= 2 and bad >= 0.15 * len(rows)
+
+
+def _overlap(a: list[float], b: list[float]) -> float:
+    w = max(0.0, min(a[2], b[2]) - max(a[0], b[0]))
+    h = max(0.0, min(a[3], b[3]) - max(a[1], b[1]))
+    area = (b[2] - b[0]) * (b[3] - b[1])
+    return w * h / area if area else 0.0
+
+
+def _pymupdf_table_rows(page: pymupdf.Page, table_el: dict[str, Any]) -> list[dict[str, Any]]:
+    """Docling tablosunun alanıyla örtüşen PyMuPDF tablolarının satırları (Docling satırlarıyla aynı biçimde)."""
+    out = []
+    tables = [t for t in page.find_tables().tables if _overlap(table_el["bbox_tl"], list(t.bbox)) > 0.5]
+    for t in sorted(tables, key=lambda t: t.bbox[1]):
+        data = t.extract()
+        if len(data) < 2:
+            continue
+        keep = [j for j in range(len(data[0])) if any((r[j] or "").strip() for r in data)]   # boş sütunlar atılır
+        header = [(data[0][j] or "").replace("\n", " ").strip() for j in keep]
+        for i, (row, rect) in enumerate(zip(data[1:], t.rows[1:])):
+            vals = [(row[j] or "").replace("\n", " ").strip() for j in keep]
+            if not any(vals):
+                continue
+            text = " | ".join(f"{h}: {v}" if h and h != v else v for h, v in zip(header, vals) if v)
+            bbox = list(rect.bbox)
+            box = {"page": table_el["page"], "bbox_tl": bbox, "page_w": table_el["page_w"], "page_h": table_el["page_h"]}
+            out.append({"id": f"{table_el['id']}_m{len(out)}", "label": "table_row", "text": text,
+                        "page": table_el["page"], "bbox_tl": bbox, "page_w": table_el["page_w"],
+                        "page_h": table_el["page_h"], "pages": [table_el["page"]], "boxes": [box],
+                        "parent_id": table_el["id"], "source": "pymupdf_table"})
+    return out
+
+
+def apply_table_fallback(meta: DocMeta, elements: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[int]]:
+    """Satırları kaymış Docling tablolarını PyMuPDF tablolarıyla değiştir. (yeni öğeler, değişen sayfalar)"""
+    by_parent: dict[str, list[dict[str, Any]]] = {}
+    for e in elements:
+        if e["label"] == "table_row" and e.get("parent_id"):
+            by_parent.setdefault(e["parent_id"], []).append(e)
+    doc = pymupdf.open(meta.path)
+    replace: dict[str, list[dict[str, Any]]] = {}
+    for e in elements:
+        rows = by_parent.get(e["id"])
+        if e["label"] != "table" or not rows or not _is_misaligned([r["text"] for r in rows]):
+            continue
+        new = _pymupdf_table_rows(doc[e["page"] - 1], e)
+        if new and not _is_misaligned([r["text"] for r in new]):
+            replace[e["id"]] = new
+        else:
+            log.warning("%s s.%d: tablo kaymış ama PyMuPDF yedeği de temiz değil, Docling satırları kaldı",
+                        meta.doc_id, e["page"])
+    if not replace:
+        return elements, []
+    out: list[dict[str, Any]] = []
+    for e in elements:
+        if e["label"] == "table_row" and e.get("parent_id") in replace:
+            continue
+        out.append(e)
+        if e["id"] in replace:
+            out += replace[e["id"]]
+    return out, sorted({e["page"] for e in elements if e["id"] in replace})
+
+
 # --- Önbellek --------------------------------------------------------------------------
 
 def parsed_path(meta: DocMeta) -> Path:
@@ -295,15 +388,21 @@ def load_or_parse(meta: DocMeta, force: bool = False) -> dict[str, Any]:
     """Parse sonucunu diskten oku, yoksa üret ve yaz."""
     path = parsed_path(meta)
     if path.exists() and not force:
-        result = json.loads(path.read_text())
+        result = json.loads(path.read_text(encoding="utf-8"))   # Windows varsayılanı cp1254: açık UTF-8
     else:
         started = time.time()
         elements, failed = parse_pdf(meta)
         result = {"doc_id": meta.doc_id, "n_elements": len(elements), "failed_pages": failed,
                   "seconds": round(time.time() - started, 1), "elements": elements}
+    changed = False
     if "fallback_pages" not in result:
         result["elements"], result["fallback_pages"] = apply_text_fallback(meta, result["elements"])
+        changed = True
+    if "table_fallback_pages" not in result:
+        result["elements"], result["table_fallback_pages"] = apply_table_fallback(meta, result["elements"])
+        changed = True
+    if changed:
         result["n_elements"] = len(result["elements"])
         PARSED_DIR.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(result, ensure_ascii=False))
+        path.write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
     return result

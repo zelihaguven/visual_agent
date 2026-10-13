@@ -30,6 +30,40 @@ class TestHappyPath:
         assert v.status == "partial"
         assert not v.checks["atif_gecerli"]
 
+    def test_dropped_tolerance_in_speech_is_flagged_but_answer_stays_valid(self):
+        # R15: ekranda "11 (± 1)", seste "11". Cevap geçerli kalır, sesli metin ayrıca işaretlenir
+        v = verify(make(sesli_metin="Dış görünür dikişler inç başına 11 dikiş olmalı."), SRC)
+        assert v.status == "verified"
+        assert v.checks["sesli_tolerans_tam"] is False
+        assert any("Sesli metinde tolerans" in p for p in v.problems)
+
+    def test_tolerance_in_speech_as_words_is_accepted(self):
+        v = verify(make(sesli_metin="inç başına 11 artı eksi 1 dikiş"), SRC)
+        assert v.checks["sesli_tolerans_tam"] is True
+
+    def test_empty_answer_without_not_found_fails(self):
+        # Windows denemesi: cevap alanı boş, alıntı var, "kısmen" gösteriliyordu
+        v = verify(make(cevap="", sesli_metin=""), SRC)
+        assert v.status == "failed"
+
+    def test_citation_marker_at_end_of_quote_is_ignored(self):
+        # Model alıntının sonuna "[1]" ekleyebiliyor (Windows denemesi, S-7300 hız sorusu): bu birebirliği bozmamalı
+        ans = make(alintilar=[{"kaynak_no": 1,
+                               "metin": "outside visible stitching shall be sewn with 11 (± 1) stitches per inch [1]"}])
+        assert verify(ans, SRC).status == "verified"
+
+    def test_quote_cut_by_length_limit_with_half_citation_is_accepted(self):
+        # Şema alıntıyı 300 karakterde kesti, sonda yarım atıf kaldı: "... per inch [" (masura kovanı sorusu)
+        for tail in (" [", " [1", "["):
+            ans = make(alintilar=[{"kaynak_no": 1,
+                                   "metin": "outside visible stitching shall be sewn with 11 (± 1) stitches per inch" + tail}])
+            assert verify(ans, SRC).checks["alinti_birebir"], tail
+
+    def test_citation_marker_does_not_hide_a_changed_quote(self):
+        ans = make(alintilar=[{"kaynak_no": 1,
+                               "metin": "outside visible stitching shall be sewn with 12 (± 1) stitches per inch [1]"}])
+        assert verify(ans, SRC).status == "failed"
+
     def test_range_and_decimal_with_comma_match_quote(self):
         src = {1: "Seams shall be sewn with 10-14 stitches per inch, width 0.5 inch."}
         ans = make(alintilar=[{"kaynak_no": 1, "metin": "sewn with 10-14 stitches per inch, width 0.5 inch"}],
@@ -45,10 +79,39 @@ class TestWrongValuesAreCaught:
         assert v.status == "failed"
         assert not v.checks["tolerans_tam"]
 
-    def test_tolerance_in_speech_text_is_accepted(self):
+    def test_tolerance_only_in_speech_does_not_rescue_screen_answer(self):
+        # 2026-10-13: Eskiden tolerans sesli metinde varsa ekrandaki toleranssız cevap da geçiyordu.
+        # Tolerans her alanda ayrı kontrol edilir: Ekranda "11" yazıyorsa cevap eksiktir (R4, R15).
         ans = make(cevap="Dış görünür dikişler inç başına 11 dikiş olmalıdır [1].",
                    sesli_metin="inç başına 11 (± 1) dikiş")
-        assert verify(ans, SRC).checks["tolerans_tam"]
+        v = verify(ans, SRC)
+        assert not v.checks["tolerans_tam"] and v.checks["sesli_tolerans_tam"]
+        assert v.status == "failed"
+
+    def test_repetition_loop_fails(self):
+        loop = "Masurayı tutarak kovanı yerine yerleştirin. "
+        ans = make(cevap="Dış görünür dikişler inç başına 11 (± 1) dikiş olmalıdır [1]. " + loop * 3, sesli_metin="")
+        v = verify(ans, SRC)
+        assert v.status == "failed" and not v.checks["tekrar_yok"]
+
+    def test_short_repeated_phrases_are_not_a_loop(self):
+        ans = make(cevap="Dış görünür dikişler inç başına 11 (± 1) dikiş olmalıdır [1]. Evet. Evet.", sesli_metin="")
+        assert verify(ans, SRC).checks["tekrar_yok"]
+
+    def test_chinese_drift_fails(self):
+        # Kullanıcı denemesi: qwen cevabı Çince yazdı ("在进行缝制前，请先关闭电源开关...")
+        ans = make(cevap="Dış görünür dikişler inç başına 11 (± 1) dikiş olmalıdır [1]. 请先关闭电源开关。")
+        v = verify(ans, SRC)
+        assert v.status == "failed" and not v.checks["alfabe_dogru"]
+
+    def test_turkish_and_symbols_are_not_foreign(self):
+        # "・": Brother kılavuzlarının madde işareti
+        ans = make(cevap="Dış görünür dikişler inç başına 11 (± 1) dikiş olmalıdır, çağanoz 90° [1]. ・Gücü kapatın.")
+        assert verify(ans, SRC).checks["alfabe_dogru"]
+
+    def test_english_tolerance_words_in_speech_are_accepted(self):
+        v = verify(make(sesli_metin="Outside seams need 11 plus or minus 1 stitches per inch."), SRC)
+        assert v.checks["sesli_tolerans_tam"]
 
     def test_number_not_in_quote_fails(self):
         ans = make(cevap="Dış görünür dikişler inç başına 12 (± 1) dikiş olmalıdır [1].", sesli_metin="")
@@ -102,6 +165,15 @@ class TestModelCodesAreNotValues:
 
     def test_range_digits_still_counted(self):
         assert numbers_in("10-14 dikiş") == {"10", "14"}
+
+    def test_list_markers_are_not_values(self):
+        assert numbers_in("Adımlar:\n1. Gücü kapatın.\n4. Somunu (2) çevirin.\n12) Kontrol edin") == {"2"}
+
+    def test_inline_list_markers_are_not_values(self):
+        assert numbers_in("Şu adımları izleyin: 1) Güçten ayırın. 2) Makine başını 90° kaldırın.") == {"90"}
+
+    def test_numbers_inside_sentence_are_still_values(self):
+        assert numbers_in("Hız 4. kademeye alınır, 3000 sti/min") == {"4", "3000"}
 
     def test_unit_glued_numbers_still_counted(self):
         assert numbers_in("12mm ve 3/16") == {"12", "3", "16"}

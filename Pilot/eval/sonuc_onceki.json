@@ -1,0 +1,769 @@
+[
+ {
+  "id": "Q01",
+  "judge": {
+   "refused": false,
+   "status": "partial",
+   "source_hit": true,
+   "wrong_doc_in_sources": false,
+   "value_ok": true,
+   "clarify_ok": null,
+   "correct": true
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 1,
+     "metin": "The seams for all outside visible stitching shall be sewn with 11 (± 1) stitches per inch."
+    }
+   ],
+   "cevap": "Yesil ceketin dış görünür dikişlerinde inç başına 11 (± 1) dikiş olmalı.",
+   "sesli_metin": "Ceketin dış görünür dikişlerinde inç başına 11 dikiş olmalı.",
+   "celiski_var": false,
+   "netlestirme_sorusu": "",
+   "bulunamadi": false
+  },
+  "speech": "Ceketin dış görünür dikişlerinde inç başına on bir dikiş olmalı.",
+  "problems": [
+   "Cevapta geçerli [n] atfı yok"
+  ],
+  "timings": {
+   "search": 15.527708053588867,
+   "prompt_tokens": 1828.0,
+   "output_tokens": 155.0,
+   "llm_seconds": 9.86971175,
+   "llm": 9.873208999633789,
+   "verify": 0.0006210803985595703,
+   "total": 25.40310001373291
+  },
+  "sources": [
+   [
+    "gl-pd-14-04a",
+    [
+     22,
+     23
+    ],
+    1.08
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     22,
+     23
+    ],
+    -0.21
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     26
+    ],
+    -2.68
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     26
+    ],
+    -3.37
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     26
+    ],
+    -3.61
+   ]
+  ]
+ },
+ {
+  "id": "Q02",
+  "judge": {
+   "refused": false,
+   "status": "partial",
+   "source_hit": true,
+   "wrong_doc_in_sources": false,
+   "value_ok": true,
+   "clarify_ok": null,
+   "correct": true
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 1,
+     "metin": "The seams for all outside visible stitching shall be sewn with 10-14 stitches per inch."
+    }
+   ],
+   "cevap": "Yesil dikişlerin SPI değeri 10-14 arasında olmalıdır.",
+   "sesli_metin": "Pantolonun dış dikişlerinde SPI değeri 10-14 arasında olmalıdır.",
+   "celiski_var": false,
+   "netlestirme_sorusu": "",
+   "bulunamadi": false
+  },
+  "speech": "Pantolonun dış dikişlerinde SPI değeri on ile on dört arası arasında olmalıdır.",
+  "problems": [
+   "Cevapta geçerli [n] atfı yok"
+  ],
+  "timings": {
+   "search": 4.062707901000977,
+   "prompt_tokens": 2257.0,
+   "output_tokens": 141.0,
+   "llm_seconds": 5.732108542,
+   "llm": 5.733741760253906,
+   "verify": 0.0005280971527099609,
+   "total": 9.797213792800903
+  },
+  "sources": [
+   [
+    "gl-pd-07-14a",
+    [
+     19
+    ],
+    -5.4
+   ],
+   [
+    "gl-pd-07-14a",
+    [
+     25
+    ],
+    -6.38
+   ],
+   [
+    "gl-pd-07-14a",
+    [
+     13
+    ],
+    -7.08
+   ],
+   [
+    "gl-pd-07-14a",
+    [
+     13
+    ],
+    -7.09
+   ],
+   [
+    "gl-pd-07-14a",
+    [
+     12
+    ],
+    -7.16
+   ]
+  ]
+ },
+ {
+  "id": "Q03",
+  "judge": {
+   "refused": false,
+   "status": "partial",
+   "source_hit": true,
+   "wrong_doc_in_sources": false,
+   "value_ok": false,
+   "clarify_ok": null,
+   "correct": false
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 4,
+     "metin": "Buttons shall be attached with 16 stitches per button."
+    }
+   ],
+   "cevap": "iddia edilebilir",
+   "sesli_metin": "Düğme iliklerinde 16 ilik olmalıdır.",
+   "celiski_var": false,
+   "netlestirme_sorusu": "",
+   "bulunamadi": false
+  },
+  "speech": "Düğme iliklerinde on altı ilik olmalıdır.",
+  "problems": [
+   "Cevapta geçerli [n] atfı yok"
+  ],
+  "timings": {
+   "search": 3.4143118858337402,
+   "prompt_tokens": 1896.0,
+   "output_tokens": 110.0,
+   "llm_seconds": 4.243686,
+   "llm": 4.24514102935791,
+   "verify": 0.0002849102020263672,
+   "total": 7.659876823425293
+  },
+  "sources": [
+   [
+    "gl-pd-14-04a",
+    [
+     22,
+     23
+    ],
+    -3.03
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     26
+    ],
+    -4.4
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     27
+    ],
+    -4.51
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     22,
+     23
+    ],
+    -4.52
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     26
+    ],
+    -4.56
+   ]
+  ]
+ },
+ {
+  "id": "Q04",
+  "judge": {
+   "refused": false,
+   "status": "partial",
+   "source_hit": true,
+   "wrong_doc_in_sources": false,
+   "value_ok": null,
+   "clarify_ok": null,
+   "correct": true
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 1,
+     "metin": "・ Is the upper thread tension too weak? Is the lower thread tension too strong? Adjust the lower thread tension or upper thread tension. Try pressing the special locus key and selecting No. 1."
+    }
+   ],
+   "cevap": "",
+   "sesli_metin": "Üst iplik gerginliği ayarını kontrol edin. Belki alt iplik gerginliği çok güçlüdür. Gerginliği uygun seviyeye ayarlayın veya özel nokta tuşunu basarak No. 1 seçeneğini deneyin.",
+   "celiski_var": false,
+   "netlestirme_sorusu": "",
+   "bulunamadi": false
+  },
+  "speech": "Üst iplik gerginliği ayarını kontrol edin. Belki alt iplik gerginliği çok güçlüdür. Gerginliği uygun seviyeye ayarlayın veya özel nokta tuşunu basarak No. bir seçeneğini deneyin.",
+  "problems": [
+   "Cevapta geçerli [n] atfı yok"
+  ],
+  "timings": {
+   "search": 7.362396001815796,
+   "prompt_tokens": 1830.0,
+   "output_tokens": 179.0,
+   "llm_seconds": 5.5269985,
+   "llm": 5.528990983963013,
+   "verify": 0.00036025047302246094,
+   "total": 12.89187479019165
+  },
+  "sources": [
+   [
+    "brother-s7300a",
+    [
+     101
+    ],
+    -1.96
+   ],
+   [
+    "brother-s7300a",
+    [
+     10
+    ],
+    -2.89
+   ],
+   [
+    "brother-s7300a",
+    [
+     29
+    ],
+    -3.39
+   ],
+   [
+    "brother-s7300a",
+    [
+     82
+    ],
+    -3.76
+   ],
+   [
+    "brother-s7300a",
+    [
+     101
+    ],
+    -4.25
+   ]
+  ]
+ },
+ {
+  "id": "Q05",
+  "judge": {
+   "refused": false,
+   "status": "partial",
+   "source_hit": true,
+   "wrong_doc_in_sources": false,
+   "value_ok": null,
+   "clarify_ok": null,
+   "correct": true
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 1,
+     "metin": "・ Is the needle tip bent? Is the needle tip blunt? If the needle tip is bent or blunt, replace the needle. ・ Is the needle properly installed? If it is incorrect, install the needle correctly. ・ Is the machine properly threaded? If it is incorrect, thread the thread correctly. ・ Is the presser foot pressure too weak? Adjust the presser foot pressure. ・ Is the needle too thin? Replace the needle with a needle that is one rank thicker. ・ Is the presser foot too high? Adjust the height of the presser foot. ・ Is the thread take-up spring too weak? Adjust the tension of the thread take-up spring. ・ Is the needle and rotary hook timing correct? Adjust the height of the needle bar. Adjust the clearance between the needle and the tip of the rotary hook."
+    }
+   ],
+   "cevap": "",
+   "sesli_metin": "S-7300B'de dikiş atlıyor olabilir. Dikiş atlamasının nedeni, dikiş tipinin kıvrılmış veya acımasız olup olmadığını kontrol etmek, doğru olarak dikişin monte olup olmadığını kontrol etmek, makinenin doğru şekilde dikişli olup olmadığını kontrol etmek, dikiş tabanı basıncının yeterli olup olmadığını ayarlamak, dikiş tipinin yeterince kalın olup olmadığını daha kalın bir dikiş ile değiştirme, dikiş tabanının yüksekliği ayarlamak, dikiş alım kemiğinin basıncının yeterli olup olmadığını ayarlamak veya dikiş tabanı ve dönen ayağın zamanlamasının doğru olup olmadığını ayarlamak olabilir.",
+   "celiski_var": false,
+   "netlestirme_sorusu": "",
+   "bulunamadi": false
+  },
+  "speech": "S-7300B'de dikiş atlıyor olabilir. Dikiş atlamasının nedeni, dikiş tipinin kıvrılmış veya acımasız olup olmadığını kontrol etmek, doğru olarak dikişin monte olup olmadığını kontrol etmek, makinenin doğru şekilde dikişli olup olmadığını kontrol etmek, dikiş tabanı basıncının yeterli olup olmadığını ayarlamak, dikiş tipinin yeterince kalın olup olmadığını daha kalın bir dikiş ile değiştirme, dikiş tabanının yüksekliği ayarlamak, dikiş alım kemiğinin basıncının yeterli olup olmadığını ayarlamak veya dikiş tabanı ve dönen ayağın zamanlamasının doğru olup olmadığını ayarlamak olabilir.",
+  "problems": [
+   "Cevapta geçerli [n] atfı yok"
+  ],
+  "timings": {
+   "search": 7.137483835220337,
+   "prompt_tokens": 1870.0,
+   "output_tokens": 433.0,
+   "llm_seconds": 10.999773625,
+   "llm": 11.00163197517395,
+   "verify": 0.0008790493011474609,
+   "total": 18.14028310775757
+  },
+  "sources": [
+   [
+    "brother-s7300b",
+    [
+     109
+    ],
+    -4.1
+   ],
+   [
+    "brother-s7300b",
+    [
+     115
+    ],
+    -4.84
+   ],
+   [
+    "brother-s7300b",
+    [
+     106
+    ],
+    -5.26
+   ],
+   [
+    "brother-s7300b",
+    [
+     115
+    ],
+    -5.49
+   ],
+   [
+    "brother-s7300b",
+    [
+     105
+    ],
+    -5.69
+   ]
+  ]
+ },
+ {
+  "id": "Q06",
+  "judge": {
+   "refused": false,
+   "status": "failed",
+   "source_hit": true,
+   "wrong_doc_in_sources": false,
+   "value_ok": null,
+   "clarify_ok": null,
+   "correct": false
+  },
+  "answer": {
+   "bulunamadi": false,
+   "alintilar": [],
+   "cevap": "",
+   "sesli_metin": "",
+   "netlestirme_sorusu": null,
+   "celiski_var": false
+  },
+  "speech": "",
+  "problems": [
+   "Model çıktısı bozuk (JSON tamamlanmadı)"
+  ],
+  "timings": {
+   "search": 3.8407669067382812,
+   "llm": 17.7799973487854,
+   "total": 21.620816946029663
+  },
+  "sources": [
+   [
+    "mrcoffee-2003",
+    [
+     17
+    ],
+    2.26
+   ],
+   [
+    "mrcoffee-2003",
+    [
+     16
+    ],
+    2.2
+   ],
+   [
+    "mrcoffee-2003",
+    [
+     16
+    ],
+    1.33
+   ],
+   [
+    "mrcoffee-2003",
+    [
+     17
+    ],
+    1.2
+   ],
+   [
+    "mrcoffee-2003",
+    [
+     8
+    ],
+    0.98
+   ]
+  ]
+ },
+ {
+  "id": "Q07",
+  "judge": {
+   "refused": false,
+   "status": "failed",
+   "source_hit": false,
+   "wrong_doc_in_sources": false,
+   "value_ok": null,
+   "clarify_ok": true,
+   "correct": false
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 1,
+     "metin": "For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min For -3 specifications for Europe and America: 4700 sti/min For -5 specifications for Europe and America: 4500 sti/min [1]"
+    },
+    {
+     "kaynak_no": 2,
+     "metin": "For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min For -3 specifications for Europe and America: 4700 sti/min For -5 specifications for Europe and America: 4500 sti/min [1]"
+    },
+    {
+     "kaynak_no": 3,
+     "metin": "For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min For -3 specifications for Europe and America: 4700 sti/min For -5 specifications for Europe and America: 4500 sti/min [1]"
+    },
+    {
+     "kaynak_no": 4,
+     "metin": "For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min For -3 specifications for Europe and America: 4700 sti/min For -5 specifications for Europe and America: 4500 sti/min [1]"
+    },
+    {
+     "kaynak_no": 5,
+     "metin": "For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min For -3 specifications for Europe and America: 4700 sti/min For -5 specifications for Europe and America: 4500 sti/min [1]"
+    }
+   ],
+   "cevap": "",
+   "sesli_metin": "SPI değeri, Çin için 4300, Japonya ve genel ihracat için 4000, Avrupa ve Amerika için -3 spesifikasyonu 4700, -5 spesifikasyonu 4500 olmalıdır.",
+   "celiski_var": true,
+   "netlestirme_sorusu": "Hangi spesifikasyon için SPI değeri soruluyor?",
+   "bulunamadi": false
+  },
+  "speech": "",
+  "problems": [
+   "Alıntı kaynakta birebir bulunamadı: 'For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min F'",
+   "Alıntı kaynakta birebir bulunamadı: 'For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min F'",
+   "Alıntı kaynakta birebir bulunamadı: 'For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min F'",
+   "Alıntı kaynakta birebir bulunamadı: 'For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min F'",
+   "Alıntı kaynakta birebir bulunamadı: 'For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min F'",
+   "Cevapta geçerli [n] atfı yok"
+  ],
+  "timings": {
+   "search": 3.1340980529785156,
+   "prompt_tokens": 1852.0,
+   "output_tokens": 554.0,
+   "llm_seconds": 13.94825575,
+   "llm": 13.949741840362549,
+   "verify": 0.0005340576171875,
+   "total": 17.08445382118225
+  },
+  "sources": [
+   [
+    "brother-s7300a",
+    [
+     10
+    ],
+    -6.28
+   ],
+   [
+    "brother-s7300a",
+    [
+     53
+    ],
+    -7.02
+   ],
+   [
+    "brother-s7300a",
+    [
+     40
+    ],
+    -7.02
+   ],
+   [
+    "brother-s7300b",
+    [
+     40
+    ],
+    -7.02
+   ],
+   [
+    "brother-s7300b",
+    [
+     53
+    ],
+    -7.02
+   ]
+  ]
+ },
+ {
+  "id": "Q08",
+  "judge": {
+   "refused": true,
+   "status": "not_found",
+   "correct": true
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 1,
+     "metin": "Size: Regular | 30: 15-3/8 | 33: 16-1/8 | 36: 16-7/8 | 39: 17-5/8 | Tol.: + 1/2"
+    },
+    {
+     "kaynak_no": 3,
+     "metin": "Size: Regular | 30: 5-7/8 | 33: 6-1/8 | 36: 6-3/8 | 39: 6-5/8"
+    }
+   ],
+   "cevap": "",
+   "sesli_metin": "Cevap bulunamadı.",
+   "celiski_var": true,
+   "netlestirme_sorusu": "Ceketlerin boyutlarına göre yaka dikişi uzunluğunu belirleyen kaynak hangisidir?",
+   "bulunamadi": true
+  },
+  "speech": "",
+  "problems": [],
+  "timings": {
+   "search": 3.9393699169158936,
+   "prompt_tokens": 1850.0,
+   "output_tokens": 242.0,
+   "llm_seconds": 7.134821542,
+   "llm": 7.136305809020996,
+   "verify": 1.621246337890625e-05,
+   "total": 11.075738906860352
+  },
+  "sources": [
+   [
+    "gl-pd-14-04a",
+    [
+     50
+    ],
+    -6.31
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     16
+    ],
+    -6.38
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     50
+    ],
+    -6.59
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     14
+    ],
+    -6.64
+   ],
+   [
+    "gl-pd-14-04a",
+    [
+     16
+    ],
+    -6.71
+   ]
+  ]
+ },
+ {
+  "id": "Q09",
+  "judge": {
+   "refused": false,
+   "status": "partial",
+   "correct": false
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 1,
+     "metin": "7.0 to 8.0 ozlsq. yd., 2xlleft hand twill, with 91 x 47 warp/filling ends per inch (minimum), 80% cotton/20% meta aramid fiber blend."
+    },
+    {
+     "kaynak_no": 2,
+     "metin": "5.04 ozlsq. yd. minimum, plain weave, 75% polyester 25% cotton, material or equal"
+    }
+   ],
+   "cevap": "",
+   "sesli_metin": "Pantolonun cep astarı için 7.0 ila 8.0 ozlsq. yd. arası 2xlleft hand twill kumaş veya 5.04 ozlsq. yd. minimum 75% polyester 25% cotton kumaş kullanılabilir.",
+   "celiski_var": true,
+   "netlestirme_sorusu": "Pantolonun hangi tipi için bu kumaşlar geçerli?",
+   "bulunamadi": false
+  },
+  "speech": "Pantolonun cep astarı için yedi virgül sıfır ila sekiz virgül sıfır ozlsq. yd. arası 2xlleft hand twill kumaş veya beş virgül sıfır dört ozlsq. yd. minimum yetmiş beş% polyester yirmi beş% cotton kumaş kullanılabilir.",
+  "problems": [
+   "Cevapta geçerli [n] atfı yok"
+  ],
+  "timings": {
+   "search": 4.079859972000122,
+   "prompt_tokens": 2094.0,
+   "output_tokens": 267.0,
+   "llm_seconds": 8.257861541,
+   "llm": 8.259237051010132,
+   "verify": 0.00038123130798339844,
+   "total": 12.339790105819702
+  },
+  "sources": [
+   [
+    "gl-pd-07-14a",
+    [
+     6
+    ],
+    -5.81
+   ],
+   [
+    "gl-pd-07-14a",
+    [
+     5
+    ],
+    -5.82
+   ],
+   [
+    "gl-pd-07-14a",
+    [
+     5
+    ],
+    -5.92
+   ],
+   [
+    "gl-pd-07-14a",
+    [
+     1
+    ],
+    -6.24
+   ],
+   [
+    "gl-pd-07-14a",
+    [
+     7
+    ],
+    -6.5
+   ]
+  ]
+ },
+ {
+  "id": "Q10",
+  "judge": {
+   "refused": false,
+   "status": "failed",
+   "correct": false
+  },
+  "answer": {
+   "alintilar": [
+    {
+     "kaynak_no": 1,
+     "metin": "No.: 102 | Setting range: -10 - 10 (Degrees) | Initial value: 0 (Degrees) | Setting units: 1 | Setting details: Needle up stop position correction value [1]"
+    },
+    {
+     "kaynak_no": 2,
+     "metin": "No.: 103 | Setting range: -10 - 10 (Degrees) | Initial value: 0 (Degrees) | Setting units: 1 | Setting details: Needle down stop position correction value [2]"
+    }
+   ],
+   "cevap": "",
+   "sesli_metin": "Uçak motoru yağı -10 ila 10 derece arası ayarlanabilir. [1-2]",
+   "celiski_var": true,
+   "netlestirme_sorusu": "Hangi parametre için -10 ila 10 derece arası ayarlanabilir?",
+   "bulunamadi": false
+  },
+  "speech": "",
+  "problems": [
+   "Alıntı kaynakta birebir bulunamadı: 'No.: 102 | Setting range: -10 - 10 (Degrees) | Initial value: 0 (Degre'",
+   "Alıntı kaynakta birebir bulunamadı: 'No.: 103 | Setting range: -10 - 10 (Degrees) | Initial value: 0 (Degre'",
+   "Cevapta geçerli [n] atfı yok",
+   "Alıntıda olmayan sayı(lar): ['2']"
+  ],
+  "timings": {
+   "search": 2.570427894592285,
+   "prompt_tokens": 1598.0,
+   "output_tokens": 241.0,
+   "llm_seconds": 6.412007417,
+   "llm": 6.413893222808838,
+   "verify": 0.0009908676147460938,
+   "total": 8.98536205291748
+  },
+  "sources": [
+   [
+    "brother-s7300b",
+    [
+     63
+    ],
+    -8.06
+   ],
+   [
+    "brother-s7300b",
+    [
+     63
+    ],
+    -8.06
+   ],
+   [
+    "brother-s7300a",
+    [
+     18
+    ],
+    -9.0
+   ],
+   [
+    "brother-s7300b",
+    [
+     19
+    ],
+    -9.0
+   ],
+   [
+    "brother-s7300a",
+    [
+     83
+    ],
+    -9.01
+   ]
+  ]
+ }
+]

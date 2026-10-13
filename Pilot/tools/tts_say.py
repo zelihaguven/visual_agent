@@ -1,6 +1,6 @@
-"""Chatterbox Multilingual ile Türkçe seslendirme (ayrı ortamda çalışır: .venv-tts, CPU).
+"""Chatterbox Multilingual ile seslendirme (ayrı ortamda çalışır: .venv-tts, CPU).
 
-Kullanım: .venv-tts/bin/python tools/tts_say.py "metin" cikti.wav
+Kullanım: .venv-tts/bin/python tools/tts_say.py "metin" cikti.wav [dil: tr | en, varsayılan tr]
 """
 import sys
 import warnings
@@ -13,7 +13,8 @@ warnings.filterwarnings("ignore")
 
 if __name__ == "__main__":
     text, out = sys.argv[1], sys.argv[2]
+    lang = sys.argv[3] if len(sys.argv) > 3 else "tr"                 # cevap sorunun dilinde (karar)
     model = ChatterboxMultilingualTTS.from_pretrained(device="cpu")   # MPS'te bozuk çıktı veriyor
     with torch.no_grad():
-        wav = model.generate(text, language_id="tr")
+        wav = model.generate(text, language_id=lang)
     ta.save(out, wav.cpu(), model.sr)

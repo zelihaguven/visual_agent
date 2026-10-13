@@ -1,0 +1,32 @@
+{
+  "_aciklama": "Pilot kullanıcıları. Giriş: e-posta + erişim kodu (cevaplar.md: 'yetkili mail veya kodla'). Kodlar SHA-256 ile saklanır, düz metin tutulmaz. Roller: user | admin. brands: kullanıcının görebileceği markalar (access='brand' dokümanlar için). full_document: true ise dokümanın tamamında gezinebilir, false ise sadece cevap sayfası ±page_window. Bu dosya admin panelinden düzenlenir. Pilot kodları: README'de.",
+  "users": [
+    {
+      "email": "usta@ornek.com",
+      "name": "Usta (GL-PD hattı)",
+      "code_sha256": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "role": "user",
+      "brands": ["GL-PD"],
+      "full_document": false,
+      "consent_at": null
+    },
+    {
+      "email": "kalite@ornek.com",
+      "name": "Kalite (tüm markalar)",
+      "code_sha256": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "role": "user",
+      "brands": ["GL-PD", "MrCoffee"],
+      "full_document": true,
+      "consent_at": null
+    },
+    {
+      "email": "admin@ornek.com",
+      "name": "Yönetici",
+      "code_sha256": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "role": "admin",
+      "brands": ["GL-PD", "MrCoffee"],
+      "full_document": true,
+      "consent_at": null
+    }
+  ]
+}

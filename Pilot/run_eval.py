@@ -20,18 +20,23 @@ def judge(item: dict, res) -> dict:
     if item.get("expect_not_found"):
         out["correct"] = out["refused"]
         return out
+    if item.get("expect_clarify") or res.verification.status == "clarify":
+        # Netleştirme: beklenmişse seçenekler beklenen kaynakları kapsamalı; beklenmemişse yanlış (gereksiz soru)
+        offered = {o.get("doc_id") for o in ans.get("secenekler", [])}
+        out["clarify_ok"] = res.verification.status == "clarify" and set(item["expect_docs"]) <= offered
+        out["correct"] = bool(item.get("expect_clarify")) and out["clarify_ok"]
+        return out
     out["source_hit"] = any((d, p) in pages for d in item["expect_docs"] for p in item["expect_pages"])
     out["wrong_doc_in_sources"] = bool(set(item.get("forbid_docs", [])) & docs)
     text = ans.get("cevap", "") + " " + res.speech_text
     out["value_ok"] = all(s in text for s in item["expect_in_answer"]) if item["expect_in_answer"] else None
-    out["clarify_ok"] = bool(ans.get("netlestirme_sorusu")) if item.get("expect_clarify") else None
     out["correct"] = (out["source_hit"] and not out["refused"] and out["value_ok"] is not False
                       and not out["wrong_doc_in_sources"] and out["status"] != "failed")
     return out
 
 
 if __name__ == "__main__":
-    items = json.loads((HERE / "questions.json").read_text())
+    items = json.loads((HERE / "questions.json").read_text(encoding="utf-8"))
     rows, raw = [], []
     for it in items:
         t = time.time()
@@ -42,7 +47,7 @@ if __name__ == "__main__":
                     "problems": res.verification.problems, "timings": res.timings,
                     "sources": [(h.chunk["doc_id"], h.chunk["pages"], round(h.rerank_score or 0, 2)) for h in res.hits]})
         print(it["id"], "✔" if j["correct"] else "✖", f"{rows[-1][3]:.1f} sn", flush=True)
-    (HERE / "sonuc.json").write_text(json.dumps(raw, ensure_ascii=False, indent=1))
+    (HERE / "sonuc.json").write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding="utf-8")
 
     n = len(rows)
     lines = ["# Pilot ölçüm sonucu", "",
@@ -54,5 +59,5 @@ if __name__ == "__main__":
                      f"{res.verification.badge} | {dt:.0f} sn | {note} |")
     ok = sum(1 for _, _, j, _ in rows if j["correct"])
     lines += ["", f"**Doğru: {ok}/{n}** · Ortalama süre: {sum(r[3] for r in rows) / n:.1f} sn", ""]
-    (HERE / "sonuc.md").write_text("\n".join(lines))
+    (HERE / "sonuc.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"Doğru: {ok}/{n}")

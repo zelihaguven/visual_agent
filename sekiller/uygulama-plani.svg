@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 760" width="1240" height="760" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+    <marker id="okr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B71C1C"/>
+    </marker>
+    <style>
+      .t  { font-size:14px; fill:#111827; font-weight:700; }
+      .s  { font-size:11.5px; fill:#374151; }
+      .h  { font-size:15px; fill:#111827; font-weight:700; }
+      .k  { font-size:12px; fill:#FFFFFF; font-weight:700; }
+      .ks { font-size:10.5px; fill:#FFFFFF; }
+      .n  { font-size:11.5px; fill:#B71C1C; font-style:italic; }
+      .ok { stroke:#374151; stroke-width:1.6; fill:none; marker-end:url(#ok); }
+      .okr{ stroke:#B71C1C; stroke-width:1.5; fill:none; stroke-dasharray:6 4; marker-end:url(#okr); }
+      .a0 { fill:#ECEFF1; stroke:#455A64; stroke-width:1.6; }
+      .a1 { fill:#FDECEA; stroke:#C62828; stroke-width:1.8; }
+      .a2 { fill:#E3F2FD; stroke:#1565C0; stroke-width:1.6; }
+      .a3 { fill:#E8F5E9; stroke:#2E7D32; stroke-width:1.6; }
+      .a4 { fill:#FFF3E0; stroke:#E65100; stroke-width:1.6; }
+      .a5 { fill:#F3E5F5; stroke:#6A1B9A; stroke-width:1.6; }
+      .a6 { fill:#E0F2F1; stroke:#00695C; stroke-width:1.6; }
+      .a7 { fill:#FFFFFF; stroke:#374151; stroke-width:1.6; }
+      .kap{ fill:#B71C1C; }
+      .lane{ fill:#F9FAFB; stroke:#E5E7EB; stroke-width:1; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1240" height="760" fill="#FFFFFF"/>
+
+  <!-- Şeritler -->
+  <rect x="10" y="40" width="1220" height="150" rx="10" class="lane"/>
+  <text x="24" y="62" class="h">Kararlar ve doğruluk (kritik yol)</text>
+  <rect x="10" y="205" width="1220" height="300" rx="10" class="lane"/>
+  <text x="24" y="227" class="h">Paralel geliştirme</text>
+  <rect x="10" y="520" width="1220" height="170" rx="10" class="lane"/>
+  <text x="24" y="542" class="h">Geçiş ve canlıya alma</text>
+
+  <!-- Aşama 0 -->
+  <rect x="30" y="75" width="200" height="100" rx="10" class="a0"/>
+  <text x="130" y="100" text-anchor="middle" class="t">Aşama 0</text>
+  <text x="130" y="118" text-anchor="middle" class="s">Kararlar ve altyapı</text>
+  <text x="130" y="138" text-anchor="middle" class="s">sözleşme · GPU/bulut bütçe</text>
+  <text x="130" y="154" text-anchor="middle" class="s">hosting · hata toleransı</text>
+
+  <!-- Kapı K0 -->
+  <polygon points="275,125 300,100 325,125 300,150" class="kap"/>
+  <text x="300" y="129" text-anchor="middle" class="k">K0</text>
+  <line x1="230" y1="125" x2="273" y2="125" class="ok"/>
+
+  <!-- Aşama 1 -->
+  <rect x="350" y="75" width="330" height="100" rx="10" class="a1"/>
+  <text x="515" y="100" text-anchor="middle" class="t">Aşama 1 · Model ve doğruluk turu</text>
+  <text x="515" y="120" text-anchor="middle" class="s">50–100 soruluk test seti (AI + uzman) · bulut ve büyük</text>
+  <text x="515" y="136" text-anchor="middle" class="s">lokal model aynı setle · eşik kalibrasyonu · doğrulama modları</text>
+  <text x="515" y="152" text-anchor="middle" class="s">belirsiz soru akışı · sorgu çevirisi + hibrit A/B</text>
+  <line x1="325" y1="125" x2="348" y2="125" class="ok"/>
+
+  <!-- Kapı K1 -->
+  <polygon points="725,125 750,100 775,125 750,150" class="kap"/>
+  <text x="750" y="129" text-anchor="middle" class="k">K1</text>
+  <line x1="680" y1="125" x2="723" y2="125" class="ok"/>
+  <text x="750" y="88" text-anchor="middle" class="n">kalite kapısı</text>
+  <!-- K1 başarısız -> geri -->
+  <path d="M750,150 L750,182 L515,182 L515,177" class="okr"/>
+  <text x="640" y="196" text-anchor="middle" class="n">hedef tutmazsa: daha büyük model / bulut kararı → tekrar ölç</text>
+
+  <!-- Karar notu sağda -->
+  <rect x="800" y="75" width="410" height="100" rx="10" class="a7"/>
+  <text x="1005" y="98" text-anchor="middle" class="t">K1 geçiş ölçütleri</text>
+  <text x="1005" y="118" text-anchor="middle" class="s">değer doğruluğu ≥ %98 · "yanlış değer doğrulandı" = 0</text>
+  <text x="1005" y="134" text-anchor="middle" class="s">doğru reddetme ≥ %90 · tuzak %100 · Recall@5 ≥ %90</text>
+  <text x="1005" y="150" text-anchor="middle" class="s">tam doğrulama oranı ölçülür (R13)</text>
+  <line x1="775" y1="125" x2="798" y2="125" class="ok"/>
+
+  <!-- Paralel şerit -->
+  <rect x="350" y="245" width="270" height="110" rx="10" class="a2"/>
+  <text x="485" y="270" text-anchor="middle" class="t">Aşama 2 · Servisleşme</text>
+  <text x="485" y="290" text-anchor="middle" class="s">adaptörler (LLM, embedding, vektör DB, TTS)</text>
+  <text x="485" y="306" text-anchor="middle" class="s">soru-cevap API · Qdrant sunucu</text>
+  <text x="485" y="322" text-anchor="middle" class="s">GPU'da embedding/rerank · denetim izi</text>
+  <text x="485" y="338" text-anchor="middle" class="s">hedef: yanıt ≤ 5 sn</text>
+
+  <rect x="350" y="375" width="270" height="110" rx="10" class="a3"/>
+  <text x="485" y="400" text-anchor="middle" class="t">Aşama 3 · Doküman işleme</text>
+  <text x="485" y="420" text-anchor="middle" class="s">VLM şekil açıklaması · OCR birleştirme</text>
+  <text x="485" y="436" text-anchor="middle" class="s">tablo temizliği · basılı↔PDF sayfa</text>
+  <text x="485" y="452" text-anchor="middle" class="s">metadata otomatik çıkarım</text>
+  <text x="485" y="468" text-anchor="middle" class="s">doküman bazlı silme</text>
+
+  <rect x="660" y="245" width="270" height="110" rx="10" class="a4"/>
+  <text x="795" y="270" text-anchor="middle" class="t">Aşama 4 · Güvenlik ve yönetim</text>
+  <text x="795" y="290" text-anchor="middle" class="s">e-posta/kod girişi · rol → marka</text>
+  <text x="795" y="306" text-anchor="middle" class="s">zorunlu ön filtre · ±1 sayfa</text>
+  <text x="795" y="322" text-anchor="middle" class="s">admin paneli · aydınlatma metni</text>
+  <text x="795" y="338" text-anchor="middle" class="s">log saklama/silme · yetki testleri</text>
+
+  <rect x="660" y="375" width="270" height="110" rx="10" class="a5"/>
+  <text x="795" y="400" text-anchor="middle" class="t">Aşama 5 · Arayüz ve ses</text>
+  <text x="795" y="420" text-anchor="middle" class="s">özel web (tablet, büyük dokunma)</text>
+  <text x="795" y="436" text-anchor="middle" class="s">rozet · görünür filtre · yedek mod uyarısı</text>
+  <text x="795" y="452" text-anchor="middle" class="s">TTS (GPU/bulut) · STT bas-konuş + onay</text>
+  <text x="795" y="468" text-anchor="middle" class="s">ses saklanmaz</text>
+
+  <!-- K0 -> Aşama 2 ve 3 (paralel başlar) -->
+  <path d="M300,150 L300,300 L348,300" class="ok"/>
+  <path d="M300,300 L300,430 L348,430" class="ok"/>
+  <!-- 2 -> 4, 2 -> 5 -->
+  <line x1="620" y1="300" x2="658" y2="300" class="ok"/>
+  <path d="M620,320 L640,320 L640,430 L658,430" class="ok"/>
+  <!-- K1 -> 5 (model kararı arayüz sesini etkiler) -->
+  <path d="M1100,175 L1100,365 L1037,365" class="ok"/>
+  <path d="M960,175 L960,430 L932,430" class="ok" stroke-dasharray="3 3"/>
+
+  <!-- Kapı K2 -->
+  <polygon points="985,365 1010,340 1035,365 1010,390" class="kap"/>
+  <text x="1010" y="369" text-anchor="middle" class="k">K2</text>
+  <path d="M930,300 L1010,300 L1010,338" class="ok"/>
+  <path d="M930,450 L1010,450 L1010,392" class="ok"/>
+  <path d="M620,450 L640,450 L640,495 L1010,495 L1010,392" class="ok"/>
+  <text x="1165" y="410" text-anchor="middle" class="n">entegrasyon kapısı</text>
+  <text x="1165" y="427" text-anchor="middle" class="s">K1 geçildi</text>
+  <text x="1165" y="443" text-anchor="middle" class="s">yetki testleri %100</text>
+  <text x="1165" y="459" text-anchor="middle" class="s">yanıt ≤ 5 sn · silme testi</text>
+
+  <!-- Aşama 6 -->
+  <rect x="350" y="560" width="330" height="110" rx="10" class="a6"/>
+  <text x="515" y="585" text-anchor="middle" class="t">Aşama 6 · Gerçek veriye geçiş</text>
+  <text x="515" y="605" text-anchor="middle" class="s">kontrol listesi · gerçek dokümanların işlenmesi</text>
+  <text x="515" y="621" text-anchor="middle" class="s">gerçek sorularla test seti · yeniden ölçüm</text>
+  <text x="515" y="637" text-anchor="middle" class="s">atölyede kullanıcı denemesi (2–3 usta)</text>
+  <text x="515" y="653" text-anchor="middle" class="s">Q10 okunuşları · cihaz (Q11)</text>
+  <path d="M1010,390 L1010,520 L300,520 L300,615 L348,615" class="ok"/>
+
+  <!-- Kapı K3 -->
+  <polygon points="725,615 750,590 775,615 750,640" class="kap"/>
+  <text x="750" y="619" text-anchor="middle" class="k">K3</text>
+  <line x1="680" y1="615" x2="723" y2="615" class="ok"/>
+  <text x="760" y="662" text-anchor="start" class="n">canlı kapısı</text>
+  <path d="M750,640 L750,678 L515,678 L515,672" class="okr"/>
+  <text x="640" y="695" text-anchor="middle" class="n">gerçek veride hedef tutmazsa: ilgili aşamaya dönüş</text>
+
+  <!-- Aşama 7 -->
+  <rect x="800" y="560" width="410" height="110" rx="10" class="a7"/>
+  <text x="1005" y="585" text-anchor="middle" class="t">Aşama 7 · Canlıya alma ve işletim</text>
+  <text x="1005" y="605" text-anchor="middle" class="s">kademeli açılış (tek marka → tüm markalar)</text>
+  <text x="1005" y="621" text-anchor="middle" class="s">geri bildirim ("yanlış değer") · aylık yeniden ölçüm</text>
+  <text x="1005" y="637" text-anchor="middle" class="s">yeni doküman / model güncelleme prosedürü</text>
+  <text x="1005" y="653" text-anchor="middle" class="s">sözleşme bitiminde veri silme</text>
+  <line x1="775" y1="615" x2="798" y2="615" class="ok"/>
+
+  <!-- Lejant -->
+  <polygon points="30,728 42,716 54,728 42,740" class="kap"/>
+  <text x="62" y="733" class="s">Karar kapısı (geçiş ölçütü sağlanmadan sonraki aşamaya geçilmez)</text>
+  <line x1="520" y1="728" x2="560" y2="728" class="okr"/>
+  <text x="568" y="733" class="s">ölçüt tutmazsa geri dönüş</text>
+  <line x1="760" y1="728" x2="800" y2="728" class="ok" stroke-dasharray="3 3"/>
+  <text x="808" y="733" class="s">dolaylı bağımlılık (model kararı → ses/gecikme)</text>
+</svg>

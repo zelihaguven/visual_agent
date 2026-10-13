@@ -1,5 +1,16 @@
+# Python ortamları ve önbellekler
 .venv/
+.venv-tts/
 __pycache__/
+*.pyc
 .pytest_cache/
-faz1_output/
 .DS_Store
+
+# Pilot: indeks (run_index.py ile yeniden üretilir), loglar, arayüzde üretilen sesler
+pilot/data/qdrant/
+pilot/data/logs/
+pilot/data/audio/
+
+# Ses dosyaları (STT ölçümünün test sesleri hariç)
+*.wav
+!pilot/eval/stt/*.wav

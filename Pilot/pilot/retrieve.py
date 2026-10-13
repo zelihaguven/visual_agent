@@ -1,4 +1,5 @@
 """Hibrit arama (dense + sparse, RRF) + marka/doküman filtresi + reranker."""
+import re
 from dataclasses import dataclass
 from typing import Any
 
@@ -10,6 +11,16 @@ from .index import client
 
 PREFETCH_K = 30      # her kolun (dense, sparse) getirdiği aday sayısı
 FUSED_K = 20         # RRF sonrası rerank'a giden aday sayısı
+
+# İçindekiler satırı ("5-5-1. Needle up/down ........ 32"): Hiçbir soruya cevap değil ama terimleri içerdiği için
+# üst sıralara çıkıyor (çağanoz sorusunda 1., "A makinesi ceket ölçüsü" cevabında alıntı olarak kullanıldı).
+# Dar tutuldu: "TOTAL. ....... 1 | 00.00%" gibi gerçek tablo satırları elenmez.
+_TOC = re.compile(r"\.{5,}\s*\d+")
+_TOC_LINE = re.compile(r"\s*[\w\-. ()/]{3,80}?\s*\.{5,}\s*\d+\s*")
+
+
+def is_toc(text: str) -> bool:
+    return len(_TOC.findall(text)) >= 2 or bool(_TOC_LINE.fullmatch(text))
 
 
 @dataclass(frozen=True)
@@ -57,7 +68,7 @@ def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | 
     finally:
         qc.close()
 
-    points = res.points
+    points = [p for p in res.points if not is_toc(p.payload["text"])]
     if not do_rerank or not points:
         return [Hit(p.payload, i) for i, p in enumerate(points[:top_k])]
     scores = rerank(query, [p.payload["text"] for p in points])
