@@ -1,5 +1,9 @@
-"""Pilot ölçümü: eval/questions.json -> eval/sonuc.md (doğru kaynak, değer, reddetme, süre)."""
+"""Pilot ölçümü: eval/questions.json -> eval/sonuc.md (doğru kaynak, değer, reddetme, süre).
+
+Başka soru dosyası: python run_eval.py eval/sekil_sorular.json -> eval/sonuc_sekil_sorular.md
+"""
 import json
+import sys
 import logging
 import time
 import warnings
@@ -36,7 +40,9 @@ def judge(item: dict, res) -> dict:
 
 
 if __name__ == "__main__":
-    items = json.loads((HERE / "questions.json").read_text(encoding="utf-8"))
+    qfile = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "questions.json"
+    suffix = "" if qfile.name == "questions.json" else "_" + qfile.stem
+    items = json.loads(qfile.read_text(encoding="utf-8"))
     rows, raw = [], []
     for it in items:
         t = time.time()
@@ -45,9 +51,10 @@ if __name__ == "__main__":
         rows.append((it, res, j, time.time() - t))
         raw.append({"id": it["id"], "judge": j, "answer": res.answer, "speech": res.speech_text,
                     "problems": res.verification.problems, "timings": res.timings,
-                    "sources": [(h.chunk["doc_id"], h.chunk["pages"], round(h.rerank_score or 0, 2)) for h in res.hits]})
+                    "sources": [(h.chunk["doc_id"], h.chunk["pages"], h.chunk.get("chunk_type"),
+                                 round(h.rerank_score or 0, 2)) for h in res.hits]})
         print(it["id"], "✔" if j["correct"] else "✖", f"{rows[-1][3]:.1f} sn", flush=True)
-    (HERE / "sonuc.json").write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding="utf-8")
+    (HERE / f"sonuc{suffix}.json").write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding="utf-8")
 
     n = len(rows)
     lines = ["# Pilot ölçüm sonucu", "",
@@ -59,5 +66,5 @@ if __name__ == "__main__":
                      f"{res.verification.badge} | {dt:.0f} sn | {note} |")
     ok = sum(1 for _, _, j, _ in rows if j["correct"])
     lines += ["", f"**Doğru: {ok}/{n}** · Ortalama süre: {sum(r[3] for r in rows) / n:.1f} sn", ""]
-    (HERE / "sonuc.md").write_text("\n".join(lines), encoding="utf-8")
+    (HERE / f"sonuc{suffix}.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"Doğru: {ok}/{n}")

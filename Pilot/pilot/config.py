@@ -38,6 +38,15 @@ STT_COMPUTE = "int8"          # CPU'da hızlı, doğruluk kaybı küçük
 
 DOCLING_DEVICE =os.environ.get("PILOT_DOCLING_DEVICE", "cpu")   # "mps" Apple GPU belleğini zorlar
 
+# Şekil anlama (VLM): Her şekle doküman işleme sırasında bir kez metin açıklaması yazılır (figures.py).
+# Küçük model: GPU'suz dizüstünde şekil başına ~20-60 sn. Değiştirmek için PILOT_VLM_MODEL.
+FIGURES_DIR = DATA_DIR / "figures"
+VLM_MODEL = os.environ.get("PILOT_VLM_MODEL", "qwen2.5vl:3b")
+FIGURE_MIN_AREA = 0.02        # sayfa alanına oranı: daha küçükler ikon/uyarı işareti/logo, açıklanmaz
+FIGURE_MIN_SIDE = 50          # point: kısa kenarı bundan dar olanlar (çizgi, şerit) açıklanmaz
+FIGURE_DPI = 150
+FIGURE_MAX_PX = 896           # VLM'e giden görselin uzun kenarı (görsel token sayısı ve CPU süresi bununla büyür)
+
 
 def _hf_models_cached() -> bool:
     """Embedding ve reranker modelleri yerel Hugging Face önbelleğinde var mı?"""

@@ -153,7 +153,8 @@ def source_label(r: Result, n: int) -> str:
     printed = c["page_labels"].get(str(c["page"]))
     page = f"s.{printed} (PDF s.{c['page']})" if printed and printed != str(c["page"]) else f"s.{c['page']}"
     section = f" · {c['section'][:60]}" if c.get("section") else ""
-    return f"[{n}] {meta.brand} · {meta.product}{section} · {page}"
+    figure = " · 🖼 şekil" if c.get("chunk_type") == "figure" else ""
+    return f"[{n}] {meta.brand} · {meta.product}{section}{figure} · {page}"
 
 
 def render_clarify(res: Result) -> None:
@@ -232,7 +233,18 @@ def render_result(res: Result, key: str) -> None:
             elif res.verification.status == "failed":
                 st.warning("Güvenilir bir cevap üretilemedi. Bu bilgi kaynaklarda bulunmuyor olabilir.")
             if ans.get("netlestirme_sorusu"):
+                # Cevap var ama değer bir ayrıntıya göre değişiyor (beden, stil ...): seçilen ayrıntı soruya eklenip
+                # yeniden sorulur. Seçenekler kaynakta geçenlerle sınırlı (verify.clarify_options).
                 st.warning(ans["netlestirme_sorusu"])
+                opts = ans.get("netlestirme_secenekleri", [])
+                if opts:
+                    cols = st.columns(len(opts))
+                    for i, (col, o) in enumerate(zip(cols, opts)):
+                        if col.button(o, key=f"nopt-{key}-{i}"):
+                            start(f"{res.question} ({o})", state_.get("brands"), doc_ids=state_.get("doc_ids"))
+                detail = st.text_input("Ya da sorunuza ayrıntı ekleyin", key=f"ndetail-{key}")
+                if st.button("Ayrıntıyla sor", key=f"ndetail-go-{key}") and detail.strip():
+                    start(f"{res.question} {detail.strip()}", state_.get("brands"), doc_ids=state_.get("doc_ids"))
             for q in ans.get("alintilar", []):
                 no = q.get("kaynak_no")
                 where = source_label(res, no) if isinstance(no, int) and 1 <= no <= len(res.hits) else f"kaynak {no}"

@@ -4,6 +4,7 @@ import time
 import warnings
 
 from pilot.chunk import build_chunks, read_chunks, write_chunks
+from pilot.figures import load_figures
 from pilot.index import build_index
 from pilot.parse import load_or_parse
 from pilot.registry import DOCS
@@ -15,7 +16,7 @@ log = logging.getLogger("index")
 if __name__ == "__main__":
     all_chunks = []
     for meta in DOCS:
-        chunks = build_chunks(meta, load_or_parse(meta)["elements"])
+        chunks = build_chunks(meta, load_or_parse(meta)["elements"], load_figures(meta))
         log.info("%s: %d parça", meta.doc_id, len(chunks))
         all_chunks += chunks
     write_chunks(all_chunks)

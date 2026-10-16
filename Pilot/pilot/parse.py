@@ -16,6 +16,7 @@ import pypdfium2 as pdfium
 
 from .config import DOCLING_DEVICE, EDGE_BAND, FURNITURE_MIN_RATIO, PAGES_PER_BATCH, PARSED_DIR, SENTENCE_END
 from .registry import DocMeta
+from .tables import SPAN_SEP
 
 log = logging.getLogger(__name__)
 
@@ -69,7 +70,11 @@ def group_table_rows(cells: list[dict[str, Any]]) -> list[dict[str, Any]]:
         row_cells = [body[i] for i in idx]
         parts = []
         for c in row_cells:
-            h = headers.get(c["c0"])
+            # Birleşik hücre kapladığı bütün sütunların ortak değeridir (JUKI s.3: hız üç modelin sütununu kaplıyor,
+            # yalnız ilk sütunun başlığı yazılınca "MO-6804: 7,000" oluyordu). İlk sütundan başlayan geniş hücre
+            # ara başlıktır, başlık almaz.
+            heads = list(dict.fromkeys(headers[col] for col in range(c["c0"], c["c1"]) if col in headers))
+            h = SPAN_SEP.join(heads) if c["c0"] > 0 or c["c1"] - c["c0"] == 1 else ""
             txt = c["text"].strip()
             parts.append(f"{h}: {txt}" if h and h != txt else txt)
         boxes = [c["bbox_tl"] for c in row_cells if c.get("bbox_tl")]
@@ -225,6 +230,8 @@ def printed_page_labels(pdf_path: Path, pages: list[int], bands=(0.06, 0.09, 0.1
                 for band in bands:
                     bottom, top = (0, h * band) if edge == "bottom" else (h * (1 - band), h)
                     text = tp.get_text_bounded(left=0, bottom=bottom, right=w, top=top) or ""
+                    if is_letter_spaced(text, min_tokens=3):    # harf aralıklı OCR: "1 0 1" → "101"
+                        text = re.sub(r"\b\d(?: \d\b)+", lambda m: m.group().replace(" ", ""), text)
                     nums = re.findall(r"(?<![\w/.-])(\d{1,4})(?![\w/.:-])", text)
                     if nums:
                         found = nums[0]
@@ -241,18 +248,68 @@ def printed_page_labels(pdf_path: Path, pages: list[int], bands=(0.06, 0.09, 0.1
 
 FALLBACK_MIN_PDF_CHARS = 200     # PDF metin katmanında en az bu kadar karakter olan sayfa değerlendirilir
 FALLBACK_MIN_COVERAGE = 0.5      # Docling bu orandan azını yakalamışsa sayfa PyMuPDF bloklarıyla değişir
+FALLBACK_KEEP_PICTURE_MAX = 0.6  # değişen sayfada bundan küçük şekiller korunur (büyükler tam sayfa tarama görseli)
 
 
 def _clean_block_text(raw: str) -> str:
-    """Satır sonu tirelemesini ('de¬\nsign', 'con-\nstruction') birleştir, satır sonlarını boşluk yap."""
-    text = re.sub(r"[¬\-]\s*\n\s*(?=[a-z])", "", raw)
+    """Satır sonu tirelemesini ('de¬\nsign', 'con-\nstruction', yumuşak tire 'over\xad\ncome') birleştir,
+    satır sonlarını boşluk yap."""
+    text = re.sub(r"[¬\-\xad]\s*\n\s*(?=[a-z])", "", raw)
     return re.sub(r"\s*\n\s*", " ", text).strip()
+
+
+# Harf aralıklı OCR katmanı: FineReader çıktısında (Granovsky 1986) her harf ayrı kelime ("C a r d f l a t").
+# Kelime araması ve alıntı doğrulaması bu metinle çalışmaz. Kelimeler harflerin konumundan yeniden kurulur.
+
+def is_letter_spaced(text: str, min_tokens: int = 20) -> bool:
+    """Metnin çoğu tek harflik parçalardan oluşuyor mu?"""
+    tokens = text.split()
+    return len(tokens) >= min_tokens and sum(len(t) == 1 for t in tokens) > 0.5 * len(tokens)
+
+
+def _line_from_chars(chars: list[tuple[str, float, float, float]]) -> str:
+    """chars: (harf, x0, x1, punto). Satırdaki harf boşlukları iki kümeye ayrılır (harf içi / kelime arası); eşik
+    satır satır bulunur, çünkü iki yana yaslı satırlarda harf aralığı satırdan satıra değişiyor."""
+    if len(chars) < 2:
+        return "".join(c[0] for c in chars)
+    gaps = [chars[i + 1][1] - chars[i][2] for i in range(len(chars) - 1)]
+    size = max(c[3] for c in chars)
+    ordered = sorted(gaps)
+    if ordered[-1] - ordered[0] < 0.12 * size:          # tek küme: tek kelime (aralıklı başlık "C O N T E N T S" da)
+        threshold = float("inf")
+    else:
+        best = None
+        for i in range(1, len(ordered)):
+            a, b = ordered[:i], ordered[i:]
+            ma, mb = sum(a) / len(a), sum(b) / len(b)
+            spread = sum((x - ma) ** 2 for x in a) + sum((x - mb) ** 2 for x in b)
+            if best is None or spread < best:
+                best, threshold = spread, (ordered[i - 1] + ordered[i]) / 2
+    threshold = max(threshold, 0.08 * size)
+    out = chars[0][0]
+    for gap, c in zip(gaps, chars[1:]):
+        out += (" " if gap > threshold else "") + c[0]
+    return out
+
+
+def _respaced_blocks(page: pymupdf.Page) -> list[tuple[float, float, float, float, str, int, int]]:
+    """page.get_text('blocks') biçiminde, kelimeleri harf konumlarından yeniden kurulmuş bloklar."""
+    blocks = []
+    for no, b in enumerate(page.get_text("rawdict")["blocks"]):
+        if b["type"] != 0:
+            continue
+        lines = [_line_from_chars([(c["c"], c["bbox"][0], c["bbox"][2], s["size"])
+                                   for s in line["spans"] for c in s["chars"] if c["c"].strip()])
+                 for line in b["lines"]]
+        blocks.append((*b["bbox"], "\n".join(t for t in lines if t), no, 0))
+    return blocks
 
 
 def _pymupdf_page_elements(page: pymupdf.Page, page_no: int) -> list[dict[str, Any]]:
     w, h = page.rect.width, page.rect.height
     out = []
-    for i, (x0, y0, x1, y1, raw, _no, kind) in enumerate(page.get_text("blocks")):
+    blocks = _respaced_blocks(page) if is_letter_spaced(page.get_text()) else page.get_text("blocks")
+    for i, (x0, y0, x1, y1, raw, _no, kind) in enumerate(blocks):
         text = _clean_block_text(raw)
         if kind != 0 or len(text) < 2:
             continue
@@ -265,7 +322,9 @@ def _pymupdf_page_elements(page: pymupdf.Page, page_no: int) -> list[dict[str, A
 
 def apply_text_fallback(meta: DocMeta, elements: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[int]]:
     """Docling'in metin katmanını büyük oranda kaçırdığı sayfaları (tam sayfa tarama görseli
-    'picture' sayılınca olur) PyMuPDF blokları ile değiştir. (yeni öğeler, değişen sayfalar)"""
+    'picture' sayılınca olur) ya da metni harf aralıklı olan sayfaları PyMuPDF blokları ile değiştir.
+    Değişen sayfada Docling'in bulduğu şekiller (tam sayfa tarama görseli değilse) korunur: şekil anlama kullanır.
+    (yeni öğeler, değişen sayfalar)"""
     doc = pymupdf.open(meta.path)
     got: dict[int, int] = {}
     for e in elements:
@@ -273,15 +332,23 @@ def apply_text_fallback(meta: DocMeta, elements: list[dict[str, Any]]) -> tuple[
             got[e["page"]] = got.get(e["page"], 0) + len(e["text"].replace(" ", ""))
     swapped: list[int] = []
     for page_no in range(1, len(doc) + 1):
-        pdf_chars = len(doc[page_no - 1].get_text().replace(" ", "").replace("\n", ""))
-        if pdf_chars >= FALLBACK_MIN_PDF_CHARS and got.get(page_no, 0) < FALLBACK_MIN_COVERAGE * pdf_chars:
+        raw = doc[page_no - 1].get_text()
+        pdf_chars = len(raw.replace(" ", "").replace("\n", ""))
+        if pdf_chars >= FALLBACK_MIN_PDF_CHARS and (got.get(page_no, 0) < FALLBACK_MIN_COVERAGE * pdf_chars
+                                                    or is_letter_spaced(raw)):
             swapped.append(page_no)
     if not swapped:
         return elements, []
-    keep = [e for e in elements if e["page"] not in set(swapped)]
+
+    def figure_on_scan(e: dict[str, Any]) -> bool:
+        l, t, r, b = e["bbox_tl"]
+        return e["label"] == "picture" and (r - l) * (b - t) < FALLBACK_KEEP_PICTURE_MAX * e["page_w"] * e["page_h"]
+
+    keep = [e for e in elements if e["page"] not in set(swapped) or figure_on_scan(e)]
     for page_no in swapped:
         keep += _pymupdf_page_elements(doc[page_no - 1], page_no)
-    keep.sort(key=lambda e: (e["page"], e["bbox_tl"][1], e["bbox_tl"][0]) if e.get("source") else (e["page"], -1, 0))
+    moved = set(swapped)
+    keep.sort(key=lambda e: (e["page"], e["bbox_tl"][1], e["bbox_tl"][0]) if e["page"] in moved else (e["page"], -1, 0))
     return keep, swapped
 
 

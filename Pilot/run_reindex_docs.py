@@ -12,6 +12,7 @@ from dataclasses import asdict
 
 from pilot.chunk import build_chunks, read_chunks
 from pilot.config import CHUNKS_PATH
+from pilot.figures import load_figures
 from pilot.index import replace_docs
 from pilot.parse import load_or_parse
 from pilot.registry import BY_ID, DOCS
@@ -28,7 +29,7 @@ if __name__ == "__main__":
     old: dict[str, list[dict]] = {}
     for c in read_chunks():
         old.setdefault(c["doc_id"], []).append(c)
-    fresh = {d: [asdict(c) for c in build_chunks(BY_ID[d], load_or_parse(BY_ID[d])["elements"])] for d in targets}
+    fresh = {d: [asdict(c) for c in build_chunks(BY_ID[d], load_or_parse(BY_ID[d])["elements"], load_figures(BY_ID[d]))] for d in targets}
     for d, cs in fresh.items():
         log.info("%s: %d parça (önce %d)", d, len(cs), len(old.get(d, [])))
     # chunks.jsonl kayıt sırasını korur: hedef dokümanlar yenileriyle, diğerleri olduğu gibi

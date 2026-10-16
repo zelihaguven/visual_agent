@@ -1,7 +1,8 @@
 """Cevap sonrası otomatik doğrulama (kod tarafı, LLM değil).
 
 Kontroller: kaynak numaraları geçerli mi, alıntı kaynakta birebir geçiyor mu, [n] atıfları,
-cevap/sesli metindeki sayılar alıntılarda var mı, kaynaktaki 'N (± t)' toleransı cevapta tam mı.
+cevap/sesli metindeki sayılar alıntılarda var mı, kaynaktaki 'N (± t)' toleransı cevapta tam mı,
+alıntı şeklin otomatik (VLM) açıklamasından mı geliyor.
 """
 import re
 from dataclasses import dataclass, field
@@ -45,6 +46,22 @@ def numbers_in(text: str) -> set[str]:
     return {_canon_num(m.group(0)) for m in NUM_RE.finditer(cleaned)}
 
 
+def clarify_options(options: list, sources: dict[int, str]) -> list[str]:
+    """Modelin netleştirme seçeneklerinden kaynak metinde kelime olarak geçenler (sırası korunur, tekrarsız).
+    2026-10-16 denemesi: Model SPI sorusunda "Hangi boy ceket için? Medium, Large, XX-Large?" diye sordu. Kaynakta
+    geçmeyen bir ayrım sorulmasın; tek harf ("A") her metinde geçtiği için 2 karakterden kısa seçenek alınmaz."""
+    text = " ".join(normalize(s) for s in sources.values())
+    kept: list[str] = []
+    for o in options or []:
+        if not isinstance(o, str):
+            continue
+        opt = o.strip()
+        n = normalize(opt)
+        if len(n) >= 2 and opt not in kept and re.search(rf"(?<!\w){re.escape(n)}(?!\w)", text):
+            kept.append(opt)
+    return kept
+
+
 @dataclass
 class Verification:
     status: str                       # "verified" | "partial" | "not_found" | "failed" | "clarify"
@@ -58,8 +75,31 @@ class Verification:
                 "clarify": "❓ Netleştirme gerekli"}[self.status]
 
 
-def verify(answer: dict, sources: dict[int, str]) -> Verification:
-    """answer: LLM'in JSON çıktısı. sources: {kaynak_no: chunk metni}."""
+QUOTE_MAX = 300           # prompts.ANSWER_SCHEMA alıntı uzunluk sınırı
+CUT_MARGIN = 15           # sınıra bu kadar yakın alıntı "kesilmiş" sayılır
+CUT_MAX_TAIL = 20         # kesilmiş alıntının sonunda kaynakta olmayan en fazla bu kadar karakter olabilir
+
+
+def _cut_quote_prefix(text: str, norm_source: str) -> str:
+    """Uzunluk sınırında kesilen alıntının kaynakla birebir örtüşen başı; değilse boş.
+    2026-10-16 (rank patch sorusu): Model 300 karakterlik sınıra dayanan alıntının sonunu bozdu ("(see figure 1)"
+    yerine "(see **[1"): ilk ~290 karakter birebir olduğu halde cevap "doğrulanamadı" oldu ve seslendirilmedi.
+    Yalnız sınıra dayanan alıntıda ve kısa bir kuyrukta uygulanır: kısa alıntıdaki fark hâlâ hatadır."""
+    n = normalize(text)
+    if len(text) < QUOTE_MAX - CUT_MARGIN:
+        return ""
+    words = n.split(" ")
+    for k in range(len(words) - 1, 0, -1):
+        head = " ".join(words[:k])
+        if head in norm_source:
+            return head if len(n) - len(head) <= CUT_MAX_TAIL else ""
+    return ""
+
+
+def verify(answer: dict, sources: dict[int, str], generated: dict[int, str] | None = None) -> Verification:
+    """answer: LLM'in JSON çıktısı. sources: {kaynak_no: chunk metni}.
+    generated: {kaynak_no: metnin model üretimi kısmı} (şekil açıklaması). Oradan yapılan alıntı birebir olsa da
+    kaynak metni değildir: cevap en fazla "kısmen doğrulandı" olur."""
     if answer.get("bulunamadi"):
         ok = not answer.get("cevap", "").strip()
         return Verification("not_found" if ok else "failed",
@@ -73,7 +113,8 @@ def verify(answer: dict, sources: dict[int, str]) -> Verification:
         problems.append("Cevap var ama alıntı yok")
 
     norm_sources = {no: normalize(t) for no, t in sources.items()}
-    exact = True
+    norm_generated = {no: normalize(t) for no, t in (generated or {}).items() if t}
+    exact, from_figure = True, False
     for q in quotes:
         # Model alıntının sonuna atıf ekleyebiliyor ("... 4000 sti/min [1]"). Atıf kaynağın parçası değil,
         # karşılaştırmadan önce ayıklanır; alıntının kendisi yine birebir olmalı.
@@ -82,9 +123,19 @@ def verify(answer: dict, sources: dict[int, str]) -> Verification:
             problems.append(f"Geçersiz kaynak numarası: {no}")
             exact = False
         elif normalize(text) not in norm_sources[no]:
-            problems.append(f"Alıntı kaynakta birebir bulunamadı: {text[:70]!r}")
-            exact = False
+            kept = _cut_quote_prefix(text, norm_sources[no])
+            if kept:
+                problems.append(f"Alıntı [{no}] uzunluk sınırında kesildi; kaynakla örtüşen ilk {len(kept)} karakter "
+                                "kullanıldı")
+            else:
+                problems.append(f"Alıntı kaynakta birebir bulunamadı: {text[:70]!r}")
+                exact = False
+        elif no in norm_generated and normalize(text) in norm_generated[no]:
+            from_figure = True
+            problems.append(f"Alıntı [{no}] şeklin otomatik açıklamasından (model üretimi, kaynak metni değil): "
+                            "şekli kaynak sayfada kontrol edin")
     checks["alinti_birebir"] = exact
+    checks["alinti_kaynak_metni"] = not from_figure
 
     cites = {int(c) for c in CITE_RE.findall(answer.get("cevap", ""))}
     cites_ok = bool(cites) and cites <= set(sources)
@@ -140,6 +191,7 @@ def verify(answer: dict, sources: dict[int, str]) -> Verification:
 
     hard = not (checks["alinti_var"] and checks["alinti_birebir"] and checks["sayilar_alintida"]
                 and checks["tolerans_tam"] and checks["cevap_var"] and checks["tekrar_yok"] and checks["alfabe_dogru"])
+    problems = list(dict.fromkeys(problems))   # model aynı alıntıyı tekrarlayabiliyor: uyarı bir kez gösterilir
     if hard:
         return Verification("failed", problems, checks)
-    return Verification("verified" if cites_ok else "partial", problems, checks)
+    return Verification("verified" if cites_ok and not from_figure else "partial", problems, checks)

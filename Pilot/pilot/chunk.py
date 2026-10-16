@@ -4,6 +4,7 @@ Parça türleri:
   text       ardışık paragraf/liste öğeleri, CHUNK_MAX_CHARS'a kadar
   table_row  tablonun mantıksal satırı ("Başlık: değer | ...")
   table      satırlarına ayrılamayan tablo (markdown)
+  figure     VLM ile açıklanmış şekil (figures.py): başlık + şekildeki yazılar + otomatik açıklama
 """
 import json
 import re
@@ -12,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import CHUNK_MAX_CHARS, CHUNKS_PATH
+from .figures import figure_text, is_described
 from .parse import merge_cross_page, printed_page_labels, remove_furniture
 from .registry import DocMeta
 
@@ -37,6 +39,7 @@ class Chunk:
     boxes: list[dict[str, Any]]
     text: str
     embed_text: str = field(default="")
+    generated: str = field(default="")   # metnin model üretimi kısmı (şekil açıklaması): doğrulamada kaynak sayılmaz
 
 
 def _embed_text(meta: DocMeta, section: str, text: str) -> str:
@@ -63,8 +66,10 @@ def _split_long(el: dict[str, Any]) -> list[dict[str, Any]]:
     return [{**el, "text": part} for part in parts]
 
 
-def build_chunks(meta: DocMeta, elements: list[dict[str, Any]]) -> list[Chunk]:
-    """Bir dokümanın parse edilmiş öğelerinden parçalar üret."""
+def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
+                 figures: dict[str, dict[str, Any]] | None = None) -> list[Chunk]:
+    """Bir dokümanın parse edilmiş öğelerinden parçalar üret. figures: figures.load_figures() çıktısı.
+    Şekil parçaları sona eklenir: Metin akışını bölmezler, metin parçalarının kimlikleri değişmez."""
     elements = merge_cross_page(remove_furniture(elements))
     pages = sorted({p for e in elements for p in e["pages"]})
     labels = printed_page_labels(meta.path, pages)
@@ -72,8 +77,11 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]]) -> list[Chunk]:
     chunks: list[Chunk] = []
     section = ""
     buf: list[dict[str, Any]] = []
+    figure_els: list[tuple[str, dict[str, Any]]] = []
 
-    def make(chunk_type: str, text: str, els: list[dict[str, Any]]) -> None:
+    def make(chunk_type: str, text: str, els: list[dict[str, Any]], sec: str | None = None,
+             generated: str = "") -> None:
+        sec = section if sec is None else sec
         text = text.strip()
         if len(text) < MIN_CHARS:
             return
@@ -82,9 +90,9 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]]) -> list[Chunk]:
         chunks.append(Chunk(
             chunk_id=f"{meta.doc_id}-{len(chunks):05d}", doc_id=meta.doc_id, brand=meta.brand,
             product=meta.product, doc_type=meta.doc_type, lang=meta.lang_of(pgs[0]),
-            chunk_type=chunk_type, section=section, page=pgs[0], pages=pgs,
+            chunk_type=chunk_type, section=sec, page=pgs[0], pages=pgs,
             page_labels={str(p): labels.get(p) for p in pgs}, boxes=boxes, text=text,
-            embed_text=_embed_text(meta, section, text)))
+            embed_text=_embed_text(meta, sec, text), generated=generated))
 
     def flush() -> None:
         nonlocal buf
@@ -94,6 +102,9 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]]) -> list[Chunk]:
 
     for e in elements:
         label = e["label"]
+        if label == "picture" and is_described((figures or {}).get(e["id"])):
+            figure_els.append((section, e))
+            continue
         if label in SKIP_LABELS:
             continue
         if label in HEADING_LABELS:
@@ -119,6 +130,9 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]]) -> list[Chunk]:
                 flush()
             buf.append(piece)
     flush()
+    for sec, e in figure_els:
+        fig = figures[e["id"]]
+        make("figure", figure_text(fig), [e], sec=sec, generated=fig["desc"])
     return chunks
 
 

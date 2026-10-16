@@ -187,3 +187,41 @@ def test_text_chunks_respect_max_length(no_pdf):
     chunks = build_chunks(BY_ID["gl-pd-14-04a"], els)
     assert all(len(c.text) <= CHUNK_MAX_CHARS * 1.3 for c in chunks)
     assert len(chunks) > 1
+
+
+# --- harf aralıklı OCR katmanı (Granovsky 1986) --------------------------------------
+
+def _chars(words, letter_gap, word_gap, size=10.0, width=5.0):
+    """Kelimeleri harf konumlarına çevir: (harf, x0, x1, punto)."""
+    out, x = [], 0.0
+    for wi, w in enumerate(words):
+        if wi:
+            x += word_gap - letter_gap
+        for c in w:
+            out.append((c, x, x + width, size))
+            x += width + letter_gap
+    return out
+
+
+def test_letter_spaced_text_is_detected():
+    assert parse.is_letter_spaced("C a r d f l a t is f i t t e d o n t h e f i n g e r")
+    assert not parse.is_letter_spaced("The card flat is fitted on the finger for attenuating the impacts " * 2)
+    assert not parse.is_letter_spaced("a b c")                       # çok kısa: karar verilmez
+
+
+@pytest.mark.parametrize("letter_gap, word_gap", [(1.0, 4.0), (2.5, 6.0), (0.0, 3.0)])
+def test_words_are_rebuilt_from_letter_positions(letter_gap, word_gap):
+    words = ["Card", "flat", "is", "fitted", "on", "the", "finger."]
+    assert parse._line_from_chars(_chars(words, letter_gap, word_gap)) == " ".join(words)
+
+
+def test_single_word_line_is_not_split():
+    assert parse._line_from_chars(_chars(["disassembly"], 1.0, 1.0)) == "disassembly"
+
+
+def test_tracked_heading_becomes_one_word():
+    assert parse._line_from_chars(_chars(["CONTENTS"], 4.0, 4.0)) == "CONTENTS"
+
+
+def test_soft_hyphen_line_break_is_joined():
+    assert _clean_block_text("have to over\xad\ncome the inertia") == "have to overcome the inertia"

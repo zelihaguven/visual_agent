@@ -14,7 +14,16 @@ from pilot.speech import normalize_for_speech as say
     ("0,5 mm", "sıfır virgül beş milimetre"),
     ("En büyük dikiş uzunluğu 5 mm'dir.", "En büyük dikiş uzunluğu beş milimetredir."),   # Windows denemesi
     ("10-14 SPI", "on ile on dört arası inç başına dikiş"),
-    ("5000 sti/min", "beş bin dikiş/dakika"),
+    ("5000 sti/min", "dakikada beş bin dikiş"),
+    # 2026-10-16 (JUKI): İngilizce binlik ayırıcı ondalık okunuyordu ("yedi virgül sıfır sıfır sıfır dikiş/dakikadir")
+    ("hızı 7,000 dikiş/dakikadır", "hızı dakikada yedi bin dikiştir"),
+    ("Max. 7,000 sti/min", "Max. dakikada yedi bin dikiş"),
+    ("1.500 devir", "bin beş yüz devir"),
+    ("12,500 dikiş", "on iki bin beş yüz dikiş"),
+    ("3,8 mm", "üç virgül sekiz milimetre"),
+    ("0,125 inç", "sıfır virgül bir iki beş inç"),
+    ("1.25 mm", "bir virgül iki beş milimetre"),
+    ("317 V - 325 V", "üç yüz on yedi V - üç yüz yirmi beş V"),
     ("101 sayfa", "yüz bir sayfa"),
     ("1250 devir", "bin iki yüz elli devir"),
     ("16 dikiş", "on altı dikiş"),

@@ -11,7 +11,7 @@ class DocMeta:
     file: str
     brand: str
     product: str
-    doc_type: str                              # product_standard | machine_manual | tailoring_guide
+    doc_type: str                              # product_standard | machine_manual | tailoring_guide | repair_guide
     default_lang: str = "en"
     lang_ranges: tuple[tuple[int, int, str], ...] = ()   # (ilk_sayfa, son_sayfa, dil)
     aliases: tuple[str, ...] = ()              # sorguda geçerse filtre: küçük harf, '-' ve boşluksuz
@@ -38,6 +38,14 @@ DOCS: tuple[DocMeta, ...] = (
             aliases=("s7300b",)),
     DocMeta("strickland-1956", "Strickland_A-Tailoring-Manual_1956.pdf", "G. Strickland", "Terzilik kitabı", "tailoring_guide",
             aliases=("strickland", "terzilik")),
+    # Genel başvuru kitabı (eğirme, dokuma, örme makineleri): tür query.MUST_MATCH'te yok, hiçbir varlık engellemez.
+    DocMeta("granovsky-1986", "Granovsky_Repair-Adjustment-Textile-Machines_1986.pdf", "T. Granovsky (Mir)",
+            "Tekstil makineleri onarım ve ayar kitabı", "repair_guide",
+            aliases=("granovsky", "onarım kitabı", "onarim kitabi")),
+    # Görülmemiş doküman testi (2026-10-16): yalnız yükleyicinin gireceği kayıt; sözlük ve kural eklenmedi.
+    # Kaynak: juki.co.jp, MO-6800S(D)/DD10 English instruction manual (instruction_eg.pdf)
+    DocMeta("juki-mo6800s", "JUKI_MO-6800S_Instruction_EN.pdf", "JUKI", "MO-6800S overlok makinesi", "machine_manual",
+            aliases=("mo6800s", "juki")),
     DocMeta("mrcoffee-2003", "MrCoffee_Coffeemaker_2003.pdf", "Mr. Coffee", "Kahve makinesi", "machine_manual",
             aliases=("kahve", "mrcoffee", "coffee")),
     DocMeta("bosch-ra1171", "Bosch_RA1171_Operating-Safety_2005.pdf", "Bosch", "RA1171 freze tezgâhı", "machine_manual",

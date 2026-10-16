@@ -1,7 +1,7 @@
 """Doğrulama katmanı: yanlış değer 'doğrulandı' diye geçmemeli (R4)."""
 import pytest
 
-from pilot.verify import normalize, numbers_in, verify
+from pilot.verify import clarify_options, normalize, numbers_in, verify
 
 SRC = {1: "The seams for all outside visible stitching shall be sewn with 11 (± 1) stitches per inch. "
           "Overedge shall be 10 (± 2) stitches per inch.",
@@ -195,3 +195,57 @@ class TestNormalize:
     ])
     def test_equivalent_forms(self, a, b):
         assert normalize(a) == normalize(b)
+
+
+SIZES = {1: "The finished depth of each pocket for sizes X-Small and Small shall be 3-3/4 (+1/8, -0) inches, "
+            "Medium, Large, X-Large and XX-Large shall be 4 inches."}
+
+
+class TestClarifyOptions:
+    def test_keeps_only_options_found_in_sources(self):
+        assert clarify_options(["Small", "Medium", "XXX-Large"], SIZES) == ["Small", "Medium"]
+
+    def test_whole_word_match(self):
+        # "Large", "X-Large" içinde değil kendi başına da geçiyor; "Larg" kelime değil
+        assert clarify_options(["Larg", "Large"], SIZES) == ["Large"]
+
+    def test_short_and_duplicate_and_non_string_options_are_dropped(self):
+        assert clarify_options(["A", "Small", "Small", 3, None], SIZES) == ["Small"]
+
+    def test_case_and_spacing_insensitive(self):
+        assert clarify_options(["x-small", " Medium "], SIZES) == ["x-small", "Medium"]
+
+    def test_no_sources_no_options(self):
+        assert clarify_options(["Medium"], {}) == []
+
+
+RANK = {1: "3.7.11 Rank patch. The rank patch shall be a piece of loop fastener tape, 2-inches wide by 2inches in cut "
+           "length. See pattern for placement. 3.7.12 Identification FR marker (Types II and III only, all styles and "
+           "classes). The Types II and III coat shall have a tape FR identification marker (see figure 1) on the left "
+           "sleeve cuff as worn."}
+# 2026-10-16: 300 karakter sınırına dayanan alıntının sonu bozuldu ("(see figure 1)" yerine "(see **[1")
+CUT = ("3.7.11 Rank patch. The rank patch shall be a piece of loop fastener tape, 2-inches wide by 2inches in cut length. "
+       "See pattern for placement. 3.7.12 Identification FR marker (Types II and III only, all styles and classes). "
+       "The Types II and III coat shall have a tape FR identification marker (see **[1")
+
+
+class TestCutQuote:
+    def answer(self, quote):
+        return {"bulunamadi": False, "alintilar": [{"kaynak_no": 1, "metin": quote}],
+                "cevap": "Rütbe arması 2 inç genişliğinde cırt banttır [1].", "sesli_metin": "Rütbe arması 2 inç.",
+                "netlestirme_sorusu": None, "celiski_var": False}
+
+    def test_quote_cut_at_length_limit_is_accepted(self):
+        assert len(CUT) >= 285
+        r = verify(self.answer(CUT), RANK)
+        assert r.status == "verified" and r.checks["alinti_birebir"]
+        assert any("uzunluk sınırında kesildi" in p for p in r.problems)
+
+    def test_short_quote_with_wrong_tail_still_fails(self):
+        r = verify(self.answer("The rank patch shall be a piece of hook fastener tape"), RANK)
+        assert r.status == "failed"
+
+    def test_long_quote_with_long_foreign_tail_fails(self):
+        bad = CUT[:200] + " and it shall be sewn on the collar with a box X stitch of twelve stitches per inch xx"
+        r = verify(self.answer(bad[:300]), RANK)
+        assert r.status == "failed"

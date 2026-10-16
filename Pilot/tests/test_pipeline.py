@@ -355,3 +355,74 @@ def test_failed_verification_gives_no_speech(monkeypatch, calls):
     r = pipeline.soru_cevapla("soru")
     assert r.verification.status == "failed"
     assert r.speech_text == ""
+
+
+POCKET = dict(CHUNK, chunk_id="gl-pd-14-04a-00090", page=12,
+              text="The finished depth of each pocket for sizes X-Small and Small shall be 3-3/4 (+1/8, -0) inches, "
+                   "Medium, Large, X-Large and XX-Large shall be 4 inches.")
+
+
+def test_ungrounded_clarification_is_hidden_when_answer_exists(monkeypatch, calls):
+    # 2026-10-16: SPI cevabının yanında "Hangi boy ceket için? Medium, Large, XX-Large?" soruldu; SPI bedene göre
+    # değişmiyor, kullanıcı cevaplayamıyordu. Kaynakta geçmeyen seçenekle sorulan soru gösterilmez.
+    ask = dict(GOOD, netlestirme_sorusu="Hangi boy ceket için?", netlestirme_secenekleri=["Medium", "Large"])
+    monkeypatch.setattr(pipeline, "chat_json", lambda u: (ask, {}))
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
+    assert r.verification.status == "verified"
+    assert r.answer["netlestirme_sorusu"] is None and r.answer["netlestirme_secenekleri"] == []
+    assert r.answer["atlanan_netlestirme"] == "Hangi boy ceket için?"
+
+
+def test_grounded_clarification_kept_with_answer(monkeypatch, calls):
+    monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(POCKET, 0, 3.0)])
+    ask = dict(GOOD, alintilar=[{"kaynak_no": 1, "metin": "Medium, Large, X-Large and XX-Large shall be 4 inches"}],
+               cevap="Medium ve üstü bedenlerde cep derinliği 4 inç [1].", sesli_metin="Cep derinliği 4 inç.",
+               netlestirme_sorusu="Hangi beden için?",
+               netlestirme_secenekleri=["X-Small", "Medium", "3XL"])
+    monkeypatch.setattr(pipeline, "chat_json", lambda u: (ask, {}))
+    r = pipeline.soru_cevapla("Ceketin göğüs cebi derinliği ne olmalı?")
+    assert r.answer["netlestirme_sorusu"] == "Hangi beden için?"
+    assert r.answer["netlestirme_secenekleri"] == ["X-Small", "Medium"]
+
+
+def test_clarification_without_answer_offers_grounded_options(monkeypatch, calls):
+    monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(POCKET, 0, 3.0)])
+    ask = dict(GOOD, cevap="", sesli_metin="", netlestirme_sorusu="Hangi beden için?",
+               netlestirme_secenekleri=["Small", "Large", "Nike"])
+    monkeypatch.setattr(pipeline, "chat_json", lambda u: (ask, {}))
+    r = pipeline.soru_cevapla("Ceketin göğüs cebi derinliği ne olmalı?")
+    assert r.verification.status == "clarify"
+    assert [o["ek"] for o in r.answer["secenekler"] if "ek" in o] == ["Small", "Large"]
+
+
+JUKI_E05 = dict(CHUNK, chunk_id="juki-mo6800s-00200", doc_id="juki-mo6800s", brand="JUKI", product="MO-6800S",
+                doc_type="machine_manual", chunk_type="table_row", page=46,
+                text="Error code: E05 | Description: Pedal signal fault")
+BROTHER_E050 = dict(CHUNK, chunk_id="brother-s7300a-00409", doc_id="brother-s7300a", brand="Brother",
+                    doc_type="machine_manual", chunk_type="table_row", page=98,
+                    text="Code: E050 | Cause: Machine head is detected as being tilted back when start sewing.")
+
+
+@pytest.fixture
+def code_chunks(monkeypatch):
+    monkeypatch.setattr(pipeline, "_chunks", lambda: {"all": [JUKI_E05, BROTHER_E050], "rows": {}})
+
+
+def test_code_missing_in_scope_is_not_found_without_llm(monkeypatch, calls, code_chunks):
+    # 2026-10-16 J9: "MO-6800S'te E050" -> arama E05 satırını getirdi, model E05'i anlattı
+    monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(JUKI_E05, 0, 1.0)])
+    r = pipeline.soru_cevapla("MO-6800S'te E050 hatası ne demek?")
+    assert r.verification.status == "not_found" and calls["llm"] == []
+    assert "E050" in r.answer["neden"] and r.answer["oneri"] == ["brother-s7300a"]
+
+
+def test_code_found_by_exact_match_is_added_to_sources(monkeypatch, calls, code_chunks):
+    monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(CHUNK, 0, 1.0)])
+    pipeline.soru_cevapla("MO-6800S'te E05 hatası ne demek?")
+    assert "Pedal signal fault" in calls["llm"][0]
+
+
+def test_code_match_ignores_hyphen_and_model_aliases():
+    assert pipeline._has_code("Code: E-050 | Cause: x", "E050")
+    assert not pipeline._has_code("Code: E0501", "E050")
+    assert pipeline.code_lookup("S7300A dikiş atlıyor", None, None) == ([], [], {})

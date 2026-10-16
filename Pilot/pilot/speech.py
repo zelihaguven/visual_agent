@@ -56,6 +56,19 @@ _UNITS = (
 )
 
 
+# Binlik ayırıcı: İngilizce kaynakta "7,000 sti/min" (yedi bin) Türkçe ondalık gibi "yedi virgül sıfır sıfır sıfır"
+# okunuyordu (2026-10-16, JUKI MO-6800S). Sıfırla başlamayan 1-3 haneli tam kısım + tam 3 haneli gruplar binliktir;
+# "0,125" ve "3,8" ondalık kalır.
+_THOUSANDS_RE = re.compile(r"(?<![\d.,])([1-9]\d{0,2})((?:[.,]\d{3})+)(?![.,]?\d)")
+# Oran birimi: "7000 sti/min" -> "dakikada yedi bin dikiş". Sondaki ek ("dikiş/dakikadır") "dikiştir" olur.
+_RATE_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(?:sti|stitches|dikiş)\s*/\s*(?:min|dakika)(\w*)")
+
+
+def _rate(m: re.Match[str]) -> str:
+    suffix = "tir" if re.fullmatch(r"[dt][ıiuü]r", m.group(2) or "") else ""
+    return f"dakikada {m.group(1)} dikiş{suffix}"
+
+
 def _units(t: str) -> str:
     for pat, word in _UNITS:
         t = re.sub(pat + r"(?:['’](\w+))?", lambda m: word + (m.group(1) or ""), t)
@@ -74,6 +87,8 @@ def normalize_for_speech_en(text: str) -> str:
 
 def normalize_for_speech(text: str) -> str:
     t = re.sub(r"\[\d+\]", "", text)                                              # atıf numaraları okunmaz
+    t = _THOUSANDS_RE.sub(lambda m: m.group(1) + re.sub(r"[.,]", "", m.group(2)), t)   # 7,000 -> 7000
+    t = _RATE_RE.sub(_rate, t)                                                    # 7000 sti/min
     t = _units(t)
     t = re.sub(rf"({_NUM})\s*\(\s*±\s*({_NUM})\s*\)", _tolerance, t)             # 11 (± 1)
     t = re.sub(rf"({_NUM})\s*±\s*({_NUM})", lambda m: f"{_say(m.group(1))} artı eksi {_say(m.group(2))}", t)
