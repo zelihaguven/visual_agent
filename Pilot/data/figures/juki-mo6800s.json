@@ -1,0 +1,599 @@
+{
+ "doc_id": "juki-mo6800s",
+ "model": "qwen2.5vl:3b",
+ "prompt_version": 2,
+ "figures": {
+  "p1_e11": {
+   "page": 4,
+   "hash": "b081856eb741b0530eb7bce0eb575b508799d4a3",
+   "caption": "",
+   "labels": "Presser foot lifting lever Presser foot (asm.) Thread stand Oil gauge Pulley Cloth plate cover",
+   "desc": "The figure shows a sewing machine with various parts labeled. The parts include the presser foot lifting lever, presser foot assembly, thread stand, oil gauge, pulley, and cloth plate cover. The figure also includes a close-up of the presser foot and a detailed view of the oil gauge.",
+   "seconds": 148.3
+  },
+  "p1_e22": {
+   "page": 5,
+   "hash": "0a2f68eb140030101e41a7eceb3c7257c7a94408",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a machine with a table and a table stand. The table is being inserted into the machine, as indicated by the black \"X\" symbol. The table is labeled with the number \"1\" and the table stand is labeled with the number \"2\".",
+   "seconds": 78.4
+  },
+  "p1_e23": {
+   "page": 5,
+   "hash": "334f202496cde23c0063966123efd6caf0dbb793",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a technical drawing of a machine part, specifically a table and a table stand. The table is attached to the table stand using bolts and screws. The table stand has multiple parts labeled with numbers, including bolts, nuts, and other fasteners. The table is shown in a horizontal position, and the bolts are shown as arrows pointing towards the table, indicating where they should be inserted. The table stand is shown in a vertical position, with bolts and screws visible.",
+   "seconds": 80.3
+  },
+  "p1_e28": {
+   "page": 6,
+   "hash": "b83451329e9e37d3e9901010738df959153aff05",
+   "caption": "2) Assemble the waste disposal set and the thread stand.",
+   "labels": "",
+   "desc": "The figure shows the assembly of a waste disposal set and a thread stand. The waste disposal set includes a plate with a hole, a rod, and a spring. The thread stand consists of a rod, a spring, and a washer. The figure also shows a close-up of the washer and spring assembly.",
+   "seconds": 74.2
+  },
+  "p1_e31": {
+   "page": 6,
+   "hash": "6e0e9d44a5dba4d3af6b4c3120414f0a6c4c83f6",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a pedal sensor attached to a machine. The sensor is connected to a cable and is positioned near the top of the machine. The sensor is being adjusted or installed, as indicated by the arrow pointing towards it. The figure does not contain any text.",
+   "seconds": 70.3
+  },
+  "p1_e34": {
+   "page": 6,
+   "hash": "839ac179012203b1d2d7310839a62c063dc508a3",
+   "caption": "3) Assemble the motor starting pedal ❷ to the left side, and the presser foot pedal ❸ to the right side.",
+   "labels": "",
+   "desc": "The figure shows a sewing machine with a pedal sensor assembly. The pedal sensor assembly includes a motor starting pedal and a presser foot pedal. The motor starting pedal is labeled as ❷ and the presser foot pedal is labeled as ❸. The pedal sensor assembly is attached to the left side of the machine.",
+   "seconds": 73.3
+  },
+  "p1_e40": {
+   "page": 7,
+   "hash": "566d7c580bc79203da16253393919bfbf8946895",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a sewing machine with a close-up of the needle area. The needle is being adjusted by turning the tension screw (3) and the balance wheel (4). The label numbers (1, 2, 3, 4) indicate the parts being referred to in the text.",
+   "seconds": 76.0
+  },
+  "p1_e56": {
+   "page": 8,
+   "hash": "dc875abe134bce5bb8c7259ff5a419ca3b987cb4",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a JUKI sewing machine, specifically highlighting the area where a USB cable is connected to the machine. The cable is inserted into a port labeled with the number 1. The machine part being adjusted is the USB port, and the garment area is not visible in this section.",
+   "seconds": 72.4
+  },
+  "p1_e57": {
+   "page": 8,
+   "hash": "d45daaefc70b4d756d84b1c89855ee5e87684d31",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a hand holding a machine part, specifically a connector or plug, labeled with the number 1. The hand is inserting the connector into a corresponding port or socket. The figure does not show any garment area or object.",
+   "seconds": 73.1
+  },
+  "p1_e67": {
+   "page": 9,
+   "hash": "839653cca36a7acd5f7c2cba6333a9eecee8190d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows the installation of a reactor box for a JUKI machine. It depicts the removal of the top cover (labeled 1) and the insertion of a new reactor box (labeled 2) into the machine. The reactor box is then secured with screws (labeled 3).",
+   "seconds": 73.6
+  },
+  "p1_e68": {
+   "page": 9,
+   "hash": "bd2c4b21f1cebe0004e6aa1a169f99df027d3824",
+   "caption": "",
+   "labels": "Blue Brown",
+   "desc": "The figure shows the installation of a reactor box in a machine. The blue and brown wires are connected to the reactor box, which is labeled as part 5. The direction of the arrow indicates the direction of the installation process.",
+   "seconds": 81.6
+  },
+  "p1_e69": {
+   "page": 9,
+   "hash": "f01261178fef075d6674eee76f1823698e7b8d6f",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows the installation of a reactor box in a machine. The reactor box is connected to the machine via wires. The reactor box is labeled with the number 7. The machine part is labeled with the number 3. The garment area is not visible in the figure.",
+   "seconds": 76.0
+  },
+  "p1_e73": {
+   "page": 10,
+   "hash": "856136fb9bbe5190dba3ceb9aa8a71b73d9e5e01",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows the installation of a reactor box in a machine. The reactor box is connected to the machine via wires and is placed in a compartment. The reactor box is labeled with the number 5. The machine part being adjusted is the reactor box.",
+   "seconds": 75.2
+  },
+  "p1_e74": {
+   "page": 10,
+   "hash": "75bd9931df199c4dd1a360fc880eb53ef99b7ffb",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows the installation of a reactor box in a machine. The reactor box is connected to the machine via wires and is placed in the garment area. The labeled parts are numbered 3, 8, and 9.",
+   "seconds": 74.5
+  },
+  "p1_e75": {
+   "page": 10,
+   "hash": "be655573be443168c2712226aa80826523a9b01d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a technical diagram of a machine part, specifically the reactor box. The diagram includes labeled parts such as 5, 8, 10, 11, and 13. The reactor box is connected to the machine via wires and is shown in a position where it is being inserted or adjusted.",
+   "seconds": 76.6
+  },
+  "p11_e0": {
+   "page": 11,
+   "hash": "f84e34f33d0ccf6cfe1268635d8dea098ecb7c18",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows the installation of a reactor box in a JUKI machine. The reactor box is being inserted into the machine, with the label \"JUKI\" visible on the front. The arrows indicate the direction of insertion, and the numbers 12 and 3 are labeled, but their specific functions are not described in the figure.",
+   "seconds": 74.8
+  },
+  "p11_e5": {
+   "page": 11,
+   "hash": "9c7e31524ab4f8c5832310bad524c597766b8f72",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows the installation of a reactor box for a JUKI machine. It depicts the direction of an arrow indicating the direction of the installation process. The figure includes labeled parts: 2, 3, and 4.",
+   "seconds": 73.3
+  },
+  "p11_e6": {
+   "page": 11,
+   "hash": "73e781675b8d6a6105fd6d1052858646139b7600",
+   "caption": "",
+   "labels": "135mm 10mm Operator's side Power switch Undersurface of table",
+   "desc": "The figure shows the layout of a machine part, specifically the location of the power switch and the direction of the operator's side. The power switch is labeled as part number 14, and the operator's side is indicated by an arrow pointing upwards. The dimensions of the machine part are 135mm in height and 10mm in width.",
+   "seconds": 74.8
+  },
+  "p11_e17": {
+   "page": 12,
+   "hash": "ed5f2cf830bad1b45f9fa281f6f8f8a6bcf8cd46",
+   "caption": "",
+   "labels": "Blue Brown Green Yellow (ground wire) AC 220-240V 1ø 220-240V",
+   "desc": "The figure shows a wiring diagram for a single-phase AC power supply with a voltage range of 220-240V. It includes three wires: blue, brown, and green/yellow, with the green/yellow wire being identified as the ground wire.",
+   "seconds": 75.4
+  },
+  "p11_e18": {
+   "page": 12,
+   "hash": "138796f5d88970b08aa2380496918e1a3bf87883",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a part of a machine, specifically a connector or plug, labeled as \"1\". The connector is connected to a hose or pipe, and it appears to be part of a system that might be used for transferring or connecting fluids. The label \"1\" indicates that this is the first part in a sequence or diagram.",
+   "seconds": 73.1
+  },
+  "p11_e20": {
+   "page": 12,
+   "hash": "87cbe1dc91128c41fd0d3ac7583b41d3262a6534",
+   "caption": "",
+   "labels": "Single phase 220 to 240V EU-Type model Single phase 220 to 240V",
+   "desc": "The figure shows a single-phase power switch for a JUKI EU-Type model machine. The switch is labeled with the number 3 and is positioned at the bottom of the machine. The text \"Single phase 220 to 240V\" is printed twice, indicating the voltage range for the machine.",
+   "seconds": 80.5
+  },
+  "p11_e40": {
+   "page": 13,
+   "hash": "d5c02e1154f878505d5950eed3b0ba584840c826",
+   "caption": "",
+   "labels": "Only for the MO-6800S Only for the MO-6800S",
+   "desc": "The figure shows a machine part, specifically the lubrication oil application area for the MO-6800S model. A hand is shown applying lubrication oil to the designated areas labeled 1, 2, and 3. The text \"Only for the MO-6800S\" is printed twice, indicating that this is specific to that model.",
+   "seconds": 75.2
+  },
+  "p11_e46": {
+   "page": 13,
+   "hash": "e1c1b5b5a90b05c12c5325578bde16675fa360ed",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a machine part with a warning symbol. A cup is connected to the machine, and a part labeled \"1\" is being inserted into the machine. The part labeled \"1\" is being inserted into the machine.",
+   "seconds": 76.8
+  },
+  "p11_e49": {
+   "page": 14,
+   "hash": "fcde311a68a07b1db104bbabe197397c4371900a",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a technical illustration of a JUKI sewing machine. It depicts the machine's top section, including the oil drain plug and the oil level indicator. The figure highlights the oil level indicator with the number 2, indicating the area where the oil level should be checked.",
+   "seconds": 73.4
+  },
+  "p11_e50": {
+   "page": 14,
+   "hash": "ec699ed14a72b64921e418a5c87d3820420d8c4e",
+   "caption": "",
+   "labels": "SILICON OIL SILICON OIL",
+   "desc": "The figure shows a machine part with two labeled areas marked \"SILICON OIL.\" A hand is applying silicon oil to the machine part. The direction of the arrows indicates the application of the oil.",
+   "seconds": 70.5
+  },
+  "p11_e58": {
+   "page": 15,
+   "hash": "4adc7d15843ad96883549fd8c63d5fe067bc2602",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a JUKI sewing machine, specifically the area where exclusive grease is replenished. The machine part visible is the top cover, which has a label marked with the number 1. The label indicates the location for the grease replenishment. There are no other parts or objects labeled in the figure.",
+   "seconds": 76.7
+  },
+  "p11_e59": {
+   "page": 15,
+   "hash": "3ad897fc267d1ce4138c9d513be83083fe1f41b1",
+   "caption": "2) Replenish grease by means of a tip of screwdriver ❸ , ❷ or the like. Use JUKI GREASE A for the replenishment of grease JUKI GREASE A: 40006323 (part number)",
+   "labels": "",
+   "desc": "The figure shows a machine part, specifically the area where grease is being replenished. A tip of a screwdriver or a similar tool is being used to insert or adjust a part. The labeled parts are identified as 2 and 3.",
+   "seconds": 87.7
+  },
+  "p11_e60": {
+   "page": 15,
+   "hash": "0f59d18ed4d977a3ae229d4455d375b066af73c9",
+   "caption": "1) Remove grease replenishing rubber plug ❶ from the looper compartment.",
+   "labels": "",
+   "desc": "The figure shows the machine part of a sewing machine, specifically the looper compartment. The text \"1) Remove grease replenishing rubber plug ❶ from the looper compartment\" indicates that the action being performed is to remove a rubber plug from the looper compartment. The rubber plug is labeled with the number 1.",
+   "seconds": 79.3
+  },
+  "p11_e62": {
+   "page": 15,
+   "hash": "9d204fe4921b83dc7366c4546e1b5e85b42505ec",
+   "caption": "2) Replenish grease by means of a tip of screwdriver ❸ , ❷ or the like. Use JUKI GREASE A for the replenishment of grease JUKI GREASE A: 40006323 (part number)",
+   "labels": "",
+   "desc": "The figure shows a section of a sewing machine, specifically the area around the needle and presser foot. It depicts the process of replenishing the machine's grease using a tip of a screwdriver or a similar tool. The figure includes two labeled parts: part number 2, which is a part of the machine, and part number 3, which is a component of the machine's mechanism.",
+   "seconds": 77.2
+  },
+  "p11_e70": {
+   "page": 16,
+   "hash": "d96523f4cd388e55a1f4517f75c5026e129bf415",
+   "caption": "",
+   "labels": "MO-6804",
+   "desc": "The figure shows a technical diagram of a machine part, specifically a section of a sewing machine. It includes various components such as pulleys, guides, and tensioners. The diagram is labeled with \"MO-6804\" and includes an inset showing a close-up of a specific part. The figure does not depict any garment area or object, nor does it show any actions being performed.",
+   "seconds": 77.7
+  },
+  "p11_e71": {
+   "page": 16,
+   "hash": "29377fe2e0d63abfb9a97e4cc348ab6cf8c73c6f",
+   "caption": "",
+   "labels": "MO-6814",
+   "desc": "The figure shows a technical diagram of a machine part, specifically a mechanism involving multiple components and cables. The diagram includes labeled parts such as cables, brackets, and other mechanical elements. The figure is labeled with \"MO-6814\" and is part of a technical document.",
+   "seconds": 83.0
+  },
+  "p11_e72": {
+   "page": 17,
+   "hash": "6ea589cd450f1fc77744eb3eeddbbe7381162b7e",
+   "caption": "",
+   "labels": "MO-6814- △△△-44H",
+   "desc": "The figure shows a technical diagram of a machine part, specifically a section of a sewing machine. It includes various components such as the needle bar, tension rods, and other parts of the machine. The diagram is labeled with \"MO-6814- △△△-44H\" at the top.",
+   "seconds": 78.9
+  },
+  "p11_e73": {
+   "page": 17,
+   "hash": "ee5976d3633f528b114e1e0240a98c53cf531807",
+   "caption": "",
+   "labels": "MO-6816",
+   "desc": "The figure shows a technical diagram of a sewing machine part, specifically the needle bar assembly. It includes various components such as the needle bar, needle, and other parts that are connected by wires. The figure also highlights specific parts with labels and arrows indicating their functions. The text \"MO-6816\" is printed in the figure, which is likely a reference number for this specific part.",
+   "seconds": 80.1
+  },
+  "p11_e74": {
+   "page": 18,
+   "hash": "cf73360b34f9de3b87458e0061f57c6755f09d82",
+   "caption": "",
+   "labels": "MO-6816- △△△-50H",
+   "desc": "The figure shows a technical diagram of a machine part, specifically a sewing machine. It includes various components such as the needle, thread, and parts of the machine's frame. The diagram is labeled with \"MO-6816- △△△-50H\" at the top.",
+   "seconds": 83.4
+  },
+  "p11_e75": {
+   "page": 18,
+   "hash": "3ee14c13aff0d273c2d483d1176de792952247d4",
+   "caption": "",
+   "labels": "MO-6816- △△△-60H",
+   "desc": "The figure shows a technical diagram of a machine part, specifically a section of a sewing machine. It includes various labeled parts such as the needle, thread, and other components. The diagram is labeled with \"MO-6816- △△△-60H\" at the top.",
+   "seconds": 83.8
+  },
+  "p11_e84": {
+   "page": 19,
+   "hash": "c32be0c3d6e6459cee0c6e314161e176002083d4",
+   "caption": "",
+   "labels": "A= Increase B= Decrease A A B B MO-6804 MO-6816*** MO-6814***",
+   "desc": "The figure shows a machine part with numbered parts labeled 1, 2, 3, and 4. It illustrates the adjustment of thread tension using two nuts, labeled A and B. Nut A is for increasing tension, and nut B is for decreasing tension. The figure also includes the model numbers MO-6804, MO-6816***, and MO-6814***.",
+   "seconds": 83.9
+  },
+  "p11_e86": {
+   "page": 19,
+   "hash": "eef84d8e9ac0324e41bc0a35e06fc8324dd5602d",
+   "caption": "",
+   "labels": "MO-6804 MO-6814*** MO-6816***",
+   "desc": "The figure shows instructions for adjusting the needle thread length on a sewing machine. It includes diagrams of the machine parts and arrows indicating the direction of adjustment. The parts labeled are MO-6804, MO-6814***, and MO-6816***.",
+   "seconds": 80.9
+  },
+  "p11_e91": {
+   "page": 20,
+   "hash": "2c68b17c15b26d0feb2894efe702278f43c42916",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a technical diagram of a machine part, specifically the looper thread cam thread guide. An arrow points to the direction of the adjustment, indicating that the parts are being turned or adjusted. The labeled parts include screws, a cam, and a guide.",
+   "seconds": 82.2
+  },
+  "p11_e99": {
+   "page": 20,
+   "hash": "185c317777a883de5186b736257d211d86a3ba6a",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a machine part being adjusted. A screwdriver is being used to tighten a screw on the machine. The labeled parts are the screw and the screwdriver.",
+   "seconds": 73.8
+  },
+  "p21_e6": {
+   "page": 21,
+   "hash": "3e42d7230e1759ecdde766e985779a111f30b8b3",
+   "caption": "",
+   "labels": "To make stitch pitch coarser To make stitch pitch denser",
+   "desc": "The figure shows a machine part with two labeled arrows. One arrow points to the left, indicating the direction to make the stitch pitch coarser. The other arrow points to the right, indicating the direction to make the stitch pitch denser.",
+   "seconds": 76.7
+  },
+  "p21_e11": {
+   "page": 21,
+   "hash": "5c41e18f77c8f323ade323defcc9e3dbedd0c062",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a sewing machine with various parts labeled. Part 1 is a lever, part 2 is a bobbin case, and part 3 is a presser foot. The lever is being adjusted downward, and the bobbin case is being opened.",
+   "seconds": 70.5
+  },
+  "p21_e19": {
+   "page": 22,
+   "hash": "ca84f3b124f2553a1e1a4153b13e9e337b422b3c",
+   "caption": "",
+   "labels": "0.5 to 1.0 mm",
+   "desc": "The figure shows a machine part with a measurement of 0.5 to 1.0 mm. The machine part is being adjusted or inserted into a garment area. The labeled parts are numbered 1, 2, 3, and 4.",
+   "seconds": 69.2
+  },
+  "p21_e34": {
+   "page": 23,
+   "hash": "ed0fadd2c142379cac6b6402fd1f3aabefbb3eaf",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a machine part with labeled components. The machine part appears to be a sewing machine, with labeled parts 1, 2, 3, and 4. Part 1 is a button, part 2 is a lever, part 3 is a needle, and part 4 is a thread guide. The figure does not show any specific action being performed.",
+   "seconds": 70.9
+  },
+  "p21_e44": {
+   "page": 23,
+   "hash": "906f9f548b0e2527c82374586b432cfc6d5c61e6",
+   "caption": "",
+   "labels": "❶i",
+   "desc": "The figure shows a technical illustration of a JUKI sewing machine. It includes parts labeled 1, 2, 3, and 4. Part 1 is a screw, part 2 is another screw, part 3 is a component of the machine's mechanism, and part 4 is a part of the machine's base. The figure is a warning section, but no specific text is printed in the figure.",
+   "seconds": 73.3
+  },
+  "p21_e55": {
+   "page": 24,
+   "hash": "23258516d6b38e6491c47abfab476e1d744cc541",
+   "caption": "",
+   "labels": "Decrease Increase This figure gives an illustration of the MO-6814S",
+   "desc": "The figure shows a JUKI sewing machine with a presser foot and a presser foot lifter. The presser foot lifter is being adjusted to increase or decrease the position of the presser foot. The figure also includes a label for the MO-6814S model.",
+   "seconds": 69.7
+  },
+  "p21_e61": {
+   "page": 25,
+   "hash": "6679f7d1e9f09b03eefedb92b5b1157efea477f0",
+   "caption": "",
+   "labels": "mm Ａ This figure gives an illustration of the MO-6814S",
+   "desc": "The figure shows the adjustment of the presser foot lift on a JUKI sewing machine. The machine part being adjusted is the presser foot, which is shown in the upper right part of the image. The direction of the adjustment is indicated by an arrow labeled \"A,\" which points downwards. The figure also includes a measurement of 1 mm, which is the distance between the presser foot and the needle plate.",
+   "seconds": 72.4
+  },
+  "p21_e74": {
+   "page": 26,
+   "hash": "3b14edc222bb7bc646e966ab3e3af1e428eb7976",
+   "caption": "",
+   "labels": "0.9 to 1.1 mm",
+   "desc": "The figure shows a close-up view of a machine part, specifically the feed dog area. The feed dog is adjusted to a height of 0.9 to 1.1 mm, as indicated by the text printed in the figure. The figure includes labeled parts: ① represents the feed dog, ② is the upper tension bar, ③ is the lower tension bar, and ④ is the needle bar.",
+   "seconds": 74.5
+  },
+  "p21_e79": {
+   "page": 26,
+   "hash": "ef4e4c11ee6e1a84cb07102210faca8843978f57",
+   "caption": "",
+   "labels": "15° In the case of 30P",
+   "desc": "The figure shows a sewing machine with a label indicating \"15° In the case of 30P\". It depicts the adjustment of the feed dog's inclination. The figure includes two labeled parts: 1, which is the feed dog, and 2, which is the adjustment screw.",
+   "seconds": 71.1
+  },
+  "p21_e82": {
+   "page": 26,
+   "hash": "570aac1612e5e5f701e241f48ce7cb4be316074d",
+   "caption": "",
+   "labels": "0.3 to 0.5 mm",
+   "desc": "The figure shows a machine part with a label indicating a height adjustment range of 0.3 to 0.5 mm. The part is labeled as 1, 2, and 3.",
+   "seconds": 68.6
+  },
+  "p21_e89": {
+   "page": 27,
+   "hash": "4f1950f72833a6305b64f59716e08cbe2dedbee4",
+   "caption": "",
+   "labels": "4.8 to 5.2 mm 5.4 to 5.7 mm",
+   "desc": "The figure shows the relationship between the needle and the upper looper in a sewing machine. The needle is shown to be inserted into the garment, with the needle bar and the upper looper visible. The measurements provided are 4.8 to 5.2 mm for the needle bar and 5.4 to 5.7 mm for the upper looper.",
+   "seconds": 72.9
+  },
+  "p21_e91": {
+   "page": 27,
+   "hash": "dba207976683316004e45ff844836f703e437423",
+   "caption": "",
+   "labels": "3.7 to 3.9 mm 3.7 to 3.9 mm",
+   "desc": "The figure shows the relationship between the needle and the lower looper in a sewing machine. The needle is positioned at a distance of 3.7 to 3.9 mm from the lower looper. The figure includes two labeled parts: the needle and the lower looper.",
+   "seconds": 71.1
+  },
+  "p21_e94": {
+   "page": 27,
+   "hash": "9594f6fc8dcab931ce4d811b8707b6965d44ad4a",
+   "caption": "",
+   "labels": "0.01 to 0.1 mm",
+   "desc": "The figure shows the relationship between the needle and the lower looper in a sewing machine. It illustrates the adjustment of the needle's position relative to the lower looper, with a tolerance range of 0.01 to 0.1 mm. The figure includes labeled parts for the needle and the lower looper, as well as a measurement indication.",
+   "seconds": 70.6
+  },
+  "p21_e97": {
+   "page": 28,
+   "hash": "dab1fedca7c95888112742ae5dea31537bd6b40e",
+   "caption": "",
+   "labels": "0.05 to 0.2 mm",
+   "desc": "The figure shows a close-up view of a sewing machine part, specifically the relationship between the upper looper and the lower looper. An arrow points to a measurement range of 0.05 to 0.2 mm, indicating the acceptable gap between these two parts.",
+   "seconds": 69.1
+  },
+  "p21_e101": {
+   "page": 28,
+   "hash": "e8ed15ddab328a6508566254c8af051ddf90d8fc",
+   "caption": "",
+   "labels": "1.4 to 1.9 mm",
+   "desc": "The figure shows a needle and a double chainstitch looper. The needle is inserted into the looper, and the distance between the needle and the looper is labeled as 1.4 to 1.9 mm.",
+   "seconds": 69.9
+  },
+  "p21_e102": {
+   "page": 28,
+   "hash": "23f8a113af80ba3619c43811871ac80181b49d38",
+   "caption": "",
+   "labels": "A 0.05 mm Tip has to be located inside the side face of needle.",
+   "desc": "The figure shows the relationship between the needle and the double chainstitch looper in a sewing machine. The tip of the needle is labeled as part 4, and it must be located inside the side face of the needle. The text indicates that the tip should be within 0.05 mm of the needle.",
+   "seconds": 72.2
+  },
+  "p21_e107": {
+   "page": 28,
+   "hash": "e0cfe088b55c4aad5d6875f1750ebe8a83cb8ab7",
+   "caption": "",
+   "labels": "0.1 to 0.2 mm Light contact",
+   "desc": "The figure shows the relationship between the needle and the needle guard in a sewing machine. The needle is positioned at a light contact with the needle guard, and the distance between them is 0.1 to 0.2 mm. The figure includes three labeled parts: 1, 2, and 3.",
+   "seconds": 68.4
+  },
+  "p21_e114": {
+   "page": 29,
+   "hash": "b4641c819f92a9cc6b3925aad4b14a5168fcf387",
+   "caption": "",
+   "labels": "A This figure gives an illustration of the MO-6814S",
+   "desc": "The figure illustrates the MO-6814S machine, showing the needle and bobbin area. The needle is shown in the top part of the figure, with the needle eye pointing downwards. The bottom part of the figure shows the machine's needle plate with the needle and bobbin area. The needle plate is labeled with the numbers 1, 2, and 3.",
+   "seconds": 72.6
+  },
+  "p21_e124": {
+   "page": 30,
+   "hash": "345ebf777c1f25bf5f6f00d5adc8900b99fb6076",
+   "caption": "",
+   "labels": "B C A",
+   "desc": "The figure shows the operation panel of a machine. The panel includes a digital display (A), buttons for adjusting settings (B and C), and a button for starting or stopping the machine (M). The panel also has a button for adjusting the garment area (5) and a button for adjusting the machine's settings (4).",
+   "seconds": 71.6
+  },
+  "p31_e7": {
+   "page": 32,
+   "hash": "2302ade8e7f9ce093f6d32919651ad0914ba1df4",
+   "caption": "",
+   "labels": "A",
+   "desc": "The figure shows a digital display with various buttons and indicators. The top part of the display shows the number \"P-01\" in red. Below it, there are two rows of buttons, each with a label and a corresponding number. The middle row has buttons labeled 3 and 4, and the bottom row has buttons labeled 2 and 5. The display also shows a number \"6500\" in the middle section. The bottom part of the display shows a button labeled \"M\" and a button labeled \"5RUE\".",
+   "seconds": 80.8
+  },
+  "p31_e41": {
+   "page": 37,
+   "hash": "eaaf5c6b337c73d334ebded18bf66885433eb6be",
+   "caption": "",
+   "labels": "B C",
+   "desc": "The figure shows a section of a machine with labels B and C pointing to specific parts. Label B is pointing to a part that appears to be a button or switch, while label C is pointing to a part that is not clearly visible in the image.",
+   "seconds": 72.8
+  },
+  "p31_e103": {
+   "page": 39,
+   "hash": "62963442bb5d3b08a34ba951581b68dc43daaf98",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a digital display with the number \"7.\" Below the display, there are two buttons labeled with symbols. The button on the left has a symbol of a line with a dot, and the button on the right has a symbol of a line with a dot and a plus sign. The button on the right also has a label with the number \"3\" and an arrow pointing upwards. The button on the left has a label with the number \"4\" and an arrow pointing downwards. The button at the bottom left is labeled \"M\" and has an arrow pointing to the right.",
+   "seconds": 80.9
+  },
+  "p31_e104": {
+   "page": 39,
+   "hash": "e9b957029693e4283b9fe860fffb6e8591cbefcf",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a digital display with the number \"51\" on it. Below the display, there are several buttons, including a button labeled \"M\" and another button labeled \"2\". The button labeled \"M\" is highlighted with a red dot and an arrow pointing to it. The button labeled \"2\" is also highlighted with a red dot and an arrow pointing to it.",
+   "seconds": 82.6
+  },
+  "p31_e105": {
+   "page": 39,
+   "hash": "f3ddc38dd8f97e953ff8f681649065fe8cc65420",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a digital display with the number \"8.8.8.8\" on it. Below the display, there are several buttons, including a button with a plus sign, a button with a minus sign, a button with a slash, and a button with a left arrow. The display and buttons are part of a machine, likely used for setting or adjusting function data.",
+   "seconds": 78.8
+  },
+  "p31_e120": {
+   "page": 40,
+   "hash": "8725b422af48311a701d53ef1658ad1108fa3297",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a machine's control panel, specifically the part related to the hand LED light. The hand LED light is being adjusted or turned on, as indicated by the red line pointing to it. The labeled parts visible include the hand LED light, the plus and minus symbols, and the 'M' button.",
+   "seconds": 77.8
+  },
+  "p31_e121": {
+   "page": 40,
+   "hash": "f547df6da5a2b17eee5f54cb3c28ddc7d7c49fcd",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a close-up of a JUKI sewing machine, focusing on the hand LED light. The hand LED light is being adjusted or inserted into the machine. The figure includes a numbered part (1) indicating the location of the hand LED light.",
+   "seconds": 73.8
+  },
+  "p41_e8": {
+   "page": 41,
+   "hash": "7f9d7126bcb5e3fbd06f6391e2e20c4d13c3ad28",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a sewing machine with a USB thumb drive inserted into the machine. The USB thumb drive is labeled as part 2. The machine part labeled as part 1 is the control panel, which includes buttons and a display screen.",
+   "seconds": 76.9
+  },
+  "p41_e32": {
+   "page": 43,
+   "hash": "c47c4d8ef5d9aa88cbb6807cb9959871bd5e9a15",
+   "caption": "",
+   "labels": "Model A C A 04 14 16 B A 0.05 to 0.2 mm D D E E G F A B C D E F G MO-6804 10.4-10.6 (10.8) 4.8-5.2 3.7-3.9 MO-6814-2 △H 10.4-10.6 (9.1) (10.5) 5.4-5.7 3.7-3.9 MO-6814-3 △H 10.4-10.6 (9.1) (10.5) 5.4-5.7 3.7-3.9 MO-6814-4 △H 11.8-12 (10.5) (12) 5.4-5.7 4.1-4.3 MO-6814-30P 10.4-10.6 (9.1) (10.5) 5.4-5",
+   "desc": "The figure shows a technical diagram of a machine part, specifically a sewing machine needle. The diagram includes various labeled parts such as A, B, C, D, E, F, and G. The parts are used to indicate the alignment and positioning of the needle within the machine. The measurements and tolerances for each part are also provided, such as the needle's length (A) and the distance between the needle and the fabric (D).",
+   "seconds": 82.1
+  },
+  "p41_e39": {
+   "page": 44,
+   "hash": "de562760874f6e7396ecda47ea41f9ad71da2184",
+   "caption": "(Unit : mm)",
+   "labels": "MO-6804 MO-6814** 6mm B A C B MO-6816** A C 5.5mm D 7.5mm",
+   "desc": "The figure shows the position of the needle thread take-up and the needle thread guide for three different models: MO-6804, MO-6814**, and MO-6816**. It includes measurements in millimeters, such as 6mm, 7.5mm, and 5.5mm. The figure also shows the direction of the needle thread guide and the needle thread take-up, indicating where they are positioned relative to the machine part. The labels A, B, C, and D are used to denote specific parts of the machine.",
+   "seconds": 82.3
+  },
+  "p41_e43": {
+   "page": 45,
+   "hash": "b54d8233d345c8ac33e65f73c330fdce78dc3bf2",
+   "caption": "",
+   "labels": "A C D E B",
+   "desc": "The figure shows the position of the looper thread take-up and the looper thread guide in a sewing machine. The looper thread take-up is located at the top, and the looper thread guide is positioned below it. The figure includes labeled parts A, C, D, E, and B, which represent different components of the machine.",
+   "seconds": 75.0
+  },
+  "p41_e47": {
+   "page": 45,
+   "hash": "d7d4cae56ce0b850839da8e066c67e09e4a164bd",
+   "caption": "",
+   "labels": "to mm",
+   "desc": "The figure shows a looper thread cam adjustment. It depicts a section of the machine where the looper thread cam is being adjusted. The text \"1 to 2 mm\" indicates the adjustment range. The figure includes a part of the looper thread cam and a section of the garment, showing the adjustment process.",
+   "seconds": 79.5
+  },
+  "p41_e51": {
+   "page": 47,
+   "hash": "fdc88fa24a1b79e0be4af96b5244c2fefd365925",
+   "caption": "Unit：mm Difference：±2",
+   "labels": "1200 Diffe 断面 断面 Black scale marker line A-A B-B",
+   "desc": "The figure shows a technical drawing of a machine part, specifically a section labeled \"A-A\" and \"B-B\". It includes dimensions and annotations for different parts of the machine, such as \"R23\" and \"R23\". The drawing is marked with a black scale marker line and labeled \"Diffe\" and \"Black scale marker line\".",
+   "seconds": 77.3
+  },
+  "p41_e59": {
+   "page": 48,
+   "hash": "85265125834d92bfd08606a2ecf24836af7b5b29",
+   "caption": "",
+   "labels": "A A 105 159 235 255 33 460 51 590 28 23 255 355 613 773 1200 1020 60 130 150 190 303 470 550 830 ø19.5 77 185 420 301 R40 R20 R40 R20 R20 R40 47 4- R10 10 9- R20 355 45° 10 10 40 5-ø25.5 5-ø13 205 435 525 R10 370 65 218 断面 A-A A Black scale marker line",
+   "desc": "The figure shows a technical drawing of a machine part, specifically a section labeled \"A-A\". It includes various dimensions and annotations, such as radii (R20, R40, R10), angles (45°), and a black scale marker line. The drawing includes measurements in millimeters and a scale for reference.",
+   "seconds": 84.1
+  },
+  "p41_e61": {
+   "page": 49,
+   "hash": "7fdb75b586dad2e60f27c212ccb70eac5071db24",
+   "caption": "Unit : mm Difference : ±2 Weight :4.25 kg ±5%",
+   "labels": "",
+   "desc": "The figure shows a technical drawing of a machine part, specifically a section labeled \"A-A\" and \"B-B\". It includes dimensions and annotations for various parts, such as holes and notches. The figure does not show the garment area or the direction of any arrows or adjustments.",
+   "seconds": 78.2
+  },
+  "p41_e64": {
+   "page": 50,
+   "hash": "70e9621a8e03a6b56e8b8b42383cd84b6eddd453",
+   "caption": "",
+   "labels": "A A 85 159 235 255 370 289 365 335 515 77 200 318 420 60 218 325 150 130 303 435 470 370 525 820 170 230 125 280 355 775 1200 1020 613 590 40 45° ø19.5 4-ø25.5 4-ø13 10 10 3-R10 R10 4-R10 3-R20 R40 R40 R40 R20 R20 R20 A-A A Black scale marker line Through hole",
+   "desc": "The figure shows a technical drawing of a machine part, specifically a section labeled \"A-A\". The drawing includes various dimensions and annotations, such as radii (R20, R10, R40), angles (45°), and a through hole. The figure also features a black scale marker line for reference.",
+   "seconds": 88.0
+  }
+ }
+}

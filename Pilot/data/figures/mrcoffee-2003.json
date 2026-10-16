@@ -1,0 +1,111 @@
+{
+ "doc_id": "mrcoffee-2003",
+ "model": "qwen2.5vl:3b",
+ "prompt_version": 2,
+ "figures": {
+  "p1_e9": {
+   "page": 1,
+   "hash": "fe6567455c21b9867bd6656d207076d45349a43f",
+   "caption": "",
+   "labels": "w w w. m rc o ff e e c o m",
+   "desc": "The figure shows a coffee maker with a digital control panel. The text \"www.mrcoffee.com\" is printed on the lower part of the machine. The control panel features various buttons and a display screen.",
+   "seconds": 81.6
+  },
+  "p1_e83": {
+   "page": 5,
+   "hash": "69caefaf215f2c79412303247836293666570d67",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a parts diagram of a coffee maker. It includes parts such as the lid (1), the filter basket (2), the water reservoir (3), the control panel (4), the spout (5), the handle (6), the filter basket (7), the water reservoir (8), the spout (9), and the filter basket (10).",
+   "seconds": 101.3
+  },
+  "p1_e95": {
+   "page": 6,
+   "hash": "9cf3ddeafbfc78378a9843b0c45ae6256e581688",
+   "caption": "",
+   "labels": "a b c d",
+   "desc": "The figure shows the control panel of a Mr. Coffee coffee maker. It includes a brew button (a), a brew strength selector (b), a brew now button (c), and a brew strength selector (d).",
+   "seconds": 109.2
+  },
+  "p1_e120": {
+   "page": 6,
+   "hash": "b129623326a3ecee8081c93b84760410db8179d7",
+   "caption": "",
+   "labels": "k e f l i m g p j o n h",
+   "desc": "The figure shows the interior of a coffee maker, with various parts labeled. The parts include the brew chamber (labeled 'i'), the brew basket (labeled 'j'), and the brew timer (labeled 'k'). The brew timer is used to control the brewing process.",
+   "seconds": 136.7
+  },
+  "p1_e250": {
+   "page": 10,
+   "hash": "63587c24bf3bba3b52388122d587ca574cc1daaf",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a control panel of a coffee maker. It includes a dial for setting brewing time, a selector for choosing brew size, and a timer for setting a delay. The panel also has buttons for adjusting brew strength and water temperature.",
+   "seconds": 109.3
+  },
+  "p11_e27": {
+   "page": 11,
+   "hash": "2d4f85dd833ba1f29355e577f65bfa7cca52f1c5",
+   "caption": "FI G U R E 5",
+   "labels": "r t e",
+   "desc": "The figure shows a hand inserting a filter basket into a coffee maker. The label on the machine reads \"Mr. Coffee\". The hand is shown inserting the filter basket into the machine. The label on the machine is visible.",
+   "seconds": 131.5
+  },
+  "p11_e34": {
+   "page": 12,
+   "hash": "3e1985178f085c418155bb78e544e7623ff04ed1",
+   "caption": "Figure 6",
+   "labels": "",
+   "desc": "The figure shows a hand pouring water into a coffee maker. The labeled parts include the hand, the coffee maker, and the water being poured.",
+   "seconds": 117.5
+  },
+  "p11_e59": {
+   "page": 13,
+   "hash": "fed63946d8993cf4d1278c29ef199d613884da29",
+   "caption": "Figura 6",
+   "labels": "",
+   "desc": "The figure shows a hand pouring water into a water dispenser. The labeled parts include the hand, the water dispenser, and the water being poured.",
+   "seconds": 105.8
+  },
+  "p11_e89": {
+   "page": 14,
+   "hash": "f7c9d4b6920b45d612dc85a9cabee52eb8aa1a4d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a control panel of a coffee maker. It includes a dial for setting brewing time, a selector for brew size, and a selector for brew strength. The panel also has a timer for setting delay and a selector for water temperature.",
+   "seconds": 113.1
+  },
+  "p11_e101": {
+   "page": 14,
+   "hash": "2956a6ba64a02167697bc652afe604c9248063bd",
+   "caption": "FI G U R A 5",
+   "labels": "",
+   "desc": "The figure shows a hand inserting a filter into the coffee maker. The label on the coffee maker is partially visible, showing the brand name.",
+   "seconds": 132.0
+  },
+  "p11_e206": {
+   "page": 18,
+   "hash": "f41ede402d8fdd761a4df4dceb4a9b0ef79d924a",
+   "caption": "",
+   "labels": "a b c d",
+   "desc": "The figure shows the control panel of a coffee maker. The panel includes a brew button labeled \"Brew Now\" and a brew strength selector labeled \"Regular\" and \"Strong\". The panel also has a water reservoir at the bottom.",
+   "seconds": 124.6
+  },
+  "p11_e212": {
+   "page": 18,
+   "hash": "110f816c2d50d89afb5e88200b0a1fc47fd31ee2",
+   "caption": "",
+   "labels": "e. Pantalla del Reloj/Pantalla del Contador Regresivo del Colado f. Pantalla del Reloj/Botón de la Pantalla del Contador Regresivo del Colado g. Luz del Ciclo de Limpieza h. Luz de Demora del Colado i. Luz de Colar Ahora j. Botón Selector k. Luces de Intensidad del Colado (Regular/Cargado) l. Botón",
+   "desc": "The figure shows the control panel of a programmable coffee maker, including various buttons and indicators. The panel includes a timer, a timer selector button, intensity buttons, a timer setting button, and a timer reset button. The buttons are labeled with Spanish text, such as \"Botón Selector\" (Selector Button) and \"Botón de Intensidad del Colado\" (Colate Intensity Button).",
+   "seconds": 155.7
+  },
+  "p11_e226": {
+   "page": 19,
+   "hash": "e25a98b47fe4c0f1617c59e73f7d24a621aad8f7",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a coffee maker with various parts labeled. The parts include the top lid (1), the water reservoir (2), the filter basket (3), the brew basket (4), the brew basket lid (5), the brew basket handle (6), the brew basket lid handle (7), the brew basket lid (8), the brew basket lid handle (9), and the brew basket lid (10).",
+   "seconds": 137.4
+  }
+ }
+}

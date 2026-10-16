@@ -1,0 +1,71 @@
+{
+ "doc_id": "gl-pd-14-04a",
+ "model": "qwen2.5vl:3b",
+ "prompt_version": 2,
+ "figures": {
+  "p11_e58": {
+   "page": 18,
+   "hash": "c60939cb8bcd64ce6586e0defb2d6c960df5959a",
+   "caption": "",
+   "labels": "",
+   "desc": "DECORATIVE",
+   "seconds": 65.7
+  },
+  "p51_e0": {
+   "page": 51,
+   "hash": "ed238ff38c01d7b8927ccb1dfdcbe2f0a479ee07",
+   "caption": "FIGURE 1. Coat Front, Army Combat Uniform",
+   "labels": "See pocket detail ID Marker for Type II III left side only",
+   "desc": "The figure shows a coat front of the Army Combat Uniform. It highlights the location of the ID Marker for Type II and III on the left side of the coat. The figure also includes a pocket detail.",
+   "seconds": 65.3
+  },
+  "p51_e2": {
+   "page": 52,
+   "hash": "379aa02c0780c93f9ac6d5c78d7a45c36000508b",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a technical drawing of a garment, specifically a jacket. It highlights the areas where bartacks are stitched through all layers and the closed cuffs.",
+   "seconds": 65.2
+  },
+  "p51_e4": {
+   "page": 53,
+   "hash": "1b56d4d4467855e09de1fc4835387667f1418317",
+   "caption": "FIGURE 3. Coat Collar, Army Combat Uniform",
+   "labels": "(Note: Figure not to scale)",
+   "desc": "The figure shows a diagram of a coat collar, specifically the area around the collar and the rank patch loop. The diagram includes a \"Box 'X' stitch\" and a \"Rank Patch Loop.\" The figure is not to scale.",
+   "seconds": 70.0
+  },
+  "p51_e6": {
+   "page": 54,
+   "hash": "d179767794d92158730c9747571227479ea11e90",
+   "caption": "FIGURE 4. Coat Upper Sleeve Pocket, Army Combat Uniform",
+   "labels": "",
+   "desc": "The figure shows a diagram of a coat upper sleeve pocket in an Army Combat Uniform. It illustrates the placement and structure of various parts, including the slide fastener, loop, webbing, and hook. The diagram highlights the alignment and interaction between these components, with arrows indicating the direction of the slide fastener and the loop's position. The figure also notes that the side bellow is only open at the bottom to show the sewn eyelet.",
+   "seconds": 53652.5
+  },
+  "p51_e8": {
+   "page": 55,
+   "hash": "a90f746b6b8fdafc1c0a881c3179903e38adf0ae",
+   "caption": "Figure 5a - Back-tack Corner Stitch 1/",
+   "labels": "Back-tack Corner Stitch Loop tape selvage",
+   "desc": "The figure shows a back-tack corner stitch, which is a sewing technique used to secure the edge of a fabric. The stitch is indicated by dashed lines, and the loop tape selvage is shown as a separate element. The figure does not show the machine part, garment area, or the direction of an arrow.",
+   "seconds": 90.2
+  },
+  "p51_e15": {
+   "page": 55,
+   "hash": "ec36d660dc33dfcb13db9337c4feb056334feb79",
+   "caption": "Figure 5b - Sleeve Pocket \"X\" Stitch with Bar-tack Stitch",
+   "labels": "Loop tape selvage",
+   "desc": "The figure shows a sleeve pocket with an \"X\" stitch and a bar-tack stitch. The loop tape selvage is indicated by a dotted line.",
+   "seconds": 83.8
+  },
+  "p51_e19": {
+   "page": 56,
+   "hash": "1559f574a07b2d4a5a643739ddb82c2377687adc",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a technical drawing of a garment area with specified dimensions. It includes a rectangular shape with two curved sides, labeled with measurements of 14 ± 1/2 inches for the length and 12 ± 1/4 inches for the height. The dimensions are marked with arrows indicating the direction of measurement.",
+   "seconds": 77.6
+  }
+ }
+}

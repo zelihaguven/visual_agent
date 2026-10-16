@@ -1,0 +1,1255 @@
+{
+ "doc_id": "granovsky-1986",
+ "model": "qwen2.5vl:3b",
+ "prompt_version": 2,
+ "figures": {
+  "p1_e0": {
+   "page": 1,
+   "hash": "8a52e033ea412a0367126cf1e9867d738eb5c45c",
+   "caption": "",
+   "labels": "",
+   "desc": "DECORATIVE",
+   "seconds": 132.7
+  },
+  "p11_e10": {
+   "page": 11,
+   "hash": "ffe10a2587633c92c7720bac2287c133cbaa31fa",
+   "caption": "",
+   "labels": "(a (c) (b) (<0",
+   "desc": "The figure shows a sequence of steps labeled (a), (b), (c), and (d) for repairing and adjusting textile machines. Each step illustrates a different phase of the repair process, with arrows indicating the direction of the repair or adjustment. The figure does not contain any text or measurements.",
+   "seconds": 127.5
+  },
+  "p11_e12": {
+   "page": 12,
+   "hash": "ef0ef9b4ea2ce4aceca14cbb69d7afa83e477578",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a graph depicting wear over time for a textile machine part. The graph is divided into three labeled sections: I, II, and III. Section I shows an initial increase in wear, Section II shows a plateau, and Section III shows a gradual increase in wear.",
+   "seconds": 143.1
+  },
+  "p21_e23": {
+   "page": 24,
+   "hash": "05487c2557fa374dfe34e65c716551d287fc171d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly of a textile machine, specifically a part of the machine's drive system. It includes a shaft (labeled 4) with a coupling (labeled 3) and a gear (labeled 5) attached to it. The shaft is connected to a motor (labeled 1) via a coupling (labeled 2). The gear (labeled 6) is likely used to transmit power from the shaft to another part of the machine.",
+   "seconds": 151.3
+  },
+  "p21_e61": {
+   "page": 28,
+   "hash": "3441f81f99bb9352a935605eadc4f6e8a3d5e410",
+   "caption": "",
+   "labels": "X m V i w M y j m a (b) (d)",
+   "desc": "The figure shows a technical drawing of a textile machine part. It depicts a cylindrical component with a groove or recess on one side, which is likely used for alignment or insertion. The part is labeled as 'X', 'M', 'V', 'I', 'W', 'M', 'Y', 'J', 'M', 'A', and 'b' and 'd'. The labels 'b' and 'd' indicate specific areas or features of the part.",
+   "seconds": 142.5
+  },
+  "p21_e71": {
+   "page": 29,
+   "hash": "060f636d07d8521b200c9837e613c225ca74a71a",
+   "caption": "",
+   "labels": "A A b",
+   "desc": "The figure shows a technical drawing of textile machine parts. It includes a cross-sectional view of a textile machine component, labeled parts 1 and 2, and a top view of a textile machine part, also labeled 1 and 2. The figure is labeled with 'A-A' and 'b', indicating a cross-section and a top view, respectively.",
+   "seconds": 150.1
+  },
+  "p21_e79": {
+   "page": 30,
+   "hash": "d1d012ab2b8a4c02771a1a33f491f83f505280b0",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows various diagrams illustrating different types of textile machine parts and their adjustments. It includes diagrams of a machine part (a), a garment area (b), a part being inserted (c), a part being adjusted (d), a part being bent (e), a part being bent (f), a part being bent (g), and a part being bent (h). The diagrams depict the direction of an arrow, the part being inserted, the part being adjusted, the part being bent, and the part being bent.",
+   "seconds": 129.2
+  },
+  "p31_e9": {
+   "page": 32,
+   "hash": "1734a7568ef5288ad04d123ca514b3a552a3aee1",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a machine part, specifically a needle and a fabric. The needle is inserted into the fabric, and the fabric is being adjusted or repaired. The labeled parts are the needle (1) and the fabric (2).",
+   "seconds": 126.2
+  },
+  "p31_e19": {
+   "page": 33,
+   "hash": "32ef63d9c8e1aa9af30cc1be07323e6c33b27b30",
+   "caption": "",
+   "labels": "sT/TTTi r j r r i V Z f Z",
+   "desc": "The figure shows a textile machine with a roller mechanism. The roller is labeled as part 1, and it is connected to a drive shaft. The roller is shown in two positions, indicating a rotation or adjustment. The machine part being adjusted is the roller, and the direction of the arrow suggests the roller is being turned or rotated.",
+   "seconds": 132.7
+  },
+  "p31_e17": {
+   "page": 33,
+   "hash": "b948c37b3b57f9480da980dc254df84811e0def2",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a machine that includes a light source (labeled 2), a lens (labeled 7), and a light guide (labeled 3). The light source is directed towards the lens, which is then directed through the light guide to illuminate the garment area (labeled 5). The light guide is attached to a metal arm (labeled 6) that is connected to the machine base.",
+   "seconds": 145.3
+  },
+  "p31_e24": {
+   "page": 34,
+   "hash": "192b3f4192b9837a703f7775e8f5a9bb642dc3cc",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a schematic of a textile machine part, specifically a section of a machine that includes a cylinder (1), a tube (2), a valve (3), a pressure gauge (4), and a heating element (6). The cylinder is connected to the tube, which is connected to the valve. The heating element is placed at the bottom of the machine. The text \"36 V a.c.\" indicates the voltage supply.",
+   "seconds": 158.2
+  },
+  "p31_e28": {
+   "page": 34,
+   "hash": "023348d450ddde6151d2f6c9307c94897b9f506b",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine component, specifically a part of a textile machine that includes a cylinder (labeled 1) with a piston (labeled 2) inside it. The piston is connected to a rod (labeled 3) that is being driven by a crank (labeled 4). The crank is connected to a motor (labeled 5) via a belt (not labeled). The direction of the crank's rotation is indicated by an arrow labeled A, and the direction of the piston's movement is indicated by an arrow labeled B.",
+   "seconds": 159.5
+  },
+  "p31_e55": {
+   "page": 38,
+   "hash": "85d274650e1ecb3cd97c383765284c12f30024cd",
+   "caption": "",
+   "labels": "Z Z Z Z Z Z Z b 17777//7 >T> f Z R m n v r r r r W v a Z Z Z",
+   "desc": "The figure shows a series of steps in the repair and adjustment process for textile machines. The steps involve manipulating and adjusting parts of the machine, with specific labels such as \"Z\" and \"T\" indicating different actions or parts. The text \"Z Z Z Z Z Z Z b 17777//7 >T> f Z R m n v r r r r W v a Z Z Z\" appears to be instructions or labels for these steps.",
+   "seconds": 108.5
+  },
+  "p31_e69": {
+   "page": 40,
+   "hash": "36bced8465bac0245d2f9d76ad0686d94d804302",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a machine that includes a motor (1), a capacitor (2), a coil (4), and a lever mechanism (5 and 6). The lever mechanism is connected to a lever arm (7) and a lever arm (8), which are part of the machine's mechanism. The lever mechanism is used to control the movement of the lever arm, which is likely used to adjust or operate the machine.",
+   "seconds": 108.6
+  },
+  "p31_e71": {
+   "page": 40,
+   "hash": "c991a159f6a49286ccff34ebf2ae84c262efa24a",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a textile machine. It depicts a section of the machine where a wire is being inserted or adjusted. The labeled parts are 1, 2, 3, and 4.",
+   "seconds": 128.6
+  },
+  "p41_e12": {
+   "page": 42,
+   "hash": "ec71b394f532484bc3b33dc07ef4f2e9f5e920b0",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a series of diagrams illustrating different parts of a textile machine. Diagram (a) shows a section of a machine part with a measurement of 60-70 degrees and a dimension of 2-3. Diagram (b) depicts a cross-section of a garment area with three labeled parts: 1, 2, and 3. Diagram (c) shows a close-up of a cylindrical component. Diagram (d) illustrates a machine part with a bolt (4) and a cylindrical component (3) with a hole. Diagram (e) shows a cross-section of a machine part with two labeled layers: 1 and 2.",
+   "seconds": 145.9
+  },
+  "p41_e49": {
+   "page": 45,
+   "hash": "c5cfcb8a715ed730cb69d7e9bfc0a396ed57ef84",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical part of a textile machine, specifically a gear or pulley assembly. The gear (labeled 1) is connected to a shaft (labeled 2) by a key (labeled 3). The shaft is inserted into a housing (labeled 4) and secured by a nut (labeled 5). The direction of the arrow indicates the rotation of the shaft. The text \"T\" and \"P\" are printed in the figure, but their specific meaning is not provided.",
+   "seconds": 126.8
+  },
+  "p41_e68": {
+   "page": 49,
+   "hash": "9e8c74db9f79e3bc0db67105ba16a8811015a5a7",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a set of textile machine parts, including a rectangular block, a cylindrical block, a cylindrical rod, a pencil, a circular block, and a rectangular block. The parts are arranged in a circular pattern. The text in the figure is not printed.",
+   "seconds": 121.4
+  },
+  "p41_e81": {
+   "page": 50,
+   "hash": "4c1d02d43730913aaaca172085237c665a57e1aa",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a hierarchical structure of different types of clutches and couplings for mechanical shaft connections. It includes fixed couplings, clutches, and special clutches. Fixed couplings are further divided into rigid, flexible, and elastic types. Clutches are categorized into jaw clutch and friction clutch. Special clutches are divided into safety, expanding, and overrunning types.",
+   "seconds": 108.7
+  },
+  "p51_e32": {
+   "page": 54,
+   "hash": "c52ffaa27d88b1f7766aca6f9631aa458fa4bc71",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows various types of gears and their components. It includes different gear designs such as spur gears (a, b, c, d), helical gears (e, f), and bevel gears (g, h). The gears are shown in various orientations and positions, indicating their different applications and configurations. The figure does not contain any text or labels.",
+   "seconds": 98.6
+  },
+  "p51_e49": {
+   "page": 56,
+   "hash": "7891322f44c604be684bff855e8b3ea2255ec85d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a gear mechanism. It depicts the process of adjusting or repairing the machine. The labeled parts are: 1 - Gear, 2 - Screw, 3 - Gear, 4 - Screw.",
+   "seconds": 96.7
+  },
+  "p51_e52": {
+   "page": 56,
+   "hash": "ac99fdeaff864535996c99c05eb3c4d23c971966",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a fabric or yarn. The part is being adjusted or repaired, as indicated by the arrow pointing to the fabric. The labeled parts are labeled as 'a', 'b', 'c', and 'd'.",
+   "seconds": 91.0
+  },
+  "p51_e54": {
+   "page": 57,
+   "hash": "dc118656414f673a6a2f2a41658a693228a6a843",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly of a gear and a shaft. The gear (labeled 2) is attached to the shaft (labeled 1) and is used to transmit rotational motion. The shaft has a cylindrical shape with a threaded end, and the gear has teeth for engaging with the shaft. The figure does not show any adjustment or direction of an arrow.",
+   "seconds": 97.8
+  },
+  "p51_e60": {
+   "page": 58,
+   "hash": "67fca4d3606c748e679342f901c559712770e465",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a textile machine, specifically a part of the machine's frame or housing. It appears to be a cross-sectional view of a circular component, possibly a bearing or a shaft, with two bolts or screws visible. The bolts are labeled with plus signs, indicating they are being tightened or adjusted. The figure does not show any specific direction of an arrow or any other action being performed.",
+   "seconds": 93.0
+  },
+  "p51_e68": {
+   "page": 59,
+   "hash": "b0cc39af8b17cd4d401ec6d879bb75139bc496bb",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a textile machine, specifically a component of the machine's frame. It depicts a close-up view of a metal frame with a bolt and a washer. The bolt is inserted into a hole in the frame, and the washer is placed between the bolt and the frame. The bolt is tightened by a nut. The figure also shows a cross-sectional view of the bolt and washer, highlighting the angle of the washer. The labeled parts are the bolt (1), washer (2), nut (3), washer (4), and the frame (5).",
+   "seconds": 98.9
+  },
+  "p61_e7": {
+   "page": 62,
+   "hash": "c9cb00bd09646183d0f3b37dcde50676ea195b4a",
+   "caption": "",
+   "labels": "C \"EZ3- -fl— A d g",
+   "desc": "The figure shows various parts of a textile machine, including wrenches, bolts, and a screwdriver. The wrenches are labeled as 'a', 'b', 'c', and 'd', while the bolts are labeled as 'e'. The screwdriver is labeled as 'f'. The figure also includes a close-up of a screw and bolt, labeled as 'g'.",
+   "seconds": 83.0
+  },
+  "p61_e15": {
+   "page": 63,
+   "hash": "a5b2ce42c72460a944587cdff4b11e67b9094351",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows various parts of a textile machine, including a hook (a), a needle (b), a spool (c), a bobbin (d), and a shuttle (e). The parts are labeled with letters and are arranged in a row.",
+   "seconds": 87.6
+  },
+  "p61_e13": {
+   "page": 63,
+   "hash": "71764b2c104c8f850120cd418114f47f0133db39",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows different types of textile machine parts. Part (a) is a cylindrical component with a conical end, part (b) is a cylindrical component with a threaded end, part (c) is a cylindrical component with a central hole and a flange, and part (d) is a cylindrical component with a flange and a central hole. The parts are labeled with letters (a), (b), (c), and (d) respectively.",
+   "seconds": 97.8
+  },
+  "p61_e24": {
+   "page": 64,
+   "hash": "b2d7f30793ab16c9986c219382e97a4a632c9391",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a series of mechanical components used for adjusting and repairing textile machines. The components include a T-shaped clamp, a bolt, and a spring-loaded mechanism. The T-shaped clamp is used to secure and adjust the position of parts, while the bolt and spring mechanism likely provide additional adjustment or tension. The components are labeled with dimensions, indicating their specifications for assembly.",
+   "seconds": 85.5
+  },
+  "p61_e26": {
+   "page": 64,
+   "hash": "4c67965d20ac3c0d3c6ca2b365d4b136eac6ff23",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a component that appears to be a roller or a shaft. The roller is labeled as part 2 and is positioned above a flat surface labeled as part 1. The roller is connected to a base or platform labeled as part 5, which is secured to the machine. The roller is likely being adjusted or repaired, as indicated by the presence of a bolt labeled as part 4, which is used to secure the roller in place.",
+   "seconds": 91.0
+  },
+  "p61_e32": {
+   "page": 65,
+   "hash": "cd3adc423dc9aeae02a9e4eed42cc2a264d99f25",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a sequence of steps for adjusting a textile machine part. The steps are labeled (a) to (e), and each step involves a different action on the part. The parts being adjusted include a hook (a), a tube (b), a screw (c), a bolt (d), and a clamp (e).",
+   "seconds": 94.7
+  },
+  "p61_e39": {
+   "page": 66,
+   "hash": "b229dec6804d36058e40e3eaa7c5faab045adefa",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a component that appears to be a roller or a pulley. The roller is attached to a shaft and is connected to a belt or a chain. The roller is labeled as part 2, and the shaft is labeled as part 3. The belt or chain is labeled as part 4. The roller is shown in a position that suggests it is being used to transfer motion or tension to the belt or chain.",
+   "seconds": 90.1
+  },
+  "p61_e65": {
+   "page": 69,
+   "hash": "0991e23caf8d9ffd131eb8d853a9e50278b34644",
+   "caption": "",
+   "labels": "S u r f a o e h a r d w o r k L L L L L L l",
+   "desc": "The figure shows a machine part labeled as \"Surface hardwork\" with arrows pointing downwards. The part appears to be a tool or component used for adjusting or repairing textile machines. The figure includes labeled parts 1 and 2, which are likely components of the machine being adjusted.",
+   "seconds": 85.7
+  },
+  "p61_e72": {
+   "page": 70,
+   "hash": "bf68f9e71115c6a370dacbeb5a10012150cc9db6",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows various parts of a textile machine, including a machine part labeled as \"1\" and \"2\". Part \"1\" appears to be a circular component, while part \"2\" is a cylindrical component. The figure also shows different views of the machine part, including a top view and a side view.",
+   "seconds": 84.6
+  },
+  "p71_e0": {
+   "page": 71,
+   "hash": "e8d86de4d75c0091c4b6f59f593f77f440a0bbca",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a yarn or thread. The part is being adjusted or repaired, as indicated by the arrows pointing to different sections. The labeled parts are numbered 1 to 8, representing various components of the yarn or thread.",
+   "seconds": 83.5
+  },
+  "p71_e9": {
+   "page": 72,
+   "hash": "04f81ed37c5454d36970cc41e3310d89ae760688",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows two views of a textile machine part. In view (a), a bolt (1) is being inserted into a hole (2) in a cylindrical component (3). In view (b), a bolt (1) is being inserted into a hole (2) in a circular component (3), which is secured by a nut (4). The bolt (5) is being inserted into a hole (6) in a cylindrical component (7).",
+   "seconds": 85.0
+  },
+  "p71_e34": {
+   "page": 75,
+   "hash": "b8dd6054e7a77191a8663ec375b4542f2c29b38c",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical component of a textile machine, specifically a part that appears to be a gear or a pulley. The component is labeled with numbers 1, 2, 3, and 4. The part is shown in a vertical orientation, with the top part labeled 1, the middle part labeled 2, the cylindrical part labeled 3, and the bottom part labeled 4. The component is likely used for transmitting motion or torque within the machine.",
+   "seconds": 93.8
+  },
+  "p71_e36": {
+   "page": 75,
+   "hash": "42e2f6f395213108aededfeffd7327a588c01385",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a textile machine. It depicts a mechanism with a cylindrical component (labeled 1) and a rectangular component (labeled 2) connected by a rod. The cylindrical component appears to be a cylinder, possibly for housing a piston or a similar mechanism. The rectangular component (2) is likely a housing or a frame for the cylinder. The rod connects the two components, suggesting a mechanism for movement or adjustment.",
+   "seconds": 88.5
+  },
+  "p71_e50": {
+   "page": 77,
+   "hash": "14bc2d3c9d10ed81499ed6546d5172c6088c4928",
+   "caption": "",
+   "labels": "a",
+   "desc": "The figure shows two diagrams labeled (a) and (b). In diagram (a), a bolt (1) is being inserted into a hole (2) in a piece of machinery. The bolt is being tightened by a nut (3) on top. The bolt is inserted into a cylindrical hole (4) in a block (5). The block is placed on a flat surface (6). In diagram (b), a bolt (1) is being inserted into a hole (2) in a rectangular piece of machinery. The bolt is being inserted into a rectangular hole (3) in a block (4). The block is placed on a flat surface (5).",
+   "seconds": 91.3
+  },
+  "p71_e57": {
+   "page": 78,
+   "hash": "b00d1bb28490608f5f84ead2709f5043837fab16",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a type of clamp or fixture used for holding fabric in place. The clamp appears to be adjustable, with a screw mechanism at the top for tightening. The parts labeled are: 1 - clamp body, 2 - clamp jaw, 3 - screw, 4 - clamp handle, 5 - clamp base, 6 - clamp adjustment screw, 7 - clamp adjustment handle.",
+   "seconds": 85.1
+  },
+  "p71_e65": {
+   "page": 79,
+   "hash": "e2b9a57bc9fc107d778637e5827de93a9af1ed84",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows various stages of a textile machine part being repaired or adjusted. The parts are labeled from (a) to (h), each depicting a different stage of the repair process. The parts are shown in different orientations, indicating the direction of the repair or adjustment.",
+   "seconds": 88.0
+  },
+  "p71_e73": {
+   "page": 80,
+   "hash": "47a1ed400df6ca80801dac30ecb853be39ff94bc",
+   "caption": "",
+   "labels": "a",
+   "desc": "The figure shows a technical drawing of a textile machine part, specifically a component with a central hole and a series of notches or grooves around it. The part appears to be a type of guide or support for a fabric or yarn. The figure does not show any specific actions or adjustments being performed on the part. The figure is labeled with the letter 'a' and does not contain any text or numbers.",
+   "seconds": 81.9
+  },
+  "p71_e75": {
+   "page": 80,
+   "hash": "2eb2bf137d7b98cd78a006539322eea534c5100b",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a gear mechanism, specifically a gear with teeth and a central hub. The gear is labeled with the letter 'a'. The gear is being adjusted or repaired, as indicated by the presence of a small rectangular component with a hole, which is likely a tool for adjusting the gear.",
+   "seconds": 81.5
+  },
+  "p71_e76": {
+   "page": 80,
+   "hash": "b2e6206238bb68d7280f80d2e29f737031c042bb",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a textile machine, specifically a part of the garment area. The part appears to be a series of parallel rods or bars, possibly used for guiding or supporting the fabric as it moves through the machine. The rods are arranged in a staggered pattern, with some rods extending beyond the others, suggesting they might be adjustable or replaceable. The label \"(b)\" indicates this is part of a series of diagrams or illustrations.",
+   "seconds": 85.7
+  },
+  "p81_e2": {
+   "page": 81,
+   "hash": "13001838ca4150288a6d1f347dae9e5717c789b3",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical component of a textile machine, specifically a part of the machine's drive mechanism. It includes a central shaft with a circular component, possibly a pulley or gear, and two bolts (labeled 1) that secure the component to the machine frame. The bolts are positioned symmetrically on either side of the shaft. The figure does not show any specific actions being performed on the component.",
+   "seconds": 82.5
+  },
+  "p81_e61": {
+   "page": 87,
+   "hash": "31bbc457bf2265236854a65ece14c7fd37b41e1a",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a close-up view of a machine part, specifically a bolt and a washer. The bolt is being inserted into a hole in a cylindrical object, which appears to be a part of a textile machine. The washer is placed between the bolt and the cylindrical object to ensure a secure fit. The labeled parts are: 1 - cylindrical object, 2 - bolt, 3 - washer.",
+   "seconds": 79.2
+  },
+  "p81_e66": {
+   "page": 87,
+   "hash": "5557332aee942071487b2b6ef554f4d0c275df39",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a roller mechanism. The roller is being adjusted or turned by a handle. The roller is connected to a shaft, and there are two handles on either side of the roller. The roller is part of a larger machine, and there is a label with the number 5 indicating the machine's frame.",
+   "seconds": 78.3
+  },
+  "p81_e68": {
+   "page": 88,
+   "hash": "30f19d1b6cb91aceda504ef5e96dfd4a39409cf9",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a cross-sectional view of a textile machine part, specifically a Y-shaped component. The part is labeled with two numbers, 1 and 2, indicating different sections or components. The figure does not show any specific actions or adjustments being performed.",
+   "seconds": 75.5
+  },
+  "p81_e70": {
+   "page": 88,
+   "hash": "a78a0174bea401bd224d64c27b833dbb1638526f",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows different views of a textile machine part. In (a), a bolt is inserted into a hole. In (b), the bolt is shown from the top. In (c), the bolt is shown from the side. In (d), the bolt is shown from the bottom. The parts are labeled as 1, 2, 3, and 4.",
+   "seconds": 83.1
+  },
+  "p81_e87": {
+   "page": 90,
+   "hash": "05c7147ec0cc6963b47438461b22fc014299be7c",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a component that appears to be a part of a textile machine. The part is labeled with numbers 1, 2, 3, and 4. The part is shown in a vertical orientation, with the top part labeled 1, the middle part labeled 2, and the bottom part labeled 3. The part is shown with a rectangular section at the bottom labeled 4. The part is not labeled with any specific function or direction.",
+   "seconds": 96.2
+  },
+  "p81_e89": {
+   "page": 90,
+   "hash": "b5d5fa3a77047093545cb31108c618652ce1622f",
+   "caption": "",
+   "labels": "T o e x p a n d",
+   "desc": "The figure shows a textile machine part with a label \"To expand\" indicating a direction for expansion. The part has a triangular shape with a 20-degree angle and a 9 ± 0.3 measurement. The part is inserted into a larger machine component.",
+   "seconds": 85.7
+  },
+  "p91_e8": {
+   "page": 92,
+   "hash": "1cb530c2324775f5c0217aed5759fc424dfd96f8",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a yarn guide or tensioning mechanism. The part is labeled with dimensions A and B, and there is an arrow indicating the direction of yarn movement. The labeled parts are the yarn guide (3), the tensioning mechanism (4), and the yarn (6).",
+   "seconds": 75.0
+  },
+  "p91_e25": {
+   "page": 94,
+   "hash": "642b60d99298651b66f5dba5b2000af075bd43ad",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a component of a textile machine. It appears to be a part of the machine's frame or support structure. The figure does not show any specific action being performed, such as turning or adjusting. The parts labeled are 1, 2, 3, 4, and 5.",
+   "seconds": 79.3
+  },
+  "p91_e32": {
+   "page": 95,
+   "hash": "4a5065ee2e25e22325138f4a0e78f6f7b12df568",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a mechanism for adjusting the tension of a fabric. The left side (a) shows a close-up of a tension adjustment mechanism, while the right side (b) provides a side view. The labeled parts include: 1 - Tension wheel, 2 - Adjustment screw, 3 - Tension spring, 4 - Fabric, 5 - Adjustment handle, 6 - Base, 7 - Motor, 8 - Tension arm, 9 - Adjustment knob.",
+   "seconds": 114.9
+  },
+  "p91_e37": {
+   "page": 96,
+   "hash": "c0efa9e60aa7389323ab9331ee93e35548add367",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a textile machine. The machine part is labeled with numbers 1 through 9. The figure does not show any specific actions being performed, such as turning or adjusting. The parts labeled are numbered from 1 to 9, but the exact function or purpose of each part is not indicated in the figure.",
+   "seconds": 137.2
+  },
+  "p91_e44": {
+   "page": 97,
+   "hash": "bd5e4c9643fd9924e5e2733623d10158430422a0",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a roller mechanism. The roller is connected to a motor via a shaft. The roller is labeled as part 1, and the motor is labeled as part 2. The direction of the arrow indicates the rotation of the roller. Part 3 is a coupling or coupling mechanism that connects the roller to the shaft. Part 4 is a bushing or bushing mechanism that supports the shaft.",
+   "seconds": 138.4
+  },
+  "p91_e53": {
+   "page": 98,
+   "hash": "9b8e388f58d3b2df8bdff51d15ec4e83659cef42",
+   "caption": "",
+   "labels": "c y l T\\ eg P iX <\\J “S d A (X e C V i \\r (a) (b)",
+   "desc": "The figure shows a textile machine part, specifically a cylinder with a series of holes. The cylinder is labeled as \"cyl\" and is part of a larger machine. The holes are labeled as \"P\" and are arranged in a grid pattern. The direction of the arrows indicates the flow of material through the machine. The figure is labeled as \"(a)\" and \"(b)\" to distinguish between different views or sections of the machine.",
+   "seconds": 103.5
+  },
+  "p91_e56": {
+   "page": 98,
+   "hash": "497a35aa4c25f5d2aff2888f9b565a58c956263d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a pressure gauge (labeled 2) attached to a machine. The gauge is used to measure the pressure applied to the fabric (labeled 1) as it passes through the machine. The gauge is connected to a pressure chamber (labeled 3) that is part of the machine's mechanism. The fabric is guided through the machine by a series of rollers (labeled 4) and a tension roller (labeled 5). The fabric is being adjusted or monitored for quality control purposes.",
+   "seconds": 97.3
+  },
+  "p91_e60": {
+   "page": 99,
+   "hash": "ac3e6c2f85f31e419ebf5de7088b6a8a5a8890d3",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows two machine parts labeled (a) and (b). Part (a) is a cylindrical component with a diameter of 0.2 mm and a length of 0.2 mm. Part (b) is a rectangular component with a length of 250 mm and a width of 0.05 mm. The figure does not show any adjustments or directions.",
+   "seconds": 99.4
+  },
+  "p91_e68": {
+   "page": 100,
+   "hash": "a7958ef378be9282ca8de1a4fc94982b13d31d8e",
+   "caption": "",
+   "labels": "/7777 I_",
+   "desc": "The figure shows a textile machine part with a rectangular component labeled 4. Two cylindrical components, labeled 1 and 2, are connected to the rectangular component. Component 2 is connected to a gear labeled 3. The direction of the arrow indicates that the gear is being driven by the rectangular component.",
+   "seconds": 79.0
+  },
+  "p91_e73": {
+   "page": 100,
+   "hash": "1de2952833270e53f845181dc0cca7ff41a18be2",
+   "caption": "",
+   "labels": "(a)",
+   "desc": "The figure shows a mechanical assembly labeled (a), which appears to be a part of a textile machine. The assembly includes components such as a bolt (1), a washer (2), a nut (3), and a cylindrical part (4). The nut is tightened onto the bolt, securing the washer in place. The cylindrical part (4) is likely a component that is being adjusted or tightened. The figure does not show the garment area or the direction of an arrow.",
+   "seconds": 90.0
+  },
+  "p101_e0": {
+   "page": 101,
+   "hash": "61b4a650813b12581cc19fe1630aedc18a964fe9",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a type of clamp or presser foot. It is being used to secure a piece of fabric or garment to the machine bed. The labeled parts are: 1 - clamp handle, 2 - clamp screw, 3 - clamp body, 4 - clamp jaw, 5 - fabric, 6 - machine bed, 7 - clamp base.",
+   "seconds": 106.5
+  },
+  "p101_e7": {
+   "page": 102,
+   "hash": "0485e615b790526963f5e54b54913ac495f22771",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a roller or a roller assembly. The roller is shown with a handle on the left side, indicating it can be adjusted or turned. The roller is connected to a frame or base, and there are several labeled parts: 1 is the handle, 2 is the roller, 3 is the frame, 4 is the bolt, and 5 is the bolt hole. The roller appears to be used for pressing or aligning fabric in the textile process.",
+   "seconds": 148.4
+  },
+  "p101_e15": {
+   "page": 103,
+   "hash": "81569107ba7c4b82cefabded602a601253b1fa28",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a needle and bobbin assembly. The needle is being inserted into the fabric, and the bobbin is being adjusted. The labeled parts are the needle (1), the bobbin (2), and the fabric (3).",
+   "seconds": 123.5
+  },
+  "p101_e22": {
+   "page": 103,
+   "hash": "d98fb0ca331969daae23bd51830d358c687230c7",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a textile machine, specifically a part of the machine's frame. It depicts a bolt (labeled 1) and a metal plate (labeled 3) that are connected by a metal bar (labeled 2). The bolt is being inserted into the metal plate, and the metal bar is being used to secure the bolt in place. The machine part being adjusted is the frame, and the garment area is not visible in this section.",
+   "seconds": 136.3
+  },
+  "p101_e24": {
+   "page": 104,
+   "hash": "1be0b71f2bc6045525c97e1a7b7de0d32fee43f7",
+   "caption": "",
+   "labels": "(a) (b)",
+   "desc": "The figure shows a textile machine repair and adjustment setup. Part (a) depicts a machine with a roller mechanism, while part (b) shows a close-up of a roller with a label. The roller in part (b) is labeled as 1, and the close-up view highlights the roller's surface and the label.",
+   "seconds": 103.0
+  },
+  "p101_e33": {
+   "page": 105,
+   "hash": "5f11ddf8293c1b088e1fd15966db6e59137c7dbc",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly with three labeled parts: 1, 2, and 3. Part 1 is a cylindrical component, part 2 is a rectangular component, and part 3 is a cylindrical component with a hole. The assembly appears to be a part of a textile machine, possibly a drive or a coupling mechanism.",
+   "seconds": 92.6
+  },
+  "p101_e72": {
+   "page": 110,
+   "hash": "a6cad04287bbe640010655b5bfdfcaf2942e616d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical part of a textile machine, specifically a component that appears to be a drive shaft or a similar rotating element. The part is labeled with numbers 1, 2, and 3. Label 1 is pointing towards the top of the shaft, indicating the direction of rotation or the axis of the shaft. Label 2 is pointing towards the middle of the shaft, suggesting it might be a bearing or a support. Label 3 is pointing towards the bottom of the shaft, possibly indicating a connection or a mounting point.",
+   "seconds": 97.9
+  },
+  "p101_e74": {
+   "page": 110,
+   "hash": "4a16a8baf478038c321685b56b812fdd432ff44d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a cross-sectional view of a textile machine part. It depicts a cylindrical component with a central hole and a flange around it. The flange is labeled as part 2, and the central hole is labeled as part 3. Part 1 is the outer shell of the component, and part 5 is the base or support. The figure does not show any specific action being performed on the part.",
+   "seconds": 92.3
+  },
+  "p111_e0": {
+   "page": 111,
+   "hash": "2e9e28ae4e24fe23a3c05eb5a7a2e85bbf709f98",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a type of needle bar. The needle bar is used to hold and guide the needles in a sewing machine. The figure includes labeled parts: 1 is the needle bar, 2 is the needle plate, 3 is the needle bar, 4 is the needle bar, and 5 is the needle bar. The figure does not show any specific action being performed.",
+   "seconds": 83.6
+  },
+  "p111_e26": {
+   "page": 114,
+   "hash": "3f8927971af16c0c53117e8755b60d0f85ab412b",
+   "caption": "",
+   "labels": "f l h i t (a) (b)",
+   "desc": "The figure shows two views of a textile machine part, labeled as (a) and (b). In view (a), part 1 is shown with part 2 inserted into it. In view (b), part 1 is shown with part 2 inserted into it, but the direction of insertion is different.",
+   "seconds": 100.5
+  },
+  "p111_e35": {
+   "page": 115,
+   "hash": "620405050bb5589fc6d570e66ea585a3ec414fa3",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a textile machine, specifically a part of the machine's body. The part appears to be a cylindrical component with a central opening, possibly a nozzle or a port. The figure does not show any specific actions being performed on the part. The labeled parts are numbered 1, 2, 3, 4, and 5.",
+   "seconds": 82.4
+  },
+  "p111_e40": {
+   "page": 116,
+   "hash": "372f572a7587c82d9a99d646ba02b46c4c23e517",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a machine part, specifically a rod or shaft (labeled 1) that is inserted into a base or platform (labeled 2). The rod is likely being adjusted or aligned within the base.",
+   "seconds": 79.6
+  },
+  "p111_e46": {
+   "page": 117,
+   "hash": "0f75960697d9e933b0bc835e9ebd7956ea1414c0",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a series of steps for adjusting a textile machine. It includes a hammer (a), a clamp (b), a screwdriver (c), a machine part (d), and a set of metal rods (e). The steps involve using the hammer to adjust the clamp, using the screwdriver to tighten a screw, and using the machine part to make adjustments. The metal rods are likely used for alignment or support.",
+   "seconds": 99.5
+  },
+  "p111_e51": {
+   "page": 117,
+   "hash": "6eb34fb7d46fa1dbe8c6e3c5ffb14e1fa15b09d1",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a machine that appears to be a part of a textile machine. The machine part is labeled with numbers 1 through 9. The part is shown in a cross-sectional view, with the top part labeled as 1, the middle part as 2, and the bottom part as 3. The part is attached to a frame labeled as 4, which is connected to a base labeled as 5. The machine part is shown in a position where it is being adjusted or repaired, as indicated by the presence of a screw labeled as 6. The screw is being tightened or loosened, as indicated by the arrow pointing towards it.",
+   "seconds": 140.6
+  },
+  "p111_e63": {
+   "page": 119,
+   "hash": "e7f2635e37ebb4631e41ffdecbac1f54895c60fd",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical component of a textile machine, specifically a lever mechanism. The lever (labeled 1) is attached to a pivot point (labeled 2) and is connected to a rotating wheel (labeled 3). The lever appears to be in a resting position, and the direction of the lever's movement is not indicated.",
+   "seconds": 122.5
+  },
+  "p121_e13": {
+   "page": 122,
+   "hash": "8608db9c2a9d41d74fd57adba21a8f13376c3b9c",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a needle and a fabric. The needle is inserted into the fabric, and the fabric is being adjusted to ensure proper alignment. The labeled parts are the needle (1) and the fabric (2).",
+   "seconds": 123.9
+  },
+  "p121_e22": {
+   "page": 122,
+   "hash": "aff49835d582e61c89e0df3bba374ce958b54666",
+   "caption": "",
+   "labels": "a b",
+   "desc": "The figure shows a machine part labeled as \"1\" and \"2\". The part \"1\" is being inserted into the garment area, which is labeled as \"2\". The part \"2\" is being inserted into the machine part \"1\".",
+   "seconds": 111.5
+  },
+  "p121_e57": {
+   "page": 126,
+   "hash": "4dc37f1c75ad90fdbf1b8afce32737bb55c9f7b2",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a close-up of a machine part, specifically a boss, which is a protruding area on a cylindrical surface. The boss is being inserted into a corresponding hole, likely for assembly or adjustment purposes. The text \"Boss\" is printed on the figure, indicating the part being shown.",
+   "seconds": 116.5
+  },
+  "p121_e55": {
+   "page": 126,
+   "hash": "d5acfe7e2bec8dc879ec1b5718aba34c089bb514",
+   "caption": "",
+   "labels": "A A",
+   "desc": "The figure shows a machine part, specifically a component of a textile machine. The component appears to be a part of the machine's mechanism, possibly a gear or a shaft, as indicated by the labeled parts. The label \"A-A\" suggests a cross-sectional view or a section of the component. The figure does not show any specific action being performed, such as turning or adjusting, but rather presents a static view of the part.",
+   "seconds": 122.6
+  },
+  "p121_e63": {
+   "page": 127,
+   "hash": "00102963455e9081128c02535f047fdf33b7ee06",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a machine where a hand is using a tool to adjust or tighten a component. The labeled parts are labeled as 1, 2, 3, 4, and 5.",
+   "seconds": 110.3
+  },
+  "p121_e69": {
+   "page": 128,
+   "hash": "1a01d580137ff8726bc5236cdb9b12ffc18435eb",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine with various labeled parts. The machine appears to be a type of textile processing equipment, possibly a loom or a similar device. The labeled parts include a drive mechanism (1), a tension control (2), a tension arm (3), a tension arm lever (4), a tension arm pivot (5), a tension arm pivot arm (6), and a tension arm pivot arm (7). The machine is shown in a resting position, with no specific action or adjustment indicated.",
+   "seconds": 128.3
+  },
+  "p121_e74": {
+   "page": 129,
+   "hash": "6fb27af9366792c8400b8957af40e748ba8d8e4e",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly, likely part of a textile machine. It depicts a vertical rod (1) with a horizontal rod (2) attached to it. The horizontal rod is inserted into a cylindrical component (3) that is secured to a base (4). The base is connected to a vertical rod (5) that extends downwards. The assembly appears to be in a state of adjustment or repair, as indicated by the position of the rods and the presence of a bolt (6) at the base.",
+   "seconds": 126.3
+  },
+  "p121_e79": {
+   "page": 130,
+   "hash": "43400253a2f7c1a4dd7aa52f5add099acca4b470",
+   "caption": "",
+   "labels": "v y y",
+   "desc": "The figure shows a textile machine part, specifically a pair of rollers (labeled as 1 and 2) that are positioned above a fabric (labeled as 3). The rollers are likely used to adjust or measure the fabric's tension. The fabric is resting on a flat surface (labeled as 4).",
+   "seconds": 112.1
+  },
+  "p131_e0": {
+   "page": 131,
+   "hash": "923bb3bd97b9acf046848af476fcbf65dab0c8d3",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine, specifically a lathe, with various parts labeled. The machine is used for processing fabric. The figure includes a motor (1), a pulley (2), a screw (3), a chuck (4), a tailstock (5), a tool post (6), a workpiece (7), a feed screw (8), a feed handle (9), and a base (10). The motor drives the screw, which in turn drives the chuck and the tailstock. The feed handle is used to adjust the feed screw, which controls the movement of the workpiece.",
+   "seconds": 132.7
+  },
+  "p131_e7": {
+   "page": 132,
+   "hash": "df275ca3aa8a249ceeff6879368936716f2cccb1",
+   "caption": "",
+   "labels": "t",
+   "desc": "The figure shows a cross-sectional view of a textile machine part, specifically a ring or a ring-like component. The component is labeled with numbers 1, 2, 3, and 4. The component appears to be a part of a textile machine, possibly a yarn guide or a similar component. The direction of an arrow indicates the movement or rotation of the component.",
+   "seconds": 108.8
+  },
+  "p131_e8": {
+   "page": 132,
+   "hash": "1feca8c63dc4066be143b098f9f74581da9a7f32",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical component of a textile machine, specifically a part of the machine's drive system. The component includes a gear (labeled 2) and a shaft (labeled 3) connected by a belt (labeled 4). The shaft is attached to a lever (labeled 5) which is connected to a lever arm (labeled 6). The lever arm is connected to a lever (labeled 7) which is attached to a lever arm (labeled 8). The lever arm is connected to a lever (labeled 9) which is attached to a lever arm (labeled 10). The lever arm is connected to a lever (labeled 11) which is attached to a lever arm (labeled 12). The lever arm is connected to a lever (labeled 13) which is attached to a lever arm (labeled 14). The lever arm is connected to a lever (labeled 15) which is attached to a lever arm (labeled 16). The",
+   "seconds": 127.5
+  },
+  "p131_e13": {
+   "page": 133,
+   "hash": "87a7571d7cac0cf6bc029ad34d65462db5ac01e6",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows three different views of a textile machine part. The top view (a) shows a circular hole with a diameter labeled as D and a radius labeled as R. The middle view (b) shows a hexagonal section with a radius labeled as R and a side length labeled as L. The bottom view (c) shows a circular hole with a diameter labeled as D and a radius labeled as r.",
+   "seconds": 107.9
+  },
+  "p131_e18": {
+   "page": 134,
+   "hash": "55dcf909d97c5965d8de0100003856b8f2deaa27",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a textile machine part, specifically a circular component with a ribbed texture. The component is labeled with the letters 'a' on both sides, indicating the outer edge. The figure does not show any specific action being performed on the part.",
+   "seconds": 94.0
+  },
+  "p131_e24": {
+   "page": 135,
+   "hash": "f4e25ae0c63f0b0425ccb8b60a362f9a57aee542",
+   "caption": "",
+   "labels": "a F i g D e v i c e f o r s t r a i g h t e n i n g b e n t s p i n d l e s",
+   "desc": "The figure shows a device for straightening bent spindles. It consists of a series of cylindrical rollers (labeled 1, 2, 3, 4, 5, 6, 7, 8, 9) that are arranged in a row. The rollers are used to apply pressure and straighten the bent spindles (labeled 10). The rollers are mounted on a horizontal bar (labeled 11) that is supported by a base (labeled 12). The rollers are driven by a motor (not explicitly labeled but implied by the arrangement). The rollers are spaced at regular intervals along the bar.",
+   "seconds": 113.6
+  },
+  "p131_e38": {
+   "page": 138,
+   "hash": "548780ecba2dc0e90f60cf6a29b555f5d6ef77ee",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a tension control mechanism. It includes a dial (1) for adjusting tension, a handle (2) for turning the tension control, and a lever (3) for adjusting the tension. The lever is connected to a rod (4) that moves the tension control. A weight (5) is attached to the rod to provide tension. A spring (6) is shown to help maintain tension. The lever (7) is used to adjust the tension by moving it up or down.",
+   "seconds": 98.6
+  },
+  "p131_e45": {
+   "page": 139,
+   "hash": "20c0a155042d92b365d4bf85f0ed5d37c17f56a8",
+   "caption": "",
+   "labels": "n",
+   "desc": "The figure shows a puller tool used for extracting spindles and shafts from drums. The tool consists of a handle (1), a spring (2), and a metal plate (3). The handle is used to apply force to the spring, which in turn applies force to the spindles and shafts. The spring is compressed by the handle, and when released, it exerts a pulling force. The metal plate is used to secure the tool to the drum.",
+   "seconds": 99.6
+  },
+  "p131_e50": {
+   "page": 140,
+   "hash": "f91ad13a1beed111b2f82fbacf27027faac1a63f",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a textile machine. It depicts a circular component with a central axis and several parts attached to it. The parts are labeled as 1, 2, 3, 4, 5, 6, 7, and 8. Part 1 is a horizontal rod, part 2 is a vertical rod, part 3 is a circular component, part 4 is a handle, part 5 is a lever, part 6 is a rod, part 7 is a rod, and part 8 is a base. The figure does not show any specific action being performed.",
+   "seconds": 109.8
+  },
+  "p131_e49": {
+   "page": 140,
+   "hash": "41bdef46141afdcfbe9b72ae3b80731f17d8d155",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a frame or base structure. The frame has two vertical supports (1) and a horizontal crossbar (6) that connects them. The crossbar has a central support (2) that is likely adjustable or removable. The top of the frame has a handle (3) for manual operation. The figure does not show any specific adjustment or direction of an arrow.",
+   "seconds": 97.0
+  },
+  "p141_e2": {
+   "page": 141,
+   "hash": "891e7f51bdd0501b430c0b98f3029fc1db011ea8",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a roller mechanism. The roller mechanism consists of three labeled parts: 1 is a cylindrical roller, 2 is a smaller roller, and 3 is a gear. The smaller roller is attached to the cylindrical roller, and the gear is attached to the cylindrical roller. The gear is used to drive the cylindrical roller, which is used to apply pressure to the fabric. The direction of the gear's rotation is not indicated in the figure.",
+   "seconds": 98.4
+  },
+  "p141_e6": {
+   "page": 142,
+   "hash": "1973040087fb90c09c68cafe7c74868eaae16373",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a mechanism for adjusting or repairing the machine. The mechanism includes a handle (labeled 8) that is used to turn or adjust a component (labeled 7). The component appears to be a part of the machine that is being adjusted or repaired.",
+   "seconds": 93.8
+  },
+  "p141_e16": {
+   "page": 144,
+   "hash": "7f5ff45fbb21603e2ef635b6314f0c8b4057f974",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a series of diagrams labeled (a) through (e), illustrating different parts and mechanisms of a textile machine. Each diagram depicts a specific component or assembly of the machine, including parts such as screws, bolts, and other mechanical elements. The diagrams are labeled with numbers corresponding to the parts, such as 1, 2, 3, etc., which are used to identify and describe the components.",
+   "seconds": 101.3
+  },
+  "p151_e1": {
+   "page": 152,
+   "hash": "724b1e1c6ce99e30894431dcd4153ecfce1c3d1b",
+   "caption": "",
+   "labels": "I H i",
+   "desc": "The figure shows a textile machine part, specifically a component that appears to be a roller or a roller mechanism. The roller is being adjusted or turned, as indicated by the arrow labeled \"Vf\" pointing to the roller. The roller is part of a larger assembly, and it is connected to a shaft or a drive mechanism. The roller is labeled as part 6 in the figure.",
+   "seconds": 98.1
+  },
+  "p151_e11": {
+   "page": 153,
+   "hash": "25ecc68a3224f16c0616e861875ffddc271bba25",
+   "caption": "",
+   "labels": "F i V (c) -Ifinxuu mEri",
+   "desc": "The figure shows a textile machine part, specifically a component with a dial gauge. The gauge is being used to measure the distance between two points labeled as 7 + 0.3 and 2.6 ± 0.5. The gauge is inserted into the machine, and the measurement is being taken. The figure includes three parts labeled (a), (b), and (c), with part (c) showing a close-up of the gauge and its measurement points.",
+   "seconds": 90.2
+  },
+  "p151_e18": {
+   "page": 154,
+   "hash": "8326340a69cb090f9ff75583a605ceeb1fdcc57b",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a textile machine. It depicts a machine component with various parts labeled, including a roller (1), a guide (2), a tension roller (3), a guide (4), a guide (5), a tension roller (6), a guide (7), a tension roller (8), a guide (9), and a guide (10). The figure also includes dimensions and arrows indicating the direction of the machine's operation.",
+   "seconds": 92.0
+  },
+  "p151_e25": {
+   "page": 155,
+   "hash": "8d476e0186b15a281d3492cc5041ec1b0380162d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical component of a textile machine, specifically a part of the machine's control mechanism. The figure includes a lever (18) and a handle (20) for adjusting or operating the machine. The lever is connected to a spring (14) and a screw (15), which are used to control the movement of the lever. The handle is attached to a rod (19) that is part of the machine's control system. The figure also includes a bolt (3) and a nut (4) that secure the components together.",
+   "seconds": 95.1
+  },
+  "p161_e0": {
+   "page": 161,
+   "hash": "14901e6862fb5d2aa6cdc09c4e7c07a4d64569f8",
+   "caption": "F i g . 1 0 1 . W a r p e r c o n d e n s i n g r o l l",
+   "labels": "",
+   "desc": "The figure shows a warp condensing roll, which is a part of a textile machine. It appears to be a technical drawing with labeled parts: 1 is the upper part of the roll, 2 is the lower part, 3 is the middle section, 4 is the condensing roller, 5 is the tension roller, 6 is the tension roller support, and 7 is the upper support. The figure does not show any specific actions or directions.",
+   "seconds": 94.7
+  },
+  "p161_e2": {
+   "page": 161,
+   "hash": "43e527bd8711a58161f57bfe5d9d61e11526e95c",
+   "caption": "F i g . 1 0 2 . W a r p i n g b e a m",
+   "labels": "",
+   "desc": "The figure shows a warp beam, which is a component of a textile machine. The beam is marked with dimensions and labeled parts. The beam has a diameter of 800 mm, a length of 1918 mm, and a height of 240 mm. The beam is connected to a machine via a bolt and a nut. The beam is used to warp the fabric in the textile machine.",
+   "seconds": 89.9
+  },
+  "p161_e5": {
+   "page": 162,
+   "hash": "b5bf61c4952b2994181d8fb0ffba6a0ba16c131e",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a component of the machine's mechanism. The part appears to be a lever or handle (labeled 6) that is connected to a rod or shaft (labeled 4) via a pivot point (labeled 5). The lever is used to adjust or control the machine's operation, likely by moving it up and down. The lever is attached to a frame or base (labeled 1), which is part of the machine's structure. The lever is connected to a handle or grip (labeled 2), which is used by the operator to apply force and control the lever.",
+   "seconds": 97.2
+  },
+  "p161_e9": {
+   "page": 162,
+   "hash": "974c4f9627fe384eecefd4d66a4c3bec8c365139",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a textile machine, specifically focusing on the adjustment mechanism for the garment area. The figure includes a bolt (1), a nut (2), and a screw (3) that are used to adjust the position of the garment area. The bolt is inserted into the nut, and the nut is secured by the screw. The figure also shows a circular component (4) that is part of the adjustment mechanism, and a rectangular component (5) that is part of the garment area.",
+   "seconds": 96.2
+  },
+  "p161_e42": {
+   "page": 168,
+   "hash": "ab2393f0a412311e2e43ecade680a98f0aa88aed",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine, specifically a part of the machine that includes a spring (5) and a lever (13). The spring is attached to the lever, and the lever is connected to a rod (17). The lever is used to adjust the tension of the fabric as it moves through the machine. The spring helps to maintain the tension.",
+   "seconds": 89.2
+  },
+  "p171_e5": {
+   "page": 172,
+   "hash": "d1aa163c0e2f452d2e435bcb3c3722526f446848",
+   "caption": "F i g . 1 0 6 . D i a g r a m o f s e c t i o n w a r p e r d r u m b r a k e",
+   "labels": "",
+   "desc": "The figure shows a diagram of a warp beam brake section. It depicts a spring mechanism (3) attached to a beam (4) that is connected to a tensioning device (5). The spring is compressed by a force (indicated by the text \"1.5 - 2 mm\"). The diagram also includes a circular component (1) and a bolt (2) for securing the components.",
+   "seconds": 89.1
+  },
+  "p171_e7": {
+   "page": 172,
+   "hash": "93a4576f120220f4866aef5c568e1ca4aefeb841",
+   "caption": "F i g . 1 0 7 . C o u n t e r o f r e v o l u t i o n s o f s e c t i o n w a r p e r d r u m",
+   "labels": "",
+   "desc": "The figure shows a counter of revolutions for a section warp drum in a textile machine. The counter is attached to the drum and has a series of teeth that rotate with the drum. The teeth are connected to a gear mechanism that drives a pointer, which indicates the number of revolutions. The numbered parts are labeled as follows: 1 - Counter, 2 - Gear, 3 - Pointer, 4 - Drum, 5 - Gear mechanism, 6 - Pointer mechanism, 7 - Counter mechanism.",
+   "seconds": 106.9
+  },
+  "p171_e9": {
+   "page": 173,
+   "hash": "cd28eb4a1b23de5641b68286a638f9a6009fdcb1",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a mechanism for adjusting the tension of a fabric. The figure includes labeled parts such as 1, 2, 3, 4, 5, 6, 7, and 8. The direction of an arrow indicates the adjustment process, and the parts are being turned or adjusted to control the tension of the fabric.",
+   "seconds": 105.5
+  },
+  "p171_e13": {
+   "page": 174,
+   "hash": "908160c3efa94c5ff3a1127aea06833b40895398",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows two diagrams of textile machine parts. Diagram (a) depicts a machine component with a bolt (3) and a spring (5) attached to it. Diagram (b) shows a different machine part with a bolt (3) and a spring (5) attached to it. Both diagrams include labels for bolts and springs, but no measurements or values are printed.",
+   "seconds": 102.9
+  },
+  "p171_e16": {
+   "page": 175,
+   "hash": "1658879d2afd690be24188a9964880bb34d470bf",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a component of a textile machine. The figure includes a diagram of a machine part (a) and a close-up view (b) of the part. The diagram shows the part with labeled parts: 1, 2, 3, 4, 5, 6, 7, and 8. The close-up view shows the internal components of the part, including 1a, 2a, 3a, and 4a. The figure does not show any specific actions being performed on the part.",
+   "seconds": 111.2
+  },
+  "p171_e24": {
+   "page": 177,
+   "hash": "54734fef1a9ab9adf5b2fd62405a3b1ab764da27",
+   "caption": "F i g . 1 1 1 . D e v i c e f o r w a r p b e a m i n g f r o m d r u m t o w e a v e r 's b e a m",
+   "labels": "]|",
+   "desc": "The figure shows a device for warp beam adjustment from a drum to a loom's beam. It includes a motor (1), a gear (2), a shaft (3), a beam (4), a tensioning mechanism (5), and a tensioning wheel (6). The motor drives the gear, which in turn drives the shaft, which connects to the beam. The tensioning mechanism and wheel are used to adjust the tension on the beam.",
+   "seconds": 108.0
+  },
+  "p171_e26": {
+   "page": 177,
+   "hash": "53cf8416983632639a329f1d3383fee7422ebe26",
+   "caption": "F i g . 1 1 1 . D e v i c e f o r w a r p b e a m i n g f r o m d r u m t o w e a v e r 's b e a m",
+   "labels": "",
+   "desc": "The figure shows a device for warp beam adjustment from a drum to a loom's beam. It includes a spring (3), a lever (5), and a bolt (7). The spring is connected to the lever, which is attached to the beam. The bolt is used to adjust the position of the beam.",
+   "seconds": 100.2
+  },
+  "p171_e27": {
+   "page": 177,
+   "hash": "90add1d33b289f093410bff4061b5f777659bdf1",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a section of a textile machine, specifically a component labeled as an \"Electromagnet.\" The electromagnet is connected to a spring mechanism, and there is a label with the number \"10\" indicating a specific measurement or part number. The electromagnet appears to be part of a mechanism that can be adjusted or manipulated, likely for the purpose of controlling or operating the machine.",
+   "seconds": 107.6
+  },
+  "p191_e24": {
+   "page": 194,
+   "hash": "4eacb8ab32b5f3dc00696b79afc955c5caf6d5a0",
+   "caption": "",
+   "labels": "F i g S i z i n g m a c h i n e d r y i n g c y l i n d e r",
+   "desc": "The figure shows a sizing machine drying cylinder. It depicts a cylindrical component with a central rod and a series of bolts and nuts. The cylinder has a curved top and bottom, and the central rod is connected to a handle at the top. The figure includes a measurement of 0.726, which is likely a dimension or radius. The parts labeled are 1 (handle), 2 (central rod), 3 (bolt), 4 (nut), 5 (cylinder), and 6 (bolt).",
+   "seconds": 95.0
+  },
+  "p191_e25": {
+   "page": 195,
+   "hash": "9b803e7fcbc4ad2bf3e4f26f8b2f999bb1436861",
+   "caption": "",
+   "labels": "(a) <b) F i g W e a v e r ’s b e a m s e t t i n g m e c h a n i s m m",
+   "desc": "The figure shows a Weaver's beam setting mechanism. It includes a pipe (a) and a tenon (b) for installing the beam. The mechanism is used in CTB looms (a) and type P and AT looms (b).",
+   "seconds": 93.8
+  },
+  "p201_e20": {
+   "page": 204,
+   "hash": "205ac40c2bf9bcf46a679776282c01d1d3792b63",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a mechanism for adjusting the tension of a fabric. The machine part is labeled as 1, 2, 3, 4, 5, 6, 7. The direction of the adjustment is indicated by the arrow pointing towards the fabric. The fabric is being pulled through the machine by a tensioning mechanism.",
+   "seconds": 102.0
+  },
+  "p201_e29": {
+   "page": 206,
+   "hash": "de5b2f439a3b3640e4029bd8db101dfb33744442",
+   "caption": "F i g . 1 1 8 . D i a g r a m o f d r i v e f o r t y p e P l o o m",
+   "labels": "",
+   "desc": "The figure shows a diagram of a drive system for a type Ploom machine. It includes labeled parts such as 1, 2, 3, 4, 5, and 6. Part 1 is a drive shaft, part 2 is a gear, part 3 is a motor, part 4 is a belt, part 5 is a pulley, and part 6 is a tension spring. The direction of the arrow indicates the direction of rotation for the drive system.",
+   "seconds": 93.7
+  },
+  "p201_e31": {
+   "page": 206,
+   "hash": "c109e5fb4326a419a5540967f73fb06de653785e",
+   "caption": "P i g . 1 1 9 . D i a g r a m o f s t a r t i n g d e v i c e i n t y p e P l o o m",
+   "labels": "",
+   "desc": "The figure shows a diagram of a starting device for a textile machine. It includes labeled parts such as 1, 2, 3, 4, 5, and 6. Part 1 is a lever, part 2 is a spring, part 3 is a rod, part 4 is a gear, part 5 is a handle, and part 6 is a lever arm. The diagram illustrates the mechanism for starting the machine.",
+   "seconds": 101.7
+  },
+  "p201_e33": {
+   "page": 207,
+   "hash": "d18423b9c40feba1602ad8a25bb02237d3150613",
+   "caption": "",
+   "labels": "•*m r i i f i I i 90 i ^*16 1,",
+   "desc": "The figure shows a mechanical part of a textile machine, specifically a component with a spring mechanism. The spring is attached to a cylindrical rod, and the spring is compressed. The figure includes measurements and dimensions, such as the length of the rod being 85 mm and the diameter of the rod being 16 mm. The spring is labeled with a number, indicating its position or function within the machine.",
+   "seconds": 99.5
+  },
+  "p201_e37": {
+   "page": 208,
+   "hash": "fa9478c0dc4ee5884ebbf8696200720f18758c42",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine with a belt conveyor system. The belt conveyor is shown with a direction of movement indicated by an arrow. The belt is connected to a motor via a pulley system. The figure also shows a close-up of the belt and pulley assembly, highlighting the belt's path and the pulleys' positions. The labeled parts include the belt (1), motor (2), pulleys (3), and the belt path (4).",
+   "seconds": 100.4
+  },
+  "p201_e42": {
+   "page": 209,
+   "hash": "45ee79d1f13c840b91ba9cddafbae0392905aa6e",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a roller mechanism. The roller mechanism is used to transport fabric through the machine. The roller is labeled as part 5, and it is connected to a drive shaft (part 3) via a belt (part 4). The roller is mounted on a base (part 7).",
+   "seconds": 95.7
+  },
+  "p201_e47": {
+   "page": 210,
+   "hash": "989fd1ee5db9e5458c387c8fa48e6703730a67c4",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly, likely part of a textile machine. It includes a gear mechanism with a central gear and two connected arms. The arms are connected to a frame, and there are bolts and screws visible. The central gear is labeled as part of the mechanism.",
+   "seconds": 94.3
+  },
+  "p211_e0": {
+   "page": 211,
+   "hash": "70996ff6fa1907ebb40cc0dbfc064c442d06ce2f",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly, likely part of a textile machine, with various labeled components. The components include a lever (1), a handle (2), a shaft (3), and a lever arm (4). The lever is connected to a handle via a shaft, and the lever arm is attached to the shaft. The lever is shown in a position where it is being adjusted or moved, as indicated by the 45-degree angle. The figure does not show the garment area or object being worked on.",
+   "seconds": 100.6
+  },
+  "p211_e12": {
+   "page": 213,
+   "hash": "d7360d527fdf77470c76e97d18c030234d2fca5a",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a frame or support structure. It includes measurements for the length and width of the frame, as well as the diameter of the wheels. The frame has a curved design, and there are two wheels attached to it. The figure does not show any specific actions or adjustments being performed.",
+   "seconds": 92.1
+  },
+  "p211_e18": {
+   "page": 214,
+   "hash": "2a728358ae608fa85888887b7c433df1111ef9da",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a mechanism for adjusting the tension of a fabric. The upper part of the figure shows a spring mechanism (labeled 3) that is used to apply tension to the fabric. The lower part shows a lever mechanism (labeled 6) that is used to adjust the tension by turning a handle (labeled 7). The distance 'a' between the spring and the lever is also indicated.",
+   "seconds": 88.8
+  },
+  "p211_e19": {
+   "page": 214,
+   "hash": "ed52e09813667f9c23869dc236f13701ebfa0c46",
+   "caption": "F i g . 1 2 7 . D i a g r a m o f w e f t y a m b r a k e i n C T B l o o m",
+   "labels": "",
+   "desc": "The figure shows a diagram of a weft yarn brake in a CT Bloom. It depicts a machine part with labeled components: 1 is the brake arm, 2 is the brake plate, and the direction of the arrow indicates the direction of the yarn being guided through the brake.",
+   "seconds": 87.6
+  },
+  "p211_e21": {
+   "page": 215,
+   "hash": "1c527651f96c9da52e499a4802828f11a89dc854",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a roller or a roller assembly. The roller is labeled as part 1 and is shown in a rectangular box. The roller has a handle on one end and a flat surface on the other. There are two small holes on the roller, labeled as part 3, which are likely for adjusting or securing the roller. The roller is shown in two different positions: one with the handle pointing upwards and the other with the handle pointing downwards.",
+   "seconds": 80.3
+  },
+  "p211_e24": {
+   "page": 215,
+   "hash": "47192540b5c630bf5259c957349494c05168007a",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows the picking motion of a CTB loom. It depicts a mechanical device with various labeled parts, including a gear (1), a lever (2), and a lever arm (3). The gear is connected to a lever arm, which is attached to a lever (4) that is part of the picking mechanism. The lever arm is connected to a lever (5) that is part of the picking mechanism. The lever arm is connected to a lever (6) that is part of the picking mechanism. The lever arm is connected to a lever (7) that is part of the picking mechanism. The lever arm is connected to a lever (8) that is part of the picking mechanism. The lever arm is connected to a lever (9) that is part of the picking mechanism. The lever arm is connected to a lever (10) that is part of the picking mechanism. The lever arm is connected to a lever (11) that is part of the picking mechanism. The lever arm is connected to a lever (12) that is part of the picking",
+   "seconds": 91.7
+  },
+  "p211_e25": {
+   "page": 216,
+   "hash": "0ba04882e622eb8014f258962eade5c3094ff564",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part with a rectangular section labeled 1, a circular section labeled 2, and a light bulb labeled 3. The part appears to be a component of a textile machine, possibly a roller or a guide, and is connected to a handle labeled 4. The direction of the handle suggests that it can be adjusted or turned.",
+   "seconds": 84.0
+  },
+  "p211_e28": {
+   "page": 217,
+   "hash": "cf2a0a4208d0013c81aa8a20ea32386cfbf5a372",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a roller mechanism. The roller is being turned by a motor, as indicated by the arrow. The roller has teeth on its surface, which are likely used to pick up and transport fabric. The roller is connected to a shaft, which is part of the machine's drive system. The roller is labeled as part 1, and the shaft is labeled as part 2.",
+   "seconds": 82.4
+  },
+  "p211_e30": {
+   "page": 218,
+   "hash": "aec652081de82cd0516e1e4604d5f0ac5b35b818",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a technical drawing of a textile machine part, specifically a component related to the machine's operation. The drawing includes various labeled parts, such as 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 11. The parts are numbered and have dimensions printed next to them, indicating their sizes. The figure does not show any specific actions being performed, but it provides detailed measurements and labels for each part.",
+   "seconds": 80.6
+  },
+  "p211_e36": {
+   "page": 220,
+   "hash": "811dc1c3c5973e6141f58a4e05e446aa7b6986b7",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical part, specifically a screwdriver with a hexagonal socket. The part is being inserted into a hole, and the hexagonal socket is being turned. The labeled parts are: 1 - Screwdriver handle, 2 - Hexagonal socket, 3 - Shank, 4 - Shank, 5 - Hexagonal socket.",
+   "seconds": 81.3
+  },
+  "p221_e0": {
+   "page": 221,
+   "hash": "748eb5e950b7127b849b7ca54a5555696fd660c2",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly with gears and shafts. The gears are labeled as Z1, Z2, Z3, Z4, and Z5. The gears are connected by shafts, and the assembly appears to be part of a textile machine. The gears are likely being adjusted or rotated to control the movement of the machine.",
+   "seconds": 78.6
+  },
+  "p221_e3": {
+   "page": 222,
+   "hash": "dc6041535d74b8c04e7cf2b1d497f96ce1a52a1c",
+   "caption": "",
+   "labels": "i n i (C)",
+   "desc": "The figure shows a sequence of steps for eliminating a meshing trace on a driven gear tooth. The steps involve adjusting the gear teeth to align them properly. The labeled parts include the driven gear tooth, the gear teeth, and the direction of the adjustment.",
+   "seconds": 78.6
+  },
+  "p221_e5": {
+   "page": 223,
+   "hash": "8701d1020a0a80b3dffdad0e66a4648eb938e146",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a section of a machine that appears to be a part of a textile machine. The machine part is labeled as \"1\" and is connected to other parts labeled as \"2,\" \"3,\" and \"4.\" The part labeled \"2\" is connected to \"3\" and \"4\" by a rod or shaft. The part labeled \"4\" is also connected to another part labeled \"a.\" The figure does not show any specific action being performed, but it does show the arrangement and connection of different parts of the machine.",
+   "seconds": 83.2
+  },
+  "p221_e12": {
+   "page": 225,
+   "hash": "b2e43b426c3766e9e87827000b517ec322a4e4ff",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a schematic diagram of a textile machine part, specifically a section of the machine that includes a pressure gauge (labeled 2), a pressure control valve (labeled 4), and a pressure relief valve (labeled 6). The diagram illustrates the flow of air or gas through the machine, with the pressure gauge and control valve being used to regulate the pressure.",
+   "seconds": 85.9
+  },
+  "p221_e17": {
+   "page": 226,
+   "hash": "6ec5d77ee4c1c10f73a5217a5f1d9dd9274cf139",
+   "caption": "",
+   "labels": "P i c k i n g b o x W f T 1— JL B R e c e i v i n g b o x c- A B w R e c e i v i n g b o x",
+   "desc": "The figure shows a textile machine part with two receiving boxes labeled \"R e c e i v i n g b o x\" and a picking box labeled \"P i c k i n g b o x\". The receiving boxes are connected by a series of tubes, and the picking box is connected to the receiving boxes. The tubes are labeled with letters A, B, and C.",
+   "seconds": 79.5
+  },
+  "p221_e22": {
+   "page": 227,
+   "hash": "112e59aca84cb4fffbc35e06cbaf2820bf59e1bb",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part with a cylindrical component (labeled 1) that is being inserted into a rectangular housing (labeled 2). The housing has a series of evenly spaced slots (labeled 3) along its length. The cylindrical component is being inserted into the housing, and the slots are likely used for alignment or positioning.",
+   "seconds": 74.4
+  },
+  "p221_e29": {
+   "page": 228,
+   "hash": "620e6f8c19b03e33342f7d25701e04efcf8bbf88",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows two diagrams labeled (a) and (b), which appear to be technical drawings of textile machine parts. Diagram (a) shows a section of a machine with a label 1, which seems to be a base or platform. Label 2 is a horizontal bar, and label 3 is a vertical bar. The diagram includes measurements and dimensions, such as 250 mm and 560 mm. Diagram (b) shows a similar section with labels 1, 3, and 5, and additional measurements like 275 mm and 0.5 mm. The diagrams illustrate the alignment and positioning of parts within the machine.",
+   "seconds": 82.0
+  },
+  "p221_e32": {
+   "page": 229,
+   "hash": "05071bb11606908812559d2d0a9501aaed1f9a7c",
+   "caption": "",
+   "labels": "Z T",
+   "desc": "The figure shows a technical drawing of a machine part, specifically a mechanism involving gears and rods. The gears are labeled as 1 and 2, and the rods are labeled as 3 and 4. The gears are connected by rods, and there are bolts and nuts visible, labeled as 5 and 6. The direction of the arrow labeled \"A\" indicates the direction of rotation or movement.",
+   "seconds": 77.3
+  },
+  "p231_e5": {
+   "page": 231,
+   "hash": "c656ea516e495c994496a817e294e1321fd6d3a6",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a type of clamp or fixture used for holding fabric in place. The clamp is being adjusted by turning a handle, as indicated by the arrow. The parts labeled are: 1 - clamp handle, 2 - clamp body, 3 - clamp jaw, and 4 - clamp adjustment screw.",
+   "seconds": 76.0
+  },
+  "p231_e11": {
+   "page": 233,
+   "hash": "6be17feca761b3690b1a298814c43b7540647051",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine with various components labeled. It depicts a mechanism where a belt (labeled 1) is being adjusted or inserted into a pulley (labeled 2). The direction of the belt is indicated by an arrow. The figure also shows a worn-out fabric (labeled 11) at the bottom, suggesting wear and tear in the machine.",
+   "seconds": 74.8
+  },
+  "p231_e18": {
+   "page": 235,
+   "hash": "7e9b6d7c55d6968d0ce4674e57433b791056ca6c",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine, specifically a mechanism for adjusting the tension of the yarn. The machine part being adjusted is the tension wheel (14), which is being turned by a spring (16) and a gear (25). The direction of the arrow indicates the movement of the tension wheel. The parts labeled are the tension wheel (14), the tension spring (16), the gear (25), and the gear (27).",
+   "seconds": 76.1
+  },
+  "p231_e27": {
+   "page": 237,
+   "hash": "25f2fa8b83bc7257948d598f7a6d41f13f5c9d7c",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a mechanism for adjusting the tension of a fabric. The mechanism includes a spring (6), a gear (7), and a handle (10). The spring is compressed by the handle, which is used to tighten or loosen the fabric tension. The gear (7) is connected to the spring, and the handle (10) is used to rotate the gear, thereby adjusting the tension.",
+   "seconds": 76.0
+  },
+  "p231_e31": {
+   "page": 238,
+   "hash": "fbe27241ab5beaabdb7a5a9ae7fc8fab5b74756d",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly of gears and springs. It appears to be part of a textile machine, likely used for adjusting or operating the machine. The labeled parts include gears (1, 2, 3), springs (4, 5), and a lever (6). The lever is being adjusted or manipulated, as indicated by its position and the direction of the spring.",
+   "seconds": 75.9
+  },
+  "p231_e37": {
+   "page": 239,
+   "hash": "3c53cf6250605b973e3685f3dfa9016ce321e1b8",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine component, specifically a part of the machine's drive system. It depicts a cylindrical shaft (part 4) with a gear (part 3) attached to it. The shaft is connected to a motor (part 1) via a coupling (part 2). The shaft is also connected to a roller (part 5) via a coupling (part 6). The roller is part of the machine's drive mechanism, which is used to rotate the fabric. The figure does not show any specific actions being performed, but it clearly illustrates the mechanical components and their arrangement.",
+   "seconds": 91.9
+  },
+  "p231_e43": {
+   "page": 240,
+   "hash": "c55473e51c35ba188a29a1ad5b680aaa439426ad",
+   "caption": "",
+   "labels": "A n t l c o f m a i n s h a f t r o t a t i o n d e g",
+   "desc": "The figure shows a graph of the main shaft rotation degree over time. It includes labeled parts such as \"Warp feeding motion,\" \"Warp tensioning motion,\" and \"Warp tensioning motion.\" The graph tracks the rotation degree over a range of values from 350 to 10, with specific points marked at intervals.",
+   "seconds": 89.2
+  },
+  "p241_e0": {
+   "page": 241,
+   "hash": "06e6e1da077453a70e2b17672dfe2923bf2e0da1",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a detailed diagram of a textile machine, specifically focusing on the warp feeding mechanism. It illustrates the various steps and components involved in the process, such as the warp feeding motion, shedling operation, well step motion, and other related actions. The diagram includes labels for different parts and their functions, such as the warp feeder, the well, and the control mechanisms.",
+   "seconds": 76.1
+  },
+  "p241_e6": {
+   "page": 242,
+   "hash": "fa5f2624e89d231a7e7cbc7ff754f7b8be9effe5",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows the motion of various parts in a textile machine, including the main shaft, slay, rapiers, compensator, shedding motion, selvedge hook, needle lift, needle lowering, scissors, and warp let-off motion. The parts are labeled with their respective positions and angles of rotation.",
+   "seconds": 79.7
+  },
+  "p241_e8": {
+   "page": 243,
+   "hash": "7c8a8796eae2a26b09d703c66c45e9c0ae77b278",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a circular diagram with various labeled parts and labeled angles around the circumference. It represents the motion and positions of different parts of a textile machine, such as the shuttle, shed, and beater. The diagram illustrates the sequence of operations and the angles at which these parts are positioned during the machine's operation.",
+   "seconds": 81.5
+  },
+  "p241_e73": {
+   "page": 250,
+   "hash": "e6fa3af37f2a529b820aa82f30ffc5c85f19be93",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a layout of a textile machine repair shop. It includes various repair areas such as the store of spare parts, repair shop office, washing and repair control department, welding shop, and tool dispensing room. The repair areas are connected by arrows indicating the flow of work, such as repair of card units, tin drums, and fluted rollers shafts.",
+   "seconds": 79.8
+  },
+  "p251_e17": {
+   "page": 253,
+   "hash": "15b59520ce105d377cddf8b9e67318ab3e17d6eb",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine layout with various labeled parts. The machine part is a textile machine, and the garment area is not explicitly shown. The direction of an arrow is not visible. The labeled parts include 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, and 17.",
+   "seconds": 80.3
+  },
+  "p251_e23": {
+   "page": 254,
+   "hash": "dd257074b1e9695d4885b5027ce2727102577fa9",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part, specifically a roller mechanism. The roller is attached to a frame and is used to apply tension to the fabric. The roller is labeled as part 4, and the frame is labeled as part 8. The roller is shown in a horizontal position, suggesting it is in use.",
+   "seconds": 76.2
+  },
+  "p251_e28": {
+   "page": 255,
+   "hash": "71e3148173f66fffc9ace750b9d16282d6e9e508",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a textile machine part with a label indicating a measurement of 65 mm. There are two arrows pointing in opposite directions, suggesting a direction of movement or adjustment. The figure does not show any garments or objects being manipulated.",
+   "seconds": 72.8
+  },
+  "p251_e58": {
+   "page": 260,
+   "hash": "8416bddce1b40b70a181308824d40e6fe62053ee",
+   "caption": "",
+   "labels": "",
+   "desc": "The figure shows a mechanical assembly, likely part of a textile machine. It depicts a cylindrical component (labeled 1) with a threaded section, which is being inserted into a cylindrical hole (labeled 2) in a larger component. The component is being guided by a guide pin (labeled 3) that is inserted into a hole in the larger component. The larger component is secured by a nut (labeled 4) and a washer (labeled 5) at the bottom.",
+   "seconds": 81.9
+  }
+ }
+}

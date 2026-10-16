@@ -1,0 +1,55 @@
+{
+ "doc_id": "gl-pd-07-14a",
+ "model": "qwen2.5vl:3b",
+ "prompt_version": 2,
+ "figures": {
+  "p11_e18": {
+   "page": 14,
+   "hash": "7924742b83aef73cbf97619116c52feff459e35b",
+   "caption": "",
+   "labels": "",
+   "desc": "DECORATIVE",
+   "seconds": 78.8
+  },
+  "p11_e37": {
+   "page": 15,
+   "hash": "5e6fad1f0fe974fef5f0ddcb6e0f6d9fd4fba04a",
+   "caption": "",
+   "labels": "",
+   "desc": "DECORATIVE",
+   "seconds": 75.8
+  },
+  "p41_e34": {
+   "page": 43,
+   "hash": "1c75ac512af788ca95e5acd96222265a5a2f4ecc",
+   "caption": "Figure 1, Trouser Front, Army Combat Uniform",
+   "labels": "-----; .... ,,---...1 II II I I I I --- I I ~I J I Ii II I I IJ II II Ii ~- ----- -- ---_.- -- ---- -- ----- -~I I",
+   "desc": "The figure shows a front view of a trouser, labeled as \"Army Combat Uniform.\" It includes a button, two pockets on the front, and a belt loop. The figure does not show any machine parts or adjustments.",
+   "seconds": 84.1
+  },
+  "p41_e36": {
+   "page": 44,
+   "hash": "20a14799fd09231aba09c94860c82e8447fa1645",
+   "caption": "Figure 2. Trouser Back, Anny Combat Unifonn",
+   "labels": "",
+   "desc": "The figure shows a back view of a trouser, specifically the back of an Army combat uniform. An arrow points to the direction of the stitching on the back pocket. The figure includes labeled parts such as the back pocket, the waistband, and the stitching lines.",
+   "seconds": 83.5
+  },
+  "p41_e44": {
+   "page": 47,
+   "hash": "80d129ebb961fac900a732873db546fa5867ee4f",
+   "caption": "",
+   "labels": "Internal waistband drawcord __ Horizontal bartack superimposed on w-----+-- J-stitch Vertical bartack on crotch seam",
+   "desc": "The figure shows a diagram of a garment with various parts labeled. It includes an internal waistband drawcord, a horizontal bartack superimposed on a J-stitch, and a vertical bartack on the crotch seam.",
+   "seconds": 101.5
+  },
+  "p41_e46": {
+   "page": 48,
+   "hash": "2bacd73d9e7e0f5f1ca0074bcb39e4cc8289dc5a",
+   "caption": "",
+   "labels": "... «i------ 14 1/2 inches ----- 12 1/4 inches y -4-1(--10 1/2 inches",
+   "desc": "The figure shows a technical drawing of a garment area, specifically a section of a garment. The dimensions are labeled as \"14 ± 1/2 inches\" for the length and \"12 ± 1/4 inches\" for the height. The figure does not show any specific machine part or direction of an arrow.",
+   "seconds": 116.1
+  }
+ }
+}
