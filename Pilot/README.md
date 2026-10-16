@@ -26,7 +26,7 @@ yazılı / sesli soru → netleştirme → hibrit arama + reranker → kaynaklı
 cd pilot
 ./setup.sh                                  # ortam + model + indeks (~15-25 dk)
 .venv/bin/streamlit run app.py              # arayüz
-.venv/bin/python -m pytest                  # 204 birim test
+.venv/bin/python -m pytest                  # 271 birim test
 .venv/bin/python run_eval.py                # 18 soruluk ölçüm → eval/sonuc.md
 ```
 
@@ -37,7 +37,7 @@ cd pilot
 python -m venv ..\.venv; ..\.venv\Scripts\pip install -r requirements-pilot.txt
 winget install Ollama.Ollama; ollama pull qwen2.5:7b
 ..\.venv\Scripts\python run_index.py                    # CPU'da ~1 saat
-..\.venv\Scripts\streamlit run app.py
+..\.venv\Scripts\streamlit run app.py        # ya da çift tıkla: baslat.bat
 ..\.venv\Scripts\python -m pytest -q
 ```
 
@@ -69,7 +69,29 @@ Kullanım:
 - `PILOT_LLM_MODEL`: başka LLM. 24 GB RAM'de 14B'den büyüğü önerilmez, bkz. [KURULUM-LOGU.md](KURULUM-LOGU.md).
 - `PILOT_STT_MODEL`: başka STT modeli.
 
+**Şekil açıklaması (isteğe bağlı, VLM):** Çizimlerin aranabilmesi için her şekle bir kez metin açıklaması yazılır.
+
+```powershell
+ollama pull qwen2.5vl:3b                                           # ~3,2 GB
+..\.venv\Scripts\python run_figures.py gl-pd-14-04a --limit 5      # deneme; argümansız: tüm dokümanlar
+..\.venv\Scripts\python run_reindex_docs.py gl-pd-14-04a           # şekil parçalarını indekse ekle
+```
+
+Sonuç `data/figures/<doc_id>.json` (repoda gelir). Kaldığı yerden sürer; aynı görsel bir kez açıklanır. Başka VLM için `PILOT_VLM_MODEL`.
+
 **Hazır veri:** Ayrıştırılmış dokümanlar (`data/parsed/`, `data/chunks.jsonl`) repoda gelir, yalnız indeks üretilir. Sıfırdan ayrıştırmak için `run_parse.py`. Bir dokümanın ayrıştırması değişirse yalnız onu yeniden indekslemek için `run_reindex_docs.py <doc_id>`.
+
+## Kalınan yer (2026-10-16)
+
+JUKI MO-6800S'in şekil açıklamaları (VLM) üretildi (`data/figures/juki-mo6800s.json`), ama **JUKI henüz yeniden indekslenmedi**. Bu yüzden JUKI şekilleri aramada görünmüyor ve `data/chunks.jsonl` JUKI'nin şekil parçalarını içermiyor. Arayüz (Streamlit) kapalıyken, `pilot` klasöründe (~4 dk):
+
+```powershell
+$env:PYTHONUTF8="1"; ..\..\visual_agent_repo\.venv\Scripts\python.exe run_reindex_docs.py juki-mo6800s
+```
+
+Ortam şimdilik eski kopyadan (`Desktop\visual_agent_repo\.venv`) kullanılıyor; kendi `..\.venv` kurulunca komutta `..\.venv\Scripts\python.exe` yazılır. İndeksleme bitince `chunks.jsonl` değişir, commit'lenmeli.
+
+Ayrıca bekleyenler: birleşik hücre düzeltmesi için diğer dokümanların yeniden ayrıştırılıp indekslenmesi (birkaç saat, gece), JUKI şekil soruları, yeni soru setlerinin otomatik ölçümü. Ayrıntı: [../PILOT-RAPORU.md §7](../PILOT-RAPORU.md).
 
 ## Yapı
 
@@ -78,6 +100,8 @@ pilot/
 ├── pilot/                kütüphane (her dosyanın görevi: ../MIMARI.md §A8)
 │   ├── registry.py       doküman kaydı
 │   ├── parse.py          Docling + PyMuPDF yedekleri
+│   ├── figures.py        şekil açıklaması (VLM)
+│   ├── tables.py         tablo satırı biçimi, tablo varyant kontrolü (K9)
 │   ├── chunk.py          parçalama
 │   ├── embed.py          bge-m3, reranker
 │   ├── index.py          Qdrant
@@ -91,11 +115,11 @@ pilot/
 │   ├── stt.py            sesli soru
 │   └── render.py         vurgulu sayfa görseli
 ├── app.py                Streamlit arayüzü
-├── run_parse.py, run_index.py, run_reindex_docs.py, run_eval.py
+├── run_parse.py, run_figures.py, run_index.py, run_reindex_docs.py, run_eval.py
 ├── eval/                 test soruları (18 + 5 sesli), ölçüm sonuçları
-├── tests/                204 birim test
+├── tests/                271 birim test
 ├── tools/                seslendirme, ölçüm ve duman testi betikleri
-├── data/                 parsed/, chunks.jsonl (repoda) · qdrant/, audio/ (yerel, repoda değil)
+├── data/                 parsed/, figures/, chunks.jsonl (repoda) · qdrant/, audio/ (yerel, repoda değil)
 └── KURULUM-LOGU.md       Mac kurulumunun boyut/süre/sorun kaydı
 ```
 

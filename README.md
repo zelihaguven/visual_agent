@@ -37,7 +37,7 @@ Visual Agent/
 ├── calisma-notlari/         araştırmanın çalışma alanı: kontrol sorulu ayrıntılı notlar (notlar/),
 │                            araştırma planı ve günlüğü (req.md), paydaş cevapları (cevaplar.md),
 │                            çekirdek deneme (faz1-test/)
-├── test-dokumanlari/        pilotta kullanılan 7 açık erişimli PDF (aşağıdaki nota bakın)
+├── test-dokumanlari/        pilotta kullanılan 9 açık erişimli PDF (aşağıdaki nota bakın)
 ├── pilot/                   çalışan pilot: kod, arayüz, testler, ölçümler
 └── _arsiv/                  kullanılmayan ilk pilot taslağı
 ```
@@ -50,7 +50,7 @@ Visual Agent/
 | `pilot/app.py` | Streamlit arayüzü |
 | `pilot/run_*.py` | Ayrıştırma, indeksleme, ölçüm |
 | `pilot/eval/` | Test soruları ve ölçüm sonuçları |
-| `pilot/tests/` | 204 birim test (model ve PDF gerektirmez) |
+| `pilot/tests/` | 271 birim test (model ve PDF gerektirmez) |
 | `pilot/data/` | Ayrıştırılmış dokümanlar ve parçalar (indeks yeniden üretilir) |
 | `pilot/tools/` | Seslendirme ve ölçüm betikleri |
 
@@ -60,7 +60,7 @@ Visual Agent/
 
 ```powershell
 cd pilot
-..\.venv\Scripts\python.exe -m pytest -q          # 204 test, birkaç saniye
+..\.venv\Scripts\python.exe -m pytest -q          # 271 test, birkaç saniye
 ..\.venv\Scripts\streamlit.exe run app.py         # arayüz: http://localhost:8501
 ```
 

@@ -1,6 +1,7 @@
 # Visual Agent: Pilot Raporu
 
-> **Dönem:** 2026-10-10 – 2026-10-13 · **Ortam:** iki makine, tamamen lokal (Apple M4 Pro 24 GB; GPU'suz Windows dizüstü, i5-1335U, 32 GB)
+> **Dönem:** 2026-10-10 – 2026-10-16 · **Ortam:** iki makine, tamamen lokal (Apple M4 Pro 24 GB; GPU'suz Windows dizüstü, i5-1335U, 32 GB)
+> **Son güncelleme (2026-10-16):** İkinci dönem. Şekil açıklaması (VLM) entegre edildi, geliştirmede kullanılmamış bir dokümanla (JUKI MO-6800S) "görülmemiş doküman" testi yapıldı, bulunan hataların dokümandan bağımsız (genel) çözümleri eklendi. Ayrıntı: §5.6, §6 ve §8'deki 2026-10-16 satırları.
 > **Kapsam:** Pilotta ne kuruldu, hangi bileşenler denendi, ne ölçüldü, hangi sorunlar çıktı ve nasıl çözüldü, ne açık kaldı, gerçek sistem için ne öneriliyor.
 > **İlgili belgeler:** Pilotun mimarisi ve önerilen hedef mimari: [MIMARI.md](MIMARI.md) · Uygulama aşaması: [UYGULAMA-PLANI.md](UYGULAMA-PLANI.md) · Araştırma: [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md) · Kod ve çalıştırma: [pilot/README.md](pilot/README.md)
 
@@ -32,6 +33,7 @@
 | **Doğrulama** | Yanlış değerin "✔ Doğrulandı" rozetiyle geçtiği durum görülmedi. Uydurma alıntılar, yabancı alfabe, tekrar döngüsü ve düşen tolerans kodla yakalanıyor. **Kör nokta:** Model doğru parçadaki **başka bir sayıyı** seçerse (Q03, Q13) yalnızca "kısmen" rozeti çıkıyor |
 | **Hız** | Mac (GPU): soru başına ~14,5 sn. GPU'suz Windows: ~3 dk (model ~2 dk). Hedef 5 sn. Model katmanı için GPU sunucu ya da bulut şart |
 | **En önemli dersler** | 1) Model kalitesi asıl belirleyici, 7B yetmiyor. 2) Belirsizlik ve kaynak uyumu modele bırakılmamalı; kural ve kullanıcı seçimiyle **modelden önce** çözülmeli. 3) Atölye terimleri ve söylenmiş kodlar için terim sözlüğü ve dönüştürücü şart. 4) Doğrulama vazgeçilmez, ama ilgililiği ve sayı seçimini denetlemiyor |
+| **İkinci dönem (2026-10-16)** | **Görülmemiş doküman testi** (JUKI overlok kılavuzu, sözlük ve kural eklenmeden): sistem çalıştı, ama 5 genel zayıflık gösterdi: birleşik tablo hücresinin tek sütuna yazılması, model varyantına özgü değerin genel cevap gibi verilmesi, benzer kodun karışması (E05 ~ E050), İngilizce binlik ayırıcının seste ondalık okunması, teknik terimin yanlış çevrilmesi. İlk dördünün **dokümandan bağımsız** çözümü eklendi. **İlke:** sistem bu test dokümanlarına göre değil, genel olarak iyileştirilecek; sözlük ve doküman kuralları isteğe bağlı departman verisi (§8 #10) |
 
 ```mermaid
 flowchart LR
@@ -44,8 +46,10 @@ flowchart LR
     B["Yetersiz kalan"] --> B1["7B model: yanlış sayı seçimi,<br/>uydurma, dil kayması"]
     B --> B2["Süre: 14,5 sn – 3 dk"]
     B --> B3["Atıf yazmama: rozet hep 'kısmen'"]
+    A --> A7["Şekil açıklaması (VLM)<br/>4 doküman, CPU'da yavaş"]
+    A --> A8["Görülmemiş doküman testi<br/>+ genel düzeltmeler"]
     C["Yapılmayan"] --> C1["Büyük / bulut model"]
-    C --> C2["Şekil anlama (VLM)"]
+    C --> C2["Otomatik ölçümün<br/>yeniden çalıştırılması"]
     C --> C3["Yetki, denetim izi, eşik"]
 ```
 
@@ -58,9 +62,10 @@ Pilot, ürün geliştirme değil, **araştırma sürecinin bir deneyidir.** Hede
 | Kapsamda | Kapsam dışı |
 |----------|-------------|
 | Yazılı ve **sesli** soru (Türkçe, İngilizce) | Gerçek müşteri dokümanları |
-| 7 açık erişimli doküman (EN, kısmen FR/ES, ikisi taranmış) | Bulut LLM / bulut TTS (karar: önce yalnızca lokal) |
+| 7 açık erişimli doküman (EN, kısmen FR/ES, ikisi taranmış); ikinci dönemde +2: Granovsky (taranmış onarım kitabı) ve JUKI MO-6800S (görülmemiş doküman testi) | Bulut LLM / bulut TTS (karar: önce yalnızca lokal) |
 | Tamamen lokal çalışma, iki farklı makine | Yetkilendirme, kullanıcı girişi, denetim izi, silme |
-| Netleştirme akışları, hibrit arama, reranker, kaynaklı cevap, doğrulama | Şekil/çizim açıklaması (VLM) |
+| Netleştirme akışları, hibrit arama, reranker, kaynaklı cevap, doğrulama | Brother kılavuzlarının şekil açıklamaları (CPU'da saatler) |
+| İkinci dönem: şekil açıklaması (VLM, 4 doküman + JUKI kısmen) | |
 | Vurgulu kaynak sayfa, sesli okuma | 50–100 soruluk test seti, uzman değerlendirmesi |
 | 18 soruluk ölçüm, STT ölçümü, terim deneyi | "Bulunamadı" eşiğinin kalibrasyonu |
 
@@ -100,10 +105,10 @@ flowchart TB
 
 | Büyüklük | Değer |
 |----------|-------|
-| Doküman | 7 PDF, 611 sayfa: 5 dijital, 2 taranmış. Diller: EN 2.516 parça, FR 203, ES 202 |
-| Parça | 2.921 (metin 1.466, tablo satırı 1.455), ortalama 350 karakter |
-| Yedek metin katmanına geçen sayfa | 143 / 611 (Strickland'da 121) |
-| Kod | ~2.000 satır Python (kütüphane + arayüz + betikler), **204 birim test** (arama, LLM ve STT taklit edilerek) |
+| Doküman | İlk dönem: 7 PDF, 611 sayfa. **2026-10-16: 9 PDF, 932 sayfa** (+ Granovsky 271, JUKI 50): 6 dijital, 3 taranmış. Diller: EN 3.717 parça, FR 203, ES 202 |
+| Parça | İlk dönem: 2.921 (metin 1.466, tablo satırı 1.455), ortalama 350 karakter. **2026-10-16: 4.122** (metin 2.341, tablo satırı 1.601, şekil 179, tablo 1) |
+| Yedek metin katmanına geçen sayfa | 143 / 611 (Strickland'da 121); Granovsky harf aralıklı OCR katmanından yeniden kuruldu |
+| Kod | ~3.000 satır Python (kütüphane + arayüz + betikler), **271 birim test** (ilk dönem 204; arama, LLM, VLM ve STT taklit edilerek) |
 
 ---
 
@@ -125,7 +130,9 @@ flowchart TB
 | **TTS** | Chatterbox, MPS | ❌ | Bozuk çıktı |
 | **STT** | faster-whisper small ve large-v3-turbo, CPU int8 | ✅ | Terim ipucuyla model kodları doğru. small 4 sn, turbo 14 sn (§5.5) |
 | **Arayüz** | Streamlit | ✅ | Netleştirme düğmeleri, vurgulu sayfa, ses, mikrofon |
-| **Sesli metin** | Kendi kural tablosu | ✅ | `11 (± 1)` → "on bir, artı eksi bir", `5 mm'dir` → "beş milimetredir" |
+| **Sesli metin** | Kendi kural tablosu | ✅ | `11 (± 1)` → "on bir, artı eksi bir", `5 mm'dir` → "beş milimetredir". 2026-10-16: İngilizce binlik ayırıcı ve oran birimi (`7,000 sti/min` → "dakikada yedi bin dikiş") |
+| **Şekil anlama (VLM)** | qwen2.5vl:3b, Ollama, CPU (2026-10-16) | ⚠ | Çalışıyor. Ceket, pantolon, kahve makinesi şekillerinde açıklamalar isabetli; taranmış eski kitapta (Granovsky) çoğu genel ("a textile machine part"). **Süre:** şekil başına 78–150 sn (Granovsky 147 şekil ~4 saat, JUKI 74 şekil ~1,5 saat). Açıklamadan yapılan alıntı "kaynak metni değil" sayılıyor, cevap en fazla "kısmen" |
+| **Tablo ayrıştırma** | Docling birleşik hücre bilgisi (2026-10-16) | ✅ | Docling birleşik hücreyi doğru veriyor; satır oluşturan kodumuz yalnız ilk sütunun başlığını yazıyordu. Düzeltildi (yalnız JUKI yeniden ayrıştırıldı) |
 
 ---
 
@@ -226,6 +233,36 @@ Skorlar iç içe. Tek bir eşik, cevapsızları reddederken cevaplıları da red
 - **Gerçek ses farklı:** Kullanıcının kendi sesinde Whisper kodu kelimeyle yazdı ("Es yetmiş üç yüz A'da E sıfır elli"). Bunun için söylenmiş kodları yazılı koda çeviren bir dönüştürücü eklendi.
 - **Model seçimi:** CPU'da small yeterli. GPU'lu hedefte turbo gerçek seslerle karşılaştırılmalı.
 
+### 5.6 İkinci dönem: elle denemeler (2026-10-16, GPU'suz Windows)
+
+**Yöntem:** Otomatik ölçüm (`run_eval.py`) çalıştırılmadı. Sorular arayüzde **elle** denendi, sonuçlar kullanıcı tarafından bildirildi; hataların sebebi aynı soru tekrar çalıştırılarak ya da yalnız arama çalıştırılarak bulundu. Soru setleri: [questions_ek.json](pilot/eval/questions_ek.json) (14), [sekil_sorular.json](pilot/eval/sekil_sorular.json) (12), [gorulmemis_juki.json](pilot/eval/gorulmemis_juki.json) (14). Beklenen cevaplar PDF metninden çıkarıldı.
+
+**Görülmemiş doküman testi:** JUKI MO-6800S overlok kılavuzu (50 sayfa, üreticinin sitesinden), geliştirmede hiç kullanılmamıştı. Yalnız bir yükleyicinin gireceği doküman kaydı (marka, ürün, tür, model kodu) eklendi; **sözlük ve kural eklenmedi.** Ayrıştırma 2,5 dk, indeksleme 3,7 dk (217 parça).
+
+| Soru | Bildirilen sonuç | Kök neden | Genel düzeltme |
+|------|------------------|-----------|----------------|
+| S-7300A ve S-7300B'de E050 | İki model aynı İngilizce satırdan **farklı ve yanlış** Türkçe yazdı ("cilti geride eğimli") | Model satırı her soruda serbest çeviriyor; kaynakların geri kalanı farklı olduğu için `temperature: 0` da tutarlılık sağlamıyor | 🔴 Açık. Hedef: onaylı çeviri yolu (MIMARI B2.1) |
+| Pantolon overedge Tex | "Belirtilmemiş" dedi, kaynakta vardı | Dokümanda iki iplik tablosu (s.8: 31-35, s.9 Tip II); tablo başlığı parçada yok, model iki değeri ayıramadı | 🔴 Açık: tablo bağlamı (small-to-big) |
+| SPI cevabı + "Hangi boy ceket için?" | Soru soruldu ama cevaplanacak yer yoktu; SPI bedene göre değişmiyor | Model kaynakta olmayan bir ayrım sordu; arayüzde cevap+soru durumunda giriş yoktu | ✅ Seçenekler kaynakta geçiyorsa düğme + ayrıntı kutusu; geçmiyorsa soru gösterilmiyor |
+| G2 rütbe arması ilmeği | "Doğrulanamadı", sesli okuma yok | Alıntı 300 karakter sınırında kesilirken bozuldu (`(see figure 1)` → `(see **[1`) | ✅ Sınırda kesilen alıntının kaynakla örtüşen başı kabul ediliyor. Cevap içerikçe boş kaldı ("tasarım belgesinde belirtilen yerde"): 🔴 hizalama |
+| G7 kahve makinesi kontrol paneli | Doğru şekil geldi, cevap Çince | İlk 8 sonucun hepsi şekil; aynı çizimin İngilizce ve İspanyolca kopyası ayrı kaynak; modele neredeyse yalnız "a b c d" etiketleri gitti | Yabancı alfabe yakalandı (✅). Metin/şekil dengesi ve dil kopyası tekilleştirme 🔴 |
+| N1, N2 Granovsky | Netleştirme sorusu / içindekiler sayfası | Arama: "tarak şapkası", "iğne şeridi" → *flats*, *needle fillet* eşleşmiyor; noktasız içindekiler ve dizin sayfası elenmiyor; harf aralıklı kitap adı bütün parçalara "bölüm" olarak yazılmış | 🔴 Açık (genel: içindekiler/dizin tespiti, başlık düzeltmesi) |
+| J1 maksimum hız | Değer doğru; ses "yedi virgül sıfır sıfır sıfır dikiş/dakikadir" | İngilizce binlik ayırıcı Türkçe ondalık okundu | ✅ "Dakikada yedi bin dikiştir" |
+| J3 overlok genişliği | Yalnız MO-6816S değerleri "MO-6800S için" verildi; doğrulama "doğrulandı" dedi | Değer modele göre değişiyor; doğrulama yalnız "sayı kaynakta var mı" diye bakıyor | ✅ **Tablo varyant kontrolü** (aşağıda) |
+| J4 iğne tipi | Bağlam doğru, değer bir alt modelin satırından (s.36) | Birleşik hücre (ortak değer) yalnız ilk modele yazılmıştı; s.36'da her satır bir alt model | ✅ Birleşik hücre düzeltmesi + satır varyantı kontrolü |
+| J8 E07 | Doğru satır; "pulley" (kasnak) → "düdük" | Model terimi yanlış çevirdi | 🟡 Talimat: çevrilen parça adının yanına kaynaktaki ad parantezle ("kasnak (pulley)") |
+| J9 E050 (JUKI'de yok) | E05'i anlattı | Kelime araması E050'yi E05'e yakın buldu | ✅ **Tanımlayıcı tam eşleşme** (aşağıda) |
+| J2, J5–J7, J10–J14 | Sonuç bildirilmedi | | |
+
+**Eklenen genel mekanizmalar** (hiçbiri dokümana özel kural içermiyor):
+- **Tanımlayıcı tam eşleşme:** Soruda harf+rakam kod varsa (E050, P41) kapsamda birebir aranır (tire/boşluk farkı yok sayılır). Kapsamda yoksa model çağrılmaz: "E050 kodu MO-6800S içinde geçmiyor; şu kaynakta geçiyor: S-7300A, S-7300B" + "o kaynakta ara" düğmesi. Varsa ve arama getirmediyse kaynaklara eklenir.
+- **Tablo varyant kontrolü:** Cevabın dayandığı tablo satırının değeri bir boyuta göre değişiyorsa (sütunlar: modeller, tipler; satırlar: alt modeller) ve ne soru ne cevap o boyutun adını söylüyorsa, seçenekler tablonun kendisinden sunulur, cevap "kısmen" olur ve seslendirilmez. Yanlış alarm önlemleri: Min/Max gibi aralıklar, öznitelik sütunları ("Setting value / Initial value"), kod ve tekrar başlıklar, kayıt tabloları (hata kodu listesi) varyant sayılmıyor. 9 dokümandaki 1.601 tablo satırının 33'ü varyant sayılıyor (kural sıkılaştırılmadan önce 86); elle bakılan örneklerin hepsi gerçek varyant (kumaş Tip I/II/III, beden tablosu, JUKI modelleri, AB tipi gerilim) ya da sayı içermeyen satır (soru tetiklemez).
+- **Birleşik hücre:** Birden çok sütunu kaplayan değer artık bütün sütunların başlığını taşıyor (`MO-6804 & MO-6814S & MO-6816S: 28 kg`).
+
+**Test seti hatası:** Q22, "E210 yalnız S-7300B'de var" varsayımıyla tuzak soru olarak yazılmıştı; tam eşleşme aracı E210'un S-7300A'da da (s.99) olduğunu gösterdi. O satır farklı biçimde ayrıştırılmış (`Code Cause Remedy: E210 ...`), soru yazılırken yapılan kontrol bu biçimi kaçırmıştı. Beklenen cevap düzeltildi. Ders: beklenen cevaplar ayrıştırılmış veriden değil, PDF metninden doğrulanmalı.
+
+**Sınır:** Düzeltmeler birim testlerle korunuyor ama **soru setleriyle yeniden ölçülmedi.** Etkilerinin sayısı bir sonraki otomatik ölçümde çıkacak.
+
 ---
 
 ## 6. Bulunan sorunlar ve çözümleri
@@ -245,6 +282,9 @@ Bütün sorunlar konuya göre gruplandı. **Durum:** ✅ çözüldü · 🟡 kı
 | Embedding kütüphanesi açılışta internete bağlanıyor | Modeller önbellekteyse `HF_HUB_OFFLINE=1` kendiliğinden. İlk kurulum çevrimiçi | ✅ |
 | faster-whisper'ın ses çözücüsü (PyAV) Windows'ta hata veriyor | Ses scipy ile çözülüyor | ✅ |
 | Gömülü Qdrant'ı aynı anda tek süreç açabiliyor | Kısmi yeniden indeksleme aracı. Sunucu modunda sorun yok | 🟡 pilota özgü |
+| 2026-10-16: Arka planda unutulmuş bir yeniden indeksleme (1 sa 44 dk CPU) arayüzü, kurulumu ve kabuk komutlarını kilitledi | İş durduruldu. İlerleme artık log dosyasına yazılıyor ve terminalden izlenebiliyor | ✅ |
+| 2026-10-16: VLM CPU'da şekil başına 78–150 sn | Gece çalıştırma. Hedefte GPU sunucu | 🔴 donanım (B1) |
+| 2026-10-16: Repo yeniden yüklenince ortam (`.venv`) ve indeks kayboldu | Eski kopyanın ortamı ve indeksi kullanıldı (parçalar birebir aynıydı); `baslat.bat` eklendi | 🟡 pilot hâlâ eski kopyanın ortamına bağlı |
 
 ### 6.2 Doküman işleme
 
@@ -256,7 +296,13 @@ Bütün sorunlar konuya göre gruplandı. **Durum:** ✅ çözüldü · 🟡 kı
 | İçindekiler satırları ("Needle up/down ...... 32") arama sonuçlarının başına çıkıyor, alıntı olarak kullanıldı | Aramada eleniyor (13 parça). Noktalı gerçek tablo satırları korunuyor | ✅ |
 | Tablo satırında başlık tekrarı ve çizim kodları | – | 🔴 |
 | Kitapçık (Mr. Coffee) ve üç dilli (Bosch) düzende basılı sayfa numarası | – | 🔴 |
-| Şekil ve çizimler aranamıyor | VLM açıklaması (Aşama 3) | 🔴 |
+| Şekil ve çizimler aranamıyor | VLM açıklaması, ayrı parça türü (`figure`); açıklama "kaynak metni değil" işaretli (2026-10-16) | 🟡 ceket, pantolon, kahve makinesi, Granovsky; JUKI kısmen; Brother yok |
+| 2026-10-16: Birleşik tablo hücresi yalnız ilk sütunun başlığını alıyordu (JUKI: ortak hız "yalnız MO-6804" gibi görünüyordu) | Kapladığı bütün sütunların başlığı | ✅ JUKI. 🟡 diğer dokümanlar yeniden ayrıştırılmadı |
+| 2026-10-16: İlk veri satırı başlık sanılıyor (JUKI kontrol kutusu: "Supply voltage" satırı boş) | – | 🔴 |
+| 2026-10-16: Tablo başlıkları tek hücrede birleşmiş (`Code Cause Remedy: E210 ...`, S-7300A s.99) | – | 🔴 |
+| 2026-10-16: Taranmış kitapta harf aralıklı kitap adı bütün parçalara "bölüm" olarak yazılmış ve embedding'e giriyor (Granovsky) | – | 🔴 |
+| 2026-10-16: Noktasız içindekiler ve kitap sonu dizin sayfaları elenmiyor | – | 🔴 |
+| 2026-10-16: Aynı çizimin dil kopyaları ayrı kaynak (Mr. Coffee EN/ES); şekil sonuçları metni dışarıda bırakabiliyor | – | 🔴 |
 
 ### 6.3 Soru yönlendirme: belirsizlik ve kaynak uyumu
 
@@ -277,6 +323,9 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 | "Çağanoz", "takılır" aramada eşleşmiyor | Atölye terimi ve fiil kılavuzda İngilizce | Taslak terim sözlüğü (29 terim), yalnız aramayı genişletiyor |
 | İngilizce soru ("coat") pantolona gitti | Eşanlamlı eksikti | coat, jacket, pants eklendi |
 | 🎤 "Es yetmiş üç yüz A'da E sıfır elli" → A tanınmadı | Whisper kodu kelimeyle yazdı | Söylenmiş kod dönüştürücüsü: "S-7300A'da E050". Sıradan sayı kelimelerine dokunmuyor |
+| 2026-10-16: "MO-6800S'te E050" → E05 anlatıldı | Kelime araması benzer kodu getirdi | **Tanımlayıcı tam eşleşme:** kod kapsamda yoksa model çağrılmadan "geçmiyor" + kodun geçtiği kaynak önerisi |
+| 2026-10-16: Model "Hangi boy ceket için?" diye sordu, cevaplanacak yer yoktu | Model cevap+soru verince arayüzde giriş yoktu; ayrım kaynakta yoktu | Seçenek alanı; seçenekler kaynakta geçmiyorsa soru gösterilmiyor (`atlanan_netlestirme` olarak saklanıyor) |
+| 2026-10-16: Modele özgü değer genel cevap gibi verildi (JUKI J3, J4) | Değer tabloda modele göre değişiyor; kurallar bunu bilmiyordu | **Tablo varyant kontrolü:** boyut ve seçenekler tablonun başlıklarından/satırlarından, doküman kaydı gerekmeden |
 
 **Bilinen sınır:** Kurallar varlığın sorudaki **rolünü** (makine ayarı mı soruluyor, ürün gereksinimi mi) bilmiyor; bu yüzden son karar kullanıcıya düğmeyle bırakılıyor. Gerçek sistemde soru niyeti sınıflandırması gerekiyor ([MIMARI.md §B](MIMARI.md)).
 
@@ -299,6 +348,12 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 | **Model doğru parçadan yanlış sayıyı seçiyor** (Q03, Q13: "16") | – | 🔴 B2. Doğrulama bunu yakalayamıyor |
 | Sayı dışı uydurma ("yeşil ceket", "şapka parçası") | – | 🔴 C3 |
 | Prosedür cevaplarında bozuk Türkçe ("dili", "wraps ettirdiğiniz") | – | 🔴 B2 |
+| 2026-10-16: 300 karakter sınırına dayanan alıntının sonu bozuldu, doğru cevap "doğrulanamadı" oldu ve seslendirilmedi | Sınıra dayanan alıntıda kaynakla örtüşen baş kabul (kuyruk ≤ 20 karakter); kısa alıntıdaki fark hâlâ hata | ✅ |
+| 2026-10-16: Aynı uyarı, model alıntıyı tekrarlayınca üç kez görünüyordu | Uyarılar tekilleştirildi | ✅ |
+| 2026-10-16: Şeklin otomatik açıklamasından alıntı | "Kaynak metni değil" uyarısı, rozet en fazla "kısmen" | ✅ tasarım |
+| 2026-10-16: Aynı İngilizce satır farklı sorularda farklı ve yanlış Türkçeye çevrildi (E050, A ve B) | – | 🔴 Hedef: onaylı çeviri yolu |
+| 2026-10-16: Teknik terimin yanlış çevirisi ("pulley" → "düdük") | Talimat: çevrilen parça adının yanında kaynaktaki ad parantez içinde | 🟡 önlem, doğrulanmıyor |
+| 2026-10-16: Cevap içerikçe boş ("tasarım belgesinde belirtilen yerde"), kaynakta cevap vardı | – | 🔴 C3 hizalama |
 
 ### 6.5 Arayüz ve ses
 
@@ -310,6 +365,9 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 | Doğrulanamayan cevapta sayfa "Cevabın kaynağı" diye gösteriliyordu | "Modelin gösterdiği kaynak (cevap doğrulanamadı)" |
 | Üretilen sesler kayboluyordu | `data/audio/` altında kalıcı, kenar çubuğunda liste |
 | "5 mm'dir" kısaltma olarak okunuyordu | Birimler kelimeye çevriliyor |
+| 2026-10-16: `7,000 sti/min` "yedi virgül sıfır sıfır sıfır dikiş/dakika" okunuyordu | Binlik ayırıcı (sıfırla başlamayan sayı + tam 3 haneli gruplar) ve oran birimi ("dakikada yedi bin dikiş") |
+| 2026-10-16: Doğrulanamayan cevapta "Sesli oku" yok | Bilinçli (R4); asıl sebep yanlış "doğrulanamadı" idi, düzeltildi (§6.4) |
+| 2026-10-16: Ses ortamı (Chatterbox) Windows'ta yeniden kuruldu | Bir cümle ~6 dk (makine yüklüyken) |
 
 ---
 
@@ -324,7 +382,14 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 | | C5 | Bölüm başlığının S-7300A hız sorusundaki etkisi, seçimden sonra yeniden denenmedi | Sonraki ölçüm |
 | | – | Q10 ve Q14 düzeltmeleri yapıldı ama ölçüm yeniden çalıştırılmadı | Sonraki ölçüm |
 | | – | Tablo satırı başlık tekrarı, kitapçık/üç dilli sayfa numarası | Aşama 3 |
-| **Kapsam dışı (planda)** | | Şekil anlama (VLM), yetki ve denetim izi, soru niyeti sınıflandırması, gerçek seslerle STT ölçümü, kod okunuşu kuralları (açık soru Q10-a) | Aşama 1–5 |
+| **İkinci dönemden (2026-10-16)** | – | Yeni düzeltmeler soru setleriyle yeniden ölçülmedi; 40 yeni soru otomatik ölçüme eklenmedi | Sonraki ölçüm (gece) |
+| | – | Birleşik hücre düzeltmesi için diğer dokümanların yeniden ayrıştırılması ve indekslenmesi (birkaç saat) | Gece |
+| | – | Genel arama kalitesi: içindekiler/dizin tespiti, harf aralıklı başlık, metin/şekil dengesi, dil kopyaları, ilk satırın başlık sanılması | Aşama 3 |
+| | – | Çeviri tutarlılığı (aynı satır → aynı Türkçe), tablo bağlamı (iki tablo karışıklığı), boş cevap (hizalama) | MIMARI B2.1 |
+| | – | Sözlük ve doküman kurallarının koddan "departman profili"ne taşınması | MIMARI B2.3 |
+| | – | Brother kılavuzlarının şekilleri; JUKI şekillerinin tamamlanıp indekslenmesi | Gece / GPU |
+| | – | Pilotun kendi `.venv`'i (şu an eski kopyanın ortamı kullanılıyor) | Kurulum |
+| **Kapsam dışı (planda)** | | Yetki ve denetim izi, soru niyeti sınıflandırması, gerçek seslerle STT ölçümü, kod okunuşu kuralları (açık soru Q10-a) | Aşama 1–5 |
 
 **Bilerek bırakılanlar:** Seste "Ceketin → Tekitin" (C4), büyük ihtimalle TTS'nin ilk sesi kırpması. Kullanıcı kararıyla sorun sayılmadı.
 
@@ -346,7 +411,10 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 | 6 | Gerçek ses sentetik sesten farklı çıktı | STT kabul ölçümü **ustaların sesiyle ve atölye gürültüsünde** yapılsın. Ölçüt: genel kelime hatası değil, **varlık doğruluğu** |
 | 7 | Docling her tabloda güvenilir değil, yedekler değerli | Doküman işlemede **kalite kontrolleri** (kapsam, tablo kayması) ve yedek ayrıştırıcı standart olsun; her yeni doküman setinde raporlansın |
 | 8 | Sessiz hatalar (MPS) ve kodlama farkları (Windows) ortam değişince çıkıyor | Her ortamda **duman testi** ve platformdan bağımsız kod (UTF-8, ses çözme) |
-| 9 | Kullanıcı denemeleri, otomatik ölçümün göstermediği hataları buldu | Test setine **kullanıcı denemelerinden gelen sorular** eklensin; her düzeltme birim testle korunsun (pilotta 204 test) |
+| 9 | Kullanıcı denemeleri, otomatik ölçümün göstermediği hataları buldu | Test setine **kullanıcı denemelerinden gelen sorular** eklensin; her düzeltme birim testle korunsun (pilotta 271 test) |
+| 10 | 2026-10-16: Düzeltmelerin bir kısmı test dokümanlarına göre ayar olmaya başlamıştı (sözlüğe terim, hata koduna onaylı çeviri, dokümana özel kural). Gerçek dokümanlar farklı olacak, bazı departmanlar sözlüğü hiç kullanmayacak | **Motor ve içerik ayrımı:** iyileştirmeler her dokümanda çalışan genel mekanizmalar olsun; sözlük, eşanlamlılar, doküman kuralları isteğe bağlı departman verisi olsun, yokken de sistem çalışsın (MIMARI B2.3) |
+| 11 | 2026-10-16: Görülmemiş doküman testi, bilinen dokümanlarla yapılan ölçümün göstermediği 5 genel zayıflığı tek seferde buldu | Her geliştirme turu **geliştirmede kullanılmamış** dokümanlarla da ölçülsün; o dokümana kural eklemeden |
+| 12 | 2026-10-16: Tablolar yapı bilgisi taşıyor (başlık, birleşik hücre, satır anahtarı) | Netleştirme boyutları (model, beden, tip) elle tanımlanmak yerine tablonun kendisinden okunabiliyor; ayrıştırmada bu bilgi kaybedilmemeli |
 
 ---
 
@@ -354,8 +422,8 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 
 | # | Risk | Pilottaki kanıt | Durum |
 |---|------|-----------------|-------|
-| **R4** | Yanlış veya uydurulmuş değer | Q03 ve Q13'te doğru parçadan yanlış sayı ("kısmen" geçti). Uydurma alıntılar yakalandı | 🔴 Model ve hizalama kontrolü gerekli |
-| R1 | Tablo ve çizim ağırlıklı sayfalar | Tablo satırları ve tablo yedeği çalışıyor. Çizimler aranamıyor | 🟡 |
+| **R4** | Yanlış veya uydurulmuş değer | Q03 ve Q13'te doğru parçadan yanlış sayı ("kısmen" geçti). Uydurma alıntılar yakalandı. 2026-10-16: modele özgü değer "doğrulandı" geçti (J3) → tablo varyant kontrolü; benzer kodun açıklaması (J9) → tam eşleşme | 🔴 Model ve hizalama kontrolü gerekli; varyant ve kod durumu 🟡 |
+| R1 | Tablo ve çizim ağırlıklı sayfalar | Tablo satırları ve tablo yedeği çalışıyor. 2026-10-16: çizimler VLM açıklamasıyla aranabiliyor (4 doküman), CPU'da yavaş | 🟡 |
 | R2 | Sesli okumada sayı/birim hatası | Kural tablosu çalışıyor. Kod okunuşu belirsiz (Q10-a) | 🟡 |
 | R7 | OCR satır kaybı | Metin katmanı yedeği kısmen çözdü | 🟡 |
 | R8 | Yetki sızıntısı | Pilotta yetki yok | 🔴 Gerçek sistemde ilk sırada |
@@ -367,7 +435,9 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 | R14 | Belirsiz soruda yanlış doküman | Q07, Q17 ve kullanıcı denemeleri | ✅ Netleştirme akışları. Açık: soru niyeti |
 | R15 | Seste tolerans düşmesi | Q01 | ✅ |
 | R16 | Atölye terimi eşleşmemesi | 5 terimden bge-m3 1'ini, qwen 0'ını bildi | 🟡 Taslak sözlük, uzman onayı bekliyor |
-| **Yeni R17** | **Model dil kayması:** cevaba Çince/Korece karışıyor | Q05, Q06, kullanıcı denemesi | 🟡 Yakalanıyor, önlenemiyor. Model seçiminde ölçüt olmalı |
+| **Yeni R17** | **Model dil kayması:** cevaba Çince/Korece karışıyor | Q05, Q06, kullanıcı denemesi, G7 (2026-10-16) | 🟡 Yakalanıyor, önlenemiyor. Model seçiminde ölçüt olmalı |
+| **Yeni R18** | **Test dokümanlarına aşırı uyum:** sistem bilinen 7 dokümana göre ayarlanır, yeni dokümanda bozulur | JUKI görülmemiş doküman testi: 5 genel zayıflık (§5.6) | 🟡 Görülmemiş doküman testi ve motor/içerik ayrımı (§8 #10–11) |
+| **Yeni R19** | **Çeviri tutarsızlığı:** aynı kaynak satırı farklı sorularda farklı Türkçeye çevriliyor | E050 (S-7300A / S-7300B), "pulley" → "düdük" | 🔴 Onaylı çeviri yolu ve güçlü model |
 
 ---
 
@@ -392,4 +462,6 @@ Kurulum ve çalıştırma (macOS ve Windows): [pilot/README.md](pilot/README.md)
 | İlk ölçüm (Mac, 10 soru) | [pilot/eval/sonuc_onceki.md](pilot/eval/sonuc_onceki.md) |
 | Rerank skorları (eşik ölçümü) | [pilot/eval/rerank_skorlari.json](pilot/eval/rerank_skorlari.json) |
 | STT ölçümü | [pilot/eval/stt_sonuc_small.json](pilot/eval/stt_sonuc_small.json) · [stt_sonuc_large-v3-turbo.json](pilot/eval/stt_sonuc_large-v3-turbo.json) |
+| İkinci dönem soru setleri (elle denendi, otomatik ölçülmedi) | [questions_ek.json](pilot/eval/questions_ek.json) · [sekil_sorular.json](pilot/eval/sekil_sorular.json) · [gorulmemis_juki.json](pilot/eval/gorulmemis_juki.json) |
+| Şekil açıklamaları (VLM) | [pilot/data/figures/](pilot/data/figures/) (JUKI dosyası yarım: işlem sürüyordu) |
 | Mac kurulum logu (boyut, süre, sorunlar) | [pilot/KURULUM-LOGU.md](pilot/KURULUM-LOGU.md) |
