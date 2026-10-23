@@ -22,6 +22,17 @@ EMBED_MAX_LENGTH = 512
 EMBED_BATCH = 16
 COLLECTION = "manuals"
 
+# Arama katmanı seçenekleri (BENCHMARK-RAPORU.md). Varsayılanlar pilotun ölçülen yapısıdır; ortam değişkeniyle seçilir.
+RERANK_PROVIDER = os.environ.get("PILOT_RERANK_PROVIDER", "local")          # local | openrouter
+RERANK_MODEL = os.environ.get("PILOT_RERANK_MODEL", RERANK_MODEL)
+# local backend: flag (FlagEmbedding, varsayılan) | torch (doğrudan transformers) | onnx | onnx-int8
+RERANK_BACKEND = os.environ.get("PILOT_RERANK_BACKEND", "flag")
+RERANK_MAX_LENGTH = int(os.environ.get("PILOT_RERANK_MAX_LENGTH", EMBED_MAX_LENGTH))
+RERANK_BATCH = int(os.environ.get("PILOT_RERANK_BATCH", "8"))                # torch/onnx backend batch boyutu
+TORCH_THREADS = int(os.environ["PILOT_TORCH_THREADS"]) if os.environ.get("PILOT_TORCH_THREADS") else None
+OPENROUTER_URL = os.environ.get("PILOT_OPENROUTER_URL", "https://openrouter.ai/api/v1")
+QDRANT_REUSE = os.environ.get("PILOT_QDRANT_REUSE", "0") == "1"           # istemci süreç boyunca tek örnek
+
 # Küçük model: 24 GB RAM'li makinede GPU belleğini zorlamaz. Değiştirmek için PILOT_LLM_MODEL ortam değişkeni.
 LLM_MODEL = os.environ.get("PILOT_LLM_MODEL", "qwen2.5:7b")
 LLM_NUM_CTX = 4096

@@ -204,7 +204,8 @@ def main() -> None:
     timed = [it for it in items if not a.timing_sets or it["set"] in a.timing_sets]
     rest = [it for it in items if it not in timed]
     params = {**retrieval_params(), "sets": a.sets, "timing_sets": a.timing_sets or a.sets, "repeats": a.repeats,
-              "warmup": a.warmup, "rerank": not a.no_rerank, "qdrant_mode": "embedded"}
+              "warmup": a.warmup, "rerank": not a.no_rerank, "qdrant_mode": "embedded",
+              "qdrant_reuse": __import__("pilot.index", fromlist=["REUSE"]).REUSE}
     log.info("%d soru: %d soru %d tur (süre + doğruluk), %d soru 1 tur (doğruluk)", len(items), len(timed),
              a.repeats, len(rest))
     memory = qdrant_memory()
@@ -218,6 +219,8 @@ def main() -> None:
                                       unfiltered=True)
         unf = {"rerank": not (a.no_rerank or a.unfiltered_no_rerank), "accuracy": summarize(urows),
                "timing": utimer.summary(), "questions": urows}
+    from pilot import index
+    index.close_shared()        # gömülü klasörü tek istemci açabilir; recall kendi istemcisini açar
     log.info("ANN recall: %d sorgu", a.recall_queries)
     recall = ann_recall(a.recall_queries) if a.recall_queries else None
     data = {"meta": meta(params), "accuracy": summarize(rows), "timing": timer.summary(),

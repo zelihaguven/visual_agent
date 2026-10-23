@@ -97,3 +97,78 @@ def test_question_sets_load_with_set_tag():
     assert {it["set"] for it in items} == set(common.KNOWN_SETS)
     assert len({it["qid"] for it in items}) == len(items)
     assert not set(common.HOLDOUT_SETS) & set(common.KNOWN_SETS)
+
+
+# ---------- reranker sağlayıcıları, CPU izleyicisi, paylaşılan Qdrant istemcisi ----------
+
+def test_length_batches_group_similar_lengths():
+    from pilot.rerankers import length_batches
+    b = length_batches([5, 50, 7, 49, 6], 2)
+    assert b == [[1, 3], [2, 4], [0]]
+    assert sorted(i for g in b for i in g) == list(range(5))
+
+
+def test_parse_rerank_response_restores_input_order():
+    from pilot.rerankers import parse_rerank_response
+    body = {"results": [{"index": 2, "relevance_score": 0.9}, {"index": 0, "relevance_score": 0.1}]}
+    assert parse_rerank_response(body, 3) == [0.1, float("-inf"), 0.9]
+    assert parse_rerank_response({"data": [{"index": 0, "score": 0.5}]}, 1) == [0.5]
+
+
+def test_openrouter_needs_key_from_env(monkeypatch):
+    from pilot.rerankers import make_reranker
+    monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
+    with pytest.raises(RuntimeError, match="OPENROUTER_API_KEY"):
+        make_reranker("openrouter", "cohere/rerank-v3.5")
+    with pytest.raises(ValueError):
+        make_reranker("local", "x", backend="yok")
+
+
+def test_parse_config():
+    from bench.rerank_bench import parse_config
+    c = parse_config("local:BAAI/bge-reranker-v2-m3:onnx-int8:384:4")
+    assert (c["model"], c["backend"], c["max_length"], c["batch"]) == ("BAAI/bge-reranker-v2-m3", "onnx-int8", 384, 4)
+    assert parse_config("local:m:torch:512")["batch"] == 8
+    o = parse_config("openrouter:cohere/rerank-v3.5")
+    assert o["provider"] == "openrouter" and o["model"] == "cohere/rerank-v3.5"
+    with pytest.raises(ValueError):
+        parse_config("local:m")
+
+
+def test_ranked_rank_limits_to_first_k_candidates():
+    from bench.rerank_bench import ranked_rank
+    cands = [_c("b", 1), _c("b", 2), _c("a", 3)]
+    assert ranked_rank(cands, None, ITEM, 20) == 3                  # RRF sırası
+    assert ranked_rank(cands, [0.1, 0.2, 0.9], ITEM, 20) == 1       # rerank öne aldı
+    assert ranked_rank(cands, [0.1, 0.2, 0.9], ITEM, 2) is None     # FUSED_K=2: aday hiç reranka gitmez
+
+
+def test_cpu_window_mean():
+    from bench.cpu import window_mean
+    t, v = [1.0, 2.0, 3.0, 4.0], [10.0, 20.0, 30.0, 40.0]
+    assert window_mean(t, v, 1.5, 3.5) == 25.0
+    assert window_mean(t, v, 3.2, 3.8) == 30.0       # pencerede örnek yok: önceki örnek
+    assert window_mean(t, v, 0.0, 0.5) is None
+
+
+def test_shared_qdrant_client_is_reused_only_when_enabled(monkeypatch):
+    from pilot import index
+
+    class Fake:
+        closed = False
+
+        def close(self):
+            self.closed = True
+
+    monkeypatch.setattr(index, "client", Fake)
+    monkeypatch.setattr(index, "_shared", None)
+    monkeypatch.setattr(index, "REUSE", False)
+    a = index.search_client()
+    index.release(a)
+    assert a.closed and index.search_client() is not a          # varsayılan: her arama yeni istemci
+    monkeypatch.setattr(index, "REUSE", True)
+    s = index.search_client()
+    index.release(s)
+    assert not s.closed and index.search_client() is s
+    index.close_shared()
+    assert s.closed and index._shared is None

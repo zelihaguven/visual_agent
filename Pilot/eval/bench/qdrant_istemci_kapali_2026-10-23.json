@@ -1,0 +1,778 @@
+{
+ "meta": {
+  "date": "2026-10-23T13:21:19",
+  "git_commit": "377ad66+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "env": {
+   "PILOT_QDRANT_REUSE": "0"
+  },
+  "params": {
+   "PREFETCH_K": 30,
+   "FUSED_K": 20,
+   "TOP_K_SOURCES": 5,
+   "EMBED_MODEL": "BAAI/bge-m3",
+   "RERANK_MODEL": "BAAI/bge-reranker-v2-m3",
+   "EMBED_MAX_LENGTH": 512,
+   "EMBED_DEVICE": "cpu",
+   "sets": [
+    "questions"
+   ],
+   "timing_sets": [
+    "questions"
+   ],
+   "repeats": 3,
+   "warmup": 3,
+   "rerank": false,
+   "qdrant_mode": "embedded",
+   "qdrant_reuse": false
+  }
+ },
+ "accuracy": {
+  "all": {
+   "n": 12,
+   "hit@1": 0.5833333333333334,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.75
+  },
+  "questions": {
+   "n": 12,
+   "hit@1": 0.5833333333333334,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.75
+  }
+ },
+ "timing": {
+  "embed": {
+   "n": 42,
+   "mean": 0.20183396190497574,
+   "p50": 0.20315695000044798,
+   "p95": 0.2317748349987596
+  },
+  "qdrant_open": {
+   "n": 42,
+   "mean": 1.0421083166664262,
+   "p50": 1.0065622499996607,
+   "p95": 1.233495034999578
+  },
+  "qdrant": {
+   "n": 42,
+   "mean": 0.29296977619071096,
+   "p50": 0.29879355000048236,
+   "p95": 0.352869169999758
+  },
+  "total": {
+   "n": 42,
+   "mean": 1.5624731238091651,
+   "p50": 1.5492939999994633,
+   "p95": 1.8145515549992521
+  }
+ },
+ "ann_recall": null,
+ "memory": {
+  "mode": "embedded",
+  "points": 4196,
+  "rss_delta_mb": 217.7,
+  "disk_mb": 51.2
+ },
+ "questions": [
+  {
+   "qid": "questions:Q01",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      23
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.5854,
+    1.8355,
+    1.8397
+   ]
+  },
+  {
+   "qid": "questions:Q02",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      1
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      25
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      1
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.4953,
+    1.5533,
+    1.5057
+   ]
+  },
+  {
+   "qid": "questions:Q03",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 3,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      3
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9,
+      10
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.6313,
+    1.3571,
+    1.4948
+   ]
+  },
+  {
+   "qid": "questions:Q04",
+   "set": "questions",
+   "kind": "arıza",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      101
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      106
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      29
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      78
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.5589,
+    1.6281,
+    1.7692
+   ]
+  },
+  {
+   "qid": "questions:Q05",
+   "set": "questions",
+   "kind": "tuzak",
+   "not_found": false,
+   "rank": 2,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300b",
+     [
+      53
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      109
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      110
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      113
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.5107,
+    1.5453,
+    1.524
+   ]
+  },
+  {
+   "qid": "questions:Q06",
+   "set": "questions",
+   "kind": "alan dışı",
+   "not_found": false,
+   "rank": 3,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "mrcoffee-2003",
+     [
+      8
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      1
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      16
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      2
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      7
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.5321,
+    1.7049,
+    1.6008
+   ]
+  },
+  {
+   "qid": "questions:Q09",
+   "set": "questions",
+   "kind": "cevapsız",
+   "not_found": true,
+   "rank": null,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      21
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      21
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.4783,
+    1.4759,
+    1.4589
+   ]
+  },
+  {
+   "qid": "questions:Q10",
+   "set": "questions",
+   "kind": "cevapsız",
+   "not_found": true,
+   "rank": null,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "granovsky-1986",
+     [
+      47,
+      48
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      63
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      178
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      63
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      84
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.634,
+    1.5938,
+    1.5314
+   ]
+  },
+  {
+   "qid": "questions:Q11",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      38
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.6104,
+    1.457,
+    1.149
+   ]
+  },
+  {
+   "qid": "questions:Q12",
+   "set": "questions",
+   "kind": "tuzak",
+   "not_found": false,
+   "rank": 3,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      21
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.4628,
+    1.6478,
+    1.4573
+   ]
+  },
+  {
+   "qid": "questions:Q13",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.8169,
+    1.4716,
+    1.7353
+   ]
+  },
+  {
+   "qid": "questions:Q14",
+   "set": "questions",
+   "kind": "kod",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      53
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.492,
+    1.5734,
+    1.5017
+   ]
+  },
+  {
+   "qid": "questions:Q15",
+   "set": "questions",
+   "kind": "kod",
+   "not_found": false,
+   "rank": 2,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      53
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.7036,
+    1.7496,
+    1.6285
+   ]
+  },
+  {
+   "qid": "questions:Q16",
+   "set": "questions",
+   "kind": "EN soru",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9,
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    1.4412,
+    1.6082,
+    1.2735
+   ]
+  },
+  {
+   "qid": "questions:Q07",
+   "set": "questions",
+   "skip": "expect_clarify"
+  },
+  {
+   "qid": "questions:Q08",
+   "set": "questions",
+   "skip": "yabanci_marka"
+  },
+  {
+   "qid": "questions:Q17",
+   "set": "questions",
+   "skip": "netlestirme"
+  },
+  {
+   "qid": "questions:Q18",
+   "set": "questions",
+   "skip": "yabanci_marka"
+  }
+ ],
+ "unfiltered": null
+}

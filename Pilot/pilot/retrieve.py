@@ -1,4 +1,5 @@
 """Hibrit arama (dense + sparse, RRF) + marka/doküman filtresi + reranker."""
+import os
 import re
 import time
 from collections.abc import Callable
@@ -9,10 +10,10 @@ from qdrant_client import models
 
 from .config import COLLECTION
 from .embed import embed, rerank
-from .index import client
+from .index import release, search_client
 
-PREFETCH_K = 30      # her kolun (dense, sparse) getirdiği aday sayısı
-FUSED_K = 20         # RRF sonrası rerank'a giden aday sayısı
+PREFETCH_K = int(os.environ.get("PILOT_PREFETCH_K", "30"))   # her kolun (dense, sparse) getirdiği aday sayısı
+FUSED_K = int(os.environ.get("PILOT_FUSED_K", "20"))         # RRF sonrası rerank'a giden aday sayısı
 
 # İsteğe bağlı zamanlama kancası (bench/measure.py): aşama adı ve süresi (sn) ile çağrılır. None: ölçüm yok.
 timing_hook: Callable[[str, float], None] | None = None
@@ -64,7 +65,7 @@ def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | 
     sparse_q = models.SparseVector(indices=list(sparse_src.keys()), values=list(sparse_src.values()))
 
     t = _lap("embed", t)
-    qc = client()
+    qc = search_client()
     t = _lap("qdrant_open", t)
     try:
         if mode == "dense":
@@ -81,7 +82,7 @@ def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | 
                 query=models.FusionQuery(fusion=models.Fusion.RRF),
                 limit=FUSED_K, with_payload=True)
     finally:
-        qc.close()
+        release(qc)
     t = _lap("qdrant", t)
 
     points = [p for p in res.points if not is_toc(p.payload["text"])]

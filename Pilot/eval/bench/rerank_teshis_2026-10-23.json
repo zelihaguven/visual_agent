@@ -1,0 +1,623 @@
+{
+ "meta": {
+  "date": "2026-10-23T12:04:50",
+  "git_commit": "377ad66+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "env": {},
+  "params": {
+   "qids": [
+    "questions:Q01",
+    "questions:Q04",
+    "sekil_sorular:G1"
+   ],
+   "calls": 2,
+   "default_threads": 10,
+   "flag_model_instance_cached": true,
+   "flag_batch_size": 128
+  }
+ },
+ "max_score_diff_vs_flag": 4.76837158203125e-06,
+ "rows": [
+  {
+   "label": "flag (varsayılan)",
+   "threads": 10,
+   "qid": "questions:Q01",
+   "seconds": 55.622883,
+   "cpu": {
+    "mhz": 1888.9988363130838,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.99633027522935
+   }
+  },
+  {
+   "label": "flag (varsayılan)",
+   "threads": 10,
+   "qid": "questions:Q04",
+   "seconds": 101.94481560000168,
+   "cpu": {
+    "mhz": 1818.3212220238338,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.9969696969697
+   }
+  },
+  {
+   "label": "flag (varsayılan)",
+   "threads": 10,
+   "qid": "sekil_sorular:G1",
+   "seconds": 54.279306800000995,
+   "cpu": {
+    "mhz": 1768.4121406090342,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.88962264150943
+   }
+  },
+  {
+   "label": "flag (varsayılan)",
+   "threads": 10,
+   "qid": "questions:Q01",
+   "seconds": 52.075459100000444,
+   "cpu": {
+    "mhz": 1792.8849053976953,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.27058823529413
+   }
+  },
+  {
+   "label": "flag (varsayılan)",
+   "threads": 10,
+   "qid": "questions:Q04",
+   "seconds": 93.0243661000004,
+   "cpu": {
+    "mhz": 1839.5573401744437,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.2292817679558
+   }
+  },
+  {
+   "label": "flag (varsayılan)",
+   "threads": 10,
+   "qid": "sekil_sorular:G1",
+   "seconds": 46.517297500000495,
+   "cpu": {
+    "mhz": 2022.668204351484,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.29120879120879
+   }
+  },
+  {
+   "label": "torch batch 20",
+   "threads": 10,
+   "qid": "questions:Q01",
+   "seconds": 27.266361699999834,
+   "cpu": {
+    "mhz": 1924.2023887246046,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 98.36415094339623
+   }
+  },
+  {
+   "label": "torch batch 20",
+   "threads": 10,
+   "qid": "questions:Q04",
+   "seconds": 49.68012309999904,
+   "cpu": {
+    "mhz": 1855.5522641739872,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 98.44123711340205
+   }
+  },
+  {
+   "label": "torch batch 20",
+   "threads": 10,
+   "qid": "sekil_sorular:G1",
+   "seconds": 28.005690500000128,
+   "cpu": {
+    "mhz": 1804.566742720951,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.99636363636364
+   }
+  },
+  {
+   "label": "torch batch 20",
+   "threads": 10,
+   "qid": "questions:Q01",
+   "seconds": 23.771369399999458,
+   "cpu": {
+    "mhz": 1848.5779000274365,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.52608695652174
+   }
+  },
+  {
+   "label": "torch batch 20",
+   "threads": 10,
+   "qid": "questions:Q04",
+   "seconds": 41.82838389999961,
+   "cpu": {
+    "mhz": 1923.2071724727994,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.93414634146342
+   }
+  },
+  {
+   "label": "torch batch 20",
+   "threads": 10,
+   "qid": "sekil_sorular:G1",
+   "seconds": 22.94478329999947,
+   "cpu": {
+    "mhz": 1934.4855083671725,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 8",
+   "threads": 10,
+   "qid": "questions:Q01",
+   "seconds": 15.041932500000257,
+   "cpu": {
+    "mhz": 1833.6382451252662,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 8",
+   "threads": 10,
+   "qid": "questions:Q04",
+   "seconds": 25.339925199999925,
+   "cpu": {
+    "mhz": 1830.511042965099,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.99591836734695
+   }
+  },
+  {
+   "label": "torch batch 8",
+   "threads": 10,
+   "qid": "sekil_sorular:G1",
+   "seconds": 17.10151919999953,
+   "cpu": {
+    "mhz": 1840.3342046472003,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 8",
+   "threads": 10,
+   "qid": "questions:Q01",
+   "seconds": 14.85974079999869,
+   "cpu": {
+    "mhz": 1837.3003725758858,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 8",
+   "threads": 10,
+   "qid": "questions:Q04",
+   "seconds": 25.550758100000166,
+   "cpu": {
+    "mhz": 1830.1733549221003,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.994
+   }
+  },
+  {
+   "label": "torch batch 8",
+   "threads": 10,
+   "qid": "sekil_sorular:G1",
+   "seconds": 17.147841800000606,
+   "cpu": {
+    "mhz": 1833.6119404843053,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 4",
+   "threads": 10,
+   "qid": "questions:Q01",
+   "seconds": 14.792197500000839,
+   "cpu": {
+    "mhz": 1820.1976344669145,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.98965517241379
+   }
+  },
+  {
+   "label": "torch batch 4",
+   "threads": 10,
+   "qid": "questions:Q04",
+   "seconds": 17.04874629999904,
+   "cpu": {
+    "mhz": 1853.918518414855,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.98484848484848
+   }
+  },
+  {
+   "label": "torch batch 4",
+   "threads": 10,
+   "qid": "sekil_sorular:G1",
+   "seconds": 15.251852299999882,
+   "cpu": {
+    "mhz": 1862.777623102357,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.99
+   }
+  },
+  {
+   "label": "torch batch 4",
+   "threads": 10,
+   "qid": "questions:Q01",
+   "seconds": 13.611378899999181,
+   "cpu": {
+    "mhz": 1870.0953260047763,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 4",
+   "threads": 10,
+   "qid": "questions:Q04",
+   "seconds": 18.99932540000009,
+   "cpu": {
+    "mhz": 1855.8365007370253,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 4",
+   "threads": 10,
+   "qid": "sekil_sorular:G1",
+   "seconds": 15.342881299999135,
+   "cpu": {
+    "mhz": 1857.108453362197,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 8, 2 iş parçacığı",
+   "threads": 2,
+   "qid": "questions:Q01",
+   "seconds": 28.47561230000065,
+   "cpu": {
+    "mhz": 2452.915437243132,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 58.6
+   }
+  },
+  {
+   "label": "torch batch 8, 2 iş parçacığı",
+   "threads": 2,
+   "qid": "questions:Q04",
+   "seconds": 54.19334019999951,
+   "cpu": {
+    "mhz": 2413.5969453815997,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 63.08504672897197
+   }
+  },
+  {
+   "label": "torch batch 8, 2 iş parçacığı",
+   "threads": 2,
+   "qid": "sekil_sorular:G1",
+   "seconds": 35.05561320000015,
+   "cpu": {
+    "mhz": 2284.073286599027,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 65.14264705882353
+   }
+  },
+  {
+   "label": "torch batch 8, 2 iş parçacığı",
+   "threads": 2,
+   "qid": "questions:Q01",
+   "seconds": 39.58806409999852,
+   "cpu": {
+    "mhz": 2509.7309369086224,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 54.620512820512815
+   }
+  },
+  {
+   "label": "torch batch 8, 2 iş parçacığı",
+   "threads": 2,
+   "qid": "questions:Q04",
+   "seconds": 69.8026690000006,
+   "cpu": {
+    "mhz": 2422.0141557292573,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 56.51313868613139
+   }
+  },
+  {
+   "label": "torch batch 8, 2 iş parçacığı",
+   "threads": 2,
+   "qid": "sekil_sorular:G1",
+   "seconds": 41.54306279999946,
+   "cpu": {
+    "mhz": 2446.8010170900966,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 56.08780487804878
+   }
+  },
+  {
+   "label": "torch batch 8, 4 iş parçacığı",
+   "threads": 4,
+   "qid": "questions:Q01",
+   "seconds": 27.56939980000061,
+   "cpu": {
+    "mhz": 2063.8612209918883,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 71.02909090909091
+   }
+  },
+  {
+   "label": "torch batch 8, 4 iş parçacığı",
+   "threads": 4,
+   "qid": "questions:Q04",
+   "seconds": 52.46316309999929,
+   "cpu": {
+    "mhz": 1925.867822389662,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 76.54807692307692
+   }
+  },
+  {
+   "label": "torch batch 8, 4 iş parçacığı",
+   "threads": 4,
+   "qid": "sekil_sorular:G1",
+   "seconds": 33.65732670000034,
+   "cpu": {
+    "mhz": 1987.6366685445053,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 73.41060606060607
+   }
+  },
+  {
+   "label": "torch batch 8, 4 iş parçacığı",
+   "threads": 4,
+   "qid": "questions:Q01",
+   "seconds": 28.190559399999984,
+   "cpu": {
+    "mhz": 2020.5827108825956,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 72.49107142857143
+   }
+  },
+  {
+   "label": "torch batch 8, 4 iş parçacığı",
+   "threads": 4,
+   "qid": "questions:Q04",
+   "seconds": 48.71189869999944,
+   "cpu": {
+    "mhz": 1966.0756950839004,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 75.97395833333333
+   }
+  },
+  {
+   "label": "torch batch 8, 4 iş parçacığı",
+   "threads": 4,
+   "qid": "sekil_sorular:G1",
+   "seconds": 30.354505599998447,
+   "cpu": {
+    "mhz": 2071.779836626729,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 70.65166666666667
+   }
+  },
+  {
+   "label": "torch batch 8, 6 iş parçacığı",
+   "threads": 6,
+   "qid": "questions:Q01",
+   "seconds": 22.192872399999032,
+   "cpu": {
+    "mhz": 1993.9292569707984,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 76.09318181818182
+   }
+  },
+  {
+   "label": "torch batch 8, 6 iş parçacığı",
+   "threads": 6,
+   "qid": "questions:Q04",
+   "seconds": 37.26521390000016,
+   "cpu": {
+    "mhz": 1982.296020298729,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 79.57837837837837
+   }
+  },
+  {
+   "label": "torch batch 8, 6 iş parçacığı",
+   "threads": 6,
+   "qid": "sekil_sorular:G1",
+   "seconds": 26.54593229999955,
+   "cpu": {
+    "mhz": 1947.79387030709,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 78.9403846153846
+   }
+  },
+  {
+   "label": "torch batch 8, 6 iş parçacığı",
+   "threads": 6,
+   "qid": "questions:Q01",
+   "seconds": 19.66515299999992,
+   "cpu": {
+    "mhz": 2209.790633738334,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 67.53076923076924
+   }
+  },
+  {
+   "label": "torch batch 8, 6 iş parçacığı",
+   "threads": 6,
+   "qid": "questions:Q04",
+   "seconds": 42.437357099999645,
+   "cpu": {
+    "mhz": 1837.6683533118246,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 90.5670731707317
+   }
+  },
+  {
+   "label": "torch batch 8, 6 iş parçacığı",
+   "threads": 6,
+   "qid": "sekil_sorular:G1",
+   "seconds": 31.59557450000102,
+   "cpu": {
+    "mhz": 1695.3570293158186,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 8, 8 iş parçacığı",
+   "threads": 8,
+   "qid": "questions:Q01",
+   "seconds": 21.62374439999985,
+   "cpu": {
+    "mhz": 1790.2758012466272,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.9952380952381
+   }
+  },
+  {
+   "label": "torch batch 8, 8 iş parçacığı",
+   "threads": 8,
+   "qid": "questions:Q04",
+   "seconds": 34.514976799999204,
+   "cpu": {
+    "mhz": 1789.3492962150153,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.96268656716418
+   }
+  },
+  {
+   "label": "torch batch 8, 8 iş parçacığı",
+   "threads": 8,
+   "qid": "sekil_sorular:G1",
+   "seconds": 22.53031530000044,
+   "cpu": {
+    "mhz": 1726.0014965125379,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.96666666666667
+   }
+  },
+  {
+   "label": "torch batch 8, 8 iş parçacığı",
+   "threads": 8,
+   "qid": "questions:Q01",
+   "seconds": 73.47408069999983,
+   "cpu": {
+    "mhz": 1939.441200031795,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 98.91470588235293
+   }
+  },
+  {
+   "label": "torch batch 8, 8 iş parçacığı",
+   "threads": 8,
+   "qid": "questions:Q04",
+   "seconds": 29.53589490000013,
+   "cpu": {
+    "mhz": 2043.935244435451,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 98.82241379310345
+   }
+  },
+  {
+   "label": "torch batch 8, 8 iş parçacığı",
+   "threads": 8,
+   "qid": "sekil_sorular:G1",
+   "seconds": 20.73239309999917,
+   "cpu": {
+    "mhz": 1817.0831062124369,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 98.58048780487805
+   }
+  },
+  {
+   "label": "torch batch 8, 12 iş parçacığı",
+   "threads": 12,
+   "qid": "questions:Q01",
+   "seconds": 16.907914399998845,
+   "cpu": {
+    "mhz": 1840.604575838479,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 8, 12 iş parçacığı",
+   "threads": 12,
+   "qid": "questions:Q04",
+   "seconds": 28.13885979999941,
+   "cpu": {
+    "mhz": 1850.827364676109,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.9962962962963
+   }
+  },
+  {
+   "label": "torch batch 8, 12 iş parçacığı",
+   "threads": 12,
+   "qid": "sekil_sorular:G1",
+   "seconds": 21.556220399999802,
+   "cpu": {
+    "mhz": 1856.6859911838767,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.99512195121952
+   }
+  },
+  {
+   "label": "torch batch 8, 12 iş parçacığı",
+   "threads": 12,
+   "qid": "questions:Q01",
+   "seconds": 15.384953499999028,
+   "cpu": {
+    "mhz": 1940.6759986757702,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  },
+  {
+   "label": "torch batch 8, 12 iş parçacığı",
+   "threads": 12,
+   "qid": "questions:Q04",
+   "seconds": 28.537397000000055,
+   "cpu": {
+    "mhz": 1851.0031898524842,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 99.99642857142858
+   }
+  },
+  {
+   "label": "torch batch 8, 12 iş parçacığı",
+   "threads": 12,
+   "qid": "sekil_sorular:G1",
+   "seconds": 19.106099599999652,
+   "cpu": {
+    "mhz": 1868.2572239468234,
+    "psutil_mhz": 1300.0,
+    "cpu_load": 100.0
+   }
+  }
+ ]
+}

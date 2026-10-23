@@ -1,9 +1,13 @@
-"""bge-m3 (dense + sparse) ve bge-reranker-v2-m3 sarmalayıcıları. Tembel yüklenir, CPU'da çalışır."""
+"""bge-m3 (dense + sparse) ve reranker sarmalayıcıları. Tembel yüklenir, CPU'da çalışır.
+
+Reranker sağlayıcısı config'den (PILOT_RERANK_*); varsayılan bge-reranker-v2-m3, FlagEmbedding, max_length 512.
+Sağlayıcılar: rerankers.py."""
 import warnings
 from functools import lru_cache
 from typing import Any
 
-from .config import EMBED_BATCH, EMBED_DEVICE, EMBED_MAX_LENGTH, EMBED_MODEL, RERANK_MODEL
+from .config import (EMBED_BATCH, EMBED_DEVICE, EMBED_MAX_LENGTH, EMBED_MODEL, RERANK_BACKEND, RERANK_BATCH,
+                     RERANK_MAX_LENGTH, RERANK_MODEL, RERANK_PROVIDER)
 
 warnings.filterwarnings("ignore")
 
@@ -16,8 +20,8 @@ def _embedder():
 
 @lru_cache(maxsize=1)
 def _reranker():
-    from FlagEmbedding import FlagReranker
-    return FlagReranker(RERANK_MODEL, use_fp16=False, devices=[EMBED_DEVICE])
+    from .rerankers import make_reranker
+    return make_reranker(RERANK_PROVIDER, RERANK_MODEL, RERANK_BACKEND, RERANK_MAX_LENGTH, RERANK_BATCH)
 
 
 def embed(texts: list[str]) -> list[dict[str, Any]]:
@@ -32,5 +36,4 @@ def embed(texts: list[str]) -> list[dict[str, Any]]:
 def rerank(query: str, passages: list[str]) -> list[float]:
     if not passages:
         return []
-    scores = _reranker().compute_score([[query, p] for p in passages], max_length=EMBED_MAX_LENGTH)
-    return [float(s) for s in (scores if isinstance(scores, list) else [scores])]
+    return _reranker()(query, passages)

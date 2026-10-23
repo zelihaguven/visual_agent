@@ -5,7 +5,7 @@ from typing import Any
 
 from qdrant_client import QdrantClient, models
 
-from .config import COLLECTION, QDRANT_DIR
+from .config import COLLECTION, QDRANT_DIR, QDRANT_REUSE
 from .embed import embed
 
 log = logging.getLogger(__name__)
@@ -16,6 +16,34 @@ BATCH = 64
 def client() -> QdrantClient:
     QDRANT_DIR.mkdir(parents=True, exist_ok=True)
     return QdrantClient(path=str(QDRANT_DIR))
+
+
+# Arama istemcisi: REUSE ise süreç boyunca tek örnek (gömülü modda her açılış koleksiyonu diskten yükler, ~2 sn).
+# Kapalıysa (varsayılan) her aramada açılıp kapanır; gömülü klasör aramalar arasında başka sürece açık kalır.
+REUSE = QDRANT_REUSE
+_shared: QdrantClient | None = None
+
+
+def search_client() -> QdrantClient:
+    global _shared
+    if not REUSE:
+        return client()
+    if _shared is None:
+        _shared = client()
+    return _shared
+
+
+def release(qc: QdrantClient) -> None:
+    """search_client() ile alınan istemciyi bırakır: paylaşılan örnek açık kalır, diğerleri kapanır."""
+    if qc is not _shared:
+        qc.close()
+
+
+def close_shared() -> None:
+    global _shared
+    if _shared is not None:
+        _shared.close()
+        _shared = None
 
 
 def _upsert(qc: QdrantClient, chunks: list[dict[str, Any]], first_id: int) -> None:

@@ -69,6 +69,20 @@ Kullanım:
 - `PILOT_LLM_MODEL`: başka LLM. 24 GB RAM'de 14B'den büyüğü önerilmez, bkz. [KURULUM-LOGU.md](KURULUM-LOGU.md).
 - `PILOT_STT_MODEL`: başka STT modeli.
 
+Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), ölçüm kodu `bench/`). Hepsi isteğe bağlı; varsayılan pilotun ölçülen yapısıdır:
+
+| Değişken | Varsayılan | Seçenekler |
+|----------|------------|------------|
+| `PILOT_RERANK_PROVIDER` | `local` | `openrouter` (bulut; anahtar yalnız `OPENROUTER_API_KEY` ortam değişkeninden) |
+| `PILOT_RERANK_MODEL` | `BAAI/bge-reranker-v2-m3` | ör. `jinaai/jina-reranker-v2-base-multilingual`, bulutta `cohere/rerank-v3.5` |
+| `PILOT_RERANK_BACKEND` | `flag` (FlagEmbedding) | `torch` (aynı skor, ~3 kat hızlı), `onnx`, `onnx-int8` (önce `python -m bench.onnx_export <model>`) |
+| `PILOT_RERANK_MAX_LENGTH` | `512` | token sınırı (soru + parça) |
+| `PILOT_RERANK_BATCH` | `8` | `torch`/`onnx` batch boyutu (uzunluğa göre gruplanır) |
+| `PILOT_TORCH_THREADS` | torch varsayılanı | iş parçacığı sayısı |
+| `PILOT_FUSED_K`, `PILOT_PREFETCH_K` | `20`, `30` | rerank'a giden aday sayısı, her kolun aday sayısı |
+| `PILOT_QDRANT_REUSE` | `0` | `1`: Qdrant istemcisi süreç boyunca açık kalır (arama başına ~1 sn kazanç; gömülü klasör o süreçte kilitli kalır) |
+| `PILOT_OPENROUTER_URL` | `https://openrouter.ai/api/v1` | |
+
 **Şekil açıklaması (isteğe bağlı, VLM):** Çizimlerin aranabilmesi için her şekle bir kez metin açıklaması yazılır.
 
 ```powershell

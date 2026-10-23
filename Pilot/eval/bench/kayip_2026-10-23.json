@@ -1,0 +1,1194 @@
+{
+ "meta": {
+  "date": "2026-10-23T13:19:11",
+  "git_commit": "377ad66+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "env": {},
+  "params": {
+   "qids": [
+    "questions_ek:Q27",
+    "sekil_sorular:N1",
+    "sekil_sorular:N2"
+   ],
+   "deep": 500
+  }
+ },
+ "rows": [
+  {
+   "qid": "questions_ek:Q27",
+   "q": "Ceketteki cırt bant kenardan ne kadar içeriden dikilmeli?",
+   "search_q": "Ceketteki cırt bant kenardan ne kadar içeriden dikilmeli?",
+   "doc_ids": [
+    "gl-pd-14-04a"
+   ],
+   "expect_pages": [
+    10
+   ],
+   "arms": {
+    "filtreli": {
+     "dense": {
+      "expected": {
+       "gl-pd-14-04a-00083": [
+        114,
+        0.5420750714896232
+       ],
+       "gl-pd-14-04a-00084": [
+        303,
+        0.49652498261826555
+       ],
+       "gl-pd-14-04a-00085": [
+        273,
+        0.5061348320797447
+       ],
+       "gl-pd-14-04a-00086": [
+        160,
+        0.5367842901744762
+       ],
+       "gl-pd-14-04a-00087": [
+        189,
+        0.5326516129511777
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "gl-pd-14-04a-00093",
+        "pages": [
+         12
+        ],
+        "type": "text",
+        "score": 0.5854,
+        "toc": false,
+        "text": "3.7.7.2 Chest pocket flaps. The chest pocket flaps shall finish 1-1/2 (± 1/8) inches in width and be of sufficient length to cover the top of the pocket. The to"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "gl-pd-14-04a-00090",
+        "pages": [
+         11
+        ],
+        "type": "text",
+        "score": 0.5845,
+        "toc": false,
+        "text": "3.7.5 Sleeve cuff. The sleeve cuff shall be as specified in the pattern. The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "gl-pd-14-04a-00192",
+        "pages": [
+         25
+        ],
+        "type": "table_row",
+        "score": 0.5838,
+        "toc": false,
+        "text": "Bar-tack or back-tack placement: Front chest pocket flaps (superimposed on topstitching) a. Top (left and right) | Size of tack (inches): 5/8 | Stitches per tac"
+       }
+      ]
+     },
+     "sparse": {
+      "expected": {
+       "gl-pd-14-04a-00083": [
+        328,
+        0.08310718834400177
+       ],
+       "gl-pd-14-04a-00084": [
+        466,
+        0.07519525289535522
+       ],
+       "gl-pd-14-04a-00085": [
+        283,
+        0.08540773391723633
+       ],
+       "gl-pd-14-04a-00086": [
+        null,
+        null
+       ],
+       "gl-pd-14-04a-00087": [
+        254,
+        0.0868661031126976
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "gl-pd-14-04a-00490",
+        "pages": [
+         49
+        ],
+        "type": "table_row",
+        "score": 0.1466,
+        "toc": false,
+        "text": "Size: X-Short | 30: 24-7/8 | 33: 25-3/8 | 36: 25-7/8 | 39: 26-3/8"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "gl-pd-14-04a-00509",
+        "pages": [
+         50
+        ],
+        "type": "table_row",
+        "score": 0.1451,
+        "toc": false,
+        "text": "Size: X-Short | 30: 15-3/8 | 33: 16-1/8 | 36: 16-7/8 | 39: 17-5/8"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "gl-pd-14-04a-00503",
+        "pages": [
+         50
+        ],
+        "type": "table_row",
+        "score": 0.1447,
+        "toc": false,
+        "text": "Size: X-Short | 30: 23-7/8 | 33: 22-1/8 | 36: 22-3/8 | 39: 22-5/8"
+       }
+      ]
+     },
+     "rrf_rank": {
+      "gl-pd-14-04a-00083": null,
+      "gl-pd-14-04a-00084": null,
+      "gl-pd-14-04a-00085": null,
+      "gl-pd-14-04a-00086": null,
+      "gl-pd-14-04a-00087": null
+     }
+    },
+    "filtresiz": {
+     "dense": {
+      "expected": {
+       "gl-pd-14-04a-00083": [
+        196,
+        0.5420750714896232
+       ],
+       "gl-pd-14-04a-00084": [
+        null,
+        null
+       ],
+       "gl-pd-14-04a-00085": [
+        null,
+        null
+       ],
+       "gl-pd-14-04a-00086": [
+        266,
+        0.5367842901744762
+       ],
+       "gl-pd-14-04a-00087": [
+        305,
+        0.5326516129511777
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "strickland-1956-00148",
+        "pages": [
+         86
+        ],
+        "type": "text",
+        "score": 0.6168,
+        "toc": false,
+        "text": "Place belt around waist with placket opening at side or center back. (For placket openings see Fig. 28 a, b, pp. 63-64.) Measure the finished skirt length at si"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "strickland-1956-00125",
+        "pages": [
+         77
+        ],
+        "type": "text",
+        "score": 0.6078,
+        "toc": false,
+        "text": "Turn seams along belt length to wrong side, baste and steam. Fold belt lengthwise through center, allowing outside belt width to be approximately Vi 6 inch wide"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "strickland-1956-00133",
+        "pages": [
+         80
+        ],
+        "type": "text",
+        "score": 0.6051,
+        "toc": false,
+        "text": "A garment that flares around the bottom should be stitched from the bottom up. d. a, by c indicate directions in which seams and darts should be stitched. d. Al"
+       }
+      ]
+     },
+     "sparse": {
+      "expected": {
+       "gl-pd-14-04a-00083": [
+        328,
+        0.08310718834400177
+       ],
+       "gl-pd-14-04a-00084": [
+        466,
+        0.07519525289535522
+       ],
+       "gl-pd-14-04a-00085": [
+        283,
+        0.08540773391723633
+       ],
+       "gl-pd-14-04a-00086": [
+        null,
+        null
+       ],
+       "gl-pd-14-04a-00087": [
+        254,
+        0.0868661031126976
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "gl-pd-14-04a-00490",
+        "pages": [
+         49
+        ],
+        "type": "table_row",
+        "score": 0.1466,
+        "toc": false,
+        "text": "Size: X-Short | 30: 24-7/8 | 33: 25-3/8 | 36: 25-7/8 | 39: 26-3/8"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "gl-pd-14-04a-00509",
+        "pages": [
+         50
+        ],
+        "type": "table_row",
+        "score": 0.1451,
+        "toc": false,
+        "text": "Size: X-Short | 30: 15-3/8 | 33: 16-1/8 | 36: 16-7/8 | 39: 17-5/8"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "gl-pd-14-04a-00503",
+        "pages": [
+         50
+        ],
+        "type": "table_row",
+        "score": 0.1447,
+        "toc": false,
+        "text": "Size: X-Short | 30: 23-7/8 | 33: 22-1/8 | 36: 22-3/8 | 39: 22-5/8"
+       }
+      ]
+     },
+     "rrf_rank": {
+      "gl-pd-14-04a-00083": null,
+      "gl-pd-14-04a-00084": null,
+      "gl-pd-14-04a-00085": null,
+      "gl-pd-14-04a-00086": null,
+      "gl-pd-14-04a-00087": null
+     }
+    }
+   },
+   "expected": [
+    {
+     "chunk_id": "gl-pd-14-04a-00083",
+     "type": "text",
+     "pages": [
+      9,
+      10
+     ],
+     "section": "3.5.1 Slide fasteners.",
+     "generated": "",
+     "toc": false,
+     "chars": 797,
+     "embed_text": "US Army (GL-PD) Ceket | 3.5.1 Slide fasteners.\nTABLE II. Thread requirements, Types II and III only. 1/ Needle & Bobbin/Looper shall use same Tex size thread Gimp. The cotton gimp for reinforcing buttonholes shall conform to A-A-50198, soft or glazed finish, Tex Size 180 or 210. Buttons. Buttons shall be dull finish, four (4) holes, 30 ligne conforming to V-B-871, Type II, Class D, Style 26. When attached to the coat, the button and thread shall withstand a pull/break of 40 pounds (minimum) when tested as specified in 4.4.2. 3.5.9 Integrated Patch Kit, (IPK) (Types II and III only, all styles and classes). The IPK shall conform to the requirements of GL/PD 10-08. UCP uniforms shall use Class"
+    },
+    {
+     "chunk_id": "gl-pd-14-04a-00084",
+     "type": "text",
+     "pages": [
+      10
+     ],
+     "section": "3.5.1 Slide fasteners.",
+     "generated": "",
+     "toc": false,
+     "chars": 932,
+     "embed_text": "US Army (GL-PD) Ceket | 3.5.1 Slide fasteners.\n3.6 Design. The coat design for Style A-Unisex and Style B-Female has a single-breasted front with a slide fastener (double slider) closure and a secondary hook and loop fastener tape closure; a band collar; long sleeves with cuffs and one (1) button, three (3) buttonholes adjustable cuff tab; and a bi-swing back. The collar has a fusible interlining. The front has two (2) angled chest pockets with flaps with hook and loop fastener tape closures. Above each chest pocket there is loop tape to accommodate the Name and US Army Tapes. The front placket has a loop tape for the Rank Patch. The coat has two (2) bellow style upper sleeve pockets and inc"
+    },
+    {
+     "chunk_id": "gl-pd-14-04a-00085",
+     "type": "text",
+     "pages": [
+      10
+     ],
+     "section": "3.5.1 Slide fasteners.",
+     "generated": "",
+     "toc": false,
+     "chars": 907,
+     "embed_text": "US Army (GL-PD) Ceket | 3.5.1 Slide fasteners.\nBoth sleeves have an Identification Friend or Foe tab cover that can be opened and closed using hook and loop fastener. The IFF tab cover is centered and sewn onto the sleeve above the upper sleeve pocket. The left sleeve has a two (2) channel pencil pocket. The coat has a double turned and cleaned finished hem. The Type II and Type III coat has an FR indicator located on the outside of the left sleeve cuff. 3.7 Construction (all types, styles and classes). The construction for coats shall be made in accordance to paragraphs 3.7.1 - 3.7.13. Construction is for all types, styles and classes unless otherwise noted. All garment material edges shall"
+    },
+    {
+     "chunk_id": "gl-pd-14-04a-00086",
+     "type": "text",
+     "pages": [
+      10
+     ],
+     "section": "3.5.1 Slide fasteners.",
+     "generated": "",
+     "toc": false,
+     "chars": 901,
+     "embed_text": "US Army (GL-PD) Ceket | 3.5.1 Slide fasteners.\n3.7.1 Fastener tape (hook and loop). All widths of hook and loop tape shall be sewn 1/8-inch to 3/16-inch from bound selvage (for fastener tape with selvage) or from tape edge (for fastener tape without selvage) to prevent needle cutting along edges, stitching runoffs or improper fit into automatic sewing equipment. To prevent raveling on fastener tape with selvage, do not sew directly on the selvage. The use of fastener tape that is slit, has split edges, or any splicing of fastener tape is not permitted. Under no circumstances shall any fastener tape be re-stitched for repair purposes. New tape shall be used for repairs to prevent needle cutti"
+    },
+    {
+     "chunk_id": "gl-pd-14-04a-00087",
+     "type": "text",
+     "pages": [
+      10,
+      11
+     ],
+     "section": "3.5.1 Slide fasteners.",
+     "generated": "",
+     "toc": false,
+     "chars": 872,
+     "embed_text": "US Army (GL-PD) Ceket | 3.5.1 Slide fasteners.\n3.7.2 Collar. The collar (see figure 3) shall be interlined with a fusible as specified in 3.3.2. 3.7.3 Front closure. The front closure is a (double slider) slide fastener with a secondary hook and loop tape closure (see figure 1). The secondary closure consists of three (3) pairs of hook and loop fastener tape. The hook portion is on the underside of the front overlapping facing (left side) and is additionally stitched with a box-x stitch. The loop portion is stitched to the front side of the under facing (right side) and is additionally stitched with a box-x stitch and coincides with the hook. The hook and loop fasteners for the front closure"
+    }
+   ]
+  },
+  {
+   "qid": "sekil_sorular:N1",
+   "q": "Granovsky kitabına göre tarak (card) şapkalarında aşınmış iğne şeridi nasıl değiştirilir?",
+   "search_q": "Granovsky kitabına göre tarak (card) şapkalarında aşınmış iğne şeridi nasıl değiştirilir?",
+   "doc_ids": [
+    "granovsky-1986"
+   ],
+   "expect_pages": [
+    101,
+    102
+   ],
+   "arms": {
+    "filtreli": {
+     "dense": {
+      "expected": {
+       "granovsky-1986-00301": [
+        22,
+        0.548872816914892
+       ],
+       "granovsky-1986-00302": [
+        144,
+        0.49736709785526534
+       ],
+       "granovsky-1986-00303": [
+        null,
+        null
+       ],
+       "granovsky-1986-00304": [
+        154,
+        0.4952028246093573
+       ],
+       "granovsky-1986-00305": [
+        199,
+        0.48433208600814015
+       ],
+       "granovsky-1986-00306": [
+        231,
+        0.47774478734684656
+       ],
+       "granovsky-1986-00307": [
+        null,
+        null
+       ],
+       "granovsky-1986-00863": [
+        null,
+        null
+       ],
+       "granovsky-1986-00864": [
+        null,
+        null
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "granovsky-1986-00447",
+        "pages": [
+         145
+        ],
+        "type": "text",
+        "score": 0.5732,
+        "toc": false,
+        "text": "are surfaced by spraying or built-up. Frequently worn-out shafts and bearings are replaced by new ones. Worn hooks are restored by using capron bushings. Cotton"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "granovsky-1986-00456",
+        "pages": [
+         148
+        ],
+        "type": "text",
+        "score": 0.5721,
+        "toc": false,
+        "text": "ss o CO ps *J3 Pin PD © CD P5C5 CD ►>> © 3 £ © cd o *h pP TO © ©ooP i & CD © o ’JD g £ £ o ^ -H tl'HFH Oh Q H ?-Hg •~1 r*. gQ « © PC CO iO .25 • a. <*-< CO ®-~*"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "granovsky-1986-00368",
+        "pages": [
+         121
+        ],
+        "type": "text",
+        "score": 0.5713,
+        "toc": false,
+        "text": "headgearings— examining the transmissions, replacing faulty parts,, and the adjustment of meshing; draw box— disassembling and checking the top and bottom rolle"
+       }
+      ]
+     },
+     "sparse": {
+      "expected": {
+       "granovsky-1986-00301": [
+        271,
+        0.03492683544754982
+       ],
+       "granovsky-1986-00302": [
+        null,
+        null
+       ],
+       "granovsky-1986-00303": [
+        220,
+        0.03685428947210312
+       ],
+       "granovsky-1986-00304": [
+        379,
+        0.03219868242740631
+       ],
+       "granovsky-1986-00305": [
+        265,
+        0.035063084214925766
+       ],
+       "granovsky-1986-00306": [
+        null,
+        null
+       ],
+       "granovsky-1986-00307": [
+        null,
+        null
+       ],
+       "granovsky-1986-00863": [
+        null,
+        null
+       ],
+       "granovsky-1986-00864": [
+        null,
+        null
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "granovsky-1986-00320",
+        "pages": [
+         106
+        ],
+        "type": "text",
+        "score": 0.0935,
+        "toc": false,
+        "text": "they are repaired by planing the keyway or the whole length of the hub to ensure a more rigid connection of the vertical shaft with the gear. Assembly and adjus"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "granovsky-1986-00282",
+        "pages": [
+         94
+        ],
+        "type": "text",
+        "score": 0.0833,
+        "toc": false,
+        "text": "repairing in the shop as well as their transport and installation after repair are rather complicated and heavy, and require special jigs and fixtures. For this"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "granovsky-1986-00000",
+        "pages": [
+         3,
+         4,
+         5
+        ],
+        "type": "text",
+        "score": 0.0719,
+        "toc": false,
+        "text": "( S p i n n i n g a n d W e a v i n g E q u i p m e n t ) First published 1986 Revised from the 1984 Russian edition Translated from the Russian by N. Chernyshe"
+       }
+      ]
+     },
+     "rrf_rank": {
+      "granovsky-1986-00301": 36,
+      "granovsky-1986-00302": null,
+      "granovsky-1986-00303": null,
+      "granovsky-1986-00304": null,
+      "granovsky-1986-00305": null,
+      "granovsky-1986-00306": null,
+      "granovsky-1986-00307": null,
+      "granovsky-1986-00863": null,
+      "granovsky-1986-00864": null
+     }
+    },
+    "filtresiz": {
+     "dense": {
+      "expected": {
+       "granovsky-1986-00301": [
+        22,
+        0.548872816914892
+       ],
+       "granovsky-1986-00302": [
+        144,
+        0.49736709785526545
+       ],
+       "granovsky-1986-00303": [
+        null,
+        null
+       ],
+       "granovsky-1986-00304": [
+        154,
+        0.4952028246093573
+       ],
+       "granovsky-1986-00305": [
+        202,
+        0.48433208600814026
+       ],
+       "granovsky-1986-00306": [
+        237,
+        0.47774478734684656
+       ],
+       "granovsky-1986-00307": [
+        null,
+        null
+       ],
+       "granovsky-1986-00863": [
+        null,
+        null
+       ],
+       "granovsky-1986-00864": [
+        null,
+        null
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "granovsky-1986-00447",
+        "pages": [
+         145
+        ],
+        "type": "text",
+        "score": 0.5732,
+        "toc": false,
+        "text": "are surfaced by spraying or built-up. Frequently worn-out shafts and bearings are replaced by new ones. Worn hooks are restored by using capron bushings. Cotton"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "granovsky-1986-00456",
+        "pages": [
+         148
+        ],
+        "type": "text",
+        "score": 0.5721,
+        "toc": false,
+        "text": "ss o CO ps *J3 Pin PD © CD P5C5 CD ►>> © 3 £ © cd o *h pP TO © ©ooP i & CD © o ’JD g £ £ o ^ -H tl'HFH Oh Q H ?-Hg •~1 r*. gQ « © PC CO iO .25 • a. <*-< CO ®-~*"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "granovsky-1986-00368",
+        "pages": [
+         121
+        ],
+        "type": "text",
+        "score": 0.5713,
+        "toc": false,
+        "text": "headgearings— examining the transmissions, replacing faulty parts,, and the adjustment of meshing; draw box— disassembling and checking the top and bottom rolle"
+       }
+      ]
+     },
+     "sparse": {
+      "expected": {
+       "granovsky-1986-00301": [
+        272,
+        0.03492683544754982
+       ],
+       "granovsky-1986-00302": [
+        null,
+        null
+       ],
+       "granovsky-1986-00303": [
+        221,
+        0.03685428947210312
+       ],
+       "granovsky-1986-00304": [
+        380,
+        0.03219868242740631
+       ],
+       "granovsky-1986-00305": [
+        266,
+        0.035063084214925766
+       ],
+       "granovsky-1986-00306": [
+        null,
+        null
+       ],
+       "granovsky-1986-00307": [
+        null,
+        null
+       ],
+       "granovsky-1986-00863": [
+        null,
+        null
+       ],
+       "granovsky-1986-00864": [
+        null,
+        null
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "granovsky-1986-00320",
+        "pages": [
+         106
+        ],
+        "type": "text",
+        "score": 0.0935,
+        "toc": false,
+        "text": "they are repaired by planing the keyway or the whole length of the hub to ensure a more rigid connection of the vertical shaft with the gear. Assembly and adjus"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "granovsky-1986-00282",
+        "pages": [
+         94
+        ],
+        "type": "text",
+        "score": 0.0833,
+        "toc": false,
+        "text": "repairing in the shop as well as their transport and installation after repair are rather complicated and heavy, and require special jigs and fixtures. For this"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "granovsky-1986-00000",
+        "pages": [
+         3,
+         4,
+         5
+        ],
+        "type": "text",
+        "score": 0.0719,
+        "toc": false,
+        "text": "( S p i n n i n g a n d W e a v i n g E q u i p m e n t ) First published 1986 Revised from the 1984 Russian edition Translated from the Russian by N. Chernyshe"
+       }
+      ]
+     },
+     "rrf_rank": {
+      "granovsky-1986-00301": 36,
+      "granovsky-1986-00302": null,
+      "granovsky-1986-00303": null,
+      "granovsky-1986-00304": null,
+      "granovsky-1986-00305": null,
+      "granovsky-1986-00306": null,
+      "granovsky-1986-00307": null,
+      "granovsky-1986-00863": null,
+      "granovsky-1986-00864": null
+     }
+    }
+   },
+   "expected": [
+    {
+     "chunk_id": "granovsky-1986-00301",
+     "type": "text",
+     "pages": [
+      100,
+      101
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 885,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nThe torn-off disk 2 is replaced by a new one which must be perpendicular to the coupling centre line and must ensure a good mating with the other disk. -0 ^ 3 & /7777 / 4 I_ _ -0 Fig. 59. Diagram of device for balan­ cing card cylinders For increasing the service life of the finger 3 another fixture is used in the driving hub 1 (it is fixed with a nut instead of pressure fitting). A hole with a diameter up to 25 m m is drilled in the hub of the friction clutch 8 and a polyvinylchloride or rubber bushing 4 (a) Fig. 60. Pulley and friction clutch of card cylinde"
+    },
+    {
+     "chunk_id": "granovsky-1986-00302",
+     "type": "text",
+     "pages": [
+      101
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 932,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nIn the card friction clutch the socket, pressure levers and small wheel block are frequently worn-out. The worn-out socket and small wheel block are replaced by new ones at the time of repairs. In order to increase their life, the sockets are made with twelve alveoluses (instead of three ones as in the previous sockets) which allows the use of the socket four times without removal and disassembly of the friction clutch (Fig. 606). To ensure a better reliability of the clutch fixture, three bolts (or every other of the six bolts used) are replaced with pins 1-3"
+    },
+    {
+     "chunk_id": "granovsky-1986-00303",
+     "type": "text",
+     "pages": [
+      101
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 939,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nbushing (of the same dimensions as the key) which is then welded, and the weld is machined. Owing to this it is possible to avoid the wear of the keyway in the clutch of the doffer. Flats. The main kinds of disarrangements which are observed in flats are the wear and warping of the needle fillet. The flat (Fig. 61) consists of a cast-iron bar 5, the flat needle fillet 7 and the clips 6 by means of which the flat set is attached to the bar. At each end of the bar, there is a boss 4 with a hole for connecting with the chain of flats. The bolt 2 which serves simu"
+    },
+    {
+     "chunk_id": "granovsky-1986-00304",
+     "type": "text",
+     "pages": [
+      101,
+      102
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 351,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nThe worn-out needle fillet is stripped from the bar on a special machine (Fig. 62). Using this machine the worn-out fillet is stripped from seven bars at a time. The flats 3 are attached on the base 5 402 Chapter Five"
+    },
+    {
+     "chunk_id": "granovsky-1986-00305",
+     "type": "text",
+     "pages": [
+      102
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 976,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nhaving guides for the carriage 1 on its ends. Fixed on the carriage are the holder 4 and strippers 2 which at the carriage movement strip the worn-out fillet from the flats. There are also machines for stripping the worn-out fillet with a blade. The production capacity of such machines is 40 flats per hour. In modern cards the reach between the flats and the cylinder is 0.12-0.15 mm and with the use of a semirigid flat fillet in combination with a wholemetal saw-toothed fillet the reach is 0.1 mm. Under the action of their own weight the flats are liable to be"
+    },
+    {
+     "chunk_id": "granovsky-1986-00306",
+     "type": "text",
+     "pages": [
+      102
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 757,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nIn the course of operation flat warping is possible, i.e. their planeness is impaired, residual bends up to 1.5-2 m m appear, as well as other defects. In case of warping, a flexible fillet is straightened by grinding (however it leads to a shorter life of fillet needles due to their wear). W h e n semirigid fillets are employed no grinding is effe­ 1 2 3 45 Fig. 62. Machine for stripping fillet from card flats cted. Warped bars are straightened by cold dressing prior to being covered with a needle filleti This is carried out in a special dressing machine. Owi"
+    },
+    {
+     "chunk_id": "granovsky-1986-00307",
+     "type": "text",
+     "pages": [
+      102,
+      103
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 1017,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nbend of bars to 0.1 m m The employment of semirigid flat fillet in modern cards has resulted in stricter requirements towards the precision of bar finishing (up to ±0.025 mm). This proved necessary for the reason that after the semirigid flat fillet has been attached to the bar the needle ends are not to be ground. To accommodate a semirigid needle fillet the surface of the flat bar is levelled as follows. A layer of polymer material is applied on the surface, and if necessary this new surface is levelled after which the needle fillet is fixed upon it (the use"
+    },
+    {
+     "chunk_id": "granovsky-1986-00863",
+     "type": "figure",
+     "pages": [
+      101
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "The figure shows a textile machine part, specifically a type of clamp or presser foot. It is being used to secure a piece of fabric or garment to the machine bed. The labeled parts are: 1 - clamp handle, 2 - clamp screw, 3 - clamp body, 4 - clamp jaw, 5 - fabric, 6 - machine bed, 7 - clamp base.",
+     "toc": false,
+     "chars": 493,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nOtomatik şekil açıklaması (model üretimi, kaynak metni değil): The figure shows a textile machine part, specifically a type of clamp or presser foot. It is being used to secure a piece of fabric or garment to the machine bed. The labeled parts are: 1 - clamp handle, 2 - clamp screw, 3 - clamp body, 4 - clamp jaw, 5 - fabric, 6 - machine bed, 7 - clamp base."
+    },
+    {
+     "chunk_id": "granovsky-1986-00864",
+     "type": "figure",
+     "pages": [
+      102
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "The figure shows a textile machine part, specifically a roller or a roller assembly. The roller is shown with a handle on the left side, indicating it can be adjusted or turned. The roller is connected to a frame or base, and there are several labeled parts: 1 is the handle, 2 is the roller, 3 is the frame, 4 is the bolt, and 5 is the bolt hole. The roller appears to be used for pressing or aligning fabric in the textile process.",
+     "toc": false,
+     "chars": 630,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nOtomatik şekil açıklaması (model üretimi, kaynak metni değil): The figure shows a textile machine part, specifically a roller or a roller assembly. The roller is shown with a handle on the left side, indicating it can be adjusted or turned. The roller is connected to a frame or base, and there are several labeled parts: 1 is the handle, 2 is the roller, 3 is the frame, 4 is the bolt, and 5 is the bolt hole. The roller appears to be used for pressing or aligning fabric in the textile process."
+    }
+   ]
+  },
+  {
+   "qid": "sekil_sorular:N2",
+   "q": "Granovsky kitabına göre makine parçalarının aşınması hangi aşamalardan geçer?",
+   "search_q": "Granovsky kitabına göre makine parçalarının aşınması hangi aşamalardan geçer?",
+   "doc_ids": [
+    "granovsky-1986"
+   ],
+   "expect_pages": [
+    12
+   ],
+   "arms": {
+    "filtreli": {
+     "dense": {
+      "expected": {
+       "granovsky-1986-00016": [
+        null,
+        null
+       ],
+       "granovsky-1986-00017": [
+        null,
+        null
+       ],
+       "granovsky-1986-00018": [
+        403,
+        0.4697595323368541
+       ],
+       "granovsky-1986-00019": [
+        11,
+        0.5556051653511888
+       ],
+       "granovsky-1986-00020": [
+        22,
+        0.5453306291345694
+       ],
+       "granovsky-1986-00804": [
+        30,
+        0.5389164742042356
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "granovsky-1986-00001",
+        "pages": [
+         5
+        ],
+        "type": "text",
+        "score": 0.5817,
+        "toc": false,
+        "text": "1. Longevity and Reliability of Machines 9 2. Wear of Machine Parts and Improvement of Their Resistance 11 3. Main Factors Influencing the Wear of Machine Parts"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "granovsky-1986-00131",
+        "pages": [
+         44,
+         45
+        ],
+        "type": "text",
+        "score": 0.5801,
+        "toc": false,
+        "text": "1. Name the different kinds of machining carried out in repair of parts. 2. What is the meaning of transfer of part sizes into repair sizes? 3. Give the meaning"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "granovsky-1986-00002",
+        "pages": [
+         5,
+         6
+        ],
+        "type": "text",
+        "score": 0.5725,
+        "toc": false,
+        "text": "1. Axles, Shafts and Bearings 45 2. Clutches, Couplings and Springs 49 3. Transmissions 52 Review Questions 60 Chapter 4. Repair of General Purpose Parts and As"
+       }
+      ]
+     },
+     "sparse": {
+      "expected": {
+       "granovsky-1986-00016": [
+        null,
+        null
+       ],
+       "granovsky-1986-00017": [
+        121,
+        0.08457425981760025
+       ],
+       "granovsky-1986-00018": [
+        null,
+        null
+       ],
+       "granovsky-1986-00019": [
+        236,
+        0.07755164057016373
+       ],
+       "granovsky-1986-00020": [
+        51,
+        0.09940008074045181
+       ],
+       "granovsky-1986-00804": [
+        413,
+        0.06941382586956024
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "granovsky-1986-00801",
+        "pages": [
+         270
+        ],
+        "type": "text",
+        "score": 0.1306,
+        "toc": false,
+        "text": "card, 252 comb, 255 fitting, 251 healds and reed, 261 fluted rollers, 256 loom units, 260 roller covering, 257 slay and shuttle, 261 specialized, 259 spindle an"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "granovsky-1986-00000",
+        "pages": [
+         3,
+         4,
+         5
+        ],
+        "type": "text",
+        "score": 0.1299,
+        "toc": false,
+        "text": "( S p i n n i n g a n d W e a v i n g E q u i p m e n t ) First published 1986 Revised from the 1984 Russian edition Translated from the Russian by N. Chernyshe"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "granovsky-1986-00799",
+        "pages": [
+         269
+        ],
+        "type": "text",
+        "score": 0.1296,
+        "toc": false,
+        "text": "calender roll of, 109 Drawing unit, 124 Drifts, 63 Drives, chain, 58 Drum, Licker-in, 94 Lining, of borings, 74 split, 71 Load variable, 23 Longevity? 9 Loom, b"
+       }
+      ]
+     },
+     "rrf_rank": {
+      "granovsky-1986-00016": null,
+      "granovsky-1986-00017": null,
+      "granovsky-1986-00018": null,
+      "granovsky-1986-00019": 21,
+      "granovsky-1986-00020": 43,
+      "granovsky-1986-00804": 58
+     }
+    },
+    "filtresiz": {
+     "dense": {
+      "expected": {
+       "granovsky-1986-00016": [
+        null,
+        null
+       ],
+       "granovsky-1986-00017": [
+        null,
+        null
+       ],
+       "granovsky-1986-00018": [
+        403,
+        0.4697595323368541
+       ],
+       "granovsky-1986-00019": [
+        11,
+        0.5556051653511888
+       ],
+       "granovsky-1986-00020": [
+        22,
+        0.5453306291345694
+       ],
+       "granovsky-1986-00804": [
+        30,
+        0.5389164742042357
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "granovsky-1986-00001",
+        "pages": [
+         5
+        ],
+        "type": "text",
+        "score": 0.5817,
+        "toc": false,
+        "text": "1. Longevity and Reliability of Machines 9 2. Wear of Machine Parts and Improvement of Their Resistance 11 3. Main Factors Influencing the Wear of Machine Parts"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "granovsky-1986-00131",
+        "pages": [
+         44,
+         45
+        ],
+        "type": "text",
+        "score": 0.5801,
+        "toc": false,
+        "text": "1. Name the different kinds of machining carried out in repair of parts. 2. What is the meaning of transfer of part sizes into repair sizes? 3. Give the meaning"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "granovsky-1986-00002",
+        "pages": [
+         5,
+         6
+        ],
+        "type": "text",
+        "score": 0.5725,
+        "toc": false,
+        "text": "1. Axles, Shafts and Bearings 45 2. Clutches, Couplings and Springs 49 3. Transmissions 52 Review Questions 60 Chapter 4. Repair of General Purpose Parts and As"
+       }
+      ]
+     },
+     "sparse": {
+      "expected": {
+       "granovsky-1986-00016": [
+        null,
+        null
+       ],
+       "granovsky-1986-00017": [
+        121,
+        0.08457425981760025
+       ],
+       "granovsky-1986-00018": [
+        null,
+        null
+       ],
+       "granovsky-1986-00019": [
+        236,
+        0.07755164057016373
+       ],
+       "granovsky-1986-00020": [
+        51,
+        0.09940008074045181
+       ],
+       "granovsky-1986-00804": [
+        414,
+        0.06941382586956024
+       ]
+      },
+      "n_returned": 500,
+      "top3": [
+       {
+        "rank": 1,
+        "chunk_id": "granovsky-1986-00801",
+        "pages": [
+         270
+        ],
+        "type": "text",
+        "score": 0.1306,
+        "toc": false,
+        "text": "card, 252 comb, 255 fitting, 251 healds and reed, 261 fluted rollers, 256 loom units, 260 roller covering, 257 slay and shuttle, 261 specialized, 259 spindle an"
+       },
+       {
+        "rank": 2,
+        "chunk_id": "granovsky-1986-00000",
+        "pages": [
+         3,
+         4,
+         5
+        ],
+        "type": "text",
+        "score": 0.1299,
+        "toc": false,
+        "text": "( S p i n n i n g a n d W e a v i n g E q u i p m e n t ) First published 1986 Revised from the 1984 Russian edition Translated from the Russian by N. Chernyshe"
+       },
+       {
+        "rank": 3,
+        "chunk_id": "granovsky-1986-00799",
+        "pages": [
+         269
+        ],
+        "type": "text",
+        "score": 0.1296,
+        "toc": false,
+        "text": "calender roll of, 109 Drawing unit, 124 Drifts, 63 Drives, chain, 58 Drum, Licker-in, 94 Lining, of borings, 74 split, 71 Load variable, 23 Longevity? 9 Loom, b"
+       }
+      ]
+     },
+     "rrf_rank": {
+      "granovsky-1986-00016": null,
+      "granovsky-1986-00017": null,
+      "granovsky-1986-00018": null,
+      "granovsky-1986-00019": 21,
+      "granovsky-1986-00020": 43,
+      "granovsky-1986-00804": 58
+     }
+    }
+   },
+   "expected": [
+    {
+     "chunk_id": "granovsky-1986-00016",
+     "type": "text",
+     "pages": [
+      11,
+      12
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 968,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\n(e.g. shaft in sliding (plain) bearing), rollingfriction(e.g. against roller cam) and pivoting friction (e.g. spindle heel against footstep). It frequently occurs that friction of one type is accompanied by friction of another type. So, for instance, in gear drives rolling friction between the teeth is accompanied by sliding friction, i.e. there occurs combined friction. Depending on the kind of lubrication used for rubbing surfaces, friction may be classified as follows: pure friction, when there are no traces of foreign substances on the rubbing surfaces (pu"
+    },
+    {
+     "chunk_id": "granovsky-1986-00017",
+     "type": "text",
+     "pages": [
+      12
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 1033,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nwhen the friction surfaces are completely separated by a thick stable layer of lubricant (Fig. 1b); boundary friction, appearing when on the rubbing surfaces there is a very thin strongly adherent oil film (of less than 0.1 pm thin) with properties different from the properties of the liquid layer (Fig. lc); and semi-liquid friction, which is a combination of the liquid and boundary frictions (Fig. id). Fig. 2. Diagram of wear Liquid friction (e.g. between shaft and bearing) ensures a m i n i m u m wear of parts and power consumption. This is achieved by a hig"
+    },
+    {
+     "chunk_id": "granovsky-1986-00018",
+     "type": "text",
+     "pages": [
+      12
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 749,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nProvided the above-mentioned conditions are satisfied, the lubricant is self-sucked into the gap between the rubbing surfaces, thus causing their separation. Moreover, liquid friction may be obtained by employing forced lubrication. Wear and its varieties. Friction is always accompanied by gradual destruction of the surfaces of mating parts moving one upon the other. This gradual destruction is called wearing. As a consequence of wearing, there is a change in the original size and shape of the rub­ bing parts which is termed wear. The capacity of the material "
+    },
+    {
+     "chunk_id": "granovsky-1986-00019",
+     "type": "text",
+     "pages": [
+      12
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 1009,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nThe process of part wear in time is irregular (Fig. 2). During the initial period I of machtine operaion, when new parts are run-in, there is a stronger wear; further, comes the period II when the speed of wearing is at its minimum, i.e. when the process stabilizes; and finally follows the period III, when wear is progressively increasing up to an emergency state so that the part may be brought completely out of use. The period / may be reduced by better finishing of rubbing surfaces, proper assembly of parts, and by using various polishing compositions. The p"
+    },
+    {
+     "chunk_id": "granovsky-1986-00020",
+     "type": "text",
+     "pages": [
+      12,
+      13
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "",
+     "toc": false,
+     "chars": 895,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nThere exist the following kinds of wear: mechanical, molecularmechanical, and corrosive-mechanical wear. Mechanical wear is Disarrangements in Machines 13 produced by abrasive particles that groove and scratch the surfaces, plastic deformation of contacting surfaces, brittle destruction of the surface layer (by work-hardening in rubbing), and repeated deformation causing fatigue deterioration of the surface layers. Molecularmechanical wear is caused by molecular adhesion on separate spots of rubbing surfaces followed by mechanical destruction of formed bonds a"
+    },
+    {
+     "chunk_id": "granovsky-1986-00804",
+     "type": "figure",
+     "pages": [
+      12
+     ],
+     "section": "R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s",
+     "generated": "The figure shows a graph depicting wear over time for a textile machine part. The graph is divided into three labeled sections: I, II, and III. Section I shows an initial increase in wear, Section II shows a plateau, and Section III shows a gradual increase in wear.",
+     "toc": false,
+     "chars": 463,
+     "embed_text": "T. Granovsky (Mir) Tekstil makineleri onarım ve ayar kitabı | R e p a i r a n d A d j u s t m e n t o f T e x t i l e M a c h i n e s\nOtomatik şekil açıklaması (model üretimi, kaynak metni değil): The figure shows a graph depicting wear over time for a textile machine part. The graph is divided into three labeled sections: I, II, and III. Section I shows an initial increase in wear, Section II shows a plateau, and Section III shows a gradual increase in wear."
+    }
+   ]
+  }
+ ]
+}
