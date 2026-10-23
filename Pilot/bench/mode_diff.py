@@ -26,6 +26,7 @@ def run(qc: QdrantClient, dense, sparse, flt) -> dict[str, list]:
 
 
 def main() -> None:
+    from pilot import retrieve
     from pilot.config import QDRANT_DIR
     from pilot.embed import embed
     from pilot.retrieve import _filter
@@ -42,6 +43,16 @@ def main() -> None:
         flt = _filter(None, p["doc_ids"])
         a, b = run(emb, v["dense"], sp, flt), run(srv, v["dense"], sp, flt)
         row = {"qid": it["qid"]}
+        # pipeline'ın kendi araması (belirli sıralı RRF, rrf_fuse): iki modda da aynı istemci yolu
+        got = {}
+        for name, qc in (("embedded", emb), ("server", srv)):
+            retrieve.search_client, retrieve.release = (lambda q=qc: q), (lambda _: None)
+            got[name] = [h.chunk["chunk_id"] for h in retrieve.search(p["search_q"], doc_ids=p["doc_ids"],
+                                                                      top_k=K, do_rerank=False)]
+        row["search"] = {"same_order": got["embedded"] == got["server"],
+                         "same_set": set(got["embedded"]) == set(got["server"]),
+                         "first_diff": next((i for i, (x, y) in enumerate(zip(got["embedded"], got["server"]))
+                                             if x != y), None)}
         for arm in ("dense", "sparse", "rrf"):
             ia, ib = [x[0] for x in a[arm]], [x[0] for x in b[arm]]
             row[arm] = {"same_order": ia == ib, "same_set": set(ia) == set(ib),
@@ -53,8 +64,9 @@ def main() -> None:
     n = len(rows)
     lines = ["# Gömülü ve sunucu modu: aynı vektörler, aynı sonuç mu?", "",
              f"{n} soru (pipeline gibi hazırlanmış sorgu, filtreli). Kollar: dense ve sparse ilk 30, RRF ilk {K}.", "",
+             "rrf: Qdrant'ın kendi RRF'i (FusionQuery). search: pipeline araması (retrieve.search, belirli sıralı RRF).", "",
              "| Kol | sıra aynı | küme aynı |", "|---|---|---|"]
-    for arm in ("dense", "sparse", "rrf"):
+    for arm in ("dense", "sparse", "rrf", "search"):
         lines.append(f"| {arm} | {sum(r[arm]['same_order'] for r in rows)}/{n} | {sum(r[arm]['same_set'] for r in rows)}/{n} |")
     diff = [r for r in rows if not r["rrf"]["same_order"]]
     lines += ["", "RRF sırası farklı olan ilk 3 soru (ilk 5: kimlik, skor):", ""]
@@ -63,7 +75,7 @@ def main() -> None:
                   f"  - gömülü: {r['rrf']['embedded_top5']}", f"  - sunucu: {r['rrf']['server_top5']}"]
     m = meta({"K": K})
     print(write_result("mod_farki", {"meta": m, "rows": rows}, "\n".join(lines) + "\n"))
-    print("\n".join(lines[4:8]))
+    print("\n".join(line for line in lines if line.startswith("| ")))
 
 
 if __name__ == "__main__":

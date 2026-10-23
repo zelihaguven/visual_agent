@@ -143,11 +143,25 @@ def test_ranked_rank_limits_to_first_k_candidates():
     assert ranked_rank(cands, [0.1, 0.2, 0.9], ITEM, 2) is None     # FUSED_K=2: aday hiç reranka gitmez
 
 
-def test_openrouter_requests_carry_zdr_by_default():
-    from pilot.rerankers import openrouter_body
-    b = openrouter_body({"model": "m", "query": "q"}, zdr=True)
-    assert b["provider"] == {"data_collection": "deny", "zdr": True} and b["query"] == "q"
-    assert "provider" not in openrouter_body({"model": "m"}, zdr=False)
+def test_zdr_is_mandatory_and_cannot_be_overridden():
+    from pilot.cloud import openrouter_body
+    b = openrouter_body({"model": "m", "query": "q"})
+    assert b["provider"] == {"zdr": True, "data_collection": "deny"} and b["query"] == "q"
+    forced = openrouter_body({"model": "m", "provider": {"zdr": False, "data_collection": "allow", "order": ["x"]}})
+    assert forced["provider"] == {"zdr": True, "data_collection": "deny", "order": ["x"]}
+
+
+def test_models_without_zdr_are_refused_before_any_request(monkeypatch):
+    from pilot import cloud, rerankers
+    monkeypatch.setenv("OPENROUTER_API_KEY", "sahte-deger-123")
+    monkeypatch.setattr(cloud, "_fetch_zdr_endpoints", lambda: [{"model_id": "qwen/qwen3-reranker-8b"}])
+    cloud.zdr_model_ids.cache_clear()
+    try:
+        with pytest.raises(ValueError, match="ZDR"):
+            rerankers.make_reranker("openrouter", "cohere/rerank-v3.5")
+        assert rerankers.make_reranker("openrouter", "qwen/qwen3-reranker-8b").model == "qwen/qwen3-reranker-8b"
+    finally:
+        cloud.zdr_model_ids.cache_clear()
 
 
 def test_cpu_window_mean():

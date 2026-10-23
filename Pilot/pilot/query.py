@@ -223,6 +223,49 @@ def strip_terms(question: str, aliases: list[str]) -> str:
     return " ".join(words)
 
 
+# Kaynak ifadesi: "Granovsky kitabına göre", "S-7300A kılavuzunda", "kılavuza göre", "according to the X manual".
+# Kaynak zaten filtreyle seçildiği için bu kelimeler aramaya bir şey katmıyor; sparse kolda dizin/başlık sayfalarını
+# ("Granovsky", "kitap") öne çekiyordu (BENCHMARK-RAPORU Aşama 2.5, N1/N2). Yalnız aramadan çıkarılır, modele giden
+# soru değişmez. Varlık tek başına geçiyorsa ("S-7300A'da E050") dokunulmaz: o sorunun parçası.
+DOC_NOUNS = ("kitab", "kitap", "kılavuz", "kilavuz", "şartname", "sartname", "doküman", "dokuman", "manuel", "katalog",
+             "talimat", "döküman")
+EN_DOC_NOUNS = ("manual", "book", "guide", "handbook", "specification", "document", "catalog", "catalogue")
+_GORE = ("göre", "gore")
+
+
+def strip_source_phrases(question: str, aliases: list[str]) -> str:
+    words = question.split()
+    keys = [_squash(a) for a in aliases if _squash(a)]
+    is_alias = [any(_squash(w).startswith(k) for k in keys) for w in words]
+    is_noun = [any(_squash(w).startswith(n) for n in DOC_NOUNS) for w in words]
+    drop = [False] * len(words)
+    for i, w in enumerate(words):
+        nxt = _squash(words[i + 1]) if i + 1 < len(words) else ""
+        if is_alias[i] and i + 1 < len(words) and (is_noun[i + 1] or nxt in _GORE):
+            drop[i] = drop[i + 1] = True                       # "Granovsky kitabına", "Granovsky'ye göre"
+        elif is_noun[i] and (nxt in _GORE or (i > 0 and drop[i - 1])):
+            drop[i] = True                                     # "kılavuza (göre)", "X kitabına göre"
+        if drop[i] and nxt in _GORE:
+            drop[i + 1] = True
+    out = [w for w, d in zip(words, drop) if not d]
+    text = " ".join(out)
+    # İngilizce: "according to (the) <X> (manual)", "in the <X> manual"
+    alias_re = "|".join(re.escape(a) for a in aliases if a)
+    if alias_re:
+        nouns = "|".join(EN_DOC_NOUNS)
+        text = re.sub(rf"\b(?:according to|in|from)\s+(?:the\s+)?(?:{alias_re})(?:'s)?(?:\s+(?:{nouns}))?\b[,]?\s*",
+                      "", text, flags=re.I)
+    text = re.sub(r"\baccording to the (?:" + "|".join(EN_DOC_NOUNS) + r")\b[,]?\s*", "", text, flags=re.I)
+    return text.strip() or question
+
+
+def source_aliases(ctx: "QueryContext", scope: list[str] | None) -> list[str]:
+    """Sorudaki, kapsamdaki dokümanı adlandıran ifadeler (strip_source_phrases için)."""
+    if not scope:
+        return []
+    return [e[0] for e in ctx.entities if set(e[2]) & set(scope)]
+
+
 # --- Soru neyi soruyor? ----------------------------------------------------------------------------
 # Kaynak belli olsa bile "ceket ölçüsü" bir şey sormuyor: şartnamede beden tablosu, dikiş sıklığı, punteriz
 # ölçüsü ... hepsi "ölçü". Bu durumda arama rastgele tablolar getiriyor, model de uydurmaya ya da boş cevaba

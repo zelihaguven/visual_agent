@@ -88,7 +88,7 @@ Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), öl
 | `PILOT_QUANTIZATION`, `PILOT_QUANT_ALWAYS_RAM` | `none`, `1` | `int8`, `binary` |
 | `PILOT_VECTORS_ON_DISK`, `PILOT_PAYLOAD_ON_DISK` | `0` | `1`: vektör / payload diskte |
 | `PILOT_HNSW_EF`, `PILOT_QUANT_RESCORE`, `PILOT_QUANT_OVERSAMPLING` | Qdrant varsayılanı | sorgu anı, dense kol |
-| `PILOT_OPENROUTER_ZDR` | `1` | Her OpenRouter isteğine `provider: {data_collection: deny, zdr: true}`; `0` kapatır |
+| (ayar yok) | | OpenRouter istekleri **her zaman** `provider: {zdr: true, data_collection: deny}` ile gider; ZDR uyumlu sağlayıcısı olmayan model kullanılamaz (`pilot/cloud.py`) |
 
 **Şekil açıklaması (isteğe bağlı, VLM):** Çizimlerin aranabilmesi için her şekle bir kez metin açıklaması yazılır.
 

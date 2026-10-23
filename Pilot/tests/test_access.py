@@ -55,7 +55,8 @@ def test_filter_puts_access_inside_qdrant_query():
     f = retrieve._filter(None, ["d"], ["kalite"])
     cond = [c for c in f.must if c.key == "access"][0]
     assert sorted(cond.match.any) == ["all", "kalite"]
-    assert retrieve._filter(None, None, None) is None          # varsayılan: bugünkü davranış, filtre yok
+    plain = retrieve._filter(None, None, None)                  # yetki/doküman koşulu yok; yalnız gezinme dışlaması
+    assert plain.must is None and [c.key for c in plain.must_not] == ["nav"]
 
 
 @pytest.mark.parametrize("mode", ["dense", "sparse", "hybrid"])

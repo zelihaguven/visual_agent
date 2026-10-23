@@ -140,6 +140,30 @@ def replace_docs(chunks: list[dict[str, Any]], doc_ids: list[str]) -> int:
         qc.close()
 
 
+def refresh_payloads(chunks: list[dict[str, Any]], doc_ids: list[str]) -> int:
+    """Metni ve embed_text'i değişmemiş dokümanlarda yalnız payload'ı (ör. nav, access) yeniler; vektörlere dokunmaz.
+    Parçalar chunk_id ile eşlenir. Döner: güncellenen nokta sayısı."""
+    by_id = {c["chunk_id"]: c for c in chunks if c["doc_id"] in doc_ids}
+    qc = client()
+    n = 0
+    try:
+        offset = None
+        while True:
+            pts, offset = qc.scroll(COLLECTION, limit=500, offset=offset, with_payload=["chunk_id", "embed_text"],
+                                    scroll_filter=models.Filter(must=[models.FieldCondition(
+                                        key="doc_id", match=models.MatchAny(any=doc_ids))]))
+            for p in pts:
+                new = by_id.get(p.payload.get("chunk_id"))
+                if new is None or new["embed_text"] != p.payload.get("embed_text"):
+                    raise ValueError(f"{p.payload.get('chunk_id')}: embed_text değişmiş, yeniden embed gerekir")
+                qc.overwrite_payload(COLLECTION, payload=with_access(new), points=[p.id])
+                n += 1
+            if offset is None:
+                return n
+    finally:
+        qc.close()
+
+
 def build_index(chunks: list[dict[str, Any]], rebuild: bool = True) -> int:
     if rebuild and not QDRANT_URL and QDRANT_DIR.exists():
         shutil.rmtree(QDRANT_DIR)

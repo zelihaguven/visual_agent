@@ -33,8 +33,7 @@ RERANK_MAX_LENGTH = int(os.environ.get("PILOT_RERANK_MAX_LENGTH", EMBED_MAX_LENG
 RERANK_BATCH = int(os.environ.get("PILOT_RERANK_BATCH", "4"))                # torch/onnx batch (4: 15,3 sn, 8: 17,1 sn)
 TORCH_THREADS = int(os.environ["PILOT_TORCH_THREADS"]) if os.environ.get("PILOT_TORCH_THREADS") else None
 OPENROUTER_URL = os.environ.get("PILOT_OPENROUTER_URL", "https://openrouter.ai/api/v1")
-# Veri minimizasyonu: her OpenRouter isteği yalnız veri saklamayan (ZDR) ve veriyi eğitimde kullanmayan sağlayıcılara gider
-OPENROUTER_ZDR = os.environ.get("PILOT_OPENROUTER_ZDR", "1") == "1"
+# OpenRouter istekleri her zaman ZDR + data_collection=deny ile gider; kapatılamaz (ürün kararı, cloud.py)
 # Qdrant istemcisi süreç boyunca tek örnek (arama başına ~1,1 sn). Gömülü klasör o süreçte kilitli kalır: yeniden
 # indeksleme arayüz kapalıyken yapılır. Eski davranış (her aramada aç/kapat): PILOT_QDRANT_REUSE=0
 QDRANT_REUSE = os.environ.get("PILOT_QDRANT_REUSE", "1") == "1"

@@ -100,6 +100,8 @@ def to_md(rows: list[dict[str, Any]], m: dict[str, Any]) -> str:
 
 if __name__ == "__main__":
     qids = sys.argv[1:] or ["questions_ek:Q27", "sekil_sorular:N1", "sekil_sorular:N2"]
+    from pilot.index import close_shared
     rows = [analyze(q) for q in qids]
+    close_shared()          # paylaşılan istemci kapanışta değil burada kapansın (aksi halde __del__ uyarısı)
     m = meta({"qids": qids, "deep": DEEP})
     print(write_result("kayip", {"meta": m, "rows": rows}, to_md(rows, m)))

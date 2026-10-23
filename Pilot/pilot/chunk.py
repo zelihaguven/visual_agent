@@ -14,13 +14,56 @@ from typing import Any
 
 from .config import CHUNK_MAX_CHARS, CHUNKS_PATH
 from .figures import figure_text, is_described
-from .parse import merge_cross_page, printed_page_labels, remove_furniture
+from .parse import is_letter_spaced, merge_cross_page, printed_page_labels, remove_furniture
 from .registry import DocMeta
 
 HEADING_LABELS = ("section_header", "title")
 SKIP_LABELS = ("picture", "figure", "page_header", "page_footer")
 MIN_CHARS = 3
 MAX_SECTION_CHARS = 80
+
+# Paragraf içi numaralı başlık ("3.7.1 Fastener tape (hook and loop). All widths ..."): Docling bunları başlık değil
+# metin olarak etiketliyor; önceki başlık sonraki bölümlerin parçalarına taşınıyordu (ceket şartnamesi s.9-11,
+# "3.5.1 Slide fasteners"). En az iki düzeyli numara: "1. Gücü kapatın" gibi adım listeleri başlık sayılmaz. Başlık
+# büyük harfle başlar ve kısa bir cümleyle noktada biter ("3.5 mm thread" başlık değil).
+RUN_IN_HEADING = re.compile(r"^(\d{1,2}(?:\.\d{1,2}){1,4})\.?\s+([A-Z][^.\n]{1,70}?)\.(?:\s|$)")
+
+# Gezinme sayfaları: içindekiler, dizin, ön sayfa (künye, telif). Hiçbir soruya cevap değiller ama sorunun terimlerini
+# içerdikleri için aday listesinde yer kaplıyorlar (BENCHMARK-RAPORU Aşama 2.5). Parça 'nav' alanıyla işaretlenir,
+# arama onları Qdrant filtresinde dışarıda tutar. Biçim kuralları; dokümana özgü değil.
+_TOC_ENTRY = re.compile(r"(?:^|\s)(?:Chapter\s+)?\d{1,2}(?:[.\-]\d{1,2})*\.?\s+[A-Z][^.\n]{3,90}?\s\.*\s*\d{1,3}(?=\s|$)")
+_TITLE_PAGE = re.compile(r"([A-Z][A-Za-z ,'&\-()]{2,80}?)\s(\d{1,3})(?=\s|$)")
+_INDEX_ENTRY = re.compile(r"[A-Za-z][A-Za-z\-' ]{1,40},\s*\d{1,3}(?:\s*[-–]\s*\d{1,3})?(?:,\s*\d{1,3})*(?=\s|$|[;.])")
+_FRONT = re.compile(r"©|\b(?:first published|copyright|isbn|translated from|printed in|all rights reserved|"
+                    r"registered trademark|edition)\b", re.I)
+FRONT_MATTER_PAGES = 6
+
+
+def _dot_leader_toc(text: str) -> bool:
+    from .retrieve import is_toc
+    return is_toc(text)
+
+
+def nav_kind(text: str, page: int) -> str:
+    """'toc' | 'index' | 'front_matter' | '' (içerik)."""
+    t = " ".join(text.split())
+    if _dot_leader_toc(t):
+        return "toc"
+    toc = _TOC_ENTRY.findall(t)
+    if len(toc) >= 3 and sum(map(len, toc)) >= 0.6 * len(t):
+        return "toc"
+    entries = _TITLE_PAGE.findall(t)
+    nums = [int(n) for _, n in entries]
+    rising = sum(b >= a for a, b in zip(nums, nums[1:]))
+    covered = sum(len(a) + len(n) + 1 for a, n in entries)
+    if len(entries) >= 5 and rising >= 0.8 * (len(nums) - 1) and covered >= 0.7 * len(t):
+        return "toc"            # numarasız içindekiler: başlık + artan sayfa numarası
+    idx = _INDEX_ENTRY.findall(t)
+    if len(idx) >= 6 and sum(map(len, idx)) >= 0.5 * len(t):
+        return "index"
+    if page <= FRONT_MATTER_PAGES and len({m.lower() for m in _FRONT.findall(t)}) >= 2:
+        return "front_matter"
+    return ""
 
 
 @dataclass
@@ -40,6 +83,7 @@ class Chunk:
     text: str
     embed_text: str = field(default="")
     generated: str = field(default="")   # metnin model üretimi kısmı (şekil açıklaması): doğrulamada kaynak sayılmaz
+    nav: str = field(default="")         # gezinme parçası: toc | index | front_matter (aramada dışarıda tutulur)
 
 
 def _embed_text(meta: DocMeta, section: str, text: str) -> str:
@@ -92,7 +136,8 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
             product=meta.product, doc_type=meta.doc_type, lang=meta.lang_of(pgs[0]),
             chunk_type=chunk_type, section=sec, page=pgs[0], pages=pgs,
             page_labels={str(p): labels.get(p) for p in pgs}, boxes=boxes, text=text,
-            embed_text=_embed_text(meta, sec, text), generated=generated))
+            embed_text=_embed_text(meta, sec, text), generated=generated,
+            nav=nav_kind(text, pgs[0]) if chunk_type == "text" else ""))
 
     def flush() -> None:
         nonlocal buf
@@ -109,7 +154,10 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
             continue
         if label in HEADING_LABELS:
             flush()
-            section = e["text"].strip()[:MAX_SECTION_CHARS]
+            # Harf aralıklı başlık ("R e p a i r a n d A d j u s t m e n t"): kelime sınırları kayıp, bölüm adı
+            # olamaz. Granovsky'de kitap adı bütün kitabın bölüm adı olmuştu (685 parça). Önceki bölüm sürer.
+            if not is_letter_spaced(e["text"], min_tokens=4):
+                section = e["text"].strip()[:MAX_SECTION_CHARS]
             continue
         if label == "table":
             flush()
@@ -124,6 +172,10 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
         if not e["text"].strip():
             continue
         for piece in _split_long(e):
+            run_in = RUN_IN_HEADING.match(piece["text"].strip())
+            if run_in:
+                flush()
+                section = f"{run_in.group(1)} {run_in.group(2)}"[:MAX_SECTION_CHARS]
             size = sum(len(x["text"]) for x in buf) + len(piece["text"])
             lang_changes = bool(buf) and meta.lang_of(piece["page"]) != meta.lang_of(buf[0]["page"])
             if buf and (size > CHUNK_MAX_CHARS or lang_changes):

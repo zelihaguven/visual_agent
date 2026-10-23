@@ -1,4 +1,4 @@
-# Aşama 2 ölçüm serisi: gömülü ve sunucu modu, HTTP ve gRPC, access filtresi. Qdrant sunucusu açık olmalı
+﻿# Aşama 2 ölçüm serisi: gömülü ve sunucu modu, HTTP ve gRPC, access filtresi. Qdrant sunucusu açık olmalı
 # (qdrant\start_windows.ps1) ve koleksiyonlar kopyalanmış olmalı (python -m bench.server copy ...).
 # Kullanım (Pilot klasöründe): powershell -ExecutionPolicy Bypass -File bench\run_asama2.ps1
 $ErrorActionPreference = "Continue"

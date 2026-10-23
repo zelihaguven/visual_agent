@@ -1,4 +1,4 @@
-# Qdrant sunucusunu Windows'ta (geliştirme makinesi) başlatır. Ayarlar docker-compose.yml ile aynı.
+﻿# Qdrant sunucusunu Windows'ta (geliştirme makinesi) başlatır. Ayarlar docker-compose.yml ile aynı.
 # Kullanım (Pilot klasöründe):  powershell -ExecutionPolicy Bypass -File qdrant\start_windows.ps1
 # İkili yoksa önce README.md'deki indirme adımı. Depo: data\qdrant_server\ (git dışı). Durdurmak: Ctrl+C.
 param([string]$Version = "v1.19.2")

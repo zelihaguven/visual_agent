@@ -4,16 +4,16 @@
              bir kez fazladan hesaplıyor; 20 aday tek batch'e sığdığı için iş iki kez yapılıyordu (BENCHMARK-RAPORU)
 - flag:      FlagEmbedding FlagReranker (pilotun ilk varsayılanı, aynı skor)
 - onnx:      aynı model ONNX Runtime ile (bench/onnx_export.py dışa aktarır); onnx-int8: dinamik int8 quantization
-- openrouter: bulut rerank (Cohere uyumlu /rerank ucu); anahtar yalnız OPENROUTER_API_KEY ortam değişkeninden
+- openrouter: bulut rerank (Cohere uyumlu /rerank ucu); ZDR zorunlu, anahtar yalnız OPENROUTER_API_KEY'den (cloud.py)
 """
-import os
 import re
 import time
 from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
-from .config import DATA_DIR, EMBED_DEVICE, OPENROUTER_URL, OPENROUTER_ZDR, TORCH_THREADS
+from .cloud import api_key, openrouter_body, require_zdr
+from .config import DATA_DIR, EMBED_DEVICE, OPENROUTER_URL, TORCH_THREADS
 
 Reranker = Callable[[str, Sequence[str]], list[float]]
 ONNX_DIR = DATA_DIR / "bench_cache" / "onnx"
@@ -131,13 +131,12 @@ class OnnxRerank(_Tokenized):
 
 
 class OpenRouterRerank:
-    """Cohere uyumlu rerank ucu. last_network_s: son çağrının istek-cevap süresi (ağ + sunucu)."""
+    """Cohere uyumlu rerank ucu, ZDR zorunlu (cloud.py). last_network_s: son çağrının istek-cevap süresi (ağ + sunucu)."""
 
     def __init__(self, model: str, timeout: float = 60.0, **_: Any) -> None:
         import requests
-        key = os.environ.get("OPENROUTER_API_KEY")
-        if not key:
-            raise RuntimeError("OPENROUTER_API_KEY ortam değişkeni tanımlı değil")
+        key = api_key()
+        require_zdr(model)
         self.model, self.timeout = model, timeout
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
@@ -156,14 +155,6 @@ class OpenRouterRerank:
         body = r.json()
         self.last_usage = body.get("usage") or body.get("meta") or {}
         return parse_rerank_response(body, len(passages))
-
-
-def openrouter_body(body: dict[str, Any], zdr: bool | None = None) -> dict[str, Any]:
-    """İstek gövdesine sağlayıcı kısıtı: veri saklamayan (ZDR), veriyi toplamayan sağlayıcılar. Yalnız sorgu ve seçilmiş
-    parçalar gider; kullanıcı kimliği, yetki bilgisi gönderilmez (çağıranın sorumluluğu)."""
-    if zdr if zdr is not None else OPENROUTER_ZDR:
-        return {**body, "provider": {"data_collection": "deny", "zdr": True}}
-    return body
 
 
 def parse_rerank_response(body: dict[str, Any], n: int) -> list[float]:

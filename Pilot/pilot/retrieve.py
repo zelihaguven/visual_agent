@@ -54,7 +54,40 @@ def _filter(brands: list[str] | None, doc_ids: list[str] | None,
         must.append(models.FieldCondition(key="doc_id", match=models.MatchAny(any=doc_ids)))
     if access is not None:
         must.append(models.FieldCondition(key="access", match=models.MatchAny(any=sorted({*access, "all"}))))
-    return models.Filter(must=must) if must else None
+    # Gezinme parçaları (içindekiler, dizin, ön sayfa; chunk.nav_kind) aranmaz. 'nav' alanı olmayan eski indekste
+    # koşul hiçbir parçayı elemez (davranış aynı).
+    return models.Filter(must=must or None, must_not=[NAV_EXCLUDE])
+
+
+NAV_EXCLUDE = models.FieldCondition(key="nav", match=models.MatchAny(any=["toc", "index", "front_matter"]))
+ARM_MARGIN = 10      # kol sınırındaki eşit skorlar için fazladan aday; sıralamadan sonra PREFETCH_K'ya kesilir
+RRF_K = 2            # Qdrant'ın RRF'iyle aynı: skor = Σ 1 / (sıra + RRF_K), sıra 0'dan başlar
+
+
+def canonical(points: list[Any], limit: int) -> list[Any]:
+    """Kol sonucunu skor (azalan), eşitse kimlik (artan) sırasına koyar. Eşit skorların sırası Qdrant'ta moda göre
+    değişiyordu (gömülü ve sunucu farklı); bu sıralamayla sonuç yalnız skor değerlerine bağlı."""
+    return sorted(points, key=lambda p: (-p.score, _id_key(p.id)))[:limit]
+
+
+def _id_key(pid: Any) -> tuple[int, Any]:
+    return (0, pid) if isinstance(pid, int) else (1, str(pid))
+
+
+def rrf_fuse(dense: list[Any], sparse: list[Any], limit: int) -> list[tuple[Any, float]]:
+    """RRF füzyonu, belirli sırayla: füzyon skoru (azalan), eşitse dense skoru (azalan; dense kolda yoksa en sonda),
+    o da eşitse parça kimliği (artan). Döner: (nokta, füzyon skoru); nokta payload'ı taşır."""
+    fused: dict[Any, float] = {}
+    point: dict[Any, Any] = {}
+    dense_score: dict[Any, float] = {}
+    for arm in (dense, sparse):
+        for rank, p in enumerate(arm):
+            fused[p.id] = fused.get(p.id, 0.0) + 1.0 / (rank + RRF_K)
+            point.setdefault(p.id, p)
+    for p in dense:
+        dense_score[p.id] = p.score
+    order = sorted(fused, key=lambda i: (-fused[i], -dense_score.get(i, float("-inf")), _id_key(i)))
+    return [(point[i], fused[i]) for i in order[:limit]]
 
 
 def dense_params(hnsw_ef: int | None = HNSW_EF, rescore: str | None = QUANT_RESCORE,
@@ -86,24 +119,21 @@ def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | 
     qc = search_client()
     t = _lap("qdrant_open", t)
     try:
-        if mode == "dense":
-            res = qc.query_points(COLLECTION, query=dense_q, using="dense", query_filter=flt,
-                                  limit=FUSED_K, with_payload=True, search_params=dparams)
-        elif mode == "sparse":
-            res = qc.query_points(COLLECTION, query=sparse_q, using="sparse", query_filter=flt,
-                                  limit=FUSED_K, with_payload=True)
-        else:
-            res = qc.query_points(
-                COLLECTION,
-                prefetch=[models.Prefetch(query=dense_q, using="dense", filter=flt, limit=PREFETCH_K, params=dparams),
-                          models.Prefetch(query=sparse_q, using="sparse", filter=flt, limit=PREFETCH_K)],
-                query=models.FusionQuery(fusion=models.Fusion.RRF),
-                limit=FUSED_K, with_payload=True)
+        # İki kol tek istekte; füzyon burada (rrf_fuse), çünkü Qdrant'ın RRF'i eşit skorları moda göre farklı sıralıyor
+        limit = (FUSED_K if mode != "hybrid" else PREFETCH_K) + ARM_MARGIN
+        reqs = []
+        if mode in ("dense", "hybrid"):
+            reqs.append(models.QueryRequest(query=dense_q, using="dense", filter=flt, limit=limit, params=dparams,
+                                            with_payload=True))
+        if mode in ("sparse", "hybrid"):
+            reqs.append(models.QueryRequest(query=sparse_q, using="sparse", filter=flt, limit=limit, with_payload=True))
+        arms = [canonical(r.points, limit - ARM_MARGIN) for r in qc.query_batch_points(COLLECTION, requests=reqs)]
     finally:
         release(qc)
     t = _lap("qdrant", t)
 
-    points = [p for p in res.points if not is_toc(p.payload["text"])]
+    ranked = [p for p, _ in rrf_fuse(arms[0], arms[1], FUSED_K)] if mode == "hybrid" else arms[0][:FUSED_K]
+    points = [p for p in ranked if not is_toc(p.payload["text"])]
     if not do_rerank or not points:
         return [Hit(p.payload, i) for i, p in enumerate(points[:top_k])]
     scores = rerank(query, [p.payload["text"] for p in points])

@@ -9,7 +9,8 @@ from .chunk import read_chunks
 from .config import CHUNKS_PATH, CLARIFY_MIN_SCORE, MIN_RERANK_SCORE, TOP_K_SOURCES
 from .llm import chat_json
 from .query import (DETAIL_HINT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific, aspects_for,
-                    context_entities, family, missing_entities, question_lang, spoken_codes, strip_terms)
+                    context_entities, family, missing_entities, question_lang, source_aliases, spoken_codes,
+                    strip_source_phrases, strip_terms)
 from .registry import BY_ID, DOCS, visible
 from .retrieve import Hit, search
 from .speech import normalize_for_speech, normalize_for_speech_en
@@ -210,8 +211,9 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
                         f"Soruda hangi bilginin istendiği belli değil (kaynak: {names}). Hangisini arıyorsunuz?",
                         aspects=aspects_for(scope), hint=DETAIL_HINT.get(BY_ID[scope[0]].doc_type, ""))
 
-    # Atölye terimleri aramada kılavuz terimleriyle genişletilir (R16). Modele giden soru değişmez.
-    search_q, added = expand_query(asked)
+    # Atölye terimleri aramada kılavuz terimleriyle genişletilir (R16); kaynak ifadesi ("X kitabına göre") aramadan
+    # çıkarılır, kaynak zaten filtrede. Modele giden soru değişmez.
+    search_q, added = expand_query(strip_source_phrases(asked, source_aliases(ctx, scope)))
     on_step("Kaynaklar aranıyor" + (f" (terim sözlüğü: {', '.join(added)})" if added else ""))
     t = time.time()
     hits = search(search_q, brands=brands, doc_ids=scope, mode=mode, top_k=TOP_K_SOURCES, query_en=query_en,

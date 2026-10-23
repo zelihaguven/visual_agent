@@ -165,8 +165,14 @@ def parse_pdf(meta: DocMeta) -> tuple[list[dict[str, Any]], list[int]]:
 
 # --- Temizlik --------------------------------------------------------------------------
 
+# OCR'ın karıştırdığı karakterler aynı sayılır: pantolon şartnamesinin üst bilgisi dört yazımla geliyordu ("GLlPD 07-14A",
+# "GLIPD 07-l4A" ...); her biri sayfaların yarısından azında olduğu için ayıklanmıyor ve 100 parçanın bölüm adı oluyordu.
+# Harfler rakama eşlenir, sonra rakam dizileri '#' olur: sayfa numarası da OCR farkı da aynı karşılaştırmaya düşer.
+_OCR_CONFUSABLE = str.maketrans({"l": "1", "i": "1", "|": "1", "/": "1", "!": "1", "o": "0"})
+
+
 def _norm_repeating(text: str) -> str:
-    return re.sub(r"\d+", "#", text.strip().lower())
+    return re.sub(r"\d+", "#", text.strip().lower().translate(_OCR_CONFUSABLE))
 
 
 def remove_furniture(elements: list[dict[str, Any]]) -> list[dict[str, Any]]:

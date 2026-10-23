@@ -35,11 +35,12 @@ def retrieval_params() -> dict[str, Any]:
 
 
 def run_questions(items: list[dict[str, Any]], repeats: int, warmup: int, do_rerank: bool = True,
-                  unfiltered: bool = False, access: list[str] | None = None) -> tuple[list[dict[str, Any]], StageTimer]:
+                  unfiltered: bool = False, access: list[str] | None = None,
+                  strip_source: bool = True) -> tuple[list[dict[str, Any]], StageTimer]:
     """unfiltered: pipeline'ın doküman filtresi kaldırılır (bütün koleksiyonda arama; kalabalıkta en kötü durum)."""
     from pilot import retrieve
 
-    prepared = [(it, prepare(it["q"])) for it in items]
+    prepared = [(it, prepare(it["q"], strip_source)) for it in items]
     if unfiltered:
         prepared = [(it, {**p, "doc_ids": None}) for it, p in prepared]
     runnable = [(it, p) for it, p in prepared if not p["skip"] and not it.get("expect_clarify")]
@@ -202,6 +203,8 @@ def main() -> None:
     ap.add_argument("--no-rerank", action="store_true")
     ap.add_argument("--unfiltered", action="store_true", help="doküman filtresi olmadan da ölç (1 tur)")
     ap.add_argument("--unfiltered-no-rerank", action="store_true", help="filtresiz geçiş rerank'sız (aday listesi)")
+    ap.add_argument("--no-source-strip", action="store_true",
+                    help="sorudaki kaynak ifadesi aramadan çıkarılmaz (Aşama 2.5 öncesi ölçüm)")
     ap.add_argument("--access", nargs="*", default=None,
                     help="kullanıcının yetki grupları (search(access=...)); verilmezse yetki kontrolü yok")
     ap.add_argument("--timing-sets", nargs="+", default=None,
@@ -214,20 +217,22 @@ def main() -> None:
     timed = [it for it in items if not a.timing_sets or it["set"] in a.timing_sets]
     rest = [it for it in items if it not in timed]
     params = {**retrieval_params(), "sets": a.sets, "timing_sets": a.timing_sets or a.sets, "repeats": a.repeats,
-              "warmup": a.warmup, "rerank": not a.no_rerank, "access": a.access,
+              "warmup": a.warmup, "rerank": not a.no_rerank, "access": a.access, "source_strip": not a.no_source_strip,
               "qdrant_mode": "server" if config.QDRANT_URL else "embedded", "qdrant_url": config.QDRANT_URL,
               "collection": config.COLLECTION, "qdrant_reuse": index.REUSE}
     log.info("%d soru: %d soru %d tur (süre + doğruluk), %d soru 1 tur (doğruluk)", len(items), len(timed),
              a.repeats, len(rest))
     memory = qdrant_memory()
-    rows, timer = run_questions(timed, a.repeats, a.warmup, do_rerank=not a.no_rerank, access=a.access)
+    strip = not a.no_source_strip
+    rows, timer = run_questions(timed, a.repeats, a.warmup, do_rerank=not a.no_rerank, access=a.access,
+                                strip_source=strip)
     if rest:
-        rows += run_questions(rest, 1, 0, do_rerank=not a.no_rerank, access=a.access)[0]
+        rows += run_questions(rest, 1, 0, do_rerank=not a.no_rerank, access=a.access, strip_source=strip)[0]
     unf = None
     if a.unfiltered:
         log.info("filtresiz geçiş (%s)", "rerank'sız" if a.unfiltered_no_rerank else "rerank'lı")
         urows, utimer = run_questions(items, 1, 0, do_rerank=not (a.no_rerank or a.unfiltered_no_rerank),
-                                      unfiltered=True, access=a.access)
+                                      unfiltered=True, access=a.access, strip_source=strip)
         unf = {"rerank": not (a.no_rerank or a.unfiltered_no_rerank), "accuracy": summarize(urows),
                "timing": utimer.summary(), "questions": urows}
     index.close_shared()        # gömülü klasörü tek istemci açabilir; recall kendi istemcisini açar
