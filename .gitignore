@@ -14,3 +14,13 @@ pilot/data/audio/
 # Ses dosyaları (STT ölçümünün test sesleri hariç)
 *.wav
 !pilot/eval/stt/*.wav
+
+# Benchmark: bulut embedding önbelleği, sentetik/sunucu Qdrant depoları, Qdrant ikilisi, Optuna dışı ham büyük veri
+pilot/data/bench_cache/
+pilot/data/bench_qdrant/
+pilot/data/qdrant_server/
+pilot/tools/qdrant/
+
+# Gizli anahtarlar (OPENROUTER_API_KEY yalnız ortam değişkeninden okunur)
+.env
+*.env
