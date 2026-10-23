@@ -1,6 +1,6 @@
 """bge-m3 (dense + sparse) ve reranker sarmalayıcıları. Tembel yüklenir, CPU'da çalışır.
 
-Reranker sağlayıcısı config'den (PILOT_RERANK_*); varsayılan bge-reranker-v2-m3, FlagEmbedding, max_length 512.
+Reranker sağlayıcısı config'den (PILOT_RERANK_*); varsayılan bge-reranker-v2-m3, torch backend, max_length 512.
 Sağlayıcılar: rerankers.py."""
 import warnings
 from functools import lru_cache

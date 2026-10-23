@@ -1,4 +1,4 @@
-"""OpenRouter: anahtar kontrolü (kullanım/limit) ve güncel embedding/rerank model listesi. Ücretsiz uçlar.
+"""OpenRouter: anahtar kontrolü (kullanım/limit), güncel embedding/rerank modelleri ve ZDR uyumlu sağlayıcıları. Ücretsiz uçlar.
 
 Kullanım: python -m bench.openrouter_models   -> eval/bench/openrouter_modeller_<tarih>.json
 Anahtar yalnız OPENROUTER_API_KEY ortam değişkeninden okunur, hiçbir yere yazılmaz.
@@ -36,6 +36,15 @@ def main() -> None:
             for m in models] if kind != "all" else [{k: m.get(k) for k in ("id", "pricing")}
             for m in models]}
         print(kind, res["status"], len(models))
+    zdr = _get("/endpoints/zdr", key)
+    zdr_list = zdr["body"].get("data", []) if isinstance(zdr["body"], dict) else []
+    zdr_models: dict[str, list[str]] = {}
+    for e in zdr_list:
+        zdr_models.setdefault(e.get("model_id"), []).append(e.get("provider_name"))
+    out["zdr"] = {"status": zdr["status"], "n_endpoints": len(zdr_list)}
+    for kind in ("embeddings", "rerank"):
+        for m in out[kind]["models"]:
+            m["zdr_providers"] = zdr_models.get(m["id"], [])
     out["rerank_like"] = out["rerank"]["models"]
     out["embed_like"] = [m for m in out["all"]["models"] if "embed" in (m["id"] or "").lower()
                          or "bge" in (m["id"] or "").lower()]
@@ -43,9 +52,10 @@ def main() -> None:
     path = OUT_DIR / f"openrouter_modeller_{datetime.now():%Y-%m-%d}.json"
     path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for m in out["rerank_like"]:
-        print("rerank:", m["id"], m["pricing"])
-    for m in (out["embeddings"]["models"] or out["embed_like"]):
-        print("embed:", m["id"], (m.get("pricing") or {}).get("prompt"), m.get("context_length"))
+        print("rerank:", m["id"], "ZDR:", m["zdr_providers"] or "YOK")
+    for m in out["embeddings"]["models"]:
+        print("embed:", m["id"], (m.get("pricing") or {}).get("prompt"), m.get("context_length"),
+              "ZDR:", m["zdr_providers"] or "YOK")
     print(path)
 
 

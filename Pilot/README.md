@@ -75,13 +75,20 @@ Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), öl
 |----------|------------|------------|
 | `PILOT_RERANK_PROVIDER` | `local` | `openrouter` (bulut; anahtar yalnız `OPENROUTER_API_KEY` ortam değişkeninden) |
 | `PILOT_RERANK_MODEL` | `BAAI/bge-reranker-v2-m3` | ör. `jinaai/jina-reranker-v2-base-multilingual`, bulutta `cohere/rerank-v3.5` |
-| `PILOT_RERANK_BACKEND` | `flag` (FlagEmbedding) | `torch` (aynı skor, ~3 kat hızlı), `onnx`, `onnx-int8` (önce `python -m bench.onnx_export <model>`) |
+| `PILOT_RERANK_BACKEND` | `torch` | `flag` (FlagEmbedding, eski varsayılan; aynı skor, ~3,6 kat yavaş), `onnx`, `onnx-int8` (önce `python -m bench.onnx_export <model>`) |
 | `PILOT_RERANK_MAX_LENGTH` | `512` | token sınırı (soru + parça) |
-| `PILOT_RERANK_BATCH` | `8` | `torch`/`onnx` batch boyutu (uzunluğa göre gruplanır) |
+| `PILOT_RERANK_BATCH` | `4` | `torch`/`onnx` batch boyutu (uzunluğa göre gruplanır) |
 | `PILOT_TORCH_THREADS` | torch varsayılanı | iş parçacığı sayısı |
 | `PILOT_FUSED_K`, `PILOT_PREFETCH_K` | `20`, `30` | rerank'a giden aday sayısı, her kolun aday sayısı |
-| `PILOT_QDRANT_REUSE` | `0` | `1`: Qdrant istemcisi süreç boyunca açık kalır (arama başına ~1 sn kazanç; gömülü klasör o süreçte kilitli kalır) |
+| `PILOT_QDRANT_REUSE` | `1` | Qdrant istemcisi süreç boyunca açık kalır (arama başına ~1 sn kazanç; gömülü klasör o süreçte kilitli kalır). `0`: her aramada aç/kapat |
 | `PILOT_OPENROUTER_URL` | `https://openrouter.ai/api/v1` | |
+| `PILOT_QDRANT_URL` | boş (gömülü mod) | `http://127.0.0.1:6333`: Qdrant sunucusu ([qdrant/README.md](qdrant/README.md)); `PILOT_QDRANT_GRPC=1` gRPC, `PILOT_QDRANT_API_KEY` sunucu anahtarı |
+| `PILOT_COLLECTION` | `manuals` | koleksiyon adı |
+| `PILOT_HNSW_M`, `PILOT_HNSW_EF_CONSTRUCT`, `PILOT_HNSW_FULL_SCAN_THRESHOLD` | Qdrant varsayılanı | koleksiyon kurulurken (sunucu modu) |
+| `PILOT_QUANTIZATION`, `PILOT_QUANT_ALWAYS_RAM` | `none`, `1` | `int8`, `binary` |
+| `PILOT_VECTORS_ON_DISK`, `PILOT_PAYLOAD_ON_DISK` | `0` | `1`: vektör / payload diskte |
+| `PILOT_HNSW_EF`, `PILOT_QUANT_RESCORE`, `PILOT_QUANT_OVERSAMPLING` | Qdrant varsayılanı | sorgu anı, dense kol |
+| `PILOT_OPENROUTER_ZDR` | `1` | Her OpenRouter isteğine `provider: {data_collection: deny, zdr: true}`; `0` kapatır |
 
 **Şekil açıklaması (isteğe bağlı, VLM):** Çizimlerin aranabilmesi için her şekle bir kez metin açıklaması yazılır.
 

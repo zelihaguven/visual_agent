@@ -167,9 +167,15 @@ def pilot_env() -> dict[str, str]:
             if k.startswith("PILOT_") or k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS")}
 
 
+# Donanım ve ağ etiketi: rapor üretimi temsil eden ölçümleri ayırır (hedef: arka uç sunucu + API'ler).
+HW_LABEL = os.environ.get("BENCH_HW_LABEL", "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez")
+NETWORK_LABEL = os.environ.get("BENCH_NETWORK", "geliştirme makinesinin bağlantısı (ofis/ev)")
+
+
 def meta(params: dict[str, Any]) -> dict[str, Any]:
     return {"date": datetime.now().isoformat(timespec="seconds"), "git_commit": _git_commit(),
-            "hardware": hardware(), "env": pilot_env(), "params": params}
+            "hardware": hardware(), "hardware_label": HW_LABEL, "network_label": NETWORK_LABEL,
+            "env": pilot_env(), "params": params}
 
 
 def dir_size(path: Path) -> int:

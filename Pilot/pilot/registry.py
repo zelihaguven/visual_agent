@@ -15,6 +15,9 @@ class DocMeta:
     default_lang: str = "en"
     lang_ranges: tuple[tuple[int, int, str], ...] = ()   # (ilk_sayfa, son_sayfa, dil)
     aliases: tuple[str, ...] = ()              # sorguda geçerse filtre: küçük harf, '-' ve boşluksuz
+    # Bu dokümanı görebilecek departman/yetki grupları. "all": herkes. Parçaların payload'ına yazılır; arama
+    # access verilirse Qdrant filtresinin içinde uygulanır (retrieve.search), yetkisiz parça sonuçlara hiç girmez.
+    access: tuple[str, ...] = ("all",)
 
     @property
     def path(self) -> Path:
@@ -67,3 +70,11 @@ CUSTOMER_BRANDS: dict[str, tuple[str, ...]] = {
     "usarmy": ("gl-pd-14-04a", "gl-pd-07-14a"),
     "glpd": ("gl-pd-14-04a", "gl-pd-07-14a"),
 }
+
+
+def visible(doc_id: str, groups: list[str] | None) -> bool:
+    """groups None: yetki kontrolü yok (pilotun varsayılanı). Aksi halde doküman 'all' ya da gruplardan biri için açık."""
+    if groups is None:
+        return True
+    access = BY_ID[doc_id].access if doc_id in BY_ID else ()
+    return "all" in access or bool(set(access) & set(groups))

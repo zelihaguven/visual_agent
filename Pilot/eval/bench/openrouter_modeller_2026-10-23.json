@@ -1,5 +1,5 @@
 {
- "date": "2026-10-23T11:25:53",
+ "date": "2026-10-23T14:55:51",
  "key_status": 200,
  "embeddings": {
   "status": 200,
@@ -24,7 +24,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "Nemotron 3.5 Embed 1B is a multimodal embedding model from NVIDIA for multilingual retrieval over text and document page images (tables, charts, infographics). Queries are text and documents can be..."
+    "description": "Nemotron 3.5 Embed 1B is a multimodal embedding model from NVIDIA for multilingual retrieval over text and document page images (tables, charts, infographics). Queries are text and documents can be...",
+    "zdr_providers": []
    },
    {
     "id": "nvidia/nemotron-3.5-embed-8b:free",
@@ -46,7 +47,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "Nemotron 3.5 Embed 8B is a multimodal embedding model from NVIDIA for multilingual retrieval over text and document page images (tables, charts, infographics). Queries are text and documents can be..."
+    "description": "Nemotron 3.5 Embed 8B is a multimodal embedding model from NVIDIA for multilingual retrieval over text and document page images (tables, charts, infographics). Queries are text and documents can be...",
+    "zdr_providers": []
    },
    {
     "id": "liquid/lfm-2.5-embedding-350m:free",
@@ -67,7 +69,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "LFM2.5-Embedding-350M is a text embedding model from Liquid AI. It produces 1,024-dimensional embeddings for retrieval and semantic search. Successful OpenRouter requests and embeddings may be retained and used to train..."
+    "description": "LFM2.5-Embedding-350M is a text embedding model from Liquid AI. It produces 1,024-dimensional embeddings for retrieval and semantic search. Successful OpenRouter requests and embeddings may be retained and used to train...",
+    "zdr_providers": []
    },
    {
     "id": "voyageai/voyage-code-4",
@@ -88,7 +91,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "voyage-code-4 is a code embedding model from Voyage AI, a MongoDB company. It is designed for coding agents and code retrieval, with Matryoshka embeddings at 2048, 1024, 512, and 256..."
+    "description": "voyage-code-4 is a code embedding model from Voyage AI, a MongoDB company. It is designed for coding agents and code retrieval, with Matryoshka embeddings at 2048, 1024, 512, and 256...",
+    "zdr_providers": []
    },
    {
     "id": "voyageai/voyage-multimodal-3.5",
@@ -110,7 +114,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "voyage-multimodal-3.5 is a state-of-the-art multimodal embedding model capable of vectorizing not only text, images, and video individually, but also content that interleaves all three modalities. It delivers excellent performance for..."
+    "description": "voyage-multimodal-3.5 is a state-of-the-art multimodal embedding model capable of vectorizing not only text, images, and video individually, but also content that interleaves all three modalities. It delivers excellent performance for...",
+    "zdr_providers": []
    },
    {
     "id": "voyageai/voyage-4-lite",
@@ -131,7 +136,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "voyage-4-lite is a lightweight, general-purpose embedding model optimized for low latency and cost. Enabled by Matryoshka learning and quantization-aware training, voyage-4-lite supports embeddings in 2048, 1024, 512, and 256 dimensions,..."
+    "description": "voyage-4-lite is a lightweight, general-purpose embedding model optimized for low latency and cost. Enabled by Matryoshka learning and quantization-aware training, voyage-4-lite supports embeddings in 2048, 1024, 512, and 256 dimensions,...",
+    "zdr_providers": []
    },
    {
     "id": "voyageai/voyage-4",
@@ -152,7 +158,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "voyage-4 is a general-purpose (including multilingual) embedding model optimized for retrieval/search and AI applications. voyage-4 supports embeddings in 2048, 1024, 512, and 256 dimensions, with multiple quantization options. Learn more..."
+    "description": "voyage-4 is a general-purpose (including multilingual) embedding model optimized for retrieval/search and AI applications. voyage-4 supports embeddings in 2048, 1024, 512, and 256 dimensions, with multiple quantization options. Learn more...",
+    "zdr_providers": []
    },
    {
     "id": "voyageai/voyage-4-large",
@@ -173,7 +180,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "voyage-4-large is a state-of-the-art general-purpose and multilingual embedding optimized for retrieval quality. Enabled by Matryoshka learning and quantization-aware training, voyage-4-large supports embeddings in 2048, 1024, 512, and 256 dimensions, with..."
+    "description": "voyage-4-large is a state-of-the-art general-purpose and multilingual embedding optimized for retrieval quality. Enabled by Matryoshka learning and quantization-aware training, voyage-4-large supports embeddings in 2048, 1024, 512, and 256 dimensions, with...",
+    "zdr_providers": []
    },
    {
     "id": "nvidia/nemotron-3-embed-1b:free",
@@ -194,7 +202,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "NVIDIA Nemotron 3 Embed 1B is an open text embedding model from NVIDIA, optimized for high-throughput, low-latency retrieval. It is suited for enterprise search, RAG, code retrieval, and agentic retrieval..."
+    "description": "NVIDIA Nemotron 3 Embed 1B is an open text embedding model from NVIDIA, optimized for high-throughput, low-latency retrieval. It is suited for enterprise search, RAG, code retrieval, and agentic retrieval...",
+    "zdr_providers": []
    },
    {
     "id": "google/gemini-embedding-2",
@@ -221,7 +230,12 @@
      "tokenizer": "Gemini",
      "instruct_type": null
     },
-    "description": "Gemini Embedding 2 is Google's first multimodal embedding model. We currently support mapping text and images into a unified vector space for semantic search and retrieval-augmented generation (RAG). It supports..."
+    "description": "Gemini Embedding 2 is Google's first multimodal embedding model. We currently support mapping text and images into a unified vector space for semantic search and retrieval-augmented generation (RAG). It supports...",
+    "zdr_providers": [
+     "Google",
+     "Google",
+     "Google"
+    ]
    },
    {
     "id": "google/gemini-embedding-2-preview",
@@ -248,7 +262,8 @@
      "tokenizer": "Gemini",
      "instruct_type": null
     },
-    "description": "Gemini Embedding 2 Preview is Google's first multimodal embedding model. We currently support mapping text and images into a unified vector space for semantic search and retrieval-augmented generation (RAG). It..."
+    "description": "Gemini Embedding 2 Preview is Google's first multimodal embedding model. We currently support mapping text and images into a unified vector space for semantic search and retrieval-augmented generation (RAG). It...",
+    "zdr_providers": []
    },
    {
     "id": "perplexity/pplx-embed-v1-4b",
@@ -269,7 +284,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "pplx-embed-v1 -4B is one of Perplexity's state-of-the-art text embedding models built for real-world, web-scale retrieval. pplx-embed-v1 is optimized for standard dense text retrieval with the 4B parameter model maximizing retrieval..."
+    "description": "pplx-embed-v1 -4B is one of Perplexity's state-of-the-art text embedding models built for real-world, web-scale retrieval. pplx-embed-v1 is optimized for standard dense text retrieval with the 4B parameter model maximizing retrieval...",
+    "zdr_providers": [
+     "Perplexity"
+    ]
    },
    {
     "id": "perplexity/pplx-embed-v1-0.6b",
@@ -290,7 +308,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "pplx-embed-v1-0.6B is one of Perplexity's state-of-the-art text embedding models built for real-world, web-scale retrieval. pplx-embed-v1 is optimized for standard dense text retrieval with the 0.6B parameter model targeting lightweight, low-latency..."
+    "description": "pplx-embed-v1-0.6B is one of Perplexity's state-of-the-art text embedding models built for real-world, web-scale retrieval. pplx-embed-v1 is optimized for standard dense text retrieval with the 0.6B parameter model targeting lightweight, low-latency...",
+    "zdr_providers": [
+     "Perplexity"
+    ]
    },
    {
     "id": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
@@ -312,7 +333,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The Llama Nemotron Embed VL 1B V2 embedding model is optimized for multimodal question-answering retrieval. The model can embed 'documents' in the form of image, text, or image and text..."
+    "description": "The Llama Nemotron Embed VL 1B V2 embedding model is optimized for multimodal question-answering retrieval. The model can embed 'documents' in the form of image, text, or image and text...",
+    "zdr_providers": []
    },
    {
     "id": "thenlper/gte-base",
@@ -333,7 +355,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The gte-base embedding model encodes English sentences and paragraphs into a 768-dimensional dense vector space, delivering efficient and effective semantic embeddings optimized for textual similarity, semantic search, and clustering applications."
+    "description": "The gte-base embedding model encodes English sentences and paragraphs into a 768-dimensional dense vector space, delivering efficient and effective semantic embeddings optimized for textual similarity, semantic search, and clustering applications.",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "thenlper/gte-large",
@@ -354,7 +379,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The gte-large embedding model converts English sentences, paragraphs and moderate-length documents into a 1024-dimensional dense vector space, delivering high-quality semantic embeddings optimized for information retrieval, semantic textual similarity, reranking and..."
+    "description": "The gte-large embedding model converts English sentences, paragraphs and moderate-length documents into a 1024-dimensional dense vector space, delivering high-quality semantic embeddings optimized for information retrieval, semantic textual similarity, reranking and...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "intfloat/e5-large-v2",
@@ -375,7 +403,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The e5-large-v2 embedding model maps English sentences, paragraphs, and documents into a 1024-dimensional dense vector space, delivering high-accuracy semantic embeddings optimized for retrieval, semantic search, reranking, and similarity-scoring tasks."
+    "description": "The e5-large-v2 embedding model maps English sentences, paragraphs, and documents into a 1024-dimensional dense vector space, delivering high-accuracy semantic embeddings optimized for retrieval, semantic search, reranking, and similarity-scoring tasks.",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "intfloat/e5-base-v2",
@@ -396,7 +427,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The e5-base-v2 embedding model encodes English sentences and paragraphs into a 768-dimensional dense vector space, producing efficient and high-quality semantic embeddings optimized for tasks such as semantic search, similarity scoring,..."
+    "description": "The e5-base-v2 embedding model encodes English sentences and paragraphs into a 768-dimensional dense vector space, producing efficient and high-quality semantic embeddings optimized for tasks such as semantic search, similarity scoring,...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "intfloat/multilingual-e5-large",
@@ -417,7 +451,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The multilingual-e5-large embedding model encodes sentences, paragraphs, and documents across over 90 languages into a 1024-dimensional dense vector space, delivering robust semantic embeddings optimized for multilingual retrieval, cross-language similarity, and..."
+    "description": "The multilingual-e5-large embedding model encodes sentences, paragraphs, and documents across over 90 languages into a 1024-dimensional dense vector space, delivering robust semantic embeddings optimized for multilingual retrieval, cross-language similarity, and...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "sentence-transformers/paraphrase-minilm-l6-v2",
@@ -438,7 +475,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The paraphrase-MiniLM-L6-v2 embedding model converts sentences and short paragraphs into a 384-dimensional dense vector space, producing high-quality semantic embeddings optimized for paraphrase detection, semantic similarity scoring, clustering, and lightweight retrieval..."
+    "description": "The paraphrase-MiniLM-L6-v2 embedding model converts sentences and short paragraphs into a 384-dimensional dense vector space, producing high-quality semantic embeddings optimized for paraphrase detection, semantic similarity scoring, clustering, and lightweight retrieval...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "sentence-transformers/all-minilm-l12-v2",
@@ -459,7 +499,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The all-MiniLM-L12-v2 embedding model maps sentences and short paragraphs into a 384-dimensional dense vector space, producing efficient and high-quality semantic embeddings optimized for tasks such as semantic search, clustering, and..."
+    "description": "The all-MiniLM-L12-v2 embedding model maps sentences and short paragraphs into a 384-dimensional dense vector space, producing efficient and high-quality semantic embeddings optimized for tasks such as semantic search, clustering, and...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "baai/bge-base-en-v1.5",
@@ -480,7 +523,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The bge-base-en-v1.5 embedding model converts English sentences and paragraphs into 768-dimensional dense vectors, delivering efficient, high-quality semantic embeddings optimized for retrieval, semantic search, and document-matching workflows. This version (v1.5) features..."
+    "description": "The bge-base-en-v1.5 embedding model converts English sentences and paragraphs into 768-dimensional dense vectors, delivering efficient, high-quality semantic embeddings optimized for retrieval, semantic search, and document-matching workflows. This version (v1.5) features...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "sentence-transformers/multi-qa-mpnet-base-dot-v1",
@@ -501,7 +547,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The multi-qa-mpnet-base-dot-v1 embedding model transforms sentences and short paragraphs into a 768-dimensional dense vector space, generating high-quality semantic embeddings optimized for question-and-answer retrieval, semantic search, and similarity-scoring across diverse content."
+    "description": "The multi-qa-mpnet-base-dot-v1 embedding model transforms sentences and short paragraphs into a 768-dimensional dense vector space, generating high-quality semantic embeddings optimized for question-and-answer retrieval, semantic search, and similarity-scoring across diverse content.",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "baai/bge-large-en-v1.5",
@@ -522,7 +571,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The bge-large-en-v1.5 embedding model maps English sentences, paragraphs, and documents into a 1024-dimensional dense vector space, delivering high-fidelity semantic embeddings optimized for semantic search, document retrieval, and downstream NLP tasks..."
+    "description": "The bge-large-en-v1.5 embedding model maps English sentences, paragraphs, and documents into a 1024-dimensional dense vector space, delivering high-fidelity semantic embeddings optimized for semantic search, document retrieval, and downstream NLP tasks...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "baai/bge-m3",
@@ -543,7 +595,11 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The bge-m3 embedding model encodes sentences, paragraphs, and long documents into a 1024-dimensional dense vector space, delivering high-quality semantic embeddings optimized for multilingual retrieval, semantic search, and large-context applications."
+    "description": "The bge-m3 embedding model encodes sentences, paragraphs, and long documents into a 1024-dimensional dense vector space, delivering high-quality semantic embeddings optimized for multilingual retrieval, semantic search, and large-context applications.",
+    "zdr_providers": [
+     "Parasail",
+     "DeepInfra"
+    ]
    },
    {
     "id": "sentence-transformers/all-mpnet-base-v2",
@@ -564,7 +620,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The all-mpnet-base-v2 embedding model encodes sentences and short paragraphs into a 768-dimensional dense vector space, providing high-fidelity semantic embeddings well suited for tasks like information retrieval, clustering, similarity scoring, and..."
+    "description": "The all-mpnet-base-v2 embedding model encodes sentences and short paragraphs into a 768-dimensional dense vector space, providing high-fidelity semantic embeddings well suited for tasks like information retrieval, clustering, similarity scoring, and...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "sentence-transformers/all-minilm-l6-v2",
@@ -585,7 +644,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The all-MiniLM-L6-v2 embedding model maps sentences and short paragraphs into a 384-dimensional dense vector space, enabling high-quality semantic representations that are ideal for downstream tasks such as information retrieval, clustering,..."
+    "description": "The all-MiniLM-L6-v2 embedding model maps sentences and short paragraphs into a 384-dimensional dense vector space, enabling high-quality semantic representations that are ideal for downstream tasks such as information retrieval, clustering,...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    },
    {
     "id": "mistralai/mistral-embed-2312",
@@ -606,7 +668,11 @@
      "tokenizer": "Mistral",
      "instruct_type": null
     },
-    "description": "Mistral Embed is a specialized embedding model for text data, optimized for semantic search and RAG applications. Developed by Mistral AI in late 2023, it produces 1024-dimensional vectors that effectively..."
+    "description": "Mistral Embed is a specialized embedding model for text data, optimized for semantic search and RAG applications. Developed by Mistral AI in late 2023, it produces 1024-dimensional vectors that effectively...",
+    "zdr_providers": [
+     "Mistral",
+     "Mistral"
+    ]
    },
    {
     "id": "google/gemini-embedding-001",
@@ -629,7 +695,10 @@
      "tokenizer": "Gemini",
      "instruct_type": null
     },
-    "description": "gemini-embedding-001 provides a unified cutting edge experience across domains, including science, legal, finance, and coding. This embedding model has consistently held a top spot on the Massive Text Embedding Benchmark..."
+    "description": "gemini-embedding-001 provides a unified cutting edge experience across domains, including science, legal, finance, and coding. This embedding model has consistently held a top spot on the Massive Text Embedding Benchmark...",
+    "zdr_providers": [
+     "Google"
+    ]
    },
    {
     "id": "openai/text-embedding-ada-002",
@@ -650,7 +719,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "text-embedding-ada-002 is OpenAI's legacy text embedding model."
+    "description": "text-embedding-ada-002 is OpenAI's legacy text embedding model.",
+    "zdr_providers": []
    },
    {
     "id": "mistralai/codestral-embed-2505",
@@ -671,7 +741,11 @@
      "tokenizer": "Mistral",
      "instruct_type": null
     },
-    "description": "Mistral Codestral Embed is specially designed for code, perfect for embedding code databases, repositories, and powering coding assistants with state-of-the-art retrieval."
+    "description": "Mistral Codestral Embed is specially designed for code, perfect for embedding code databases, repositories, and powering coding assistants with state-of-the-art retrieval.",
+    "zdr_providers": [
+     "Mistral",
+     "Mistral"
+    ]
    },
    {
     "id": "openai/text-embedding-3-large",
@@ -692,7 +766,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "text-embedding-3-large is OpenAI's most capable embedding model for both english and non-english tasks. Embeddings are a numerical representation of text that can be used to measure the relatedness between two..."
+    "description": "text-embedding-3-large is OpenAI's most capable embedding model for both english and non-english tasks. Embeddings are a numerical representation of text that can be used to measure the relatedness between two...",
+    "zdr_providers": [
+     "Azure"
+    ]
    },
    {
     "id": "openai/text-embedding-3-small",
@@ -713,7 +790,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "text-embedding-3-small is OpenAI's improved, more performant version of the ada embedding model. Embeddings are a numerical representation of text that can be used to measure the relatedness between two pieces..."
+    "description": "text-embedding-3-small is OpenAI's improved, more performant version of the ada embedding model. Embeddings are a numerical representation of text that can be used to measure the relatedness between two pieces...",
+    "zdr_providers": [
+     "Azure"
+    ]
    },
    {
     "id": "qwen/qwen3-embedding-8b",
@@ -734,7 +814,12 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks. This series inherits the exceptional multilingual capabilities, long-text..."
+    "description": "The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks. This series inherits the exceptional multilingual capabilities, long-text...",
+    "zdr_providers": [
+     "Nebius",
+     "SiliconFlow",
+     "DeepInfra"
+    ]
    },
    {
     "id": "qwen/qwen3-embedding-4b",
@@ -755,7 +840,10 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks. This series inherits the exceptional multilingual capabilities, long-text..."
+    "description": "The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks. This series inherits the exceptional multilingual capabilities, long-text...",
+    "zdr_providers": [
+     "DeepInfra"
+    ]
    }
   ]
  },
@@ -782,7 +870,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": ""
+    "description": "",
+    "zdr_providers": []
    },
    {
     "id": "voyageai/rerank-3-lite",
@@ -803,7 +892,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "rerank-3-lite is a reranker optimized for both latency and quality and a drop-in upgrade to rerank-2.5-lite, improving on it by 0.94% NDCG@10 on average across domain evaluations and by 1.86%..."
+    "description": "rerank-3-lite is a reranker optimized for both latency and quality and a drop-in upgrade to rerank-2.5-lite, improving on it by 0.94% NDCG@10 on average across domain evaluations and by 1.86%...",
+    "zdr_providers": []
    },
    {
     "id": "voyageai/rerank-3",
@@ -824,7 +914,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "rerank-3 is a reranker optimized for quality and a drop-in upgrade to rerank-2.5, improving on it by 0.80% NDCG@10 on average across domain evaluations and by 3.35% on long-document evaluations,..."
+    "description": "rerank-3 is a reranker optimized for quality and a drop-in upgrade to rerank-2.5, improving on it by 0.80% NDCG@10 on average across domain evaluations and by 3.35% on long-document evaluations,...",
+    "zdr_providers": []
    },
    {
     "id": "qwen/qwen3-reranker-8b",
@@ -845,7 +936,10 @@
      "tokenizer": "Qwen3",
      "instruct_type": null
     },
-    "description": "Qwen3 Reranker 8B is a text reranking model from Alibaba Cloud built on the Qwen3 architecture. It evaluates query-document pairs to produce relevance scores for use in retrieval and RAG..."
+    "description": "Qwen3 Reranker 8B is a text reranking model from Alibaba Cloud built on the Qwen3 architecture. It evaluates query-document pairs to produce relevance scores for use in retrieval and RAG...",
+    "zdr_providers": [
+     "Fireworks"
+    ]
    },
    {
     "id": "voyageai/rerank-2.5-lite",
@@ -866,7 +960,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "rerank-2.5-lite is a reranker optimized for both latency and quality, delivering a 7.16% improvement in retrieval accuracy over Cohere Rerank v3.5 across 93 datasets. It also outperformed Cohere Rerank v3.5..."
+    "description": "rerank-2.5-lite is a reranker optimized for both latency and quality, delivering a 7.16% improvement in retrieval accuracy over Cohere Rerank v3.5 across 93 datasets. It also outperformed Cohere Rerank v3.5...",
+    "zdr_providers": []
    },
    {
     "id": "voyageai/rerank-2.5",
@@ -887,7 +982,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "rerank-2.5 is a cutting-edge reranker optimized for quality, delivering a 7.94% improvement in retrieval accuracy over Cohere Rerank v3.5 across 93 datasets. It also outperformed Cohere Rerank v3.5 by 12.70%..."
+    "description": "rerank-2.5 is a cutting-edge reranker optimized for quality, delivering a 7.94% improvement in retrieval accuracy over Cohere Rerank v3.5 across 93 datasets. It also outperformed Cohere Rerank v3.5 by 12.70%...",
+    "zdr_providers": []
    },
    {
     "id": "nvidia/llama-nemotron-rerank-vl-1b-v2:free",
@@ -909,7 +1005,8 @@
      "tokenizer": "Other",
      "instruct_type": null
     },
-    "description": "Llama Nemotron Rerank VL 1B V2 is a 1.7B multimodal reranking model from NVIDIA. It evaluates the relevance of document images and text against user queries, designed for vision RAG..."
+    "description": "Llama Nemotron Rerank VL 1B V2 is a 1.7B multimodal reranking model from NVIDIA. It evaluates the relevance of document images and text against user queries, designed for vision RAG...",
+    "zdr_providers": []
    },
    {
     "id": "cohere/rerank-4-pro",
@@ -930,7 +1027,8 @@
      "tokenizer": "Cohere",
      "instruct_type": null
     },
-    "description": "Cohere's AI search foundation model for enhancing the relevance of information surfaced within search and RAG systems. Features a 32K context window, multilingual support across 100+ languages, no data pre-processing..."
+    "description": "Cohere's AI search foundation model for enhancing the relevance of information surfaced within search and RAG systems. Features a 32K context window, multilingual support across 100+ languages, no data pre-processing...",
+    "zdr_providers": []
    },
    {
     "id": "cohere/rerank-4-fast",
@@ -951,7 +1049,8 @@
      "tokenizer": "Cohere",
      "instruct_type": null
     },
-    "description": "Cohere's AI search foundation model for enhancing the relevance of information surfaced within search and RAG systems. Features a 32K context window, multilingual support across 100+ languages, no data pre-processing..."
+    "description": "Cohere's AI search foundation model for enhancing the relevance of information surfaced within search and RAG systems. Features a 32K context window, multilingual support across 100+ languages, no data pre-processing...",
+    "zdr_providers": []
    },
    {
     "id": "cohere/rerank-v3.5",
@@ -972,7 +1071,8 @@
      "tokenizer": "Cohere",
      "instruct_type": null
     },
-    "description": "Rerank v3.5 is designed to reorder search results for improved relevance. It supports multi-aspect and semi-structured data reranking over 100+ languages. Ideal for refining results from semantic or keyword search..."
+    "description": "Rerank v3.5 is designed to reorder search results for improved relevance. It supports multi-aspect and semi-structured data reranking over 100+ languages. Ideal for refining results from semantic or keyword search...",
+    "zdr_providers": []
    }
   ]
  },
@@ -997,9 +1097,9 @@
    {
     "id": "deepseek/deepseek-v4.1-flash-1017",
     "pricing": {
-     "prompt": "0.0000003",
-     "completion": "0.0000012",
-     "input_cache_read": "0.000000006",
+     "prompt": "0.00000015",
+     "completion": "0.0000006",
+     "input_cache_read": "0.000000003",
      "overrides": [
       {
        "utc_days": [
@@ -1726,9 +1826,9 @@
    {
     "id": "~deepseek/deepseek-pro-latest",
     "pricing": {
-     "prompt": "0.0000002247",
+     "prompt": "0.0000002565",
      "completion": "0.000008",
-     "input_cache_read": "0.00000022"
+     "input_cache_read": "0.00000026"
     }
    },
    {
@@ -1868,8 +1968,8 @@
    {
     "id": "deepseek/deepseek-v4.1-flash",
     "pricing": {
-     "prompt": "0.000000165",
-     "completion": "0.00000066",
+     "prompt": "0.0000003",
+     "completion": "0.0000012",
      "input_cache_read": "0.000000006"
     }
    },
@@ -2258,9 +2358,9 @@
    {
     "id": "deepseek/deepseek-v4-pro-0813",
     "pricing": {
-     "prompt": "0.00000132",
-     "completion": "0.00000396",
-     "input_cache_read": "0.000000044",
+     "prompt": "0.00000066",
+     "completion": "0.00000198",
+     "input_cache_read": "0.000000022",
      "overrides": [
       {
        "utc_days": [
@@ -5849,6 +5949,10 @@
    }
   ]
  },
+ "zdr": {
+  "status": 200,
+  "n_endpoints": 1065
+ },
  "rerank_like": [
   {
    "id": "nvidia/nemotron-3.5-rerank-8b:free",
@@ -5870,7 +5974,8 @@
     "tokenizer": "Other",
     "instruct_type": null
    },
-   "description": ""
+   "description": "",
+   "zdr_providers": []
   },
   {
    "id": "voyageai/rerank-3-lite",
@@ -5891,7 +5996,8 @@
     "tokenizer": "Other",
     "instruct_type": null
    },
-   "description": "rerank-3-lite is a reranker optimized for both latency and quality and a drop-in upgrade to rerank-2.5-lite, improving on it by 0.94% NDCG@10 on average across domain evaluations and by 1.86%..."
+   "description": "rerank-3-lite is a reranker optimized for both latency and quality and a drop-in upgrade to rerank-2.5-lite, improving on it by 0.94% NDCG@10 on average across domain evaluations and by 1.86%...",
+   "zdr_providers": []
   },
   {
    "id": "voyageai/rerank-3",
@@ -5912,7 +6018,8 @@
     "tokenizer": "Other",
     "instruct_type": null
    },
-   "description": "rerank-3 is a reranker optimized for quality and a drop-in upgrade to rerank-2.5, improving on it by 0.80% NDCG@10 on average across domain evaluations and by 3.35% on long-document evaluations,..."
+   "description": "rerank-3 is a reranker optimized for quality and a drop-in upgrade to rerank-2.5, improving on it by 0.80% NDCG@10 on average across domain evaluations and by 3.35% on long-document evaluations,...",
+   "zdr_providers": []
   },
   {
    "id": "qwen/qwen3-reranker-8b",
@@ -5933,7 +6040,10 @@
     "tokenizer": "Qwen3",
     "instruct_type": null
    },
-   "description": "Qwen3 Reranker 8B is a text reranking model from Alibaba Cloud built on the Qwen3 architecture. It evaluates query-document pairs to produce relevance scores for use in retrieval and RAG..."
+   "description": "Qwen3 Reranker 8B is a text reranking model from Alibaba Cloud built on the Qwen3 architecture. It evaluates query-document pairs to produce relevance scores for use in retrieval and RAG...",
+   "zdr_providers": [
+    "Fireworks"
+   ]
   },
   {
    "id": "voyageai/rerank-2.5-lite",
@@ -5954,7 +6064,8 @@
     "tokenizer": "Other",
     "instruct_type": null
    },
-   "description": "rerank-2.5-lite is a reranker optimized for both latency and quality, delivering a 7.16% improvement in retrieval accuracy over Cohere Rerank v3.5 across 93 datasets. It also outperformed Cohere Rerank v3.5..."
+   "description": "rerank-2.5-lite is a reranker optimized for both latency and quality, delivering a 7.16% improvement in retrieval accuracy over Cohere Rerank v3.5 across 93 datasets. It also outperformed Cohere Rerank v3.5...",
+   "zdr_providers": []
   },
   {
    "id": "voyageai/rerank-2.5",
@@ -5975,7 +6086,8 @@
     "tokenizer": "Other",
     "instruct_type": null
    },
-   "description": "rerank-2.5 is a cutting-edge reranker optimized for quality, delivering a 7.94% improvement in retrieval accuracy over Cohere Rerank v3.5 across 93 datasets. It also outperformed Cohere Rerank v3.5 by 12.70%..."
+   "description": "rerank-2.5 is a cutting-edge reranker optimized for quality, delivering a 7.94% improvement in retrieval accuracy over Cohere Rerank v3.5 across 93 datasets. It also outperformed Cohere Rerank v3.5 by 12.70%...",
+   "zdr_providers": []
   },
   {
    "id": "nvidia/llama-nemotron-rerank-vl-1b-v2:free",
@@ -5997,7 +6109,8 @@
     "tokenizer": "Other",
     "instruct_type": null
    },
-   "description": "Llama Nemotron Rerank VL 1B V2 is a 1.7B multimodal reranking model from NVIDIA. It evaluates the relevance of document images and text against user queries, designed for vision RAG..."
+   "description": "Llama Nemotron Rerank VL 1B V2 is a 1.7B multimodal reranking model from NVIDIA. It evaluates the relevance of document images and text against user queries, designed for vision RAG...",
+   "zdr_providers": []
   },
   {
    "id": "cohere/rerank-4-pro",
@@ -6018,7 +6131,8 @@
     "tokenizer": "Cohere",
     "instruct_type": null
    },
-   "description": "Cohere's AI search foundation model for enhancing the relevance of information surfaced within search and RAG systems. Features a 32K context window, multilingual support across 100+ languages, no data pre-processing..."
+   "description": "Cohere's AI search foundation model for enhancing the relevance of information surfaced within search and RAG systems. Features a 32K context window, multilingual support across 100+ languages, no data pre-processing...",
+   "zdr_providers": []
   },
   {
    "id": "cohere/rerank-4-fast",
@@ -6039,7 +6153,8 @@
     "tokenizer": "Cohere",
     "instruct_type": null
    },
-   "description": "Cohere's AI search foundation model for enhancing the relevance of information surfaced within search and RAG systems. Features a 32K context window, multilingual support across 100+ languages, no data pre-processing..."
+   "description": "Cohere's AI search foundation model for enhancing the relevance of information surfaced within search and RAG systems. Features a 32K context window, multilingual support across 100+ languages, no data pre-processing...",
+   "zdr_providers": []
   },
   {
    "id": "cohere/rerank-v3.5",
@@ -6060,7 +6175,8 @@
     "tokenizer": "Cohere",
     "instruct_type": null
    },
-   "description": "Rerank v3.5 is designed to reorder search results for improved relevance. It supports multi-aspect and semi-structured data reranking over 100+ languages. Ideal for refining results from semantic or keyword search..."
+   "description": "Rerank v3.5 is designed to reorder search results for improved relevance. It supports multi-aspect and semi-structured data reranking over 100+ languages. Ideal for refining results from semantic or keyword search...",
+   "zdr_providers": []
   }
  ],
  "embed_like": []

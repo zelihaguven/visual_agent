@@ -20,18 +20,48 @@ RERANK_MODEL = "BAAI/bge-reranker-v2-m3"
 EMBED_DEVICE = "cpu"          # MPS'te bge-m3 ve reranker yanlış sonuç veriyor (KURULUM-LOGU.md #1)
 EMBED_MAX_LENGTH = 512
 EMBED_BATCH = 16
-COLLECTION = "manuals"
+COLLECTION = os.environ.get("PILOT_COLLECTION", "manuals")
 
 # Arama katmanı seçenekleri (BENCHMARK-RAPORU.md). Varsayılanlar pilotun ölçülen yapısıdır; ortam değişkeniyle seçilir.
 RERANK_PROVIDER = os.environ.get("PILOT_RERANK_PROVIDER", "local")          # local | openrouter
 RERANK_MODEL = os.environ.get("PILOT_RERANK_MODEL", RERANK_MODEL)
-# local backend: flag (FlagEmbedding, varsayılan) | torch (doğrudan transformers) | onnx | onnx-int8
-RERANK_BACKEND = os.environ.get("PILOT_RERANK_BACKEND", "flag")
+# local backend: torch (doğrudan transformers, varsayılan) | flag (FlagEmbedding, eski) | onnx | onnx-int8.
+# torch, flag ile aynı skoru verir (fark <1e-5), 3,6 kat hızlı: FlagEmbedding her çağrıda ilk batch'i fazladan hesaplıyor
+# ve 20 adayı tek batch'te en uzun parçaya dolduruyor (BENCHMARK-RAPORU Aşama 1)
+RERANK_BACKEND = os.environ.get("PILOT_RERANK_BACKEND", "torch")
 RERANK_MAX_LENGTH = int(os.environ.get("PILOT_RERANK_MAX_LENGTH", EMBED_MAX_LENGTH))
-RERANK_BATCH = int(os.environ.get("PILOT_RERANK_BATCH", "8"))                # torch/onnx backend batch boyutu
+RERANK_BATCH = int(os.environ.get("PILOT_RERANK_BATCH", "4"))                # torch/onnx batch (4: 15,3 sn, 8: 17,1 sn)
 TORCH_THREADS = int(os.environ["PILOT_TORCH_THREADS"]) if os.environ.get("PILOT_TORCH_THREADS") else None
 OPENROUTER_URL = os.environ.get("PILOT_OPENROUTER_URL", "https://openrouter.ai/api/v1")
-QDRANT_REUSE = os.environ.get("PILOT_QDRANT_REUSE", "0") == "1"           # istemci süreç boyunca tek örnek
+# Veri minimizasyonu: her OpenRouter isteği yalnız veri saklamayan (ZDR) ve veriyi eğitimde kullanmayan sağlayıcılara gider
+OPENROUTER_ZDR = os.environ.get("PILOT_OPENROUTER_ZDR", "1") == "1"
+# Qdrant istemcisi süreç boyunca tek örnek (arama başına ~1,1 sn). Gömülü klasör o süreçte kilitli kalır: yeniden
+# indeksleme arayüz kapalıyken yapılır. Eski davranış (her aramada aç/kapat): PILOT_QDRANT_REUSE=0
+QDRANT_REUSE = os.environ.get("PILOT_QDRANT_REUSE", "1") == "1"
+
+# Qdrant sunucu modu (Pilot/qdrant/README.md). PILOT_QDRANT_URL yoksa gömülü mod (QDRANT_DIR), bugünkü davranış.
+QDRANT_URL = os.environ.get("PILOT_QDRANT_URL") or None
+QDRANT_GRPC = os.environ.get("PILOT_QDRANT_GRPC", "0") == "1"
+QDRANT_API_KEY = os.environ.get("PILOT_QDRANT_API_KEY") or None      # sunucuda anahtar varsa; hiçbir yere yazılmaz
+
+
+def _int_env(name: str) -> int | None:
+    return int(os.environ[name]) if os.environ.get(name) else None
+
+
+# Koleksiyon ayarları (yalnız koleksiyon kurulurken uygulanır; gömülü mod HNSW/quantization kullanmaz, tam arar).
+# Boş bırakılanlar Qdrant varsayılanı: m=16, ef_construct=100, full_scan_threshold=10000 KB.
+HNSW_M = _int_env("PILOT_HNSW_M")
+HNSW_EF_CONSTRUCT = _int_env("PILOT_HNSW_EF_CONSTRUCT")
+HNSW_FULL_SCAN_THRESHOLD = _int_env("PILOT_HNSW_FULL_SCAN_THRESHOLD")
+QUANTIZATION = os.environ.get("PILOT_QUANTIZATION", "none")          # none | int8 | binary
+QUANT_ALWAYS_RAM = os.environ.get("PILOT_QUANT_ALWAYS_RAM", "1") == "1"
+VECTORS_ON_DISK = os.environ.get("PILOT_VECTORS_ON_DISK", "0") == "1"
+PAYLOAD_ON_DISK = os.environ.get("PILOT_PAYLOAD_ON_DISK", "0") == "1"
+# Sorgu anı (dense kol). Boş: Qdrant varsayılanı (hnsw_ef = ef_construct; quantization varsa rescore açık)
+HNSW_EF = _int_env("PILOT_HNSW_EF")
+QUANT_RESCORE = os.environ.get("PILOT_QUANT_RESCORE")                  # "1" | "0" | boş
+QUANT_OVERSAMPLING = float(os.environ["PILOT_QUANT_OVERSAMPLING"]) if os.environ.get("PILOT_QUANT_OVERSAMPLING") else None
 
 # Küçük model: 24 GB RAM'li makinede GPU belleğini zorlamaz. Değiştirmek için PILOT_LLM_MODEL ortam değişkeni.
 LLM_MODEL = os.environ.get("PILOT_LLM_MODEL", "qwen2.5:7b")

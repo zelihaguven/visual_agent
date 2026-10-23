@@ -8,7 +8,7 @@ from typing import Any
 
 from qdrant_client import models
 
-from .config import COLLECTION
+from .config import COLLECTION, HNSW_EF, QUANT_OVERSAMPLING, QUANT_RESCORE
 from .embed import embed, rerank
 from .index import release, search_client
 
@@ -43,21 +43,39 @@ class Hit:
     rerank_score: float | None = None
 
 
-def _filter(brands: list[str] | None, doc_ids: list[str] | None) -> models.Filter | None:
+def _filter(brands: list[str] | None, doc_ids: list[str] | None,
+            access: list[str] | None = None) -> models.Filter | None:
+    """access: kullanıcının yetki grupları. Verilirse yalnız 'all' ya da bu gruplardan birine açık parçalar aranır;
+    koşul Qdrant filtresinin içindedir (sonradan eleme değil), yetkisiz parça hiçbir kola ve rerank'a girmez."""
     must = []
     if brands:
         must.append(models.FieldCondition(key="brand", match=models.MatchAny(any=brands)))
     if doc_ids:
         must.append(models.FieldCondition(key="doc_id", match=models.MatchAny(any=doc_ids)))
+    if access is not None:
+        must.append(models.FieldCondition(key="access", match=models.MatchAny(any=sorted({*access, "all"}))))
     return models.Filter(must=must) if must else None
+
+
+def dense_params(hnsw_ef: int | None = HNSW_EF, rescore: str | None = QUANT_RESCORE,
+                 oversampling: float | None = QUANT_OVERSAMPLING) -> models.SearchParams | None:
+    """Dense kolun sorgu anı ayarları (sunucu modunda HNSW/quantization). Hepsi boşsa None: Qdrant varsayılanı."""
+    quant = None
+    if rescore is not None or oversampling is not None:
+        quant = models.QuantizationSearchParams(rescore=None if rescore is None else rescore == "1",
+                                                oversampling=oversampling)
+    if hnsw_ef is None and quant is None:
+        return None
+    return models.SearchParams(hnsw_ef=hnsw_ef, quantization=quant)
 
 
 def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | None = None,
            mode: str = "hybrid", top_k: int = 5, do_rerank: bool = True,
-           query_en: str | None = None) -> list[Hit]:
+           query_en: str | None = None, access: list[str] | None = None) -> list[Hit]:
     """mode: 'dense' | 'sparse' | 'hybrid'. query_en verilirse sparse kol ona göre çalışır
-    (TR soru + EN doküman: kelime araması için çeviri)."""
-    flt = _filter(brands, doc_ids)
+    (TR soru + EN doküman: kelime araması için çeviri). access: kullanıcının yetki grupları (None: kontrol yok)."""
+    flt = _filter(brands, doc_ids, access)
+    dparams = dense_params()
     t = time.perf_counter()
     dense_vec = embed([query])[0]
     sparse_src = embed([query_en])[0]["sparse"] if query_en else dense_vec["sparse"]
@@ -70,14 +88,14 @@ def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | 
     try:
         if mode == "dense":
             res = qc.query_points(COLLECTION, query=dense_q, using="dense", query_filter=flt,
-                                  limit=FUSED_K, with_payload=True)
+                                  limit=FUSED_K, with_payload=True, search_params=dparams)
         elif mode == "sparse":
             res = qc.query_points(COLLECTION, query=sparse_q, using="sparse", query_filter=flt,
                                   limit=FUSED_K, with_payload=True)
         else:
             res = qc.query_points(
                 COLLECTION,
-                prefetch=[models.Prefetch(query=dense_q, using="dense", filter=flt, limit=PREFETCH_K),
+                prefetch=[models.Prefetch(query=dense_q, using="dense", filter=flt, limit=PREFETCH_K, params=dparams),
                           models.Prefetch(query=sparse_q, using="sparse", filter=flt, limit=PREFETCH_K)],
                 query=models.FusionQuery(fusion=models.Fusion.RRF),
                 limit=FUSED_K, with_payload=True)

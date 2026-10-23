@@ -35,7 +35,7 @@ def retrieval_params() -> dict[str, Any]:
 
 
 def run_questions(items: list[dict[str, Any]], repeats: int, warmup: int, do_rerank: bool = True,
-                  unfiltered: bool = False) -> tuple[list[dict[str, Any]], StageTimer]:
+                  unfiltered: bool = False, access: list[str] | None = None) -> tuple[list[dict[str, Any]], StageTimer]:
     """unfiltered: pipeline'ın doküman filtresi kaldırılır (bütün koleksiyonda arama; kalabalıkta en kötü durum)."""
     from pilot import retrieve
 
@@ -45,7 +45,8 @@ def run_questions(items: list[dict[str, Any]], repeats: int, warmup: int, do_rer
     runnable = [(it, p) for it, p in prepared if not p["skip"] and not it.get("expect_clarify")]
     timer = StageTimer()
     for it, p in runnable[:warmup]:
-        retrieve.search(p["search_q"], doc_ids=p["doc_ids"], top_k=retrieve.FUSED_K, do_rerank=do_rerank)
+        retrieve.search(p["search_q"], doc_ids=p["doc_ids"], top_k=retrieve.FUSED_K, do_rerank=do_rerank,
+                        access=access)
     retrieve.timing_hook = timer
     rows: dict[str, dict[str, Any]] = {}
     try:
@@ -53,7 +54,7 @@ def run_questions(items: list[dict[str, Any]], repeats: int, warmup: int, do_rer
             for it, p in runnable:
                 timer.start()
                 hits = retrieve.search(p["search_q"], doc_ids=p["doc_ids"], top_k=retrieve.FUSED_K,
-                                       do_rerank=do_rerank)
+                                       do_rerank=do_rerank, access=access)
                 t = timer.stop()
                 if r == 0:
                     chunks = [h.chunk for h in hits]
@@ -112,11 +113,16 @@ def ann_recall(n_queries: int = 500, ks: tuple[int, ...] = (5, 20), noise: float
 
 
 def qdrant_memory() -> dict[str, Any]:
-    """Gömülü mod: istemci açılınca süreç belleğindeki artış (bütün koleksiyon RAM'e yüklenir) ve disk."""
+    """Gömülü mod: istemci açılınca süreç belleğindeki artış (bütün koleksiyon RAM'e yüklenir) ve disk.
+    Sunucu modu: qdrant sürecinin RAM'i, depo ve koleksiyon diski (bench/server.py)."""
     import psutil
 
-    from pilot.config import COLLECTION, QDRANT_DIR
+    from pilot.config import COLLECTION, QDRANT_DIR, QDRANT_URL
     from pilot.index import client
+
+    if QDRANT_URL:
+        from bench.server import server_memory
+        return server_memory(COLLECTION)
 
     gc.collect()
     proc = psutil.Process()
@@ -151,6 +157,7 @@ def report_md(name: str, data: dict[str, Any]) -> str:
     lines = [f"# Arama ölçümü: {name}", "",
              f"{m['date']} · commit `{m['git_commit']}` · {hw.get('cpu')} ({hw.get('logical_cpus')} iş parçacığı), "
              f"{hw.get('ram_gb')} GB RAM · {hw.get('platform')}", "",
+             f"Donanım: {m.get('hardware_label')} · ağ: {m.get('network_label')}", "",
              "Parametreler: " + ", ".join(f"`{k}={v}`" for k, v in m["params"].items()), "",
              "## Doğruluk (netleştirme ve bulunamadı soruları hariç)", ""]
     lines += acc_table(acc)
@@ -164,8 +171,7 @@ def report_md(name: str, data: dict[str, Any]) -> str:
                                                            if k.startswith("recall"))]
     if data.get("memory"):
         mem = data["memory"]
-        lines += ["", "## Bellek", "", f"Mod: {mem['mode']} · parça: {mem['points']} · RAM artışı: "
-                  f"{mem['rss_delta_mb']} MB · disk: {mem['disk_mb']} MB"]
+        lines += ["", "## Bellek", "", " · ".join(f"{k}: {v}" for k, v in mem.items())]
     if data.get("unfiltered"):
         u = data["unfiltered"]
         lines += ["", "## Filtresiz (doküman filtresi kaldırılmış, bütün koleksiyon, "
@@ -196,30 +202,34 @@ def main() -> None:
     ap.add_argument("--no-rerank", action="store_true")
     ap.add_argument("--unfiltered", action="store_true", help="doküman filtresi olmadan da ölç (1 tur)")
     ap.add_argument("--unfiltered-no-rerank", action="store_true", help="filtresiz geçiş rerank'sız (aday listesi)")
+    ap.add_argument("--access", nargs="*", default=None,
+                    help="kullanıcının yetki grupları (search(access=...)); verilmezse yetki kontrolü yok")
     ap.add_argument("--timing-sets", nargs="+", default=None,
                     help="süre yalnız bu setlerde --repeats tur ölçülür; diğerleri 1 tur (yalnız doğruluk)")
     a = ap.parse_args()
+
+    from pilot import config, index
 
     items = load_questions(a.sets)
     timed = [it for it in items if not a.timing_sets or it["set"] in a.timing_sets]
     rest = [it for it in items if it not in timed]
     params = {**retrieval_params(), "sets": a.sets, "timing_sets": a.timing_sets or a.sets, "repeats": a.repeats,
-              "warmup": a.warmup, "rerank": not a.no_rerank, "qdrant_mode": "embedded",
-              "qdrant_reuse": __import__("pilot.index", fromlist=["REUSE"]).REUSE}
+              "warmup": a.warmup, "rerank": not a.no_rerank, "access": a.access,
+              "qdrant_mode": "server" if config.QDRANT_URL else "embedded", "qdrant_url": config.QDRANT_URL,
+              "collection": config.COLLECTION, "qdrant_reuse": index.REUSE}
     log.info("%d soru: %d soru %d tur (süre + doğruluk), %d soru 1 tur (doğruluk)", len(items), len(timed),
              a.repeats, len(rest))
     memory = qdrant_memory()
-    rows, timer = run_questions(timed, a.repeats, a.warmup, do_rerank=not a.no_rerank)
+    rows, timer = run_questions(timed, a.repeats, a.warmup, do_rerank=not a.no_rerank, access=a.access)
     if rest:
-        rows += run_questions(rest, 1, 0, do_rerank=not a.no_rerank)[0]
+        rows += run_questions(rest, 1, 0, do_rerank=not a.no_rerank, access=a.access)[0]
     unf = None
     if a.unfiltered:
         log.info("filtresiz geçiş (%s)", "rerank'sız" if a.unfiltered_no_rerank else "rerank'lı")
         urows, utimer = run_questions(items, 1, 0, do_rerank=not (a.no_rerank or a.unfiltered_no_rerank),
-                                      unfiltered=True)
+                                      unfiltered=True, access=a.access)
         unf = {"rerank": not (a.no_rerank or a.unfiltered_no_rerank), "accuracy": summarize(urows),
                "timing": utimer.summary(), "questions": urows}
-    from pilot import index
     index.close_shared()        # gömülü klasörü tek istemci açabilir; recall kendi istemcisini açar
     log.info("ANN recall: %d sorgu", a.recall_queries)
     recall = ann_recall(a.recall_queries) if a.recall_queries else None

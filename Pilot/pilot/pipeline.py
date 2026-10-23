@@ -10,7 +10,7 @@ from .config import CHUNKS_PATH, CLARIFY_MIN_SCORE, MIN_RERANK_SCORE, TOP_K_SOUR
 from .llm import chat_json
 from .query import (DETAIL_HINT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific, aspects_for,
                     context_entities, family, missing_entities, question_lang, spoken_codes, strip_terms)
-from .registry import BY_ID, DOCS
+from .registry import BY_ID, DOCS, visible
 from .retrieve import Hit, search
 from .speech import normalize_for_speech, normalize_for_speech_en
 from .tables import record_keys, variant_check
@@ -112,10 +112,11 @@ def _has_code(text: str, code: str) -> bool:
     return re.search(rf"(?<![\w-]){pat}(?![\w-])", text, re.I) is not None
 
 
-def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None
+def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None, access: list[str] | None = None
                 ) -> tuple[list[dict[str, Any]], list[str], dict[str, list[str]]]:
     """Sorudaki kodlar için kapsamda birebir geçen parçalar, kapsamda hiç geçmeyen kodlar ve bu kodların geçtiği
-    kapsam dışı dokümanlar. Arama benzer kodu (E05 ~ E050) getirebiliyor; kod birebir aranır."""
+    kapsam dışı dokümanlar. Arama benzer kodu (E05 ~ E050) getirebiliyor; kod birebir aranır.
+    access: kullanıcının yetki grupları; yetkisiz dokümanların parçaları ve adları hiç dönmez (arama gibi)."""
     aliases = {a for d in DOCS for a in d.aliases}   # tiresiz model adı ("s7300a") kod değil, doküman kaydı
     codes = list(dict.fromkeys(m.group(1).upper() for m in CODE_TOKEN_RE.finditer(question)
                                if m.group(1).lower() not in aliases))
@@ -123,7 +124,7 @@ def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None
     missing: list[str] = []
     elsewhere: dict[str, list[str]] = {}
     for code in codes:
-        hits = [c for c in _chunks()["all"] if _has_code(c["text"], code)]
+        hits = [c for c in _chunks()["all"] if visible(c["doc_id"], access) and _has_code(c["text"], code)]
         inside = [c for c in hits if (not scope or c["doc_id"] in scope) and (not brands or c["brand"] in brands)]
         if inside:
             # Önce tablo satırı (kod tablosu), sonra metin; kod başına en fazla 2 parça
@@ -135,9 +136,12 @@ def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None
 
 
 def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: list[str] | None = None,
-                 mode: str = "hybrid", query_en: str | None = None, on_step=_noop, voice: bool = False) -> Result:
+                 mode: str = "hybrid", query_en: str | None = None, on_step=_noop, voice: bool = False,
+                 access: list[str] | None = None) -> Result:
     """on_step: arayüzde adım adım durum göstermek için çağrılır ("Kaynaklar aranıyor" ...).
-    voice: soru sesle soruldu (STT). Sorudan kaynak çıkmıyorsa arama yapılmadan sorulur (karar)."""
+    voice: soru sesle soruldu (STT). Sorudan kaynak çıkmıyorsa arama yapılmadan sorulur (karar).
+    access: kullanıcının yetki grupları (None: kontrol yok, pilotun varsayılanı). Arama ve kod eşleşmesi yalnız
+    yetkili parçalarda çalışır. Netleştirme seçeneklerindeki doküman adları henüz filtrelenmiyor (BENCHMARK-RAPORU)."""
     timings: dict[str, float] = {}
     t0 = time.time()
     question = spoken_codes(question)     # "Es yetmiş üç yüz A" → "S-7300A": arama ve model yazılı kodu görür
@@ -210,10 +214,11 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
     search_q, added = expand_query(asked)
     on_step("Kaynaklar aranıyor" + (f" (terim sözlüğü: {', '.join(added)})" if added else ""))
     t = time.time()
-    hits = search(search_q, brands=brands, doc_ids=scope, mode=mode, top_k=TOP_K_SOURCES, query_en=query_en)
+    hits = search(search_q, brands=brands, doc_ids=scope, mode=mode, top_k=TOP_K_SOURCES, query_en=query_en,
+                  access=access)
     timings["search"] = time.time() - t
 
-    found, missing, elsewhere = code_lookup(asked, scope, brands)
+    found, missing, elsewhere = code_lookup(asked, scope, brands, access)
     if missing and not found:
         # Sorulan kod kapsamdaki dokümanlarda hiç geçmiyor: benzer bir kodun açıklaması verilmez, model çağrılmaz.
         names = ", ".join(BY_ID[d].product for d in scope) if scope else "dokümanlar"

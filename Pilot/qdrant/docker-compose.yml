@@ -1,0 +1,23 @@
+# Qdrant sunucusu (arka uç). Kurulum notu: README.md
+# Linux sunucuda: docker compose up -d   ·  Pilot tarafı: PILOT_QDRANT_URL=http://<sunucu>:6333
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.19.2          # Windows ikilisiyle aynı sürüm; qdrant-client 1.19 ile uyumlu
+    container_name: visual-agent-qdrant
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6333:6333"             # HTTP (REST). Dışarı açılacaksa önce API anahtarı ve TLS
+      - "127.0.0.1:6334:6334"             # gRPC (PILOT_QDRANT_GRPC=1)
+    environment:
+      QDRANT__TELEMETRY_DISABLED: "true"
+      QDRANT__LOG_LEVEL: "INFO"
+      # Dış erişimde zorunlu (değer .env'den, repoya girmez): QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY}
+    volumes:
+      - qdrant_storage:/qdrant/storage
+      - qdrant_snapshots:/qdrant/snapshots
+    ulimits:
+      nofile: {soft: 65535, hard: 65535}  # büyük koleksiyonda segment dosyaları
+
+volumes:
+  qdrant_storage:
+  qdrant_snapshots:

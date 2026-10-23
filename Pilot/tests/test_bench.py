@@ -143,6 +143,13 @@ def test_ranked_rank_limits_to_first_k_candidates():
     assert ranked_rank(cands, [0.1, 0.2, 0.9], ITEM, 2) is None     # FUSED_K=2: aday hiç reranka gitmez
 
 
+def test_openrouter_requests_carry_zdr_by_default():
+    from pilot.rerankers import openrouter_body
+    b = openrouter_body({"model": "m", "query": "q"}, zdr=True)
+    assert b["provider"] == {"data_collection": "deny", "zdr": True} and b["query"] == "q"
+    assert "provider" not in openrouter_body({"model": "m"}, zdr=False)
+
+
 def test_cpu_window_mean():
     from bench.cpu import window_mean
     t, v = [1.0, 2.0, 3.0, 4.0], [10.0, 20.0, 30.0, 40.0]
@@ -172,3 +179,12 @@ def test_shared_qdrant_client_is_reused_only_when_enabled(monkeypatch):
     assert not s.closed and index.search_client() is s
     index.close_shared()
     assert s.closed and index._shared is None
+
+
+def test_synthetic_access_is_deterministic_and_half_public():
+    from bench.server import GROUPS, synthetic_access
+    xs = [synthetic_access(i) for i in range(4000)]
+    assert xs == [synthetic_access(i) for i in range(4000)]
+    public = sum(1 for x in xs if x == ["all"]) / len(xs)
+    assert 0.45 < public < 0.55
+    assert {g for x in xs for g in x} == {"all", *GROUPS}

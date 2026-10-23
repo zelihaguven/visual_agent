@@ -1,8 +1,8 @@
 """Reranker sağlayıcıları. Hepsi aynı arayüzde: reranker(query, passages) -> skorlar (passages sırasıyla).
 
-- flag:      FlagEmbedding FlagReranker (pilotun varsayılanı)
-- torch:     aynı model doğrudan transformers ile. FlagEmbedding her çağrıda ilk batch'i batch boyutu denemesi için
+- torch:     varsayılan; model doğrudan transformers ile. FlagEmbedding her çağrıda ilk batch'i batch boyutu denemesi için
              bir kez fazladan hesaplıyor; 20 aday tek batch'e sığdığı için iş iki kez yapılıyordu (BENCHMARK-RAPORU)
+- flag:      FlagEmbedding FlagReranker (pilotun ilk varsayılanı, aynı skor)
 - onnx:      aynı model ONNX Runtime ile (bench/onnx_export.py dışa aktarır); onnx-int8: dinamik int8 quantization
 - openrouter: bulut rerank (Cohere uyumlu /rerank ucu); anahtar yalnız OPENROUTER_API_KEY ortam değişkeninden
 """
@@ -13,7 +13,7 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
-from .config import DATA_DIR, EMBED_DEVICE, OPENROUTER_URL, TORCH_THREADS
+from .config import DATA_DIR, EMBED_DEVICE, OPENROUTER_URL, OPENROUTER_ZDR, TORCH_THREADS
 
 Reranker = Callable[[str, Sequence[str]], list[float]]
 ONNX_DIR = DATA_DIR / "bench_cache" / "onnx"
@@ -147,8 +147,8 @@ class OpenRouterRerank:
     def __call__(self, query: str, passages: Sequence[str]) -> list[float]:
         t = time.perf_counter()
         r = self.session.post(f"{OPENROUTER_URL}/rerank", timeout=self.timeout,
-                              json={"model": self.model, "query": query, "documents": list(passages),
-                                    "top_n": len(passages)})
+                              json=openrouter_body({"model": self.model, "query": query, "documents": list(passages),
+                                                    "top_n": len(passages)}))
         self.last_network_s = time.perf_counter() - t
         if r.status_code != 200:
             # Hata metni loga gider; istek başlıkları (anahtar) yazılmaz
@@ -156,6 +156,14 @@ class OpenRouterRerank:
         body = r.json()
         self.last_usage = body.get("usage") or body.get("meta") or {}
         return parse_rerank_response(body, len(passages))
+
+
+def openrouter_body(body: dict[str, Any], zdr: bool | None = None) -> dict[str, Any]:
+    """İstek gövdesine sağlayıcı kısıtı: veri saklamayan (ZDR), veriyi toplamayan sağlayıcılar. Yalnız sorgu ve seçilmiş
+    parçalar gider; kullanıcı kimliği, yetki bilgisi gönderilmez (çağıranın sorumluluğu)."""
+    if zdr if zdr is not None else OPENROUTER_ZDR:
+        return {**body, "provider": {"data_collection": "deny", "zdr": True}}
+    return body
 
 
 def parse_rerank_response(body: dict[str, Any], n: int) -> list[float]:
