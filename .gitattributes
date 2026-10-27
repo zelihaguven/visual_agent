@@ -1,0 +1,2 @@
+# Linux betikleri her zaman LF (core.autocrlf=true makinelerde CRLF olursa bash çalışmaz: Aşama 3 sunucu paketi)
+*.sh text eol=lf

@@ -46,8 +46,9 @@ def code(out: Path) -> str:
     commit = git("rev-parse", "--short", "HEAD")
     tmp = CACHE / "kod.tar"
     CACHE.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["git", "archive", "--format=tar", "-o", str(tmp), "HEAD", "Pilot/pilot", "Pilot/bench", "Pilot/eval"],
-                   cwd=PILOT_DIR.parent, check=True)
+    # core.autocrlf=false: depodaki LF hali (Windows'ta archive CRLF'e çeviriyor; Linux'ta bash betiği çalışmaz)
+    subprocess.run(["git", "-c", "core.autocrlf=false", "archive", "--format=tar", "-o", str(tmp), "HEAD",
+                    "Pilot/pilot", "Pilot/bench", "Pilot/eval"], cwd=PILOT_DIR.parent, check=True)
     dest = out / "kod"
     if dest.exists():
         shutil.rmtree(dest)
@@ -122,7 +123,13 @@ def build(out: Path, collections: list[str], make_tar: bool) -> None:
     out.mkdir(parents=True, exist_ok=True)
     commit = code(out)
     for f in ("asama3_sunucu.sh", "BENIOKU.txt", "requirements-onprem.txt"):
-        shutil.copy(HERE / f, out / f)
+        (out / f).write_bytes((HERE / f).read_bytes().replace(b"
+", b"
+"))       # LF (Linux)
+    crlf = [str(p.relative_to(out)) for p in out.rglob("*.sh") if b"
+" in p.read_bytes()]
+    if crlf:
+        raise SystemExit(f"CRLF satır sonlu betik (Linux'ta çalışmaz): {crlf}")
     binaries(out)
     wheels(out)
     queries(out)
