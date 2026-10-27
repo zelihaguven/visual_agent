@@ -1,0 +1,7 @@
+# Şirket içi sunucu (3a süre, 3c yük): yalnız Qdrant istemcisi ve ölçüm. Tekerlekler dizüstünde indirilir
+# (bench.onprem.paket wheels: manylinux, CPython 3.12), sunucuda --no-index ile kurulur. Sürümler lock dosyasından.
+qdrant-client==1.19.1
+numpy==2.5.3
+requests==2.34.2
+psutil==7.2.2
+pydantic==2.14.0

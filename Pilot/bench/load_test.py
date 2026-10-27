@@ -23,7 +23,7 @@ import time
 from typing import Any
 
 from bench.common import meta, write_result
-from bench.scale_bench import ACCESS_USER, apply_env, container_stats, load_query_vectors, pct
+from bench.scale_bench import ACCESS_USER, apply_env, load_query_vectors, pct, resource_stats
 
 QUERY_TOKENS = 40
 
@@ -148,7 +148,7 @@ def main() -> None:
     data = {"meta": meta({"collection": a.collection, "mode": a.mode, "think_s": a.think, "duration_s": a.duration,
                           "procs": a.procs, "client_cpus": a.client_cpus, "label": a.label,
                           "filter_mix": "50% marka, 25% yetki, 25% filtresiz"}),
-            "levels": res, "saturation_users": max(good) if good else None, "resources": container_stats(a.collection)}
+            "levels": res, "saturation_users": max(good) if good else None, "resources": resource_stats(a.collection)}
     lines = [f"# Aşama 3c yük: {a.collection} · {a.mode} · {a.label}", "",
              f"Kapalı döngü, düşünme süresi {a.think} sn (±%50), kademe {a.duration:.0f} sn, istemci çekirdekleri "
              f"{a.client_cpus or 'hepsi'}, {a.procs} süreç. Karışım: %50 marka, %25 yetki, %25 filtresiz. "

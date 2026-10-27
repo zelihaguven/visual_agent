@@ -126,9 +126,9 @@ def qdrant_memory() -> dict[str, Any]:
     from pilot.index import client
 
     if QDRANT_URL:
-        if os.environ.get("PILOT_QDRANT_DOCKER"):
-            from bench.scale_bench import container_stats
-            return container_stats(COLLECTION)
+        if os.environ.get("PILOT_QDRANT_DOCKER") or os.environ.get("PILOT_QDRANT_UNIT"):
+            from bench.scale_bench import resource_stats
+            return resource_stats(COLLECTION)
         from bench.server import server_memory
         return server_memory(COLLECTION)
 

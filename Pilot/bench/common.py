@@ -153,6 +153,8 @@ class StageTimer:
 # ---------- sonuç dosyası ----------
 
 def _git_commit() -> str:
+    if os.environ.get("BENCH_GIT_COMMIT"):          # şirket içi sunucu: git yok, paketin commit'i (bench/onprem)
+        return os.environ["BENCH_GIT_COMMIT"]
     try:
         sha = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=PILOT_DIR, capture_output=True,
                              text=True, timeout=10).stdout.strip()

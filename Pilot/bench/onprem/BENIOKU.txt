@@ -1,0 +1,27 @@
+Visual Agent — Aşama 3a (süre) ve 3c (yük) ölçüm paketi
+=========================================================
+
+Ne yapar: Arama veritabanını (Qdrant) bu sunucuda, ölçüm için sınırlanmış kaynakla (8 çekirdek / 16 GB, sonra
+4 çekirdek / 16 GB) çalıştırır ve arama süresini ve eşzamanlı kullanıcı kapasitesini ölçer. Müşteri verisi yoktur:
+indeksler açık kaynaklı kılavuzlar, ABD patentleri ve Vikipedi metinlerinden üretildi.
+
+İnternet gerekmez. Dışarıya bağlantı açılmaz; Qdrant yalnız 127.0.0.1'i dinler. Sistem paketleri kurulmaz, sistemde
+bir şey değiştirilmez: her şey bu klasörün içindeki "calisma" alt klasöründe. Kök yetkisi, Qdrant'a systemd ile
+kaynak sınırı koymak ve ölçümler arasında disk önbelleğini boşaltmak için gerekir.
+
+Gereken: Linux x86_64, en az 10 çekirdek, 24 GB RAM, paket boyutunun ~2,5 katı boş disk.
+
+ÇALIŞTIRMA (tek komut, bu klasörde; ekran kapansa da sürmesi için tmux/screen içinde ya da nohup ile):
+
+    sudo bash asama3_sunucu.sh
+
+Süre: yükleme 20–40 dk, ölçüm ~2 saat. Bitince bu klasörde şu dosya oluşur:
+
+    asama3_sonuc_<sunucu>_<tarih>.tar.gz      ← bunu geri getirin (birkaç MB)
+
+Sonra temizlik (Qdrant durur, açılan indeksler ve çalışma dosyaları silinir; paket ve sonuç dosyası kalır):
+
+    sudo bash asama3_sunucu.sh temizle
+
+Bir adım hata verirse aynı komutu yeniden çalıştırın; kurulum ve yüklenmiş indeksler atlanır. Hata mesajı ve günlük:
+calisma/asama3_sunucu.log

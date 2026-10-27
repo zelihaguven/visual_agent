@@ -6,6 +6,7 @@ Kullanım (Pilot klasöründe):
     python -m bench.scale_bench limits --none                                       # sınırsız (indeksleme)
     python -m bench.scale_bench latency --collection scale_qwen3_8b --label 8cpu-16g [--repeats 5]
     python -m bench.scale_bench stats --collection scale_qwen3_8b
+    python -m bench.scale_bench wait                                                # Qdrant hazır olana kadar bekle
 
 - Sınır (limits): docker update --cpuset-cpus 0..n-1 --cpus n --memory M --memory-swap M, sonra konteyner yeniden
   başlatılır ve sayfa önbelleği boşaltılır (soğuk başlangıç; ölçüm ısınma turuyla başlar). cgroup v2'de dosya sayfa
@@ -13,7 +14,9 @@ Kullanım (Pilot klasöründe):
   Yük üreten istemci (bench.load_test) sınırın dışındaki çekirdeklerde çalışır.
 - Gecikme (latency): yalnız Qdrant (sorgu vektörü önceden hesaplı; bulut embed ağı girmez). Dört biçim: filtresiz hibrit,
   marka filtreli hibrit, yetki filtreli hibrit (["all", "g1"]), yalnız dense. Arama pipeline'ınki (retrieve.candidates).
-- Kök kullanıcı varsayılır (Hetzner'in varsayılanı); docker komutları sudo'suz çağrılır.
+- limits yalnız docker içindir (VM). Docker'sız şirket içi sunucuda sınırı systemd verir (bench/onprem/asama3_sunucu.sh:
+  systemd-run -p AllowedCPUs -p CPUQuota -p MemoryMax); kaynak ölçümü resource_stats ikisini de okur.
+- Docker komutları sudo'suz çağrılır (kök kullanıcı).
 """
 import argparse
 import json
@@ -97,6 +100,40 @@ def container_stats(collection: str | None = None) -> dict[str, Any]:
     return out
 
 
+def systemd_stats(collection: str | None = None) -> dict[str, Any]:
+    """systemd birimi altında çalışan Qdrant (şirket içi sunucu, bench/onprem): cgroup belleği (sayfa önbelleği dahil),
+    sınırlar ve koleksiyon diski. PILOT_QDRANT_UNIT birimin adı; PILOT_QDRANT_UNIT_USER=1 ise kullanıcı birimi."""
+    unit = os.environ["PILOT_QDRANT_UNIT"]
+    cmd = ["systemctl"] + (["--user"] if os.environ.get("PILOT_QDRANT_UNIT_USER") == "1" else []) + [
+        "show", unit, "-p", "MemoryCurrent", "-p", "MemoryMax", "-p", "AllowedCPUs", "-p", "CPUQuotaPerSecUSec"]
+    try:
+        kv = dict(line.split("=", 1) for line in sh(*cmd).splitlines() if "=" in line)
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    gb = (lambda v: round(int(v) / 2**30, 2) if v and v.isdigit() else v)
+    out = {"mode": "systemd", "unit": unit, "mem_current_gb": gb(kv.get("MemoryCurrent")),
+           "limit_memory_gb": gb(kv.get("MemoryMax")), "limit_cpus": kv.get("AllowedCPUs"),
+           "cpu_quota": kv.get("CPUQuotaPerSecUSec")}
+    storage = os.environ.get("PILOT_QDRANT_STORAGE")
+    if collection and storage:
+        path = Path(storage) / "collections" / collection
+        out["collection_disk_gb"] = round(int(sh("du", "-sb", str(path)).split()[0]) / 2**30, 2) if path.exists() else None
+    if collection:
+        from bench.server import server_client
+        i = server_client().get_collection(collection)
+        out.update(points=i.points_count, segments=i.segments_count, status=str(i.status))
+    return out
+
+
+def resource_stats(collection: str | None = None) -> dict[str, Any]:
+    """Qdrant'ın kaynak kullanımı ve sınırı: docker (VM) ya da systemd (şirket içi sunucu); ikisi de yoksa boş."""
+    if os.environ.get("PILOT_QDRANT_UNIT"):
+        return systemd_stats(collection)
+    if os.environ.get("PILOT_QDRANT_DOCKER"):
+        return container_stats(collection)
+    return {}
+
+
 # ---------- sorgular ----------
 
 def queries_path(collection: str) -> Path:
@@ -174,7 +211,7 @@ def latency(collection: str, label: str, repeats: int, warmup: int, recall_queri
     recall = ann_recall(recall_queries) if recall_queries else None
     data = {"meta": meta({"collection": collection, "label": label, "repeats": repeats, "queries": len(qs),
                           "access_user": ACCESS_USER}),
-            "timing": timing, "ann_recall": recall, "resources": container_stats(collection)}
+            "timing": timing, "ann_recall": recall, "resources": resource_stats(collection)}
     lines = [f"# Aşama 3 süre: {collection} · {label}", "",
              f"{len(qs)} sorgu × {repeats} tur, yalnız Qdrant (sorgu vektörü hazır). Kaynak: {data['resources']}", "",
              "| Biçim | n | p50 | p95 | p99 |", "|---|---|---|---|---|"]
@@ -205,6 +242,9 @@ def main() -> None:
     la.add_argument("--recall-queries", type=int, default=300)
     st = sub.add_parser("stats")
     st.add_argument("--collection")
+    w = sub.add_parser("wait")
+    w.add_argument("--url", default="http://127.0.0.1:6333")
+    w.add_argument("--timeout", type=float, default=600)
     a = ap.parse_args()
     if a.cmd == "queries":
         build_queries(a.collection)
@@ -212,8 +252,10 @@ def main() -> None:
         limits(None if a.none else a.cpus, a.memory)
     elif a.cmd == "latency":
         latency(a.collection, a.label, a.repeats, a.warmup, a.recall_queries)
+    elif a.cmd == "wait":
+        wait_ready(a.url, a.timeout)
     else:
-        print(json.dumps(container_stats(a.collection), ensure_ascii=False))
+        print(json.dumps(resource_stats(a.collection), ensure_ascii=False))
 
 
 if __name__ == "__main__":
