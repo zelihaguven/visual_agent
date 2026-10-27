@@ -91,6 +91,11 @@ LLM_NUM_CTX = 4096
 LLM_NUM_PREDICT = 700
 TOP_K_SOURCES = 5             # LLM'e verilen kaynak sayısı
 MIN_RERANK_SCORE: float | None = None   # None: eşik kapalı. Test setiyle kalibre edilecek
+# Arama sonrası netleştirme yöntemi: top3 (varsayılan: ilk 3 sonucun dokümanları) | doc_score (ilk FUSED_K adayın RRF
+# skorları dokümana göre toplanır; birbirinin yerine geçebilen en iyi iki dokümanın oranı ≥ CLARIFY_DOC_RATIO ise sorulur).
+# Oran onaylı soru setiyle seçilecek (bench/clarify_guard.py); şimdilik yalnız seçenek.
+CLARIFY_METHOD = os.environ.get("PILOT_CLARIFY_METHOD", "top3")
+CLARIFY_DOC_RATIO = float(os.environ.get("PILOT_CLARIFY_DOC_RATIO", "0.6"))
 CLARIFY_MIN_SCORE = -7.0      # arama sonrası "hangi ürün/model?" sorusu için en düşük ilk skor (Q10 −8, Q15 −6,2)
 
 # Sesli soru (faster-whisper). Ölçüm (PILOT-RAPORU §16.4, GPU'suz i5): small ve large-v3-turbo varlık doğruluğunda

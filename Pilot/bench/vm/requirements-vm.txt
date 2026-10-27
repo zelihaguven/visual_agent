@@ -1,0 +1,13 @@
+# Aşama 3 VM'i (Linux, bulut embed + Qdrant sunucusu) için en küçük paket kümesi. Sürümler requirements-pilot.lock.txt'ten.
+# GPU'lu VM'de local yol (bge-m3) için ek olarak: pip install -r requirements-vm-gpu.txt
+qdrant-client==1.19.1
+requests==2.34.2
+numpy==2.5.3
+pydantic==2.14.0
+psutil==7.2.2
+pytest==9.1.1
+fastembed==0.9.1          # BM25
+pyarrow>=17               # Hugging Face parquet
+pymupdf==1.28.2           # pilot.chunk içe aktarımları (VM'de PDF işlenmez)
+pypdfium2==5.14.0
+ollama==0.6.3             # pilot.figures içe aktarımı (VM'de çağrılmaz)

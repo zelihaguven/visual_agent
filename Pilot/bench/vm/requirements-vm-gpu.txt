@@ -1,0 +1,4 @@
+# GPU'lu VM: local yol (bge-m3 dense) için. torch CUDA tekerleği: --index-url https://download.pytorch.org/whl/cu128
+torch==2.14.1
+transformers==5.19.0
+sentence-transformers==6.1.0

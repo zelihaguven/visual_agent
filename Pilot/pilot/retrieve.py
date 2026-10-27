@@ -42,6 +42,7 @@ class Hit:
     chunk: dict[str, Any]
     fused_rank: int
     rerank_score: float | None = None
+    fused_score: float | None = None     # rerank öncesi skor: hibritte RRF, tek kolda o kolun skoru
 
 
 def _filter(brands: list[str] | None, doc_ids: list[str] | None,
@@ -147,7 +148,9 @@ def candidates(qc: Any, q: dict[str, Any], flt: models.Filter | None, mode: str 
         reqs.append(models.QueryRequest(query=models.SparseVector(indices=list(sp.keys()), values=list(sp.values())),
                                         using=sparse_name, filter=flt, limit=limit, with_payload=True))
     arms = [canonical(r.points, limit - ARM_MARGIN) for r in qc.query_batch_points(collection, requests=reqs)]
-    ranked = [p for p, _ in rrf_fuse(arms[0], arms[1], fused_k)] if mode == "hybrid" else arms[0][:fused_k]
+    # Noktanın skoru füzyon skoruyla değiştirilir (Hit.fused_score; netleştirme ve "bulunamadı" kararları için)
+    ranked = ([p.model_copy(update={"score": sc}) for p, sc in rrf_fuse(arms[0], arms[1], fused_k)] if mode == "hybrid"
+              else arms[0][:fused_k])
     return [p for p in ranked if not is_toc(p.payload["text"])]
 
 
@@ -169,9 +172,9 @@ def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | 
         release(qc)
     t = _lap("qdrant", t)
     if not do_rerank or not rerank_enabled() or not points:
-        return [Hit(p.payload, i) for i, p in enumerate(points[:top_k])]
+        return [Hit(p.payload, i, None, p.score) for i, p in enumerate(points[:top_k])]
     passages = [p.payload.get(RERANK_PASSAGE) or p.payload["text"] for p in points]
     scores = rerank(query, passages)
     _lap("rerank", t)
     order = rerank_order(scores)[:top_k]
-    return [Hit(points[i].payload, i, scores[i]) for i in order]
+    return [Hit(points[i].payload, i, scores[i], points[i].score) for i in order]

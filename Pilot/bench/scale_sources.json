@@ -1,0 +1,26 @@
+{
+  "_not": "Aşama 3b dikkat dağıtıcı korpusu (bench/scale_corpus.py). share: dikkat dağıtıcıların payı; kaynak yetmezse açığı fill: true olan kaynak kapatır. keywords: başlık + metnin başında en az biri geçmeli (konuya yakınlık). max_chunks_per_doc: tek bir uzun belgenin (patent) korpusu domine etmemesi için. Lisanslar Hugging Face veri seti kartlarından (2026-10-27).",
+  "seed": 42,
+  "chunk_chars": 450,
+  "max_chunk_chars": 900,
+  "tiers": [10000, 30000, 100000, 1000000],
+  "sources": [
+    {"key": "patent-d", "label": "ABD patentleri, CPC D (tekstil, kâğıt; dikiş makineleri D05B)", "lang": "en",
+     "dataset": "NortheasternUniversity/big_patent", "config": "d", "split": "train", "text": "description",
+     "title": "abstract", "license": "CC BY 4.0", "share": 0.40, "max_chunks_per_doc": 40},
+    {"key": "patent-f", "label": "ABD patentleri, CPC F (makine mühendisliği, motor, pompa)", "lang": "en",
+     "dataset": "NortheasternUniversity/big_patent", "config": "f", "split": "train", "text": "description",
+     "title": "abstract", "license": "CC BY 4.0", "share": 0.30, "max_chunks_per_doc": 30, "fill": true},
+    {"key": "wiki-en", "label": "İngilizce Vikipedi, makine/tekstil/giyim/cihaz konulu maddeler", "lang": "en",
+     "dataset": "wikimedia/wikipedia", "config": "20231101.en", "split": "train", "text": "text", "title": "title",
+     "license": "CC BY-SA 3.0 + GFDL", "share": 0.18, "max_chunks_per_doc": 20,
+     "keywords": ["sewing", "stitch", "textile", "fabric", "garment", "clothing", "uniform", "yarn", "thread", "loom",
+                  "machine", "engine", "motor", "pump", "appliance", "coffee maker", "dishwasher", "compressor",
+                  "manufacturing", "specification"]},
+    {"key": "wiki-tr", "label": "Türkçe Vikipedi, makine/tekstil/giyim/cihaz konulu maddeler", "lang": "tr",
+     "dataset": "wikimedia/wikipedia", "config": "20231101.tr", "split": "train", "text": "text", "title": "title",
+     "license": "CC BY-SA 3.0 + GFDL", "share": 0.12, "max_chunks_per_doc": 20,
+     "keywords": ["dikiş", "dikis", "tekstil", "kumaş", "giysi", "giyim", "iplik", "dokuma", "makine", "motor",
+                  "pompa", "cihaz", "elektrik", "üniforma", "kahve makinesi", "bulaşık makinesi", "kompresör", "üretim"]}
+  ]
+}

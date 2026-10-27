@@ -426,3 +426,33 @@ def test_code_match_ignores_hyphen_and_model_aliases():
     assert pipeline._has_code("Code: E-050 | Cause: x", "E050")
     assert not pipeline._has_code("Code: E0501", "E050")
     assert pipeline.code_lookup("S7300A dikiş atlıyor", None, None) == ([], [], {})
+
+
+# --- doküman düzeyinde netleştirme (seçenek; varsayılan top3) ---
+
+def _h(doc, score):
+    from pilot.retrieve import Hit
+    return Hit({"doc_id": doc, "text": "t", "pages": [1]}, 0, None, score)
+
+
+def test_doc_score_ambiguity_asks_when_rival_product_is_close():
+    from pilot.pipeline import doc_score_ambiguity
+    hits = [_h("gl-pd-14-04a", 0.5), _h("gl-pd-07-14a", 0.4), _h("gl-pd-14-04a", 0.2), _h("strickland-1956", 0.3)]
+    assert doc_score_ambiguity(hits, 0.5) == ("products", ["gl-pd-14-04a", "gl-pd-07-14a"])   # 0.4 / 0.7 = 0.57
+    assert doc_score_ambiguity(hits, 0.6) is None
+
+
+def test_doc_score_ambiguity_models_and_non_interchangeable_top():
+    from pilot.pipeline import doc_score_ambiguity
+    models = [_h("brother-s7300b", 0.5), _h("brother-s7300a", 0.45)]
+    assert doc_score_ambiguity(models, 0.6) == ("models", ["brother-s7300b", "brother-s7300a"])
+    # en iyi doküman terzilik kitabı: kimseyle yer değiştiremez, sorulmaz
+    book = [_h("strickland-1956", 0.5), _h("brother-s7300a", 0.45), _h("brother-s7300b", 0.44)]
+    assert doc_score_ambiguity(book, 0.5) is None
+
+
+def test_post_search_ambiguity_default_is_top3():
+    from pilot.pipeline import post_search_ambiguity
+    hits = [_h("brother-s7300a", 0.5), _h("brother-s7300b", 0.1), _h("brother-s7300a", 0.1)]
+    assert post_search_ambiguity(hits) == ("models", ["brother-s7300a", "brother-s7300b"])        # top3: iki model
+    assert post_search_ambiguity(hits, method="doc_score", ratio=0.5) is None                     # 0.1 / 0.6 düşük

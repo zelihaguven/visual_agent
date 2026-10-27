@@ -6,13 +6,14 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from .chunk import read_chunks
-from .config import CHUNKS_PATH, CLARIFY_MIN_SCORE, MIN_RERANK_SCORE, TOP_K_SOURCES
+from .config import (CHUNKS_PATH, CLARIFY_DOC_RATIO, CLARIFY_METHOD, CLARIFY_MIN_SCORE, MIN_RERANK_SCORE,
+                     TOP_K_SOURCES)
 from .llm import chat_json
 from .query import (DETAIL_HINT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific, aspects_for,
                     context_entities, family, missing_entities, question_lang, source_aliases, spoken_codes,
                     strip_source_phrases, strip_terms)
 from .registry import BY_ID, DOCS, visible
-from .retrieve import Hit, search
+from .retrieve import FUSED_K, Hit, search
 from .speech import normalize_for_speech, normalize_for_speech_en
 from .tables import record_keys, variant_check
 from .terms import expand_query
@@ -136,11 +137,46 @@ def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None
     return found, missing, elsewhere
 
 
-def post_search_ambiguity(hits: list[Hit], min_score: float = CLARIFY_MIN_SCORE) -> tuple[str, list[str]] | None:
+def interchangeable(d1: str, d2: str) -> bool:
+    """Birbirinin yerine geçebilecek kaynaklar: iki ürün şartnamesi ya da aynı makine ailesinin modelleri."""
+    if d1 == d2:
+        return False
+    both_products = BY_ID[d1].doc_type == BY_ID[d2].doc_type == "product_standard"
+    return both_products or d2 in family(d1)
+
+
+def doc_scores(hits: list[Hit]) -> list[tuple[str, float]]:
+    """Adayların füzyon skorları dokümana göre toplanır (skor yoksa sıradan RRF payı: 1/(sıra+2)). Azalan sırada."""
+    tot: dict[str, float] = {}
+    for i, h in enumerate(hits):
+        s = h.fused_score if h.fused_score is not None else 1 / (i + 2)
+        tot[h.chunk["doc_id"]] = tot.get(h.chunk["doc_id"], 0.0) + s
+    return sorted(tot.items(), key=lambda x: -x[1])
+
+
+def doc_score_ambiguity(hits: list[Hit], ratio: float = CLARIFY_DOC_RATIO) -> tuple[str, list[str]] | None:
+    """En yüksek toplam skorlu doküman ile onunla yer değiştirebilen en iyi doküman: 2. / 1. ≥ ratio ise sorulur.
+    En iyi doküman kimseyle yer değiştiremiyorsa (ör. terzilik kitabı) sorulmaz: cevap orada."""
+    ranked = doc_scores(hits)
+    if not ranked:
+        return None
+    d1, s1 = ranked[0]
+    rivals = [(d, s) for d, s in ranked[1:] if interchangeable(d1, d) and s >= ratio * s1]
+    if not rivals:
+        return None
+    docs = [d1, *[d for d, _ in rivals]]
+    return ("products" if BY_ID[d1].doc_type == "product_standard" else "models"), docs
+
+
+def post_search_ambiguity(hits: list[Hit], min_score: float = CLARIFY_MIN_SCORE, method: str = CLARIFY_METHOD,
+                          ratio: float = CLARIFY_DOC_RATIO) -> tuple[str, list[str]] | None:
     """Arama sonrası belirsizlik (R14): ilk 3 sonuç farklı ürün şartnamelerinden ya da aynı ailenin modellerinden geliyorsa
     ('products' | 'models', dokümanlar). Sonuçlar alakasızsa sorulmaz: "Uçak motoru yağı" (Q10) skor −8 ile "hangi model?"
     sorusunu tetikledi. Eşik reranker skoruna bağlı; rerank kapalıyken (varsayılan, skor None) koruma çalışmaz: açık kalan,
     eşik onaylı soru setiyle hibrit/RRF skoruna göre yeniden ayarlanacak (BENCHMARK-RAPORU, bench/clarify_guard.py)."""
+    if method == "doc_score":
+        relevant = hits[0].rerank_score is None or hits[0].rerank_score >= min_score
+        return doc_score_ambiguity(hits, ratio) if relevant else None
     top = list(dict.fromkeys(h.chunk["doc_id"] for h in hits[:3]))
     products = [d for d in top if BY_ID[d].doc_type == "product_standard"]
     models = next((ms for ms in ([d for d in top if d in family(x)] for x in top) if len(ms) >= 2), [])
@@ -232,8 +268,11 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
     search_q, added = expand_query(strip_source_phrases(asked, source_aliases(ctx, scope)))
     on_step("Kaynaklar aranıyor" + (f" (terim sözlüğü: {', '.join(added)})" if added else ""))
     t = time.time()
-    hits = search(search_q, brands=brands, doc_ids=scope, mode=mode, top_k=TOP_K_SOURCES, query_en=query_en,
-                  access=access)
+    # doc_score netleştirmesi bütün adaylara bakar (ilk FUSED_K); modele yine ilk TOP_K_SOURCES gider
+    wide = CLARIFY_METHOD == "doc_score" and not scope
+    candidates = search(search_q, brands=brands, doc_ids=scope, mode=mode,
+                        top_k=max(TOP_K_SOURCES, FUSED_K) if wide else TOP_K_SOURCES, query_en=query_en, access=access)
+    hits = candidates[:TOP_K_SOURCES]
     timings["search"] = time.time() - t
 
     found, missing, elsewhere = code_lookup(asked, scope, brands, access)
@@ -262,7 +301,7 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
         #   - farklı ürün şartnameleri ("Dış görünür dikişlerde SPI?" → ceket 11 (± 1), pantolon 10-14)
         #   - aynı ailenin modelleri ("Masura kovanı nasıl takılır?" → S-7300A ve S-7300B aynı bölüm; model 158 sn
         #     çalışıp "hangi model?" diye sordu, kullanıcı ayrıntı yazınca iki kılavuzdan karışık alıntı yaptı)
-        amb = post_search_ambiguity(hits)
+        amb = post_search_ambiguity(candidates if CLARIFY_METHOD == "doc_score" else hits)
         if amb:
             kind, docs = amb
             msg = ("Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?"

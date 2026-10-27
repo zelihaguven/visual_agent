@@ -107,6 +107,70 @@ def summary() -> None:
     print("\n".join(lines))
 
 
+RATIOS = (0.4, 0.5, 0.6, 0.7, 0.8)
+
+
+def methods() -> None:
+    """Aynı adaylarla (yeni varsayılan yol: rerank yok, ilk FUSED_K aday, RRF skoru) top3 ile doc_score(oran) yan yana.
+    Onaylı setler ve aday taslak (onaysız) ayrı. Eşik seçilmez, yalnız dağılım; eşik onaylı setle seçilecek."""
+    from pilot import retrieve
+    from pilot.pipeline import code_lookup, doc_scores, interchangeable, post_search_ambiguity
+    from pilot.retrieve import Hit
+
+    groups = [("onayli", load_questions(KNOWN_SETS))]
+    aday = json.loads((OUT_DIR.parent / "aday_sorular.json").read_text(encoding="utf-8"))
+    groups.append(("aday_onaysiz", [{**it, "set": "aday", "qid": f"aday:{it['id']}"} for it in aday]))
+    rows = []
+    for group, items in groups:
+        for it in items:
+            p = prepare(it["q"])
+            if p["skip"] or p["doc_ids"]:
+                continue
+            hits = retrieve.search(p["search_q"], top_k=retrieve.FUSED_K)
+            found, _, _ = code_lookup(it["q"], None, None)
+            if found:
+                have = {h.chunk["chunk_id"] for h in hits}
+                hits = [Hit(c, -1, None, None) for c in found if c["chunk_id"] not in have] + hits
+            exp, nf = bool(it.get("expect_clarify")), bool(it.get("expect_not_found"))
+            ranked = doc_scores(hits)
+            d1, s1 = ranked[0]
+            rival = next(((d, s) for d, s in ranked[1:] if interchangeable(d1, d)), None)
+            row = {"group": group, "qid": it["qid"], "q": it["q"], "expected": exp, "not_found": nf,
+                   "top_doc": d1, "rival": rival[0] if rival else None, "ratio": (rival[1] / s1) if rival else 0.0,
+                   "olasi": it.get("olasi_urunler", []),
+                   "top3": outcome(exp, bool(post_search_ambiguity(hits[:5], method="top3")), nf)}
+            for r in RATIOS:
+                row[f"doc_{r}"] = outcome(exp, bool(post_search_ambiguity(hits, method="doc_score", ratio=r)), nf)
+            rows.append(row)
+            print(group, it["qid"], f"oran {row['ratio']:.2f}", row["top_doc"], row["rival"], row["top3"], flush=True)
+    from pilot.index import close_shared
+    close_shared()
+    cols = ["top3"] + [f"doc_{r}" for r in RATIOS]
+    names = {"top3": "ilk 3 sonuç (bugünkü)", **{f"doc_{r}": f"doküman skoru, oran ≥ {r}" for r in RATIOS}}
+    lines = ["# Netleştirme: ilk 3 sonuç ile doküman düzeyinde skor", "",
+             "Yeni varsayılan yol (rerank yok). Yalnız kaynak belirtmeyen sorular. Doküman skoru: ilk 20 adayın RRF skorları "
+             "dokümana göre toplanır; en iyi doküman ile onunla yer değiştirebilen (iki ürün şartnamesi ya da aynı makine "
+             "ailesi) en iyi rakibin oranı ≥ eşik ise sorulur. **Eşik seçilmedi**: aday sorular onaysız, eşik onaylı setle seçilecek.", ""]
+    for group, title in (("onayli", "Onaylı setler"), ("aday_onaysiz", "Aday taslak (onaysız, yalnız dağılım)")):
+        g = [x for x in rows if x["group"] == group]
+        lines += [f"## {title} ({len(g)} soru; {sum(x['expected'] for x in g)} netleştirme beklenen)", "",
+                  "| Yöntem | doğru netleştirme | yanlış negatif | yanlış pozitif | yanlış pozitif (alakasız) | doğru geçiş |",
+                  "|---|---|---|---|---|---|"]
+        for c in cols:
+            k = {o: sum(1 for x in g if x[c] == o) for o in
+                 ("dogru_netlestirme", "yanlis_negatif", "yanlis_pozitif", "yanlis_pozitif_alakasiz", "dogru_gecis")}
+            lines.append(f"| {names[c]} | {k['dogru_netlestirme']} | {k['yanlis_negatif']} | {k['yanlis_pozitif']} | "
+                         f"{k['yanlis_pozitif_alakasiz']} | {k['dogru_gecis']} |")
+        lines.append("")
+    lines += ["## Oran dağılımı (2. doküman / 1. doküman; rakip yoksa 0)", "",
+              "| Soru | netleştirme bekleniyor | en iyi doküman | rakip | oran | ilk 3 sonuç |", "|---|---|---|---|---|---|"]
+    for x in sorted(rows, key=lambda x: (not x["expected"], -x["ratio"])):
+        lines.append(f"| {x['qid']} {x['q'][:55]} | {'evet' if x['expected'] else ('bulunamadı' if x['not_found'] else 'hayır')} | "
+                     f"{x['top_doc']} | {x['rival'] or '–'} | {x['ratio']:.2f} | {x['top3']} |")
+    print(write_result("netlestirme_yontem", {"meta": meta({"ratios": RATIOS}), "rows": rows}, "\n".join(lines) + "\n"))
+    print("\n".join(l for l in lines if l.startswith(("##", "| ilk", "| doküman"))))
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -114,9 +178,12 @@ def main() -> None:
     r.add_argument("--label", required=True)
     r.add_argument("--unverified", action="store_true")
     sub.add_parser("summary")
+    sub.add_parser("methods")
     a = ap.parse_args()
     if a.cmd == "run":
         run(a.label, a.unverified)
+    elif a.cmd == "methods":
+        methods()
     else:
         summary()
 

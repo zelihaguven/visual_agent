@@ -137,3 +137,19 @@ def test_rerank_uses_header_text_and_rrf_fusion(monkeypatch):
     # reranker son adayı 1. yaptı; birleşimde hibrit sıranın ilk ikisinin arkasına çıkar (test_bench'teki hesap)
     assert [h.fused_rank for h in hits] == [0, 1, 4, 2, 3]
     assert retrieve.rerank_order([0.0, 0.0, 0.0, 0.0, 9.0], "none")[0] == 4       # eski: yalnız reranker skoru
+
+
+def test_hits_carry_fused_score_when_rerank_off(monkeypatch):
+    from pilot import retrieve
+    c = QdrantClient(":memory:")
+    c.create_collection(retrieve.COLLECTION, **collection_schema(4))
+    c.upsert(retrieve.COLLECTION, points=[models.PointStruct(
+        id=i, vector=point_vectors({"dense": [1.0, -0.1 * i, 0.0, 0.0], "sparses": {"bm25": {1: 1.0 + i}, "bge-m3": {1: 1.0}}}),
+        payload={"doc_id": "d", "text": f"t{i}", "pages": [1]}) for i in range(4)])
+    monkeypatch.setattr(retrieve, "search_client", lambda: c)
+    monkeypatch.setattr(retrieve, "release", lambda _: None)
+    monkeypatch.setattr(retrieve, "encode_query", lambda t, s=None: {"dense": [1.0, 0.0, 0.0, 0.0], "sparse": {1: 1.0}})
+    hits = retrieve.search("q", top_k=4, do_rerank=False)
+    scores = [h.fused_score for h in hits]
+    assert all(s is not None for s in scores) and scores == sorted(scores, reverse=True)
+    assert scores[0] <= 1 / 2 + 1 / 2                      # RRF üst sınırı (iki kolda da 1.)

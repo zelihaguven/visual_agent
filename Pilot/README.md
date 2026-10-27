@@ -87,6 +87,8 @@ Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), öl
 | `PILOT_EMBED_MODEL`, `PILOT_EMBED_QUERY_PREFIX`, `PILOT_EMBED_DOC_PREFIX` | boş | bulut model adı ve modelin sorgu/doküman biçimi (`bench/models.json`) |
 | `PILOT_SPARSE` | `bm25` | fastembed `Qdrant/bm25` + Qdrant IDF (Aşama 4: rerank'sız hit@1 0,44 → 0,72). `bge-m3`: eski yol. 2026-10-27 öncesi indekse bir kez `python run_add_bm25.py` |
 | `PILOT_DENSE_MODE`, `PILOT_DENSE_SHORT_DIM`, `PILOT_SHORT_OVERSAMPLE` | `full`, `256`, `4` | `short`: yalnız MRL kısa vektör; `short_rescore`: kısa vektörle aday, tam vektörle sıra |
+| `PILOT_CLARIFY_METHOD`, `PILOT_CLARIFY_DOC_RATIO` | `top3`, `0.6` | Arama sonrası "hangi ürün/model?" sorusu. `doc_score` (ilk 20 adayın RRF toplamı dokümana göre) denendi, olumsuz çıktı (taslakta doğru netleştirme 10 → 7); kapalı tutulur |
+| `PILOT_CLARIFY_METHOD`, `PILOT_CLARIFY_DOC_RATIO` | `top3`, `0.6` | Arama sonrası "hangi ürün/model?" sorusu. `doc_score` (ilk 20 adayın RRF toplamı dokümana göre) denendi ve olumsuz çıktı (taslakta 10 → 7 doğru netleştirme); kapalı tutulur |
 | `PILOT_QDRANT_URL` | boş (gömülü mod) | `http://127.0.0.1:6333`: Qdrant sunucusu ([qdrant/README.md](qdrant/README.md)); `PILOT_QDRANT_GRPC=1` gRPC, `PILOT_QDRANT_API_KEY` sunucu anahtarı |
 | `PILOT_COLLECTION` | `manuals` | koleksiyon adı |
 | `PILOT_HNSW_M`, `PILOT_HNSW_EF_CONSTRUCT`, `PILOT_HNSW_FULL_SCAN_THRESHOLD` | Qdrant varsayılanı | koleksiyon kurulurken (sunucu modu) |
