@@ -11,11 +11,13 @@ Kullanım (Pilot klasöründe; PILOT_QDRANT_URL ile sunucu; bulut için OPENROUT
 - Koleksiyon (qwen3-8b): tam vektör "dense" (4096, diskte, HNSW'siz: yalnız yeniden skorlamada okunur), MRL kısa
   vektör "dense_s256" (RAM'de, HNSW), "bm25" (IDF'i Qdrant uygular). Arama: PILOT_DENSE_MODE=short_rescore.
   Kısa vektör tam vektörün başından türetilir (ek istek yok). Payload indeksleri: brand, doc_id, access, nav, kademe.
+  Dikkat dağıtıcıların yetkisi yapay (bench.server.synthetic_access): yarısı "all", yarısı g1..g4.
 - Kaldığı yerden: nokta kimliği = korpustaki sıra; toplu iş (batch) Qdrant'a yazılınca data/scale/progress/
   <koleksiyon>.done dosyasına eklenir. Yeniden başlatınca bitmiş toplu işler atlanır. Ctrl+C güvenli: süren istekler
   biter, yazılmayan toplu iş sonra yeniden gönderilir (upsert aynı kimlikle; çift kayıt olmaz).
 - Toplu yükleme sırasında HNSW kurulumu ertelenir (indexing_threshold=0); bütün toplu işler bitince açılır.
-- Maliyet: koşmadan önce kalan token × ZDR fiyatı; 5 USD'yi aşarsa --yes gerekir. ZDR zorunlu (pilot/cloud.py).
+- Maliyet: koşmadan önce kalan token × ZDR fiyatı; 5 USD'yi aşarsa --yes gerekir. Koşarken toplam harcama (önceki
+  koşular dahil, API'nin usage.cost alanı) --max-usd'yi (3 USD) bulursa durur. ZDR zorunlu (pilot/cloud.py).
 """
 import argparse
 import json
@@ -92,6 +94,12 @@ class Embedder:
 
     def __call__(self, texts: list[str]) -> list[list[float]]:
         if self.spec["provider"] == "local":
+            from pilot.config import EMBED_MODEL
+            if self.spec["model"] == EMBED_MODEL and self.device == "cpu":
+                # pipeline'ın bge-m3'ü (FlagEmbedding): sorgu ve gerçek parçaların vektörleriyle aynı model ve ayar
+                from pilot.embed import embed
+                with self.lock:
+                    return [v["dense"] for v in embed(texts)]
             return self._st_model().encode(texts, batch_size=32, normalize_embeddings=True).tolist()
         e = self._cloud()
         before = dict(e.stats)
@@ -100,6 +108,18 @@ class Embedder:
             for k in ("requests", "prompt_tokens", "cost_usd", "network_s", "retries"):
                 self.stats[k] += e.stats[k] - before[k]
         return vecs
+
+
+def load_reuse(path: Path | None, spec: dict[str, Any]) -> dict[str, list[float]]:
+    """Gerçek parçaların hazır bge-m3 vektörleri (bench.scale_synth export): chunk_id → dense. Yalnız aynı model."""
+    if not path:
+        return {}
+    import numpy as np
+    z = np.load(path)
+    meta = {"model": "BAAI/bge-m3", "dim": int(z["dense"].shape[1])}
+    if spec["model"] != meta["model"] or spec["dim"] != meta["dim"]:
+        raise SystemExit(f"--reuse-real {path}: {meta} ≠ {spec['model']} ({spec['dim']})")
+    return {json.loads(p)["chunk_id"]: v.tolist() for p, v in zip(z["payload"], z["dense"])}
 
 
 # ---------- koleksiyon ----------
@@ -130,9 +150,12 @@ def ensure_collection(qc, name: str, meta: dict[str, Any]) -> None:
     qc.create_payload_index(name, "kademe", field_schema=models.PayloadSchemaType.INTEGER)
 
 
-def payload(r: dict[str, Any]) -> dict[str, Any]:
+def payload(r: dict[str, Any], point_id: int) -> dict[str, Any]:
+    """Gerçek parça: registry'deki yetki. Dikkat dağıtıcı: Aşama 2'deki yapay dağılım (yarısı "all", yarısı g1..g4),
+    erişim filtreli arama ölçekte de ölçülsün."""
+    from bench.server import synthetic_access
     from pilot.index import with_access
-    p = with_access(r) if r["kind"] == "gercek" else {**r, "access": ["all"]}
+    p = with_access(r) if r["kind"] == "gercek" else {**r, "access": synthetic_access(point_id)}
     p.pop("boxes", None)                            # vurgulama kutuları ölçekte gereksiz yük
     return p
 
@@ -156,7 +179,7 @@ def estimate_usd(spec: dict[str, Any], corpus: Path, todo: set[int], size: int, 
 
 def index(corpus: Path, collection: str, key: str, workers: int, size: int, short_dims: tuple[int, ...],
           max_kademe: int | None, yes: bool, device: str, full_on_disk: bool, full_hnsw: bool,
-          stop_after: int | None) -> dict[str, Any]:
+          stop_after: int | None, max_usd: float = 3.0, reuse_real: Path | None = None) -> dict[str, Any]:
     from qdrant_client import models
 
     from bench.providers import doc_text
@@ -193,6 +216,9 @@ def index(corpus: Path, collection: str, key: str, workers: int, size: int, shor
     qc = server_client()
     ensure_collection(qc, collection, meta)
     embed = Embedder(spec, device)
+    reuse = load_reuse(reuse_real, spec)
+    if reuse:
+        log.info("gerçek parçaların hazır vektörleri: %d (yeniden embed edilmez)", len(reuse))
     bm25_lock, done_lock = threading.Lock(), threading.Lock()
     local = threading.local()
     stop = threading.Event()
@@ -203,11 +229,17 @@ def index(corpus: Path, collection: str, key: str, workers: int, size: int, shor
         return local.qc
 
     def work(k: int, rows: list[dict[str, Any]]) -> int:
-        texts = [doc_text(spec, r) for r in rows]
+        vecs: list[list[float] | None] = [reuse.get(r["chunk_id"]) if r["kind"] == "gercek" else None for r in rows]
+        need = [i for i, v in enumerate(vecs) if v is None]
+        texts = [doc_text(spec, rows[i]) for i in need]
         for attempt in range(BATCH_RETRIES + 1):
             try:
-                vecs = embed(texts)
-                if len(vecs) != len(rows) or any(v is None or len(v) != spec["dim"] for v in vecs):
+                got = embed(texts) if texts else []
+                if len(got) != len(need):
+                    raise RuntimeError(f"toplu iş {k}: {len(got)} vektör, {len(need)} bekleniyor")
+                for i, v in zip(need, got):
+                    vecs[i] = v
+                if any(v is None or len(v) != spec["dim"] for v in vecs):
                     raise RuntimeError(f"toplu iş {k}: eksik ya da yanlış boyutlu vektör")
                 break
             except RuntimeError:
@@ -222,7 +254,7 @@ def index(corpus: Path, collection: str, key: str, workers: int, size: int, shor
         client().upsert(collection, wait=True, points=[models.PointStruct(
             id=first + i, vector=point_vectors({"dense": vecs[i], "sparse": sparse[i]}, sparse="bm25",
                                                short_dims=short_dims),
-            payload=payload(rows[i])) for i in range(len(rows))])
+            payload=payload(rows[i], first + i)) for i in range(len(rows))])
         with done_lock, done_path.open("a") as f:
             f.write(f"{k}\n")
         return len(rows)
@@ -234,6 +266,10 @@ def index(corpus: Path, collection: str, key: str, workers: int, size: int, shor
         stop.set()
     signal.signal(signal.SIGINT, on_sigint)
 
+    prev_runs = json.loads(stats_path.read_text(encoding="utf-8"))["runs"] if stats_path.exists() else []
+    spent_before = sum(r["embed_stats"].get("cost_usd", 0.0) for r in prev_runs)
+    if spent_before >= max_usd:
+        raise SystemExit(f"{collection}: önceki koşular {spent_before:.4f} USD harcadı ≥ sınır {max_usd} USD")
     t0, n_done, n_batches, errors = time.time(), 0, 0, []
     pending: set[Future] = set()
     total_todo = len(todo)
@@ -262,6 +298,11 @@ def index(corpus: Path, collection: str, key: str, workers: int, size: int, shor
                     log.error("toplu iş hatası: %s", errors[-1])
                     if len(errors) >= 5:
                         stop.set()
+            if spent_before + embed.stats["cost_usd"] >= max_usd and not stop.is_set():
+                # Anahtarda harcama sınırı yok (kullanıcının mevcut anahtarı): sınır burada, önceki koşular dahil
+                log.error("harcama sınırı: %.4f USD ≥ %.2f USD, durduruluyor", spent_before + embed.stats["cost_usd"],
+                          max_usd)
+                stop.set()
             if n_batches and (n_batches % LOG_EVERY == 0 or not pending):
                 el = time.time() - t0
                 rate = n_done / max(el, 1e-9)
@@ -372,6 +413,8 @@ def main() -> None:
     x.add_argument("--full-hnsw", action="store_true", help="tam vektöre de HNSW (PILOT_DENSE_MODE=full ölçmek için)")
     x.add_argument("--stop-after", type=int, help="bu kadar toplu işten sonra dur (kaldığı yerden devam denemesi)")
     x.add_argument("--yes", action="store_true")
+    x.add_argument("--reuse-real", type=Path, help="gerçek parçaların hazır vektörleri (data/scale/real_bge_m3.npz)")
+    x.add_argument("--max-usd", type=float, default=3.0, help="bu koleksiyon için toplam bulut harcama sınırı (önceki koşular dahil)")
     c = sub.add_parser("copy")
     c.add_argument("--source", required=True)
     c.add_argument("--target", required=True)
@@ -385,7 +428,7 @@ def main() -> None:
     if a.cmd == "index":
         index(Path(a.corpus), a.collection, a.embed, a.workers, a.batch,
               tuple(int(d) for d in a.short_dims.split(",") if d), a.max_kademe, a.yes, a.device,
-              not a.full_in_ram, a.full_hnsw, a.stop_after)
+              not a.full_in_ram, a.full_hnsw, a.stop_after, a.max_usd, a.reuse_real)
     elif a.cmd == "copy":
         copy(a.source, a.target, a.max_kademe)
     elif a.cmd == "probe":

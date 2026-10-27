@@ -1,6 +1,25 @@
 # Aşama 3 hazırlığı: VM seçenekleri, korpus, kalabalık testi, kuru çalıştırma
 
-Durum: **onay bekliyor, VM açılmadı.** Betikler hazır ve yerelde 300 parçayla kuru çalıştırıldı (aşağıda). Yerelde 10k–30k kademesi koşulmadı; uçtan uca test sürerken CPU'yu yormamak için.
+Durum: **Aşama 3 bölündü (kullanıcı kararı, 2026-10-27).**
+
+- **Şimdi, dizüstünde:** 3b doğruluk (`bench/run_asama3_yerel.ps1`). Süreleri "dizüstü, üretimi temsil etmez" diye işaretli, karar için kullanılmayacak.
+- **Sonra, VM'de:** 3a süre ölçümleri ve 3c yük testi. Hetzner hesabı henüz yok; açılınca kullanıcı CCX43'ü Console'dan açacak.
+- **VM'e erişim:** Hetzner API belirteci kullanılmayacak. Erişim yalnız SSH ile, anahtar `~/.ssh/visual_agent_asama3`, açık kısmı Console'a eklenecek.
+- **OpenRouter:** mevcut anahtar kullanılacak. Harcama sınırı betikte: `scale_index --max-usd 3`, önceki koşular dahil.
+
+Ön onay (A, Hetzner CCX43, toplam ~5–6 $) geçerli. Fiyat Hetzner'in sayfasından doğrulandı: 0,4431 €/saat (KDV hariç, IPv4 dahil), 16 vCPU, 64 GB, 360 GB NVMe.
+
+## 0. Onay koşulları ve nasıl uygulanıyor
+
+| Koşul | Uygulama |
+|---|---|
+| Süre ölçümleri görev dosyasındaki hedef donanımla (4–8 vCPU / 16 GB) | İndeksleme ve kurulum bütün makinede. 3a/3b süre ölçümleri ve 3c, Qdrant konteyneri `--cpuset-cpus 0-7 --cpus 8 --memory 16g --memory-swap 16g` ile sınırlıyken (`bench.scale_bench limits`). cgroup v2'de dosya sayfa önbelleği de bu 16 GB'a sayılıyor. Her koşuldan önce konteyner yeniden başlatılıyor ve önbellek boşaltılıyor. Aynı ölçümler 4 vCPU / 16 GB ile de yapılıyor. Raporda iki koşul ayrı gösterilecek; sınırsız 64 GB sonuçları üretim süresi diye sunulmayacak |
+| 3c yük testi | Bu VM'de yapılabiliyor: Qdrant 0–7 (ya da 0–3) numaralı çekirdeklerde, yük üreten istemci kalan çekirdeklerde (`os.sched_setaffinity`), Qdrant'ın cgroup'u dışında, 8 süreç (`bench.load_test`) |
+| Dikkat dağıtıcı korpus başlamadan bildirilecek | §2 (tek satırı başlamadan önce yazılacak) |
+| İlk 10k kademesinden sonra hız ve maliyet | `run_asama3.sh qwen10k` ayrı adım. 1M tahmini 3 saati ya da 3 $ OpenRouter'ı aşarsa durulup sorulacak |
+| Kapanış | Sonuçlar ve gerekli dosyalar (`eval/bench/asama3*`, `data/scale/progress/*.stats.json`, günlük) `scp` ile indirilecek. Sunucuyu kullanıcı Console'dan silecek (API belirteci yok); SSH bağlantısının artık kurulamadığı doğrulanacak. Gerçek toplam: açık kalınan saat × 0,4431 € ve OpenRouter kullanımı (betik istatistiklerindeki `usage.cost` toplamı). `bench/vm/hetzner.py` yalnız belirteç olursa kullanılır |
+| Anahtar | Mevcut OpenRouter anahtarı, yalnız SSH oturumunun ortamında; diske ve günlüğe yazılmaz. Harcama sınırı betikte (`--max-usd 3`) |
+ Betikler hazır ve yerelde 300 parçayla kuru çalıştırıldı (aşağıda). Yerelde 10k–30k kademesi koşulmadı; uçtan uca test sürerken CPU'yu yormamak için.
 
 ## 1. VM seçenekleri
 
@@ -105,6 +124,22 @@ Bilinen sınırlar:
 - **Ölçüm:** her kademede (gerçek parçalar, 10k, 30k, 100k, 1M) ve her yolda (Qwen3-8B, bge-m3 + BM25) filtreli ve filtresiz hit@1/@5/MRR. Kullanılan araç mevcut `bench.measure`; koleksiyon ortam değişkenleri `bench.scale_index search_env` ile veriliyor.
 - **JUKI:** ayarlamada kullanılmıyor; ayrı satırda raporlanıyor.
 
+## 3c. Kalabalık testi kurulumu (VM)
+
+`bench/load_test.py`:
+- **Kullanıcı modeli:** kapalı döngü; her kademe 60 sn.
+- **Biçimler ve kademeler:**
+
+  | Biçim | Düşünme süresi | Kullanıcı | Koleksiyon |
+  |---|---|---|---|
+  | `qdrant` | 0 sn | 1, 5, 10, 25, 50, 100 | 1M Qwen ve 1M sentetik (bge-m3) |
+  | `qdrant` | 5 sn | 1, 5, 10, 25, 50, 100 | 1M Qwen |
+  | `embed` | 0 sn | 1–25 | (bulut) |
+  | `e2e` | 5 sn | 1, 5, 10, 25, 50, 100 | 1M Qwen |
+
+- **4 vCPU koşulu:** yalnız `qdrant`, düşünme süresi 0.
+- **Ölçülenler:** p50/p95/p99, saniyede sorgu, hata türleri ve doyma noktası.
+
 ## 4. Betikler
 
 | Dosya | Ne yapar |
@@ -113,7 +148,12 @@ Bilinen sınırlar:
 | [bench/vm/run_asama3.sh](../../bench/vm/run_asama3.sh) | Sırayla: korpus → Qwen3-8B 1M → kademe kopyaları → local yol → durum. Her adım kaldığı yerden sürer; tmux içinde çalışır. |
 | [bench/scale_corpus.py](../../bench/scale_corpus.py) | Korpus: parquet (tam) ya da rows API (küçük örnek). İndirmeler önbellekte; deterministik. |
 | [bench/scale_index.py](../../bench/scale_index.py) | Paralel embed (iş parçacığı başına istemci), BM25, Qdrant'a yükleme. Toplu iş bazında ilerleme dosyası; Ctrl+C güvenli. Maliyet tahmini 5 USD'yi aşarsa `--yes` ister. Alt komutlar: `copy` (kademe), `status`, `probe`. |
-| [bench/vm/requirements-vm.txt](../../bench/vm/requirements-vm.txt) | VM için en küçük paket kümesi (sürümler lock dosyasından). |
+| [bench/vm/requirements-vm.txt](../../bench/vm/requirements-vm.txt), [requirements-vm-local.txt](../../bench/vm/requirements-vm-local.txt) | VM paketleri (sürümler lock dosyasından); local yol için torch CPU + bge-m3 |
+| [bench/scale_synth.py](../../bench/scale_synth.py) | 3a: gerçek bge-m3 vektörleri (yerelde dışa aktarılır) + Gauss gürültüsü; BM25 ağırlıkları ölçeklenir, token düşürülür; 1M, gRPC ile yükleme |
+| [bench/scale_bench.py](../../bench/scale_bench.py) | Qdrant konteyner sınırı, sorgu vektörleri (bir kez), yalnız Qdrant gecikmesi (filtresiz / marka / yetki / dense), ANN recall, RAM/disk |
+| [bench/load_test.py](../../bench/load_test.py) | 3c yük testi |
+| [bench/vm/hetzner.py](../../bench/vm/hetzner.py) | Hetzner API: fiyat, aç, durum, sil (doğrulamalı), gerçek maliyet |
+| `bench.measure --scale-collection` | 3b doğruluk + uçtan uca arama süresi (bulut embed dahil) |
 
 VM kodu GitHub'dan çeker. Commit'ler push edilmediyse yerelde `git bundle create visual_agent.bundle main` ile bir bundle oluşturulup VM'e kopyalanır, kurulum `BUNDLE=...` ile yapılır.
 

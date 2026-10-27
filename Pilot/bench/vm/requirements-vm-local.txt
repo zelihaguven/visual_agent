@@ -1,0 +1,8 @@
+# Local yol (bge-m3 + BM25): VM'de bge-m3 ile embed (scale_index --embed bge-m3-local) ve sorgu (bench.measure).
+# torch önce ayrı kurulur (setup.sh): CPU tekerleği https://download.pytorch.org/whl/cpu, GPU'da cu128.
+transformers==5.19.0
+sentence-transformers==6.1.0
+flagembedding==1.4.2      # pilot.embed (sorgu: dense + sparse), bench.measure
+peft==0.21.2
+accelerate==1.15.0
+sentencepiece==0.2.2

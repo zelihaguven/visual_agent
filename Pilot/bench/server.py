@@ -32,9 +32,11 @@ def synthetic_access(point_id: int, seed: int = 0) -> list[str]:
 
 
 def server_client(url: str | None = None) -> QdrantClient:
+    """PILOT_QDRANT_GRPC=1: gRPC (6334). Büyük vektörlerin toplu yüklemesinde JSON'dan çok daha hızlı (Aşama 3)."""
     import os
     return QdrantClient(url=url or os.environ.get("PILOT_QDRANT_URL") or "http://127.0.0.1:6333",
-                        api_key=os.environ.get("PILOT_QDRANT_API_KEY") or None, timeout=300)
+                        api_key=os.environ.get("PILOT_QDRANT_API_KEY") or None, timeout=300,
+                        prefer_grpc=os.environ.get("PILOT_QDRANT_GRPC") == "1")
 
 
 def read_embedded(batch: int = 500) -> list[models.Record]:

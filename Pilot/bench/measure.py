@@ -13,6 +13,7 @@ aranır; doğruluk ilk turdan (arama deterministik), süreler bütün turlardan.
 import argparse
 import gc
 import logging
+import os
 import random
 import warnings
 from typing import Any
@@ -84,9 +85,10 @@ def ann_recall(n_queries: int = 500, ks: tuple[int, ...] = (5, 20), noise: float
     import numpy as np
     from qdrant_client import models
 
-    from pilot.config import COLLECTION
-    from pilot.index import client
+    from pilot.config import COLLECTION, DENSE_MODE, DENSE_SHORT_DIM
+    from pilot.index import client, short_name
 
+    name = "dense" if DENSE_MODE == "full" else short_name(DENSE_SHORT_DIM)    # HNSW'li vektör
     rng = random.Random(seed)
     qc = client()
     try:
@@ -97,20 +99,22 @@ def ann_recall(n_queries: int = 500, ks: tuple[int, ...] = (5, 20), noise: float
             if offset is None:
                 break
         ids = rng.sample(all_ids, min(n_queries, len(all_ids)))
-        pts = qc.retrieve(COLLECTION, ids=ids, with_vectors=["dense"], with_payload=False)
+        pts = qc.retrieve(COLLECTION, ids=ids, with_vectors=[name], with_payload=False)
         gen = np.random.default_rng(seed)
         kmax, res = max(ks), {k: [] for k in ks}
         for p in pts:
-            v = np.asarray(p.vector["dense"]) + gen.normal(0, noise, 1024)
+            base = np.asarray(p.vector[name])
+            v = base + gen.normal(0, noise * (1024 / len(base)) ** 0.5, len(base))
             q = (v / np.linalg.norm(v)).tolist()
-            approx = qc.query_points(COLLECTION, query=q, using="dense", limit=kmax, search_params=search_params)
-            exact = qc.query_points(COLLECTION, query=q, using="dense", limit=kmax,
+            approx = qc.query_points(COLLECTION, query=q, using=name, limit=kmax, search_params=search_params)
+            exact = qc.query_points(COLLECTION, query=q, using=name, limit=kmax,
                                     search_params=models.SearchParams(exact=True))
             for k in ks:
                 res[k].append(overlap_at_k([x.id for x in approx.points], [x.id for x in exact.points], k))
     finally:
         qc.close()
-    return {"n_queries": len(pts), "noise": noise, **{f"recall@{k}": sum(v) / len(v) for k, v in res.items()}}
+    return {"n_queries": len(pts), "noise": noise, "vector": name,
+            **{f"recall@{k}": sum(v) / len(v) for k, v in res.items()}}
 
 
 def qdrant_memory() -> dict[str, Any]:
@@ -122,6 +126,9 @@ def qdrant_memory() -> dict[str, Any]:
     from pilot.index import client
 
     if QDRANT_URL:
+        if os.environ.get("PILOT_QDRANT_DOCKER"):
+            from bench.scale_bench import container_stats
+            return container_stats(COLLECTION)
         from bench.server import server_memory
         return server_memory(COLLECTION)
 
@@ -209,7 +216,11 @@ def main() -> None:
                     help="kullanıcının yetki grupları (search(access=...)); verilmezse yetki kontrolü yok")
     ap.add_argument("--timing-sets", nargs="+", default=None,
                     help="süre yalnız bu setlerde --repeats tur ölçülür; diğerleri 1 tur (yalnız doğruluk)")
+    ap.add_argument("--scale-collection", help="Aşama 3 koleksiyonu: arama ayarları bench.scale_index'ten (sunucu modu)")
     a = ap.parse_args()
+    if a.scale_collection:
+        from bench.scale_bench import apply_env      # pilot içe aktarılmadan önce
+        apply_env(a.scale_collection)
 
     from pilot import config, index
 

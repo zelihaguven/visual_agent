@@ -2,7 +2,7 @@
 # Aşama 3 VM kurulumu (Ubuntu 24.04, Python 3.12). Bulut embed (OpenRouter, ZDR) + Qdrant sunucusu (docker).
 # Kullanım (VM'de):
 #   bash setup.sh            # CPU VM
-#   bash setup.sh --gpu      # GPU'lu VM: local yol (bge-m3) için torch CUDA da kurulur
+#   bash setup.sh --gpu      # GPU'lu VM: torch CUDA tekerleği (varsayılan CPU tekerleği)
 #   BUNDLE=~/visual_agent.bundle bash setup.sh    # GitHub yerine yerelden kopyalanan git bundle'dan (push edilmemiş commit'ler)
 # Anahtar dosyaya yazılmaz: kurulumdan sonra oturumda  read -rs OPENROUTER_API_KEY && export OPENROUTER_API_KEY
 set -euo pipefail
@@ -27,10 +27,13 @@ python3 -m venv .venv-vm
 .venv-vm/bin/pip install -q -r bench/vm/requirements-vm.txt
 if [ "$GPU" = 1 ]; then
   nvidia-smi || { echo "GPU sürücüsü yok (nvidia-smi çalışmadı)"; exit 1; }
-  .venv-vm/bin/pip install -q torch==2.14.1 --index-url "${TORCH_INDEX:-https://download.pytorch.org/whl/cu128}"
-  .venv-vm/bin/pip install -q -r bench/vm/requirements-vm-gpu.txt
-  .venv-vm/bin/python -c "import torch; assert torch.cuda.is_available(); print('CUDA:', torch.cuda.get_device_name(0))"
+  TORCH_INDEX=${TORCH_INDEX:-https://download.pytorch.org/whl/cu128}
+else
+  TORCH_INDEX=${TORCH_INDEX:-https://download.pytorch.org/whl/cpu}
 fi
+.venv-vm/bin/pip install -q torch==2.14.1 --index-url "$TORCH_INDEX"
+.venv-vm/bin/pip install -q -r bench/vm/requirements-vm-local.txt
+.venv-vm/bin/python -c "import torch; print('torch', torch.__version__, 'CUDA:', torch.cuda.is_available())"
 
 echo "== 4/5 Qdrant sunucusu (qdrant/docker-compose.yml, yalnız 127.0.0.1)"
 sudo docker compose -f qdrant/docker-compose.yml up -d

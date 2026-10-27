@@ -1,5 +1,5 @@
 # Aşama 3 VM'i (Linux, bulut embed + Qdrant sunucusu) için en küçük paket kümesi. Sürümler requirements-pilot.lock.txt'ten.
-# GPU'lu VM'de local yol (bge-m3) için ek olarak: pip install -r requirements-vm-gpu.txt
+# Local yol (bge-m3) için ek olarak: requirements-vm-local.txt (setup.sh kurar)
 qdrant-client==1.19.1
 requests==2.34.2
 numpy==2.5.3
