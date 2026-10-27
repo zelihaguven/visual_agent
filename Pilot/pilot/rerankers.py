@@ -12,7 +12,7 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
-from .cloud import api_key, openrouter_body, require_zdr
+from .cloud import api_key, openrouter_body, post_with_retry, require_zdr
 from .config import DATA_DIR, EMBED_DEVICE, OPENROUTER_URL, TORCH_THREADS
 
 Reranker = Callable[[str, Sequence[str]], list[float]]
@@ -141,14 +141,16 @@ class OpenRouterRerank:
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
         self.last_network_s = 0.0
+        self.last_attempts = 1
         self.last_usage: dict[str, Any] = {}
 
     def __call__(self, query: str, passages: Sequence[str]) -> list[float]:
         t = time.perf_counter()
-        r = self.session.post(f"{OPENROUTER_URL}/rerank", timeout=self.timeout,
-                              json=openrouter_body({"model": self.model, "query": query, "documents": list(passages),
-                                                    "top_n": len(passages)}))
-        self.last_network_s = time.perf_counter() - t
+        r, self.last_attempts = post_with_retry(
+            self.session, f"{OPENROUTER_URL}/rerank",
+            openrouter_body({"model": self.model, "query": query, "documents": list(passages), "top_n": len(passages)}),
+            self.timeout)
+        self.last_network_s = time.perf_counter() - t      # yeniden denemeler ve beklemeler dahil
         if r.status_code != 200:
             # Hata metni loga gider; istek başlıkları (anahtar) yazılmaz
             raise RuntimeError(f"OpenRouter rerank {r.status_code}: {r.text[:300]}")

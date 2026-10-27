@@ -9,7 +9,7 @@ from typing import Any
 from qdrant_client import models
 
 from .config import (COLLECTION, DENSE_MODE, DENSE_SHORT_DIM, HNSW_EF, QUANT_OVERSAMPLING, QUANT_RESCORE,
-                     SHORT_OVERSAMPLE, SPARSE_KIND)
+                     RERANK_FUSION, RERANK_FUSION_K, RERANK_PASSAGE, SHORT_OVERSAMPLE, SPARSE_KIND)
 from .embed import encode_query, rerank, rerank_enabled
 from .index import SPARSE_NAMES, release, search_client, short_name
 
@@ -63,6 +63,20 @@ def _filter(brands: list[str] | None, doc_ids: list[str] | None,
 NAV_EXCLUDE = models.FieldCondition(key="nav", match=models.MatchAny(any=["toc", "index", "front_matter"]))
 ARM_MARGIN = 10      # kol sınırındaki eşit skorlar için fazladan aday; sıralamadan sonra PREFETCH_K'ya kesilir
 RRF_K = 2            # Qdrant'ın RRF'iyle aynı: skor = Σ 1 / (sıra + RRF_K), sıra 0'dan başlar
+
+
+def fused_order(scores: list[float], k: int = RERANK_FUSION_K) -> list[int]:
+    """Reranker sırası ile hibrit (giriş) sırasının RRF birleşimi: skor_i = 1/(k + rerank_sırası) + 1/(k + giriş_sırası),
+    sıralar 1'den başlar; eşitlikte giriş sırası. Reranker tek başına karar vermez, hibrit aramanın sırası korunur."""
+    rr = sorted(range(len(scores)), key=lambda i: (-scores[i], i))
+    pos = {i: r + 1 for r, i in enumerate(rr)}
+    return sorted(range(len(scores)), key=lambda i: (-(1 / (k + pos[i]) + 1 / (k + i + 1)), i))
+
+
+def rerank_order(scores: list[float], fusion: str = RERANK_FUSION) -> list[int]:
+    if fusion == "rrf":
+        return fused_order(scores)
+    return sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)
 
 
 def canonical(points: list[Any], limit: int) -> list[Any]:
@@ -156,7 +170,8 @@ def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | 
     t = _lap("qdrant", t)
     if not do_rerank or not rerank_enabled() or not points:
         return [Hit(p.payload, i) for i, p in enumerate(points[:top_k])]
-    scores = rerank(query, [p.payload["text"] for p in points])
+    passages = [p.payload.get(RERANK_PASSAGE) or p.payload["text"] for p in points]
+    scores = rerank(query, passages)
     _lap("rerank", t)
-    order = sorted(range(len(points)), key=lambda i: scores[i], reverse=True)[:top_k]
+    order = rerank_order(scores)[:top_k]
     return [Hit(points[i].payload, i, scores[i]) for i in order]

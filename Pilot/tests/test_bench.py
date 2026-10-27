@@ -210,3 +210,56 @@ def test_synthetic_access_is_deterministic_and_half_public():
     public = sum(1 for x in xs if x == ["all"]) / len(xs)
     assert 0.45 < public < 0.55
     assert {g for x in xs for g in x} == {"all", *GROUPS}
+
+
+def test_parse_config_options():
+    from bench.rerank_bench import parse_config
+    c = parse_config("openrouter:qwen/qwen3-reranker-8b@embed@inst")
+    assert c["model"] == "qwen/qwen3-reranker-8b" and c["passage"] == "embed_text" and c["instruct"]
+    assert c["base"] == "openrouter:qwen/qwen3-reranker-8b"
+    d = parse_config("local:BAAI/bge-reranker-v2-m3:onnx-int8:512:4")
+    assert d["passage"] == "text" and not d["instruct"] and d["base"] == d["spec"]
+
+
+def test_fused_order_combines_rerank_and_input_order():
+    from bench.rerank_bench import fused_order
+    # reranker ve giriş aynı fikirdeyse sıra değişmez
+    assert fused_order([3.0, 2.0, 1.0]) == [0, 1, 2]
+    # tam ters sıra: uçlar eşit skor (1/61 + 1/63), eşitlikte giriş sırası; ortadaki (2/62) biraz düşük
+    assert fused_order([0.1, 0.2, 0.3]) == [0, 2, 1]
+    # reranker son adayı birinci yapar: giriş sırasının ilk ikisinin arkasına çıkar, en sonda kalmaz
+    assert fused_order([0.0, 0.0, 0.0, 0.0, 9.0]) == [0, 1, 4, 2, 3]
+
+
+def test_unverified_questions_are_not_measured(tmp_path):
+    (tmp_path / "x.json").write_text(json.dumps([
+        {"id": "A1", "q": "a", "dogrulandi": False}, {"id": "A2", "q": "b", "dogrulandi": True}, {"id": "Q1", "q": "c"}]),
+        encoding="utf-8")
+    assert [it["id"] for it in common.load_questions(["x"], tmp_path)] == ["A2", "Q1"]
+
+
+def test_candidate_draft_is_all_unverified():
+    items = json.loads((common.EVAL_DIR / "aday_sorular.json").read_text(encoding="utf-8"))
+    assert items and all(it["dogrulandi"] is False for it in items)
+    assert not {d for it in items for d in it["expect_docs"]} & {"juki-mo6800s"}     # ayrı tutulan set dışarıda
+
+
+def test_post_with_retry_retries_transient_errors_only():
+    from types import SimpleNamespace
+
+    from pilot.cloud import post_with_retry
+    waits = []
+
+    class S:
+        def __init__(self, codes):
+            self.codes = list(codes)
+
+        def post(self, url, json, timeout):
+            return SimpleNamespace(status_code=self.codes.pop(0))
+
+    r, n = post_with_retry(S([503, 429, 200]), "u", {}, 1, sleep=waits.append)
+    assert r.status_code == 200 and n == 3 and waits == [1.0, 2.0]
+    r, n = post_with_retry(S([404, 200]), "u", {}, 1, sleep=waits.append)      # ZDR reddi: yeniden denenmez
+    assert r.status_code == 404 and n == 1
+    r, n = post_with_retry(S([503] * 10), "u", {}, 1, retries=2, sleep=lambda s: None)
+    assert r.status_code == 503 and n == 3

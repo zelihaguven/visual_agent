@@ -74,6 +74,7 @@ Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), öl
 | Değişken | Varsayılan | Seçenekler |
 |----------|------------|------------|
 | `PILOT_RERANK_PROVIDER` | `none` | Aşama 4 kararı: rerank kapalı, hibrit arama sonucu doğrudan. `local` (aşağıdaki model/backend), `openrouter` (`qwen/qwen3-reranker-8b`, ZDR; anahtar yalnız `OPENROUTER_API_KEY`'den) |
+| `PILOT_RERANK_PASSAGE`, `PILOT_RERANK_FUSION`, `PILOT_RERANK_FUSION_K` | `embed_text`, `rrf`, `60` | Rerank açıkken: reranker'a başlıklı metin, reranker sırası hibrit sırayla RRF birleşimi (Aşama 4 teşhisi; filtresiz hit@1 +0,06…+0,25). Eski davranış: `text`, `none` |
 | `PILOT_RERANK_MODEL` | `BAAI/bge-reranker-v2-m3` | ör. `jinaai/jina-reranker-v2-base-multilingual`, bulutta `cohere/rerank-v3.5` |
 | `PILOT_RERANK_BACKEND` | `torch` | `flag` (FlagEmbedding, eski varsayılan; aynı skor, ~3,6 kat yavaş), `onnx`, `onnx-int8` (önce `python -m bench.onnx_export <model>`) |
 | `PILOT_RERANK_MAX_LENGTH` | `512` | token sınırı (soru + parça) |

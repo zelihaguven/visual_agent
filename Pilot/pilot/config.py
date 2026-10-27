@@ -26,6 +26,12 @@ COLLECTION = os.environ.get("PILOT_COLLECTION", "manuals")
 # none (varsayılan, Aşama 4 kararı): iyi adaylarla local reranker katkısız/zararlıydı; hibrit arama sonucu doğrudan
 # kullanılır. local: bge-v2-m3 / jina / onnx (PILOT_RERANK_MODEL, PILOT_RERANK_BACKEND); openrouter: qwen3-reranker-8b
 RERANK_PROVIDER = os.environ.get("PILOT_RERANK_PROVIDER", "none")           # none | local | openrouter
+# Rerank açıkken (Aşama 4 teşhisi, rerank_duzeltme): reranker'a başlıklı metin gider (embed_text: marka, ürün, bölüm +
+# metin; embedding de bununla yapılıyor) ve reranker sırası hibrit sırayla RRF ile birleştirilir (k=60, standart sabit).
+# Başlıksız metinde reranker ceket ile pantolonun aynı adlı bölümlerini ayıramıyordu; tek başına sıra hibrit sırayı siliyordu.
+RERANK_PASSAGE = os.environ.get("PILOT_RERANK_PASSAGE", "embed_text")       # embed_text | text (eski)
+RERANK_FUSION = os.environ.get("PILOT_RERANK_FUSION", "rrf")               # rrf | none (yalnız reranker skoru, eski)
+RERANK_FUSION_K = int(os.environ.get("PILOT_RERANK_FUSION_K", "60"))
 RERANK_MODEL = os.environ.get("PILOT_RERANK_MODEL", RERANK_MODEL)
 # local backend: torch (doğrudan transformers, varsayılan) | flag (FlagEmbedding, eski) | onnx | onnx-int8.
 # torch, flag ile aynı skoru verir (fark <1e-5), 3,6 kat hızlı: FlagEmbedding her çağrıda ilk batch'i fazladan hesaplıyor

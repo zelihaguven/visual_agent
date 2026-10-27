@@ -93,15 +93,30 @@ def ranked_rank(cands: list[dict[str, Any]], scores: list[float] | None, item: d
     return first_rank([cands[i] for i in top], item)
 
 
+RRF_FUSE_K = 60          # reranker sırası + hibrit sıra birleştirmesi (standart RRF sabiti; bu sorulara göre seçilmedi)
+QWEN_INSTRUCT = ("Instruct: Given a question about a machine manual or garment specification, judge whether the "
+                 "document answers the question\nQuery: ")
+
+
 def parse_config(spec: str) -> dict[str, Any]:
-    parts = spec.split(":")
+    """sağlayıcı:model:backend:max_length[:batch][@embed][@inst]. @embed: reranker'a başlıklı metin (embed_text:
+    marka, ürün, bölüm + metin); @inst: sorguya görev talimatı (Qwen3-Reranker biçimi)."""
+    base, *opts = spec.split("@")
+    parts = base.split(":")
+    extra = {"base": base, "passage": "embed_text" if "embed" in opts else "text", "instruct": "inst" in opts}
     if parts[0] == "openrouter":
         return {"spec": spec, "provider": "openrouter", "model": ":".join(parts[1:]), "backend": "api",
-                "max_length": None, "batch": None}
+                "max_length": None, "batch": None, **extra}
     if parts[0] != "local" or len(parts) < 4:
         raise ValueError(f"yapılandırma: local:model:backend:max_length[:batch] ya da openrouter:model — {spec}")
     return {"spec": spec, "provider": "local", "model": parts[1], "backend": parts[2], "max_length": int(parts[3]),
-            "batch": int(parts[4]) if len(parts) > 4 else 8}
+            "batch": int(parts[4]) if len(parts) > 4 else 8, **extra}
+
+
+def fused_order(scores: list[float], k: int = RRF_FUSE_K) -> list[int]:
+    """pilot.retrieve.fused_order (pipeline ile aynı birleştirme)."""
+    from pilot.retrieve import fused_order as f
+    return f(scores, k)
 
 
 def build(cfg: dict[str, Any]):
@@ -112,12 +127,17 @@ def build(cfg: dict[str, Any]):
 def summarize_config(rows: list[dict[str, Any]], ks: tuple[int, ...] = (10, 15, 20)) -> dict[str, Any]:
     scored = [r for r in rows if not r["not_found"]]
     acc = {f"K{k}": accuracy([r["rank"][str(k)] for r in scored]) for k in ks}
+    if all("rank_fused" in r for r in scored):
+        acc["fused"] = accuracy([r["rank_fused"] for r in scored])
     by_set = {s: accuracy([r["rank"]["20"] for r in scored if r["set"] == s]) for s in sorted({r["set"] for r in scored})}
     secs = [r["seconds"] for r in rows]
     mhz = [r["cpu"]["mhz"] for r in rows if r["cpu"]["mhz"]]
     out = {"accuracy": acc, "by_set": by_set, "time": stats(secs),
            "cpu_mhz": stats(mhz) if mhz else None,
            "not_found_top": {r["qid"]: r["top"] for r in rows if r["not_found"]}}
+    retried = [r for r in rows if r.get("attempts", 1) > 1]
+    if retried:
+        out["retried_calls"] = len(retried)
     costs = [r["cost_usd"] for r in rows if r.get("cost_usd") is not None]
     if costs:
         out["cost_usd_total"] = sum(costs)
@@ -130,35 +150,49 @@ def compare(name: str, specs: list[str], modes: list[str], warmup: int, limit: i
             candidates: str | None = None) -> None:
     cands = load_candidates(path=candidates)
     items = {it["qid"]: it for it in load_questions(KNOWN_SETS)}
+    from pilot.chunk import read_chunks
+    embed_text = {c["chunk_id"]: c["embed_text"] for c in read_chunks()}
     cfgs = [parse_config(s) for s in specs]
     models = {}
-    for c in cfgs:
+    for c in cfgs:                       # aynı tabanın varyantları (@embed, @inst) tek model örneğini paylaşır
         t = time.perf_counter()
-        models[c["spec"]] = build(c)
+        if c["base"] not in models:
+            models[c["base"]] = build(c)
         c["load_s"] = round(time.perf_counter() - t, 1)
         log.info("yüklendi %s (%.0f sn)", c["spec"], c["load_s"])
+
+    def passages_for(c, items_):
+        return [embed_text.get(x["chunk_id"], x["text"]) if c["passage"] == "embed_text" else x["text"]
+                for x in items_]
+
+    def query_for(c, q):
+        return (QWEN_INSTRUCT + q) if c["instruct"] else q
+
     qs = list(cands["questions"].values())[:limit]
     for c in cfgs:
         for q in qs[:warmup]:
-            models[c["spec"]](q["search_q"], [x["text"] for x in q["filtered"]])
+            models[c["base"]](query_for(c, q["search_q"]), passages_for(c, q["filtered"]))
     rows: dict[str, dict[str, list[dict[str, Any]]]] = {c["spec"]: {m: [] for m in modes} for c in cfgs}
     with CpuMonitor() as mon:
         for i, q in enumerate(qs):
             for mode in modes:
-                passages = [x["text"] for x in q[mode]]
                 order = cfgs if i % 2 == 0 else cfgs[::-1]          # dönüşümlü: sıra etkisini dengeler
                 for c in order:
-                    m = models[c["spec"]]
+                    m = models[c["base"]]
+                    passages = passages_for(c, q[mode])
                     t0 = time.perf_counter()
-                    scores = m(q["search_q"], passages)
+                    scores = m(query_for(c, q["search_q"]), passages)
                     t1 = time.perf_counter()
+                    fo = fused_order(scores)
                     rows[c["spec"]][mode].append({
                         "qid": q["qid"], "set": q["set"], "not_found": q["not_found"], "seconds": t1 - t0,
                         "network_s": getattr(m, "last_network_s", None), "cpu": mon.window(t0, t1),
                         "cost_usd": (getattr(m, "last_usage", None) or {}).get("cost"),
+                        "attempts": getattr(m, "last_attempts", 1),
                         "n_passages": len(passages), "top": max(scores) if scores else None,
                         "rank": {str(k): None if q["not_found"] else ranked_rank(q[mode], scores, items[q["qid"]], k)
                                  for k in (10, 15, 20)},
+                        "rank_fused": None if q["not_found"] else first_rank([q[mode][j] for j in fo], items[q["qid"]]),
                         "scores": [round(s, 4) for s in scores]})
             log.info("%d/%d %s", i + 1, len(qs), q["qid"])
     # rerank'sız (RRF sırası) referans
@@ -184,17 +218,19 @@ def compare_md(name: str, data: dict[str, Any]) -> str:
     for mode in m["params"]["modes"]:
         nr = data["no_rerank"][mode]
         lines += [f"## {'Filtreli' if mode == 'filtered' else 'Filtresiz'}", "",
-                  "| Yapılandırma | hit@1 | hit@5 | MRR | süre ort. | p50 | p95 | MHz ort. | yükleme |",
-                  "|---|---|---|---|---|---|---|---|---|",
+                  "| Yapılandırma | hit@1 | hit@5 | MRR | füzyonla hit@1 / hit@5 / MRR | süre ort. | p50 | p95 | MHz ort. | yükleme |",
+                  "|---|---|---|---|---|---|---|---|---|---|",
                   f"| rerank yok (RRF) | {fmt_pct(nr['hit@1'])} | {fmt_pct(nr['hit@5'])} | {fmt_pct(nr['mrr'])} "
-                  f"| – | – | – | – | – |"]
+                  f"| – | – | – | – | – | – |"]
         for c in m["params"]["configs"]:
             s = data["configs"][c["spec"]][mode]["summary"]
             a, t = s["accuracy"]["K20"], s["time"]
+            fz = s["accuracy"].get("fused")
+            fused = f"{fmt_pct(fz['hit@1'])} / {fmt_pct(fz['hit@5'])} / {fmt_pct(fz['mrr'])}" if fz else "–"
             mhz = f"{s['cpu_mhz']['mean']:.0f}" if s.get("cpu_mhz") else "–"
             net = f" (ağ {fmt_s(s['network']['p50'])})" if s.get("network") else ""
             lines.append(f"| `{c['spec']}` | {fmt_pct(a['hit@1'])} | {fmt_pct(a['hit@5'])} | {fmt_pct(a['mrr'])} | "
-                         f"{fmt_s(t['mean'])}{net} | {fmt_s(t['p50'])} | {fmt_s(t['p95'])} | {mhz} | "
+                         f"{fused} | {fmt_s(t['mean'])}{net} | {fmt_s(t['p50'])} | {fmt_s(t['p95'])} | {mhz} | "
                          f"{c.get('load_s', '–')} sn |")
         lines += ["", "FUSED_K etkisi (doğruluk; aynı skorlar ilk K adaya kısıtlanarak):", "",
                   "| Yapılandırma | K=10 hit@1/hit@5/MRR | K=15 | K=20 |", "|---|---|---|---|"]

@@ -1,0 +1,140 @@
+{
+ "meta": {
+  "date": "2026-10-27T11:25:10",
+  "git_commit": "f130ac4",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {},
+  "params": {
+   "keys": [
+    "qwen3-8b_full",
+    "bge-m3-local-bm25_full",
+    "te3-large_full"
+   ]
+  }
+ },
+ "stats": {
+  "qwen3-8b_full": {
+   "tokens": {
+    "n": 1560,
+    "p50": 83,
+    "max": 661,
+    "over_512": 7
+   },
+   "bge-reranker-v2-m3 int8|filtered": {
+    "lost": 6,
+    "gained": 4,
+    "lost_same_doc": 6
+   },
+   "bge-reranker-v2-m3 int8|unfiltered": {
+    "lost": 10,
+    "gained": 5,
+    "lost_same_doc": 3
+   },
+   "jina-reranker-v2-base-multilingual|filtered": {
+    "lost": 6,
+    "gained": 3,
+    "lost_same_doc": 6
+   },
+   "jina-reranker-v2-base-multilingual|unfiltered": {
+    "lost": 11,
+    "gained": 3,
+    "lost_same_doc": 4
+   },
+   "qwen3-reranker-8b|filtered": {
+    "lost": 3,
+    "gained": 2,
+    "lost_same_doc": 3
+   },
+   "qwen3-reranker-8b|unfiltered": {
+    "lost": 5,
+    "gained": 2,
+    "lost_same_doc": 2
+   }
+  },
+  "bge-m3-local-bm25_full": {
+   "tokens": {
+    "n": 1560,
+    "p50": 117,
+    "max": 665,
+    "over_512": 12
+   },
+   "bge-reranker-v2-m3 int8|filtered": {
+    "lost": 4,
+    "gained": 4,
+    "lost_same_doc": 4
+   },
+   "bge-reranker-v2-m3 int8|unfiltered": {
+    "lost": 6,
+    "gained": 4,
+    "lost_same_doc": 3
+   },
+   "jina-reranker-v2-base-multilingual|filtered": {
+    "lost": 6,
+    "gained": 4,
+    "lost_same_doc": 6
+   },
+   "jina-reranker-v2-base-multilingual|unfiltered": {
+    "lost": 7,
+    "gained": 4,
+    "lost_same_doc": 2
+   },
+   "qwen3-reranker-8b|filtered": {
+    "lost": 2,
+    "gained": 2,
+    "lost_same_doc": 2
+   },
+   "qwen3-reranker-8b|unfiltered": {
+    "lost": 1,
+    "gained": 2,
+    "lost_same_doc": 1
+   }
+  },
+  "te3-large_full": {
+   "tokens": {
+    "n": 1560,
+    "p50": 98,
+    "max": 601,
+    "over_512": 5
+   },
+   "bge-reranker-v2-m3 int8|filtered": {
+    "lost": 6,
+    "gained": 4,
+    "lost_same_doc": 6
+   },
+   "bge-reranker-v2-m3 int8|unfiltered": {
+    "lost": 8,
+    "gained": 4,
+    "lost_same_doc": 3
+   },
+   "jina-reranker-v2-base-multilingual|filtered": {
+    "lost": 6,
+    "gained": 2,
+    "lost_same_doc": 6
+   },
+   "jina-reranker-v2-base-multilingual|unfiltered": {
+    "lost": 9,
+    "gained": 3,
+    "lost_same_doc": 3
+   },
+   "qwen3-reranker-8b|filtered": {
+    "lost": 3,
+    "gained": 4,
+    "lost_same_doc": 3
+   },
+   "qwen3-reranker-8b|unfiltered": {
+    "lost": 4,
+    "gained": 3,
+    "lost_same_doc": 2
+   }
+  }
+ }
+}

@@ -115,3 +115,25 @@ def test_rerank_off_by_default_returns_fusion_order(monkeypatch):
     monkeypatch.setattr(retrieve, "encode_query", lambda t, s=None: {"dense": [1.0, 0.0, 0.0, 0.0], "sparse": {1: 1.0}})
     hits = retrieve.search("q", top_k=3)
     assert not called and [h.rerank_score for h in hits] == [None, None, None] and len(hits) == 3
+
+
+def test_rerank_uses_header_text_and_rrf_fusion(monkeypatch):
+    """Rerank açıkken (PILOT_RERANK_PROVIDER=local|openrouter): reranker'a embed_text gider, sıra RRF birleşimi."""
+    from pilot import retrieve
+    seen = []
+    monkeypatch.setattr(retrieve, "rerank_enabled", lambda: True)
+    monkeypatch.setattr(retrieve, "rerank", lambda q, ps: seen.extend(ps) or [0.0, 0.0, 0.0, 0.0, 9.0])
+    c = QdrantClient(":memory:")
+    c.create_collection(retrieve.COLLECTION, **collection_schema(4))
+    c.upsert(retrieve.COLLECTION, points=[models.PointStruct(
+        id=i, vector=point_vectors({"dense": [1.0, -0.1 * i, 0.0, 0.0], "sparses": {"bm25": {1: 1.0}, "bge-m3": {1: 1.0}}}),
+        payload={"doc_id": "d", "text": f"t{i}", "embed_text": f"Marka Ürün | Bölüm\nt{i}", "pages": [1]})
+        for i in range(5)])
+    monkeypatch.setattr(retrieve, "search_client", lambda: c)
+    monkeypatch.setattr(retrieve, "release", lambda _: None)
+    monkeypatch.setattr(retrieve, "encode_query", lambda t, s=None: {"dense": [1.0, 0.0, 0.0, 0.0], "sparse": {1: 1.0}})
+    hits = retrieve.search("q", top_k=5)
+    assert seen and all(p.startswith("Marka Ürün | Bölüm") for p in seen)
+    # reranker son adayı 1. yaptı; birleşimde hibrit sıranın ilk ikisinin arkasına çıkar (test_bench'teki hesap)
+    assert [h.fused_rank for h in hits] == [0, 1, 4, 2, 3]
+    assert retrieve.rerank_order([0.0, 0.0, 0.0, 0.0, 9.0], "none")[0] == 4       # eski: yalnız reranker skoru

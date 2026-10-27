@@ -24,6 +24,31 @@ def openrouter_body(body: dict[str, Any]) -> dict[str, Any]:
     return {**body, "provider": provider}
 
 
+RETRY_STATUS = {429, 500, 502, 503, 504}
+RETRIES = 4                 # geçici hatalarda (aşırı yük, hız sınırı) en fazla bu kadar yeniden deneme
+
+
+def post_with_retry(session, url: str, body: dict[str, Any], timeout: float, retries: int = RETRIES,
+                    backoff: float = 1.0, sleep=None) -> tuple[Any, int]:
+    """POST; 429/5xx ve bağlantı hatasında artan beklemeyle (1, 2, 4, 8 sn) yeniden dener. Döner: (yanıt, deneme sayısı).
+    Kalıcı hatalar (400, 401, 404 ZDR reddi) denenmez, çağıran ele alır."""
+    import time
+
+    import requests
+    sleep = sleep or time.sleep
+    for attempt in range(retries + 1):
+        try:
+            r = session.post(url, json=body, timeout=timeout)
+        except (requests.ConnectionError, requests.Timeout):
+            if attempt == retries:
+                raise
+        else:
+            if r.status_code not in RETRY_STATUS or attempt == retries:
+                return r, attempt + 1
+        sleep(backoff * 2 ** attempt)
+    raise AssertionError("ulaşılmaz")
+
+
 def api_key() -> str:
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key:
@@ -97,7 +122,7 @@ class CloudEmbedder:
         self.cache = cache
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bearer {api_key()}", "Content-Type": "application/json"})
-        self.stats = {"requests": 0, "prompt_tokens": 0, "cost_usd": 0.0, "network_s": 0.0, "cached": 0}
+        self.stats = {"requests": 0, "prompt_tokens": 0, "cost_usd": 0.0, "network_s": 0.0, "cached": 0, "retries": 0}
         self.last_network_s = 0.0
 
     def _call(self, texts: list[str]) -> list[list[float]]:
@@ -106,8 +131,9 @@ class CloudEmbedder:
         if self.dimensions:
             body["dimensions"] = self.dimensions
         t = time.perf_counter()
-        r = self.session.post(f"{OPENROUTER_URL}/embeddings", json=openrouter_body(body), timeout=self.timeout)
+        r, attempts = post_with_retry(self.session, f"{OPENROUTER_URL}/embeddings", openrouter_body(body), self.timeout)
         self.last_network_s = time.perf_counter() - t
+        self.stats["retries"] += attempts - 1
         self.stats["network_s"] += self.last_network_s
         self.stats["requests"] += 1
         if r.status_code != 200:

@@ -27,10 +27,13 @@ _SECRET = re.compile(r"KEY|TOKEN|SECRET|PASSWORD", re.I)
 
 # ---------- soru setleri ----------
 
-def load_questions(sets: Iterable[str]) -> list[dict[str, Any]]:
+def load_questions(sets: Iterable[str], eval_dir: Path | None = None) -> list[dict[str, Any]]:
+    """Onaysız sorular ('dogrulandi': false, ör. eval/aday_sorular.json taslağı) ölçüme girmez."""
     out = []
     for name in sets:
-        for it in json.loads((EVAL_DIR / f"{name}.json").read_text(encoding="utf-8")):
+        for it in json.loads(((eval_dir or EVAL_DIR) / f"{name}.json").read_text(encoding="utf-8")):
+            if it.get("dogrulandi") is False:
+                continue
             out.append({**it, "set": name, "qid": f"{name}:{it['id']}"})
     return out
 
