@@ -8,7 +8,7 @@ from typing import Any
 
 from .config import (DENSE_MODE, DENSE_SHORT_DIM, EMBED_BATCH, EMBED_CLOUD_MODEL, EMBED_DEVICE, EMBED_DOC_PREFIX,
                      EMBED_MAX_LENGTH, EMBED_MODEL, EMBED_PROVIDER, EMBED_QUERY_PREFIX, RERANK_BACKEND, RERANK_BATCH,
-                     RERANK_MAX_LENGTH, RERANK_MODEL, RERANK_PROVIDER, SPARSE_KIND)
+                     RERANK_MAX_LENGTH, RERANK_MODEL, RERANK_PROVIDER, SPARSE_KIND, INDEX_SPARSE)
 
 warnings.filterwarnings("ignore")
 
@@ -71,18 +71,24 @@ def encode_query(text: str, sparse_text: str | None = None) -> dict[str, Any]:
 
 
 def encode_docs(texts: list[str]) -> list[dict[str, Any]]:
-    """İndeksleme vektörleri, encode_query ile aynı sağlayıcı ve sparse türü. Bulut embedding önbelleğe alınır."""
+    """İndeksleme vektörleri: {'dense', 'sparses': {tür: vektör}}. İndekslenen sparse türleri INDEX_SPARSE (local:
+    bge-m3 ve bm25 ikisi birden, sorgu anında PILOT_SPARSE ile seçilir). Bulut embedding önbelleğe alınır."""
+    sparses: dict[str, list[Any]] = {}
     if EMBED_PROVIDER == "local":
         vecs = embed(texts)
         dense = [v["dense"] for v in vecs]
-        sparse = [v["sparse"] for v in vecs]
+        sparses["bge-m3"] = [v["sparse"] for v in vecs]
     else:
         dense = _cloud().embed([EMBED_DOC_PREFIX + t for t in texts])
-        sparse = [None] * len(texts)
-    if SPARSE_KIND == "bm25":
+    if "bm25" in INDEX_SPARSE:
         from .sparse import bm25_docs
-        sparse = bm25_docs(texts)
-    return [{"dense": d, "sparse": s} for d, s in zip(dense, sparse)]
+        sparses["bm25"] = bm25_docs(texts)
+    return [{"dense": d, "sparses": {k: v[i] for k, v in sparses.items() if k in INDEX_SPARSE}}
+            for i, d in enumerate(dense)]
+
+
+def rerank_enabled() -> bool:
+    return RERANK_PROVIDER != "none"
 
 
 def rerank(query: str, passages: list[str]) -> list[float]:

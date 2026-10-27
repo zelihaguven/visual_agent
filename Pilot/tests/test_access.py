@@ -34,7 +34,8 @@ def qc(monkeypatch):
         for i in range(25):
             sp = _sparse(pid)
             points.append(models.PointStruct(
-                id=pid, vector={"dense": _vec(pid), "sparse": models.SparseVector(indices=list(sp), values=list(sp.values()))},
+                id=pid, vector={"dense": _vec(pid), "sparse": models.SparseVector(indices=list(sp), values=list(sp.values())),
+                                "bm25": models.SparseVector(indices=list(sp), values=list(sp.values()))},
                 payload={"doc_id": doc, "brand": "B", "text": f"{doc} parça {i} E050", "pages": [i], "access": access}))
             pid += 1
     c.upsert(retrieve.COLLECTION, points=points)

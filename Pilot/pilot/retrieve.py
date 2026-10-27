@@ -10,7 +10,7 @@ from qdrant_client import models
 
 from .config import (COLLECTION, DENSE_MODE, DENSE_SHORT_DIM, HNSW_EF, QUANT_OVERSAMPLING, QUANT_RESCORE,
                      SHORT_OVERSAMPLE, SPARSE_KIND)
-from .embed import encode_query, rerank
+from .embed import encode_query, rerank, rerank_enabled
 from .index import SPARSE_NAMES, release, search_client, short_name
 
 PREFETCH_K = int(os.environ.get("PILOT_PREFETCH_K", "30"))   # her kolun (dense, sparse) getirdiği aday sayısı
@@ -154,7 +154,7 @@ def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | 
     finally:
         release(qc)
     t = _lap("qdrant", t)
-    if not do_rerank or not points:
+    if not do_rerank or not rerank_enabled() or not points:
         return [Hit(p.payload, i) for i, p in enumerate(points[:top_k])]
     scores = rerank(query, [p.payload["text"] for p in points])
     _lap("rerank", t)

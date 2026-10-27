@@ -73,7 +73,7 @@ Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), öl
 
 | Değişken | Varsayılan | Seçenekler |
 |----------|------------|------------|
-| `PILOT_RERANK_PROVIDER` | `local` | `openrouter` (bulut; anahtar yalnız `OPENROUTER_API_KEY` ortam değişkeninden) |
+| `PILOT_RERANK_PROVIDER` | `none` | Aşama 4 kararı: rerank kapalı, hibrit arama sonucu doğrudan. `local` (aşağıdaki model/backend), `openrouter` (`qwen/qwen3-reranker-8b`, ZDR; anahtar yalnız `OPENROUTER_API_KEY`'den) |
 | `PILOT_RERANK_MODEL` | `BAAI/bge-reranker-v2-m3` | ör. `jinaai/jina-reranker-v2-base-multilingual`, bulutta `cohere/rerank-v3.5` |
 | `PILOT_RERANK_BACKEND` | `torch` | `flag` (FlagEmbedding, eski varsayılan; aynı skor, ~3,6 kat yavaş), `onnx`, `onnx-int8` (önce `python -m bench.onnx_export <model>`) |
 | `PILOT_RERANK_MAX_LENGTH` | `512` | token sınırı (soru + parça) |
@@ -84,7 +84,7 @@ Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), öl
 | `PILOT_OPENROUTER_URL` | `https://openrouter.ai/api/v1` | |
 | `PILOT_EMBED_PROVIDER` | `local` | `openrouter`: bulut dense (ZDR zorunlu) + BM25 sparse; koleksiyon o modelle kurulmuş olmalı (`bench.providers build`) |
 | `PILOT_EMBED_MODEL`, `PILOT_EMBED_QUERY_PREFIX`, `PILOT_EMBED_DOC_PREFIX` | boş | bulut model adı ve modelin sorgu/doküman biçimi (`bench/models.json`) |
-| `PILOT_SPARSE` | local: `bge-m3`, bulut: `bm25` | `bm25`: fastembed `Qdrant/bm25` + Qdrant IDF; local bge-m3 dense ile de kullanılabilir (Aşama 4: rerank'sız hit@1 0,44 → 0,72) |
+| `PILOT_SPARSE` | `bm25` | fastembed `Qdrant/bm25` + Qdrant IDF (Aşama 4: rerank'sız hit@1 0,44 → 0,72). `bge-m3`: eski yol. 2026-10-27 öncesi indekse bir kez `python run_add_bm25.py` |
 | `PILOT_DENSE_MODE`, `PILOT_DENSE_SHORT_DIM`, `PILOT_SHORT_OVERSAMPLE` | `full`, `256`, `4` | `short`: yalnız MRL kısa vektör; `short_rescore`: kısa vektörle aday, tam vektörle sıra |
 | `PILOT_QDRANT_URL` | boş (gömülü mod) | `http://127.0.0.1:6333`: Qdrant sunucusu ([qdrant/README.md](qdrant/README.md)); `PILOT_QDRANT_GRPC=1` gRPC, `PILOT_QDRANT_API_KEY` sunucu anahtarı |
 | `PILOT_COLLECTION` | `manuals` | koleksiyon adı |

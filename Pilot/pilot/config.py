@@ -23,7 +23,9 @@ EMBED_BATCH = 16
 COLLECTION = os.environ.get("PILOT_COLLECTION", "manuals")
 
 # Arama katmanı seçenekleri (BENCHMARK-RAPORU.md). Varsayılanlar pilotun ölçülen yapısıdır; ortam değişkeniyle seçilir.
-RERANK_PROVIDER = os.environ.get("PILOT_RERANK_PROVIDER", "local")          # local | openrouter
+# none (varsayılan, Aşama 4 kararı): iyi adaylarla local reranker katkısız/zararlıydı; hibrit arama sonucu doğrudan
+# kullanılır. local: bge-v2-m3 / jina / onnx (PILOT_RERANK_MODEL, PILOT_RERANK_BACKEND); openrouter: qwen3-reranker-8b
+RERANK_PROVIDER = os.environ.get("PILOT_RERANK_PROVIDER", "none")           # none | local | openrouter
 RERANK_MODEL = os.environ.get("PILOT_RERANK_MODEL", RERANK_MODEL)
 # local backend: torch (doğrudan transformers, varsayılan) | flag (FlagEmbedding, eski) | onnx | onnx-int8.
 # torch, flag ile aynı skoru verir (fark <1e-5), 3,6 kat hızlı: FlagEmbedding her çağrıda ilk batch'i fazladan hesaplıyor
@@ -44,7 +46,10 @@ EMBED_PROVIDER = os.environ.get("PILOT_EMBED_PROVIDER", "local")             # l
 EMBED_CLOUD_MODEL = os.environ.get("PILOT_EMBED_MODEL", "")                  # ör. qwen/qwen3-embedding-8b
 EMBED_QUERY_PREFIX = os.environ.get("PILOT_EMBED_QUERY_PREFIX", "")          # modelin sorgu biçimi (bench/models.json)
 EMBED_DOC_PREFIX = os.environ.get("PILOT_EMBED_DOC_PREFIX", "")
-SPARSE_KIND = os.environ.get("PILOT_SPARSE", "bge-m3" if EMBED_PROVIDER == "local" else "bm25")   # bge-m3 | bm25
+# Sparse kol: bm25 (varsayılan, Aşama 4: rerank'sız hit@1 0,44 → 0,72) | bge-m3 (bge-m3'ün kendi ağırlıkları, eski yol).
+# Local indeksler ikisini birden taşır (INDEX_SPARSE); bulut dense indekslerde yalnız bm25.
+SPARSE_KIND = os.environ.get("PILOT_SPARSE", "bm25")
+INDEX_SPARSE: tuple[str, ...] = ("bge-m3", "bm25") if EMBED_PROVIDER == "local" else ("bm25",)
 # Dense kol: full (tam vektör) | short (yalnız MRL kısa vektör) | short_rescore (kısa vektörle aday, tam vektörle sıra)
 DENSE_MODE = os.environ.get("PILOT_DENSE_MODE", "full")
 DENSE_SHORT_DIM = int(os.environ.get("PILOT_DENSE_SHORT_DIM", "256"))

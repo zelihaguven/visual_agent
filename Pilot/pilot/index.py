@@ -9,9 +9,9 @@ from typing import Any
 
 from qdrant_client import QdrantClient, models
 
-from .config import (COLLECTION, HNSW_EF_CONSTRUCT, HNSW_FULL_SCAN_THRESHOLD, HNSW_M, PAYLOAD_ON_DISK,
+from .config import (COLLECTION, HNSW_EF_CONSTRUCT, HNSW_FULL_SCAN_THRESHOLD, HNSW_M, INDEX_SPARSE, PAYLOAD_ON_DISK,
                      QDRANT_API_KEY, QDRANT_DIR, QDRANT_GRPC, QDRANT_REUSE, QDRANT_URL, QUANT_ALWAYS_RAM,
-                     QUANTIZATION, SPARSE_KIND, VECTORS_ON_DISK)
+                     QUANTIZATION, VECTORS_ON_DISK)
 from .embed import encode_docs, short_vector
 from .registry import BY_ID
 
@@ -75,10 +75,11 @@ def quantization_config(kind: str, always_ram: bool) -> models.QuantizationConfi
 def collection_schema(dense_dim: int = DENSE_DIM, *, m: int | None = HNSW_M, ef_construct: int | None = HNSW_EF_CONSTRUCT,
                       full_scan_threshold: int | None = HNSW_FULL_SCAN_THRESHOLD, quantization: str = QUANTIZATION,
                       always_ram: bool = QUANT_ALWAYS_RAM, vectors_on_disk: bool = VECTORS_ON_DISK,
-                      payload_on_disk: bool = PAYLOAD_ON_DISK, sparse: str = SPARSE_KIND,
+                      payload_on_disk: bool = PAYLOAD_ON_DISK, sparse: str | tuple[str, ...] = INDEX_SPARSE,
                       short_dims: tuple[int, ...] = ()) -> dict[str, Any]:
-    """create_collection argümanları. Hepsi varsayılandaysa pilotun ilk şemasının aynısı. sparse='bm25': IDF'i Qdrant
-    uygular (modifier). short_dims: MRL kısa vektörleri (dense_s256 ...), kısa vektörle aday çekmek için."""
+    """create_collection argümanları. sparse: tür ya da türler ('bge-m3' → 'sparse', 'bm25' → 'bm25'; bm25'te IDF'i
+    Qdrant uygular). short_dims: MRL kısa vektörleri (dense_s256 ...), kısa vektörle aday çekmek için."""
+    kinds = (sparse,) if isinstance(sparse, str) else tuple(sparse)
     hnsw = None
     if any(x is not None for x in (m, ef_construct, full_scan_threshold)):
         hnsw = models.HnswConfigDiff(m=m, ef_construct=ef_construct, full_scan_threshold=full_scan_threshold)
@@ -87,10 +88,10 @@ def collection_schema(dense_dim: int = DENSE_DIM, *, m: int | None = HNSW_M, ef_
     for d in short_dims:
         vectors[short_name(d)] = models.VectorParams(size=d, distance=models.Distance.COSINE, hnsw_config=hnsw,
                                                      on_disk=vectors_on_disk or None)
-    sparse_params = (models.SparseVectorParams(modifier=models.Modifier.IDF) if sparse == "bm25"
-                     else models.SparseVectorParams())
+    sparse_cfg = {SPARSE_NAMES[k]: (models.SparseVectorParams(modifier=models.Modifier.IDF) if k == "bm25"
+                                    else models.SparseVectorParams()) for k in kinds}
     return {"vectors_config": vectors,
-            "sparse_vectors_config": {SPARSE_NAMES[sparse]: sparse_params},
+            "sparse_vectors_config": sparse_cfg,
             "quantization_config": quantization_config(quantization, always_ram),
             "on_disk_payload": payload_on_disk or None}
 
@@ -117,10 +118,14 @@ def sync_access(qc: QdrantClient, name: str = COLLECTION) -> None:
             models.FieldCondition(key="doc_id", match=models.MatchValue(value=doc_id))]))
 
 
-def point_vectors(v: dict[str, Any], sparse: str = SPARSE_KIND, short_dims: tuple[int, ...] = ()) -> dict[str, Any]:
-    sp = v["sparse"]
-    out = {"dense": v["dense"],
-           SPARSE_NAMES[sparse]: models.SparseVector(indices=list(sp.keys()), values=list(sp.values()))}
+def _sv(sp: dict[int, float]) -> models.SparseVector:
+    return models.SparseVector(indices=list(sp.keys()), values=list(sp.values()))
+
+
+def point_vectors(v: dict[str, Any], sparse: str = "bm25", short_dims: tuple[int, ...] = ()) -> dict[str, Any]:
+    """v: {'dense', 'sparses': {tür: vektör}} ya da tek sparse için {'dense', 'sparse'} (sparse türü)."""
+    sparses = v.get("sparses") or {sparse: v["sparse"]}
+    out = {"dense": v["dense"], **{SPARSE_NAMES[k]: _sv(sp) for k, sp in sparses.items()}}
     for d in short_dims:
         out[short_name(d)] = short_vector(v["dense"], d)
     return out
@@ -154,6 +159,36 @@ def replace_docs(chunks: list[dict[str, Any]], doc_ids: list[str]) -> int:
         new = [c for c in chunks if c["doc_id"] in doc_ids]
         _upsert(qc, new, max(ids, default=-1) + 1)
         return len(new)
+    finally:
+        qc.close()
+
+
+def add_bm25(collection: str = COLLECTION) -> int:
+    """Mevcut koleksiyona BM25 sparse vektörü ekler: vektörler ve payload kopyalanır, BM25 payload'daki embed_text'ten
+    hesaplanır (yeniden embed yok). Qdrant var olan koleksiyona yeni sparse vektör adı eklemediği için koleksiyon aynı
+    adla yeniden kurulur. Döner: nokta sayısı (zaten varsa 0). Gömülü ve sunucu modunda çalışır (PILOT_QDRANT_URL)."""
+    from .sparse import bm25_docs
+    qc = client()
+    try:
+        info = qc.get_collection(collection)
+        if "bm25" in (info.config.params.sparse_vectors or {}):
+            log.info("%s zaten bm25 taşıyor", collection)
+            return 0
+        pts, offset = [], None
+        while True:
+            batch, offset = qc.scroll(collection, limit=500, offset=offset, with_payload=True, with_vectors=True)
+            pts += batch
+            if offset is None:
+                break
+        dense_dim = info.config.params.vectors["dense"].size
+        bm25 = bm25_docs([p.payload["embed_text"] for p in pts])
+        qc.delete_collection(collection)
+        create_collection(qc, collection, **collection_schema(dense_dim, sparse=("bge-m3", "bm25")))
+        for i in range(0, len(pts), 256):
+            qc.upsert(collection, points=[models.PointStruct(id=p.id, vector={**p.vector, "bm25": _sv(b)},
+                                                             payload=p.payload)
+                                          for p, b in zip(pts[i:i + 256], bm25[i:i + 256])])
+        return len(pts)
     finally:
         qc.close()
 

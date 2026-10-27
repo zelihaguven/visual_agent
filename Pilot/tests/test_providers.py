@@ -31,9 +31,10 @@ def test_schema_bm25_uses_idf_and_short_vectors():
     s = collection_schema(8, sparse="bm25", short_dims=(4,))
     assert set(s["vectors_config"]) == {"dense", "dense_s4"} and s["vectors_config"]["dense_s4"].size == 4
     assert s["sparse_vectors_config"]["bm25"].modifier == models.Modifier.IDF
-    d = collection_schema(8)                           # varsayılan: pilotun ilk şeması
-    assert set(d["vectors_config"]) == {"dense"} and set(d["sparse_vectors_config"]) == {"sparse"}
+    d = collection_schema(8)                           # varsayılan local: iki sparse (bm25 varsayılan, bge-m3 eski yol)
+    assert set(d["vectors_config"]) == {"dense"} and set(d["sparse_vectors_config"]) == {"sparse", "bm25"}
     assert d["sparse_vectors_config"]["sparse"].modifier is None
+    assert d["sparse_vectors_config"]["bm25"].modifier == models.Modifier.IDF
 
 
 def test_point_vectors_names():
@@ -88,8 +89,29 @@ def test_embed_cache_avoids_second_request(tmp_path, monkeypatch):
     assert calls[-1] == ["x"]
 
 
-def test_encode_query_local_default_unchanged(monkeypatch):
+def test_encode_query_local_default_is_bge_dense_plus_bm25(monkeypatch):
     from pilot import embed as em
+    from pilot import sparse
     monkeypatch.setattr(em, "embed", lambda texts: [{"dense": [0.6, 0.8], "sparse": {1: 0.5}} for _ in texts])
-    q = em.encode_query("soru")
-    assert q == {"dense": [0.6, 0.8], "sparse": {1: 0.5}}       # local bge-m3: dense + kendi sparse'ı, kısa yok
+    monkeypatch.setattr(sparse, "bm25_query", lambda text: {7: 1.0})
+    assert em.encode_query("soru") == {"dense": [0.6, 0.8], "sparse": {7: 1.0}}      # varsayılan: BM25
+    monkeypatch.setattr(em, "SPARSE_KIND", "bge-m3")                                # eski yol: bge-m3 sparse
+    assert em.encode_query("soru") == {"dense": [0.6, 0.8], "sparse": {1: 0.5}}
+
+
+def test_rerank_off_by_default_returns_fusion_order(monkeypatch):
+    from pilot import embed as em
+    from pilot import retrieve
+    assert em.RERANK_PROVIDER == "none" and not em.rerank_enabled()
+    called = []
+    monkeypatch.setattr(retrieve, "rerank", lambda q, ps: called.append(1) or [0.0] * len(ps))
+    c = QdrantClient(":memory:")
+    c.create_collection(retrieve.COLLECTION, **collection_schema(4))
+    c.upsert(retrieve.COLLECTION, points=[models.PointStruct(
+        id=i, vector=point_vectors({"dense": [1.0, 0.1 * i, 0.0, 0.0], "sparses": {"bm25": {1: 1.0}, "bge-m3": {1: 1.0}}}),
+        payload={"doc_id": "d", "text": f"t{i}", "pages": [1]}) for i in range(5)])
+    monkeypatch.setattr(retrieve, "search_client", lambda: c)
+    monkeypatch.setattr(retrieve, "release", lambda _: None)
+    monkeypatch.setattr(retrieve, "encode_query", lambda t, s=None: {"dense": [1.0, 0.0, 0.0, 0.0], "sparse": {1: 1.0}})
+    hits = retrieve.search("q", top_k=3)
+    assert not called and [h.rerank_score for h in hits] == [None, None, None] and len(hits) == 3
