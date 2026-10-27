@@ -1,13 +1,18 @@
 # Aşama 3 hazırlığı: VM seçenekleri, korpus, kalabalık testi, kuru çalıştırma
 
-Durum: **Aşama 3 bölündü (kullanıcı kararı, 2026-10-27).**
+Durum: **Aşama 3 bölündü (kullanıcı kararları, 2026-10-27).**
 
-- **Şimdi, dizüstünde:** 3b doğruluk (`bench/run_asama3_yerel.ps1`). Süreleri "dizüstü, üretimi temsil etmez" diye işaretli, karar için kullanılmayacak.
-- **Sonra, VM'de:** 3a süre ölçümleri ve 3c yük testi. Hetzner hesabı henüz yok; açılınca kullanıcı CCX43'ü Console'dan açacak.
-- **VM'e erişim:** Hetzner API belirteci kullanılmayacak. Erişim yalnız SSH ile, anahtar `~/.ssh/visual_agent_asama3`, açık kısmı Console'a eklenecek.
-- **OpenRouter:** mevcut anahtar kullanılacak. Harcama sınırı betikte: `scale_index --max-usd 3`, önceki koşular dahil.
+- **3b, dizüstünde:** `bench/run_asama3_yerel.ps1`. Süreleri "dizüstü, üretimi temsil etmez" diye işaretli, karar için kullanılmayacak.
+- **3a süre ve 3c yük, şirket içi Linux sunucuda:** Hetzner açılmayacak; sunucuyu BT'den istiyoruz.
+- **Paket:** `bench/onprem/`, internet gerekmez.
+  - İndeksler dizüstünde snapshot olarak hazırlanıyor (sha256 kontrollü).
+  - Pakette Python 3.12 (standalone), Qdrant v1.19.2 (statik musl ikili), Linux tekerlekleri ve hazır sorgu vektörleri var.
+- **Kaynak sınırı:** Docker gerekmez; sınırı systemd veriyor: `systemd-run -p AllowedCPUs -p CPUQuota -p MemoryMax -p MemorySwapMax=0`, cgroup v2'de sayfa önbelleği dahil. systemd yoksa çekirdek sınırı taskset ile konuyor; bellek sınırı olmuyor ve bu sonuçlara yazılıyor.
+- **SSH izni çıkmazsa:** tek komut `sudo bash asama3_sunucu.sh`. Sonuç tek bir `asama3_sonuc_<sunucu>_<tarih>.tar.gz`.
+- **Yerelde denenenler:** Windows'ta snapshot alma, sha256 ve dosyadan geri yükleme, Linux tekerleklerinin çözümlenmesi, LF satır sonları.
+- **Denenmeyen:** Linux'ta systemd sınırı ve betiğin kendisi; burada Linux, WSL ve Docker yok. Sunucuda önce `sudo bash asama3_sunucu.sh kontrol` çalıştırılmalı.
 
-Ön onay (A, Hetzner CCX43, toplam ~5–6 $) geçerli. Fiyat Hetzner'in sayfasından doğrulandı: 0,4431 €/saat (KDV hariç, IPv4 dahil), 16 vCPU, 64 GB, 360 GB NVMe.
+Hetzner bölümü (§1, `bench/vm/`) VM seçeneği olarak duruyor, kullanılmayacak.
 
 ## 0. Onay koşulları ve nasıl uygulanıyor
 

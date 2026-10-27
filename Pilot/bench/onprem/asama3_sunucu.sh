@@ -15,7 +15,7 @@
 #   temizle  Qdrant'ı durdurur, açılmış indeksleri ve çalışma klasörünü siler (paket ve sonuç dosyası kalır)
 #
 # Gereken: Linux x86_64, bash, tar, en az 10 çekirdek ve 24 GB RAM (daha azında koşul uyarlanır, raporda yazar),
-# boş disk ≈ 2,5 × snapshot boyutu. Sınır için systemd + cgroup v2 ve kök yetkisi; yoksa kullanıcı birimi ya da
+# boş disk ≈ 2,5 × snapshot boyutu, 6333/6334 portları boş, taskset (util-linux). Sınır için systemd + cgroup v2 ve kök yetkisi; yoksa kullanıcı birimi ya da
 # taskset ile sürer ve sonuçlara "bellek sınırı yok" etiketi düşülür. Docker gerekmez. Ağ: yalnız 127.0.0.1.
 # Süre kabaca: yükleme 20–40 dk, ölçüm iki koşul için ~2 saat. Ekran kapansa da sürsün: tmux/screen ya da nohup.
 set -uo pipefail
@@ -27,7 +27,7 @@ QDATA=$W/qdrant_data
 KOD=$PAKET/kod/Pilot
 LOG=$W/asama3_sunucu.log
 UNIT=asama3-qdrant
-PORT=${QPORT:-6333}
+PORT=6333                                  # gRPC 6334 (qdrant-client'in varsayılanı); ikisi de boş olmalı
 mkdir -p "$W"
 log() { echo "$(date +%T) $*" | tee -a "$LOG"; }
 die() { log "HATA: $*"; exit 1; }
@@ -65,6 +65,12 @@ kontrol() {
   [ "$(uname -m)" = x86_64 ] || die "yalnız x86_64 destekleniyor"
   [ "$free_gb" -ge "$need_gb" ] || die "disk yetmiyor: ${free_gb} GB boş, ~${need_gb} GB gerekli"
   [ "$ncpu" -ge 6 ] || die "en az 6 çekirdek gerekli (Qdrant 4 + istemci 2)"
+  command -v taskset >/dev/null || die "taskset yok (util-linux paketi)"
+  if ! { [ -f "$W/qdrant.pid" ] || "${SCTL[@]}" is-active -q "$UNIT" 2>/dev/null; }; then
+    for p in "$PORT" $((PORT + 1)); do
+      (exec 3<>/dev/tcp/127.0.0.1/$p) 2>/dev/null && die "port $p kullanımda (başka bir Qdrant?); önce onu durdurun"
+    done
+  fi
   [ "$RUNNER" = yok ] && log "UYARI: systemd/cgroup v2 ile sınır konamıyor; taskset ile çekirdek sınırı, bellek sınırı yok (sonuçlarda yazar)"
   return 0
 }
