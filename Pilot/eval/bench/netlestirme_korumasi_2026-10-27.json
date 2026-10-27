@@ -1,0 +1,1402 @@
+{
+ "meta": {
+  "date": "2026-10-27T13:49:26",
+  "git_commit": "1b3ada5+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {},
+  "params": {}
+ },
+ "runs": [
+  {
+   "params": {
+    "label": "eski_rerank",
+    "rerank": "local",
+    "sparse": "bge-m3",
+    "passage": "text",
+    "fusion": "none",
+    "clarify_min_score": -7.0
+   },
+   "rows": [
+    {
+     "group": "onayli",
+     "qid": "questions:Q07",
+     "q": "Dış görünür dikişlerde SPI kaç olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "gl-pd-07-14a",
+      "gl-pd-14-04a"
+     ],
+     "top_docs": [
+      "gl-pd-07-14a",
+      "gl-pd-14-04a",
+      "brother-s7300a"
+     ],
+     "top_score": -0.05435933917760849,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "onayli",
+     "qid": "questions:Q10",
+     "q": "Uçak motoru yağı kaç derecede değiştirilir?",
+     "expected": false,
+     "not_found": true,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": -3.815721035003662,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "onayli",
+     "qid": "questions_ek:Q30",
+     "q": "E050 hatası ne demek?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300b",
+      "brother-s7300b"
+     ],
+     "top_score": 1.4313935041427612,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "onayli",
+     "qid": "sekil_sorular:N3",
+     "q": "Dişli çark türleri nelerdir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "granovsky-1986",
+      "bosch-ra1171"
+     ],
+     "top_score": -9.269721984863281,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A079",
+     "q": "Kalın kumaşlarda makine dikiş boyu nasıl seçilir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "strickland-1956",
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_score": -4.927157402038574,
+     "outcome": "yanlis_pozitif"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A080",
+     "q": "Fransız etek ucu (French hem) nasıl yapılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "strickland-1956",
+      "strickland-1956"
+     ],
+     "top_score": -0.30361154675483704,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A081",
+     "q": "Uzun kruvaze paltoda düğmelenmeyen alt kat nasıl sabitlenir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "bosch-ra1171",
+      "strickland-1956"
+     ],
+     "top_score": -7.793249130249023,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A082",
+     "q": "Klapede pad dikişine kırım çizgisinin ne kadar gerisinden başlanır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "strickland-1956",
+      "strickland-1956"
+     ],
+     "top_score": -5.559070587158203,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A083",
+     "q": "Gömme cepler neden tela ile desteklenir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "gl-pd-14-04a",
+      "strickland-1956"
+     ],
+     "top_score": -9.138826370239258,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A084",
+     "q": "Ok başı punteriz (arrowhead) nasıl yapılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "gl-pd-14-04a",
+      "brother-s7300a"
+     ],
+     "top_score": -3.1207005977630615,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A085",
+     "q": "İlik aralıklarını doğru işaretlemek için ne yapılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "strickland-1956",
+      "strickland-1956"
+     ],
+     "top_score": -2.399176836013794,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A087",
+     "q": "Bengalin kumaş hangi giysiler için uygundur?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "strickland-1956",
+      "strickland-1956"
+     ],
+     "top_score": -1.4313735961914062,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A088",
+     "q": "Parçaları yıkamak için sabun çözeltisinde litre başına kaç gram sabun kullanılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": 2.164656639099121,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A089",
+     "q": "Kalın cidarlı dökme demir parçaları kaynatırken çelik pim çapı nasıl seçilir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "strickland-1956"
+     ],
+     "top_score": -7.10452127456665,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A090",
+     "q": "Ring iplik makinesinde kondansatörün toplam stroku kaç mm olmalı?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "juki-mo6800s",
+      "juki-mo6800s"
+     ],
+     "top_score": 2.3237128257751465,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A091",
+     "q": "Birinci tip çözgü makinesinin tamburunda koni açısı hangi aralıkta değişir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": -2.508999824523926,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A092",
+     "q": "Dokuma tezgâhında orta onarım ne sıklıkla yapılır ve kaç kişi yapar?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": 0.951295018196106,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A093",
+     "q": "Mekik kutusunda mekik yokken çözgü koruyucu uçları pedlerin kaç mm üstünde olmalı?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": -0.39577755331993103,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A094",
+     "q": "Topuk konisinin elektrik kıvılcımıyla doldurulmasında katman kalınlığı kaç mm?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "juki-mo6800s",
+      "juki-mo6800s"
+     ],
+     "top_score": -2.337393045425415,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A096",
+     "q": "Tekstil makinesi parçalarında bakır kaplama ne için kullanılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": -4.725263595581055,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A097",
+     "q": "Yağ damperi ayar düzeneğindeki lamba kaç voltluk?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": 2.565253734588623,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A102",
+     "q": "Cam sürahideki beyaz kireç lekeleri nasıl çıkarılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "mrcoffee-2003",
+      "mrcoffee-2003",
+      "granovsky-1986"
+     ],
+     "top_score": -5.853648662567139,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A103",
+     "q": "Sürahi ısıtma plakasından 30 saniyeden uzun alınırsa ne olur, ne yapmalıyım?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "mrcoffee-2003",
+      "mrcoffee-2003",
+      "juki-mo6800s"
+     ],
+     "top_score": -0.5237637758255005,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A105",
+     "q": "Yedek su filtresi diskleri nereden alınır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "mrcoffee-2003",
+      "mrcoffee-2003",
+      "mrcoffee-2003"
+     ],
+     "top_score": -4.594169616699219,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A113",
+     "q": "Parça listesinde 38 numaralı Allen başlı bağlantı vidasından kaç adet var?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "bosch-ra1171",
+      "bosch-ra1171",
+      "bosch-ra1171"
+     ],
+     "top_score": 3.5196139812469482,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A131",
+     "q": "E050 ne demek?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300b",
+      "juki-mo6800s"
+     ],
+     "top_score": -1.1664600372314453,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A132",
+     "q": "Dikişte ilmek oluşuyor, ne yapmalıyım?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "brother-s7300a",
+      "strickland-1956",
+      "strickland-1956"
+     ],
+     "top_score": -7.608539581298828,
+     "outcome": "yanlis_negatif"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A133",
+     "q": "İplik kesildikten sonra üst iplik kuyruğu kaç mm olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_docs": [
+      "brother-s7300b",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": 1.9396413564682007,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A134",
+     "q": "Alt iplik sayacı nasıl azalıyor?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_score": -1.7961281538009644,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A135",
+     "q": "Aydınlatma LED'i nasıl açılıp kapatılır?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_score": 1.9471111297607422,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A136",
+     "q": "Topraklama vidası hangi torkla sıkılır?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_docs": [
+      "brother-s7300b",
+      "granovsky-1986",
+      "brother-s7300a"
+     ],
+     "top_score": -5.124802589416504,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A137",
+     "q": "Çağanoz ile masura kovanı tutucusu arasındaki boşluk ne olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_docs": [
+      "brother-s7300b",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": 2.2533628940582275,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A138",
+     "q": "İplik kesme kamı ayarında iğne mili kaç mm kaldırılır?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_docs": [
+      "brother-s7300b",
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_score": -0.8658901453018188,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A139",
+     "q": "Makine kafası dik konuma nasıl getirilir?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_docs": [
+      "brother-s7300b",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": -0.2839335799217224,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A140",
+     "q": "İliklerde inç başına kaç dikiş olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "gl-pd-07-14a",
+      "gl-pd-14-04a"
+     ],
+     "top_docs": [
+      "gl-pd-07-14a",
+      "gl-pd-14-04a",
+      "gl-pd-14-04a"
+     ],
+     "top_score": -0.9204154014587402,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A141",
+     "q": "Cırt bant kenardan ne kadar içeriden dikilir?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "granovsky-1986",
+      "strickland-1956"
+     ],
+     "top_score": -9.436563491821289,
+     "outcome": "yanlis_negatif"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A142",
+     "q": "Beden etiketi nereye dikilir?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "gl-pd-14-04a",
+      "gl-pd-14-04a"
+     ],
+     "top_score": -8.68362808227539,
+     "outcome": "yanlis_negatif"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A143",
+     "q": "Isırma testinde kollar böcek kafesinde kaç dakika tutulur?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "gl-pd-14-04a",
+      "gl-pd-07-14a"
+     ],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "mrcoffee-2003",
+      "gl-pd-07-14a"
+     ],
+     "top_score": -5.057188510894775,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A144",
+     "q": "Permetrin geri kazanımı en az yüzde kaç olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "gl-pd-14-04a",
+      "gl-pd-07-14a"
+     ],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "gl-pd-07-14a",
+      "gl-pd-14-04a"
+     ],
+     "top_score": 0.9982028007507324,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A145",
+     "q": "Cep kapağı punterizi kaç dikişli olur?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "gl-pd-14-04a",
+      "gl-pd-14-04a"
+     ],
+     "top_score": -3.4226298332214355,
+     "outcome": "yanlis_negatif"
+    }
+   ]
+  },
+  {
+   "params": {
+    "label": "yeni_varsayilan",
+    "rerank": "none",
+    "sparse": "bm25",
+    "passage": "embed_text",
+    "fusion": "rrf",
+    "clarify_min_score": -7.0
+   },
+   "rows": [
+    {
+     "group": "onayli",
+     "qid": "questions:Q07",
+     "q": "Dış görünür dikişlerde SPI kaç olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "gl-pd-07-14a",
+      "gl-pd-14-04a"
+     ],
+     "top_docs": [
+      "gl-pd-07-14a",
+      "gl-pd-14-04a",
+      "gl-pd-14-04a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "onayli",
+     "qid": "questions:Q10",
+     "q": "Uçak motoru yağı kaç derecede değiştirilir?",
+     "expected": false,
+     "not_found": true,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "onayli",
+     "qid": "questions_ek:Q30",
+     "q": "E050 hatası ne demek?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300b",
+      "juki-mo6800s"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "onayli",
+     "qid": "sekil_sorular:N3",
+     "q": "Dişli çark türleri nelerdir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A079",
+     "q": "Kalın kumaşlarda makine dikiş boyu nasıl seçilir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A080",
+     "q": "Fransız etek ucu (French hem) nasıl yapılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "strickland-1956",
+      "strickland-1956"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A081",
+     "q": "Uzun kruvaze paltoda düğmelenmeyen alt kat nasıl sabitlenir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "gl-pd-07-14a",
+      "strickland-1956"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A082",
+     "q": "Klapede pad dikişine kırım çizgisinin ne kadar gerisinden başlanır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "bosch-ra1171",
+      "strickland-1956"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A083",
+     "q": "Gömme cepler neden tela ile desteklenir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "strickland-1956",
+      "strickland-1956"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A084",
+     "q": "Ok başı punteriz (arrowhead) nasıl yapılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A085",
+     "q": "İlik aralıklarını doğru işaretlemek için ne yapılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "bosch-ra1171",
+      "strickland-1956"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A087",
+     "q": "Bengalin kumaş hangi giysiler için uygundur?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "strickland-1956",
+      "strickland-1956"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A088",
+     "q": "Parçaları yıkamak için sabun çözeltisinde litre başına kaç gram sabun kullanılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A089",
+     "q": "Kalın cidarlı dökme demir parçaları kaynatırken çelik pim çapı nasıl seçilir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A090",
+     "q": "Ring iplik makinesinde kondansatörün toplam stroku kaç mm olmalı?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A091",
+     "q": "Birinci tip çözgü makinesinin tamburunda koni açısı hangi aralıkta değişir?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "juki-mo6800s",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A092",
+     "q": "Dokuma tezgâhında orta onarım ne sıklıkla yapılır ve kaç kişi yapar?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "bosch-ra1171",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A093",
+     "q": "Mekik kutusunda mekik yokken çözgü koruyucu uçları pedlerin kaç mm üstünde olmalı?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "brother-s7300a",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A094",
+     "q": "Topuk konisinin elektrik kıvılcımıyla doldurulmasında katman kalınlığı kaç mm?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "brother-s7300a",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A096",
+     "q": "Tekstil makinesi parçalarında bakır kaplama ne için kullanılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "bosch-ra1171",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A097",
+     "q": "Yağ damperi ayar düzeneğindeki lamba kaç voltluk?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "granovsky-1986",
+      "granovsky-1986"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A102",
+     "q": "Cam sürahideki beyaz kireç lekeleri nasıl çıkarılır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "granovsky-1986",
+      "juki-mo6800s",
+      "gl-pd-14-04a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A103",
+     "q": "Sürahi ısıtma plakasından 30 saniyeden uzun alınırsa ne olur, ne yapmalıyım?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "mrcoffee-2003",
+      "bosch-ra1171",
+      "brother-s7300a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A105",
+     "q": "Yedek su filtresi diskleri nereden alınır?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "mrcoffee-2003",
+      "mrcoffee-2003",
+      "mrcoffee-2003"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A113",
+     "q": "Parça listesinde 38 numaralı Allen başlı bağlantı vidasından kaç adet var?",
+     "expected": false,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "bosch-ra1171",
+      "bosch-ra1171",
+      "bosch-ra1171"
+     ],
+     "top_score": null,
+     "outcome": "dogru_gecis"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A131",
+     "q": "E050 ne demek?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300b",
+      "juki-mo6800s"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A132",
+     "q": "Dikişte ilmek oluşuyor, ne yapmalıyım?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "bosch-ra1171",
+      "strickland-1956"
+     ],
+     "top_score": null,
+     "outcome": "yanlis_negatif"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A133",
+     "q": "İplik kesildikten sonra üst iplik kuyruğu kaç mm olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_docs": [
+      "brother-s7300b",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A134",
+     "q": "Alt iplik sayacı nasıl azalıyor?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300b",
+      "gl-pd-07-14a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A135",
+     "q": "Aydınlatma LED'i nasıl açılıp kapatılır?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "juki-mo6800s",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": null,
+     "outcome": "yanlis_negatif"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A136",
+     "q": "Topraklama vidası hangi torkla sıkılır?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_docs": [
+      "brother-s7300b",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A137",
+     "q": "Çağanoz ile masura kovanı tutucusu arasındaki boşluk ne olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300b",
+      "brother-s7300a"
+     ],
+     "top_docs": [
+      "brother-s7300b",
+      "brother-s7300a",
+      "brother-s7300a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A138",
+     "q": "İplik kesme kamı ayarında iğne mili kaç mm kaldırılır?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A139",
+     "q": "Makine kafası dik konuma nasıl getirilir?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "brother-s7300a",
+      "brother-s7300b"
+     ],
+     "top_docs": [
+      "brother-s7300a",
+      "brother-s7300b",
+      "brother-s7300b"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A140",
+     "q": "İliklerde inç başına kaç dikiş olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "gl-pd-14-04a",
+      "gl-pd-07-14a"
+     ],
+     "top_docs": [
+      "strickland-1956",
+      "gl-pd-14-04a",
+      "gl-pd-07-14a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A141",
+     "q": "Cırt bant kenardan ne kadar içeriden dikilir?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "strickland-1956",
+      "bosch-ra1171",
+      "strickland-1956"
+     ],
+     "top_score": null,
+     "outcome": "yanlis_negatif"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A142",
+     "q": "Beden etiketi nereye dikilir?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "gl-pd-14-04a",
+      "gl-pd-07-14a"
+     ],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "gl-pd-14-04a",
+      "gl-pd-07-14a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A143",
+     "q": "Isırma testinde kollar böcek kafesinde kaç dakika tutulur?",
+     "expected": true,
+     "not_found": false,
+     "triggered": true,
+     "offered": [
+      "gl-pd-14-04a",
+      "gl-pd-07-14a"
+     ],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "gl-pd-07-14a",
+      "gl-pd-07-14a"
+     ],
+     "top_score": null,
+     "outcome": "dogru_netlestirme"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A144",
+     "q": "Permetrin geri kazanımı en az yüzde kaç olmalı?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "gl-pd-07-14a",
+      "bosch-ra1171",
+      "gl-pd-07-14a"
+     ],
+     "top_score": null,
+     "outcome": "yanlis_negatif"
+    },
+    {
+     "group": "aday_onaysiz",
+     "qid": "aday:A145",
+     "q": "Cep kapağı punterizi kaç dikişli olur?",
+     "expected": true,
+     "not_found": false,
+     "triggered": false,
+     "offered": [],
+     "top_docs": [
+      "gl-pd-14-04a",
+      "brother-s7300b",
+      "gl-pd-14-04a"
+     ],
+     "top_score": null,
+     "outcome": "yanlis_negatif"
+    }
+   ]
+  }
+ ]
+}

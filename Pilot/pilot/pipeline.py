@@ -136,6 +136,22 @@ def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None
     return found, missing, elsewhere
 
 
+def post_search_ambiguity(hits: list[Hit], min_score: float = CLARIFY_MIN_SCORE) -> tuple[str, list[str]] | None:
+    """Arama sonrası belirsizlik (R14): ilk 3 sonuç farklı ürün şartnamelerinden ya da aynı ailenin modellerinden geliyorsa
+    ('products' | 'models', dokümanlar). Sonuçlar alakasızsa sorulmaz: "Uçak motoru yağı" (Q10) skor −8 ile "hangi model?"
+    sorusunu tetikledi. Eşik reranker skoruna bağlı; rerank kapalıyken (varsayılan, skor None) koruma çalışmaz: açık kalan,
+    eşik onaylı soru setiyle hibrit/RRF skoruna göre yeniden ayarlanacak (BENCHMARK-RAPORU, bench/clarify_guard.py)."""
+    top = list(dict.fromkeys(h.chunk["doc_id"] for h in hits[:3]))
+    products = [d for d in top if BY_ID[d].doc_type == "product_standard"]
+    models = next((ms for ms in ([d for d in top if d in family(x)] for x in top) if len(ms) >= 2), [])
+    relevant = hits[0].rerank_score is None or hits[0].rerank_score >= min_score
+    if relevant and len(products) >= 2:
+        return "products", products
+    if relevant and models:
+        return "models", models
+    return None
+
+
 def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: list[str] | None = None,
                  mode: str = "hybrid", query_en: str | None = None, on_step=_noop, voice: bool = False,
                  access: list[str] | None = None) -> Result:
@@ -246,19 +262,15 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
         #   - farklı ürün şartnameleri ("Dış görünür dikişlerde SPI?" → ceket 11 (± 1), pantolon 10-14)
         #   - aynı ailenin modelleri ("Masura kovanı nasıl takılır?" → S-7300A ve S-7300B aynı bölüm; model 158 sn
         #     çalışıp "hangi model?" diye sordu, kullanıcı ayrıntı yazınca iki kılavuzdan karışık alıntı yaptı)
-        top = list(dict.fromkeys(h.chunk["doc_id"] for h in hits[:3]))
-        products = [d for d in top if BY_ID[d].doc_type == "product_standard"]
-        models = next((ms for ms in ([d for d in top if d in family(x)] for x in top) if len(ms) >= 2), [])
-        # Sonuçlar alakasızsa sorulmaz: "Uçak motoru yağı" (Q10) skor −8 ile "hangi model?" sorusunu tetikledi.
-        # Eşik kaba: "bulunamadı" eşiği konamadı (skorlar iç içe), ama bu yalnız netleştirmeyi atlar; model yine çalışır.
-        relevant = hits[0].rerank_score is None or hits[0].rerank_score >= CLARIFY_MIN_SCORE
-        if relevant and (len(products) >= 2 or models):
+        amb = post_search_ambiguity(hits)
+        if amb:
+            kind, docs = amb
             msg = ("Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?"
-                   if len(products) >= 2 else
+                   if kind == "products" else
                    "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. "
                    "Hangi model için?")
             timings["total"] = time.time() - t0
-            return _clarify(question, ctx, timings, products if len(products) >= 2 else models, msg, hits)
+            return _clarify(question, ctx, timings, docs, msg, hits)
 
     on_step("Cevap hazırlanıyor (model)")
     t = time.time()
