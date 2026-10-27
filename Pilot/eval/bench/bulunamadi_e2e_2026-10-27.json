@@ -1,7 +1,7 @@
 {
  "meta": {
-  "date": "2026-10-27T15:20:15",
-  "git_commit": "7c3a97d",
+  "date": "2026-10-27T15:28:11",
+  "git_commit": "d458475+degisiklik",
   "hardware": {
    "platform": "Windows-11-10.0.26200-SP0",
    "python": "3.12.10",
@@ -12,12 +12,7 @@
   },
   "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
   "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
-  "env": {
-   "PILOT_RERANK_FUSION": "none",
-   "PILOT_RERANK_PASSAGE": "text",
-   "PILOT_RERANK_PROVIDER": "local",
-   "PILOT_SPARSE": "bge-m3"
-  },
+  "env": {},
   "params": {}
  },
  "runs": {
@@ -35,44 +30,6 @@
      "badge": "✖ Kaynaklarda bulunamadı",
      "top3": [],
      "seconds": 0.0
-    },
-    {
-     "qid": "questions:Q09",
-     "set": "questions",
-     "q": "Pantolonun cep astarı hangi kumaştan yapılmalı ve gramajı kaç olmalı?",
-     "exit": "model_cevap",
-     "llm_called": true,
-     "bulunamadi": false,
-     "cevap": "Pantolonun cep astarı 2xl left hand twill kumaştan yapılmalı ve gramajı 7.0 ile 8.0 ozlsq. yd. aralığında olmalıdır.",
-     "neden": "",
-     "badge": "⚠ Kısmen doğrulandı",
-     "top3": [
-      {
-       "doc": "gl-pd-07-14a",
-       "pages": [
-        6
-       ],
-       "rerank": -5.81450080871582,
-       "fused": 0.3333333333333333
-      },
-      {
-       "doc": "gl-pd-07-14a",
-       "pages": [
-        5
-       ],
-       "rerank": -5.8237080574035645,
-       "fused": 0.5
-      },
-      {
-       "doc": "gl-pd-07-14a",
-       "pages": [
-        5
-       ],
-       "rerank": -5.919363498687744,
-       "fused": 0.08333333333333333
-      }
-     ],
-     "seconds": 174.9
     },
     {
      "qid": "questions:Q10",
@@ -841,44 +798,6 @@
      "badge": "✖ Kaynaklarda bulunamadı",
      "top3": [],
      "seconds": 0.0
-    },
-    {
-     "qid": "questions:Q09",
-     "set": "questions",
-     "q": "Pantolonun cep astarı hangi kumaştan yapılmalı ve gramajı kaç olmalı?",
-     "exit": "model_cevap",
-     "llm_called": true,
-     "bulunamadi": false,
-     "cevap": "Pantolonun cep astarı için 5.04 ozlsq. yd. minimum, plain weave, 75% polyester 25% cotton, material veya eşdeğer material kullanılabilir. Alternatif olarak, 7.0 to 8.0 ozlsq. yd., 2xlleft hand twill, 80% cotton/20% meta aramid fiber blend olan material da kullanılabilir.",
-     "neden": "",
-     "badge": "✖ Doğrulanamadı",
-     "top3": [
-      {
-       "doc": "gl-pd-07-14a",
-       "pages": [
-        5
-       ],
-       "rerank": null,
-       "fused": 0.5
-      },
-      {
-       "doc": "gl-pd-07-14a",
-       "pages": [
-        6
-       ],
-       "rerank": null,
-       "fused": 0.3333333333333333
-      },
-      {
-       "doc": "gl-pd-07-14a",
-       "pages": [
-        19
-       ],
-       "rerank": null,
-       "fused": 0.25
-      }
-     ],
-     "seconds": 495.4
     },
     {
      "qid": "questions:Q10",

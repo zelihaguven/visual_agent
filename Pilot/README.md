@@ -109,6 +109,15 @@ Sonuç `data/figures/<doc_id>.json` (repoda gelir). Kaldığı yerden sürer; ay
 
 **Hazır veri:** Ayrıştırılmış dokümanlar (`data/parsed/`, `data/chunks.jsonl`) repoda gelir, yalnız indeks üretilir. Sıfırdan ayrıştırmak için `run_parse.py`. Bir dokümanın ayrıştırması değişirse yalnız onu yeniden indekslemek için `run_reindex_docs.py <doc_id>`.
 
+## Kalınan yer (2026-10-27, arama benchmark'ı)
+
+Benchmark aşamaları 0, 1, 2, 2.5 ve 4 bitti. Varsayılan arama: bge-m3 dense + BM25, rerank kapalı (Aşama 4 kararı). Sonuçlar `eval/bench/` altında.
+
+- **"Bulunamadı" davranışı (2026-10-27):** 21 cevapsız soruda doğru reddetme %48. Model 7 soruda alakasız kaynaktan cevap yazıyor; 3'ü "kısmen doğrulandı" rozeti alıyor. Bu iş model ve doğruluk turuna (K1) bırakıldı. Rozet kontrolü Aşama 3 sırasında yapılacak: [eval/bench/bulunamadi_analiz_2026-10-27.md](eval/bench/bulunamadi_analiz_2026-10-27.md).
+- **Aşama 3 (ölçek ve yük testi):** VM onaylandı (Hetzner CCX43). Betikler hazır ve kuru çalıştırıldı: `bench/scale_corpus.py`, `bench/scale_index.py`, `bench/vm/`. Plan ve maliyet: [eval/bench/asama3_hazirlik_2026-10-27.md](eval/bench/asama3_hazirlik_2026-10-27.md). Kalan: 3a sentetik ölçeklenme, 3b doğruluk ölçümü, 3c yük testi betikleri ve VM koşusu.
+- **Aşama 5 (Optuna):** rerank denemeleri "bulunamadı" davranışıyla da değerlendirilecek. Bulut reranker skoruyla "cevap yok" eşiği de orada denenecek.
+- **Onay bekleyen:** aday soru taslağı (`eval/aday_sorular.json`, 155 soru; fark listesi `eval/aday_sorular_fark.md`). "Hangi ürün/model?" eşiği onaylı setle seçilecek.
+
 ## Kalınan yer (2026-10-16)
 
 JUKI MO-6800S'in şekil açıklamaları (VLM) üretildi (`data/figures/juki-mo6800s.json`), ama **JUKI henüz yeniden indekslenmedi**. Bu yüzden JUKI şekilleri aramada görünmüyor ve `data/chunks.jsonl` JUKI'nin şekil parçalarını içermiyor. Arayüz (Streamlit) kapalıyken, `pilot` klasöründe (~4 dk):

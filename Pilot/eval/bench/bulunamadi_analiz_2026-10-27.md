@@ -1,39 +1,42 @@
 # "Bulunamadı" davranışı ve netleştirme yöntemi: rapor (düzeltme yapılmadı)
 
-Ham sonuçlar: [bulunamadi_e2e_2026-10-27.md](bulunamadi_e2e_2026-10-27.md) / `.json`. 22 cevapsız soru vardı: onaylı setlerden 5 (Q08, Q09, Q10, Q18, Q31), aday taslaktan 17 (A114–A130, onaysız). Hepsi tam hattan geçti; model yerelde qwen2.5:7b (Ollama, CPU).
+Ham sonuçlar: [bulunamadi_e2e_2026-10-27.md](bulunamadi_e2e_2026-10-27.md) / `.json`. **21 cevapsız soru:** onaylı setlerden 4 (Q08, Q10, Q18, Q31), aday taslaktan 17 (A114–A130, onaysız). Hepsi tam hattan geçti; model yerelde qwen2.5:7b (Ollama, CPU). Q09 de koşuldu, ama kaynakta cevabı olduğu için (aşağıda) kullanıcı kararıyla olumlu soruya çevrildi ve tablodan çıkarıldı.
 
 | Yol | Ayar |
 |---|---|
 | Yeni varsayılan | bge-m3 + BM25, rerank yok |
 | Eski yol | bge-m3 dense + sparse, local bge-reranker (başlıksız metin, yalnız reranker sırası) |
 
-Donanım: geliştirme dizüstü (i5-1335U, GPU yok); üretimi temsil etmez. Soru başına süre 50–140 sn (model). Q09 495 sn sürdü, o sırada başka bir ölçüm de çalışıyordu.
+Donanım: geliştirme dizüstü (i5-1335U, GPU yok); üretimi temsil etmez. Soru başına süre 50–140 sn (model).
 
-## 1. Sonuç
+## 1. Sonuç (21 soru)
 
 | | Yeni varsayılan | Eski (rerank) |
 |---|---|---|
-| Doğru "bulunamadı" | **10** | **13** |
+| **Doğru reddetme** ("bulunamadı") | **10 (%48)** | **13 (%62)** |
 | … kural (yabancı marka, kod yok) | 4 | 4 |
 | … model "bulunamadı" dedi | 6 | 9 |
 | Model netleştirme istedi (cevap yok) | 4 | 1 |
-| Model cevap üretti | 8 | 8 |
-| … **doğrulanmış görünen cevap** ("⚠ Kısmen doğrulandı") | **3** (A114, A126, A129) | **3** (Q09, A114, A125) |
-| … kırmızı rozetli cevap ("✖ Doğrulanamadı", seslendirilmez) | 2 (Q09, A128) | 3 (A126, A128, A129) |
+| Model cevap üretti | 7 | 7 |
+| … **doğrulanmış görünen yanlış cevap** ("⚠ Kısmen doğrulandı") | **3** (A114, A126, A129) | **2** (A114, A125) |
+| … kırmızı rozetli cevap ("✖ Doğrulanamadı", seslendirilmez) | 1 (A128) | 3 (A126, A128, A129) |
 | … boş cevap, kırmızı rozet | 3 (Q31, A118, A125) | 2 (Q10, A118) |
 
-**Q09 yanlış etiketli:** Soru "cevapsız" diye işaretli, ama cevap pantolon şartnamesinde var:
-- s. 5: "5.04 oz/sq. yd. minimum, plain weave, 75% polyester 25% cotton … side and hip hanging pockets".
-- s. 6: FR alternatifi "7.0 to 8.0 oz/sq. yd., 2×1 left hand twill".
+Hedef (K1, model ve doğruluk turu): doğru reddetme ≥ %90, doğrulanmış görünen yanlış değer = 0. Bugün: %48 ve 3.
 
-Sorunun notu da "gramaj kumaş bölümünde olabilir; elle kontrol edilmeli" diyor. İki yolun cevabı da kaynağa dayanıyor. Etiketi değiştirmedim, onayınızı bekliyorum. Q09 düşülünce gerçek "alakasız kaynaktan cevap" sayısı yeni yolda 7, eski yolda 7.
+**Q09 olumlu soruya çevrildi** (kullanıcı kararı, 2026-10-27). Cevap pantolon şartnamesinde var. Kabul sayfası gl-pd-07-14a s. 5–6:
+- Madde 3.3: cep astarı ana kumaşla aynı.
+- Alternatif Tip I: en az 5.04 oz/yd² plain weave, %75 polyester / %25 pamuk.
+- FR Tip II: 7.0–8.0 oz/yd² 2×1 dimi.
+
+İki yolun cevabı da bu alternatiflerden birini ya da ikisini veriyordu, yani kaynağa dayanıyordu.
 
 **Asıl risk:** Cevap üretip "⚠ Kısmen doğrulandı" rozeti alan sorular. Kullanıcı bunlara güvenebilir.
 - **A114 "Bosch freze tablası kaç kilogram?":** Her iki yolda da cevap "kg unitesinde ağırlığını ifade eder". Kaynakta yalnız sembol tablosundaki "kg = Kilograms" satırı var.
 - **A126 / A129 (yeni yol):** Strickland'dan konu dışı adımlar geliyor: deri ceket ve overlok ayarı.
 - **A125 (eski yol):** "Ceket fermuarı A-A-50199, Type II markasından olmalı." A-A-50199 bir standart numarası, marka değil; yine de kaynağa dayanıyor.
 
-Kırmızı rozetli ve boş cevaplar "bulunamadı" demiyor, ama değer de vermiyor. Boş cevaplarda büyük ihtimalle modelin JSON'u yarıda kesildi (pipeline'daki "uzunluk sınırı" yolu); ayrım kayıtta tutulmadığı için kesin değil.
+Kırmızı rozetli ve boş cevaplar "bulunamadı" demiyor, ama değer de vermiyor. Boş cevaplarda büyük ihtimalle modelin JSON'u yarıda kesildi (pipeline'daki "uzunluk sınırı" yolu); ayrım kayıtta tutulmadığı için kesin değil. Rozet kontrolü Aşama 3 VM koşuları beklerken yapılacak (kullanıcı kararı).
 
 **İki yol arasındaki fark (Q10 dahil):**
 - **Q10 "Uçak motoru yağı":** Yeni yolda model "bulunamadı" dedi. Eski yolda boş cevap ve kırmızı rozet. İki yolda da kaynakların üçü de granovsky-1986'dan, alakasız.
@@ -41,7 +44,7 @@ Kırmızı rozetli ve boş cevaplar "bulunamadı" demiyor, ama değer de vermiyo
 - **Q31 "S-7300A motor gücü":** Eski yol "bulunamadı" dedi; yeni yol boş cevap ve kırmızı rozet.
 - **A130 (yeni yol):** "Bulunamadı" kararı doğru, ama gerekçe Çince yazıldı. Dil kayması (B2); rozet bu yüzden kırmızı.
 
-36 soruluk eşikte olduğu gibi 22 soruda 3 sorunun farkı gürültü sınırında. İki yolun "yanlış cevap" sayısı aynı.
+21 soruda 3 sorunun farkı gürültü sınırında. İki yolun "yanlış cevap" sayısı aynı (7). Sorunun çoğu modelde, arama yolunda değil.
 
 ## 2. İlk 3 kaynak ve skorlar
 
@@ -91,13 +94,13 @@ Doküman skoru, çok sayıda zayıf eşleşmesi olan dokümanı ödüllendiriyor
 
 Oran sonucu neredeyse değiştirmiyor; sorun toplamada. Olumsuz bulgu olarak PILOT-RAPORU §7'ye yazıldı. Seçenek kapalı, varsayılan `top3`.
 
-## 5. Açık sorular (karar sizin)
+## 5. Kararlar
 
-1. **Q09:** Etiket "cevapsız" yerine olumlu soruya çevrilsin mi? Kabul: gl-pd-07-14a s. 5–6.
+1. **Q09:** Olumlu soruya çevrildi (karar verildi).
 2. **Yanlış cevaplar için bakılabilecek yerler (henüz denenmedi):**
    - Kısmen doğrulandı rozetinin cevapsız sorularda neden verildiği (`verify.py`).
    - Daha güçlü ya da bulut bir model (B2).
    - Bulut reranker skoruyla bir eşik; onaylı setle kalibre edilecek.
    - Boş cevabın nedenini kayda yazmak, JSON kesilmesi mi değil mi ayırmak için.
 
-   Hepsi düzeltme ve onayınız olmadan yapılmayacak.
+   Karar (2026-10-27): şimdi bakılmıyor. Model ve doğruluk turuna (K1) bırakıldı; PILOT-RAPORU §7. Rerank ve bulut reranker eşiği Aşama 5'te "bulunamadı" davranışıyla birlikte değerlendirilecek.

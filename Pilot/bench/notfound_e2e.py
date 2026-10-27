@@ -78,19 +78,29 @@ def summary() -> None:
     runs = {json.loads(f.read_text(encoding="utf-8"))["params"]["label"]: json.loads(f.read_text(encoding="utf-8"))
             for f in sorted(CACHE.glob("notfound_e2e_*.json"))}
     labels = list(runs)
+    # Yalnız bugün hâlâ cevapsız etiketli sorular (ör. Q09 sonradan olumlu soruya çevrildi; satırı ham kayıtta kalır)
+    current = {it["qid"] for it in questions()}
+    dropped = sorted({r["qid"] for lb in labels for r in runs[lb]["rows"]} - current)
+    for lb in labels:
+        runs[lb] = {**runs[lb], "rows": [r for r in runs[lb]["rows"] if r["qid"] in current]}
     ok = {"yabanci_marka", "kod_yok", "kaynak_uyumsuz", "skor_esigi", "model_bulunamadi"}
+    trusted = {"✔ Doğrulandı", "⚠ Kısmen doğrulandı"}       # yanlış cevap güvenilir görünüyor (K1: 0 olmalı)
     lines = ['# "Bulunamadı" davranışı uçtan uca', "",
              "Cevabı olmayan sorular tam hattan geçirildi (model dahil). Doğru: herhangi bir 'bulunamadı' çıkışı. Yanlış: model "
              "alakasız kaynaktan cevap üretti (`model_cevap`) ya da gereksiz netleştirme. Skor: rerank açıkken reranker, "
-             "kapalıyken RRF (hibrit). Onaylı sorular ve aday taslak (onaysız) ayrı.", "",
-             "| Yol | soru | doğru 'bulunamadı' | model cevap üretti | netleştirme | çıkışlar |", "|---|---|---|---|---|---|"]
+             "kapalıyken RRF (hibrit). Onaylı sorular ve aday taslak (onaysız) ayrı."
+             + (f" Sonradan cevaplı sayılıp çıkarılan: {', '.join(dropped)}." if dropped else ""), "",
+             "| Yol | soru | doğru 'bulunamadı' | oran | model cevap üretti | … doğrulanmış görünen | netleştirme | çıkışlar |",
+             "|---|---|---|---|---|---|---|---|"]
     for lb in labels:
         rows = runs[lb]["rows"]
         ex: dict[str, int] = {}
         for r in rows:
             ex[r["exit"]] = ex.get(r["exit"], 0) + 1
-        lines.append(f"| {lb} | {len(rows)} | {sum(v for k, v in ex.items() if k in ok)} | {ex.get('model_cevap', 0)} | "
-                     f"{ex.get('netlestirme', 0)} | " + ", ".join(f"{k} {v}" for k, v in sorted(ex.items())) + " |")
+        good = sum(v for k, v in ex.items() if k in ok)
+        shown = sum(r["exit"] == "model_cevap" and r["badge"] in trusted for r in rows)
+        lines.append(f"| {lb} | {len(rows)} | {good} | {good / max(len(rows), 1):.0%} | {ex.get('model_cevap', 0)} | "
+                     f"{shown} | {ex.get('netlestirme', 0)} | " + ", ".join(f"{k} {v}" for k, v in sorted(ex.items())) + " |")
     lines += ["", "## Soru soru", "", "| Soru | " + " | ".join(labels) + " | ilk 3 kaynak (skor) — " + labels[0] + " |",
               "|---|" + "---|" * len(labels) + "---|"]
     by = {lb: {r["qid"]: r for r in runs[lb]["rows"]} for lb in labels}
@@ -104,7 +114,8 @@ def summary() -> None:
         cells = []
         for lb in labels:
             r = by[lb].get(qid)
-            cells.append("–" if not r else r["exit"] + (f": {r['cevap'][:90]}" if r["exit"] == "model_cevap" else ""))
+            cells.append("–" if not r else r["exit"] + (f" ({r['badge']}): {r['cevap'][:90]}" if r["exit"] == "model_cevap"
+                                                     else ""))
         lines.append(f"| {qid} {r0['q'][:60]} | " + " | ".join(c.replace("|", "/") for c in cells) + f" | {top} |")
     print(write_result("bulunamadi_e2e", {"meta": meta({}), "runs": runs}, "\n".join(lines) + "\n"))
     print("\n".join(lines[:12]))
