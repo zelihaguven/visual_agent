@@ -46,7 +46,7 @@ def qc(monkeypatch):
         state["seed"] += 1
         return [{"dense": _vec(10_000 + state["seed"]), "sparse": _sparse(20_000 + state["seed"])} for _ in texts]
 
-    monkeypatch.setattr(retrieve, "embed", fake_embed)
+    monkeypatch.setattr(retrieve, "encode_query", lambda text, sparse_text=None: fake_embed([text])[0])
     monkeypatch.setattr(retrieve, "rerank", lambda q, ps: [random.random() for _ in ps])
     return c
 
@@ -90,7 +90,7 @@ def test_missing_access_payload_is_closed(monkeypatch):
                                                               payload={"doc_id": "x", "text": "t", "pages": [1]})])
     monkeypatch.setattr(retrieve, "search_client", lambda: c)
     monkeypatch.setattr(retrieve, "release", lambda _: None)
-    monkeypatch.setattr(retrieve, "embed", lambda t: [{"dense": _vec(1), "sparse": {1: 1.0}}])
+    monkeypatch.setattr(retrieve, "encode_query", lambda text, sparse_text=None: {"dense": _vec(1), "sparse": {1: 1.0}})
     assert retrieve.search("q", mode="dense", do_rerank=False, access=["kalite"]) == []
 
 

@@ -1,0 +1,116 @@
+{
+ "meta": {
+  "date": "2026-10-27T10:01:30",
+  "git_commit": "5f35276+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {},
+  "params": {}
+ },
+ "rows": [
+  {
+   "key": "bge-m3-local-bm25",
+   "dim": 1024,
+   "tokens": 0,
+   "tokens_per_chunk": null,
+   "cost_usd": 0.0,
+   "chunks_per_s": null,
+   "index_1m_usd": 0.0,
+   "index_1m_hours": null,
+   "query_1k_usd": 0.0,
+   "reused": true
+  },
+  {
+   "key": "bge-m3-or",
+   "dim": 1024,
+   "tokens": 565861,
+   "tokens_per_chunk": 133.71006616257088,
+   "cost_usd": 0.00565861,
+   "chunks_per_s": 27.964050095641216,
+   "index_1m_usd": 1.3371006616257088,
+   "index_1m_hours": 9.933388648201403,
+   "query_1k_usd": 0.0004,
+   "reused": false
+  },
+  {
+   "key": "gemini-001",
+   "dim": 3072,
+   "tokens": 519311,
+   "tokens_per_chunk": 122.71053875236295,
+   "cost_usd": 0.07789665,
+   "chunks_per_s": 13.485507019265814,
+   "index_1m_usd": 18.40658081285444,
+   "index_1m_hours": 20.598245018221103,
+   "query_1k_usd": 0.006,
+   "reused": false
+  },
+  {
+   "key": "me5-large",
+   "dim": 1024,
+   "tokens": 571523,
+   "tokens_per_chunk": 135.04796786389414,
+   "cost_usd": 0.005715230000000001,
+   "chunks_per_s": 16.70296332386436,
+   "index_1m_usd": 1.3504796786389415,
+   "index_1m_hours": 16.630448884534324,
+   "query_1k_usd": 0.0004,
+   "reused": false
+  },
+  {
+   "key": "nomic-v2-moe",
+   "dim": 768,
+   "tokens": 0,
+   "tokens_per_chunk": null,
+   "cost_usd": 0.0,
+   "chunks_per_s": 2.734389495795618,
+   "index_1m_usd": 0.0,
+   "index_1m_hours": 101.58676304340962,
+   "query_1k_usd": 0.0,
+   "reused": null
+  },
+  {
+   "key": "qwen3-4b",
+   "dim": 2560,
+   "tokens": 554148,
+   "tokens_per_chunk": 130.94234404536863,
+   "cost_usd": 0.01108296,
+   "chunks_per_s": 12.466350990794492,
+   "index_1m_usd": 2.6188468809073724,
+   "index_1m_hours": 22.282204149626203,
+   "query_1k_usd": 0.0008,
+   "reused": false
+  },
+  {
+   "key": "qwen3-8b",
+   "dim": 4096,
+   "tokens": 554148,
+   "tokens_per_chunk": 130.94234404536863,
+   "cost_usd": 0.006143639999999999,
+   "chunks_per_s": 19.09647880200367,
+   "index_1m_usd": 1.4517107750472587,
+   "index_1m_hours": 14.546020795657487,
+   "query_1k_usd": 0.0004,
+   "reused": false
+  },
+  {
+   "key": "te3-large",
+   "dim": 3072,
+   "tokens": 537718,
+   "tokens_per_chunk": 127.06001890359168,
+   "cost_usd": 0.0699,
+   "chunks_per_s": 26.3419,
+   "index_1m_usd": 16.517013232514177,
+   "index_1m_hours": 10.545092714564166,
+   "query_1k_usd": 0.0052,
+   "reused": false
+  }
+ ]
+}

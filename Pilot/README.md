@@ -82,6 +82,10 @@ Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), öl
 | `PILOT_FUSED_K`, `PILOT_PREFETCH_K` | `20`, `30` | rerank'a giden aday sayısı, her kolun aday sayısı |
 | `PILOT_QDRANT_REUSE` | `1` | Qdrant istemcisi süreç boyunca açık kalır (arama başına ~1 sn kazanç; gömülü klasör o süreçte kilitli kalır). `0`: her aramada aç/kapat |
 | `PILOT_OPENROUTER_URL` | `https://openrouter.ai/api/v1` | |
+| `PILOT_EMBED_PROVIDER` | `local` | `openrouter`: bulut dense (ZDR zorunlu) + BM25 sparse; koleksiyon o modelle kurulmuş olmalı (`bench.providers build`) |
+| `PILOT_EMBED_MODEL`, `PILOT_EMBED_QUERY_PREFIX`, `PILOT_EMBED_DOC_PREFIX` | boş | bulut model adı ve modelin sorgu/doküman biçimi (`bench/models.json`) |
+| `PILOT_SPARSE` | local: `bge-m3`, bulut: `bm25` | `bm25`: fastembed `Qdrant/bm25` + Qdrant IDF; local bge-m3 dense ile de kullanılabilir (Aşama 4: rerank'sız hit@1 0,44 → 0,72) |
+| `PILOT_DENSE_MODE`, `PILOT_DENSE_SHORT_DIM`, `PILOT_SHORT_OVERSAMPLE` | `full`, `256`, `4` | `short`: yalnız MRL kısa vektör; `short_rescore`: kısa vektörle aday, tam vektörle sıra |
 | `PILOT_QDRANT_URL` | boş (gömülü mod) | `http://127.0.0.1:6333`: Qdrant sunucusu ([qdrant/README.md](qdrant/README.md)); `PILOT_QDRANT_GRPC=1` gRPC, `PILOT_QDRANT_API_KEY` sunucu anahtarı |
 | `PILOT_COLLECTION` | `manuals` | koleksiyon adı |
 | `PILOT_HNSW_M`, `PILOT_HNSW_EF_CONSTRUCT`, `PILOT_HNSW_FULL_SCAN_THRESHOLD` | Qdrant varsayılanı | koleksiyon kurulurken (sunucu modu) |

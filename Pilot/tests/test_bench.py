@@ -67,6 +67,14 @@ def test_stage_timer_sums_repeated_stages():
     assert s["embed"]["n"] == 2 and s["rerank"]["n"] == 1 and s["total"]["n"] == 2
 
 
+def test_stage_timer_record_external_timings():
+    t = StageTimer()
+    t.record({"embed": 1.0, "total": 2.0})
+    t.record({"embed": 3.0, "total": 4.0})
+    s = t.summary()
+    assert s["embed"]["p50"] == 2.0 and s["total"]["n"] == 2
+
+
 def test_secret_env_values_not_written(monkeypatch):
     monkeypatch.setenv("PILOT_OPENROUTER_API_KEY", "sahte-deger-123")
     monkeypatch.setenv("PILOT_QDRANT_URL", "http://localhost:6333")

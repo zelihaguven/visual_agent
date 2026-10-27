@@ -1,0 +1,33 @@
+{
+  "_not": "Aşama 4 aday modelleri. Model adları koda gömülmez, buradan okunur. provider: openrouter (ZDR zorunlu, pilot/cloud.py) | local. mrl: kısaltılmış boyutlar (MRL eğitimli modellerde vektörün başı alınıp normalize edilir). query_prefix/doc_prefix: modelin önerdiği sorgu/doküman biçimi. max_chars: doküman metni bu uzunlukta kesilir (bağlam sınırı küçük modeller).",
+  "embeddings": [
+    {"key": "bge-m3-local", "provider": "local", "model": "BAAI/bge-m3", "dim": 1024, "mrl": [], "sparse": "bge-m3",
+     "note": "temel çizgi: mevcut indeks"},
+    {"key": "bge-m3-local-bm25", "provider": "local", "model": "BAAI/bge-m3", "dim": 1024, "mrl": [], "sparse": "bm25",
+     "reuse_vectors_from": "manuals",
+     "note": "local bge-m3 dense (mevcut indeksin vektörleri) + BM25: sparse kolun etkisi, buluta gitmeden"},
+    {"key": "bge-m3-or", "provider": "openrouter", "model": "baai/bge-m3", "dim": 1024, "mrl": [], "sparse": "bm25",
+     "note": "aynı model bulutta; vektörler local ile aynıysa indeks yeniden kullanılır"},
+    {"key": "qwen3-8b", "provider": "openrouter", "model": "qwen/qwen3-embedding-8b", "dim": 4096, "mrl": [256, 512, 1024],
+     "sparse": "bm25", "query_prefix": "Instruct: Given a question about a machine manual or garment specification, retrieve passages that answer the question\nQuery: "},
+    {"key": "qwen3-4b", "provider": "openrouter", "model": "qwen/qwen3-embedding-4b", "dim": 2560, "mrl": [256, 512, 1024],
+     "sparse": "bm25", "query_prefix": "Instruct: Given a question about a machine manual or garment specification, retrieve passages that answer the question\nQuery: "},
+    {"key": "gemini-001", "provider": "openrouter", "model": "google/gemini-embedding-001", "dim": 3072, "mrl": [256, 512, 768],
+     "sparse": "bm25", "note": "gemini-embedding-2 ZDR listesinde görünüyor ama istek ZDR filtresinde 404 (2026-10-27)"},
+    {"key": "te3-large", "provider": "openrouter", "model": "openai/text-embedding-3-large", "dim": 3072, "mrl": [256, 512, 1024],
+     "sparse": "bm25"},
+    {"key": "me5-large", "provider": "openrouter", "model": "intfloat/multilingual-e5-large", "dim": 1024, "mrl": [],
+     "sparse": "bm25", "query_prefix": "query: ", "doc_prefix": "passage: ", "max_chars": 1500},
+    {"key": "nomic-v2-moe", "provider": "local", "model": "nomic-ai/nomic-embed-text-v2-moe", "dim": 768, "mrl": [256],
+     "sparse": "bm25", "query_prefix": "search_query: ", "doc_prefix": "search_document: ", "max_chars": 1800,
+     "note": "sunucu CPU'sunda çalışabilecek açık model (bulut embedding'e bağımlı olmayan yol)"}
+  ],
+  "rerank_usd_per_mtok_measured": {"qwen/qwen3-reranker-8b": 0.2,
+    "_not": "Uç nokta listesinde fiyat 0 görünüyor; gerçek çağrıda usage.cost: 180 token = 0,000036 USD (2026-10-27)"},
+  "rerankers": [
+    "local:BAAI/bge-reranker-v2-m3:torch:512:4",
+    "local:BAAI/bge-reranker-v2-m3:onnx-int8:512:4",
+    "local:jinaai/jina-reranker-v2-base-multilingual:torch:512:4",
+    "openrouter:qwen/qwen3-reranker-8b"
+  ]
+}

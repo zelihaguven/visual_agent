@@ -11,13 +11,18 @@ from qdrant_client import QdrantClient, models
 
 from .config import (COLLECTION, HNSW_EF_CONSTRUCT, HNSW_FULL_SCAN_THRESHOLD, HNSW_M, PAYLOAD_ON_DISK,
                      QDRANT_API_KEY, QDRANT_DIR, QDRANT_GRPC, QDRANT_REUSE, QDRANT_URL, QUANT_ALWAYS_RAM,
-                     QUANTIZATION, VECTORS_ON_DISK)
-from .embed import embed
+                     QUANTIZATION, SPARSE_KIND, VECTORS_ON_DISK)
+from .embed import encode_docs, short_vector
 from .registry import BY_ID
 
 log = logging.getLogger(__name__)
 DENSE_DIM = 1024
 BATCH = 64
+SPARSE_NAMES = {"bge-m3": "sparse", "bm25": "bm25"}    # sparse vektörün koleksiyondaki adı
+
+
+def short_name(dim: int) -> str:
+    return f"dense_s{dim}"
 PAYLOAD_INDEXES = ("brand", "doc_id", "access")     # keyword; access bir liste (departman/yetki grupları)
 
 
@@ -70,14 +75,22 @@ def quantization_config(kind: str, always_ram: bool) -> models.QuantizationConfi
 def collection_schema(dense_dim: int = DENSE_DIM, *, m: int | None = HNSW_M, ef_construct: int | None = HNSW_EF_CONSTRUCT,
                       full_scan_threshold: int | None = HNSW_FULL_SCAN_THRESHOLD, quantization: str = QUANTIZATION,
                       always_ram: bool = QUANT_ALWAYS_RAM, vectors_on_disk: bool = VECTORS_ON_DISK,
-                      payload_on_disk: bool = PAYLOAD_ON_DISK) -> dict[str, Any]:
-    """create_collection argümanları. Hepsi varsayılandaysa pilotun ilk şemasının aynısı."""
+                      payload_on_disk: bool = PAYLOAD_ON_DISK, sparse: str = SPARSE_KIND,
+                      short_dims: tuple[int, ...] = ()) -> dict[str, Any]:
+    """create_collection argümanları. Hepsi varsayılandaysa pilotun ilk şemasının aynısı. sparse='bm25': IDF'i Qdrant
+    uygular (modifier). short_dims: MRL kısa vektörleri (dense_s256 ...), kısa vektörle aday çekmek için."""
     hnsw = None
     if any(x is not None for x in (m, ef_construct, full_scan_threshold)):
         hnsw = models.HnswConfigDiff(m=m, ef_construct=ef_construct, full_scan_threshold=full_scan_threshold)
-    return {"vectors_config": {"dense": models.VectorParams(size=dense_dim, distance=models.Distance.COSINE,
-                                                            hnsw_config=hnsw, on_disk=vectors_on_disk or None)},
-            "sparse_vectors_config": {"sparse": models.SparseVectorParams()},
+    vectors = {"dense": models.VectorParams(size=dense_dim, distance=models.Distance.COSINE, hnsw_config=hnsw,
+                                            on_disk=vectors_on_disk or None)}
+    for d in short_dims:
+        vectors[short_name(d)] = models.VectorParams(size=d, distance=models.Distance.COSINE, hnsw_config=hnsw,
+                                                     on_disk=vectors_on_disk or None)
+    sparse_params = (models.SparseVectorParams(modifier=models.Modifier.IDF) if sparse == "bm25"
+                     else models.SparseVectorParams())
+    return {"vectors_config": vectors,
+            "sparse_vectors_config": {SPARSE_NAMES[sparse]: sparse_params},
             "quantization_config": quantization_config(quantization, always_ram),
             "on_disk_payload": payload_on_disk or None}
 
@@ -104,19 +117,24 @@ def sync_access(qc: QdrantClient, name: str = COLLECTION) -> None:
             models.FieldCondition(key="doc_id", match=models.MatchValue(value=doc_id))]))
 
 
-def _upsert(qc: QdrantClient, chunks: list[dict[str, Any]], first_id: int) -> None:
+def point_vectors(v: dict[str, Any], sparse: str = SPARSE_KIND, short_dims: tuple[int, ...] = ()) -> dict[str, Any]:
+    sp = v["sparse"]
+    out = {"dense": v["dense"],
+           SPARSE_NAMES[sparse]: models.SparseVector(indices=list(sp.keys()), values=list(sp.values()))}
+    for d in short_dims:
+        out[short_name(d)] = short_vector(v["dense"], d)
+    return out
+
+
+def _upsert(qc: QdrantClient, chunks: list[dict[str, Any]], first_id: int, collection: str = COLLECTION,
+            short_dims: tuple[int, ...] = ()) -> None:
     for start in range(0, len(chunks), BATCH):
         batch = chunks[start:start + BATCH]
-        vecs = embed([c["embed_text"] for c in batch])
-        points = []
-        for i, (c, v) in enumerate(zip(batch, vecs)):
-            sp = v["sparse"]
-            points.append(models.PointStruct(
-                id=first_id + start + i,
-                vector={"dense": v["dense"],
-                        "sparse": models.SparseVector(indices=list(sp.keys()), values=list(sp.values()))},
-                payload=with_access(c)))
-        qc.upsert(COLLECTION, points=points)
+        vecs = encode_docs([c["embed_text"] for c in batch])
+        points = [models.PointStruct(id=first_id + start + i, vector=point_vectors(v, short_dims=short_dims),
+                                     payload=with_access(c))
+                  for i, (c, v) in enumerate(zip(batch, vecs))]
+        qc.upsert(collection, points=points)
         log.info("indekslendi: %d/%d", min(start + BATCH, len(chunks)), len(chunks))
 
 

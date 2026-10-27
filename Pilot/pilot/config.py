@@ -38,6 +38,18 @@ OPENROUTER_URL = os.environ.get("PILOT_OPENROUTER_URL", "https://openrouter.ai/a
 # indeksleme arayüz kapalıyken yapılır. Eski davranış (her aramada aç/kapat): PILOT_QDRANT_REUSE=0
 QDRANT_REUSE = os.environ.get("PILOT_QDRANT_REUSE", "1") == "1"
 
+# Embedding sağlayıcısı (BENCHMARK-RAPORU Aşama 4). Varsayılan: local bge-m3 (dense + sparse), bugünkü yapı.
+# openrouter: bulut dense (ZDR zorunlu) + BM25 sparse (pilot/sparse.py); koleksiyon o modelle kurulmuş olmalı.
+EMBED_PROVIDER = os.environ.get("PILOT_EMBED_PROVIDER", "local")             # local | openrouter
+EMBED_CLOUD_MODEL = os.environ.get("PILOT_EMBED_MODEL", "")                  # ör. qwen/qwen3-embedding-8b
+EMBED_QUERY_PREFIX = os.environ.get("PILOT_EMBED_QUERY_PREFIX", "")          # modelin sorgu biçimi (bench/models.json)
+EMBED_DOC_PREFIX = os.environ.get("PILOT_EMBED_DOC_PREFIX", "")
+SPARSE_KIND = os.environ.get("PILOT_SPARSE", "bge-m3" if EMBED_PROVIDER == "local" else "bm25")   # bge-m3 | bm25
+# Dense kol: full (tam vektör) | short (yalnız MRL kısa vektör) | short_rescore (kısa vektörle aday, tam vektörle sıra)
+DENSE_MODE = os.environ.get("PILOT_DENSE_MODE", "full")
+DENSE_SHORT_DIM = int(os.environ.get("PILOT_DENSE_SHORT_DIM", "256"))
+SHORT_OVERSAMPLE = float(os.environ.get("PILOT_SHORT_OVERSAMPLE", "4"))
+
 # Qdrant sunucu modu (Pilot/qdrant/README.md). PILOT_QDRANT_URL yoksa gömülü mod (QDRANT_DIR), bugünkü davranış.
 QDRANT_URL = os.environ.get("PILOT_QDRANT_URL") or None
 QDRANT_GRPC = os.environ.get("PILOT_QDRANT_GRPC", "0") == "1"

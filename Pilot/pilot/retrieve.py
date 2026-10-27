@@ -8,9 +8,10 @@ from typing import Any
 
 from qdrant_client import models
 
-from .config import COLLECTION, HNSW_EF, QUANT_OVERSAMPLING, QUANT_RESCORE
-from .embed import embed, rerank
-from .index import release, search_client
+from .config import (COLLECTION, DENSE_MODE, DENSE_SHORT_DIM, HNSW_EF, QUANT_OVERSAMPLING, QUANT_RESCORE,
+                     SHORT_OVERSAMPLE, SPARSE_KIND)
+from .embed import encode_query, rerank
+from .index import SPARSE_NAMES, release, search_client, short_name
 
 PREFETCH_K = int(os.environ.get("PILOT_PREFETCH_K", "30"))   # her kolun (dense, sparse) getirdiği aday sayısı
 FUSED_K = int(os.environ.get("PILOT_FUSED_K", "20"))         # RRF sonrası rerank'a giden aday sayısı
@@ -102,38 +103,57 @@ def dense_params(hnsw_ef: int | None = HNSW_EF, rescore: str | None = QUANT_RESC
     return models.SearchParams(hnsw_ef=hnsw_ef, quantization=quant)
 
 
+def candidates(qc: Any, q: dict[str, Any], flt: models.Filter | None, mode: str = "hybrid", *,
+               collection: str = COLLECTION, sparse_name: str = SPARSE_NAMES[SPARSE_KIND],
+               dense_mode: str = DENSE_MODE, short_dim: int = DENSE_SHORT_DIM, prefetch_k: int | None = None,
+               fused_k: int | None = None, dparams: models.SearchParams | None = None) -> list[Any]:
+    """Rerank öncesi aday listesi (RRF sırası, içindekiler satırı elenmiş). q: encode_query çıktısı.
+    dense_mode: full | short (yalnız MRL kısa vektör) | short_rescore (kısa vektörle aday, tam vektörle sıra; tek istek).
+    İki kol tek istekte; füzyon burada (rrf_fuse), çünkü Qdrant'ın RRF'i eşit skorları moda göre farklı sıralıyor."""
+    prefetch_k = PREFETCH_K if prefetch_k is None else prefetch_k
+    fused_k = FUSED_K if fused_k is None else fused_k
+    limit = (fused_k if mode != "hybrid" else prefetch_k) + ARM_MARGIN
+    reqs = []
+    if mode in ("dense", "hybrid"):
+        if dense_mode == "full":
+            reqs.append(models.QueryRequest(query=q["dense"], using="dense", filter=flt, limit=limit, params=dparams,
+                                            with_payload=True))
+        elif dense_mode == "short":
+            reqs.append(models.QueryRequest(query=q["short"], using=short_name(short_dim), filter=flt, limit=limit,
+                                            params=dparams, with_payload=True))
+        elif dense_mode == "short_rescore":
+            pre = models.Prefetch(query=q["short"], using=short_name(short_dim), filter=flt, params=dparams,
+                                  limit=int(limit * SHORT_OVERSAMPLE))
+            reqs.append(models.QueryRequest(prefetch=pre, query=q["dense"], using="dense", filter=flt, limit=limit,
+                                            with_payload=True))
+        else:
+            raise ValueError(f"bilinmeyen dense_mode: {dense_mode}")
+    if mode in ("sparse", "hybrid"):
+        sp = q["sparse"]
+        reqs.append(models.QueryRequest(query=models.SparseVector(indices=list(sp.keys()), values=list(sp.values())),
+                                        using=sparse_name, filter=flt, limit=limit, with_payload=True))
+    arms = [canonical(r.points, limit - ARM_MARGIN) for r in qc.query_batch_points(collection, requests=reqs)]
+    ranked = [p for p, _ in rrf_fuse(arms[0], arms[1], fused_k)] if mode == "hybrid" else arms[0][:fused_k]
+    return [p for p in ranked if not is_toc(p.payload["text"])]
+
+
 def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | None = None,
            mode: str = "hybrid", top_k: int = 5, do_rerank: bool = True,
            query_en: str | None = None, access: list[str] | None = None) -> list[Hit]:
     """mode: 'dense' | 'sparse' | 'hybrid'. query_en verilirse sparse kol ona göre çalışır
-    (TR soru + EN doküman: kelime araması için çeviri). access: kullanıcının yetki grupları (None: kontrol yok)."""
+    (TR soru + EN doküman: kelime araması için çeviri). access: kullanıcının yetki grupları (None: kontrol yok).
+    Sorgu vektörleri sağlayıcıya göre (embed.encode_query): local bge-m3 ya da bulut dense + BM25."""
     flt = _filter(brands, doc_ids, access)
-    dparams = dense_params()
     t = time.perf_counter()
-    dense_vec = embed([query])[0]
-    sparse_src = embed([query_en])[0]["sparse"] if query_en else dense_vec["sparse"]
-    dense_q = dense_vec["dense"]
-    sparse_q = models.SparseVector(indices=list(sparse_src.keys()), values=list(sparse_src.values()))
-
+    q = encode_query(query, query_en)
     t = _lap("embed", t)
     qc = search_client()
     t = _lap("qdrant_open", t)
     try:
-        # İki kol tek istekte; füzyon burada (rrf_fuse), çünkü Qdrant'ın RRF'i eşit skorları moda göre farklı sıralıyor
-        limit = (FUSED_K if mode != "hybrid" else PREFETCH_K) + ARM_MARGIN
-        reqs = []
-        if mode in ("dense", "hybrid"):
-            reqs.append(models.QueryRequest(query=dense_q, using="dense", filter=flt, limit=limit, params=dparams,
-                                            with_payload=True))
-        if mode in ("sparse", "hybrid"):
-            reqs.append(models.QueryRequest(query=sparse_q, using="sparse", filter=flt, limit=limit, with_payload=True))
-        arms = [canonical(r.points, limit - ARM_MARGIN) for r in qc.query_batch_points(COLLECTION, requests=reqs)]
+        points = candidates(qc, q, flt, mode, dparams=dense_params())
     finally:
         release(qc)
     t = _lap("qdrant", t)
-
-    ranked = [p for p, _ in rrf_fuse(arms[0], arms[1], FUSED_K)] if mode == "hybrid" else arms[0][:FUSED_K]
-    points = [p for p in ranked if not is_toc(p.payload["text"])]
     if not do_rerank or not points:
         return [Hit(p.payload, i) for i, p in enumerate(points[:top_k])]
     scores = rerank(query, [p.payload["text"] for p in points])

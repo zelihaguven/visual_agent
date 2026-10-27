@@ -47,3 +47,87 @@ def zdr_model_ids() -> frozenset[str]:
 def require_zdr(model: str, ids: Callable[[], frozenset[str]] = zdr_model_ids) -> None:
     if model not in ids():
         raise ValueError(f"{model}: ZDR uyumlu sağlayıcısı yok; ZDR zorunlu olduğu için kullanılamaz ve ölçülmez")
+
+
+# ---------- embedding (OpenAI uyumlu /embeddings) ----------
+
+class EmbedCache:
+    """Bulut embedding önbelleği (SQLite, data/bench_cache/, git dışı): aynı metin aynı model+boyutla iki kez gönderilmez."""
+
+    def __init__(self, path=None) -> None:
+        import sqlite3
+
+        from .config import DATA_DIR
+        path = path or DATA_DIR / "bench_cache" / "embed_cache.sqlite"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self.db = sqlite3.connect(str(path))
+        self.db.execute("CREATE TABLE IF NOT EXISTS v (model TEXT, dim INTEGER, h TEXT, vec BLOB, PRIMARY KEY (model, dim, h))")
+
+    @staticmethod
+    def key(text: str) -> str:
+        import hashlib
+        return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+    def get(self, model: str, dim: int, texts: list[str]) -> list[list[float] | None]:
+        import numpy as np
+        out: list[list[float] | None] = []
+        for t in texts:
+            row = self.db.execute("SELECT vec FROM v WHERE model=? AND dim=? AND h=?",
+                                  (model, dim, self.key(t))).fetchone()
+            out.append(np.frombuffer(row[0], dtype=np.float32).tolist() if row else None)
+        return out
+
+    def put(self, model: str, dim: int, texts: list[str], vecs: list[list[float]]) -> None:
+        import numpy as np
+        self.db.executemany("INSERT OR REPLACE INTO v VALUES (?, ?, ?, ?)",
+                            [(model, dim, self.key(t), np.asarray(v, dtype=np.float32).tobytes())
+                             for t, v in zip(texts, vecs)])
+        self.db.commit()
+
+
+class CloudEmbedder:
+    """OpenRouter embedding istemcisi. stats: istek sayısı, token, maliyet (API'nin usage alanı), ağ süresi.
+    dimensions verilirse API'den istenir (MRL); 0/None: modelin tam boyutu."""
+
+    def __init__(self, model: str, dimensions: int | None = None, batch: int = 64, timeout: float = 120.0,
+                 cache: EmbedCache | None = None) -> None:
+        import requests
+        require_zdr(model)
+        self.model, self.dimensions, self.batch, self.timeout = model, dimensions, batch, timeout
+        self.cache = cache
+        self.session = requests.Session()
+        self.session.headers.update({"Authorization": f"Bearer {api_key()}", "Content-Type": "application/json"})
+        self.stats = {"requests": 0, "prompt_tokens": 0, "cost_usd": 0.0, "network_s": 0.0, "cached": 0}
+        self.last_network_s = 0.0
+
+    def _call(self, texts: list[str]) -> list[list[float]]:
+        import time
+        body = {"model": self.model, "input": texts, "encoding_format": "float"}
+        if self.dimensions:
+            body["dimensions"] = self.dimensions
+        t = time.perf_counter()
+        r = self.session.post(f"{OPENROUTER_URL}/embeddings", json=openrouter_body(body), timeout=self.timeout)
+        self.last_network_s = time.perf_counter() - t
+        self.stats["network_s"] += self.last_network_s
+        self.stats["requests"] += 1
+        if r.status_code != 200:
+            raise RuntimeError(f"OpenRouter embeddings {self.model} {r.status_code}: {r.text[:300]}")
+        data = r.json()
+        usage = data.get("usage") or {}
+        self.stats["prompt_tokens"] += int(usage.get("prompt_tokens") or usage.get("total_tokens") or 0)
+        self.stats["cost_usd"] += float(usage.get("cost") or 0.0)
+        return [d["embedding"] for d in sorted(data["data"], key=lambda d: d["index"])]
+
+    def embed(self, texts: list[str], use_cache: bool = True) -> list[list[float]]:
+        dim = self.dimensions or 0
+        got = self.cache.get(self.model, dim, texts) if (self.cache and use_cache) else [None] * len(texts)
+        missing = [i for i, v in enumerate(got) if v is None]
+        self.stats["cached"] += len(texts) - len(missing)
+        for start in range(0, len(missing), self.batch):
+            idx = missing[start:start + self.batch]
+            vecs = self._call([texts[i] for i in idx])
+            for i, v in zip(idx, vecs):
+                got[i] = v
+            if self.cache:
+                self.cache.put(self.model, dim, [texts[i] for i in idx], vecs)
+        return got  # type: ignore[return-value]

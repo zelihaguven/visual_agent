@@ -204,7 +204,8 @@ def test_search_excludes_navigation_chunks(monkeypatch):
     c.upsert(retrieve.COLLECTION, points=pts)
     monkeypatch.setattr(retrieve, "search_client", lambda: c)
     monkeypatch.setattr(retrieve, "release", lambda _: None)
-    monkeypatch.setattr(retrieve, "embed", lambda t: [{"dense": [1.0, 0.0, 0.0, 0.5], "sparse": {1: 1.0}}])
+    monkeypatch.setattr(retrieve, "encode_query",
+                        lambda text, sparse_text=None: {"dense": [1.0, 0.0, 0.0, 0.5], "sparse": {1: 1.0}})
     hits = retrieve.search("q", top_k=40, do_rerank=False)
     ids = {int(h.chunk["text"][1:]) if h.chunk["text"] != "eski" else 99 for h in hits}
     assert ids and not any(i % 3 == 0 for i in ids if i != 99)

@@ -1,0 +1,7 @@
+# Benchmark (bench/) için ek paketler; pilotun kendisi bunlar olmadan çalışır. Kurulum: pip install -r requirements-bench.txt
+fastembed==0.9.1          # BM25 sparse kol (Qdrant/bm25)
+onnxruntime==1.31.0       # reranker onnx / onnx-int8 backend
+onnx==1.23.2
+onnxscript==0.7.2         # torch.onnx dışa aktarma
+einops==0.8.2             # jina-reranker-v2 uzak kodu
+pywin32==312              # Windows: CPU frekansı (win32pdh); diğer sistemlerde gerekmez

@@ -77,8 +77,10 @@ def collect(sets: list[str], repeats: int = 3, holdout: bool = False) -> None:
     log.info("yazıldı: %s", path)
 
 
-def load_candidates(holdout: bool = False) -> dict[str, Any]:
-    return json.loads(cand_path(holdout).read_text(encoding="utf-8"))
+def load_candidates(holdout: bool = False, path: str | None = None) -> dict[str, Any]:
+    """path: başka bir aday dosyası (ör. bench.providers collect çıktısı, başka embedding modeli)."""
+    from pathlib import Path
+    return json.loads((Path(path) if path else cand_path(holdout)).read_text(encoding="utf-8"))
 
 
 # ---------- doğruluk ----------
@@ -124,8 +126,9 @@ def summarize_config(rows: list[dict[str, Any]], ks: tuple[int, ...] = (10, 15, 
     return out
 
 
-def compare(name: str, specs: list[str], modes: list[str], warmup: int, limit: int | None) -> None:
-    cands = load_candidates()
+def compare(name: str, specs: list[str], modes: list[str], warmup: int, limit: int | None,
+            candidates: str | None = None) -> None:
+    cands = load_candidates(path=candidates)
     items = {it["qid"]: it for it in load_questions(KNOWN_SETS)}
     cfgs = [parse_config(s) for s in specs]
     models = {}
@@ -345,6 +348,7 @@ def main() -> None:
     k.add_argument("--modes", nargs="+", default=["filtered"], choices=["filtered", "unfiltered"])
     k.add_argument("--warmup", type=int, default=2)
     k.add_argument("--limit", type=int, default=None)
+    k.add_argument("--candidates", default=None, help="aday dosyası (varsayılan: bench_cache/candidates.json)")
     g = sub.add_parser("grid")
     g.add_argument("--name", default="rerank_izgara")
     g.add_argument("--model", default="BAAI/bge-reranker-v2-m3")
@@ -359,7 +363,7 @@ def main() -> None:
     elif a.cmd == "diag":
         diag(a.name, a.qids, a.calls)
     elif a.cmd == "compare":
-        compare(a.name, a.configs, a.modes, a.warmup, a.limit)
+        compare(a.name, a.configs, a.modes, a.warmup, a.limit, a.candidates)
     else:
         grid(a.name, a.model, a.backend, a.fused_k, a.max_length, a.timing_sets, a.repeats)
 

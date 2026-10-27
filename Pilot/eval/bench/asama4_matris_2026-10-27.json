@@ -1,0 +1,364 @@
+{
+ "meta": {
+  "date": "2026-10-27T11:09:38",
+  "git_commit": "5f35276+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {},
+  "params": {}
+ },
+ "rows": [
+  {
+   "emb": "bge-m3-local-bm25_full",
+   "mode": "filtered",
+   "rerank": "yok",
+   "hit@1": 0.7222222222222222,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.7915509259259259,
+   "rerank_p50": 0.0,
+   "total_p50": 0.22666179999987435
+  },
+  {
+   "emb": "bge-m3-local-bm25_full",
+   "mode": "filtered",
+   "rerank": "bge-reranker-v2-m3 int8",
+   "hit@1": 0.7222222222222222,
+   "hit@5": 0.8611111111111112,
+   "mrr": 0.787962962962963,
+   "rerank_p50": 5.336760800000775,
+   "total_p50": 5.563422600000649,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "bge-m3-local-bm25_full",
+   "mode": "filtered",
+   "rerank": "jina-reranker-v2-base-multilingual",
+   "hit@1": 0.6666666666666666,
+   "hit@5": 0.9166666666666666,
+   "mrr": 0.7673400673400673,
+   "rerank_p50": 4.207265799999732,
+   "total_p50": 4.433927599999606,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "bge-m3-local-bm25_full",
+   "mode": "filtered",
+   "rerank": "qwen3-reranker-8b",
+   "hit@1": 0.7222222222222222,
+   "hit@5": 0.9444444444444444,
+   "mrr": 0.8074074074074074,
+   "rerank_p50": 0.3847075000003315,
+   "total_p50": 0.6113693000002058,
+   "cost_usd_39": 0.029198599999999998
+  },
+  {
+   "emb": "bge-m3-local-bm25_full",
+   "mode": "unfiltered",
+   "rerank": "yok",
+   "hit@1": 0.6666666666666666,
+   "hit@5": 0.8611111111111112,
+   "mrr": 0.7454650673400673,
+   "rerank_p50": 0.0,
+   "total_p50": 0.22666179999987435
+  },
+  {
+   "emb": "bge-m3-local-bm25_full",
+   "mode": "unfiltered",
+   "rerank": "bge-reranker-v2-m3 int8",
+   "hit@1": 0.6111111111111112,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.7185185185185186,
+   "rerank_p50": 6.457347999999911,
+   "total_p50": 6.684009799999785,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "bge-m3-local-bm25_full",
+   "mode": "unfiltered",
+   "rerank": "jina-reranker-v2-base-multilingual",
+   "hit@1": 0.5833333333333334,
+   "hit@5": 0.9166666666666666,
+   "mrr": 0.7080808080808081,
+   "rerank_p50": 5.066096000000471,
+   "total_p50": 5.292757800000345,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "bge-m3-local-bm25_full",
+   "mode": "unfiltered",
+   "rerank": "qwen3-reranker-8b",
+   "hit@1": 0.6944444444444444,
+   "hit@5": 0.9444444444444444,
+   "mrr": 0.7842592592592593,
+   "rerank_p50": 0.44226460000027146,
+   "total_p50": 0.6689264000001458,
+   "cost_usd_39": 0.0335616
+  },
+  {
+   "emb": "bge-m3-local_full",
+   "mode": "filtered",
+   "rerank": "yok",
+   "hit@1": 0.4444444444444444,
+   "hit@5": 0.8611111111111112,
+   "mrr": 0.6064814814814814,
+   "rerank_p50": 0.0,
+   "total_p50": 0.35841119999986404
+  },
+  {
+   "emb": "bge-m3-local_full",
+   "mode": "filtered",
+   "rerank": "bge-reranker-v2-m3 int8",
+   "hit@1": 0.75,
+   "hit@5": 0.8611111111111112,
+   "mrr": 0.8055555555555556,
+   "rerank_p50": 6.932440599999609,
+   "total_p50": 7.290851799999473,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "bge-m3-local_full",
+   "mode": "filtered",
+   "rerank": "jina-reranker-v2-base-multilingual",
+   "hit@1": 0.7222222222222222,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.7893518518518519,
+   "rerank_p50": 5.4555962000004,
+   "total_p50": 5.814007400000264,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "bge-m3-local_full",
+   "mode": "filtered",
+   "rerank": "qwen3-reranker-8b",
+   "hit@1": 0.6944444444444444,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.7708333333333334,
+   "rerank_p50": 0.4165938999994978,
+   "total_p50": 0.7750050999993618,
+   "cost_usd_39": 0.0307208
+  },
+  {
+   "emb": "bge-m3-local_full",
+   "mode": "unfiltered",
+   "rerank": "yok",
+   "hit@1": 0.5,
+   "hit@5": 0.8611111111111112,
+   "mrr": 0.6271164021164021,
+   "rerank_p50": 0.0,
+   "total_p50": 0.35841119999986404
+  },
+  {
+   "emb": "bge-m3-local_full",
+   "mode": "unfiltered",
+   "rerank": "bge-reranker-v2-m3 int8",
+   "hit@1": 0.75,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.8032407407407408,
+   "rerank_p50": 7.4193065999998,
+   "total_p50": 7.777717799999664,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "bge-m3-local_full",
+   "mode": "unfiltered",
+   "rerank": "jina-reranker-v2-base-multilingual",
+   "hit@1": 0.6388888888888888,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.7384259259259259,
+   "rerank_p50": 5.796644200000628,
+   "total_p50": 6.155055400000492,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "bge-m3-local_full",
+   "mode": "unfiltered",
+   "rerank": "qwen3-reranker-8b",
+   "hit@1": 0.6388888888888888,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.7430555555555556,
+   "rerank_p50": 0.4303397000003315,
+   "total_p50": 0.7887509000001955,
+   "cost_usd_39": 0.0313508
+  },
+  {
+   "emb": "qwen3-8b_full",
+   "mode": "filtered",
+   "rerank": "yok",
+   "hit@1": 0.7777777777777778,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.8288139329805997,
+   "rerank_p50": 0.0,
+   "total_p50": 0.6920604499998717
+  },
+  {
+   "emb": "qwen3-8b_full",
+   "mode": "filtered",
+   "rerank": "bge-reranker-v2-m3 int8",
+   "hit@1": 0.7222222222222222,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.8048941798941799,
+   "rerank_p50": 5.365095299999666,
+   "total_p50": 6.057155749999538,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "qwen3-8b_full",
+   "mode": "filtered",
+   "rerank": "jina-reranker-v2-base-multilingual",
+   "hit@1": 0.6944444444444444,
+   "hit@5": 0.9166666666666666,
+   "mrr": 0.7928240740740741,
+   "rerank_p50": 4.2443821999995635,
+   "total_p50": 4.936442649999435,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "qwen3-8b_full",
+   "mode": "filtered",
+   "rerank": "qwen3-reranker-8b",
+   "hit@1": 0.75,
+   "hit@5": 0.9166666666666666,
+   "mrr": 0.8326719576719577,
+   "rerank_p50": 0.3824786999994103,
+   "total_p50": 1.074539149999282,
+   "cost_usd_39": 0.0267578
+  },
+  {
+   "emb": "qwen3-8b_full",
+   "mode": "unfiltered",
+   "rerank": "yok",
+   "hit@1": 0.7777777777777778,
+   "hit@5": 0.8611111111111112,
+   "mrr": 0.829971340388007,
+   "rerank_p50": 0.0,
+   "total_p50": 0.6920604499998717
+  },
+  {
+   "emb": "qwen3-8b_full",
+   "mode": "unfiltered",
+   "rerank": "bge-reranker-v2-m3 int8",
+   "hit@1": 0.6388888888888888,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.7500864875864877,
+   "rerank_p50": 6.791146600000502,
+   "total_p50": 7.483207050000374,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "qwen3-8b_full",
+   "mode": "unfiltered",
+   "rerank": "jina-reranker-v2-base-multilingual",
+   "hit@1": 0.5555555555555556,
+   "hit@5": 0.9166666666666666,
+   "mrr": 0.7037037037037037,
+   "rerank_p50": 5.503335800000059,
+   "total_p50": 6.195396249999931,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "qwen3-8b_full",
+   "mode": "unfiltered",
+   "rerank": "qwen3-reranker-8b",
+   "hit@1": 0.6944444444444444,
+   "hit@5": 0.9166666666666666,
+   "mrr": 0.8048941798941799,
+   "rerank_p50": 0.40243999999984226,
+   "total_p50": 1.094500449999714,
+   "cost_usd_39": 0.031294
+  },
+  {
+   "emb": "te3-large_full",
+   "mode": "filtered",
+   "rerank": "yok",
+   "hit@1": 0.7777777777777778,
+   "hit@5": 0.9166666666666666,
+   "mrr": 0.8331018518518518,
+   "rerank_p50": 0.0,
+   "total_p50": 0.7224179500001355
+  },
+  {
+   "emb": "te3-large_full",
+   "mode": "filtered",
+   "rerank": "bge-reranker-v2-m3 int8",
+   "hit@1": 0.7222222222222222,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.8062499999999999,
+   "rerank_p50": 4.964628200001243,
+   "total_p50": 5.687046150001379,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "te3-large_full",
+   "mode": "filtered",
+   "rerank": "jina-reranker-v2-base-multilingual",
+   "hit@1": 0.6666666666666666,
+   "hit@5": 0.9444444444444444,
+   "mrr": 0.7708333333333334,
+   "rerank_p50": 3.84302359999856,
+   "total_p50": 4.565441549998695,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "te3-large_full",
+   "mode": "filtered",
+   "rerank": "qwen3-reranker-8b",
+   "hit@1": 0.8055555555555556,
+   "hit@5": 0.9444444444444444,
+   "mrr": 0.8703703703703703,
+   "rerank_p50": 0.37331950000043435,
+   "total_p50": 1.0957374500005699,
+   "cost_usd_39": 0.0265368
+  },
+  {
+   "emb": "te3-large_full",
+   "mode": "unfiltered",
+   "rerank": "yok",
+   "hit@1": 0.7222222222222222,
+   "hit@5": 0.7777777777777778,
+   "mrr": 0.7516129431570608,
+   "rerank_p50": 0.0,
+   "total_p50": 0.7224179500001355
+  },
+  {
+   "emb": "te3-large_full",
+   "mode": "unfiltered",
+   "rerank": "bge-reranker-v2-m3 int8",
+   "hit@1": 0.6111111111111112,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.736574074074074,
+   "rerank_p50": 7.433173400000669,
+   "total_p50": 8.155591350000805,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "te3-large_full",
+   "mode": "unfiltered",
+   "rerank": "jina-reranker-v2-base-multilingual",
+   "hit@1": 0.5555555555555556,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.6898148148148148,
+   "rerank_p50": 5.232873000000836,
+   "total_p50": 5.955290950000972,
+   "cost_usd_39": null
+  },
+  {
+   "emb": "te3-large_full",
+   "mode": "unfiltered",
+   "rerank": "qwen3-reranker-8b",
+   "hit@1": 0.6944444444444444,
+   "hit@5": 0.8888888888888888,
+   "mrr": 0.787037037037037,
+   "rerank_p50": 0.46699919999991835,
+   "total_p50": 1.1894171500000539,
+   "cost_usd_39": 0.032992
+  }
+ ]
+}

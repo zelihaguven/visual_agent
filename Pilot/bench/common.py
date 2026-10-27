@@ -134,6 +134,11 @@ class StageTimer:
             self.samples.setdefault(k, []).append(v)
         return cur
 
+    def record(self, stages: dict[str, float]) -> None:
+        """Dışarıda ölçülmüş aşama süreleri (ör. bulut çağrısı + ağ) tek örnek olarak."""
+        for k, v in stages.items():
+            self.samples.setdefault(k, []).append(v)
+
     def summary(self) -> dict[str, dict[str, float | int]]:
         return {k: stats(v) for k, v in self.samples.items()}
 

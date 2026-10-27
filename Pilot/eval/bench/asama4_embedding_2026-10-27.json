@@ -1,0 +1,1266 @@
+{
+ "meta": {
+  "date": "2026-10-27T10:00:05",
+  "git_commit": "5f35276+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {},
+  "params": {
+   "paths": [
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_bge-m3-local-bm25_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_bge-m3-local_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_bge-m3-or_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_gemini-001_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_me5-large_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_nomic-v2-moe_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_nomic-v2-moe_short256.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_nomic-v2-moe_short_rescore256.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_qwen3-4b_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_qwen3-8b_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_qwen3-8b_short256.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_qwen3-8b_short512.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_qwen3-8b_short_rescore256.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_qwen3-8b_short_rescore512.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_te3-large_full.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_te3-large_short256.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_te3-large_short512.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_te3-large_short_rescore256.json",
+    "C:\\Users\\egitim.YESIM\\Desktop\\visual_agent\\Pilot\\data\\bench_cache\\candidates_te3-large_short_rescore512.json"
+   ]
+  }
+ },
+ "rows": [
+  {
+   "params": {
+    "key": "bge-m3-local-bm25",
+    "model": "BAAI/bge-m3",
+    "provider": "local",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "emb_bge-m3-local-bm25",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": null
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.2287519785714353,
+      "p50": 0.21490225000002283,
+      "p95": 0.30323161999979215
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.013438576190494479,
+      "p50": 0.013200299999880372,
+      "p95": 0.017394390000117707
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.2421905547619298,
+      "p50": 0.22666179999987435,
+      "p95": 0.3171872000001031
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7222222222222222,
+    "hit@5": 0.8888888888888888,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.7915509259259259
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.6666666666666666,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.7454650673400673
+   }
+  },
+  {
+   "params": {
+    "key": "bge-m3-local",
+    "model": "BAAI/bge-m3",
+    "provider": "local",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "manuals",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": null
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.32807795714280646,
+      "p50": 0.3356933499999286,
+      "p95": 0.3977956000000176
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.0262265071428915,
+      "p50": 0.023316200000181198,
+      "p95": 0.054213720000006946
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.35430446428569795,
+      "p50": 0.35841119999986404,
+      "p95": 0.423840085000279
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.4444444444444444,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.8888888888888888,
+    "mrr": 0.6064814814814814
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.5,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.8888888888888888,
+    "mrr": 0.6271164021164021
+   }
+  },
+  {
+   "params": {
+    "key": "bge-m3-or",
+    "model": "baai/bge-m3",
+    "provider": "openrouter",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "emb_bge-m3-or",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 70,
+     "prompt_tokens": 1335,
+     "cost_usd": 1.3349999999999996e-05,
+     "network_s": 46.941127200002484,
+     "cached": 39
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.7017817595238046,
+      "p50": 0.5473543999999038,
+      "p95": 1.2103487449999641
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.030161659523779843,
+      "p50": 0.030787200000077064,
+      "p95": 0.041425710000135035
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.7319434190475844,
+      "p50": 0.5739943999999468,
+      "p95": 1.2398587899998115
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.6895043119047516,
+      "p50": 0.5366412999999284,
+      "p95": 1.2051176149999487
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7222222222222222,
+    "hit@5": 0.8888888888888888,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.7915509259259259
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.6666666666666666,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.7454650673400673
+   }
+  },
+  {
+   "params": {
+    "key": "gemini-001",
+    "model": "google/gemini-embedding-001",
+    "provider": "openrouter",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "emb_gemini-001",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 70,
+     "prompt_tokens": 1272,
+     "cost_usd": 0.0001908,
+     "network_s": 75.10063230000151,
+     "cached": 39
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 1.0852678857143128,
+      "p50": 1.285325999999941,
+      "p95": 1.368505895000294
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.02937972619042739,
+      "p50": 0.030770849999726124,
+      "p95": 0.04062848500029759
+     },
+     "total": {
+      "n": 42,
+      "mean": 1.1146476119047402,
+      "p50": 1.317840550000028,
+      "p95": 1.3946621899998264
+     },
+     "network": {
+      "n": 42,
+      "mean": 1.0750085380952463,
+      "p50": 1.2798949499999708,
+      "p95": 1.3623672750000422
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.6388888888888888,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9166666666666666,
+    "mrr": 0.7232042648709316
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.6388888888888888,
+    "hit@5": 0.8055555555555556,
+    "hit@20": 0.9166666666666666,
+    "mrr": 0.7074194324194324
+   }
+  },
+  {
+   "params": {
+    "key": "me5-large",
+    "model": "intfloat/multilingual-e5-large",
+    "provider": "openrouter",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "emb_me5-large",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 70,
+     "prompt_tokens": 1545,
+     "cost_usd": 1.545e-05,
+     "network_s": 61.93155979999938,
+     "cached": 39
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.9473227928571023,
+      "p50": 0.9182679999998982,
+      "p95": 1.4944909600002803
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.025871876190519418,
+      "p50": 0.024506999999857726,
+      "p95": 0.03992280000006758
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.9731946690476218,
+      "p50": 0.9349564999999984,
+      "p95": 1.5290748899999698
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.9339277761904603,
+      "p50": 0.8961272000001372,
+      "p95": 1.4883148399998845
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.5833333333333334,
+    "hit@5": 0.8333333333333334,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.6851190476190476
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.4722222222222222,
+    "hit@5": 0.75,
+    "hit@20": 0.9166666666666666,
+    "mrr": 0.575898368606702
+   }
+  },
+  {
+   "params": {
+    "key": "nomic-v2-moe",
+    "model": "nomic-ai/nomic-embed-text-v2-moe",
+    "provider": "local",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "emb_nomic-v2-moe",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": null
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.20316833095237252,
+      "p50": 0.19869604999985313,
+      "p95": 0.24939377499949836
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.022699790476162024,
+      "p50": 0.022102149999682297,
+      "p95": 0.027835924999681082
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.22586812142853455,
+      "p50": 0.2217897499999708,
+      "p95": 0.26820845499951246
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.5833333333333334,
+    "hit@5": 0.8055555555555556,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.671090456384574
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.5555555555555556,
+    "hit@5": 0.7777777777777778,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.6391460119401295
+   }
+  },
+  {
+   "params": {
+    "key": "nomic-v2-moe",
+    "model": "nomic-ai/nomic-embed-text-v2-moe",
+    "provider": "local",
+    "dense_mode": "short",
+    "short_dim": 256,
+    "collection": "emb_nomic-v2-moe",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": null
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.19484045952384849,
+      "p50": 0.18866930000012871,
+      "p95": 0.2294482700005119
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.021258954761811936,
+      "p50": 0.020648499999879277,
+      "p95": 0.02526353499988545
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.2160994142856604,
+      "p50": 0.20864419999998063,
+      "p95": 0.2534328350002852
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.5833333333333334,
+    "hit@5": 0.6944444444444444,
+    "hit@20": 0.8333333333333334,
+    "mrr": 0.6434884559884559
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.5,
+    "hit@5": 0.6944444444444444,
+    "hit@20": 0.8055555555555556,
+    "mrr": 0.5859532828282829
+   }
+  },
+  {
+   "params": {
+    "key": "nomic-v2-moe",
+    "model": "nomic-ai/nomic-embed-text-v2-moe",
+    "provider": "local",
+    "dense_mode": "short_rescore",
+    "short_dim": 256,
+    "collection": "emb_nomic-v2-moe",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": null
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.19717893571431064,
+      "p50": 0.19090585000003557,
+      "p95": 0.2196524300004512
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.025215914285711603,
+      "p50": 0.025445149999541172,
+      "p95": 0.028560415000220017
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.22239485000002224,
+      "p50": 0.21760805000030814,
+      "p95": 0.24476293499978963
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.5833333333333334,
+    "hit@5": 0.8055555555555556,
+    "hit@20": 0.9166666666666666,
+    "mrr": 0.6697015674956852
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.5555555555555556,
+    "hit@5": 0.7777777777777778,
+    "hit@20": 0.9166666666666666,
+    "mrr": 0.6380096483037659
+   }
+  },
+  {
+   "params": {
+    "key": "qwen3-4b",
+    "model": "qwen/qwen3-embedding-4b",
+    "provider": "openrouter",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "emb_qwen3-4b",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 70,
+     "prompt_tokens": 3125,
+     "cost_usd": 6.249999999999999e-05,
+     "network_s": 100.34548840000025,
+     "cached": 39
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 1.268777288095223,
+      "p50": 1.212087300000121,
+      "p95": 2.228171759999736
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.02847486428574831,
+      "p50": 0.02864869999984876,
+      "p95": 0.04203618499993809
+     },
+     "total": {
+      "n": 42,
+      "mean": 1.2972521523809715,
+      "p50": 1.2372775500000444,
+      "p95": 2.25497206499997
+     },
+     "network": {
+      "n": 42,
+      "mean": 1.251007028571437,
+      "p50": 1.104573950000031,
+      "p95": 2.2224652699998613
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.6666666666666666,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 1.0,
+    "mrr": 0.7641975308641975
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.6388888888888888,
+    "hit@5": 0.8333333333333334,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.729320987654321
+   }
+  },
+  {
+   "params": {
+    "key": "qwen3-8b",
+    "model": "qwen/qwen3-embedding-8b",
+    "provider": "openrouter",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "emb_qwen3-8b",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 2044,
+     "cost_usd": 2.0439999999999997e-05,
+     "network_s": 41.580023699999856,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.9307156714285589,
+      "p50": 0.6637370500002362,
+      "p95": 1.573317009999709
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.03311396428568428,
+      "p50": 0.03304675000003954,
+      "p95": 0.04275860000000193
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.9638296357142432,
+      "p50": 0.6920604499998717,
+      "p95": 1.5974721049997918
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.9235581214285654,
+      "p50": 0.6551160499998332,
+      "p95": 1.5623000899999846
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.8888888888888888,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.8288139329805997
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.829971340388007
+   }
+  },
+  {
+   "params": {
+    "key": "qwen3-8b",
+    "model": "qwen/qwen3-embedding-8b",
+    "provider": "openrouter",
+    "dense_mode": "short",
+    "short_dim": 256,
+    "collection": "emb_qwen3-8b",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 2044,
+     "cost_usd": 2.0439999999999997e-05,
+     "network_s": 34.592915699999594,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.7729083619047807,
+      "p50": 0.6067038999997294,
+      "p95": 1.970860005000074
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.026361952380944957,
+      "p50": 0.021839399999862508,
+      "p95": 0.03866180999998505
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.7992703142857257,
+      "p50": 0.6275769999999739,
+      "p95": 2.005995960000084
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.7639357666666585,
+      "p50": 0.5974841500001276,
+      "p95": 1.9641089600000867
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.6388888888888888,
+    "hit@5": 0.8888888888888888,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.7444444444444445
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.6111111111111112,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9444444444444444,
+    "mrr": 0.7041786916786916
+   }
+  },
+  {
+   "params": {
+    "key": "qwen3-8b",
+    "model": "qwen/qwen3-embedding-8b",
+    "provider": "openrouter",
+    "dense_mode": "short",
+    "short_dim": 512,
+    "collection": "emb_qwen3-8b",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 2044,
+     "cost_usd": 2.3049999999999998e-05,
+     "network_s": 33.39175930000056,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.7441644023810048,
+      "p50": 0.6236605999999938,
+      "p95": 1.4407442899997234
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.027105114285653882,
+      "p50": 0.030101150000291454,
+      "p95": 0.03945795999989059
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.7712695166666587,
+      "p50": 0.6507709499999237,
+      "p95": 1.4686507399998374
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.7347907500000236,
+      "p50": 0.6164006500000596,
+      "p95": 1.4320796150000872
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.6666666666666666,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.7631283068783069
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.6944444444444444,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.7748550061050061
+   }
+  },
+  {
+   "params": {
+    "key": "qwen3-8b",
+    "model": "qwen/qwen3-embedding-8b",
+    "provider": "openrouter",
+    "dense_mode": "short_rescore",
+    "short_dim": 256,
+    "collection": "emb_qwen3-8b",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 2044,
+     "cost_usd": 2.7969999999999998e-05,
+     "network_s": 31.837989300001027,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.706898107142836,
+      "p50": 0.6243187499999294,
+      "p95": 1.0833504550003217
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.03763679761905656,
+      "p50": 0.034879499999988184,
+      "p95": 0.055211809999786955
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.7445349047618925,
+      "p50": 0.656295099999852,
+      "p95": 1.135369955000191
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.6981669785714508,
+      "p50": 0.6159178000000338,
+      "p95": 1.0748347649999677
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.8888888888888888,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.8288139329805997
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.829971340388007
+   }
+  },
+  {
+   "params": {
+    "key": "qwen3-8b",
+    "model": "qwen/qwen3-embedding-8b",
+    "provider": "openrouter",
+    "dense_mode": "short_rescore",
+    "short_dim": 512,
+    "collection": "emb_qwen3-8b",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 2044,
+     "cost_usd": 2.4789999999999998e-05,
+     "network_s": 33.57330940000202,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.7494270023809501,
+      "p50": 0.6635012500000812,
+      "p95": 1.1568146649998419
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.03971982857142177,
+      "p50": 0.039406499999813605,
+      "p95": 0.055335350000018456
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.7891468309523718,
+      "p50": 0.6957916500000465,
+      "p95": 1.2163244699999716
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.7414245738095598,
+      "p50": 0.6567987500000072,
+      "p95": 1.1490863150000443
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.8888888888888888,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.8288139329805997
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.8611111111111112,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.829971340388007
+   }
+  },
+  {
+   "params": {
+    "key": "te3-large",
+    "model": "openai/text-embedding-3-large",
+    "provider": "openrouter",
+    "dense_mode": "full",
+    "short_dim": null,
+    "collection": "emb_te3-large",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 70,
+     "prompt_tokens": 1565,
+     "cost_usd": 0.00020345,
+     "network_s": 56.645496699996784,
+     "cached": 39
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.7922504904762112,
+      "p50": 0.6912777000000006,
+      "p95": 1.120395680000001
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.028445092857141606,
+      "p50": 0.028178399999887915,
+      "p95": 0.043180859999870334
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.8206955833333528,
+      "p50": 0.7224179500001355,
+      "p95": 1.162655140000106
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.7860162357142361,
+      "p50": 0.6860542499998701,
+      "p95": 1.114305295000099
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.9166666666666666,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.8331018518518518
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.7222222222222222,
+    "hit@5": 0.7777777777777778,
+    "hit@20": 0.9166666666666666,
+    "mrr": 0.7516129431570608
+   }
+  },
+  {
+   "params": {
+    "key": "te3-large",
+    "model": "openai/text-embedding-3-large",
+    "provider": "openrouter",
+    "dense_mode": "short",
+    "short_dim": 256,
+    "collection": "emb_te3-large",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 1063,
+     "cost_usd": 0.00013819,
+     "network_s": 31.896682900000997,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.7183115499999531,
+      "p50": 0.6209418999999343,
+      "p95": 1.0082596649998548
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.032003833333376294,
+      "p50": 0.03284874999985732,
+      "p95": 0.04059331500000098
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.7503153833333294,
+      "p50": 0.6590863500000523,
+      "p95": 1.043852719999813
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.7068838833333648,
+      "p50": 0.602223949999825,
+      "p95": 1.0008815299999465
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.6666666666666666,
+    "hit@5": 0.9166666666666666,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.7602954144620812
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.5277777777777778,
+    "hit@5": 0.6944444444444444,
+    "hit@20": 0.8611111111111112,
+    "mrr": 0.6092904122928633
+   }
+  },
+  {
+   "params": {
+    "key": "te3-large",
+    "model": "openai/text-embedding-3-large",
+    "provider": "openrouter",
+    "dense_mode": "short",
+    "short_dim": 512,
+    "collection": "emb_te3-large",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 1063,
+     "cost_usd": 0.00013819,
+     "network_s": 26.9029583000015,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.5967616619047389,
+      "p50": 0.5275457499999447,
+      "p95": 0.8844112549997362
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.02702334761907618,
+      "p50": 0.029990799999950468,
+      "p95": 0.03848293000003195
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.6237850095238151,
+      "p50": 0.5465430500000821,
+      "p95": 0.9194499199996471
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.5796750071428851,
+      "p50": 0.5108070499998121,
+      "p95": 0.8705181099999663
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7222222222222222,
+    "hit@5": 0.9166666666666666,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.7856812169312168
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.5833333333333334,
+    "hit@5": 0.7222222222222222,
+    "hit@20": 0.8611111111111112,
+    "mrr": 0.6452241544766054
+   }
+  },
+  {
+   "params": {
+    "key": "te3-large",
+    "model": "openai/text-embedding-3-large",
+    "provider": "openrouter",
+    "dense_mode": "short_rescore",
+    "short_dim": 256,
+    "collection": "emb_te3-large",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 1063,
+     "cost_usd": 0.00013819,
+     "network_s": 30.818556200003513,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.6956378380951784,
+      "p50": 0.5811412000000473,
+      "p95": 1.100883480000084
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.03619177857144894,
+      "p50": 0.03605509999988499,
+      "p95": 0.044300019999809585
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.7318296166666274,
+      "p50": 0.6252194499998041,
+      "p95": 1.1325703599998858
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.682420535714365,
+      "p50": 0.5684337500001675,
+      "p95": 1.0807541850000915
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.9166666666666666,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.8331018518518518
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.7222222222222222,
+    "hit@5": 0.7777777777777778,
+    "hit@20": 0.9166666666666666,
+    "mrr": 0.750733024691358
+   }
+  },
+  {
+   "params": {
+    "key": "te3-large",
+    "model": "openai/text-embedding-3-large",
+    "provider": "openrouter",
+    "dense_mode": "short_rescore",
+    "short_dim": 512,
+    "collection": "emb_te3-large",
+    "FUSED_K": 20,
+    "PREFETCH_K": 30,
+    "repeats": 3,
+    "timing_sets": [
+     "questions"
+    ],
+    "cloud_stats": {
+     "requests": 45,
+     "prompt_tokens": 1063,
+     "cost_usd": 0.00013819,
+     "network_s": 29.57272370000328,
+     "cached": 64
+    }
+   },
+   "timing": {
+    "filtered": {
+     "embed": {
+      "n": 42,
+      "mean": 0.6607202499999945,
+      "p50": 0.5809871000001294,
+      "p95": 0.9600670450000507
+     },
+     "qdrant": {
+      "n": 42,
+      "mean": 0.03277943809522791,
+      "p50": 0.03406229999995958,
+      "p95": 0.046856535000142675
+     },
+     "total": {
+      "n": 42,
+      "mean": 0.6934996880952223,
+      "p50": 0.6138378499999817,
+      "p95": 0.9934028099998385
+     },
+     "network": {
+      "n": 42,
+      "mean": 0.6459848928572272,
+      "p50": 0.5717730500002745,
+      "p95": 0.9426904849999801
+     }
+    },
+    "unfiltered": {}
+   },
+   "filtered": {
+    "n": 36,
+    "hit@1": 0.7777777777777778,
+    "hit@5": 0.9166666666666666,
+    "hit@20": 0.9722222222222222,
+    "mrr": 0.8331018518518518
+   },
+   "unfiltered": {
+    "n": 36,
+    "hit@1": 0.7222222222222222,
+    "hit@5": 0.7777777777777778,
+    "hit@20": 0.9166666666666666,
+    "mrr": 0.7516129431570608
+   }
+  }
+ ]
+}
