@@ -1,0 +1,1634 @@
+{
+ "meta": {
+  "date": "2026-10-27T15:20:15",
+  "git_commit": "7c3a97d",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {
+   "PILOT_RERANK_FUSION": "none",
+   "PILOT_RERANK_PASSAGE": "text",
+   "PILOT_RERANK_PROVIDER": "local",
+   "PILOT_SPARSE": "bge-m3"
+  },
+  "params": {}
+ },
+ "runs": {
+  "eski_rerank": {
+   "rows": [
+    {
+     "qid": "questions:Q08",
+     "set": "questions",
+     "q": "Nike ceketlerinde yaka dikişi kaç mm olmalı?",
+     "exit": "yabanci_marka",
+     "llm_called": false,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "Soruda geçen marka için (Nike) sistemde doküman yok.",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [],
+     "seconds": 0.0
+    },
+    {
+     "qid": "questions:Q09",
+     "set": "questions",
+     "q": "Pantolonun cep astarı hangi kumaştan yapılmalı ve gramajı kaç olmalı?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Pantolonun cep astarı 2xl left hand twill kumaştan yapılmalı ve gramajı 7.0 ile 8.0 ozlsq. yd. aralığında olmalıdır.",
+     "neden": "",
+     "badge": "⚠ Kısmen doğrulandı",
+     "top3": [
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        6
+       ],
+       "rerank": -5.81450080871582,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        5
+       ],
+       "rerank": -5.8237080574035645,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        5
+       ],
+       "rerank": -5.919363498687744,
+       "fused": 0.08333333333333333
+      }
+     ],
+     "seconds": 174.9
+    },
+    {
+     "qid": "questions:Q10",
+     "set": "questions",
+     "q": "Uçak motoru yağı kaç derecede değiştirilir?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        47,
+        48
+       ],
+       "rerank": -3.815721035003662,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        178
+       ],
+       "rerank": -4.447164535522461,
+       "fused": 0.5
+      },
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        225,
+        226
+       ],
+       "rerank": -5.423842906951904,
+       "fused": 0.09090909090909091
+      }
+     ],
+     "seconds": 121.4
+    },
+    {
+     "qid": "questions:Q18",
+     "set": "questions",
+     "q": "Nike tişörtlerinde yaka ribanası kaç cm olmalı?",
+     "exit": "yabanci_marka",
+     "llm_called": false,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "Soruda geçen marka için (Nike) sistemde doküman yok.",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [],
+     "seconds": 0.0
+    },
+    {
+     "qid": "questions_ek:Q31",
+     "set": "questions_ek",
+     "q": "S-7300A'nın motor gücü kaç watt?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        85
+       ],
+       "rerank": -5.829409599304199,
+       "fused": 0.16666666666666666
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        85
+       ],
+       "rerank": -6.012948036193848,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        53
+       ],
+       "rerank": -6.697112083435059,
+       "fused": 0.6666666666666666
+      }
+     ],
+     "seconds": 105.2
+    },
+    {
+     "qid": "aday:A114",
+     "set": "aday",
+     "q": "Bosch freze tablası kaç kilogram ağırlığında?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Bosch freze tablası kg adımlarında ağırlık olarak belirtilmiştir.",
+     "neden": "",
+     "badge": "⚠ Kısmen doğrulandı",
+     "top3": [
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        87
+       ],
+       "rerank": -6.932272911071777,
+       "fused": 0.41025641025641024
+      },
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        77
+       ],
+       "rerank": -7.336141109466553,
+       "fused": 0.367816091954023
+      },
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        77
+       ],
+       "rerank": -7.590245246887207,
+       "fused": 0.2
+      }
+     ],
+     "seconds": 94.0
+    },
+    {
+     "qid": "aday:A115",
+     "set": "aday",
+     "q": "Granovsky kitabına göre bilgisayarlı nakış makinesinin yazılımı nasıl güncellenir?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "Verilen kaynaklarla bilgisayarlı nakış makinesinin yazılımı nasıl güncellenmesi gerektiği konusunda doğrudan bilgi bulunmamaktadır. Kitap, makine parçalarının değiştirilmesi ve ayarları yapılış hakkında bilgi vermektedir ancak yazılım güncelleme konusunda spesifik bir bilgisi yoktur.",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        150,
+        151
+       ],
+       "rerank": -7.688253402709961,
+       "fused": 0.25882352941176473
+      },
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        109
+       ],
+       "rerank": -8.098281860351562,
+       "fused": 0.125
+      },
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        148,
+        149
+       ],
+       "rerank": -8.294612884521484,
+       "fused": 0.2976190476190476
+      }
+     ],
+     "seconds": 225.3
+    },
+    {
+     "qid": "aday:A116",
+     "set": "aday",
+     "q": "Pantolon şartnamesinde kemer tokası kaç gram olmalı?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        23
+       ],
+       "rerank": -7.180134296417236,
+       "fused": 0.1111111111111111
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        13
+       ],
+       "rerank": -8.44033432006836,
+       "fused": 0.12424242424242424
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        7
+       ],
+       "rerank": -8.49907398223877,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 130.0
+    },
+    {
+     "qid": "aday:A117",
+     "set": "aday",
+     "q": "S-7300A'da E133 hatası ne demek?",
+     "exit": "kod_yok",
+     "llm_called": false,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "E133 kodu S-7300A düz dikiş makinesi içinde geçmiyor. Bu kod şu kaynakta geçiyor: S-7300B düz dikiş makinesi.",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        98
+       ],
+       "rerank": -4.495196342468262,
+       "fused": 0.09090909090909091
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        98
+       ],
+       "rerank": -6.007771015167236,
+       "fused": 0.1111111111111111
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        98
+       ],
+       "rerank": -6.372889041900635,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 5.7
+    },
+    {
+     "qid": "aday:A118",
+     "set": "aday",
+     "q": "S-7300A'da E-740 kodu çıktı, ne yapmalıyım?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": -4.349926948547363,
+       "fused": 0.2
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": -5.092750549316406,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": -5.229244232177734,
+       "fused": 0.125
+      }
+     ],
+     "seconds": 75.9
+    },
+    {
+     "qid": "aday:A119",
+     "set": "aday",
+     "q": "S-7300A'da E582 hatası neden olur?",
+     "exit": "kod_yok",
+     "llm_called": false,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "E582 kodu S-7300A düz dikiş makinesi içinde geçmiyor. Bu kod şu kaynakta geçiyor: S-7300B düz dikiş makinesi.",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": -2.5764875411987305,
+       "fused": 0.7
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": -6.311219215393066,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        99
+       ],
+       "rerank": -6.34071159362793,
+       "fused": 0.125
+      }
+     ],
+     "seconds": 6.5
+    },
+    {
+     "qid": "aday:A120",
+     "set": "aday",
+     "q": "Bosch freze tablasının garanti süresi ne kadar?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        87
+       ],
+       "rerank": -4.453412055969238,
+       "fused": 0.3733333333333333
+      },
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        68
+       ],
+       "rerank": -4.9516825675964355,
+       "fused": 0.2
+      },
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        77
+       ],
+       "rerank": -7.190235137939453,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 132.7
+    },
+    {
+     "qid": "aday:A121",
+     "set": "aday",
+     "q": "Mr. Coffee kahve makinesi kaç watt?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        17
+       ],
+       "rerank": -4.093314170837402,
+       "fused": 0.30952380952380953
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        7
+       ],
+       "rerank": -4.573432922363281,
+       "fused": 0.3666666666666667
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        17
+       ],
+       "rerank": -4.895617485046387,
+       "fused": 0.1984126984126984
+      }
+     ],
+     "seconds": 139.2
+    },
+    {
+     "qid": "aday:A122",
+     "set": "aday",
+     "q": "Mr. Coffee kahve makinesiyle süt nasıl köpürtülür?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        16
+       ],
+       "rerank": -3.868530750274658,
+       "fused": 0.2
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        17
+       ],
+       "rerank": -4.611721992492676,
+       "fused": 0.20192307692307693
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        7
+       ],
+       "rerank": -5.092560768127441,
+       "fused": 0.27142857142857146
+      }
+     ],
+     "seconds": 173.8
+    },
+    {
+     "qid": "aday:A123",
+     "set": "aday",
+     "q": "S-7300B'nin güç tüketimi kaç watt?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300b",
+       "pages": [
+        23
+       ],
+       "rerank": -0.3182506263256073,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300b",
+       "pages": [
+        88
+       ],
+       "rerank": -6.3037309646606445,
+       "fused": 0.14285714285714285
+      },
+      {
+       "doc": "brother-s7300b",
+       "pages": [
+        88
+       ],
+       "rerank": -6.631500244140625,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 80.1
+    },
+    {
+     "qid": "aday:A124",
+     "set": "aday",
+     "q": "Ceketin kapüşon ölçüleri nedir?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        49
+       ],
+       "rerank": -4.625377655029297,
+       "fused": 0.6428571428571428
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        49
+       ],
+       "rerank": -4.989020824432373,
+       "fused": 0.09429824561403508
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        49
+       ],
+       "rerank": -5.005955696105957,
+       "fused": 0.8333333333333333
+      }
+     ],
+     "seconds": 146.5
+    },
+    {
+     "qid": "aday:A125",
+     "set": "aday",
+     "q": "Ceket fermuarı hangi markadan olmalı?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Ceket fermuarı A-A-50199, Type II markasından olmalı.",
+     "neden": "",
+     "badge": "⚠ Kısmen doğrulandı",
+     "top3": [
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        3
+       ],
+       "rerank": -6.660114288330078,
+       "fused": 0.25
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        5
+       ],
+       "rerank": -6.698402404785156,
+       "fused": 0.14285714285714285
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        9
+       ],
+       "rerank": -7.563965797424316,
+       "fused": 0.16666666666666666
+      }
+     ],
+     "seconds": 99.2
+    },
+    {
+     "qid": "aday:A126",
+     "set": "aday",
+     "q": "Strickland kitabına göre deri ceket nasıl dikilir?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Deri ceket dikilirken, sırasıyla şunları yapmalısınız:\n1. Ceket çelişine zıp ekleyerek zıptan girebilecek şekilde dikilmesini sağlayın.\n2. Zipti kapattıktan sonra ceketi yan tarafına çevirin.\n3. Ceket çelişesinin ceb açığından sonuna kadar ve altına doğru cebi dikin.",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        26
+       ],
+       "rerank": -7.2498979568481445,
+       "fused": 0.2
+      },
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        158
+       ],
+       "rerank": -7.310888290405273,
+       "fused": 0.1111111111111111
+      },
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        83
+       ],
+       "rerank": -7.675261497497559,
+       "fused": 0.3214285714285714
+      }
+     ],
+     "seconds": 160.9
+    },
+    {
+     "qid": "aday:A127",
+     "set": "aday",
+     "q": "S-7300A Bluetooth ya da Wi-Fi ile nasıl bağlanır?",
+     "exit": "netlestirme",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "❓ Netleştirme gerekli",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        55
+       ],
+       "rerank": -4.575272560119629,
+       "fused": 0.25
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        19,
+        20
+       ],
+       "rerank": -7.858715057373047,
+       "fused": 0.2
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        33
+       ],
+       "rerank": -9.968774795532227,
+       "fused": 0.09090909090909091
+      }
+     ],
+     "seconds": 93.7
+    },
+    {
+     "qid": "aday:A128",
+     "set": "aday",
+     "q": "Pantolon kumaşının su geçirmezlik (hidrostatik basınç) değeri ne olmalı?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Pantolon kumaşının su geçirmezlik (hidrostatik basınç) değeri, 4.4.2 belirtilen testlerde 5.0'dan düşük veya 8.5'den yüksek olmamalıdır.",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        7
+       ],
+       "rerank": -4.007317543029785,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        13
+       ],
+       "rerank": -6.712581157684326,
+       "fused": 0.16666666666666666
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        5
+       ],
+       "rerank": -6.814487457275391,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 127.9
+    },
+    {
+     "qid": "aday:A129",
+     "set": "aday",
+     "q": "Terzilik kitabına göre overlok makinesi nasıl ayarlanır?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Overlok makinesini ayarlamak için, ceket açılışının (placket) alt kenarında (underlap edge) 4 birim (Vi veya %6 inç) dışa döndürülerek ve sırada basting 2 paraleline sabitlenen bir uzatma yapın. Bu uzatma, placket açılışının (placket) alt açılışının (lower opening) V4 ila 1/2 inç aşağısında taşınır. Basting ve bu katılmış kenarı ısıntırın. Placket açılışının (placket) ön kenarını (overlap) placket",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        117,
+        118
+       ],
+       "rerank": -5.967811584472656,
+       "fused": 0.09583333333333333
+      },
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        81
+       ],
+       "rerank": -6.565944194793701,
+       "fused": 0.16666666666666666
+      },
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        136
+       ],
+       "rerank": -6.929758071899414,
+       "fused": 0.5
+      }
+     ],
+     "seconds": 186.7
+    },
+    {
+     "qid": "aday:A130",
+     "set": "aday",
+     "q": "Mr. Coffee makinesiyle espresso nasıl yapılır?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        8
+       ],
+       "rerank": 2.1212985515594482,
+       "fused": 0.14957264957264957
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        17
+       ],
+       "rerank": 1.3551610708236694,
+       "fused": 0.6428571428571428
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        11,
+        12
+       ],
+       "rerank": 0.43417301774024963,
+       "fused": 0.16666666666666666
+      }
+     ],
+     "seconds": 143.4
+    }
+   ],
+   "params": {
+    "label": "eski_rerank",
+    "rerank": "local",
+    "sparse": "bge-m3",
+    "passage": "text",
+    "fusion": "none",
+    "llm": "qwen2.5:7b",
+    "min_rerank_score": null
+   }
+  },
+  "yeni_varsayilan": {
+   "rows": [
+    {
+     "qid": "questions:Q08",
+     "set": "questions",
+     "q": "Nike ceketlerinde yaka dikişi kaç mm olmalı?",
+     "exit": "yabanci_marka",
+     "llm_called": false,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "Soruda geçen marka için (Nike) sistemde doküman yok.",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [],
+     "seconds": 0.0
+    },
+    {
+     "qid": "questions:Q09",
+     "set": "questions",
+     "q": "Pantolonun cep astarı hangi kumaştan yapılmalı ve gramajı kaç olmalı?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Pantolonun cep astarı için 5.04 ozlsq. yd. minimum, plain weave, 75% polyester 25% cotton, material veya eşdeğer material kullanılabilir. Alternatif olarak, 7.0 to 8.0 ozlsq. yd., 2xlleft hand twill, 80% cotton/20% meta aramid fiber blend olan material da kullanılabilir.",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        5
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        6
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        19
+       ],
+       "rerank": null,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 495.4
+    },
+    {
+     "qid": "questions:Q10",
+     "set": "questions",
+     "q": "Uçak motoru yağı kaç derecede değiştirilir?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        178
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        47,
+        48
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        84
+       ],
+       "rerank": null,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 111.1
+    },
+    {
+     "qid": "questions:Q18",
+     "set": "questions",
+     "q": "Nike tişörtlerinde yaka ribanası kaç cm olmalı?",
+     "exit": "yabanci_marka",
+     "llm_called": false,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "Soruda geçen marka için (Nike) sistemde doküman yok.",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [],
+     "seconds": 0.0
+    },
+    {
+     "qid": "questions_ek:Q31",
+     "set": "questions_ek",
+     "q": "S-7300A'nın motor gücü kaç watt?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        12
+       ],
+       "rerank": null,
+       "fused": 0.5333333333333333
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        53
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        98
+       ],
+       "rerank": null,
+       "fused": 0.5
+      }
+     ],
+     "seconds": 48.1
+    },
+    {
+     "qid": "aday:A114",
+     "set": "aday",
+     "q": "Bosch freze tablası kaç kilogram ağırlığında?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Bosch freze tablası kg unitesinde ağırlığını ifade eder.",
+     "neden": "",
+     "badge": "⚠ Kısmen doğrulandı",
+     "top3": [
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        5
+       ],
+       "rerank": null,
+       "fused": 1.0
+      },
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        77
+       ],
+       "rerank": null,
+       "fused": 0.41666666666666663
+      },
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        77
+       ],
+       "rerank": null,
+       "fused": 0.34285714285714286
+      }
+     ],
+     "seconds": 75.9
+    },
+    {
+     "qid": "aday:A115",
+     "set": "aday",
+     "q": "Granovsky kitabına göre bilgisayarlı nakış makinesinin yazılımı nasıl güncellenir?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        199
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        112
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "granovsky-1986",
+       "pages": [
+        158
+       ],
+       "rerank": null,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 124.2
+    },
+    {
+     "qid": "aday:A116",
+     "set": "aday",
+     "q": "Pantolon şartnamesinde kemer tokası kaç gram olmalı?",
+     "exit": "netlestirme",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "❓ Netleştirme gerekli",
+     "top3": [
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        12
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        7
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        37
+       ],
+       "rerank": null,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 127.2
+    },
+    {
+     "qid": "aday:A117",
+     "set": "aday",
+     "q": "S-7300A'da E133 hatası ne demek?",
+     "exit": "kod_yok",
+     "llm_called": false,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "E133 kodu S-7300A düz dikiş makinesi içinde geçmiyor. Bu kod şu kaynakta geçiyor: S-7300B düz dikiş makinesi.",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        99
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        55
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 0.6
+    },
+    {
+     "qid": "aday:A118",
+     "set": "aday",
+     "q": "S-7300A'da E-740 kodu çıktı, ne yapmalıyım?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        55
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 71.4
+    },
+    {
+     "qid": "aday:A119",
+     "set": "aday",
+     "q": "S-7300A'da E582 hatası neden olur?",
+     "exit": "kod_yok",
+     "llm_called": false,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "E582 kodu S-7300A düz dikiş makinesi içinde geçmiyor. Bu kod şu kaynakta geçiyor: S-7300B düz dikiş makinesi.",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        55
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        100
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 0.6
+    },
+    {
+     "qid": "aday:A120",
+     "set": "aday",
+     "q": "Bosch freze tablasının garanti süresi ne kadar?",
+     "exit": "netlestirme",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "❓ Netleştirme gerekli",
+     "top3": [
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        45
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        55
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "bosch-ra1171",
+       "pages": [
+        77
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 130.6
+    },
+    {
+     "qid": "aday:A121",
+     "set": "aday",
+     "q": "Mr. Coffee kahve makinesi kaç watt?",
+     "exit": "netlestirme",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "❓ Netleştirme gerekli",
+     "top3": [
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        11
+       ],
+       "rerank": null,
+       "fused": 0.5526315789473684
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        6
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        11
+       ],
+       "rerank": null,
+       "fused": 0.38888888888888884
+      }
+     ],
+     "seconds": 98.4
+    },
+    {
+     "qid": "aday:A122",
+     "set": "aday",
+     "q": "Mr. Coffee kahve makinesiyle süt nasıl köpürtülür?",
+     "exit": "netlestirme",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "❓ Netleştirme gerekli",
+     "top3": [
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        19
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        6
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        17
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 100.3
+    },
+    {
+     "qid": "aday:A123",
+     "set": "aday",
+     "q": "S-7300B'nin güç tüketimi kaç watt?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300b",
+       "pages": [
+        23
+       ],
+       "rerank": null,
+       "fused": 0.75
+      },
+      {
+       "doc": "brother-s7300b",
+       "pages": [
+        15
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300b",
+       "pages": [
+        79
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 84.4
+    },
+    {
+     "qid": "aday:A124",
+     "set": "aday",
+     "q": "Ceketin kapüşon ölçüleri nedir?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        49
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        49
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        14
+       ],
+       "rerank": null,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 138.4
+    },
+    {
+     "qid": "aday:A125",
+     "set": "aday",
+     "q": "Ceket fermuarı hangi markadan olmalı?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        9
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        19
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        9
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 89.7
+    },
+    {
+     "qid": "aday:A126",
+     "set": "aday",
+     "q": "Strickland kitabına göre deri ceket nasıl dikilir?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Deri ceket derinliklerini açarak, omuz dartının kesilmiş kenarını altına indirirken, kalan açılmamış parçayı dart noktasına kasa plato gibi yaslar. Dart, eğik bir yas padı üzerinde ısıntırılarak iyi bir eğri oluşturmak için kullanılır.",
+     "neden": "",
+     "badge": "⚠ Kısmen doğrulandı",
+     "top3": [
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        100,
+        101
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        19
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-14-04a",
+       "pages": [
+        22,
+        23
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 124.5
+    },
+    {
+     "qid": "aday:A127",
+     "set": "aday",
+     "q": "S-7300A Bluetooth ya da Wi-Fi ile nasıl bağlanır?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "",
+     "neden": "",
+     "badge": "✖ Kaynaklarda bulunamadı",
+     "top3": [
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        55
+       ],
+       "rerank": null,
+       "fused": 0.75
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        19
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "brother-s7300a",
+       "pages": [
+        15
+       ],
+       "rerank": null,
+       "fused": 0.4444444444444444
+      }
+     ],
+     "seconds": 124.6
+    },
+    {
+     "qid": "aday:A128",
+     "set": "aday",
+     "q": "Pantolon kumaşının su geçirmezlik (hidrostatik basınç) değeri ne olmalı?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Pantolon kumaşının su geçirmezlik (hidrostatik basınç) değeri, 4.4.2 bölümünde belirtilen testlerle yapılan testlerde 5.0'dan daha yüksek veya 8.5'den daha düşük olmamalıdır.",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        7
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        2
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "gl-pd-07-14a",
+       "pages": [
+        5
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      }
+     ],
+     "seconds": 129.5
+    },
+    {
+     "qid": "aday:A129",
+     "set": "aday",
+     "q": "Terzilik kitabına göre overlok makinesi nasıl ayarlanır?",
+     "exit": "model_cevap",
+     "llm_called": true,
+     "bulunamadi": false,
+     "cevap": "Overlok makinesini ayarlamak için, işe koyulacak parçanın işlenmesi işaretlenen iş çizgisi boyunca makine tarafından makine şeridi yapın.",
+     "neden": "",
+     "badge": "⚠ Kısmen doğrulandı",
+     "top3": [
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        136
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        53
+       ],
+       "rerank": null,
+       "fused": 0.3333333333333333
+      },
+      {
+       "doc": "strickland-1956",
+       "pages": [
+        114,
+        116
+       ],
+       "rerank": null,
+       "fused": 0.25
+      }
+     ],
+     "seconds": 140.1
+    },
+    {
+     "qid": "aday:A130",
+     "set": "aday",
+     "q": "Mr. Coffee makinesiyle espresso nasıl yapılır?",
+     "exit": "model_bulunamadi",
+     "llm_called": true,
+     "bulunamadi": true,
+     "cevap": "Mr. Coffee咖啡机上制作espresso的方法在提供的文档中没有具体说明。文档主要描述了咖啡的制作过程，没有涉及espresso的制作步骤。因此，根据现有信息，无法提供espresso的具体制作方法。",
+     "neden": "",
+     "badge": "✖ Doğrulanamadı",
+     "top3": [
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        17
+       ],
+       "rerank": null,
+       "fused": 0.5434782608695652
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        16
+       ],
+       "rerank": null,
+       "fused": 0.5
+      },
+      {
+       "doc": "mrcoffee-2003",
+       "pages": [
+        16
+       ],
+       "rerank": null,
+       "fused": 0.40476190476190477
+      }
+     ],
+     "seconds": 157.7
+    }
+   ],
+   "params": {
+    "label": "yeni_varsayilan",
+    "rerank": "none",
+    "sparse": "bm25",
+    "passage": "embed_text",
+    "fusion": "rrf",
+    "llm": "qwen2.5:7b",
+    "min_rerank_score": null
+   }
+  }
+ }
+}
