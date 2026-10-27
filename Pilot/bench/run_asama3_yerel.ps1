@@ -8,6 +8,8 @@
 #   yerel10k   local yol bge-m3 + BM25, 10k (gerçek parçaların vektörleri hazır; ~5.800 dikkat dağıtıcı CPU'da)
 #   yerel30k   aynı koleksiyonu 30k'ya tamamlar (CPU'da birkaç saat; isteğe bağlı)
 #   olcum      3b doğruluk: bütün kademeler, filtreli + filtresiz, rerank'sız
+#   sentetik   3a için 1M sentetik koleksiyon (bge-m3 vektörü + gürültü; şirket içi sunucuya snapshot olarak gider)
+#   paket      şirket içi sunucu paketi (snapshot'lar + Python + Qdrant + tekerlekler; bench/onprem)
 param([Parameter(Mandatory = $true)][string]$Step)
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
@@ -43,6 +45,11 @@ switch ($Step) {
             Run "3b doğruluk $c" @("-m","bench.measure","--scale-collection",$c,"--name","asama3b_$c","--no-rerank","--unfiltered","--repeats","1","--warmup","3","--recall-queries","300")
         }
     }
+    "sentetik"  {
+        Run "3a: gerçek vektörler" @("-m","bench.scale_synth","export")
+        Run "3a: sentetik 1M" @("-m","bench.scale_synth","build","--n","1000000","--collection","synth_1m","--workers","4")
+    }
+    "paket"     { Run "sunucu paketi" @("-m","bench.onprem.paket","--out","data/scale/paket","--collections","synth_1m","scale_qwen3_8b","scale_bge_m3") }
     default { "bilinmeyen adım: $Step"; exit 1 }
 }
 "$(Get-Date -Format HH:mm:ss) == $Step BİTTİ" | Out-File $log -Append -Encoding utf8
