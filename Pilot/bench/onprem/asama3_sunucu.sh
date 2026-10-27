@@ -71,7 +71,7 @@ kontrol() {
 
 kur() {
   [ -x "$PY" ] || { mkdir -p "$W" && tar -xzf "$PAKET"/python/cpython-*.tar.gz -C "$W" || die "Python açılamadı"; }
-  "$PY" -m pip install -q --no-index --find-links "$PAKET/wheels" -r "$PAKET/requirements-onprem.txt" || die "paket kurulumu"
+  "$PY" -m pip install -q --no-index --find-links "$PAKET/wheels" -r "$PAKET/wheels/pins.txt" || die "paket kurulumu"
   [ -x "$QBIN" ] || { mkdir -p "$W/qdrant" && tar -xzf "$PAKET"/bin/qdrant-*.tar.gz -C "$W/qdrant" || die "Qdrant açılamadı"; }
   "$QBIN" --version | tee -a "$LOG"
   "$PY" -c "import qdrant_client, numpy, bench.scale_bench, bench.load_test; print('python hazır')" | tee -a "$LOG" || die "içe aktarma"

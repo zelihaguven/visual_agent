@@ -58,15 +58,48 @@ def code(out: Path) -> str:
     return commit
 
 
+LINUX_ENV = {"platform_system": "Linux", "sys_platform": "linux", "os_name": "posix", "platform_machine": "x86_64",
+             "python_version": "3.12", "python_full_version": "3.12.15", "implementation_name": "cpython",
+             "platform_python_implementation": "CPython"}
+
+
+def linux_closure(reqs: list[str]) -> dict[str, str]:
+    """Gereksinimlerin bağımlılık kapanışı, Linux koşullarıyla (pip download --platform koşulları yerel sisteme göre
+    değerlendiriyor: Windows'ta portalocker → pywin32 istiyor). Sürümler bu ortamda kurulu olanlar (lock ile aynı)."""
+    from importlib.metadata import PackageNotFoundError, distribution
+
+    from packaging.requirements import Requirement
+    out: dict[str, str] = {}
+    todo = [(Requirement(r), ()) for r in reqs]
+    while todo:
+        req, extras = todo.pop()
+        name = req.name.lower().replace("_", "-")
+        if req.marker and not any(req.marker.evaluate({**LINUX_ENV, "extra": e}) for e in (extras or ("",))):
+            continue
+        if name in out and not req.extras:
+            continue
+        try:
+            d = distribution(req.name)
+        except PackageNotFoundError:
+            raise SystemExit(f"{req.name} bu ortamda kurulu değil; sürümü belirlenemiyor")
+        out[name] = d.version
+        todo += [(Requirement(r), tuple(req.extras)) for r in (d.requires or [])]
+    return out
+
+
 def wheels(out: Path) -> None:
     dest = out / "wheels"
     dest.mkdir(parents=True, exist_ok=True)
-    cmd = [sys.executable, "-m", "pip", "download", "-q", "-r", str(HERE / "requirements-onprem.txt"), "-d", str(dest),
-           "--only-binary=:all:", "--python-version", "3.12", "--implementation", "cp", "--abi", "cp312"]
+    reqs = [l.split("#")[0].strip() for l in (HERE / "requirements-onprem.txt").read_text(encoding="utf-8").splitlines()]
+    pins = linux_closure([r for r in reqs if r])
+    cmd = [sys.executable, "-m", "pip", "download", "-q", "--no-deps", "-d", str(dest), "--only-binary=:all:",
+           "--python-version", "3.12", "--implementation", "cp",
+           "--abi", "cp312", "--abi", "abi3", "--abi", "none"]          # none: saf Python tekerlekleri
     for p in PLATFORMS:
         cmd += ["--platform", p]
-    subprocess.run(cmd, check=True)
-    print(f"tekerlek: {len(list(dest.glob('*.whl')))}")
+    subprocess.run(cmd + [f"{n}=={v}" for n, v in sorted(pins.items())], check=True)
+    (dest / "pins.txt").write_text("".join(f"{n}=={v}\n" for n, v in sorted(pins.items())), encoding="utf-8")
+    print(f"tekerlek: {len(list(dest.glob('*.whl')))} ({', '.join(sorted(pins))})")
 
 
 def binaries(out: Path) -> None:
