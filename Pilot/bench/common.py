@@ -68,7 +68,11 @@ def prepare(question: str, strip_source: bool = True) -> dict[str, Any]:
 # ---------- doğruluk ----------
 
 def is_match(chunk: dict[str, Any], item: dict[str, Any]) -> bool:
-    """Parça beklenen kaynaklardan mı? expect_pages varsa sayfa da tutmalı, yoksa doküman yeter."""
+    """Parça beklenen kaynaklardan mı? 'kabul' varsa (doküman + sayfa çiftleri: çok dilli/çok sayfalı/çok dokümanlı
+    cevap) her çift ayrı değerlendirilir; yoksa expect_docs + expect_pages (sayfa yoksa doküman yeter)."""
+    if item.get("kabul"):
+        return any(chunk["doc_id"] == k["doc"] and (not k.get("pages") or bool(set(chunk["pages"]) & set(k["pages"])))
+                   for k in item["kabul"])
     if chunk["doc_id"] not in item.get("expect_docs", []):
         return False
     pages = item.get("expect_pages")

@@ -27,6 +27,13 @@ def test_match_without_pages_is_doc_level():
     assert not is_match(_c("b", 1), {"expect_docs": ["a"]})
 
 
+def test_match_with_kabul_pairs_is_per_document():
+    """Çok dilli/çok dokümanlı kabul: sayfa her dokümanın kendi sayfasıyla eşleşmeli (a s.7 ya da b s.17)."""
+    item = {"kabul": [{"doc": "a", "pages": [7]}, {"doc": "b", "pages": [17]}], "expect_docs": ["a", "b"], "expect_pages": [7, 17]}
+    assert is_match(_c("a", 7), item) and is_match(_c("b", 17), item)
+    assert not is_match(_c("a", 17), item) and not is_match(_c("b", 7), item)    # çapraz eşleşme yok
+
+
 def test_first_rank_and_accuracy():
     chunks = [_c("b", 3), _c("a", 9), _c("a", 4)]
     assert first_rank(chunks, ITEM) == 3
