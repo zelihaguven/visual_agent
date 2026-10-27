@@ -123,11 +123,8 @@ def build(out: Path, collections: list[str], make_tar: bool) -> None:
     out.mkdir(parents=True, exist_ok=True)
     commit = code(out)
     for f in ("asama3_sunucu.sh", "BENIOKU.txt", "requirements-onprem.txt"):
-        (out / f).write_bytes((HERE / f).read_bytes().replace(b"
-", b"
-"))       # LF (Linux)
-    crlf = [str(p.relative_to(out)) for p in out.rglob("*.sh") if b"
-" in p.read_bytes()]
+        (out / f).write_bytes((HERE / f).read_bytes().replace(b"\r\n", b"\n"))       # LF (Linux)
+    crlf = [str(p.relative_to(out)) for p in out.rglob("*.sh") if b"\r\n" in p.read_bytes()]
     if crlf:
         raise SystemExit(f"CRLF satır sonlu betik (Linux'ta çalışmaz): {crlf}")
     binaries(out)
