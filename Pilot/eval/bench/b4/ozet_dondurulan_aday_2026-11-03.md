@@ -143,3 +143,59 @@ Uygulamanın varsayılan yolunda reranker **zaten kapalı** (B4, `f130ac4`): `PI
 | Çeviri (179 soru × 2 kip) | 0,004 |
 | Gecikme ölçümü ve yoklamalar | ~0,005 |
 | **Toplam** | **~1,77** |
+
+## 9. Ek (2026-11-03 akşam): Qwen kolsuz ikili yol, kuyruk ölçümü planı, süre sınırı tasarımı
+
+Aynı uyarı geçerli: onaysız set, aşırı uyum riski; bu bölümdeki sayılar karar değil. Pipeline'a hiçbir şey bağlanmadı.
+
+### 9.1 İkili yol: bge-m3 + çevirili BM25 (Qwen kolu yok)
+
+10k, rerank'sız, aynı 160 soru, çevrimdışı (bulut çağrısı yok; BM25 kolu bge-m3 koleksiyonundan, aynı korpus). Ham tablo: [asama4_ikili_yol_10k](asama4_ikili_yol_10k_2026-11-03.md).
+
+| hit@1 / hit@5 | Filtreli | Filtresiz |
+|---|---|---|
+| İkili: bge-m3 + çevirili BM25 | 0,72 / 0,95 | 0,71 / 0,88 |
+| **Aday: üçlü + çevirili BM25** | **0,86 / 0,98** | **0,84 / 0,94** |
+
+Tür bazında (filtreli, ikili → aday): değer 0,68/0,94 → 0,83/0,97; prosedür 0,85/0,90 → 0,90/1,00; kod 0,95/1,00 → 1,00/1,00; arıza 0,75/0,88 → 0,88/1,00; şekil **0,50**/1,00 → 0,79/1,00.
+
+**Fark nereden (filtreli, 30 soru; 28'inde aday iyi, 2'sinde ikili):**
+- hit@1 kaybı (aday 1., ikili 2.–5.): çoğu ceket/pantolon şartnamesi soruları (Q12, Q16, Q27, G1, G2, A001, A006, A007, A008, A014, A023, A035, A036), Brother (A053, A060, A065), Granovsky (N3, A096, A152), Bosch (A107, A109).
+- hit@5 kaybı (5 soru): A018 (ikili 10. / aday 2.), A102 (8. / 1.), A103 (13. / 2.), A110 (7. / 1.), A151 (yok / 2.); üçü üç dilli kılavuzlardan.
+- İkili daha iyi: A076 (1. / 2.), A092 (1. / 2.).
+- Filtresizde 31 soru, desen aynı; arıza hit@1 0,50 / 0,88.
+
+Okuma: Qwen kolu en çok **ilk sırayı** belirliyor (hit@1 −14 puan); ilk 5 büyük ölçüde korunuyor (−3 puan). Bu, aşağıdaki yedek yolun bedeli.
+
+### 9.2 Kuyruk ölçümü (sürüyor; rapor yarın)
+
+`bench/tail_probe.py`: Qwen3-8B sorgu embed'i, çeviri (gemma-3-12b-it), cevap modeli (mistral-small-24b-instruct-2501, akışlı: ilk token ve toplam); her servis 30 çağrı, her girdide `provider.sort = latency` ile ve onsuz art arda; sabit girdiler (30 soru, adayın ilk 5 kaynağıyla kurulmuş cevap istemi), önbellek yok. **Görev Zamanlayıcı'da 3 koşu: bugün 17:45, 20:15, 22:45** (`VisualAgent_kuyruk_t1..t3`; bilgisayar kapalıysa açılınca çalışır, uykudan uyandırmaz). Harcama sınırı 0,3 USD (önceki koşular dahil; tahmin ~0,02). Özet: `python -m bench.tail_probe --summary`; p50/p90/p95/en uzun ve ilk token değerleri yarın bu bölüme eklenecek.
+
+### 9.3 Süre sınırı ve yedek yol tasarımı (uygulanmadı)
+
+Hedef (PRD): arama ≤ 1 sn, ilk kelime ≤ 1,5 sn, ilk cümle ≤ 3 sn (p95). Eşikler aşağıda örnek; kuyruk ölçümünden (9.2) sonra kesinleşir. Bütün bulut çağrıları ZDR'li kalır (yedekler de `require_zdr`).
+
+**Qwen3-8B sorgu embed'i** (bugün: normal çağrı ~0,6–1,8 sn, kuyrukta 14–26 sn)
+
+| Seçenek | Nasıl | Getiri | Bedel / risk |
+|---|---|---|---|
+| Süre sınırı + kolsuz devam | Embed 1,5 sn'de gelmezse o sorgu ikili yolla (bge-m3 + çevirili BM25) sürer; geç gelen vektör önbelleğe yazılır (aynı soru tekrar gelirse kullanılır) | Arama süresi üstten sınırlı (~1,5 sn + Qdrant) | O sorguda doğruluk ikili yol düzeyine iner (9.1: hit@1 −14, hit@5 −3 puan) |
+| Hedging | 1 sn'de cevap yoksa aynı isteği ikinci kez gönder (mümkünse farklı sağlayıcıya: `provider.order` / `sort`), ilk gelen kullanılır, öteki iptal | Kuyruk sağlayıcıya ya da tek isteğe özgüyse büyük kısmı kırpılır; doğruluk kaybı yok | Yavaş isteklerde 2× embed maliyeti (önemsiz: ~0,00001 USD/sorgu); sağlayıcı genel olarak yavaşsa işe yaramaz |
+| Devre kesici | Son N çağrının çoğu sınırı aştıysa birkaç dakika Qwen hiç çağrılmaz, ikili yol kullanılır; aralıklı deneme çağrısıyla geri açılır | Her sorguda süre sınırını beklemek gerekmez | Bu sürede bütün sorgular ikili yol doğruluğunda |
+| (sunucuda) yerel embedding | Qwen3 yerine sunucuda çalışan model | Ağ kuyruğu yok | Donanım; Qwen3-8B CPU'da pratik değil, doğruluk yeniden ölçülmeli |
+
+Önerilen birleşim: **1 sn'de hedge, 1,5 sn'de kolsuz devam, devre kesici**; önbellekte vektör varsa hiç çağrı yok. Her yedek kullanım günlüğe yazılır (oran izlenir; yüksekse sağlayıcı ya da mimari değişir).
+
+**Çeviri (gemma-3-12b-it)**: süre sınırı ~1,2 sn; aşılırsa BM25 çevirisiz sorguyla (A/üçlü çevirisiz düzeyi). Ayrıca `provider.sort = latency` (yoklamada p90 0,81 → 0,69 sn).
+
+**Cevap modeli**
+
+| Seçenek | Nasıl | Not |
+|---|---|---|
+| İlk token süre sınırı | İlk token ~1,5 sn'de gelmezse istek iptal, yedeğe geçilir | Bugün ilk token çoğunlukla 0,3–1,2 sn, 2/20 soruda ~20 sn |
+| Hedging (ilk token) | 1,2 sn'de ilk token yoksa ikinci istek farklı sağlayıcıya; ilk akan kullanılır | Maliyet yalnız yavaş isteklerde 2× (~0,0003 USD/sorgu) |
+| Yedek sağlayıcı / model | Aynı model başka ZDR sağlayıcıda (`provider.order`, `allow_fallbacks`), o da yoksa önceden seçilmiş ZDR'li ikinci model | Cevap modeli seçimi (PRD A1) ile birlikte; ikinci modelin doğruluğu ayrıca ölçülmeli |
+| Toplam süre sınırı | Akış ~20 sn'de bitmezse kesilir, kullanıcıya kısmi cevap + "tamamlanamadı" | Doğrulama rozeti kısmi cevapta verilmez |
+| Arayüz | Arama bitince kaynaklar hemen gösterilir; cevap akarken "hazırlanıyor" | Algılanan bekleme azalır |
+
+Önerilen birleşim: **1,2 sn'de ilk token hedge'i, 1,5 sn'de yedek sağlayıcı, 20 sn toplam sınır**; eşikler 9.2'deki ilk token dağılımına göre ayarlanır.

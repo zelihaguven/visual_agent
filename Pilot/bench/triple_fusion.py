@@ -57,13 +57,15 @@ def main() -> None:
     qwen, bge = QueryEncoder(specs()["qwen3-8b"], 256), QueryEncoder(specs()["bge-m3-local-bm25"], 256)
     items = [(it, prepare(it["q"])) for it in load_questions(a.sets, include_unapproved=a.include_unapproved)]
     items = [(it, p) for it, p in items if not p["skip"] and not it.get("expect_clarify")]
-    skipped = [it["qid"] for it, p in items if not qwen.cached(p["search_q"])]
+    use_qwen = "qwen" in arms_on
+    skipped = [it["qid"] for it, p in items if use_qwen and not qwen.cached(p["search_q"])]
     items = [(it, p) for it, p in items if it["qid"] not in skipped]
     qc = server_client()
     out: dict[str, Any] = {"questions": {}, "timing": {}, "skipped_offline": skipped}
     for n, (it, p) in enumerate(items, 1):
-        qv = qwen(p["search_q"], True)
+        qv = qwen(p["search_q"], True) if use_qwen else None
         bv = bge(p["search_q"], True) if "bge" in arms_on else None
+        base = qv or bv                        # BM25 sorgusu (çevrilmemişse) ilk dense kolun encode'undan
         qd = out["questions"].setdefault(it["qid"], {
             "qid": it["qid"], "set": it["set"], "q": it["q"], "search_q": p["search_q"],
             "not_found": bool(it.get("expect_not_found")),
@@ -71,7 +73,7 @@ def main() -> None:
         for mode in ("filtered", "unfiltered"):
             flt = retrieve._filter(None, p["doc_ids"] if mode == "filtered" else None)
             k = retrieve.PREFETCH_K
-            sq = {**qv, "sparse": bm25_query(trans[it["qid"]][mode]["bm25"])} if trans else qv
+            sq = {**base, "sparse": bm25_query(trans[it["qid"]][mode]["bm25"])} if trans else base
             arms = []
             if "qwen" in arms_on:
                 arms.append(retrieve.candidates(qc, qv, flt, "dense", collection=a.qwen_collection,
@@ -80,7 +82,10 @@ def main() -> None:
                 arms.append(retrieve.candidates(qc, bv, flt, "dense", collection=a.bge_collection, dense_mode="full",
                                                 fused_k=k))
             if "bm25" in arms_on:
-                arms.append(retrieve.candidates(qc, sq, flt, "sparse", collection=a.qwen_collection, sparse_name="bm25",
+                # Qwen kolu yoksa BM25 bge-m3 koleksiyonundan (aynı korpus, aynı BM25 vektörleri)
+                arms.append(retrieve.candidates(qc, sq, flt, "sparse",
+                                                collection=a.qwen_collection if use_qwen else a.bge_collection,
+                                                sparse_name="bm25",
                                                 fused_k=k))
             qd[mode] = [{"chunk_id": x.payload["chunk_id"], "doc_id": x.payload["doc_id"], "pages": x.payload["pages"],
                          "chunk_type": x.payload.get("chunk_type"), "text": x.payload["text"],
