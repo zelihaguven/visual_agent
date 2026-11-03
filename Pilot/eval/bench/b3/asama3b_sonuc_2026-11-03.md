@@ -12,7 +12,7 @@ Süreler geliştirme dizüstünde (i5-1335U, GPU yok) alındı: **üretimi temsi
 |---|---|
 | Korpus | Gerçek 4.232 parça + dikkat dağıtıcılar: big_patent CPC D %40, CPC F %30, Vikipedi en %18, tr %12 ([hazırlık](asama3_hazirlik_2026-10-27.md) §2). Kademeler iç içe: 10k, 30k, 100k, 1M |
 | Qwen3-8B (bulut) | 999.952 nokta; MRL 256 kısa vektör HNSW'de, tam 4096 vektör diskte (`short_rescore`), BM25. 1M embed maliyeti ~1,75 USD (günlükten: 10k denemesi 0,016 + kesilen koşu 1,615 + devam 0,117), sınır 3 USD |
-| bge-m3 + BM25 (lokal) | 10k'ya kadar (CPU, 0,88 parça/sn, 3,1 saat). Görev tanımındaki 20–30k sınırının altında kaldı; 30k adımı isteğe bağlıydı, koşulmadı |
+| bge-m3 + BM25 (lokal) | 10k'ya kadar (CPU, 0,88 parça/sn, 3,1 saat). Görev tanımındaki 20–30k sınırının altında kaldı. Karar (2026-11-03): 30k'ya şimdilik tamamlanmıyor; 1M ölçümü şirket içi sunucudaki teste bırakıldı |
 | Ölçüm | 37 bilinen soru (Q09 artık cevaplı), rerank'sız (B4 varsayılanı), filtreli + filtresiz; ANN recall 300 rastgele sorgu |
 | B3a için | `synth_1m`: 1M sentetik nokta (gerçek bge-m3 vektörü + gürültü 0,015, sparse token düşürme 0,3), 1.068 sn'de yüklendi. Ölçümü şirket içi sunucuda |
 
@@ -82,9 +82,33 @@ Okuma: kalabalık ilk 5'e giriyor ama doğru sayfayı çoğunlukla ilk 5'ten ata
 
 1M'de Qdrant süreci 5,8 GB RAM kullandı (dizüstünde 32 GB RAM var; sayfa önbelleği buna dahil değil). Sorgu embed süresi bulut ağına bağlı (p50 0,8–1,1 sn) ve bu ölçümün konusu değil.
 
+## 10k kademesinde iki yol yan yana (filtreli)
+
+İki yolun ortak ölçüldüğü en büyük kademe 10k. Değerler mevcut sonuçlardan ([Qwen3-8B 10k](asama3b_scale_qwen3_8b_10000_2026-11-03.md), [bge-m3 + BM25 10k](asama3b_scale_bge_m3_10000_2026-11-03.md)); yeni koşu yok. Filtreli, rerank'sız.
+
+| Set | n | Qwen3-8B hit@1 | bge-m3 + BM25 hit@1 | Qwen3-8B hit@5 | bge-m3 + BM25 hit@5 |
+|---|---|---|---|---|---|
+| **Hepsi** | 37 | **0,76** (28) | **0,73** (27) | **0,92** (34) | **0,89** (33) |
+| questions | 13 | 0,62 | 0,85 | 1,00 | 1,00 |
+| questions_ek | 12 | 0,92 | 0,83 | 0,92 | 0,83 |
+| sekil_sorular | 12 | 0,75 | 0,50 | 0,83 | 0,83 |
+
+Toplamdaki 1 soruluk fark, iki yolun ayrıştığı 9 sorunun net sonucu:
+
+| Soru | Qwen3-8B sırası | bge-m3 + BM25 sırası | Önde |
+|---|---|---|---|
+| questions:Q09, Q12 | 4, 4 | 1, 1 | bge-m3 |
+| questions:Q13 | 2 | 1 | bge-m3 |
+| sekil_sorular:G6 | 9 | 1 | bge-m3 |
+| questions_ek:Q27 | 1 | ilk 20'de yok | Qwen3-8B |
+| sekil_sorular:N3 | 1 | ilk 20'de yok | Qwen3-8B |
+| sekil_sorular:G1, G2, N2 | 1, 1, 1 | 3, 2, 2 | Qwen3-8B |
+
+Okuma: toplamda fark 1 soru, yani gürültü sınırının (5–8 puan) altında. Ama yollar farklı sorularda başarılı: bge-m3 + BM25 `questions` setinde (hit@1 0,85 / 0,62), Qwen3-8B şekil sorularında (0,75 / 0,50) önde. Bu, iki yolun hata kümelerinin örtüşmediğini gösteriyor; tek bir toplam sayıyla karar vermek bu ayrımı gizler.
+
 ## Sonuç ve sonraki adım
 
-- **K1 arama ölçütü (hit@5 ≥ %90):** Qwen3-8B filtreli 1M'de 0,92 ile geçiyor; filtresiz 0,86 ile geçmiyor. bge-m3 + BM25 10k'da 0,89 (sınırda). bge-m3 yolu 1M'de ölçülmedi: CPU'da 1M ≈ 185 saat (B4 maliyet tablosu); GPU ya da sunucu gerekir.
-- **Embedding kararı (PRD: "bge-m3 ve Qwen3-8B karşılaştırılıyor"):** aynı kademede (10k) Qwen3-8B hit@1 ve hit@5'te 3 puan önde; fark 37 soruda gürültü sınırının altında. Karar onaylı 155 soruluk setle verilmeli.
-- **B3a ve B3c** (süre ve yük) şirket içi sunucuda; paket `synth_1m`, `scale_qwen3_8b`, `scale_bge_m3` snapshot'larıyla depo düzenlemesinden sonra bir kez üretilecek.
+- **K1 arama ölçütü (hit@5 ≥ %90):** Qwen3-8B filtreli 1M'de 0,92 ile geçiyor; filtresiz 0,86 ile geçmiyor. bge-m3 + BM25 10k'da 0,89 (sınırda). bge-m3 yolunun 1M ölçümü şirket içi sunucudaki teste bırakıldı (karar 2026-11-03); dizüstü CPU'da 1M ≈ 185 saat (B4 maliyet tablosu).
+- **Embedding kararı (PRD: "bge-m3 ve Qwen3-8B karşılaştırılıyor"):** 10k'da Qwen3-8B toplamda 1 soru önde, ama iki yol farklı soru türlerinde güçlü (yukarıdaki bölüm). Karar onaylı 155 soruluk setle, set bazında verilmeli.
+- **B3a ve B3c** (süre ve yük) şirket içi sunucuda. Paket depo düzenlemesinden sonra bir kez üretildi (commit `7ba656e`, 25,7 GB: `synth_1m`, `scale_qwen3_8b`, `scale_bge_m3` snapshot'ları).
 - **Kesinti notu:** 27 Ekim gecesi koşu 14.400/15.468 toplu işte ağ hatasıyla durdu, 3 Kasım sabahı kaldığı yerden devam etti; veri kaybı yok, son durum 15.625/15.625 toplu iş.
