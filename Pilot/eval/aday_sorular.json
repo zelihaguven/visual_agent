@@ -3376,6 +3376,14 @@
      9
     ],
     "chunk_id": "mrcoffee-2003-00054"
+   },
+   {
+    "doc": "mrcoffee-2003",
+    "pages": [
+     15
+    ],
+    "chunk_id": "mrcoffee-2003-00094",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [],
@@ -3408,6 +3416,14 @@
      10
     ],
     "chunk_id": "mrcoffee-2003-00055"
+   },
+   {
+    "doc": "mrcoffee-2003",
+    "pages": [
+     12
+    ],
+    "chunk_id": "mrcoffee-2003-00073",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3442,6 +3458,14 @@
      12
     ],
     "chunk_id": "mrcoffee-2003-00071"
+   },
+   {
+    "doc": "mrcoffee-2003",
+    "pages": [
+     13
+    ],
+    "chunk_id": "mrcoffee-2003-00075",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3476,6 +3500,14 @@
      16
     ],
     "chunk_id": "mrcoffee-2003-00100"
+   },
+   {
+    "doc": "mrcoffee-2003",
+    "pages": [
+     8
+    ],
+    "chunk_id": "mrcoffee-2003-00048",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3511,6 +3543,15 @@
      18
     ],
     "chunk_id": "mrcoffee-2003-00113"
+   },
+   {
+    "doc": "mrcoffee-2003",
+    "pages": [
+     6,
+     7
+    ],
+    "chunk_id": "mrcoffee-2003-00037",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3620,6 +3661,14 @@
      21
     ],
     "chunk_id": "mrcoffee-2003-00139"
+   },
+   {
+    "doc": "mrcoffee-2003",
+    "pages": [
+     3
+    ],
+    "chunk_id": "mrcoffee-2003-00012",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [],
@@ -3652,6 +3701,22 @@
      2
     ],
     "chunk_id": "bosch-ra1171-00009"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     32
+    ],
+    "chunk_id": "bosch-ra1171-00196",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     63
+    ],
+    "chunk_id": "bosch-ra1171-00400",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [],
@@ -3684,6 +3749,22 @@
      19
     ],
     "chunk_id": "bosch-ra1171-00144"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     49
+    ],
+    "chunk_id": "bosch-ra1171-00340",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     81
+    ],
+    "chunk_id": "bosch-ra1171-00543",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3718,6 +3799,22 @@
      14
     ],
     "chunk_id": "bosch-ra1171-00121"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     44
+    ],
+    "chunk_id": "bosch-ra1171-00314",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     76
+    ],
+    "chunk_id": "bosch-ra1171-00518",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3753,6 +3850,22 @@
      15
     ],
     "chunk_id": "bosch-ra1171-00124"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     45
+    ],
+    "chunk_id": "bosch-ra1171-00318",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     77
+    ],
+    "chunk_id": "bosch-ra1171-00521",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3787,6 +3900,22 @@
      25
     ],
     "chunk_id": "bosch-ra1171-00170"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     55
+    ],
+    "chunk_id": "bosch-ra1171-00369",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     87
+    ],
+    "chunk_id": "bosch-ra1171-00569",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3821,6 +3950,22 @@
      31
     ],
     "chunk_id": "bosch-ra1171-00187"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     61
+    ],
+    "chunk_id": "bosch-ra1171-00390",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     93
+    ],
+    "chunk_id": "bosch-ra1171-00591",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -3854,6 +3999,22 @@
      21
     ],
     "chunk_id": "bosch-ra1171-00155"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     51
+    ],
+    "chunk_id": "bosch-ra1171-00352",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     83
+    ],
+    "chunk_id": "bosch-ra1171-00554",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [],
@@ -3887,6 +4048,22 @@
      8
     ],
     "chunk_id": "bosch-ra1171-00097"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     38
+    ],
+    "chunk_id": "bosch-ra1171-00287",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     70
+    ],
+    "chunk_id": "bosch-ra1171-00492",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [
@@ -4960,6 +5137,22 @@
      17
     ],
     "chunk_id": "mrcoffee-2003-00107"
+   },
+   {
+    "doc": "mrcoffee-2003",
+    "pages": [
+     8
+    ],
+    "chunk_id": "mrcoffee-2003-00048",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "mrcoffee-2003",
+    "pages": [
+     7
+    ],
+    "chunk_id": "mrcoffee-2003-00039",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [],
@@ -4992,6 +5185,22 @@
      21
     ],
     "chunk_id": "bosch-ra1171-00155"
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     51
+    ],
+    "chunk_id": "bosch-ra1171-00352",
+    "dil_kopyasi": true
+   },
+   {
+    "doc": "bosch-ra1171",
+    "pages": [
+     83
+    ],
+    "chunk_id": "bosch-ra1171-00554",
+    "dil_kopyasi": true
    }
   ],
   "expect_in_answer": [],
