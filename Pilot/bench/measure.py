@@ -223,12 +223,15 @@ def main() -> None:
         apply_env(a.scale_collection)
 
     from pilot import config, index
+    from pilot.embed import rerank_enabled
 
     items = load_questions(a.sets)
     timed = [it for it in items if not a.timing_sets or it["set"] in a.timing_sets]
     rest = [it for it in items if it not in timed]
     params = {**retrieval_params(), "sets": a.sets, "timing_sets": a.timing_sets or a.sets, "repeats": a.repeats,
-              "warmup": a.warmup, "rerank": not a.no_rerank, "access": a.access, "source_strip": not a.no_source_strip,
+              # reranker yalnız PILOT_RERANK_PROVIDER ayarlıysa çalışır (varsayılan none, B4); --no-rerank onu da kapatır
+              "warmup": a.warmup, "rerank": not a.no_rerank and rerank_enabled(), "access": a.access,
+              "source_strip": not a.no_source_strip,
               "qdrant_mode": "server" if config.QDRANT_URL else "embedded", "qdrant_url": config.QDRANT_URL,
               "collection": config.COLLECTION, "qdrant_reuse": index.REUSE}
     log.info("%d soru: %d soru %d tur (süre + doğruluk), %d soru 1 tur (doğruluk)", len(items), len(timed),

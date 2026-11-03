@@ -10,7 +10,7 @@ Arama katmanının ölçümleri (yalnız arama; cevap modeli ayrı). Aşamalar *
 | [b2/](b2/README.md) | B2 | Qdrant sunucu modu, gRPC, yetki (`access`) filtresi | Sunucu modu: Qdrant p50 306 → 13 ms; yetki filtresi aramanın içinde |
 | [b25/](b25/README.md) | B2.5 | Veri kalitesi, belirli sıralı RRF | hit@5 0,86 → 0,89; gömülü ve sunucu modu aynı sıra |
 | [b3/](b3/README.md) | B3 | 1M kalabalıkta doğruluk (B3b); süre (B3a) ve yük (B3c) sunucuda | hit@5 1M'e kadar sabit; B3a/B3c bekliyor |
-| [b4/](b4/README.md) | B4 | 9 embedding × 3 reranker, maliyet | **Varsayılan: bge-m3 + BM25, rerank kapalı** (hit@5 0,89, p50 0,45 sn) |
+| [b4/](b4/README.md) | B4 | 9 embedding × 3 reranker, maliyet; 2026-11-03 genel kurallar, çeviri, gecikme | **Varsayılan: bge-m3 + BM25, rerank kapalı** (hit@5 0,89, p50 0,45 sn). Dondurulan aday: üçlü füzyon + çevirili BM25 ([özet](b4/ozet_dondurulan_aday_2026-11-03.md)) |
 | [bulunamadi/](bulunamadi/README.md) | — | "Bulunamadı" ve netleştirme, tam hat | Doğru "bulunamadı" %48, hedef ≥ %90 (Adım 2) |
 | `genel/` | — | Önekine uymayan genel araç çıktıları (`kayip`, `mod_farki`, `rerank_*`, `openrouter_modeller` …) | Yeni koşularda oluşur |
 
