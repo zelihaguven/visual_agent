@@ -198,8 +198,26 @@ def dir_size(path: Path) -> int:
     return sum(f.stat().st_size for f in Path(path).rglob("*") if f.is_file()) if Path(path).exists() else 0
 
 
-def write_result(stage: str, data: dict[str, Any], md: str, out_dir: Path = OUT_DIR) -> Path:
-    """<aşama>_<tarih>.json ve .md. Aynı gün ikinci koşu: _2, _3 ..."""
+# Sonuç klasörü, adın önekinden (eval/bench/README.md). Önekine uymayan genel araç çıktıları genel/'e.
+STAGE_DIRS = (
+    ("baseline", "b0-b1"), ("asama1", "b0-b1"),
+    ("asama25", "b25"), ("asama2_", "b2"),
+    ("asama3", "b3"),
+    ("asama4", "b4"), ("rerank_duzeltme", "b4"), ("rerank_teshis2", "b4"),
+    ("bulunamadi", "bulunamadi"), ("netlestirme", "bulunamadi"),
+)
+
+
+def stage_dir(stage: str) -> Path:
+    for prefix, sub in STAGE_DIRS:
+        if stage.startswith(prefix):
+            return OUT_DIR / sub
+    return OUT_DIR / "genel"
+
+
+def write_result(stage: str, data: dict[str, Any], md: str, out_dir: Path | None = None) -> Path:
+    """<aşama>_<tarih>.json ve .md, stage_dir(stage) altına. Aynı gün ikinci koşu: _2, _3 ..."""
+    out_dir = out_dir or stage_dir(stage)
     out_dir.mkdir(parents=True, exist_ok=True)
     base = f"{stage}_{datetime.now():%Y-%m-%d}"
     name, i = base, 1

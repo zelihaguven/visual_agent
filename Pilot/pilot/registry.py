@@ -1,4 +1,4 @@
-"""Pilot doküman kaydı (metadata). Kaynak: calisma-notlari/notlar/manual-envanteri.md."""
+"""Pilot doküman kaydı (metadata). Kaynak: docs/arsiv/calisma-notlari/notlar/manual-envanteri.md."""
 from dataclasses import dataclass
 from pathlib import Path
 

@@ -1,7 +1,7 @@
 """Gömülü ve sunucu modunun aynı vektörlerle aynı sonucu verip vermediği: dense, sparse ve hibrit (RRF) kolları ayrı.
 
 Kullanım (Pilot klasöründe, sunucu açık, koleksiyon kopyalanmış): python -m bench.mode_diff
-Çıktı: eval/bench/mod_farki_<tarih>.json ve .md. Fark varsa hangi kolda başladığı ve RRF skorları.
+Çıktı: eval/bench/genel/mod_farki_<tarih>.json ve .md. Fark varsa hangi kolda başladığı ve RRF skorları.
 """
 import warnings
 

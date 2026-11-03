@@ -2,7 +2,7 @@
 
 Kullanım: python -m bench.loss questions_ek:Q27 sekil_sorular:N1 sekil_sorular:N2
 Her soru için: beklenen parçaların dense ve sparse kollardaki sırası (filtreli, ilk 500), RRF sırası, parça türü ve
-embed_text'i, iki kolun ilk 3 rakibi. Çıktı: eval/bench/kayip_<tarih>.json ve .md
+embed_text'i, iki kolun ilk 3 rakibi. Çıktı: eval/bench/genel/kayip_<tarih>.json ve .md
 """
 import sys
 import warnings

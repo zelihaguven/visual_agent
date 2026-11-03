@@ -1,6 +1,6 @@
 """OpenRouter: anahtar kontrolü (kullanım/limit), güncel embedding/rerank modelleri ve ZDR uyumlu sağlayıcıları. Ücretsiz uçlar.
 
-Kullanım: python -m bench.openrouter_models   -> eval/bench/openrouter_modeller_<tarih>.json
+Kullanım: python -m bench.openrouter_models   -> eval/bench/genel/openrouter_modeller_<tarih>.json
 Anahtar yalnız OPENROUTER_API_KEY ortam değişkeninden okunur, hiçbir yere yazılmaz.
 """
 import json
@@ -9,7 +9,7 @@ from datetime import datetime
 
 import requests
 
-from bench.common import OUT_DIR
+from bench.common import stage_dir
 from pilot.config import OPENROUTER_URL
 
 
@@ -48,8 +48,9 @@ def main() -> None:
     out["rerank_like"] = out["rerank"]["models"]
     out["embed_like"] = [m for m in out["all"]["models"] if "embed" in (m["id"] or "").lower()
                          or "bge" in (m["id"] or "").lower()]
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    path = OUT_DIR / f"openrouter_modeller_{datetime.now():%Y-%m-%d}.json"
+    out_dir = stage_dir("openrouter_modeller")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / f"openrouter_modeller_{datetime.now():%Y-%m-%d}.json"
     path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for m in out["rerank_like"]:
         print("rerank:", m["id"], "ZDR:", m["zdr_providers"] or "YOK")

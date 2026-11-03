@@ -4,14 +4,14 @@ yalnız tokenizer).
 Kullanım: python -m bench.rerank_diag qwen3-8b_full [bge-m3-local-bm25_full ...]
 Her aday kümesi ve reranker için: rerank'ın hit@1'i bozduğu ve düzelttiği sorular (doğru parça önce/sonra kaçıncı, öne
 alınan parça hangisi, aynı doküman mı), reranker'a giden metnin token uzunluğu ve kesilip kesilmediği (max_length),
-metinde doküman/bölüm başlığı olup olmadığı. Çıktı: eval/bench/rerank_teshis2_<tarih>.md
+metinde doküman/bölüm başlığı olup olmadığı. Çıktı: eval/bench/b4/rerank_teshis2_<tarih>.md
 """
 import json
 import sys
 from pathlib import Path
 from typing import Any
 
-from bench.common import KNOWN_SETS, OUT_DIR, first_rank, load_questions, meta, write_result
+from bench.common import KNOWN_SETS, first_rank, load_questions, meta, stage_dir, write_result
 from bench.rerank_bench import ranked_rank
 
 CACHE = Path(__file__).resolve().parent.parent / "data" / "bench_cache"
@@ -37,7 +37,7 @@ def analyze(key: str) -> tuple[list[str], dict[str, Any]]:
     from pilot.chunk import read_chunks
     chunks = {c["chunk_id"]: c for c in read_chunks()}
     cands = json.loads((CACHE / f"candidates_{key}.json").read_text(encoding="utf-8"))["questions"]
-    res = json.loads(next(OUT_DIR.glob(f"asama4_rerank_{key}_*.json")).read_text(encoding="utf-8"))
+    res = json.loads(next(stage_dir("asama4_rerank").glob(f"asama4_rerank_{key}_*.json")).read_text(encoding="utf-8"))
     items = {it["qid"]: it for it in load_questions(KNOWN_SETS)}
     lines = [f"## {key}", ""]
     stats: dict[str, Any] = {}

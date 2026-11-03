@@ -9,7 +9,7 @@ Kullanım (Pilot klasöründe; yol ortam değişkenleriyle seçilir, her yol ayr
     python -m bench.clarify_guard run --label yeni_varsayilan
     $env:PILOT_RERANK_PROVIDER="local"; $env:PILOT_SPARSE="bge-m3"; $env:PILOT_RERANK_PASSAGE="text"; `
       $env:PILOT_RERANK_FUSION="none"; python -m bench.clarify_guard run --label eski_rerank
-    python -m bench.clarify_guard summary          # eval/bench/netlestirme_korumasi_<tarih>.md
+    python -m bench.clarify_guard summary          # eval/bench/bulunamadi/netlestirme_korumasi_<tarih>.md
 Onaylı setler sayılır; --unverified ile eval/aday_sorular.json (onaysız) ayrıca, yalnız bilgi amaçlı.
 """
 import argparse

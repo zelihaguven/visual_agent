@@ -4,7 +4,7 @@ Kullanım (Pilot klasöründe, arayüz kapalıyken; gömülü Qdrant klasörü t
     $env:PYTHONUTF8="1"; python -m bench.measure --name baseline
     python -m bench.measure --name x --repeats 5 --sets questions sekil_sorular
     python -m bench.measure --name juki --sets gorulmemis_juki     # yalnız son raporda (ayrı tutulan set)
-Çıktı: eval/bench/<name>_<tarih>.json ve .md
+Çıktı: eval/bench/<aşama klasörü>/<name>_<tarih>.json ve .md (common.stage_dir)
 
 Yöntem (BENCHMARK-RAPORU.md §Yöntem): Modeller ısınma sorgularıyla yüklenir (süreye girmez). Her soru --repeats kez
 aranır; doğruluk ilk turdan (arama deterministik), süreler bütün turlardan. Arama pipeline'daki gibi hazırlanır

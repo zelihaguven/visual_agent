@@ -7,20 +7,20 @@ __pycache__/
 .DS_Store
 
 # Pilot: indeks (run_index.py ile yeniden üretilir), loglar, arayüzde üretilen sesler
-pilot/data/qdrant/
-pilot/data/logs/
-pilot/data/audio/
+Pilot/data/qdrant/
+Pilot/data/logs/
+Pilot/data/audio/
 
 # Ses dosyaları (STT ölçümünün test sesleri hariç)
 *.wav
-!pilot/eval/stt/*.wav
+!Pilot/eval/stt/*.wav
 
 # Benchmark: bulut embedding önbelleği, Aşama 3 korpusu ve ilerleme dosyaları, sentetik/sunucu Qdrant depoları, Qdrant ikilisi, Optuna dışı ham büyük veri
-pilot/data/bench_cache/
-pilot/data/bench_qdrant/
-pilot/data/qdrant_server/
-pilot/tools/qdrant/
-pilot/data/scale/
+Pilot/data/bench_cache/
+Pilot/data/bench_qdrant/
+Pilot/data/qdrant_server/
+Pilot/tools/qdrant/
+Pilot/data/scale/
 
 # Gizli anahtarlar (OPENROUTER_API_KEY yalnız ortam değişkeninden okunur)
 .env

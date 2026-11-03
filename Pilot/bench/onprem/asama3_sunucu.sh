@@ -186,7 +186,7 @@ topla() {
     echo "== lscpu"; lscpu 2>/dev/null; echo "== bellek"; free -g; echo "== disk"; df -h "$PAKET"
     echo "== systemd"; systemctl --version 2>/dev/null | head -1; echo "== commit"; cat "$PAKET/COMMIT" 2>/dev/null
   } > "$W/sistem.txt" 2>&1
-  tar -czf "$out" -C "$KOD" $(cd "$KOD" && ls eval/bench/asama3_sure_* eval/bench/asama3_yuk_* 2>/dev/null) \
+  tar -czf "$out" -C "$KOD" $(cd "$KOD" && ls eval/bench/b3/asama3_sure_* eval/bench/b3/asama3_yuk_* 2>/dev/null) \
       -C "$W" kontrol.txt sistem.txt asama3_sunucu.log || die "tar"
   log "SONUÇ: $out ($(du -h "$out" | cut -f1)) — bu dosyayı geri getirin"
 }

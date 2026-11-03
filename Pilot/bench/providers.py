@@ -349,7 +349,7 @@ def costs(name: str) -> None:
 
 
 def matrix(name: str) -> None:
-    """Embedding × reranker tablosu (eval/bench/asama4_rerank_*.json): doğruluk, rerank süresi, uçtan uca süre."""
+    """Embedding × reranker tablosu (eval/bench/b4/asama4_rerank_*.json): doğruluk, rerank süresi, uçtan uca süre."""
     rows = []
     emb = {r["params"]["key"] + "_" + r["params"]["dense_mode"]: r for r in
            (candidates_accuracy(p) for p in CACHE_DIR.glob("candidates_*_full.json"))}
@@ -387,8 +387,8 @@ def matrix(name: str) -> None:
 
 
 def OUT_DIR_GLOB():
-    from bench.common import OUT_DIR
-    return OUT_DIR.glob("asama4_rerank_*.json")
+    from bench.common import stage_dir
+    return stage_dir("asama4_rerank").glob("asama4_rerank_*.json")
 
 
 def main() -> None:

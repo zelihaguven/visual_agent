@@ -98,6 +98,25 @@ def test_write_result_does_not_overwrite(tmp_path):
     assert p2.with_suffix(".md").read_text(encoding="utf-8") == "# x"
 
 
+@pytest.mark.parametrize("stage, sub", [
+    ("baseline", "b0-b1"), ("asama1_onerilen", "b0-b1"),
+    ("asama2_sunucu_grpc", "b2"), ("asama25_sonra", "b25"),
+    ("asama3_sure_synth_1m_8c", "b3"), ("asama3_yuk_scale_qwen3_8b_qdrant_8c", "b3"), ("asama3b_scale_qwen3_8b", "b3"),
+    ("asama4_rerank_qwen3-8b_full", "b4"), ("rerank_duzeltme_ozet", "b4"), ("rerank_teshis2", "b4"),
+    ("bulunamadi_e2e", "bulunamadi"), ("netlestirme_korumasi", "bulunamadi"),
+    ("kayip", "genel"), ("mod_farki", "genel"), ("rerank_modeller", "genel"), ("openrouter_modeller", "genel"),
+    ("asama2", "genel"),        # alt çizgisiz "asama2" hiçbir öneke uymaz; asama25 ile karışmasın diye önek "asama2_"
+])
+def test_stage_dir_routes_by_prefix(stage, sub):
+    assert common.stage_dir(stage) == common.OUT_DIR / sub
+
+
+def test_write_result_default_dir_is_stage_dir(tmp_path, monkeypatch):
+    monkeypatch.setattr(common, "OUT_DIR", tmp_path)
+    p = write_result("asama25_x", {"a": 1}, "# x")
+    assert p.parent == tmp_path / "b25"
+
+
 def test_prepare_scopes_like_pipeline():
     p = prepare("S-7300A'da E050 hatası ne demek?")
     assert p["skip"] is None and p["doc_ids"] == ["brother-s7300a"]

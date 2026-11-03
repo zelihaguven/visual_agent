@@ -4,7 +4,7 @@ Kullanım (Pilot klasöründe, Ollama açık; yol ortam değişkenleriyle, her y
     python -m bench.notfound_e2e run --label yeni_varsayilan
     $env:PILOT_RERANK_PROVIDER="local"; $env:PILOT_SPARSE="bge-m3"; $env:PILOT_RERANK_PASSAGE="text"; `
       $env:PILOT_RERANK_FUSION="none"; python -m bench.notfound_e2e run --label eski_rerank
-    python -m bench.notfound_e2e summary         # eval/bench/bulunamadi_e2e_<tarih>.md
+    python -m bench.notfound_e2e summary         # eval/bench/bulunamadi/bulunamadi_e2e_<tarih>.md
 Sorular: onaylı setlerin expect_not_found soruları + aday taslağın (onaysız) bulunamadı soruları.
 Çıkış noktası: yabanci_marka | kod_yok | kaynak_uyumsuz | skor_esigi | model_bulunamadi | model_cevap (cevap üretti:
 yanlış) | netlestirme. Kaldığı yerden sürer (aynı etiketle yeniden çalıştırınca biten sorular atlanır).

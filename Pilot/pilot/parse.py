@@ -1,7 +1,7 @@
 """PDF -> öğe listesi (Docling, OCR kapalı: PDF'in kendi metin katmanı kullanılır).
 
 Her öğe: id, label, text, page, bbox_tl [l,t,r,b] (sol-üst orijin, point), page_w, page_h, pages, boxes.
-Faz 1 denemesindeki (calisma-notlari/faz1-test/faz1-test.py) üst/alt bilgi ayıklama, tablo satırı ve
+Faz 1 denemesindeki (docs/arsiv/calisma-notlari/faz1-test/faz1-test.py) üst/alt bilgi ayıklama, tablo satırı ve
 sayfa geçişi birleştirme mantığının pilot sürümü.
 """
 import json
