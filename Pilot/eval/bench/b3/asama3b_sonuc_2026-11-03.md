@@ -30,6 +30,8 @@ Süreler geliştirme dizüstünde (i5-1335U, GPU yok) alındı: **üretimi temsi
 
 `scale_bge_m3` (10k'ya kadar kurulan ana koleksiyon) `scale_bge_m3_10000` ile aynı sonucu verdi; tabloda tek satır.
 
+İki yol da hibrit: dense + BM25, RRF ile birleşim. "Qwen3-8B" satırları Qwen3-8B dense (MRL 256 ile aday, tam 4096 vektörle sıralama: `short_rescore`) + BM25; "bge-m3 + BM25" satırları bge-m3 dense (tam vektör) + BM25. BM25 kolu iki yolda aynı (fastembed `Qdrant/bm25` + Qdrant IDF).
+
 ```mermaid
 xychart-beta
     title "Qwen3-8B: kalabalık büyürken doğruluk (rerank'sız, 37 soru)"
@@ -84,9 +86,9 @@ Okuma: kalabalık ilk 5'e giriyor ama doğru sayfayı çoğunlukla ilk 5'ten ata
 
 ## 10k kademesinde iki yol yan yana (filtreli)
 
-İki yolun ortak ölçüldüğü en büyük kademe 10k. Değerler mevcut sonuçlardan ([Qwen3-8B 10k](asama3b_scale_qwen3_8b_10000_2026-11-03.md), [bge-m3 + BM25 10k](asama3b_scale_bge_m3_10000_2026-11-03.md)); yeni koşu yok. Filtreli, rerank'sız.
+İki yolun ortak ölçüldüğü en büyük kademe 10k. Değerler mevcut sonuçlardan ([Qwen3-8B + BM25 10k](asama3b_scale_qwen3_8b_10000_2026-11-03.md), [bge-m3 + BM25 10k](asama3b_scale_bge_m3_10000_2026-11-03.md)); yeni koşu yok. Filtreli, rerank'sız. İki yol da hibrit (dense + BM25, RRF); Qwen3-8B ölçümü `PILOT_SPARSE=bm25` ile, koleksiyonda `bm25` sparse vektörüyle alındı, ayrı bir hibrit koşusu gerekmedi.
 
-| Set | n | Qwen3-8B hit@1 | bge-m3 + BM25 hit@1 | Qwen3-8B hit@5 | bge-m3 + BM25 hit@5 |
+| Set | n | Qwen3-8B + BM25 hit@1 | bge-m3 + BM25 hit@1 | Qwen3-8B + BM25 hit@5 | bge-m3 + BM25 hit@5 |
 |---|---|---|---|---|---|
 | **Hepsi** | 37 | **0,76** (28) | **0,73** (27) | **0,92** (34) | **0,89** (33) |
 | questions | 13 | 0,62 | 0,85 | 1,00 | 1,00 |
@@ -95,7 +97,7 @@ Okuma: kalabalık ilk 5'e giriyor ama doğru sayfayı çoğunlukla ilk 5'ten ata
 
 Toplamdaki 1 soruluk fark, iki yolun ayrıştığı 9 sorunun net sonucu:
 
-| Soru | Qwen3-8B sırası | bge-m3 + BM25 sırası | Önde |
+| Soru | Qwen3-8B + BM25 sırası | bge-m3 + BM25 sırası | Önde |
 |---|---|---|---|
 | questions:Q09, Q12 | 4, 4 | 1, 1 | bge-m3 |
 | questions:Q13 | 2 | 1 | bge-m3 |
@@ -104,11 +106,15 @@ Toplamdaki 1 soruluk fark, iki yolun ayrıştığı 9 sorunun net sonucu:
 | sekil_sorular:N3 | 1 | ilk 20'de yok | Qwen3-8B |
 | sekil_sorular:G1, G2, N2 | 1, 1, 1 | 3, 2, 2 | Qwen3-8B |
 
-Okuma: toplamda fark 1 soru, yani gürültü sınırının (5–8 puan) altında. Ama yollar farklı sorularda başarılı: bge-m3 + BM25 `questions` setinde (hit@1 0,85 / 0,62), Qwen3-8B şekil sorularında (0,75 / 0,50) önde. Bu, iki yolun hata kümelerinin örtüşmediğini gösteriyor; tek bir toplam sayıyla karar vermek bu ayrımı gizler.
+Okuma: toplamda fark 1 soru, yani gürültü sınırının (5–8 puan) altında. Yollar farklı sorularda başarılı: bge-m3 + BM25 `questions` setinde (hit@1 11/13 ve 8/13), Qwen3-8B + BM25 şekil sorularında (9/12 ve 6/12) önde. Bu, iki yolun hata kümelerinin örtüşmediğine işaret ediyor.
+
+**Örneklem uyarısı:** set bazındaki farkların her biri **3'er sorudan** oluşuyor (`questions` ve `sekil_sorular` hit@1); `questions_ek`'teki fark 1 soru. Set başına n = 12–13 soruyla bu farklar **karar için yetersiz**: tek bir sorunun yer değiştirmesi oranı 8 puan oynatıyor. Bu bölüm yalnız neye bakılacağını gösteriyor, hangi yolun iyi olduğunu göstermiyor.
+
+**Embedding kararı nasıl verilecek:** bu karşılaştırma rerank'sız. Embedding kararı, B4'teki düzende **reranker sonrası** karşılaştırmayla verilecek (aynı aday listesi üzerinde embedding × reranker, [B4 matrisi](../b4/asama4_matris_2026-10-27.md)), onaylı 155 soruluk setle ve set bazında.
 
 ## Sonuç ve sonraki adım
 
-- **K1 arama ölçütü (hit@5 ≥ %90):** Qwen3-8B filtreli 1M'de 0,92 ile geçiyor; filtresiz 0,86 ile geçmiyor. bge-m3 + BM25 10k'da 0,89 (sınırda). bge-m3 yolunun 1M ölçümü şirket içi sunucudaki teste bırakıldı (karar 2026-11-03); dizüstü CPU'da 1M ≈ 185 saat (B4 maliyet tablosu).
-- **Embedding kararı (PRD: "bge-m3 ve Qwen3-8B karşılaştırılıyor"):** 10k'da Qwen3-8B toplamda 1 soru önde, ama iki yol farklı soru türlerinde güçlü (yukarıdaki bölüm). Karar onaylı 155 soruluk setle, set bazında verilmeli.
+- **K1 arama ölçütü (hit@5 ≥ %90):** Qwen3-8B filtreli 1M'de 0,92 ile geçiyor; filtresiz 0,86 ile geçmiyor. bge-m3 + BM25 10k'da 0,89 (sınırda). bge-m3 yolunun 1M ölçümü şirket içi sunucudaki teste bırakıldı (karar 2026-11-03) ve sunucu özellikleri gelene kadar bekliyor: mevcut pakette bge-m3 yalnız 10k'ya kadar var; 1M için gerçek korpusun sunucuda gömülmesi gerekir (dizüstü CPU'da ≈ 185 saat, B4 maliyet tablosu), bu adım sunucuya göre pakete eklenecek.
+- **Embedding kararı (PRD: "bge-m3 ve Qwen3-8B karşılaştırılıyor"):** 10k'da Qwen3-8B + BM25 toplamda 1 soru önde; set bazındaki farklar 3'er soru, n = 12–13 ile karar için yetersiz. Karar B4 düzeninde reranker sonrası karşılaştırmayla, onaylı 155 soruluk setle verilecek.
 - **B3a ve B3c** (süre ve yük) şirket içi sunucuda. Paket depo düzenlemesinden sonra bir kez üretildi (commit `7ba656e`, 25,7 GB: `synth_1m`, `scale_qwen3_8b`, `scale_bge_m3` snapshot'ları).
 - **Kesinti notu:** 27 Ekim gecesi koşu 14.400/15.468 toplu işte ağ hatasıyla durdu, 3 Kasım sabahı kaldığı yerden devam etti; veri kaybı yok, son durum 15.625/15.625 toplu iş.
