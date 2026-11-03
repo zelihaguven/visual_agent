@@ -9,9 +9,9 @@ from .chunk import read_chunks
 from .config import (CHUNKS_PATH, CLARIFY_DOC_RATIO, CLARIFY_METHOD, CLARIFY_MIN_SCORE, MIN_RERANK_SCORE,
                      TOP_K_SOURCES)
 from .llm import chat_json
-from .query import (DETAIL_HINT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific, aspects_for,
-                    context_entities, family, missing_entities, question_lang, source_aliases, spoken_codes,
-                    strip_source_phrases, strip_terms)
+from .query import (CODE_IN_TEXT, DETAIL_HINT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific,
+                    aspects_for, code_key, context_entities, family, missing_entities, normalize_codes, question_lang,
+                    source_aliases, spoken_codes, strip_source_phrases, strip_terms)
 from .registry import BY_ID, DOCS, visible
 from .retrieve import FUSED_K, Hit, search
 from .speech import normalize_for_speech, normalize_for_speech_en
@@ -108,10 +108,12 @@ CODE_TOKEN_RE = re.compile(r"(?<![\w-])([A-Za-z]{1,3}\d{2,5})(?![\w-])")
 
 
 def _has_code(text: str, code: str) -> bool:
-    """Kod birebir; harf ve rakam arasında tire/boşluk farkı yok sayılır ("E050" = "E-050")."""
-    m = re.fullmatch(r"([A-Za-z]+)(\d+)", code)
-    pat = rf"{m.group(1)}[-\s]?{m.group(2)}" if m else re.escape(code)
-    return re.search(rf"(?<![\w-]){pat}(?![\w-])", text, re.I) is not None
+    """Kod anahtarıyla (query.code_key): tire/boşluk ve baştaki sıfır farkı yok sayılır ("E50" = "E-050" = "E050"),
+    sayısal değer farklıysa kod farklıdır ("E05" ≠ "E050")."""
+    key = code_key(code)
+    if key is None:
+        return re.search(rf"(?<![\w-]){re.escape(code)}(?![\w-])", text, re.I) is not None
+    return any((m.group(1).upper(), int(m.group(2))) == key for m in CODE_IN_TEXT.finditer(text))
 
 
 def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None, access: list[str] | None = None
@@ -253,6 +255,8 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
     # Arama onlara benzeyen parçaları öne almasın, model de "kaynak Brother için değil" diye reddetmesin.
     context = context_entities(ctx, scope) if scope else []
     asked = strip_terms(question, context) if context else question
+    # Kod biçimi korpustaki yazıma ("e50" → "E050"): arama ve kod araması aynı kodu görür (query.normalize_codes)
+    asked = normalize_codes(asked, scope)
 
     if scope and asks_nothing_specific(question, ctx):
         # Kaynak belli ama soru neyi sorduğunu söylemiyor ("ceket ölçüsü"): arama rastgele tablolar getirir.

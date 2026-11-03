@@ -44,8 +44,8 @@ def prepare(question: str, strip_source: bool = True) -> dict[str, Any]:
     """pipeline.soru_cevapla()'nın aramadan önceki adımlarının aynısı: söylenmiş kodlar, varlıklar, kapsam, bağlam
     terimlerinin çıkarılması, terim sözlüğü. Arama yapılmayacaksa (netleştirme, yabancı marka) 'skip' nedenini taşır.
     pipeline.py değişirse burası da güncellenmeli (tests/test_bench.py yaygın durumları kontrol eder)."""
-    from pilot.query import (MUST_MATCH, analyze_query, asks_nothing_specific, context_entities, source_aliases,
-                             spoken_codes, strip_source_phrases, strip_terms)
+    from pilot.query import (MUST_MATCH, analyze_query, asks_nothing_specific, context_entities, normalize_codes,
+                             source_aliases, spoken_codes, strip_source_phrases, strip_terms)
     from pilot.registry import BY_ID
     from pilot.terms import expand_query
 
@@ -59,6 +59,7 @@ def prepare(question: str, strip_source: bool = True) -> dict[str, Any]:
     scope = list(ctx.doc_ids) or None
     context = context_entities(ctx, scope) if scope else []
     asked = strip_terms(question, context) if context else question
+    asked = normalize_codes(asked, scope)
     if scope and asks_nothing_specific(question, ctx):
         return {"skip": "konu_belirsiz"}
     if strip_source:            # strip_source=False: Aşama 2.5 öncesi ölçüm (kaynak ifadesi aramada kalır)

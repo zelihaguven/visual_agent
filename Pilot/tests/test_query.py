@@ -160,3 +160,16 @@ def test_foreign_brand_is_detected(question, brand):
 ])
 def test_no_false_foreign_brand(question):
     assert analyze_query(question).foreign_brands == ()
+
+
+def test_code_key_and_normalization(monkeypatch):
+    from pilot import query
+    assert query.code_key("e50") == query.code_key("E-050") == ("E", 50) and query.code_key("E05") == ("E", 5)
+    monkeypatch.setattr(query, "_code_forms", lambda: {
+        "brother-s7300a": {("E", 50): frozenset({"E050"}), ("TO", 99): frozenset({"TO099", "TO99"})},
+        "juki-mo6800s": {("E", 5): frozenset({"E05"})}})
+    n = query.normalize_codes
+    assert n("s7300a e50 ne demek", None) == "s7300a E050 ne demek"     # takma ad dokunulmaz, kod tek yazıma düşer
+    assert n("e50'de ne olur", ["juki-mo6800s"]) == "e50'de ne olur"     # kapsamda karşılığı yok: olduğu gibi
+    assert n("E05 hatası", ["juki-mo6800s"]) == "E05 hatası"            # zaten korpustaki yazım
+    assert n("to99 kodu", None) == "to99 kodu"                          # iki yazım (TO099, TO99): olduğu gibi

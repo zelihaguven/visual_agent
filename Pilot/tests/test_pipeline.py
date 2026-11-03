@@ -428,6 +428,34 @@ def test_code_match_ignores_hyphen_and_model_aliases():
     assert pipeline.code_lookup("S7300A dikiş atlıyor", None, None) == ([], [], {})
 
 
+def test_code_match_ignores_leading_zeros_but_not_value():
+    assert pipeline._has_code("Code: E050 | Cause: x", "E50")          # baştaki sıfır yazılmamış
+    assert pipeline._has_code("Code: E-050", "e50")
+    assert not pipeline._has_code("Error code: E05 | x", "E50")        # değer farklı (5 ≠ 50): J9 ayrımı korunur
+    assert not pipeline._has_code("Code: E050", "E05")
+
+
+@pytest.fixture
+def code_tables(monkeypatch):
+    from pilot import query
+    monkeypatch.setattr(query, "_code_forms", lambda: {"juki-mo6800s": {("E", 5): frozenset({"E05"})},
+                                                       "brother-s7300a": {("E", 50): frozenset({"E050"})}})
+
+
+def test_short_code_is_normalized_for_search_and_code_lookup(monkeypatch, calls, code_chunks, code_tables):
+    seen = []
+    monkeypatch.setattr(pipeline, "search", lambda q, **kw: seen.append(q) or [Hit(CHUNK, 0, 1.0)])
+    r = pipeline.soru_cevapla("S-7300A'da e50 hatası ne demek?")
+    assert r.verification.status != "not_found"                        # eskiden: "E50 kodu ... geçmiyor"
+    assert "E050" in seen[0] and "Machine head" in calls["llm"][0]
+
+
+def test_code_of_other_value_stays_not_found(monkeypatch, calls, code_chunks, code_tables):
+    monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(JUKI_E05, 0, 1.0)])
+    r = pipeline.soru_cevapla("MO-6800S'te e50 hatası ne demek?")       # JUKI'de E50/E050 yok, E05 başka kod
+    assert r.verification.status == "not_found" and calls["llm"] == []
+
+
 # --- doküman düzeyinde netleştirme (seçenek; varsayılan top3) ---
 
 def _h(doc, score):

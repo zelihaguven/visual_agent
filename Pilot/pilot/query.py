@@ -138,6 +138,52 @@ def spoken_codes(text: str) -> str:
     return " ".join(out)
 
 
+# --- Kod biçimi: "e50" ↔ "E050" -------------------------------------------------------------------------
+# Kod: 1–3 harf + isteğe bağlı ayırıcı + 2–5 rakam. İki kod, harfleri (büyük/küçük farkı yok) ve rakamlarının sayısal
+# değeri aynıysa aynıdır: baştaki sıfır yazılmayabilir ("E50" = "E050"), ama değer farklıysa farklıdır ("E05" ≠
+# "E050"). Hangi yazımın var olduğu korpustan otomatik çıkarılır (doküman başına kod tablosu); dokümana özgü eşleme yok.
+CODE_IN_TEXT = re.compile(r"(?<![\w-])([A-Za-z]{1,3})[-\s]?(\d{2,5})(?![\w-])")
+CODE_IN_QUESTION = re.compile(r"(?<![\w-])([A-Za-z]{1,3}\d{2,5})(?![\w-])")
+
+
+def code_key(code: str) -> tuple[str, int] | None:
+    m = re.fullmatch(r"([A-Za-z]{1,3})[-\s]?(\d{2,5})", code.strip())
+    return (m.group(1).upper(), int(m.group(2))) if m else None
+
+
+@lru_cache(maxsize=1)
+def _code_forms() -> dict[str, dict[tuple[str, int], frozenset[str]]]:
+    """Doküman → kod anahtarı → korpustaki yazımlar (harfler büyük, ayırıcısız: "E050")."""
+    out: dict[str, dict[tuple[str, int], set[str]]] = {}
+    if CHUNKS_PATH.exists():
+        with CHUNKS_PATH.open(encoding="utf-8") as f:
+            for line in f:
+                c = json.loads(line)
+                forms = out.setdefault(c["doc_id"], {})
+                for m in CODE_IN_TEXT.finditer(c["text"]):
+                    forms.setdefault((m.group(1).upper(), int(m.group(2))), set()).add(m.group(1).upper() + m.group(2))
+    return {d: {k: frozenset(v) for k, v in f.items()} for d, f in out.items()}
+
+
+def normalize_codes(question: str, scope: list[str] | None) -> str:
+    """Sorudaki kodu korpustaki yazımına çevirir: aynı yazım kapsamda yoksa ve anahtarı kapsamda tek bir yazıma
+    düşüyorsa ("e50" → "E050"). Birden çok yazıma düşerse ya da hiç düşmezse olduğu gibi kalır (kod araması
+    anahtarla eşler; hiç yoksa "kapsamda yok"). Doküman takma adları ("s7300a") kod sayılmaz."""
+    tables = _code_forms()
+    docs = scope or list(tables)
+    aliases = {a for d in DOCS for a in d.aliases}
+
+    def repl(m: re.Match) -> str:
+        code = m.group(1)
+        key = code_key(code)
+        if key is None or code.lower() in aliases:
+            return code
+        forms = set().union(*(tables.get(d, {}).get(key, frozenset()) for d in docs))
+        return next(iter(forms)) if len(forms) == 1 and code.upper() not in forms else code
+
+    return CODE_IN_QUESTION.sub(repl, question)
+
+
 _TR_HINTS = {"ne", "nedir", "nasıl", "kaç", "mı", "mi", "mu", "mü", "için", "olmalı", "hangi", "neden", "ve", "bir",
              "ile", "var", "yok", "değil", "ayarlanır", "takılır", "makinesi", "makinesinde", "hatası", "dikiş"}
 _EN_HINTS = {"the", "how", "what", "which", "is", "are", "for", "of", "many", "much", "should", "does", "do", "on",
