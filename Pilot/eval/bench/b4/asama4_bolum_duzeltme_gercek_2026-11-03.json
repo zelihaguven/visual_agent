@@ -1,0 +1,713 @@
+{
+ "meta": {
+  "date": "2026-11-03T15:25:00",
+  "git_commit": "5809129+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {
+   "PILOT_QDRANT_URL": "http://127.0.0.1:6333"
+  },
+  "params": {
+   "runs": {
+    "Qwen3-8B + BM25": {
+     "önce": "bolum_once_qwen",
+     "sonra": "bolum_sonra_qwen"
+    },
+    "bge-m3 + BM25": {
+     "önce": "bolum_once_bge",
+     "sonra": "bolum_sonra_bge"
+    }
+   },
+   "sets": [
+    "aday_sorular",
+    "questions",
+    "questions_ek",
+    "sekil_sorular"
+   ],
+   "unapproved": true
+  }
+ },
+ "questions": [
+  "aday_sorular:A001",
+  "aday_sorular:A003",
+  "aday_sorular:A004",
+  "aday_sorular:A005",
+  "aday_sorular:A006",
+  "aday_sorular:A009",
+  "aday_sorular:A012",
+  "aday_sorular:A013",
+  "aday_sorular:A014",
+  "aday_sorular:A015",
+  "aday_sorular:A016",
+  "aday_sorular:A017",
+  "aday_sorular:A018",
+  "aday_sorular:A020",
+  "aday_sorular:A022",
+  "aday_sorular:A025",
+  "aday_sorular:A026",
+  "aday_sorular:A027",
+  "aday_sorular:A028",
+  "aday_sorular:A029",
+  "aday_sorular:A030",
+  "aday_sorular:A031",
+  "aday_sorular:A032",
+  "aday_sorular:A033",
+  "aday_sorular:A034",
+  "aday_sorular:A035",
+  "aday_sorular:A036",
+  "aday_sorular:A037",
+  "aday_sorular:A038",
+  "aday_sorular:A039",
+  "aday_sorular:A040",
+  "aday_sorular:A041",
+  "aday_sorular:A042",
+  "aday_sorular:A043",
+  "aday_sorular:A044",
+  "aday_sorular:A050",
+  "aday_sorular:A051",
+  "aday_sorular:A052",
+  "aday_sorular:A053",
+  "aday_sorular:A054",
+  "aday_sorular:A055",
+  "aday_sorular:A056",
+  "aday_sorular:A059",
+  "aday_sorular:A060",
+  "aday_sorular:A061",
+  "aday_sorular:A062",
+  "aday_sorular:A063",
+  "aday_sorular:A064",
+  "aday_sorular:A067",
+  "aday_sorular:A068",
+  "aday_sorular:A073",
+  "aday_sorular:A074",
+  "aday_sorular:A079",
+  "aday_sorular:A080",
+  "aday_sorular:A081",
+  "aday_sorular:A082",
+  "aday_sorular:A083",
+  "aday_sorular:A087",
+  "aday_sorular:A088",
+  "aday_sorular:A089",
+  "aday_sorular:A090",
+  "aday_sorular:A091",
+  "aday_sorular:A092",
+  "aday_sorular:A093",
+  "aday_sorular:A094",
+  "aday_sorular:A096",
+  "aday_sorular:A097",
+  "aday_sorular:A098",
+  "aday_sorular:A099",
+  "aday_sorular:A100",
+  "aday_sorular:A101",
+  "aday_sorular:A102",
+  "aday_sorular:A103",
+  "aday_sorular:A104",
+  "aday_sorular:A105",
+  "aday_sorular:A106",
+  "aday_sorular:A107",
+  "aday_sorular:A108",
+  "aday_sorular:A109",
+  "aday_sorular:A110",
+  "aday_sorular:A111",
+  "aday_sorular:A112",
+  "aday_sorular:A113",
+  "aday_sorular:A146",
+  "aday_sorular:A148",
+  "aday_sorular:A150",
+  "aday_sorular:A151",
+  "aday_sorular:A152",
+  "aday_sorular:A153",
+  "aday_sorular:A154",
+  "aday_sorular:A155",
+  "questions:Q01",
+  "questions:Q02",
+  "questions:Q03",
+  "questions:Q04",
+  "questions:Q05",
+  "questions:Q06",
+  "questions:Q09",
+  "questions:Q11",
+  "questions:Q12",
+  "questions:Q13",
+  "questions:Q14",
+  "questions:Q15",
+  "questions:Q16",
+  "questions_ek:Q19",
+  "questions_ek:Q20",
+  "questions_ek:Q21",
+  "questions_ek:Q22",
+  "questions_ek:Q23",
+  "questions_ek:Q24",
+  "questions_ek:Q25",
+  "questions_ek:Q26",
+  "questions_ek:Q27",
+  "questions_ek:Q28",
+  "questions_ek:Q29",
+  "questions_ek:Q32",
+  "sekil_sorular:G1",
+  "sekil_sorular:G2",
+  "sekil_sorular:G3",
+  "sekil_sorular:G4",
+  "sekil_sorular:G5",
+  "sekil_sorular:G6",
+  "sekil_sorular:G7",
+  "sekil_sorular:G8",
+  "sekil_sorular:G9",
+  "sekil_sorular:N1",
+  "sekil_sorular:N2",
+  "sekil_sorular:N3"
+ ],
+ "subsets": {
+  "etkilenen 34": [
+   "aday_sorular:A005",
+   "aday_sorular:A006",
+   "aday_sorular:A014",
+   "aday_sorular:A025",
+   "aday_sorular:A026",
+   "aday_sorular:A034",
+   "aday_sorular:A079",
+   "aday_sorular:A080",
+   "aday_sorular:A081",
+   "aday_sorular:A082",
+   "aday_sorular:A083",
+   "aday_sorular:A087",
+   "aday_sorular:A088",
+   "aday_sorular:A089",
+   "aday_sorular:A090",
+   "aday_sorular:A091",
+   "aday_sorular:A092",
+   "aday_sorular:A093",
+   "aday_sorular:A094",
+   "aday_sorular:A096",
+   "aday_sorular:A097",
+   "aday_sorular:A152",
+   "aday_sorular:A154"
+  ],
+  "bölümü değişen 16": [
+   "aday_sorular:A005",
+   "aday_sorular:A006",
+   "aday_sorular:A025",
+   "aday_sorular:A026",
+   "aday_sorular:A034",
+   "aday_sorular:A092",
+   "aday_sorular:A093",
+   "aday_sorular:A094",
+   "aday_sorular:A097",
+   "aday_sorular:A154"
+  ]
+ },
+ "rows": {
+  "filtered|Toplam|bolum_once_qwen": {
+   "n": 128,
+   "hit@1": 0.6953125,
+   "hit@5": 0.84375,
+   "hit@20": 0.9375,
+   "mrr": 0.7552331851262772
+  },
+  "filtered|Toplam|bolum_sonra_qwen": {
+   "n": 128,
+   "hit@1": 0.703125,
+   "hit@5": 0.8359375,
+   "hit@20": 0.9296875,
+   "mrr": 0.7569708138170309
+  },
+  "filtered|Toplam|bolum_once_bge": {
+   "n": 128,
+   "hit@1": 0.6171875,
+   "hit@5": 0.8046875,
+   "hit@20": 0.9140625,
+   "mrr": 0.7007946223869332
+  },
+  "filtered|Toplam|bolum_sonra_bge": {
+   "n": 128,
+   "hit@1": 0.6328125,
+   "hit@5": 0.796875,
+   "hit@20": 0.921875,
+   "mrr": 0.7079079364625634
+  },
+  "filtered|Tür: değer|bolum_once_qwen": {
+   "n": 66,
+   "hit@1": 0.6212121212121212,
+   "hit@5": 0.8484848484848485,
+   "hit@20": 0.9393939393939394,
+   "mrr": 0.7084314807999018
+  },
+  "filtered|Tür: değer|bolum_sonra_qwen": {
+   "n": 66,
+   "hit@1": 0.6363636363636364,
+   "hit@5": 0.8333333333333334,
+   "hit@20": 0.9242424242424242,
+   "mrr": 0.7118457300275483
+  },
+  "filtered|Tür: değer|bolum_once_bge": {
+   "n": 66,
+   "hit@1": 0.5454545454545454,
+   "hit@5": 0.7424242424242424,
+   "hit@20": 0.8636363636363636,
+   "mrr": 0.63341583987517
+  },
+  "filtered|Tür: değer|bolum_sonra_bge": {
+   "n": 66,
+   "hit@1": 0.5757575757575758,
+   "hit@5": 0.7424242424242424,
+   "hit@20": 0.8787878787878788,
+   "mrr": 0.6513705975358101
+  },
+  "filtered|Tür: prosedür|bolum_once_qwen": {
+   "n": 13,
+   "hit@1": 0.38461538461538464,
+   "hit@5": 0.5384615384615384,
+   "hit@20": 0.6923076923076923,
+   "mrr": 0.4502958579881656
+  },
+  "filtered|Tür: prosedür|bolum_sonra_qwen": {
+   "n": 13,
+   "hit@1": 0.38461538461538464,
+   "hit@5": 0.5384615384615384,
+   "hit@20": 0.6923076923076923,
+   "mrr": 0.4502958579881656
+  },
+  "filtered|Tür: prosedür|bolum_once_bge": {
+   "n": 13,
+   "hit@1": 0.5384615384615384,
+   "hit@5": 0.7692307692307693,
+   "hit@20": 0.9230769230769231,
+   "mrr": 0.6282051282051282
+  },
+  "filtered|Tür: prosedür|bolum_sonra_bge": {
+   "n": 13,
+   "hit@1": 0.6153846153846154,
+   "hit@5": 0.7692307692307693,
+   "hit@20": 0.9230769230769231,
+   "mrr": 0.6666666666666666
+  },
+  "filtered|Tür: kod|bolum_once_qwen": {
+   "n": 20,
+   "hit@1": 0.95,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9527777777777778
+  },
+  "filtered|Tür: kod|bolum_sonra_qwen": {
+   "n": 20,
+   "hit@1": 0.95,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9526315789473685
+  },
+  "filtered|Tür: kod|bolum_once_bge": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9321428571428572
+  },
+  "filtered|Tür: kod|bolum_sonra_bge": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9321428571428572
+  },
+  "filtered|Tür: arıza|bolum_once_qwen": {
+   "n": 7,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: arıza|bolum_sonra_qwen": {
+   "n": 7,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: arıza|bolum_once_bge": {
+   "n": 7,
+   "hit@1": 0.42857142857142855,
+   "hit@5": 0.7142857142857143,
+   "hit@20": 0.8571428571428571,
+   "mrr": 0.5606060606060607
+  },
+  "filtered|Tür: arıza|bolum_sonra_bge": {
+   "n": 7,
+   "hit@1": 0.5714285714285714,
+   "hit@5": 0.7142857142857143,
+   "hit@20": 0.8571428571428571,
+   "mrr": 0.6558441558441558
+  },
+  "filtered|Tür: şekil|bolum_once_qwen": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 1.0,
+   "mrr": 0.8157596371882087
+  },
+  "filtered|Tür: şekil|bolum_sonra_qwen": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 1.0,
+   "mrr": 0.8157596371882087
+  },
+  "filtered|Tür: şekil|bolum_once_bge": {
+   "n": 14,
+   "hit@1": 0.5714285714285714,
+   "hit@5": 0.8571428571428571,
+   "hit@20": 1.0,
+   "mrr": 0.7020833333333334
+  },
+  "filtered|Tür: şekil|bolum_sonra_bge": {
+   "n": 14,
+   "hit@1": 0.5,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 1.0,
+   "mrr": 0.6348564425770309
+  },
+  "filtered|Tür: diğer|bolum_once_qwen": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8229166666666666
+  },
+  "filtered|Tür: diğer|bolum_sonra_qwen": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8229166666666666
+  },
+  "filtered|Tür: diğer|bolum_once_bge": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9166666666666666
+  },
+  "filtered|Tür: diğer|bolum_sonra_bge": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8541666666666666
+  },
+  "filtered|Alt küme: etkilenen 34|bolum_once_qwen": {
+   "n": 23,
+   "hit@1": 0.6086956521739131,
+   "hit@5": 0.782608695652174,
+   "hit@20": 0.9130434782608695,
+   "mrr": 0.6759226661972658
+  },
+  "filtered|Alt küme: etkilenen 34|bolum_sonra_qwen": {
+   "n": 23,
+   "hit@1": 0.6086956521739131,
+   "hit@5": 0.7391304347826086,
+   "hit@20": 0.8695652173913043,
+   "mrr": 0.6669960474308301
+  },
+  "filtered|Alt küme: etkilenen 34|bolum_once_bge": {
+   "n": 23,
+   "hit@1": 0.6956521739130435,
+   "hit@5": 0.8260869565217391,
+   "hit@20": 0.9130434782608695,
+   "mrr": 0.7446796338672769
+  },
+  "filtered|Alt küme: etkilenen 34|bolum_sonra_bge": {
+   "n": 23,
+   "hit@1": 0.7391304347826086,
+   "hit@5": 0.8260869565217391,
+   "hit@20": 0.9130434782608695,
+   "mrr": 0.7729922632668628
+  },
+  "filtered|Alt küme: bölümü değişen 16|bolum_once_qwen": {
+   "n": 10,
+   "hit@1": 0.5,
+   "hit@5": 0.8,
+   "hit@20": 1.0,
+   "mrr": 0.6243589743589744
+  },
+  "filtered|Alt küme: bölümü değişen 16|bolum_sonra_qwen": {
+   "n": 10,
+   "hit@1": 0.5,
+   "hit@5": 0.8,
+   "hit@20": 1.0,
+   "mrr": 0.6174242424242424
+  },
+  "filtered|Alt küme: bölümü değişen 16|bolum_once_bge": {
+   "n": 10,
+   "hit@1": 0.5,
+   "hit@5": 0.8,
+   "hit@20": 0.9,
+   "mrr": 0.6075
+  },
+  "filtered|Alt küme: bölümü değişen 16|bolum_sonra_bge": {
+   "n": 10,
+   "hit@1": 0.6,
+   "hit@5": 0.8,
+   "hit@20": 0.9,
+   "mrr": 0.6726190476190477
+  },
+  "unfiltered|Toplam|bolum_once_qwen": {
+   "n": 128,
+   "hit@1": 0.703125,
+   "hit@5": 0.828125,
+   "hit@20": 0.9296875,
+   "mrr": 0.7547376945675369
+  },
+  "unfiltered|Toplam|bolum_sonra_qwen": {
+   "n": 128,
+   "hit@1": 0.703125,
+   "hit@5": 0.8203125,
+   "hit@20": 0.9296875,
+   "mrr": 0.7531138558240436
+  },
+  "unfiltered|Toplam|bolum_once_bge": {
+   "n": 128,
+   "hit@1": 0.625,
+   "hit@5": 0.78125,
+   "hit@20": 0.9140625,
+   "mrr": 0.6959684914865836
+  },
+  "unfiltered|Toplam|bolum_sonra_bge": {
+   "n": 128,
+   "hit@1": 0.640625,
+   "hit@5": 0.7734375,
+   "hit@20": 0.9140625,
+   "mrr": 0.7027911457012415
+  },
+  "unfiltered|Tür: değer|bolum_once_qwen": {
+   "n": 66,
+   "hit@1": 0.6363636363636364,
+   "hit@5": 0.8333333333333334,
+   "hit@20": 0.9242424242424242,
+   "mrr": 0.7094087714830748
+  },
+  "unfiltered|Tür: değer|bolum_sonra_qwen": {
+   "n": 66,
+   "hit@1": 0.6363636363636364,
+   "hit@5": 0.8181818181818182,
+   "hit@20": 0.9242424242424242,
+   "mrr": 0.7056281953340776
+  },
+  "unfiltered|Tür: değer|bolum_once_bge": {
+   "n": 66,
+   "hit@1": 0.5757575757575758,
+   "hit@5": 0.696969696969697,
+   "hit@20": 0.8636363636363636,
+   "mrr": 0.6354197072199465
+  },
+  "unfiltered|Tür: değer|bolum_sonra_bge": {
+   "n": 66,
+   "hit@1": 0.5909090909090909,
+   "hit@5": 0.696969696969697,
+   "hit@20": 0.8636363636363636,
+   "mrr": 0.6452350033320341
+  },
+  "unfiltered|Tür: prosedür|bolum_once_qwen": {
+   "n": 13,
+   "hit@1": 0.38461538461538464,
+   "hit@5": 0.5384615384615384,
+   "hit@20": 0.6923076923076923,
+   "mrr": 0.4502958579881656
+  },
+  "unfiltered|Tür: prosedür|bolum_sonra_qwen": {
+   "n": 13,
+   "hit@1": 0.38461538461538464,
+   "hit@5": 0.5384615384615384,
+   "hit@20": 0.6923076923076923,
+   "mrr": 0.4502958579881656
+  },
+  "unfiltered|Tür: prosedür|bolum_once_bge": {
+   "n": 13,
+   "hit@1": 0.5384615384615384,
+   "hit@5": 0.7692307692307693,
+   "hit@20": 0.9230769230769231,
+   "mrr": 0.6282051282051282
+  },
+  "unfiltered|Tür: prosedür|bolum_sonra_bge": {
+   "n": 13,
+   "hit@1": 0.6153846153846154,
+   "hit@5": 0.7692307692307693,
+   "hit@20": 0.9230769230769231,
+   "mrr": 0.6666666666666666
+  },
+  "unfiltered|Tür: kod|bolum_once_qwen": {
+   "n": 20,
+   "hit@1": 0.95,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9526315789473685
+  },
+  "unfiltered|Tür: kod|bolum_sonra_qwen": {
+   "n": 20,
+   "hit@1": 0.95,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9526315789473685
+  },
+  "unfiltered|Tür: kod|bolum_once_bge": {
+   "n": 20,
+   "hit@1": 0.85,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9071428571428571
+  },
+  "unfiltered|Tür: kod|bolum_sonra_bge": {
+   "n": 20,
+   "hit@1": 0.85,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9071428571428571
+  },
+  "unfiltered|Tür: arıza|bolum_once_qwen": {
+   "n": 7,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: arıza|bolum_sonra_qwen": {
+   "n": 7,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: arıza|bolum_once_bge": {
+   "n": 7,
+   "hit@1": 0.5714285714285714,
+   "hit@5": 0.7142857142857143,
+   "hit@20": 0.8571428571428571,
+   "mrr": 0.632034632034632
+  },
+  "unfiltered|Tür: arıza|bolum_sonra_bge": {
+   "n": 7,
+   "hit@1": 0.7142857142857143,
+   "hit@5": 0.7142857142857143,
+   "hit@20": 0.8571428571428571,
+   "mrr": 0.7272727272727273
+  },
+  "unfiltered|Tür: şekil|bolum_once_qwen": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 1.0,
+   "mrr": 0.8157596371882087
+  },
+  "unfiltered|Tür: şekil|bolum_sonra_qwen": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 1.0,
+   "mrr": 0.8157596371882087
+  },
+  "unfiltered|Tür: şekil|bolum_once_bge": {
+   "n": 14,
+   "hit@1": 0.5714285714285714,
+   "hit@5": 0.8571428571428571,
+   "hit@20": 1.0,
+   "mrr": 0.7020833333333334
+  },
+  "unfiltered|Tür: şekil|bolum_sonra_bge": {
+   "n": 14,
+   "hit@1": 0.5,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 1.0,
+   "mrr": 0.6348564425770309
+  },
+  "unfiltered|Tür: diğer|bolum_once_qwen": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 0.875,
+   "hit@20": 1.0,
+   "mrr": 0.8072916666666666
+  },
+  "unfiltered|Tür: diğer|bolum_sonra_qwen": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 0.875,
+   "hit@20": 1.0,
+   "mrr": 0.8125
+  },
+  "unfiltered|Tür: diğer|bolum_once_bge": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8229166666666666
+  },
+  "unfiltered|Tür: diğer|bolum_sonra_bge": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8229166666666666
+  },
+  "unfiltered|Alt küme: etkilenen 34|bolum_once_qwen": {
+   "n": 23,
+   "hit@1": 0.6086956521739131,
+   "hit@5": 0.782608695652174,
+   "hit@20": 0.8695652173913043,
+   "mrr": 0.6562951496388029
+  },
+  "unfiltered|Alt küme: etkilenen 34|bolum_sonra_qwen": {
+   "n": 23,
+   "hit@1": 0.6086956521739131,
+   "hit@5": 0.7391304347826086,
+   "hit@20": 0.8695652173913043,
+   "mrr": 0.6544208987943003
+  },
+  "unfiltered|Alt küme: etkilenen 34|bolum_once_bge": {
+   "n": 23,
+   "hit@1": 0.6956521739130435,
+   "hit@5": 0.7391304347826086,
+   "hit@20": 0.9130434782608695,
+   "mrr": 0.7321338463214894
+  },
+  "unfiltered|Alt küme: etkilenen 34|bolum_sonra_bge": {
+   "n": 23,
+   "hit@1": 0.7391304347826086,
+   "hit@5": 0.7391304347826086,
+   "hit@20": 0.9130434782608695,
+   "mrr": 0.7541400583532768
+  },
+  "unfiltered|Alt küme: bölümü değişen 16|bolum_once_qwen": {
+   "n": 10,
+   "hit@1": 0.5,
+   "hit@5": 0.8,
+   "hit@20": 0.9,
+   "mrr": 0.5792156862745098
+  },
+  "unfiltered|Alt küme: bölümü değişen 16|bolum_sonra_qwen": {
+   "n": 10,
+   "hit@1": 0.5,
+   "hit@5": 0.7,
+   "hit@20": 1.0,
+   "mrr": 0.5801680672268907
+  },
+  "unfiltered|Alt küme: bölümü değişen 16|bolum_once_bge": {
+   "n": 10,
+   "hit@1": 0.5,
+   "hit@5": 0.6,
+   "hit@20": 0.9,
+   "mrr": 0.5786446886446887
+  },
+  "unfiltered|Alt küme: bölümü değişen 16|bolum_sonra_bge": {
+   "n": 10,
+   "hit@1": 0.6,
+   "hit@5": 0.6,
+   "hit@20": 0.9,
+   "mrr": 0.6292589763177998
+  }
+ }
+}

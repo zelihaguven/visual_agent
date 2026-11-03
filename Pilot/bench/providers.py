@@ -199,6 +199,28 @@ def build(key: str, yes: bool) -> dict[str, Any]:
     return res
 
 
+def refresh(key: str, collection: str | None = None, dry_run: bool = False, partial: bool = False) -> list[str]:
+    """Koleksiyonda embed_text'i değişen parçaları (chunks.jsonl'a göre) aynı nokta kimliğiyle yeniden gömer:
+    dense modelin kendisiyle (bulutta önbellekli; reuse_vectors_from varsa o koleksiyondan), BM25 embed_text'ten.
+    Parça sınırları değiştiyse hata (build gerekir). partial: ölçek koleksiyonu (yalnız gerçek parçalar güncellenir,
+    dikkat dağıtıcılara ve korpus alanlarına dokunulmaz)."""
+    from pilot.chunk import read_chunks
+    from pilot.index import update_changed
+    from pilot.sparse import bm25_docs
+
+    spec = specs()[key]
+
+    def encode(cs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        dense = reuse_vectors(spec["reuse_vectors_from"], cs) if spec.get("reuse_vectors_from") \
+            else doc_vectors(spec, cs)[0]
+        return [{"dense": d, "sparses": {"bm25": s}} for d, s in zip(dense, bm25_docs([c["embed_text"] for c in cs]))]
+
+    collection = collection or collection_name(key)
+    changed = update_changed(read_chunks(), collection, encode, dry_run=dry_run, partial=partial)
+    log.info("%s: %s %d nokta", collection, "güncellenecek" if dry_run else "güncellendi", len(changed))
+    return changed
+
+
 # ---------- aday toplama ----------
 
 class QueryEncoder:
@@ -284,19 +306,19 @@ def collect(key: str, dense_mode: str, short_dim: int, repeats: int, timing_sets
                         "expect_docs": it.get("expect_docs", []), "expect_pages": it.get("expect_pages", [])})
                     qd[mode] = [{"chunk_id": x.payload["chunk_id"], "doc_id": x.payload["doc_id"],
                                  "pages": x.payload["pages"], "chunk_type": x.payload.get("chunk_type"),
-                                 "text": x.payload["text"]} for x in pts]
+                                 "text": x.payload["text"], "embed_text": x.payload.get("embed_text")} for x in pts]
             log.info("%s tur %d bitti", mode, r + 1)
         out["timing"][mode] = timer.summary()
     qc.close()
     if offline and enc.cloud and enc.cloud.stats["requests"]:
         raise RuntimeError(f"offline koşuda bulut çağrısı yapıldı: {enc.cloud.stats}")
-    out["params"] = {"key": key, "model": spec["model"], "provider": spec["provider"], "dense_mode": dense_mode,
+    tag = tag or f"{key}_{dense_mode}" + (f"{short_dim}" if dense_mode != "full" else "")
+    out["params"] = {"key": key, "tag": tag, "model": spec["model"], "provider": spec["provider"], "dense_mode": dense_mode,
                      "short_dim": short_dim if dense_mode != "full" else None, "collection": collection,
                      "FUSED_K": retrieve.FUSED_K, "PREFETCH_K": retrieve.PREFETCH_K, "repeats": repeats,
                      "SHORT_OVERSAMPLE": retrieve.SHORT_OVERSAMPLE, "sets": list(sets),
                      "include_unapproved": include_unapproved, "offline": offline,
                      "timing_sets": timing_sets, "cloud_stats": enc.cloud.stats if enc.cloud else None}
-    tag = tag or f"{key}_{dense_mode}" + (f"{short_dim}" if dense_mode != "full" else "")
     path = CACHE_DIR / f"candidates_{tag}.json"
     path.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
     log.info("yazıldı: %s", path)
@@ -430,6 +452,11 @@ def main() -> None:
     c.add_argument("--include-unapproved", action="store_true", help="onaysız sorular da (yalnız bilgi amaçlı)")
     c.add_argument("--offline", action="store_true", help="bulut çağrısı yok: önbellekte olmayan sorgu atlanır")
     c.add_argument("--tag", help="çıktı: data/bench_cache/candidates_<tag>.json")
+    r = sub.add_parser("refresh", help="embed_text'i değişen noktaları yeniden göm (sınırlar aynı)")
+    r.add_argument("--key", required=True)
+    r.add_argument("--collection")
+    r.add_argument("--dry-run", action="store_true")
+    r.add_argument("--partial", action="store_true", help="ölçek koleksiyonu: yalnız gerçek parçalar")
     sub.add_parser("matrix")
     k = sub.add_parser("costs")
     k.add_argument("--name", default="asama4_maliyet")
@@ -441,6 +468,8 @@ def main() -> None:
         print_estimate(estimate(a.keys))
     elif a.cmd == "build":
         build(a.key, a.yes)
+    elif a.cmd == "refresh":
+        refresh(a.key, a.collection, a.dry_run, a.partial)
     elif a.cmd == "matrix":
         matrix("asama4_matris")
     elif a.cmd == "costs":

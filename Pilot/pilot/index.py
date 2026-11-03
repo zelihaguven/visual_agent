@@ -5,6 +5,7 @@ payload indeksi kurulur; filtreli aramanın hızı büyük koleksiyonda buna ba�
 """
 import logging
 import shutil
+from collections.abc import Callable
 from typing import Any
 
 from qdrant_client import QdrantClient, models
@@ -213,6 +214,58 @@ def refresh_payloads(chunks: list[dict[str, Any]], doc_ids: list[str]) -> int:
                 n += 1
             if offset is None:
                 return n
+    finally:
+        qc.close()
+
+
+def update_changed(chunks: list[dict[str, Any]], collection: str = COLLECTION,
+                   encode: Callable[[list[dict[str, Any]]], list[dict[str, Any]]] | None = None,
+                   dry_run: bool = False, partial: bool = False) -> list[str]:
+    """embed_text'i değişen parçaları aynı nokta kimliğiyle yeniden gömer (ör. yalnız bölüm adı değiştiyse); öteki
+    noktalara dokunmaz. Parçalar chunk_id ile eşlenir; parça kümesi değiştiyse (sınır/kimlik) hata verir, o durumda
+    replace_docs gerekir. encode: parça listesi → [{'dense', 'sparses'}] (varsayılan: encode_docs(embed_text)).
+    Kısa (MRL) vektörler koleksiyonda hangi boyutlar varsa onlarla yazılır.
+    partial: koleksiyonda başka noktalar da var (ölçek koleksiyonu: dikkat dağıtıcılar); onlara dokunulmaz, payload'ın
+    yalnız section ve embed_text alanı değişir (korpusa özgü alanlar kalır).
+    Döner: güncellenen (dry_run'da güncellenecek) chunk_id'ler."""
+    by_id = {c["chunk_id"]: c for c in chunks}
+    qc = client()
+    try:
+        params = qc.get_collection(collection).config.params
+        names = set((params.sparse_vectors or {}).keys())
+        short_dims = tuple(sorted(int(n[len("dense_s"):]) for n in params.vectors if n.startswith("dense_s")))
+        stored, offset = {}, None
+        while True:
+            pts, offset = qc.scroll(collection, limit=1000, offset=offset, with_payload=["chunk_id", "embed_text"])
+            stored.update({p.payload["chunk_id"]: (p.id, p.payload.get("embed_text")) for p in pts
+                           if not partial or p.payload.get("chunk_id") in by_id})
+            if offset is None:
+                break
+        if set(stored) != set(by_id):
+            raise ValueError(f"{collection}: parça kümesi farklı (eksik {len(set(by_id) - set(stored))}, "
+                             f"fazla {len(set(stored) - set(by_id))}); replace_docs kullanın")
+        changed = [cid for cid, (_, t) in stored.items() if t != by_id[cid]["embed_text"]]
+        if dry_run or not changed:
+            return changed
+        encode = encode or (lambda cs: encode_docs([c["embed_text"] for c in cs]))
+        for start in range(0, len(changed), BATCH):
+            batch = [by_id[c] for c in changed[start:start + BATCH]]
+            points = []
+            for c, v in zip(batch, encode(batch)):
+                v = {**v, "sparses": {k: s for k, s in v["sparses"].items() if SPARSE_NAMES[k] in names}}
+                pid, vec = stored[c["chunk_id"]][0], point_vectors(v, short_dims=short_dims)
+                if partial:
+                    qc.set_payload(collection, payload={"section": c["section"], "embed_text": c["embed_text"]},
+                                   points=[pid])
+                    points.append(models.PointVectors(id=pid, vector=vec))
+                else:
+                    points.append(models.PointStruct(id=pid, payload=with_access(c), vector=vec))
+            if partial:
+                qc.update_vectors(collection, points=points)
+            else:
+                qc.upsert(collection, points=points)
+            log.info("%s: %d/%d güncellendi", collection, min(start + BATCH, len(changed)), len(changed))
+        return changed
     finally:
         qc.close()
 

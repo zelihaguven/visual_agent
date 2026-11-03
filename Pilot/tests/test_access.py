@@ -137,3 +137,53 @@ def test_dense_params():
     assert retrieve.dense_params(None, None, None) is None
     p = retrieve.dense_params(128, "1", 2.0)
     assert p.hnsw_ef == 128 and p.quantization.rescore is True and p.quantization.oversampling == 2.0
+
+
+def test_update_changed_reembeds_only_changed_points_with_same_ids(monkeypatch):
+    c = QdrantClient(":memory:")
+    c.create_collection("k", **collection_schema(DIM))
+    old = [{"chunk_id": f"d-{i:05d}", "doc_id": "doc-herkes", "embed_text": f"Ürün | Eski {i}\nmetin {i}"} for i in range(3)]
+    vec = lambda s: {"dense": _vec(s), "sparse": models.SparseVector(indices=[1], values=[1.0]),
+                     "bm25": models.SparseVector(indices=[1], values=[1.0])}
+    c.upsert("k", points=[models.PointStruct(id=100 + i, vector=vec(i), payload=ch) for i, ch in enumerate(old)])
+    monkeypatch.setattr(c, "close", lambda: None)
+    monkeypatch.setattr(index, "client", lambda: c)
+    new = [dict(ch) for ch in old]
+    new[1]["embed_text"] = "Ürün | Yeni bölüm\nmetin 1"
+    calls = []
+
+    def encode(chunks):
+        calls.append([x["chunk_id"] for x in chunks])
+        return [{"dense": _vec(999), "sparses": {"bm25": {7: 0.5}, "bge-m3": {7: 0.5}}} for _ in chunks]
+
+    assert index.update_changed(new, "k", encode, dry_run=True) == ["d-00001"] and calls == []
+    assert index.update_changed(new, "k", encode) == ["d-00001"] and calls == [["d-00001"]]
+    pts = {p.id: p for p in c.retrieve("k", ids=[100, 101, 102], with_payload=True, with_vectors=True)}
+    assert pts[101].payload["embed_text"] == "Ürün | Yeni bölüm\nmetin 1"
+    unit = lambda v: [x / sum(y * y for y in v) ** 0.5 for x in v]        # Cosine: Qdrant normalleştirerek saklar
+    assert pts[101].vector["dense"] == pytest.approx(unit(_vec(999)), abs=1e-5)
+    assert pts[100].vector["dense"] == pytest.approx(unit(_vec(0)), abs=1e-5)     # değişmeyen nokta aynı
+    assert index.update_changed(new, "k", encode) == []                      # ikinci kez: iş yok
+    with pytest.raises(ValueError, match="parça kümesi farklı"):
+        index.update_changed(new[:2], "k", encode)
+
+
+def test_update_changed_partial_keeps_distractors_and_corpus_fields(monkeypatch):
+    c = QdrantClient(":memory:")
+    c.create_collection("s", **collection_schema(DIM, sparse="bm25", short_dims=(4,)))
+    real = {"chunk_id": "d-00000", "doc_id": "doc-herkes", "section": "Eski", "embed_text": "Ürün | Eski\nmetin",
+            "kind": "gercek", "kademe": 0}
+    dd = {"chunk_id": "dd-wiki-tr-000001-000", "doc_id": "dd-wiki-tr-000001", "embed_text": "dikkat", "kind": "dikkat"}
+    vec = lambda s: {"dense": _vec(s), "dense_s4": _vec(s)[:4], "bm25": models.SparseVector(indices=[1], values=[1.0])}
+    c.upsert("s", points=[models.PointStruct(id=0, vector=vec(0), payload=real),
+                          models.PointStruct(id=1, vector=vec(1), payload=dd)])
+    monkeypatch.setattr(c, "close", lambda: None)
+    monkeypatch.setattr(index, "client", lambda: c)
+    new = [{**real, "section": "Yeni", "embed_text": "Ürün | Yeni\nmetin", "boxes": [1]}]
+    encode = lambda cs: [{"dense": _vec(999), "sparses": {"bm25": {7: 0.5}}} for _ in cs]
+    with pytest.raises(ValueError):                                   # dikkat dağıtıcı chunks'ta yok: tam kipte hata
+        index.update_changed(new, "s", encode)
+    assert index.update_changed(new, "s", encode, partial=True) == ["d-00000"]
+    p0, p1 = c.retrieve("s", ids=[0, 1], with_payload=True, with_vectors=True)
+    assert p0.payload == {**real, "section": "Yeni", "embed_text": "Ürün | Yeni\nmetin"}   # kind/kademe kaldı, boxes yok
+    assert "dense_s4" in p0.vector and p1.payload == dd and p1.vector["bm25"].indices == [1]
