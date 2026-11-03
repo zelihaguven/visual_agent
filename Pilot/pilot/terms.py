@@ -37,12 +37,8 @@ GLOSSARY: dict[str, str] = {
     "kuşgözü": "eyelet",
     "overlok": "overedge",
     "inç başına dikiş": "stitches per inch",
-    "dış görünür dikiş": "outside visible stitching",
-    # Kılavuz bölüm başlıkları işlem adıyla başlıyor ("4-4. Installing the bobbin case"). Fiil eşlenmeyince
-    # "masura kovanı nasıl takılır?" sorusunda alt iplik gerginliği parçası takma bölümünün önüne geçiyordu.
-    # Kök eşleşir ("takıl" → takılır, takılması). "tak" kullanılmaz: "takım" kelimesini de yakalar.
-    "takıl": "installing",
-    "takma": "installing",
+    # "takıl"/"takma" → "installing" bir test sorusu ("masura kovanı nasıl takılır?") için eklenmişti; ilke gereği
+    # kaldırıldı (2026-11-03). Kök eşleşir ("sökül" → sökülür, sökülmesi).
     "sökül": "removing",
     "sökme": "removing",
 }

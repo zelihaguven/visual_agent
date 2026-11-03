@@ -47,9 +47,10 @@ def test_model_family_without_letter_is_ambiguous():
 
 
 def test_english_product_names_set_filter():
-    # Q16: İngilizce soru pantolon şartnamesine gidiyordu
-    assert set(analyze_query("How many stitches per inch are required for buttonholes on the coat?").doc_ids) == {"gl-pd-14-04a"}
+    # Dokümanın kendi ürün adı ("trouser", başlıkta) kapsam belirler. Q16 için elle eklenen "coat/jacket/pants"
+    # eşanlamlıları ilke gereği kaldırıldı (2026-11-03): "coat" sorusu filtresiz aranır, kaynağı arama bulur.
     assert set(analyze_query("Outside seams of the trousers").doc_ids) == {"gl-pd-07-14a"}
+    assert analyze_query("How many stitches per inch are required for buttonholes on the coat?").doc_ids == ()
 
 
 def test_explicit_model_is_not_ambiguous():
