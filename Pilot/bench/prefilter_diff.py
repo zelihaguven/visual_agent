@@ -12,12 +12,14 @@ from statistics import mean
 from typing import Any
 
 from bench.common import accuracy, first_rank, fmt_pct, load_questions, meta, overlap_at_k, write_result
-from bench.providers import CACHE_DIR
 
 K = 20
 
 
 def load(tag: str) -> dict[str, Any]:
+    # bench.providers burada yüklenir: modül, içe aktarılırken global uyarı filtresini değiştiriyor ("ignore");
+    # en üstte yüklenirse bu modülü içe aktaran testler öteki testlerin uyarılarını da etkiliyordu
+    from bench.providers import CACHE_DIR
     return json.loads((CACHE_DIR / f"candidates_{tag}.json").read_text(encoding="utf-8"))
 
 
