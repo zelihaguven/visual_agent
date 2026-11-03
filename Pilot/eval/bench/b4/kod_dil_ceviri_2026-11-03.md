@@ -48,3 +48,22 @@ Bosch'ta 7 parçanın dili değişti, sınır aynı: kapağın iki parçası (ü
 **Uygulama:** `run_rechunk.py` ile `chunks.jsonl` ve `manuals` (Mr. Coffee yeniden gömüldü, 167 parça, CPU 164 sn; ötekilerde yalnız payload); yeni `providers replace-doc` ile `emb_bge-m3-local-bm25`, `emb_qwen3-8b`, `scale_bge_m3_10000`, `scale_qwen3_8b_10000` (her birinde 164 eski nokta silindi, 167 eklendi; 7 Bosch parçasının `lang` alanı eşitlendi). Beş koleksiyon da `chunks.jsonl` ile birebir tutarlı (4.235 gerçek parça). Bulut: yalnız yeni Mr. Coffee metinleri (Qwen3-8B, önbellekli). **1M koleksiyonu ve sunucu paketi güncellenmedi** (eski Mr. Coffee parçalarıyla).
 
 **Etiketler:** Mr. Coffee'ye işaret eden 19 kabul kaynağının hepsi sayfa düzeyinde korunuyor: beklenen bilgi (kanıt cümlesi ya da parçanın açılışı) yeni parçalarda aynı sayfada. `chunk_id` alanları yeni kimliklere çevrildi (30 alan); değerlendirme sayfa düzeyinde olduğu için sonuçları değiştirmez. İnceleme tablosunda 123 kanıt cümlesinin hepsi yeni parçalarda bulunuyor.
+
+## 3. BM25'e çevrilmiş sorgu (ölçüldü, pipeline'a bağlanmadı)
+
+Yöntem (`pilot/translate.py`, `pilot/cloud.CloudChat`): soru, kapsamdaki parçaların tespit edilen dillerine (payı ≥ %25) çevrilir; **yalnız BM25 kolu** çeviriyle (diller birleştirilir), dense kollar özgün soruyla. Soru zaten hedef dildeyse çağrı yok. Kodlar, sayılar, birimler korunur (istemde). Model: **google/gemma-3-12b-it** (ZDR). Hedef diller: 156 soruda en, 12'sinde en+es (Mr. Coffee), 11'inde es+fr+en (Bosch); kapsamsız soruda korpusun baskın dili (en). Ölçüm: 10k, rerank'sız, dense sorgu vektörleri önbellekten; önbellekte vektörü olmayan 2 soru (A146: kod normalleştirmesiyle arama metni değişti; A149) dışarıda: **158 cevaplı soru**. Ham tablo (tür bazında): [asama4_ceviri_bm25_10k](asama4_ceviri_bm25_10k_2026-11-03.md).
+
+| hit@1 / hit@5 | Filtreli, çevirisiz | **Filtreli, çevirili** | Filtresiz, çevirisiz | Filtresiz, çevirili |
+|---|---|---|---|---|
+| A: Qwen3-8B + BM25 | 0,75 / 0,87 | **0,82 / 0,97** | 0,75 / 0,86 | 0,80 / 0,94 |
+| Üçlü füzyon | 0,81 / 0,94 | **0,86 / 0,98** | 0,79 / 0,93 | 0,84 / 0,94 |
+
+Tür bazında (filtreli, A): değer 0,68/0,82 → 0,78/0,98; prosedür 0,79/0,89 → 0,89/1,00; şekil hit@5 0,79 → 0,93. Kod ve arıza zaten yüksek.
+
+**Gecikme ve maliyet:** 350 çağrı (179 soru × filtreli/filtresiz kapsam; 8'inde çağrı gerekmedi), **medyan 0,90 sn, p95 2,24 sn**, en uzun 4,1 sn, yeniden deneme 0; 36.692 + 8.507 token, **0,0038 USD** (sınır 1 USD). Ölçüm dizüstünden. Önceki tahminim (0,4–0,8 sn) iyimsermiş: sorgu embed'iyle (Qwen3-8B ~0,7 sn) paralel çalışsa bile duvar saatine medyanda ~0,2 sn, p95'te ~1,5 sn ekler; arama ≤ 1 sn hedefi p95'te tutmaz. Seçenekler: daha hızlı/küçük model ya da yerel çeviri modeli (ölçülmedi), sık soruların önbelleği.
+
+**Kaçırılan 5 soruda (filtreli, A yolu, rerank'sız sıra):** A079 – → **1**; A081 – → **1**; A148 – → **5**; A151 1 → 1 (dil kopyası etiketiyle zaten bulunuyordu); A146 bu ölçümde yok (yukarıda; kod kuralı §1'de ayrıca çözüldü). Üçlü füzyonda A079 ve A081 zaten 1., A148 – → 7.
+
+**Çeviri hataları (dürüst not):** A081 "uzun kruvaze palto" → "long cross-stitch coat" (yanlış; yine de doğru parça 1. sırada: "long … coat … buttoned"); A036 "pantolon çizimi" → "pantograph drawing" (yanlış terim). Üç dilli Bosch sorularının 6'sında model JSON yanıtında bazı dilleri vermedi; o sorularda BM25 özgün soruya düştü. Alan terimleri için sözlük (departman verisi) çeviriden önce uygulanabilir; kontrol edilmedi.
+
+Çeviri pipeline'a henüz bağlanmadı (gecikme kararı gerekli).

@@ -173,3 +173,26 @@ def test_code_key_and_normalization(monkeypatch):
     assert n("e50'de ne olur", ["juki-mo6800s"]) == "e50'de ne olur"     # kapsamda karşılığı yok: olduğu gibi
     assert n("E05 hatası", ["juki-mo6800s"]) == "E05 hatası"            # zaten korpustaki yazım
     assert n("to99 kodu", None) == "to99 kodu"                          # iki yazım (TO099, TO99): olduğu gibi
+
+
+def test_query_translation_targets_and_call(monkeypatch):
+    from collections import Counter
+    from pilot import translate
+    monkeypatch.setattr(translate, "_doc_lang_counts", lambda: {"bosch": Counter(en=191, fr=199, es=203),
+                                                                "coffee": Counter(en=84, es=83),
+                                                                "coat": Counter(en=565)})
+    assert translate.target_languages(["coat"]) == ["en"]
+    assert set(translate.target_languages(["bosch"])) == {"en", "fr", "es"}
+    assert translate.target_languages(None) == ["en"]                     # korpusta en baskın, öteki diller < %25
+
+    class Chat:
+        calls = []
+        def complete(self, messages, **kw):
+            self.calls.append(messages)
+            return '{"en": "How do I lock the router table switch E050?", "es": "¿Cómo bloquear el interruptor E050?"}'
+    chat = Chat()
+    out = translate.translate_query("Freze şalteri E050 nasıl kilitlenir?", "tr", ["en", "es"], chat)
+    assert out["en"].startswith("How do I lock") and "E050" in out["es"] and len(chat.calls) == 1
+    assert "E050" in translate.bm25_text(out, "x") and translate.bm25_text({}, "özgün") == "özgün"
+    assert translate.translate_query("How to lock?", "en", ["en"], chat) == {"en": "How to lock?"}
+    assert len(chat.calls) == 1                                           # hedef dildeki soru için çağrı yok

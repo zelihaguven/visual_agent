@@ -46,9 +46,14 @@ def main() -> None:
     ap.add_argument("--qwen-dense", default="short_rescore", choices=["full", "short_rescore"])
     ap.add_argument("--sets", nargs="+", default=list(KNOWN_SETS))
     ap.add_argument("--include-unapproved", action="store_true")
+    ap.add_argument("--arms", default="qwen,bge,bm25", help="kollar: qwen, bge, bm25 (A yolu: qwen,bm25)")
+    ap.add_argument("--bm25-translations", help="bench.translate_bm25 çıktısı: BM25 kolu çevrilmiş sorguyla")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
 
+    from pilot.sparse import bm25_query
+    arms_on = a.arms.split(",")
+    trans = json.loads(open(a.bm25_translations, encoding="utf-8").read())["questions"] if a.bm25_translations else {}
     qwen, bge = QueryEncoder(specs()["qwen3-8b"], 256), QueryEncoder(specs()["bge-m3-local-bm25"], 256)
     items = [(it, prepare(it["q"])) for it in load_questions(a.sets, include_unapproved=a.include_unapproved)]
     items = [(it, p) for it, p in items if not p["skip"] and not it.get("expect_clarify")]
@@ -57,7 +62,8 @@ def main() -> None:
     qc = server_client()
     out: dict[str, Any] = {"questions": {}, "timing": {}, "skipped_offline": skipped}
     for n, (it, p) in enumerate(items, 1):
-        qv, bv = qwen(p["search_q"], True), bge(p["search_q"], True)
+        qv = qwen(p["search_q"], True)
+        bv = bge(p["search_q"], True) if "bge" in arms_on else None
         qd = out["questions"].setdefault(it["qid"], {
             "qid": it["qid"], "set": it["set"], "q": it["q"], "search_q": p["search_q"],
             "not_found": bool(it.get("expect_not_found")),
@@ -65,11 +71,17 @@ def main() -> None:
         for mode in ("filtered", "unfiltered"):
             flt = retrieve._filter(None, p["doc_ids"] if mode == "filtered" else None)
             k = retrieve.PREFETCH_K
-            arms = [retrieve.candidates(qc, qv, flt, "dense", collection=a.qwen_collection, dense_mode=a.qwen_dense,
-                                        short_dim=256, fused_k=k),
-                    retrieve.candidates(qc, bv, flt, "dense", collection=a.bge_collection, dense_mode="full", fused_k=k),
-                    retrieve.candidates(qc, qv, flt, "sparse", collection=a.qwen_collection, sparse_name="bm25",
-                                        fused_k=k)]
+            sq = {**qv, "sparse": bm25_query(trans[it["qid"]][mode]["bm25"])} if trans else qv
+            arms = []
+            if "qwen" in arms_on:
+                arms.append(retrieve.candidates(qc, qv, flt, "dense", collection=a.qwen_collection,
+                                                dense_mode=a.qwen_dense, short_dim=256, fused_k=k))
+            if "bge" in arms_on:
+                arms.append(retrieve.candidates(qc, bv, flt, "dense", collection=a.bge_collection, dense_mode="full",
+                                                fused_k=k))
+            if "bm25" in arms_on:
+                arms.append(retrieve.candidates(qc, sq, flt, "sparse", collection=a.qwen_collection, sparse_name="bm25",
+                                                fused_k=k))
             qd[mode] = [{"chunk_id": x.payload["chunk_id"], "doc_id": x.payload["doc_id"], "pages": x.payload["pages"],
                          "chunk_type": x.payload.get("chunk_type"), "text": x.payload["text"],
                          "embed_text": x.payload.get("embed_text")}
@@ -79,8 +91,8 @@ def main() -> None:
     qc.close()
     if qwen.cloud.stats["requests"]:
         raise RuntimeError(f"bulut çağrısı yapıldı: {qwen.cloud.stats}")
-    out["params"] = {"key": "uclu", "tag": a.tag, "arms": [f"qwen3-8b:{a.qwen_dense}@{a.qwen_collection}",
-                                                           f"bge-m3:full@{a.bge_collection}", "bm25"],
+    out["params"] = {"key": "uclu", "tag": a.tag, "arms": arms_on, "qwen": f"qwen3-8b:{a.qwen_dense}@{a.qwen_collection}",
+                     "bge": f"bge-m3:full@{a.bge_collection}", "bm25_translations": a.bm25_translations,
                      "PREFETCH_K": retrieve.PREFETCH_K, "RRF_K": retrieve.RRF_K, "FUSED_K": K_OUT,
                      "sets": list(a.sets), "include_unapproved": a.include_unapproved, "offline": True,
                      "cloud_stats": qwen.cloud.stats}

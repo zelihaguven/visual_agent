@@ -157,3 +157,43 @@ class CloudEmbedder:
             if self.cache:
                 self.cache.put(self.model, dim, [texts[i] for i in idx], vecs)
         return got  # type: ignore[return-value]
+
+
+# ---------- sohbet (OpenAI uyumlu /chat/completions) ----------
+
+class CloudChat:
+    """OpenRouter sohbet istemcisi (ör. sorgu çevirisi). ZDR zorunlu (require_zdr + openrouter_body).
+    stats: istek, token, maliyet (API'nin usage alanı), ağ süresi; last_network_s: son çağrının süresi."""
+
+    def __init__(self, model: str, timeout: float = 60.0) -> None:
+        import requests
+        require_zdr(model)
+        self.model, self.timeout = model, timeout
+        self.session = requests.Session()
+        self.session.headers.update({"Authorization": f"Bearer {api_key()}", "Content-Type": "application/json"})
+        self.stats = {"requests": 0, "prompt_tokens": 0, "completion_tokens": 0, "cost_usd": 0.0, "network_s": 0.0,
+                      "retries": 0}
+        self.last_network_s = 0.0
+
+    def complete(self, messages: list[dict[str, str]], max_tokens: int = 300, temperature: float = 0.0,
+                 json_mode: bool = False) -> str:
+        import time
+        body: dict[str, Any] = {"model": self.model, "messages": messages, "max_tokens": max_tokens,
+                                "temperature": temperature, "usage": {"include": True}}
+        if json_mode:
+            body["response_format"] = {"type": "json_object"}
+        t = time.perf_counter()
+        r, attempts = post_with_retry(self.session, f"{OPENROUTER_URL}/chat/completions", openrouter_body(body),
+                                      self.timeout)
+        self.last_network_s = time.perf_counter() - t
+        self.stats["requests"] += 1
+        self.stats["retries"] += attempts - 1
+        self.stats["network_s"] += self.last_network_s
+        if r.status_code != 200:
+            raise RuntimeError(f"OpenRouter chat {self.model} {r.status_code}: {r.text[:300]}")
+        data = r.json()
+        usage = data.get("usage") or {}
+        self.stats["prompt_tokens"] += int(usage.get("prompt_tokens") or 0)
+        self.stats["completion_tokens"] += int(usage.get("completion_tokens") or 0)
+        self.stats["cost_usd"] += float(usage.get("cost") or 0.0)
+        return data["choices"][0]["message"]["content"] or ""
