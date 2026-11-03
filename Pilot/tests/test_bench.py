@@ -153,6 +153,32 @@ def test_review_sources_are_deduplicated_per_document():
     assert src_text({"kabul": [{"doc": "a", "pages": [5]}, {"doc": "a", "pages": [4]}]}) == ("a", "4, 5")
 
 
+def test_candidate_generator_refuses_to_lose_hand_edits():
+    from bench.aday_sorular import lost_fields
+    old = [{"id": "A1", "kabul": [{"doc": "d", "pages": [1]}, {"doc": "d", "pages": [9], "dil_kopyasi": True}],
+            "dogrulandi": True, "not_elle": "x"},
+           {"id": "A2", "q": "?"}]
+    new = [{"id": "A1", "kabul": [{"doc": "d", "pages": [1]}], "dogrulandi": False}]
+    lost = lost_fields(old, new)
+    assert any("A1.kabul: eleman kaybolur" in x and "dil_kopyasi" in x for x in lost)
+    assert any(x.startswith("A1.dogrulandi: değer değişir") for x in lost)
+    assert "A1.not_elle: alan kaybolur" in lost and "A2: soru yeniden üretimde yok" in lost
+    same = [{"id": "A1", "kabul": [{"doc": "d", "pages": [1]}]}]
+    assert lost_fields(same, same + [{"id": "A3"}]) == []          # yeni soru ya da alan eklemek kayıp değil
+
+
+def test_candidate_generator_main_refuses_current_file():
+    import subprocess, sys
+    from pathlib import Path
+    pilot = Path(__file__).resolve().parent.parent
+    path = pilot / "eval" / "aday_sorular.json"
+    before = path.read_bytes()
+    r = subprocess.run([sys.executable, "-m", "bench.aday_sorular"], cwd=pilot, capture_output=True, text=True,
+                       encoding="utf-8", env={**__import__("os").environ, "PYTHONUTF8": "1"})
+    assert r.returncode != 0 and "Yazılmadı" in r.stderr                 # dil kopyaları elle eklendi: reddeder
+    assert path.read_bytes() == before
+
+
 def test_prepare_scopes_like_pipeline():
     p = prepare("S-7300A'da E050 hatası ne demek?")
     assert p["skip"] is None and p["doc_ids"] == ["brother-s7300a"]

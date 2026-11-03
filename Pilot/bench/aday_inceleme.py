@@ -122,7 +122,10 @@ def build(out: Path) -> Path:
         alinti, check = excerpt_and_check(it, chunks, by_id)
         docs, pages = src_text(it)
         titles = "; ".join(f"{BY_ID[d].product} ({BY_ID[d].file})" for d in docs.split("; ") if d in BY_ID)
-        rows.append([n, it["id"], it["kind"], it["q"], docs, titles, pages, it.get("bolum", ""), alinti, check,
+        # bölüm adı güncel parçalardan (JSON'daki "bolum" taslak anının kopyası, bölüm düzeltmesinden sonra bayat)
+        cids = it.get("expect_chunk_ids") or [k["chunk_id"] for k in it.get("kabul") or [] if k.get("chunk_id")]
+        bolum = "; ".join(dict.fromkeys(by_id[c]["section"] for c in cids if c in by_id and by_id[c]["section"]))
+        rows.append([n, it["id"], it["kind"], it["q"], docs, titles, pages, bolum, alinti, check,
                      it.get("cevap", ""), ", ".join(it.get("zorluk") or []), "", ""])
     sheet(wb.create_sheet("Sorular"),
           [("No", 5), ("ID", 7), ("Tür", 11), ("Soru", 45), ("Beklenen doküman", 18), ("Doküman", 28),

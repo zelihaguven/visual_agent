@@ -441,9 +441,37 @@ def to_md(items: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def lost_fields(existing: list[dict], new: list[dict]) -> list[str]:
+    """Var olan JSON'da olup yeniden üretimde kaybolacak ya da değişecek her şey: soru, alan, alan değeri, listenin
+    elemanı (ör. elle eklenen kabul kaynağı, dogrulandi: true). Boşsa yazmak güvenli."""
+    by_id = {it["id"]: it for it in new}
+    out = []
+    for old in existing:
+        cur = by_id.get(old["id"])
+        if cur is None:
+            out.append(f"{old['id']}: soru yeniden üretimde yok")
+            continue
+        for k, v in old.items():
+            if k not in cur:
+                out.append(f"{old['id']}.{k}: alan kaybolur")
+            elif isinstance(v, list) and isinstance(cur[k], list):
+                out += [f"{old['id']}.{k}: eleman kaybolur {json.dumps(x, ensure_ascii=False)[:80]}"
+                        for x in v if x not in cur[k]]
+            elif v != cur[k]:
+                out.append(f"{old['id']}.{k}: değer değişir {json.dumps(v, ensure_ascii=False)[:60]} → "
+                           f"{json.dumps(cur[k], ensure_ascii=False)[:60]}")
+    return out
+
+
 if __name__ == "__main__":
     items = build()
-    (EVAL / "aday_sorular.json").write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding="utf-8")
+    path = EVAL / "aday_sorular.json"
+    if path.exists():
+        lost = lost_fields(json.loads(path.read_text(encoding="utf-8")), items)
+        if lost:
+            raise SystemExit("Yazılmadı: var olan aday_sorular.json'daki elle eklenmiş bilgi kaybolurdu "
+                             f"({len(lost)} fark). Önce taslağa (DRAFT) taşıyın.\n  " + "\n  ".join(lost[:30]))
+    path.write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding="utf-8")
     (EVAL / "aday_sorular.md").write_text(to_md(items), encoding="utf-8")
     warn = [it for it in items if it.get("uyari")]
     print(len(items), "soru;", sum(1 for it in items if it.get("expect_not_found")), "bulunamadı;",
