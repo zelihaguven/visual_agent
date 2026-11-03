@@ -17,6 +17,7 @@ import logging
 import time
 import warnings
 from pathlib import Path
+from collections.abc import Sequence
 from typing import Any
 
 from bench.common import (KNOWN_SETS, PILOT_DIR, StageTimer, accuracy, first_rank, fmt_pct, fmt_s, load_questions,
@@ -225,31 +226,46 @@ class QueryEncoder:
         out["short"] = short_vector(out["dense"], self.short_dim)
         return out
 
+    def cached(self, text: str) -> bool:
+        """Bulut sorgu vektörü önbellekte mi (offline koşu)."""
+        q = self.spec.get("query_prefix", "") + text
+        return self.cloud.cache.get(self.cloud.model, self.cloud.dimensions or 0, [q])[0] is not None
 
-def collect(key: str, dense_mode: str, short_dim: int, repeats: int, timing_sets: list[str]) -> Path:
+
+def collect(key: str, dense_mode: str, short_dim: int, repeats: int, timing_sets: list[str], *,
+            collection: str | None = None, sets: Sequence[str] = KNOWN_SETS, include_unapproved: bool = False,
+            offline: bool = False, tag: str | None = None) -> Path:
+    """offline: bulut çağrısı yok; sorgu vektörü önbellekte olmayan soru atlanır (out["skipped_offline"]),
+    süre ölçülmez (önbellekten okuma). collection/sets/tag verilmezse B4'teki davranış."""
     from bench.server import server_client
     from pilot import retrieve
 
     spec = specs()[key]
     enc = QueryEncoder(spec, short_dim)
     sparse_name = "sparse" if spec["sparse"] == "bge-m3" else "bm25"
+    collection = collection or collection_name(key)
     qc = server_client()
-    items = [(it, prepare(it["q"])) for it in load_questions(KNOWN_SETS)]
+    items = [(it, prepare(it["q"])) for it in load_questions(sets, include_unapproved=include_unapproved)]
     items = [(it, p) for it, p in items if not p["skip"] and not it.get("expect_clarify")]
-    out: dict[str, Any] = {"questions": {}, "timing": {}}
+    out: dict[str, Any] = {"questions": {}, "timing": {}, "skipped_offline": []}
+    if offline:
+        repeats, timing_sets = 1, []
+        if enc.cloud:
+            out["skipped_offline"] = [it["qid"] for it, p in items if not enc.cached(p["search_q"])]
+            items = [(it, p) for it, p in items if it["qid"] not in out["skipped_offline"]]
 
     def run(it, p, scope, use_cache):
         t0 = time.perf_counter()
         q = enc(p["search_q"], use_cache)
         t1 = time.perf_counter()
-        pts = retrieve.candidates(qc, q, retrieve._filter(None, scope), "hybrid", collection=collection_name(key),
+        pts = retrieve.candidates(qc, q, retrieve._filter(None, scope), "hybrid", collection=collection,
                                   sparse_name=sparse_name, dense_mode=dense_mode, short_dim=short_dim)
         t2 = time.perf_counter()
         return pts, {"embed": t1 - t0, "qdrant": t2 - t1, "total": t2 - t0,
                      "network": enc.cloud.last_network_s if enc.cloud else 0.0}
 
     for it, p in items[:3]:                      # ısınma (bağlantı, model yükleme)
-        run(it, p, p["doc_ids"], False)
+        run(it, p, p["doc_ids"], offline)
     for mode in ("filtered", "unfiltered"):
         timer = StageTimer()
         for r in range(repeats if mode == "filtered" else 1):
@@ -272,11 +288,15 @@ def collect(key: str, dense_mode: str, short_dim: int, repeats: int, timing_sets
             log.info("%s tur %d bitti", mode, r + 1)
         out["timing"][mode] = timer.summary()
     qc.close()
+    if offline and enc.cloud and enc.cloud.stats["requests"]:
+        raise RuntimeError(f"offline koşuda bulut çağrısı yapıldı: {enc.cloud.stats}")
     out["params"] = {"key": key, "model": spec["model"], "provider": spec["provider"], "dense_mode": dense_mode,
-                     "short_dim": short_dim if dense_mode != "full" else None, "collection": collection_name(key),
+                     "short_dim": short_dim if dense_mode != "full" else None, "collection": collection,
                      "FUSED_K": retrieve.FUSED_K, "PREFETCH_K": retrieve.PREFETCH_K, "repeats": repeats,
+                     "SHORT_OVERSAMPLE": retrieve.SHORT_OVERSAMPLE, "sets": list(sets),
+                     "include_unapproved": include_unapproved, "offline": offline,
                      "timing_sets": timing_sets, "cloud_stats": enc.cloud.stats if enc.cloud else None}
-    tag = f"{key}_{dense_mode}" + (f"{short_dim}" if dense_mode != "full" else "")
+    tag = tag or f"{key}_{dense_mode}" + (f"{short_dim}" if dense_mode != "full" else "")
     path = CACHE_DIR / f"candidates_{tag}.json"
     path.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
     log.info("yazıldı: %s", path)
@@ -405,6 +425,11 @@ def main() -> None:
     c.add_argument("--short-dim", type=int, default=256)
     c.add_argument("--repeats", type=int, default=3)
     c.add_argument("--timing-sets", nargs="+", default=["questions"])
+    c.add_argument("--collection", help="varsayılan: emb_<key> (ör. scale_qwen3_8b_10000)")
+    c.add_argument("--sets", nargs="+", default=list(KNOWN_SETS))
+    c.add_argument("--include-unapproved", action="store_true", help="onaysız sorular da (yalnız bilgi amaçlı)")
+    c.add_argument("--offline", action="store_true", help="bulut çağrısı yok: önbellekte olmayan sorgu atlanır")
+    c.add_argument("--tag", help="çıktı: data/bench_cache/candidates_<tag>.json")
     sub.add_parser("matrix")
     k = sub.add_parser("costs")
     k.add_argument("--name", default="asama4_maliyet")
@@ -421,7 +446,8 @@ def main() -> None:
     elif a.cmd == "costs":
         costs(a.name)
     elif a.cmd == "collect":
-        collect(a.key, a.dense, a.short_dim, a.repeats, a.timing_sets)
+        collect(a.key, a.dense, a.short_dim, a.repeats, a.timing_sets, collection=a.collection, sets=a.sets,
+                include_unapproved=a.include_unapproved, offline=a.offline, tag=a.tag)
     else:
         summary(a.paths, a.name)
 

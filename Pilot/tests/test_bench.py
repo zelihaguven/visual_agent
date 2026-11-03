@@ -117,6 +117,35 @@ def test_write_result_default_dir_is_stage_dir(tmp_path, monkeypatch):
     assert p.parent == tmp_path / "b25"
 
 
+def test_load_questions_unapproved_only_on_request(tmp_path):
+    (tmp_path / "s.json").write_text(json.dumps([{"id": "A", "q": "x", "dogrulandi": False}, {"id": "B", "q": "y"}]),
+                                     encoding="utf-8")
+    assert [it["id"] for it in common.load_questions(["s"], tmp_path)] == ["B"]
+    assert [it["id"] for it in common.load_questions(["s"], tmp_path, include_unapproved=True)] == ["A", "B"]
+
+
+def test_prefilter_label_free_overlap_and_order():
+    from bench.prefilter_diff import label_free, rank_shift
+    ch = lambda *ids: [{"chunk_id": i} for i in ids]
+    ref = {"questions": {"q1": {"filtered": ch("a", "b", "c")}, "q2": {"filtered": ch("a", "b")}}}
+    oth = {"questions": {"q1": {"filtered": ch("a", "c", "b")}, "q2": {"filtered": ch("a", "x")}}}
+    s = label_free(ref, oth, ["q1", "q2"], "filtered")
+    assert s["n"] == 2 and s["full_overlap"] == 1 and s["same_order"] == 0 and s["top1_same"] == 2
+    assert s["changed"] == ["q1", "q2"] and s["overlap_mean"] == pytest.approx(0.75)
+    assert rank_shift(["a", "c", "b"], ["a", "b", "c"]) == pytest.approx(2 / 3)
+
+
+def test_review_excerpt_checks_quote_in_page_text():
+    from bench.aday_inceleme import excerpt_and_check
+    chunks = [{"chunk_id": "d-1", "doc_id": "d", "pages": [3], "text": "The tabs  shall be\n2 inches wide."}]
+    by_id = {c["chunk_id"]: c for c in chunks}
+    ok = {"kanit": "the tabs shall be 2 inches wide", "expect_docs": ["d"], "expect_pages": [3]}
+    bad = {**ok, "kanit": "the tabs shall be 3 inches wide"}
+    assert excerpt_and_check(ok, chunks, by_id)[1] == "evet"
+    assert excerpt_and_check(bad, chunks, by_id)[1].startswith("HAYIR")
+    assert excerpt_and_check({"expect_docs": ["d"], "expect_pages": [3]}, chunks, by_id)[0].startswith("The tabs")
+
+
 def test_prepare_scopes_like_pipeline():
     p = prepare("S-7300A'da E050 hatası ne demek?")
     assert p["skip"] is None and p["doc_ids"] == ["brother-s7300a"]
