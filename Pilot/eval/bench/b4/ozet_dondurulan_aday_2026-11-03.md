@@ -167,9 +167,32 @@ Tür bazında (filtreli, ikili → aday): değer 0,68/0,94 → 0,83/0,97; prosed
 
 Okuma: Qwen kolu en çok **ilk sırayı** belirliyor (hit@1 −14 puan); ilk 5 büyük ölçüde korunuyor (−3 puan). Bu, aşağıdaki yedek yolun bedeli.
 
-### 9.2 Kuyruk ölçümü (sürüyor; rapor yarın)
+### 9.2 Kuyruk ölçümü (2 koşu bitti, 3. koşu bekliyor)
 
-`bench/tail_probe.py`: Qwen3-8B sorgu embed'i, çeviri (gemma-3-12b-it), cevap modeli (mistral-small-24b-instruct-2501, akışlı: ilk token ve toplam); her servis 30 çağrı, her girdide `provider.sort = latency` ile ve onsuz art arda; sabit girdiler (30 soru, adayın ilk 5 kaynağıyla kurulmuş cevap istemi), önbellek yok. **Görev Zamanlayıcı'da 3 koşu: bugün 17:45, 20:15, 22:45** (`VisualAgent_kuyruk_t1..t3`; bilgisayar kapalıysa açılınca çalışır, uykudan uyandırmaz). Harcama sınırı 0,3 USD (önceki koşular dahil; tahmin ~0,02). Özet: `python -m bench.tail_probe --summary`; p50/p90/p95/en uzun ve ilk token değerleri yarın bu bölüme eklenecek.
+`bench/tail_probe.py`: Qwen3-8B sorgu embed'i, çeviri (gemma-3-12b-it), cevap modeli (mistral-small-24b-instruct-2501, akışlı: ilk token ve toplam); her servis 30 çağrı, her girdide `provider.sort = latency` ile ve onsuz art arda; sabit girdiler (30 soru, adayın ilk 5 kaynağıyla kurulmuş cevap istemi), önbellek yok. Görev Zamanlayıcı'dan `bench/run_kuyruk.ps1` (`VisualAgent_kuyruk_t1..t3`, pencere açmadan `conhost.exe --headless`; ilk iki deneme konsol penceresi kapanınca 0xC000013A ile kesildi). Harcama sınırı 0,3 USD (önceki koşular dahil). Özet: `python -m bench.tail_probe --summary`.
+
+| Koşu | Servis | sort | n | hata | p50 | p90 | p95 | en uzun | ilk token p50 / p95 |
+|---|---|---|---|---|---|---|---|---|---|
+| 18:00 t1 | qwen_embed | yok | 30 | 0 | 0,90 | 2,37 | 3,59 | 4,91 | – |
+| 18:00 t1 | qwen_embed | latency | 30 | 0 | 2,03 | 5,71 | 6,17 | 7,07 | – |
+| 18:00 t1 | çeviri | yok | 30 | 0 | 0,99 | 2,02 | 2,14 | 2,27 | – |
+| 18:00 t1 | çeviri | latency | 30 | 0 | 1,16 | 1,87 | 2,02 | 2,09 | – |
+| 18:00 t1 | cevap | yok | 30 | 0 | 4,24 | 6,13 | 6,68 | 8,42 | 0,39 / 0,97 |
+| 18:00 t1 | cevap | latency | 30 | 0 | 3,86 | 6,03 | 6,66 | 7,73 | 0,43 / 0,79 |
+| 18:08 t2 | qwen_embed | yok | 30 | 0 | 1,16 | 9,53 | 14,44 | 20,81 | – |
+| 18:08 t2 | qwen_embed | latency | 30 | 0 | 2,75 | 13,40 | 17,03 | 18,59 | – |
+| 18:08 t2 | çeviri | yok | 30 | 0 | 0,83 | 1,71 | 1,81 | 3,32 | – |
+| 18:08 t2 | çeviri | latency | 30 | 0 | 0,72 | 1,45 | 1,56 | 1,87 | – |
+| 18:08 t2 | cevap | yok | 30 | 0 | 3,01 | 4,58 | 5,06 | 6,12 | 0,38 / 0,64 |
+| 18:08 t2 | cevap | latency | 30 | 0 | 2,89 | 4,56 | 4,98 | 5,26 | 0,37 / 0,82 |
+
+Süreler saniye; harcama iki koşu 0,019 USD. t1 ile t2 arası 8 dakika, yani **şimdilik tek zaman dilimi**; t3 farklı bir saatte elle başlatılacak, sonra bu bölüm tamamlanır.
+
+İlk okuma (2 koşu, karar değil):
+- **Qwen embed kuyruğu dakikalar içinde gelip gidiyor:** t1'de p95 3,6 sn, 8 dakika sonra t2'de 14,4 sn (en uzun 20,8). Kuyruk yalnız günün saatine bağlı değil; süre sınırı ve yedek yol (9.3) gerekli.
+- **`sort=latency` Qwen'de yardımcı olmadı:** iki koşuda da p50 2–2,4 kat kötü, kuyruk daha iyi değil.
+- **Çeviri kararlı:** p95 ≤ 2,1 sn; `sort=latency` t2'de biraz iyi, t1'de nötr.
+- **Cevap modeli kararlı:** ilk token p95 ≤ 1 sn, toplam p95 ≤ 6,7 sn; `sort=latency` farkı gürültü düzeyinde.
 
 ### 9.3 Süre sınırı ve yedek yol tasarımı (uygulanmadı)
 
