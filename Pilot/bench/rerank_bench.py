@@ -149,7 +149,9 @@ def summarize_config(rows: list[dict[str, Any]], ks: tuple[int, ...] = (10, 15, 
 def compare(name: str, specs: list[str], modes: list[str], warmup: int, limit: int | None,
             candidates: str | None = None) -> None:
     cands = load_candidates(path=candidates)
-    items = {it["qid"]: it for it in load_questions(KNOWN_SETS)}
+    # aday dosyası hangi setlerle toplandıysa (providers collect: sets, include_unapproved); eski dosyalar: bilinen setler
+    items = {it["qid"]: it for it in load_questions(cands["params"].get("sets", KNOWN_SETS),
+                                                    include_unapproved=cands["params"].get("include_unapproved", False))}
     from pilot.chunk import read_chunks
     embed_text = {c["chunk_id"]: c["embed_text"] for c in read_chunks()}
     cfgs = [parse_config(s) for s in specs]
@@ -162,8 +164,9 @@ def compare(name: str, specs: list[str], modes: list[str], warmup: int, limit: i
         log.info("yüklendi %s (%.0f sn)", c["spec"], c["load_s"])
 
     def passages_for(c, items_):
-        return [embed_text.get(x["chunk_id"], x["text"]) if c["passage"] == "embed_text" else x["text"]
-                for x in items_]
+        # chunks.jsonl'da olmayan parça (ölçek koleksiyonunun dikkat dağıtıcısı): aday dosyasındaki embed_text
+        return [embed_text.get(x["chunk_id"]) or x.get("embed_text") or x["text"] if c["passage"] == "embed_text"
+                else x["text"] for x in items_]
 
     def query_for(c, q):
         return (QWEN_INSTRUCT + q) if c["instruct"] else q
