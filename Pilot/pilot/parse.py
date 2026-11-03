@@ -175,17 +175,25 @@ def _norm_repeating(text: str) -> str:
     return re.sub(r"\d+", "#", text.strip().lower().translate(_OCR_CONFUSABLE))
 
 
-def remove_furniture(elements: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Üst/alt bilgileri (sayfa kenarında, sayfaların çoğunda tekrar eden metin) ayıkla."""
+def in_edge_band(e: dict[str, Any]) -> bool:
+    _, t, _, b = e["bbox_tl"]
+    return t <= e["page_h"] * EDGE_BAND or b >= e["page_h"] * (1 - EDGE_BAND)
+
+
+def furniture_keys(elements: list[dict[str, Any]]) -> set[str]:
+    """Üst/alt bilgi sayılan metinlerin normalleştirilmiş hali (sayfa kenarında, sayfaların çoğunda tekrar eden)."""
     pages = {e["page"] for e in elements}
     seen: dict[str, set[int]] = {}
     for e in elements:
-        _, t, _, b = e["bbox_tl"]
-        h = e["page_h"]
-        if t <= h * EDGE_BAND or b >= h * (1 - EDGE_BAND):
+        if in_edge_band(e):
             seen.setdefault(_norm_repeating(e["text"]), set()).add(e["page"])
     need = max(2, int(len(pages) * FURNITURE_MIN_RATIO))
-    furn = {k for k, v in seen.items() if len(v) >= need and k} if len(pages) >= 2 else set()
+    return {k for k, v in seen.items() if len(v) >= need and k} if len(pages) >= 2 else set()
+
+
+def remove_furniture(elements: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Üst/alt bilgileri (sayfa kenarında, sayfaların çoğunda tekrar eden metin) ayıkla."""
+    furn = furniture_keys(elements)
     return [e for e in elements
             if e["label"] not in ("page_header", "page_footer") and _norm_repeating(e["text"]) not in furn]
 

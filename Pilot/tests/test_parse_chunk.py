@@ -145,6 +145,7 @@ def test_long_paragraph_splits_on_sentence_boundaries_and_keeps_boxes():
 @pytest.fixture
 def no_pdf(monkeypatch):
     monkeypatch.setattr(chunk_mod, "printed_page_labels", lambda path, pages: {p: str(p) for p in pages})
+    monkeypatch.setattr(chunk_mod, "pdf_outline", lambda path: [])
 
 
 def test_build_chunks_sets_section_type_and_metadata(no_pdf):
@@ -173,6 +174,88 @@ def test_chunk_never_crosses_a_heading(no_pdf):
     chunks = build_chunks(BY_ID["gl-pd-14-04a"], els)
     assert [c.text for c in chunks] == ["Para A before.", "Para B after."]
     assert chunks[1].section == "Heading"
+
+
+# --- bölüm adı kuralları: yalnız section/embed_text değişir, parça sınırı aynı ----------------------------------------
+
+def sections(chunks):
+    return [(c.text, c.section) for c in chunks]
+
+
+def test_rule1_ocr_junk_and_admonition_headings_keep_previous_section(no_pdf):
+    els = [el("3.4 Threading", label="section_header", top=100.0), el("Para A.", top=120.0),
+           el("NOTE:", label="section_header", top=140.0), el("Para B.", top=160.0),
+           el("c: o o", label="section_header", top=180.0), el("Para C.", top=200.0),
+           el("Uyarı", label="section_header", top=220.0), el("Para D.", top=240.0)]
+    chunks = build_chunks(BY_ID["brother-s7300a"], els)
+    assert sections(chunks) == [("Para A.", "3.4 Threading"), ("Para B.", "3.4 Threading"),
+                                ("Para C.", "3.4 Threading"), ("Para D.", "3.4 Threading")]   # sınırlar aynı: 4 parça
+    assert chunks[1].embed_text.endswith("| 3.4 Threading\nPara B.")
+
+
+def test_rule1_ocr_junk_detection_keeps_numbered_headings():
+    assert chunk_mod.is_ocr_junk("c: o o") and chunk_mod.is_ocr_junk("® .s °")
+    assert not chunk_mod.is_ocr_junk("1.2.1 Types.") and not chunk_mod.is_ocr_junk("3.11 Configuration")
+
+
+def test_rule1_page_header_ocr_variant_in_edge_band_is_not_a_section(no_pdf):
+    els = [el("GLlPD 07-14A", page=p, top=20.0, label="section_header") for p in (1, 2, 3, 4)]
+    els += [el("3.11 Seams", page=1, label="section_header", top=100.0), el("Body 1.", page=1, top=130.0),
+            el("OLlPD 07-14A", page=3, label="section_header", top=20.0), el("Body 3.", page=3, top=130.0),
+            el("OLlPD 07-14A", page=4, label="section_header", top=400.0), el("Body 4.", page=4, top=430.0)]
+    chunks = build_chunks(BY_ID["gl-pd-07-14a"], els)
+    assert sections(chunks) == [("Body 1.", "3.11 Seams"), ("Body 3.", "3.11 Seams"),
+                                ("Body 4.", "OLlPD 07-14A")]        # sayfa ortasındaki aynı metin başlık olarak kalır
+
+
+def test_rule2_table_rows_take_caption_below_and_continued_is_dropped(no_pdf):
+    els = [el("4. VERIFICATION", label="section_header", top=50.0),
+           el("Row 1", label="table_row", top=100.0), el("Row 2", label="table_row", top=120.0),
+           el("TABLE VIII. Visual examination - Continued", label="caption", top=140.0),
+           el("Row 3", label="table_row", top=200.0),
+           el("TABLE IX. End item tests", label="caption", top=220.0)]
+    secs = {c.text: c.section for c in build_chunks(BY_ID["gl-pd-07-14a"], els)}
+    assert secs["Row 1"] == secs["Row 2"] == "4. VERIFICATION > TABLE VIII. Visual examination"
+    assert secs["Row 3"] == "4. VERIFICATION > TABLE IX. End item tests"
+
+
+def test_rule2_shared_caption_follows_document_convention():
+    tab = lambda t: el(t, label="table_row")
+    cap = lambda t: el(t, label="caption")
+    below = [tab("a"), cap("TABLE I. A"), tab("b"), cap("TABLE II. B"), el("text"), tab("c"), cap("TABLE III. C")]
+    assert chunk_mod.table_captions(below) == {0: "TABLE I. A", 2: "TABLE II. B", 5: "TABLE III. C"}
+    above = [cap("TABLE I. A"), tab("a"), cap("TABLE II. B"), tab("b"), el("text"), cap("TABLE III. C"), tab("c")]
+    assert chunk_mod.table_captions(above) == {1: "TABLE I. A", 3: "TABLE II. B", 6: "TABLE III. C"}
+    assert chunk_mod.table_captions([tab("x"), el("No caption here.")]) == {}
+
+
+def test_rule3_deep_numbered_heading_yields_to_parent_only_for_named_tables(no_pdf):
+    els = [el("3.11.1 Seams and stitching", label="section_header", top=50.0), el("Body.", top=60.0),
+           el("3.11.1.1 Repair of stitch.", label="section_header", top=80.0), el("Repairs.", top=90.0),
+           el("Row 1", label="table_row", top=100.0), el("TABLE V. Seam types", label="caption", top=120.0),
+           el("Row 2", label="table_row", top=300.0)]          # adsız tablo (adı yok): bölüm aynı kalır
+    els[-1]["page"] = 2
+    secs = {c.text: c.section for c in build_chunks(BY_ID["gl-pd-14-04a"], els)}
+    assert secs["Repairs."] == "3.11.1.1 Repair of stitch."
+    assert secs["Row 1"] == "3.11.1 Seams and stitching > TABLE V. Seam types"
+    assert secs["Row 2"] == "3.11.1.1 Repair of stitch."
+    assert chunk_mod.parent_section("3.11 Configuration", {"3": "3 Req"}) == "3.11 Configuration"   # 2 düzey: aynı
+
+
+def test_rule4_outline_fills_only_empty_sections(no_pdf, monkeypatch):
+    monkeypatch.setattr(chunk_mod, "pdf_outline", lambda path: [(1, "Cover"), (3, "2. Setup")])
+    els = [el("Front text.", page=1), el("CAUTION", label="section_header", page=4, top=280.0),   # Kural 1: ad değil
+           el("Setup text.", page=4, top=301.0),
+           el("Named", label="section_header", page=5, top=100.0), el("Named text.", page=5, top=130.0)]
+    secs = {c.text: c.section for c in build_chunks(BY_ID["brother-s7300a"], els)}
+    assert secs == {"Front text.": "Cover", "Setup text.": "2. Setup", "Named text.": "Named"}
+
+
+def test_rule4_ocr_generated_outline_is_ignored():
+    good = [[1, "Cover", 1], [1, "SAFETY INSTRUCTIONS", 3], [2, "[1] Safety indications", 3]]
+    assert chunk_mod.clean_outline(good) == [(1, "Cover"), (3, "SAFETY INSTRUCTIONS"), (3, "[1] Safety indications")]
+    junk = [[1, "Repair and Adjustment of Textile Machines\n", 3], [2, "ag xi\n", 4], [2, "(4).\n", 45], [3, "♦", 98]]
+    assert chunk_mod.clean_outline(junk) == []
 
 
 def test_lang_follows_page_ranges_for_trilingual_manual(no_pdf):
