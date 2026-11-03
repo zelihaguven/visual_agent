@@ -83,7 +83,7 @@ Ağ: embedding yanıtı JSON float olarak geliyor. 4096 boyutlu bir vektör ~45 
 
 ## 2. Korpus: 1M parça nereden geliyor (3b)
 
-Gerçek 4.232 parça her kademede var. Geri kalanı Hugging Face'teki açık veri setlerinden konuya yakın dikkat dağıtıcılar ([scale_sources.json](../../bench/scale_sources.json)):
+Gerçek 4.232 parça her kademede var. Geri kalanı Hugging Face'teki açık veri setlerinden konuya yakın dikkat dağıtıcılar ([scale_sources.json](../../../bench/scale_sources.json)):
 
 | Kaynak | Pay | Neden | Lisans |
 |---|---|---|---|
@@ -149,15 +149,15 @@ Bilinen sınırlar:
 
 | Dosya | Ne yapar |
 |---|---|
-| [bench/vm/setup.sh](../../bench/vm/setup.sh) | Ubuntu 24.04 kurulumu: paketler, kod (GitHub ya da git bundle), `.venv-vm`, Qdrant (docker, yalnız 127.0.0.1), kontrol. `--gpu` ile torch CUDA. Anahtar dosyaya yazılmaz (`read -rs`). |
-| [bench/vm/run_asama3.sh](../../bench/vm/run_asama3.sh) | Sırayla: korpus → Qwen3-8B 1M → kademe kopyaları → local yol → durum. Her adım kaldığı yerden sürer; tmux içinde çalışır. |
-| [bench/scale_corpus.py](../../bench/scale_corpus.py) | Korpus: parquet (tam) ya da rows API (küçük örnek). İndirmeler önbellekte; deterministik. |
-| [bench/scale_index.py](../../bench/scale_index.py) | Paralel embed (iş parçacığı başına istemci), BM25, Qdrant'a yükleme. Toplu iş bazında ilerleme dosyası; Ctrl+C güvenli. Maliyet tahmini 5 USD'yi aşarsa `--yes` ister. Alt komutlar: `copy` (kademe), `status`, `probe`. |
-| [bench/vm/requirements-vm.txt](../../bench/vm/requirements-vm.txt), [requirements-vm-local.txt](../../bench/vm/requirements-vm-local.txt) | VM paketleri (sürümler lock dosyasından); local yol için torch CPU + bge-m3 |
-| [bench/scale_synth.py](../../bench/scale_synth.py) | 3a: gerçek bge-m3 vektörleri (yerelde dışa aktarılır) + Gauss gürültüsü; BM25 ağırlıkları ölçeklenir, token düşürülür; 1M, gRPC ile yükleme |
-| [bench/scale_bench.py](../../bench/scale_bench.py) | Qdrant konteyner sınırı, sorgu vektörleri (bir kez), yalnız Qdrant gecikmesi (filtresiz / marka / yetki / dense), ANN recall, RAM/disk |
-| [bench/load_test.py](../../bench/load_test.py) | 3c yük testi |
-| [bench/vm/hetzner.py](../../bench/vm/hetzner.py) | Hetzner API: fiyat, aç, durum, sil (doğrulamalı), gerçek maliyet |
+| [bench/vm/setup.sh](../../../../docs/arsiv/pilot-bench-vm/setup.sh) | Ubuntu 24.04 kurulumu: paketler, kod (GitHub ya da git bundle), `.venv-vm`, Qdrant (docker, yalnız 127.0.0.1), kontrol. `--gpu` ile torch CUDA. Anahtar dosyaya yazılmaz (`read -rs`). |
+| [bench/vm/run_asama3.sh](../../../../docs/arsiv/pilot-bench-vm/run_asama3.sh) | Sırayla: korpus → Qwen3-8B 1M → kademe kopyaları → local yol → durum. Her adım kaldığı yerden sürer; tmux içinde çalışır. |
+| [bench/scale_corpus.py](../../../bench/scale_corpus.py) | Korpus: parquet (tam) ya da rows API (küçük örnek). İndirmeler önbellekte; deterministik. |
+| [bench/scale_index.py](../../../bench/scale_index.py) | Paralel embed (iş parçacığı başına istemci), BM25, Qdrant'a yükleme. Toplu iş bazında ilerleme dosyası; Ctrl+C güvenli. Maliyet tahmini 5 USD'yi aşarsa `--yes` ister. Alt komutlar: `copy` (kademe), `status`, `probe`. |
+| [bench/vm/requirements-vm.txt](../../../../docs/arsiv/pilot-bench-vm/requirements-vm.txt), [requirements-vm-local.txt](../../../../docs/arsiv/pilot-bench-vm/requirements-vm-local.txt) | VM paketleri (sürümler lock dosyasından); local yol için torch CPU + bge-m3 |
+| [bench/scale_synth.py](../../../bench/scale_synth.py) | 3a: gerçek bge-m3 vektörleri (yerelde dışa aktarılır) + Gauss gürültüsü; BM25 ağırlıkları ölçeklenir, token düşürülür; 1M, gRPC ile yükleme |
+| [bench/scale_bench.py](../../../bench/scale_bench.py) | Qdrant konteyner sınırı, sorgu vektörleri (bir kez), yalnız Qdrant gecikmesi (filtresiz / marka / yetki / dense), ANN recall, RAM/disk |
+| [bench/load_test.py](../../../bench/load_test.py) | 3c yük testi |
+| [bench/vm/hetzner.py](../../../../docs/arsiv/pilot-bench-vm/hetzner.py) | Hetzner API: fiyat, aç, durum, sil (doğrulamalı), gerçek maliyet |
 | `bench.measure --scale-collection` | 3b doğruluk + uçtan uca arama süresi (bulut embed dahil) |
 
 VM kodu GitHub'dan çeker. Commit'ler push edilmediyse yerelde `git bundle create visual_agent.bundle main` ile bir bundle oluşturulup VM'e kopyalanır, kurulum `BUNDLE=...` ile yapılır.
