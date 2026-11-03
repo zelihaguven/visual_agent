@@ -16,3 +16,5 @@ B3 üçe bölündü (2026-10-27). **B3b** (kalabalıkta doğruluk) dizüstünde 
 | [asama3b_scale_bge_m3](asama3b_scale_bge_m3_2026-11-03.md) | 2026-11-03 | bge-m3 + BM25 ana koleksiyon (10k'ya kadar kuruldu): 10k ile aynı sonuç |
 
 Süreler dizüstünde alındı; üretimi temsil etmez, karar için kullanılmaz.
+
+**Paket başlık düzeltmesi öncesi:** 2026-11-03'te parçaların bölüm adları düzeltildi (`pilot/chunk.py`, 606 parça; [b4/asama4_bolum_duzeltme_gercek](../b4/asama4_bolum_duzeltme_gercek_2026-11-03.md)). 1M koleksiyonu (`scale_qwen3_8b`), `synth_1m` ve sunucu paketi (commit `7ba656e`) düzeltme öncesi `embed_text` ile kalıyor; bu rapordaki B3b sayıları da öyle. Paket, sunucu testi tarihi belli olunca güncellenecek.
