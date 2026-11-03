@@ -3,8 +3,9 @@ toplamda ve soru türüne göre; harcama.
 
 Kullanım (Pilot klasöründe):
     python -m bench.rerank_report --name <ad> --runs "yol=<compare json>" ... [--config <yapılandırma>]
-Reranker sonrası sıra: reranker sırası ile hibrit sıranın RRF birleşimi (rank_fused, B4 düzeltmesi). Rerank'sız sıra
-aynı aday dosyasından (RRF ilk 20). Onaysız soru içeren koşular "geçici, onaysız set" diye işaretlenir.
+Reranker sonrası sıra: reranker sırası ile hibrit sıranın RRF birleşimi (B4 düzeltmesi), kayıtlı reranker skorlarından
+bugünkü etiketlerle yeniden hesaplanır (etiket sonradan düzeltildiyse koşu anındaki rank_fused bayattır). Rerank'sız
+sıra aynı aday dosyasından (RRF ilk 20). Onaysız soru içeren koşular "geçici, onaysız set" diye işaretlenir.
 """
 import argparse
 import json
@@ -13,6 +14,7 @@ from typing import Any
 
 from bench.candidate_report import KINDS, kind_of
 from bench.common import accuracy, first_rank, fmt_pct, load_questions, meta, write_result
+from pilot.retrieve import fused_order
 
 K = 20
 
@@ -49,7 +51,8 @@ def main() -> None:
         for mode, v in cfg.items():
             rows = {x["qid"]: x for x in v["rows"] if not x["not_found"]}
             ranks[k][mode] = {"rerank'sız": {q: first_rank(cands[q][mode][:K], items[q]) for q in rows},
-                              "reranker": {q: x["rank_fused"] for q, x in rows.items()}}
+                              "reranker": {q: first_rank([cands[q][mode][j] for j in fused_order(x["scores"])],
+                                                         items[q]) for q, x in rows.items()}}
     qids = sorted(set.intersection(*(set(ranks[k][m]["reranker"]) for k in ranks for m in ranks[k])))
     blocks = [("Toplam", qids)] + [(f"Tür: {t}", [q for q in qids if kind_of(items[q]) == t]) for t in KINDS]
     blocks = [(b, qs) for b, qs in blocks if qs]

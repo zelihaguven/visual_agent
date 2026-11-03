@@ -1,0 +1,788 @@
+{
+ "meta": {
+  "date": "2026-11-03T16:57:04",
+  "git_commit": "e3b7480+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {
+   "PILOT_QDRANT_URL": "http://127.0.0.1:6333"
+  },
+  "params": {
+   "runs": {
+    "A: Qwen3-8B + BM25": "A: Qwen3-8B + BM25=eval/bench/b4/asama4_rerank10k_a_2026-11-03.json",
+    "Üçlü füzyon": "Üçlü füzyon=eval/bench/b4/asama4_rerank10k_uclu_2026-11-03.json",
+    "Üçlü, BM25 çevirili": "Üçlü, BM25 çevirili=eval/bench/b4/asama4_rerank10k_uclu_tr_2026-11-03.json"
+   },
+   "sets": [
+    "aday_sorular",
+    "questions",
+    "questions_ek",
+    "sekil_sorular"
+   ],
+   "unapproved": true
+  }
+ },
+ "questions": [
+  "aday_sorular:A001",
+  "aday_sorular:A002",
+  "aday_sorular:A003",
+  "aday_sorular:A004",
+  "aday_sorular:A005",
+  "aday_sorular:A006",
+  "aday_sorular:A007",
+  "aday_sorular:A008",
+  "aday_sorular:A009",
+  "aday_sorular:A010",
+  "aday_sorular:A011",
+  "aday_sorular:A012",
+  "aday_sorular:A013",
+  "aday_sorular:A014",
+  "aday_sorular:A015",
+  "aday_sorular:A016",
+  "aday_sorular:A017",
+  "aday_sorular:A018",
+  "aday_sorular:A019",
+  "aday_sorular:A020",
+  "aday_sorular:A021",
+  "aday_sorular:A022",
+  "aday_sorular:A023",
+  "aday_sorular:A024",
+  "aday_sorular:A025",
+  "aday_sorular:A026",
+  "aday_sorular:A027",
+  "aday_sorular:A028",
+  "aday_sorular:A029",
+  "aday_sorular:A030",
+  "aday_sorular:A031",
+  "aday_sorular:A032",
+  "aday_sorular:A033",
+  "aday_sorular:A034",
+  "aday_sorular:A035",
+  "aday_sorular:A036",
+  "aday_sorular:A037",
+  "aday_sorular:A038",
+  "aday_sorular:A039",
+  "aday_sorular:A040",
+  "aday_sorular:A041",
+  "aday_sorular:A042",
+  "aday_sorular:A043",
+  "aday_sorular:A044",
+  "aday_sorular:A045",
+  "aday_sorular:A046",
+  "aday_sorular:A047",
+  "aday_sorular:A048",
+  "aday_sorular:A049",
+  "aday_sorular:A050",
+  "aday_sorular:A051",
+  "aday_sorular:A052",
+  "aday_sorular:A053",
+  "aday_sorular:A054",
+  "aday_sorular:A055",
+  "aday_sorular:A056",
+  "aday_sorular:A057",
+  "aday_sorular:A058",
+  "aday_sorular:A059",
+  "aday_sorular:A060",
+  "aday_sorular:A061",
+  "aday_sorular:A062",
+  "aday_sorular:A063",
+  "aday_sorular:A064",
+  "aday_sorular:A065",
+  "aday_sorular:A066",
+  "aday_sorular:A067",
+  "aday_sorular:A068",
+  "aday_sorular:A069",
+  "aday_sorular:A070",
+  "aday_sorular:A071",
+  "aday_sorular:A072",
+  "aday_sorular:A073",
+  "aday_sorular:A074",
+  "aday_sorular:A075",
+  "aday_sorular:A076",
+  "aday_sorular:A077",
+  "aday_sorular:A078",
+  "aday_sorular:A079",
+  "aday_sorular:A080",
+  "aday_sorular:A081",
+  "aday_sorular:A082",
+  "aday_sorular:A083",
+  "aday_sorular:A084",
+  "aday_sorular:A085",
+  "aday_sorular:A086",
+  "aday_sorular:A087",
+  "aday_sorular:A088",
+  "aday_sorular:A089",
+  "aday_sorular:A090",
+  "aday_sorular:A091",
+  "aday_sorular:A092",
+  "aday_sorular:A093",
+  "aday_sorular:A094",
+  "aday_sorular:A095",
+  "aday_sorular:A096",
+  "aday_sorular:A097",
+  "aday_sorular:A098",
+  "aday_sorular:A099",
+  "aday_sorular:A100",
+  "aday_sorular:A101",
+  "aday_sorular:A102",
+  "aday_sorular:A103",
+  "aday_sorular:A104",
+  "aday_sorular:A105",
+  "aday_sorular:A106",
+  "aday_sorular:A107",
+  "aday_sorular:A108",
+  "aday_sorular:A109",
+  "aday_sorular:A110",
+  "aday_sorular:A111",
+  "aday_sorular:A112",
+  "aday_sorular:A113",
+  "aday_sorular:A147",
+  "aday_sorular:A148",
+  "aday_sorular:A150",
+  "aday_sorular:A151",
+  "aday_sorular:A152",
+  "aday_sorular:A153",
+  "aday_sorular:A154",
+  "aday_sorular:A155",
+  "questions:Q01",
+  "questions:Q02",
+  "questions:Q03",
+  "questions:Q04",
+  "questions:Q05",
+  "questions:Q06",
+  "questions:Q09",
+  "questions:Q11",
+  "questions:Q12",
+  "questions:Q13",
+  "questions:Q14",
+  "questions:Q15",
+  "questions:Q16",
+  "questions_ek:Q19",
+  "questions_ek:Q20",
+  "questions_ek:Q21",
+  "questions_ek:Q22",
+  "questions_ek:Q23",
+  "questions_ek:Q24",
+  "questions_ek:Q25",
+  "questions_ek:Q26",
+  "questions_ek:Q27",
+  "questions_ek:Q28",
+  "questions_ek:Q29",
+  "questions_ek:Q32",
+  "sekil_sorular:G1",
+  "sekil_sorular:G2",
+  "sekil_sorular:G3",
+  "sekil_sorular:G4",
+  "sekil_sorular:G5",
+  "sekil_sorular:G6",
+  "sekil_sorular:G7",
+  "sekil_sorular:G8",
+  "sekil_sorular:G9",
+  "sekil_sorular:N1",
+  "sekil_sorular:N2",
+  "sekil_sorular:N3"
+ ],
+ "cost_usd": {
+  "A: Qwen3-8B + BM25": 0.3263576,
+  "Üçlü füzyon": 0.3250818,
+  "Üçlü, BM25 çevirili": 0.3242152
+ },
+ "rows": {
+  "filtered|Toplam|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 158,
+   "hit@1": 0.7468354430379747,
+   "hit@5": 0.8734177215189873,
+   "hit@20": 0.9620253164556962,
+   "mrr": 0.8020340155624966
+  },
+  "filtered|Toplam|A: Qwen3-8B + BM25|reranker": {
+   "n": 158,
+   "hit@1": 0.7974683544303798,
+   "hit@5": 0.930379746835443,
+   "hit@20": 0.9620253164556962,
+   "mrr": 0.8527095794500859
+  },
+  "filtered|Toplam|Üçlü füzyon|rerank'sız": {
+   "n": 158,
+   "hit@1": 0.810126582278481,
+   "hit@5": 0.9430379746835443,
+   "hit@20": 0.9810126582278481,
+   "mrr": 0.8670281722496912
+  },
+  "filtered|Toplam|Üçlü füzyon|reranker": {
+   "n": 158,
+   "hit@1": 0.8291139240506329,
+   "hit@5": 0.9493670886075949,
+   "hit@20": 0.9810126582278481,
+   "mrr": 0.8855682292391154
+  },
+  "filtered|Toplam|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 158,
+   "hit@1": 0.8607594936708861,
+   "hit@5": 0.9810126582278481,
+   "hit@20": 1.0,
+   "mrr": 0.9073990355635926
+  },
+  "filtered|Toplam|Üçlü, BM25 çevirili|reranker": {
+   "n": 158,
+   "hit@1": 0.8291139240506329,
+   "hit@5": 0.9873417721518988,
+   "hit@20": 1.0,
+   "mrr": 0.8983771502758844
+  },
+  "filtered|Tür: değer|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 90,
+   "hit@1": 0.6777777777777778,
+   "hit@5": 0.8222222222222222,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.7450082170915504
+  },
+  "filtered|Tür: değer|A: Qwen3-8B + BM25|reranker": {
+   "n": 90,
+   "hit@1": 0.7444444444444445,
+   "hit@5": 0.9222222222222223,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.8166880341880342
+  },
+  "filtered|Tür: değer|Üçlü füzyon|rerank'sız": {
+   "n": 90,
+   "hit@1": 0.7666666666666667,
+   "hit@5": 0.9111111111111111,
+   "hit@20": 0.9666666666666667,
+   "mrr": 0.8290689865689865
+  },
+  "filtered|Tür: değer|Üçlü füzyon|reranker": {
+   "n": 90,
+   "hit@1": 0.8,
+   "hit@5": 0.9222222222222223,
+   "hit@20": 0.9666666666666667,
+   "mrr": 0.8603123728123727
+  },
+  "filtered|Tür: değer|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 90,
+   "hit@1": 0.8333333333333334,
+   "hit@5": 0.9666666666666667,
+   "hit@20": 1.0,
+   "mrr": 0.8857671957671958
+  },
+  "filtered|Tür: değer|Üçlü, BM25 çevirili|reranker": {
+   "n": 90,
+   "hit@1": 0.8,
+   "hit@5": 0.9888888888888889,
+   "hit@20": 1.0,
+   "mrr": 0.8845584045584046
+  },
+  "filtered|Tür: prosedür|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 19,
+   "hit@1": 0.7894736842105263,
+   "hit@5": 0.8947368421052632,
+   "hit@20": 0.8947368421052632,
+   "mrr": 0.8333333333333334
+  },
+  "filtered|Tür: prosedür|A: Qwen3-8B + BM25|reranker": {
+   "n": 19,
+   "hit@1": 0.8421052631578947,
+   "hit@5": 0.8947368421052632,
+   "hit@20": 0.8947368421052632,
+   "mrr": 0.868421052631579
+  },
+  "filtered|Tür: prosedür|Üçlü füzyon|rerank'sız": {
+   "n": 19,
+   "hit@1": 0.8421052631578947,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9210526315789473
+  },
+  "filtered|Tür: prosedür|Üçlü füzyon|reranker": {
+   "n": 19,
+   "hit@1": 0.8947368421052632,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9473684210526315
+  },
+  "filtered|Tür: prosedür|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 19,
+   "hit@1": 0.8947368421052632,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9473684210526315
+  },
+  "filtered|Tür: prosedür|Üçlü, BM25 çevirili|reranker": {
+   "n": 19,
+   "hit@1": 0.8947368421052632,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9473684210526315
+  },
+  "filtered|Tür: kod|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 19,
+   "hit@1": 0.9473684210526315,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9649122807017543
+  },
+  "filtered|Tür: kod|A: Qwen3-8B + BM25|reranker": {
+   "n": 19,
+   "hit@1": 0.9473684210526315,
+   "hit@5": 0.9473684210526315,
+   "hit@20": 1.0,
+   "mrr": 0.9548872180451128
+  },
+  "filtered|Tür: kod|Üçlü füzyon|rerank'sız": {
+   "n": 19,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: kod|Üçlü füzyon|reranker": {
+   "n": 19,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: kod|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 19,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: kod|Üçlü, BM25 çevirili|reranker": {
+   "n": 19,
+   "hit@1": 0.9473684210526315,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9736842105263158
+  },
+  "filtered|Tür: arıza|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9166666666666666
+  },
+  "filtered|Tür: arıza|A: Qwen3-8B + BM25|reranker": {
+   "n": 8,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: arıza|Üçlü füzyon|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: arıza|Üçlü füzyon|reranker": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: arıza|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: arıza|Üçlü, BM25 çevirili|reranker": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: şekil|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.8571428571428571,
+   "hit@20": 1.0,
+   "mrr": 0.8276643990929705
+  },
+  "filtered|Tür: şekil|A: Qwen3-8B + BM25|reranker": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.8511904761904762
+  },
+  "filtered|Tür: şekil|Üçlü füzyon|rerank'sız": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.8243506493506494
+  },
+  "filtered|Tür: şekil|Üçlü füzyon|reranker": {
+   "n": 14,
+   "hit@1": 0.7142857142857143,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.7970238095238095
+  },
+  "filtered|Tür: şekil|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8321428571428572
+  },
+  "filtered|Tür: şekil|Üçlü, BM25 çevirili|reranker": {
+   "n": 14,
+   "hit@1": 0.7142857142857143,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.7857142857142857
+  },
+  "filtered|Tür: diğer|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8229166666666666
+  },
+  "filtered|Tür: diğer|A: Qwen3-8B + BM25|reranker": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8333333333333334
+  },
+  "filtered|Tür: diğer|Üçlü füzyon|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8541666666666666
+  },
+  "filtered|Tür: diğer|Üçlü füzyon|reranker": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8541666666666666
+  },
+  "filtered|Tür: diğer|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: diğer|Üçlü, BM25 çevirili|reranker": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9166666666666666
+  },
+  "unfiltered|Toplam|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 158,
+   "hit@1": 0.7468354430379747,
+   "hit@5": 0.8607594936708861,
+   "hit@20": 0.9493670886075949,
+   "mrr": 0.793714606316989
+  },
+  "unfiltered|Toplam|A: Qwen3-8B + BM25|reranker": {
+   "n": 158,
+   "hit@1": 0.7658227848101266,
+   "hit@5": 0.8987341772151899,
+   "hit@20": 0.9493670886075949,
+   "mrr": 0.8284037454644304
+  },
+  "unfiltered|Toplam|Üçlü füzyon|rerank'sız": {
+   "n": 158,
+   "hit@1": 0.7911392405063291,
+   "hit@5": 0.930379746835443,
+   "hit@20": 0.9683544303797469,
+   "mrr": 0.8550687972365189
+  },
+  "unfiltered|Toplam|Üçlü füzyon|reranker": {
+   "n": 158,
+   "hit@1": 0.8164556962025317,
+   "hit@5": 0.9493670886075949,
+   "hit@20": 0.9683544303797469,
+   "mrr": 0.8749987442234278
+  },
+  "unfiltered|Toplam|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 158,
+   "hit@1": 0.8354430379746836,
+   "hit@5": 0.9367088607594937,
+   "hit@20": 0.9746835443037974,
+   "mrr": 0.8862567811934902
+  },
+  "unfiltered|Toplam|Üçlü, BM25 çevirili|reranker": {
+   "n": 158,
+   "hit@1": 0.7974683544303798,
+   "hit@5": 0.9683544303797469,
+   "hit@20": 0.9746835443037974,
+   "mrr": 0.8715792646172392
+  },
+  "unfiltered|Tür: değer|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 90,
+   "hit@1": 0.6555555555555556,
+   "hit@5": 0.8111111111111111,
+   "hit@20": 0.9444444444444444,
+   "mrr": 0.7183659949346223
+  },
+  "unfiltered|Tür: değer|A: Qwen3-8B + BM25|reranker": {
+   "n": 90,
+   "hit@1": 0.6888888888888889,
+   "hit@5": 0.8555555555555555,
+   "hit@20": 0.9444444444444444,
+   "mrr": 0.7743087975931113
+  },
+  "unfiltered|Tür: değer|Üçlü füzyon|rerank'sız": {
+   "n": 90,
+   "hit@1": 0.7333333333333333,
+   "hit@5": 0.8888888888888888,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.8072318884818884
+  },
+  "unfiltered|Tür: değer|Üçlü füzyon|reranker": {
+   "n": 90,
+   "hit@1": 0.7666666666666667,
+   "hit@5": 0.9222222222222223,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.8375903880070547
+  },
+  "unfiltered|Tür: değer|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 90,
+   "hit@1": 0.7888888888888889,
+   "hit@5": 0.9,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.8429100529100529
+  },
+  "unfiltered|Tür: değer|Üçlü, BM25 çevirili|reranker": {
+   "n": 90,
+   "hit@1": 0.7444444444444445,
+   "hit@5": 0.9555555555555556,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.8340740740740741
+  },
+  "unfiltered|Tür: prosedür|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 19,
+   "hit@1": 0.8421052631578947,
+   "hit@5": 0.8947368421052632,
+   "hit@20": 0.8947368421052632,
+   "mrr": 0.868421052631579
+  },
+  "unfiltered|Tür: prosedür|A: Qwen3-8B + BM25|reranker": {
+   "n": 19,
+   "hit@1": 0.8421052631578947,
+   "hit@5": 0.8947368421052632,
+   "hit@20": 0.8947368421052632,
+   "mrr": 0.868421052631579
+  },
+  "unfiltered|Tür: prosedür|Üçlü füzyon|rerank'sız": {
+   "n": 19,
+   "hit@1": 0.8421052631578947,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9210526315789473
+  },
+  "unfiltered|Tür: prosedür|Üçlü füzyon|reranker": {
+   "n": 19,
+   "hit@1": 0.8947368421052632,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9473684210526315
+  },
+  "unfiltered|Tür: prosedür|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 19,
+   "hit@1": 0.8947368421052632,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9473684210526315
+  },
+  "unfiltered|Tür: prosedür|Üçlü, BM25 çevirili|reranker": {
+   "n": 19,
+   "hit@1": 0.8947368421052632,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9385964912280701
+  },
+  "unfiltered|Tür: kod|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 19,
+   "hit@1": 0.9473684210526315,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9649122807017543
+  },
+  "unfiltered|Tür: kod|A: Qwen3-8B + BM25|reranker": {
+   "n": 19,
+   "hit@1": 0.9473684210526315,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9649122807017543
+  },
+  "unfiltered|Tür: kod|Üçlü füzyon|rerank'sız": {
+   "n": 19,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: kod|Üçlü füzyon|reranker": {
+   "n": 19,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: kod|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 19,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: kod|Üçlü, BM25 çevirili|reranker": {
+   "n": 19,
+   "hit@1": 0.9473684210526315,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9736842105263158
+  },
+  "unfiltered|Tür: arıza|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 8,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: arıza|A: Qwen3-8B + BM25|reranker": {
+   "n": 8,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: arıza|Üçlü füzyon|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: arıza|Üçlü füzyon|reranker": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: arıza|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: arıza|Üçlü, BM25 çevirili|reranker": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: şekil|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.8571428571428571,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.8174603174603174
+  },
+  "unfiltered|Tür: şekil|A: Qwen3-8B + BM25|reranker": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.8357142857142856
+  },
+  "unfiltered|Tür: şekil|Üçlü füzyon|rerank'sız": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.8178571428571428
+  },
+  "unfiltered|Tür: şekil|Üçlü füzyon|reranker": {
+   "n": 14,
+   "hit@1": 0.7142857142857143,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.7880952380952381
+  },
+  "unfiltered|Tür: şekil|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.869047619047619
+  },
+  "unfiltered|Tür: şekil|Üçlü, BM25 çevirili|reranker": {
+   "n": 14,
+   "hit@1": 0.7142857142857143,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.8197278911564626
+  },
+  "unfiltered|Tür: diğer|A: Qwen3-8B + BM25|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 0.875,
+   "hit@20": 1.0,
+   "mrr": 0.8095238095238095
+  },
+  "unfiltered|Tür: diğer|A: Qwen3-8B + BM25|reranker": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8333333333333334
+  },
+  "unfiltered|Tür: diğer|Üçlü füzyon|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.875
+  },
+  "unfiltered|Tür: diğer|Üçlü füzyon|reranker": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9166666666666666
+  },
+  "unfiltered|Tür: diğer|Üçlü, BM25 çevirili|rerank'sız": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: diğer|Üçlü, BM25 çevirili|reranker": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9166666666666666
+  }
+ }
+}

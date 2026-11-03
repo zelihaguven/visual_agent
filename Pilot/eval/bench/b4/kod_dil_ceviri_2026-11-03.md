@@ -67,3 +67,21 @@ Tür bazında (filtreli, A): değer 0,68/0,82 → 0,78/0,98; prosedür 0,79/0,89
 **Çeviri hataları (dürüst not):** A081 "uzun kruvaze palto" → "long cross-stitch coat" (yanlış; yine de doğru parça 1. sırada: "long … coat … buttoned"); A036 "pantolon çizimi" → "pantograph drawing" (yanlış terim). Üç dilli Bosch sorularının 6'sında model JSON yanıtında bazı dilleri vermedi; o sorularda BM25 özgün soruya düştü. Alan terimleri için sözlük (departman verisi) çeviriden önce uygulanabilir; kontrol edilmedi.
 
 Çeviri pipeline'a henüz bağlanmadı (gecikme kararı gerekli).
+
+## 4. Üçlü füzyon + reranker (ölçüldü)
+
+qwen3-reranker-8b (başlıklı metin + reranker sırası ile hibrit sıranın RRF birleşimi, B4 düzeni), 10k, aynı 158 soru. Reranker sonrası sıra kayıtlı skorlardan bugünkü etiketlerle hesaplandı (`rerank_report` düzeltildi: koşu anında kaydedilen sıra, sonradan eklenen dil kopyası etiketleriyle bayattı). A satırı önceki reranker koşusundan (aynı reranker, ilke temizliği ve Mr. Coffee yeniden parçalanmadan önceki aday listesi; etiketler sayfa düzeyinde aynı). Ham tablo (tür bazında): [asama4_rerank10k_uclu_ozet](asama4_rerank10k_uclu_ozet_2026-11-03.md).
+
+| Filtreli, hit@1 / hit@5 | Rerank'sız | + reranker |
+|---|---|---|
+| A: Qwen3-8B + BM25 | 0,75 / 0,87 | 0,80 / 0,93 |
+| Üçlü füzyon | 0,81 / 0,94 | 0,83 / 0,95 |
+| **Üçlü, BM25 çevirili** | **0,86 / 0,98** | 0,83 / 0,99 |
+
+Filtresiz: A 0,75/0,86 → 0,77/0,90; üçlü 0,79/0,93 → 0,82/0,95; üçlü çevirili 0,84/0,94 → 0,80/0,97.
+
+- Reranker zayıf aday listesinde kazandırıyor (A +5 puan hit@1), güçlü listede **hit@1'i düşürüyor** (üçlü çevirili −3 puan filtreli, −4 filtresiz; en çok şekil 0,79 → 0,71 ve değer 0,83 → 0,80). hit@5'e katkısı 1 puan.
+- Bu sette en iyi hit@1: **üçlü füzyon + BM25'e çevrilmiş sorgu, reranker'sız**. Reranker'ın getirisi sorgu başına ~0,4 sn (medyan) / ~1,1 sn (p95) ve ~0,001 USD'ye karşı yalnız hit@5'te +1 puan.
+- Harcama: bu adımda 0,649 USD (iki aday listesi × filtreli/filtresiz); tablodaki toplam A'nın önceki koşusunu (0,326 USD) da içeriyor.
+
+Sayılar onaysız sette ve dizüstünde; karar onaylı setle verilmeli. Set başına n küçük (şekil 14, arıza 8): tür bazındaki farklar 1–2 soru.
