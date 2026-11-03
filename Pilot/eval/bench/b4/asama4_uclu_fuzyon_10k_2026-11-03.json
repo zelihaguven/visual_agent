@@ -1,0 +1,492 @@
+{
+ "meta": {
+  "date": "2026-11-03T15:53:30",
+  "git_commit": "f7d26aa",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {},
+  "params": {
+   "runs": {
+    "Rerank'sız": {
+     "A Qwen3-8B + BM25": "rr10k_a",
+     "C bge-m3 + BM25": "rr10k_c",
+     "Üçlü füzyon": "rr10k_uclu"
+    }
+   },
+   "sets": [
+    "aday_sorular",
+    "questions",
+    "questions_ek",
+    "sekil_sorular"
+   ],
+   "unapproved": true
+  }
+ },
+ "questions": [
+  "aday_sorular:A001",
+  "aday_sorular:A002",
+  "aday_sorular:A003",
+  "aday_sorular:A004",
+  "aday_sorular:A005",
+  "aday_sorular:A006",
+  "aday_sorular:A007",
+  "aday_sorular:A008",
+  "aday_sorular:A009",
+  "aday_sorular:A010",
+  "aday_sorular:A011",
+  "aday_sorular:A012",
+  "aday_sorular:A013",
+  "aday_sorular:A014",
+  "aday_sorular:A015",
+  "aday_sorular:A016",
+  "aday_sorular:A017",
+  "aday_sorular:A018",
+  "aday_sorular:A019",
+  "aday_sorular:A020",
+  "aday_sorular:A021",
+  "aday_sorular:A022",
+  "aday_sorular:A023",
+  "aday_sorular:A024",
+  "aday_sorular:A025",
+  "aday_sorular:A026",
+  "aday_sorular:A027",
+  "aday_sorular:A028",
+  "aday_sorular:A029",
+  "aday_sorular:A030",
+  "aday_sorular:A031",
+  "aday_sorular:A032",
+  "aday_sorular:A033",
+  "aday_sorular:A034",
+  "aday_sorular:A035",
+  "aday_sorular:A036",
+  "aday_sorular:A037",
+  "aday_sorular:A038",
+  "aday_sorular:A039",
+  "aday_sorular:A040",
+  "aday_sorular:A041",
+  "aday_sorular:A042",
+  "aday_sorular:A043",
+  "aday_sorular:A044",
+  "aday_sorular:A045",
+  "aday_sorular:A046",
+  "aday_sorular:A047",
+  "aday_sorular:A048",
+  "aday_sorular:A049",
+  "aday_sorular:A050",
+  "aday_sorular:A051",
+  "aday_sorular:A052",
+  "aday_sorular:A053",
+  "aday_sorular:A054",
+  "aday_sorular:A055",
+  "aday_sorular:A056",
+  "aday_sorular:A057",
+  "aday_sorular:A058",
+  "aday_sorular:A059",
+  "aday_sorular:A060",
+  "aday_sorular:A061",
+  "aday_sorular:A062",
+  "aday_sorular:A063",
+  "aday_sorular:A064",
+  "aday_sorular:A065",
+  "aday_sorular:A066",
+  "aday_sorular:A067",
+  "aday_sorular:A068",
+  "aday_sorular:A069",
+  "aday_sorular:A070",
+  "aday_sorular:A071",
+  "aday_sorular:A072",
+  "aday_sorular:A073",
+  "aday_sorular:A074",
+  "aday_sorular:A075",
+  "aday_sorular:A076",
+  "aday_sorular:A077",
+  "aday_sorular:A078",
+  "aday_sorular:A079",
+  "aday_sorular:A080",
+  "aday_sorular:A081",
+  "aday_sorular:A082",
+  "aday_sorular:A083",
+  "aday_sorular:A084",
+  "aday_sorular:A085",
+  "aday_sorular:A086",
+  "aday_sorular:A087",
+  "aday_sorular:A088",
+  "aday_sorular:A089",
+  "aday_sorular:A090",
+  "aday_sorular:A091",
+  "aday_sorular:A092",
+  "aday_sorular:A093",
+  "aday_sorular:A094",
+  "aday_sorular:A095",
+  "aday_sorular:A096",
+  "aday_sorular:A097",
+  "aday_sorular:A098",
+  "aday_sorular:A099",
+  "aday_sorular:A100",
+  "aday_sorular:A101",
+  "aday_sorular:A102",
+  "aday_sorular:A103",
+  "aday_sorular:A104",
+  "aday_sorular:A105",
+  "aday_sorular:A106",
+  "aday_sorular:A107",
+  "aday_sorular:A108",
+  "aday_sorular:A109",
+  "aday_sorular:A110",
+  "aday_sorular:A111",
+  "aday_sorular:A112",
+  "aday_sorular:A113",
+  "aday_sorular:A146",
+  "aday_sorular:A147",
+  "aday_sorular:A148",
+  "aday_sorular:A149",
+  "aday_sorular:A150",
+  "aday_sorular:A151",
+  "aday_sorular:A152",
+  "aday_sorular:A153",
+  "aday_sorular:A154",
+  "aday_sorular:A155",
+  "questions:Q01",
+  "questions:Q02",
+  "questions:Q03",
+  "questions:Q04",
+  "questions:Q05",
+  "questions:Q06",
+  "questions:Q09",
+  "questions:Q11",
+  "questions:Q12",
+  "questions:Q13",
+  "questions:Q14",
+  "questions:Q15",
+  "questions:Q16",
+  "questions_ek:Q19",
+  "questions_ek:Q20",
+  "questions_ek:Q21",
+  "questions_ek:Q22",
+  "questions_ek:Q23",
+  "questions_ek:Q24",
+  "questions_ek:Q25",
+  "questions_ek:Q26",
+  "questions_ek:Q27",
+  "questions_ek:Q28",
+  "questions_ek:Q29",
+  "questions_ek:Q32",
+  "sekil_sorular:G1",
+  "sekil_sorular:G2",
+  "sekil_sorular:G3",
+  "sekil_sorular:G4",
+  "sekil_sorular:G5",
+  "sekil_sorular:G6",
+  "sekil_sorular:G7",
+  "sekil_sorular:G8",
+  "sekil_sorular:G9",
+  "sekil_sorular:N1",
+  "sekil_sorular:N2",
+  "sekil_sorular:N3"
+ ],
+ "subsets": {},
+ "rows": {
+  "filtered|Toplam|rr10k_a": {
+   "n": 160,
+   "hit@1": 0.6875,
+   "hit@5": 0.8375,
+   "hit@20": 0.94375,
+   "mrr": 0.7488555968831221
+  },
+  "filtered|Toplam|rr10k_c": {
+   "n": 160,
+   "hit@1": 0.61875,
+   "hit@5": 0.81875,
+   "hit@20": 0.91875,
+   "mrr": 0.7065645452758456
+  },
+  "filtered|Toplam|rr10k_uclu": {
+   "n": 160,
+   "hit@1": 0.75,
+   "hit@5": 0.89375,
+   "hit@20": 0.96875,
+   "mrr": 0.8156939067876567
+  },
+  "filtered|Tür: değer|rr10k_a": {
+   "n": 90,
+   "hit@1": 0.6333333333333333,
+   "hit@5": 0.8111111111111111,
+   "hit@20": 0.9444444444444444,
+   "mrr": 0.7084209155042488
+  },
+  "filtered|Tür: değer|rr10k_c": {
+   "n": 90,
+   "hit@1": 0.5666666666666667,
+   "hit@5": 0.7777777777777778,
+   "hit@20": 0.9,
+   "mrr": 0.6627334999213225
+  },
+  "filtered|Tür: değer|rr10k_uclu": {
+   "n": 90,
+   "hit@1": 0.7,
+   "hit@5": 0.8777777777777778,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.776476393976394
+  },
+  "filtered|Tür: prosedür|rr10k_a": {
+   "n": 20,
+   "hit@1": 0.55,
+   "hit@5": 0.7,
+   "hit@20": 0.8,
+   "mrr": 0.6084539969834087
+  },
+  "filtered|Tür: prosedür|rr10k_c": {
+   "n": 20,
+   "hit@1": 0.65,
+   "hit@5": 0.85,
+   "hit@20": 0.9,
+   "mrr": 0.7150000000000001
+  },
+  "filtered|Tür: prosedür|rr10k_uclu": {
+   "n": 20,
+   "hit@1": 0.65,
+   "hit@5": 0.8,
+   "hit@20": 0.95,
+   "mrr": 0.739957264957265
+  },
+  "filtered|Tür: kod|rr10k_a": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9192982456140351
+  },
+  "filtered|Tür: kod|rr10k_c": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9321428571428572
+  },
+  "filtered|Tür: kod|rr10k_uclu": {
+   "n": 20,
+   "hit@1": 0.95,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9535714285714286
+  },
+  "filtered|Tür: arıza|rr10k_a": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9166666666666666
+  },
+  "filtered|Tür: arıza|rr10k_c": {
+   "n": 8,
+   "hit@1": 0.5,
+   "hit@5": 0.75,
+   "hit@20": 0.875,
+   "mrr": 0.600328947368421
+  },
+  "filtered|Tür: arıza|rr10k_uclu": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: şekil|rr10k_a": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.8571428571428571,
+   "hit@20": 1.0,
+   "mrr": 0.8276643990929705
+  },
+  "filtered|Tür: şekil|rr10k_c": {
+   "n": 14,
+   "hit@1": 0.5,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.6303921568627452
+  },
+  "filtered|Tür: şekil|rr10k_uclu": {
+   "n": 14,
+   "hit@1": 0.8571428571428571,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.8874458874458874
+  },
+  "filtered|Tür: diğer|rr10k_a": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8229166666666666
+  },
+  "filtered|Tür: diğer|rr10k_c": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8541666666666666
+  },
+  "filtered|Tür: diğer|rr10k_uclu": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8541666666666666
+  },
+  "unfiltered|Toplam|rr10k_a": {
+   "n": 160,
+   "hit@1": 0.68125,
+   "hit@5": 0.825,
+   "hit@20": 0.925,
+   "mrr": 0.7358320662180956
+  },
+  "unfiltered|Toplam|rr10k_c": {
+   "n": 160,
+   "hit@1": 0.625,
+   "hit@5": 0.78125,
+   "hit@20": 0.9,
+   "mrr": 0.6893402880873856
+  },
+  "unfiltered|Toplam|rr10k_uclu": {
+   "n": 160,
+   "hit@1": 0.73125,
+   "hit@5": 0.875,
+   "hit@20": 0.95625,
+   "mrr": 0.8042209439865691
+  },
+  "unfiltered|Tür: değer|rr10k_a": {
+   "n": 90,
+   "hit@1": 0.6,
+   "hit@5": 0.8,
+   "hit@20": 0.9333333333333333,
+   "mrr": 0.6738157303843578
+  },
+  "unfiltered|Tür: değer|rr10k_c": {
+   "n": 90,
+   "hit@1": 0.5444444444444444,
+   "hit@5": 0.7222222222222222,
+   "hit@20": 0.8777777777777778,
+   "mrr": 0.622932704073055
+  },
+  "unfiltered|Tür: değer|rr10k_uclu": {
+   "n": 90,
+   "hit@1": 0.6777777777777778,
+   "hit@5": 0.8444444444444444,
+   "hit@20": 0.9444444444444444,
+   "mrr": 0.7590043752543753
+  },
+  "unfiltered|Tür: prosedür|rr10k_a": {
+   "n": 20,
+   "hit@1": 0.6,
+   "hit@5": 0.7,
+   "hit@20": 0.8,
+   "mrr": 0.6417873303167421
+  },
+  "unfiltered|Tür: prosedür|rr10k_c": {
+   "n": 20,
+   "hit@1": 0.7,
+   "hit@5": 0.85,
+   "hit@20": 0.9,
+   "mrr": 0.74
+  },
+  "unfiltered|Tür: prosedür|rr10k_uclu": {
+   "n": 20,
+   "hit@1": 0.6,
+   "hit@5": 0.8,
+   "hit@20": 0.95,
+   "mrr": 0.7144017094017094
+  },
+  "unfiltered|Tür: kod|rr10k_a": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.95,
+   "hit@20": 0.95,
+   "mrr": 0.9166666666666666
+  },
+  "unfiltered|Tür: kod|rr10k_c": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9321428571428572
+  },
+  "unfiltered|Tür: kod|rr10k_uclu": {
+   "n": 20,
+   "hit@1": 0.95,
+   "hit@5": 0.95,
+   "hit@20": 1.0,
+   "mrr": 0.9538461538461538
+  },
+  "unfiltered|Tür: arıza|rr10k_a": {
+   "n": 8,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: arıza|rr10k_c": {
+   "n": 8,
+   "hit@1": 0.625,
+   "hit@5": 0.625,
+   "hit@20": 0.875,
+   "mrr": 0.6494360902255639
+  },
+  "unfiltered|Tür: arıza|rr10k_uclu": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: şekil|rr10k_a": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.8571428571428571,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.8174603174603174
+  },
+  "unfiltered|Tür: şekil|rr10k_c": {
+   "n": 14,
+   "hit@1": 0.5714285714285714,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 0.8571428571428571,
+   "mrr": 0.6375350140056023
+  },
+  "unfiltered|Tür: şekil|rr10k_uclu": {
+   "n": 14,
+   "hit@1": 0.8571428571428571,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.8928571428571429
+  },
+  "unfiltered|Tür: diğer|rr10k_a": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 0.875,
+   "hit@20": 1.0,
+   "mrr": 0.8095238095238095
+  },
+  "unfiltered|Tür: diğer|rr10k_c": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8333333333333334
+  },
+  "unfiltered|Tür: diğer|rr10k_uclu": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.875
+  }
+ }
+}

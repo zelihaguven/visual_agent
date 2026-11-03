@@ -325,3 +325,16 @@ def test_post_with_retry_retries_transient_errors_only():
     assert r.status_code == 404 and n == 1
     r, n = post_with_retry(S([503] * 10), "u", {}, 1, retries=2, sleep=lambda s: None)
     assert r.status_code == 503 and n == 3
+
+
+def test_triple_fusion_rrf_by_chunk_id_with_first_arm_tiebreak():
+    from types import SimpleNamespace as P
+    from bench.triple_fusion import fuse
+    pt = lambda cid, s: P(payload={"chunk_id": cid}, score=s)
+    qwen = [pt("a", 0.9), pt("b", 0.8)]
+    bge = [pt("b", 0.7), pt("c", 0.6)]          # farklı koleksiyon: aynı parça chunk_id ile eşlenir
+    bm25 = [pt("c", 5.0), pt("a", 4.0)]
+    out = [p.payload["chunk_id"] for p in fuse([qwen, bge, bm25], 3, rrf_k=2)]
+    # a: 1/2 + 1/3, b: 1/3 + 1/2, c: 1/3 + 1/2 → eşitlik: ilk kolun skoru (a 0,9 > b 0,8 > c yok)
+    assert out == ["a", "b", "c"]
+    assert [p.payload["chunk_id"] for p in fuse([qwen, bge, bm25], 1, rrf_k=2)] == ["a"]
