@@ -146,6 +146,13 @@ def test_review_excerpt_checks_quote_in_page_text():
     assert excerpt_and_check({"expect_docs": ["d"], "expect_pages": [3]}, chunks, by_id)[0].startswith("The tabs")
 
 
+def test_review_sources_are_deduplicated_per_document():
+    from bench.aday_inceleme import src_text
+    it = {"kabul": [{"doc": "a", "pages": [10]}, {"doc": "a", "pages": [9, 10]}, {"doc": "b", "pages": [2]}]}
+    assert src_text(it) == ("a; b", "a: s. 9, 10; b: s. 2")
+    assert src_text({"kabul": [{"doc": "a", "pages": [5]}, {"doc": "a", "pages": [4]}]}) == ("a", "4, 5")
+
+
 def test_prepare_scopes_like_pipeline():
     p = prepare("S-7300A'da E050 hatası ne demek?")
     assert p["skip"] is None and p["doc_ids"] == ["brother-s7300a"]

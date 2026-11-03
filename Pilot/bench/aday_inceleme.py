@@ -48,10 +48,14 @@ def excerpt_and_check(it: dict[str, Any], chunks: list[dict[str, Any]],
 
 
 def src_text(it: dict[str, Any]) -> tuple[str, str]:
-    srcs = sources(it)
-    return ("; ".join(d for d, _, _ in srcs),
-            "; ".join(f"{d}: s. {', '.join(map(str, p))}" if len(srcs) > 1 else ", ".join(map(str, p))
-                      for d, p, _ in srcs))
+    """Doküman başına tek kayıt (çok sayfalı kabulde aynı doküman tekrarlanmaz), sayfalar birleşik ve sıralı."""
+    pages: dict[str, list[int]] = {}
+    for d, p, _ in sources(it):
+        pages.setdefault(d, [])
+        pages[d] += [x for x in p if x not in pages[d]]
+    fmt = lambda p: ", ".join(map(str, sorted(p)))
+    return ("; ".join(pages),
+            "; ".join(f"{d}: s. {fmt(p)}" for d, p in pages.items()) if len(pages) > 1 else fmt(next(iter(pages.values()), [])))
 
 
 def build(out: Path) -> Path:
