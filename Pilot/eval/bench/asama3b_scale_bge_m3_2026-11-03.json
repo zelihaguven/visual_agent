@@ -1,0 +1,3783 @@
+{
+ "meta": {
+  "date": "2026-11-03T13:06:10",
+  "git_commit": "67afaca",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {
+   "PILOT_COLLECTION": "scale_bge_m3",
+   "PILOT_QDRANT_GRPC": "1",
+   "PILOT_QDRANT_URL": "http://127.0.0.1:6333",
+   "PILOT_SPARSE": "bm25"
+  },
+  "params": {
+   "PREFETCH_K": 30,
+   "FUSED_K": 20,
+   "TOP_K_SOURCES": 5,
+   "EMBED_MODEL": "BAAI/bge-m3",
+   "RERANK_MODEL": "BAAI/bge-reranker-v2-m3",
+   "EMBED_MAX_LENGTH": 512,
+   "EMBED_DEVICE": "cpu",
+   "sets": [
+    "questions",
+    "questions_ek",
+    "sekil_sorular"
+   ],
+   "timing_sets": [
+    "questions",
+    "questions_ek",
+    "sekil_sorular"
+   ],
+   "repeats": 1,
+   "warmup": 3,
+   "rerank": false,
+   "access": null,
+   "source_strip": true,
+   "qdrant_mode": "server",
+   "qdrant_url": "http://127.0.0.1:6333",
+   "collection": "scale_bge_m3",
+   "qdrant_reuse": true
+  }
+ },
+ "accuracy": {
+  "all": {
+   "n": 37,
+   "hit@1": 0.7297297297297297,
+   "hit@5": 0.8918918918918919,
+   "hit@20": 0.918918918918919,
+   "mrr": 0.7954954954954955
+  },
+  "questions": {
+   "n": 13,
+   "hit@1": 0.8461538461538461,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8974358974358974
+  },
+  "questions_ek": {
+   "n": 12,
+   "hit@1": 0.8333333333333334,
+   "hit@5": 0.8333333333333334,
+   "hit@20": 0.8333333333333334,
+   "mrr": 0.8333333333333334
+  },
+  "sekil_sorular": {
+   "n": 12,
+   "hit@1": 0.5,
+   "hit@5": 0.8333333333333334,
+   "hit@20": 0.9166666666666666,
+   "mrr": 0.6472222222222223
+  }
+ },
+ "timing": {
+  "embed": {
+   "n": 39,
+   "mean": 0.19315901538478406,
+   "p50": 0.19360740000047372,
+   "p95": 0.22109439999876485
+  },
+  "qdrant_open": {
+   "n": 39,
+   "mean": 3.892307386894782e-06,
+   "p50": 3.7999998312443495e-06,
+   "p95": 4.640000770450573e-06
+  },
+  "qdrant": {
+   "n": 39,
+   "mean": 0.015027538461603958,
+   "p50": 0.016361500001949025,
+   "p95": 0.019516650000514345
+  },
+  "total": {
+   "n": 39,
+   "mean": 0.20828501282066542,
+   "p50": 0.21046639999985928,
+   "p95": 0.23861681000125828
+  }
+ },
+ "ann_recall": {
+  "n_queries": 300,
+  "noise": 0.05,
+  "vector": "dense",
+  "recall@5": 1.0,
+  "recall@20": 1.0
+ },
+ "memory": {
+  "mode": "server",
+  "rss_mb": 6898.1,
+  "storage_mb": 49528.2,
+  "points": 10000,
+  "indexed_vectors": 10000,
+  "segments": 6,
+  "collection_disk_mb": 914.3
+ },
+ "questions": [
+  {
+   "qid": "questions:Q01",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      25
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      16
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2329
+   ]
+  },
+  {
+   "qid": "questions:Q02",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      25
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      20
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1783
+   ]
+  },
+  {
+   "qid": "questions:Q03",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 3,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      3
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.21
+   ]
+  },
+  {
+   "qid": "questions:Q04",
+   "set": "questions",
+   "kind": "arıza",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      101
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      29
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      82
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      101
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      78
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2408
+   ]
+  },
+  {
+   "qid": "questions:Q05",
+   "set": "questions",
+   "kind": "tuzak",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300b",
+     [
+      109
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      113
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      110
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      85
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      40
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.225
+   ]
+  },
+  {
+   "qid": "questions:Q06",
+   "set": "questions",
+   "kind": "alan dışı",
+   "not_found": false,
+   "rank": 3,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "mrcoffee-2003",
+     [
+      8
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      16
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      7
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1784
+   ]
+  },
+  {
+   "qid": "questions:Q09",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      10,
+      11
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2115
+   ]
+  },
+  {
+   "qid": "questions:Q10",
+   "set": "questions",
+   "kind": "cevapsız",
+   "not_found": true,
+   "rank": null,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "granovsky-1986",
+     [
+      178
+     ]
+    ],
+    [
+     "dd-wiki-tr-016754",
+     [
+      1
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      47,
+      48
+     ]
+    ],
+    [
+     "dd-wiki-tr-006669",
+     [
+      1
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      84
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1697
+   ]
+  },
+  {
+   "qid": "questions:Q11",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1961
+   ]
+  },
+  {
+   "qid": "questions:Q12",
+   "set": "questions",
+   "kind": "tuzak",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      21
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      21
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      25
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2202
+   ]
+  },
+  {
+   "qid": "questions:Q13",
+   "set": "questions",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2337
+   ]
+  },
+  {
+   "qid": "questions:Q14",
+   "set": "questions",
+   "kind": "kod",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2257
+   ]
+  },
+  {
+   "qid": "questions:Q15",
+   "set": "questions",
+   "kind": "kod",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      85
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1922
+   ]
+  },
+  {
+   "qid": "questions:Q16",
+   "set": "questions",
+   "kind": "EN soru",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2105
+   ]
+  },
+  {
+   "qid": "questions_ek:Q19",
+   "set": "questions_ek",
+   "kind": "kod",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      100
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1982
+   ]
+  },
+  {
+   "qid": "questions_ek:Q20",
+   "set": "questions_ek",
+   "kind": "çeviri tutarlılığı",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2188
+   ]
+  },
+  {
+   "qid": "questions_ek:Q21",
+   "set": "questions_ek",
+   "kind": "çeviri tutarlılığı",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      108
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      11
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2037
+   ]
+  },
+  {
+   "qid": "questions_ek:Q22",
+   "set": "questions_ek",
+   "kind": "kod",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2056
+   ]
+  },
+  {
+   "qid": "questions_ek:Q23",
+   "set": "questions_ek",
+   "kind": "kod",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300b",
+     [
+      108
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      108
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      11
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2028
+   ]
+  },
+  {
+   "qid": "questions_ek:Q24",
+   "set": "questions_ek",
+   "kind": "arıza",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      106
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      76
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      27
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2194
+   ]
+  },
+  {
+   "qid": "questions_ek:Q25",
+   "set": "questions_ek",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.221
+   ]
+  },
+  {
+   "qid": "questions_ek:Q26",
+   "set": "questions_ek",
+   "kind": "değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      22
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2393
+   ]
+  },
+  {
+   "qid": "questions_ek:Q27",
+   "set": "questions_ek",
+   "kind": "değer",
+   "not_found": false,
+   "rank": null,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      25
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2149
+   ]
+  },
+  {
+   "qid": "questions_ek:Q28",
+   "set": "questions_ek",
+   "kind": "değer",
+   "not_found": false,
+   "rank": null,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      50
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2053
+   ]
+  },
+  {
+   "qid": "questions_ek:Q29",
+   "set": "questions_ek",
+   "kind": "EN soru",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2029
+   ]
+  },
+  {
+   "qid": "questions_ek:Q31",
+   "set": "questions_ek",
+   "kind": "cevapsız",
+   "not_found": true,
+   "rank": null,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      53
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      85
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      40
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2259
+   ]
+  },
+  {
+   "qid": "questions_ek:Q32",
+   "set": "questions_ek",
+   "kind": "alan dışı",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "bosch-ra1171",
+     [
+      41
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      64
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      78
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      6
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      46
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1895
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G1",
+   "set": "sekil_sorular",
+   "kind": "görsel",
+   "not_found": false,
+   "rank": 3,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      54
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11,
+      12
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1832
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G2",
+   "set": "sekil_sorular",
+   "kind": "görsel",
+   "not_found": false,
+   "rank": 2,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      53
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      54
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2223
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G3",
+   "set": "sekil_sorular",
+   "kind": "görsel",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      55
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      25
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2385
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G4",
+   "set": "sekil_sorular",
+   "kind": "görsel",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      47
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      7
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      7
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.218
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G5",
+   "set": "sekil_sorular",
+   "kind": "görsel",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      44
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      18
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      22
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      10,
+      11
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1697
+   ]
+  },
+  {
+   "qid": "sekil_sorular:N1",
+   "set": "sekil_sorular",
+   "kind": "yeni doküman",
+   "not_found": false,
+   "rank": 10,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "granovsky-1986",
+     [
+      94
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      93
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      96
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      145
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      253
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2162
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G6",
+   "set": "sekil_sorular",
+   "kind": "görsel",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "mrcoffee-2003",
+     [
+      11,
+      12
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      14
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      13
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2131
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G7",
+   "set": "sekil_sorular",
+   "kind": "görsel",
+   "not_found": false,
+   "rank": 3,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "mrcoffee-2003",
+     [
+      18
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      6
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      10
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1898
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G8",
+   "set": "sekil_sorular",
+   "kind": "görsel + değer",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-07-14a",
+     [
+      48
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1806
+   ]
+  },
+  {
+   "qid": "sekil_sorular:G9",
+   "set": "sekil_sorular",
+   "kind": "görsel, doğrulama",
+   "not_found": false,
+   "rank": 1,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "gl-pd-14-04a",
+     [
+      51
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      16
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      25
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2113
+   ]
+  },
+  {
+   "qid": "sekil_sorular:N2",
+   "set": "sekil_sorular",
+   "kind": "yeni doküman",
+   "not_found": false,
+   "rank": 2,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "granovsky-1986",
+     [
+      42
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      12
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      61
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      16
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.1997
+   ]
+  },
+  {
+   "qid": "sekil_sorular:N3",
+   "set": "sekil_sorular",
+   "kind": "alan ayrımı",
+   "not_found": false,
+   "rank": null,
+   "top_score": null,
+   "scores": [],
+   "top5": [
+    [
+     "granovsky-1986",
+     [
+      166
+     ]
+    ],
+    [
+     "dd-wiki-tr-008532",
+     [
+      1
+     ]
+    ],
+    [
+     "dd-wiki-tr-014065",
+     [
+      1
+     ]
+    ],
+    [
+     "dd-wiki-tr-002555",
+     [
+      1
+     ]
+    ],
+    [
+     "dd-patent-f-009662",
+     [
+      1
+     ]
+    ]
+   ],
+   "forbidden_in_top5": false,
+   "seconds": [
+    0.2082
+   ]
+  },
+  {
+   "qid": "questions:Q07",
+   "set": "questions",
+   "skip": "expect_clarify"
+  },
+  {
+   "qid": "questions:Q08",
+   "set": "questions",
+   "skip": "yabanci_marka"
+  },
+  {
+   "qid": "questions:Q17",
+   "set": "questions",
+   "skip": "netlestirme"
+  },
+  {
+   "qid": "questions:Q18",
+   "set": "questions",
+   "skip": "yabanci_marka"
+  },
+  {
+   "qid": "questions_ek:Q30",
+   "set": "questions_ek",
+   "skip": "expect_clarify"
+  }
+ ],
+ "unfiltered": {
+  "rerank": false,
+  "accuracy": {
+   "all": {
+    "n": 37,
+    "hit@1": 0.7027027027027027,
+    "hit@5": 0.8648648648648649,
+    "hit@20": 0.8918918918918919,
+    "mrr": 0.7561561561561562
+   },
+   "questions": {
+    "n": 13,
+    "hit@1": 0.7692307692307693,
+    "hit@5": 0.9230769230769231,
+    "hit@20": 1.0,
+    "mrr": 0.8290598290598291
+   },
+   "questions_ek": {
+    "n": 12,
+    "hit@1": 0.75,
+    "hit@5": 0.8333333333333334,
+    "hit@20": 0.8333333333333334,
+    "mrr": 0.7777777777777778
+   },
+   "sekil_sorular": {
+    "n": 12,
+    "hit@1": 0.5833333333333334,
+    "hit@5": 0.8333333333333334,
+    "hit@20": 0.8333333333333334,
+    "mrr": 0.6555555555555556
+   }
+  },
+  "timing": {
+   "embed": {
+    "n": 39,
+    "mean": 0.18952931538530185,
+    "p50": 0.18992459999935818,
+    "p95": 0.22048116000187293
+   },
+   "qdrant_open": {
+    "n": 39,
+    "mean": 3.751281604845411e-06,
+    "p50": 3.7999998312443495e-06,
+    "p95": 4.420000550453551e-06
+   },
+   "qdrant": {
+    "n": 39,
+    "mean": 0.01854386410270355,
+    "p50": 0.019095899999229005,
+    "p95": 0.022289640000599322
+   },
+   "total": {
+    "n": 39,
+    "mean": 0.20814045384535207,
+    "p50": 0.20822950000001583,
+    "p95": 0.2364142499980517
+   }
+  },
+  "questions": [
+   {
+    "qid": "questions:Q01",
+    "set": "questions",
+    "kind": "değer",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       25
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       19
+      ]
+     ],
+     [
+      "strickland-1956",
+      [
+       108,
+       109
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2335
+    ]
+   },
+   {
+    "qid": "questions:Q02",
+    "set": "questions",
+    "kind": "değer",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-07-14a",
+      [
+       19
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       12
+      ]
+     ],
+     [
+      "dd-wiki-tr-013579",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       25
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2036
+    ]
+   },
+   {
+    "qid": "questions:Q03",
+    "set": "questions",
+    "kind": "değer",
+    "not_found": false,
+    "rank": 9,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       11
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       11
+      ]
+     ],
+     [
+      "dd-wiki-tr-013579",
+      [
+       1
+      ]
+     ],
+     [
+      "strickland-1956",
+      [
+       93,
+       94
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.219
+    ]
+   },
+   {
+    "qid": "questions:Q04",
+    "set": "questions",
+    "kind": "arıza",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300a",
+      [
+       101
+      ]
+     ],
+     [
+      "dd-wiki-tr-002063",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       29
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       109
+      ]
+     ],
+     [
+      "dd-wiki-tr-014593",
+      [
+       1
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2411
+    ]
+   },
+   {
+    "qid": "questions:Q05",
+    "set": "questions",
+    "kind": "tuzak",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300b",
+      [
+       109
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       113
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       101
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       101
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       110
+      ]
+     ]
+    ],
+    "forbidden_in_top5": true,
+    "seconds": [
+     0.2359
+    ]
+   },
+   {
+    "qid": "questions:Q06",
+    "set": "questions",
+    "kind": "alan dışı",
+    "not_found": false,
+    "rank": 3,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "mrcoffee-2003",
+      [
+       8
+      ]
+     ],
+     [
+      "dd-wiki-tr-004409",
+      [
+       1
+      ]
+     ],
+     [
+      "mrcoffee-2003",
+      [
+       16
+      ]
+     ],
+     [
+      "dd-wiki-tr-022328",
+      [
+       1
+      ]
+     ],
+     [
+      "mrcoffee-2003",
+      [
+       7
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1824
+    ]
+   },
+   {
+    "qid": "questions:Q09",
+    "set": "questions",
+    "kind": "değer",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-07-14a",
+      [
+       5
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       6
+      ]
+     ],
+     [
+      "dd-wiki-tr-000310",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       19
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2282
+    ]
+   },
+   {
+    "qid": "questions:Q10",
+    "set": "questions",
+    "kind": "cevapsız",
+    "not_found": true,
+    "rank": null,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "granovsky-1986",
+      [
+       178
+      ]
+     ],
+     [
+      "dd-wiki-tr-016754",
+      [
+       1
+      ]
+     ],
+     [
+      "granovsky-1986",
+      [
+       47,
+       48
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "granovsky-1986",
+      [
+       84
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1975
+    ]
+   },
+   {
+    "qid": "questions:Q11",
+    "set": "questions",
+    "kind": "değer",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ],
+     [
+      "juki-mo6800s",
+      [
+       3
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "strickland-1956",
+      [
+       18
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2103
+    ]
+   },
+   {
+    "qid": "questions:Q12",
+    "set": "questions",
+    "kind": "tuzak",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-07-14a",
+      [
+       19
+      ]
+     ],
+     [
+      "juki-mo6800s",
+      [
+       3
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       8
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       25
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2277
+    ]
+   },
+   {
+    "qid": "questions:Q13",
+    "set": "questions",
+    "kind": "değer",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ],
+     [
+      "dd-wiki-tr-010401",
+      [
+       1
+      ]
+     ],
+     [
+      "strickland-1956",
+      [
+       84
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2415
+    ]
+   },
+   {
+    "qid": "questions:Q14",
+    "set": "questions",
+    "kind": "kod",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300a",
+      [
+       98
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       105
+      ]
+     ],
+     [
+      "dd-wiki-tr-022222",
+      [
+       1
+      ]
+     ],
+     [
+      "dd-wiki-tr-003156",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       99
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2016
+    ]
+   },
+   {
+    "qid": "questions:Q15",
+    "set": "questions",
+    "kind": "kod",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300a",
+      [
+       12
+      ]
+     ],
+     [
+      "dd-wiki-tr-000288",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       12
+      ]
+     ],
+     [
+      "dd-wiki-tr-019699",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       85
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2007
+    ]
+   },
+   {
+    "qid": "questions:Q16",
+    "set": "questions",
+    "kind": "EN soru",
+    "not_found": false,
+    "rank": 3,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-07-14a",
+      [
+       11
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       19
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       11
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2163
+    ]
+   },
+   {
+    "qid": "questions_ek:Q19",
+    "set": "questions_ek",
+    "kind": "kod",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300a",
+      [
+       98
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       105
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       99
+      ]
+     ],
+     [
+      "dd-wiki-tr-003763",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       100
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1897
+    ]
+   },
+   {
+    "qid": "questions_ek:Q20",
+    "set": "questions_ek",
+    "kind": "çeviri tutarlılığı",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300a",
+      [
+       98
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       105
+      ]
+     ],
+     [
+      "dd-wiki-tr-003763",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       98
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       98
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2139
+    ]
+   },
+   {
+    "qid": "questions_ek:Q21",
+    "set": "questions_ek",
+    "kind": "çeviri tutarlılığı",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300b",
+      [
+       105
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       107
+      ]
+     ],
+     [
+      "dd-wiki-tr-016148",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       108
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       98
+      ]
+     ]
+    ],
+    "forbidden_in_top5": true,
+    "seconds": [
+     0.1932
+    ]
+   },
+   {
+    "qid": "questions_ek:Q22",
+    "set": "questions_ek",
+    "kind": "kod",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300a",
+      [
+       99
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       99
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       99
+      ]
+     ],
+     [
+      "dd-wiki-tr-003763",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       106
+      ]
+     ]
+    ],
+    "forbidden_in_top5": true,
+    "seconds": [
+     0.1783
+    ]
+   },
+   {
+    "qid": "questions_ek:Q23",
+    "set": "questions_ek",
+    "kind": "kod",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300b",
+      [
+       108
+      ]
+     ],
+     [
+      "dd-wiki-tr-019302",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       108
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       107
+      ]
+     ],
+     [
+      "dd-wiki-tr-017547",
+      [
+       1
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2109
+    ]
+   },
+   {
+    "qid": "questions_ek:Q24",
+    "set": "questions_ek",
+    "kind": "arıza",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300a",
+      [
+       106
+      ]
+     ],
+     [
+      "dd-wiki-tr-021366",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       114
+      ]
+     ],
+     [
+      "dd-wiki-tr-003763",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       76
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2183
+    ]
+   },
+   {
+    "qid": "questions_ek:Q25",
+    "set": "questions_ek",
+    "kind": "değer",
+    "not_found": false,
+    "rank": 3,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       9,
+       10
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       8
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       9
+      ]
+     ],
+     [
+      "dd-wiki-tr-016148",
+      [
+       1
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2247
+    ]
+   },
+   {
+    "qid": "questions_ek:Q26",
+    "set": "questions_ek",
+    "kind": "değer",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-07-14a",
+      [
+       8
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       9
+      ]
+     ],
+     [
+      "strickland-1956",
+      [
+       16
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       22
+      ]
+     ],
+     [
+      "dd-wiki-tr-000474",
+      [
+       1
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2107
+    ]
+   },
+   {
+    "qid": "questions_ek:Q27",
+    "set": "questions_ek",
+    "kind": "değer",
+    "not_found": false,
+    "rank": null,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "strickland-1956",
+      [
+       86
+      ]
+     ],
+     [
+      "dd-wiki-tr-001558",
+      [
+       1
+      ]
+     ],
+     [
+      "strickland-1956",
+      [
+       77
+      ]
+     ],
+     [
+      "dd-wiki-tr-001068",
+      [
+       1
+      ]
+     ],
+     [
+      "strickland-1956",
+      [
+       80
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1991
+    ]
+   },
+   {
+    "qid": "questions_ek:Q28",
+    "set": "questions_ek",
+    "kind": "değer",
+    "not_found": false,
+    "rank": null,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       22,
+       23
+      ]
+     ],
+     [
+      "dd-wiki-tr-001068",
+      [
+       1
+      ]
+     ],
+     [
+      "dd-patent-d-004387",
+      [
+       1
+      ]
+     ],
+     [
+      "dd-wiki-tr-008881",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       50
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2018
+    ]
+   },
+   {
+    "qid": "questions_ek:Q29",
+    "set": "questions_ek",
+    "kind": "EN soru",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300b",
+      [
+       105
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       107
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       107
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       107
+      ]
+     ],
+     [
+      "brother-s7300b",
+      [
+       107
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2193
+    ]
+   },
+   {
+    "qid": "questions_ek:Q31",
+    "set": "questions_ek",
+    "kind": "cevapsız",
+    "not_found": true,
+    "rank": null,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "brother-s7300a",
+      [
+       53
+      ]
+     ],
+     [
+      "dd-wiki-tr-000686",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       85
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "brother-s7300a",
+      [
+       12
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2055
+    ]
+   },
+   {
+    "qid": "questions_ek:Q32",
+    "set": "questions_ek",
+    "kind": "alan dışı",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "bosch-ra1171",
+      [
+       41
+      ]
+     ],
+     [
+      "dd-wiki-en-001112",
+      [
+       1
+      ]
+     ],
+     [
+      "bosch-ra1171",
+      [
+       78
+      ]
+     ],
+     [
+      "bosch-ra1171",
+      [
+       64
+      ]
+     ],
+     [
+      "bosch-ra1171",
+      [
+       46
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1783
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G1",
+    "set": "sekil_sorular",
+    "kind": "görsel",
+    "not_found": false,
+    "rank": 5,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       11
+      ]
+     ],
+     [
+      "dd-wiki-tr-015675",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       11
+      ]
+     ],
+     [
+      "dd-wiki-en-020329",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       54
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1763
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G2",
+    "set": "sekil_sorular",
+    "kind": "görsel",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       53
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       12,
+       13
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       32
+      ]
+     ],
+     [
+      "dd-wiki-tr-011229",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       54
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2162
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G3",
+    "set": "sekil_sorular",
+    "kind": "görsel",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       55
+      ]
+     ],
+     [
+      "dd-wiki-tr-015675",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       26
+      ]
+     ],
+     [
+      "dd-wiki-en-020329",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       25
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2354
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G4",
+    "set": "sekil_sorular",
+    "kind": "görsel",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-07-14a",
+      [
+       47
+      ]
+     ],
+     [
+      "dd-wiki-tr-022328",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       7
+      ]
+     ],
+     [
+      "dd-wiki-tr-005933",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       10
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1969
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G5",
+    "set": "sekil_sorular",
+    "kind": "görsel",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-07-14a",
+      [
+       44
+      ]
+     ],
+     [
+      "dd-wiki-tr-000310",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       18
+      ]
+     ],
+     [
+      "dd-wiki-tr-018365",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       11
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1882
+    ]
+   },
+   {
+    "qid": "sekil_sorular:N1",
+    "set": "sekil_sorular",
+    "kind": "yeni doküman",
+    "not_found": false,
+    "rank": null,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "granovsky-1986",
+      [
+       94
+      ]
+     ],
+     [
+      "dd-wiki-tr-021366",
+      [
+       1
+      ]
+     ],
+     [
+      "granovsky-1986",
+      [
+       145
+      ]
+     ],
+     [
+      "dd-wiki-tr-022328",
+      [
+       1
+      ]
+     ],
+     [
+      "granovsky-1986",
+      [
+       141
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2171
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G6",
+    "set": "sekil_sorular",
+    "kind": "görsel",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "mrcoffee-2003",
+      [
+       11,
+       12
+      ]
+     ],
+     [
+      "dd-wiki-tr-019699",
+      [
+       1
+      ]
+     ],
+     [
+      "mrcoffee-2003",
+      [
+       14
+      ]
+     ],
+     [
+      "dd-wiki-tr-002594",
+      [
+       1
+      ]
+     ],
+     [
+      "mrcoffee-2003",
+      [
+       13
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2082
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G7",
+    "set": "sekil_sorular",
+    "kind": "görsel",
+    "not_found": false,
+    "rank": 3,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "mrcoffee-2003",
+      [
+       18
+      ]
+     ],
+     [
+      "dd-wiki-tr-018492",
+      [
+       1
+      ]
+     ],
+     [
+      "mrcoffee-2003",
+      [
+       6
+      ]
+     ],
+     [
+      "dd-wiki-tr-001744",
+      [
+       1
+      ]
+     ],
+     [
+      "mrcoffee-2003",
+      [
+       10
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2029
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G8",
+    "set": "sekil_sorular",
+    "kind": "görsel + değer",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-07-14a",
+      [
+       48
+      ]
+     ],
+     [
+      "dd-wiki-tr-006669",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       13
+      ]
+     ],
+     [
+      "dd-wiki-tr-008922",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-07-14a",
+      [
+       13
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2013
+    ]
+   },
+   {
+    "qid": "sekil_sorular:G9",
+    "set": "sekil_sorular",
+    "kind": "görsel, doğrulama",
+    "not_found": false,
+    "rank": 1,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "gl-pd-14-04a",
+      [
+       51
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       16
+      ]
+     ],
+     [
+      "dd-wiki-tr-004589",
+      [
+       1
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       12,
+       13
+      ]
+     ],
+     [
+      "gl-pd-14-04a",
+      [
+       18
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.2122
+    ]
+   },
+   {
+    "qid": "sekil_sorular:N2",
+    "set": "sekil_sorular",
+    "kind": "yeni doküman",
+    "not_found": false,
+    "rank": 3,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "granovsky-1986",
+      [
+       42
+      ]
+     ],
+     [
+      "dd-wiki-tr-004778",
+      [
+       1
+      ]
+     ],
+     [
+      "granovsky-1986",
+      [
+       12
+      ]
+     ],
+     [
+      "dd-wiki-tr-005481",
+      [
+       1
+      ]
+     ],
+     [
+      "granovsky-1986",
+      [
+       12,
+       13
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1953
+    ]
+   },
+   {
+    "qid": "sekil_sorular:N3",
+    "set": "sekil_sorular",
+    "kind": "alan ayrımı",
+    "not_found": false,
+    "rank": null,
+    "top_score": null,
+    "scores": [],
+    "top5": [
+     [
+      "granovsky-1986",
+      [
+       166
+      ]
+     ],
+     [
+      "dd-wiki-tr-008532",
+      [
+       1
+      ]
+     ],
+     [
+      "dd-wiki-tr-014065",
+      [
+       1
+      ]
+     ],
+     [
+      "dd-wiki-tr-002555",
+      [
+       1
+      ]
+     ],
+     [
+      "dd-patent-f-009662",
+      [
+       1
+      ]
+     ]
+    ],
+    "forbidden_in_top5": false,
+    "seconds": [
+     0.1844
+    ]
+   },
+   {
+    "qid": "questions:Q07",
+    "set": "questions",
+    "skip": "expect_clarify"
+   },
+   {
+    "qid": "questions:Q08",
+    "set": "questions",
+    "skip": "yabanci_marka"
+   },
+   {
+    "qid": "questions:Q17",
+    "set": "questions",
+    "skip": "netlestirme"
+   },
+   {
+    "qid": "questions:Q18",
+    "set": "questions",
+    "skip": "yabanci_marka"
+   },
+   {
+    "qid": "questions_ek:Q30",
+    "set": "questions_ek",
+    "skip": "expect_clarify"
+   }
+  ]
+ }
+}
