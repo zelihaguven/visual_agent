@@ -84,28 +84,37 @@ def run(label: str, n: int, max_usd: float) -> Path:
                                                               {"role": "user", "content": x["answer_user"]}]}, True),
     }
     prior = spent()
+    path = DIR / f"{datetime.now():%Y-%m-%d_%H%M}_{label}.json"
+
+    def save() -> None:                                   # her servisten sonra: koşu kesilse de ölçüm ve harcama kalır
+        out["end"] = datetime.now().isoformat(timespec="seconds")
+        path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+
     for name, make in services.items():
-        path, body, stream = make(inputs[0])
-        call(s, path, body, stream)                       # ısınma (bağlantı)
+        api, body, stream = make(inputs[0])
+        call(s, api, body, stream)                        # ısınma (bağlantı)
         for x in inputs:
             for sort in (None, "latency"):
-                path, body, stream = make(x)
+                api, body, stream = make(x)
                 if sort:
                     body = {**body, "provider": {"sort": sort}}
-                sec, first, cost, err = call(s, path, body, stream)
+                sec, first, cost, err = call(s, api, body, stream)
                 out["rows"].append({"servis": name, "sort": sort or "yok", "qid": x["qid"], "sn": sec,
                                     "ilk_token": first, "hata": err})
                 out["cost_usd"] += cost
+                print(f"{datetime.now():%H:%M:%S} {name} {x['qid']} sort={sort or 'yok'} {sec:.2f} sn"
+                      + (f" HATA {err}" if err else ""), flush=True)
                 if prior + out["cost_usd"] > max_usd:
                     out["durdu"] = f"harcama sınırı {max_usd} USD"
                     break
             if out.get("durdu"):
                 break
+        save()
+        print(f"{datetime.now():%H:%M:%S} == {name} bitti, harcama {out['cost_usd']:.4f} USD", flush=True)
         if out.get("durdu"):
             break
-    out["end"] = datetime.now().isoformat(timespec="seconds")
-    path = DIR / f"{datetime.now():%Y-%m-%d_%H%M}_{label}.json"
-    path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    out["tamam"] = not out.get("durdu")
+    save()
     return path
 
 
