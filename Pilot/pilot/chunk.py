@@ -8,13 +8,14 @@ Parça türleri:
 """
 import json
 import re
+from collections import Counter
 from dataclasses import asdict, dataclass, field
+from difflib import SequenceMatcher
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from difflib import SequenceMatcher
-
-from .config import CHUNK_MAX_CHARS, CHUNKS_PATH
+from .config import CHUNK_MAX_CHARS, CHUNKS_PATH, LANGS
 from .figures import figure_text, is_described
 from .parse import (_norm_repeating, furniture_keys, in_edge_band, is_letter_spaced, merge_cross_page,
                     printed_page_labels, remove_furniture)
@@ -120,6 +121,75 @@ def parent_section(section: str, numbered: dict[str, str]) -> str:
 # Kural 4: bölüm adı boş kalan parça, PDF yer imlerinden (outline) sayfasına düşen son başlığı alır. Yer imleri
 # OCR'dan üretilmişse (Granovsky: "ag xi", "(4).") kullanılmaz: başlıkların en az %80'i Kural 1'den geçmeli.
 OUTLINE_MIN_VALID = 0.8
+
+
+# --- Dil: öğe bazında otomatik tespit (lingua) -------------------------------------------------------------------
+# Kayıttaki dil alanı (DocMeta.default_lang, lang_ranges) yalnız yöneticinin beyanıdır; dil metinden gelir. Tespit öğe
+# (paragraf, tablo satırı) düzeyinde: aynı sayfada iki dil olabilir (Mr. Coffee iki sütunlu, en + es). Öğe yeterince
+# uzun, gerçek kelimelerden oluşan (OCR çöpü değil) ve tespiti güvenliyse kendi dilini alır; değilse aynı sayfada
+# kendinden önceki güvenli öğenin dilini (iki sütunlu sayfada okuma sırası), yoksa sayfanın çoğunluk dilini (dil
+# bölümünün ilk sayfası), o da yoksa önceki sayfadan; hiç güvenli öğe yoksa 'en'.
+# Dil değişimi parça sınırıdır. Sistemin ürettiği metin (şekil şablonu, model açıklaması) dili belirlemez.
+ELEM_MIN_LETTERS, ELEM_MIN_CONF = 40, 0.8
+MIN_WORD_QUALITY = 0.3          # 4+ harfli kelimelerin oranı: OCR çöpünde 0,01–0,08, normal metinde ~0,5
+
+
+@lru_cache(maxsize=1)
+def _detector() -> Any:
+    from lingua import IsoCode639_1, LanguageDetectorBuilder
+    codes = [getattr(IsoCode639_1, c.strip().upper()) for c in LANGS if c.strip()]
+    return LanguageDetectorBuilder.from_iso_codes_639_1(*codes).with_preloaded_language_models().build()
+
+
+def detect_lang(text: str) -> tuple[str | None, float, int]:
+    """(dil, güven, harf sayısı). Sayılar, kodlar ve noktalama atılır; harf yoksa ya da metin kelimeden oluşmuyorsa
+    (OCR çöpü) (None, 0, harf)."""
+    words = re.findall(r"[^\W\d_]{2,}", text)
+    letters = sum(map(len, words))
+    if not words or sum(len(w) >= 4 for w in words) / len(words) < MIN_WORD_QUALITY:
+        return None, 0.0, letters
+    best = _detector().compute_language_confidence_values(" ".join(words))[0]
+    return best.language.iso_code_639_1.name.lower(), best.value, letters
+
+
+def element_languages(elements: list[dict[str, Any]]) -> list[str]:
+    """Öğe başına dil (elements ile aynı sırada)."""
+    known: list[str | None] = []
+    for e in elements:
+        lang = None
+        if e["label"] not in ("picture", "figure") and e["text"].strip():
+            lang, conf, letters = detect_lang(e["text"])
+            if letters < ELEM_MIN_LETTERS or conf < ELEM_MIN_CONF:
+                lang = None
+        known.append(lang)
+    page_major: dict[int, str] = {}
+    for page in {e["page"] for e in elements}:
+        cnt = Counter(x for e, x in zip(elements, known) if x and e["page"] == page)
+        if cnt:
+            page_major[page] = cnt.most_common(1)[0][0]
+    out: list[str] = []
+    cur, cur_page = next((x for x in known if x), None) or "en", None
+    for e, x in zip(elements, known):
+        if x:
+            cur, cur_page = x, e["page"]
+        elif cur_page != e["page"] and e["page"] in page_major:
+            cur, cur_page = page_major[e["page"]], e["page"]
+        out.append(cur)
+    return out
+
+
+def lang_conflicts(meta: DocMeta, elements: list[dict[str, Any]], langs: list[str]) -> list[tuple[int, str, str]]:
+    """Kayıttaki beyanla (DocMeta.lang_of) çelişen sayfalar: (sayfa, beyan, tespit edilen diller "en+es")."""
+    per: dict[int, Counter] = {}
+    for e, lang in zip(elements, langs):
+        if e["label"] not in ("picture", "figure") and e["text"].strip():
+            per.setdefault(e["page"], Counter())[lang] += 1
+    out = []
+    for page, cnt in sorted(per.items()):
+        found = "+".join(sorted(cnt))
+        if found != meta.lang_of(page):
+            out.append((page, meta.lang_of(page), found))
+    return out
 
 
 def pdf_outline(path: Path) -> list[tuple[int, str]]:
@@ -245,12 +315,14 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
     labels = printed_page_labels(meta.path, pages)
     captions = table_captions(elements)
     outline = pdf_outline(meta.path)
+    elem_lang = element_languages(elements)
 
     chunks: list[Chunk] = []
     section = ""
     numbered: dict[str, str] = {}          # görülen numaralı başlıklar: "3.11.1" → "3.11.1 Seams and stitching"
     buf: list[dict[str, Any]] = []
-    figure_els: list[tuple[str, dict[str, Any]]] = []
+    figure_els: list[tuple[str, dict[str, Any], str]] = []
+    buf_lang = ""
 
     def set_section(s: str) -> None:
         nonlocal section
@@ -259,7 +331,7 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
         if m:
             numbered[m.group(1)] = s
 
-    def make(chunk_type: str, text: str, els: list[dict[str, Any]], sec: str | None = None,
+    def make(chunk_type: str, text: str, els: list[dict[str, Any]], lang: str, sec: str | None = None,
              generated: str = "", caption: str = "") -> None:
         sec = section if sec is None else sec
         if caption and caption not in sec:
@@ -273,7 +345,7 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
             sec = outline_section(outline, pgs[0])
         chunks.append(Chunk(
             chunk_id=f"{meta.doc_id}-{len(chunks):05d}", doc_id=meta.doc_id, brand=meta.brand,
-            product=meta.product, doc_type=meta.doc_type, lang=meta.lang_of(pgs[0]),
+            product=meta.product, doc_type=meta.doc_type, lang=lang,
             chunk_type=chunk_type, section=sec, page=pgs[0], pages=pgs,
             page_labels={str(p): labels.get(p) for p in pgs}, boxes=boxes, text=text,
             embed_text=_embed_text(meta, sec, text), generated=generated,
@@ -282,13 +354,13 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
     def flush() -> None:
         nonlocal buf
         if buf:
-            make("text", " ".join(e["text"].strip() for e in buf), buf)
+            make("text", " ".join(e["text"].strip() for e in buf), buf, buf_lang)
             buf = []
 
     for idx, e in enumerate(elements):
         label = e["label"]
         if label == "picture" and is_described((figures or {}).get(e["id"])):
-            figure_els.append((section, e))
+            figure_els.append((section, e, elem_lang[idx]))
             continue
         if label in SKIP_LABELS:
             continue
@@ -303,11 +375,11 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
         if label == "table":
             flush()
             if not e.get("has_rows"):
-                make("table", e["text"], [e], caption=captions.get(idx, ""))
+                make("table", e["text"], [e], elem_lang[idx], caption=captions.get(idx, ""))
             continue
         if label == "table_row":
             flush()
-            make("table_row", e["text"], [e], caption=captions.get(idx, ""))
+            make("table_row", e["text"], [e], elem_lang[idx], caption=captions.get(idx, ""))
             continue
         # metin/liste/dipnot/başlık dışı her şey paragraf gibi biriktirilir
         if not e["text"].strip():
@@ -318,14 +390,15 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
                 flush()
                 set_section(f"{run_in.group(1)} {run_in.group(2)}"[:MAX_SECTION_CHARS])
             size = sum(len(x["text"]) for x in buf) + len(piece["text"])
-            lang_changes = bool(buf) and meta.lang_of(piece["page"]) != meta.lang_of(buf[0]["page"])
+            lang_changes = bool(buf) and elem_lang[idx] != buf_lang
             if buf and (size > CHUNK_MAX_CHARS or lang_changes):
                 flush()
+            buf_lang = elem_lang[idx]
             buf.append(piece)
     flush()
-    for sec, e in figure_els:
+    for sec, e, lang in figure_els:
         fig = figures[e["id"]]
-        make("figure", figure_text(fig), [e], sec=sec, generated=fig["desc"])
+        make("figure", figure_text(fig), [e], lang, sec=sec, generated=fig["desc"])
     return chunks
 
 

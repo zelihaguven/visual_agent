@@ -258,11 +258,54 @@ def test_rule4_ocr_generated_outline_is_ignored():
     assert chunk_mod.clean_outline(junk) == []
 
 
-def test_lang_follows_page_ranges_for_trilingual_manual(no_pdf):
-    meta = BY_ID["bosch-ra1171"]
-    chunks = build_chunks(meta, [el("English text", page=10), el("Texte français", page=40, top=301.0),
-                                 el("Texto español", page=70, top=302.0)])
-    assert [c.lang for c in chunks] == ["en", "fr", "es"]
+EN = ("To lock the switch in the off position, press the cover to turn the switch off and remove the lockout key "
+      "completely from the side of the switch case. The red slide panel should cover the top half of the switch.")
+ES = ("Para bloquear el interruptor en la posición de apagado, presione la tapa a fin de apagar el interruptor y "
+      "retire la llave de seguridad por completo del costado de la caja del interruptor.")
+FR = ("Pour verrouiller l'interrupteur à la position arrêt, poussez sur le clapet pour éteindre l'interrupteur et "
+      "retirez complètement la clé de sécurité du côté de l'interrupteur.")
+EN, ES, FR = (f"{x} {x}" for x in (EN, ES, FR))       # sayfa dili için en az PAGE_MIN_LETTERS harf
+
+
+def test_lang_is_detected_from_text_not_registry(no_pdf):
+    # Mr. Coffee kaydında dil aralığı yok (beyan: en); İspanyolca sayfa metinden tespit edilir
+    chunks = build_chunks(BY_ID["mrcoffee-2003"], [el(EN, page=3), el(ES, page=13, top=301.0), el(FR, page=20, top=302.0)])
+    assert [c.lang for c in chunks] == ["en", "es", "fr"]
+
+
+def test_bilingual_page_and_short_rows_inherit_previous_language(no_pdf):
+    # İki sütunlu sayfa (Mr. Coffee): aynı sayfada es ve en; kısa tablo satırı önceki öğenin dilini alır
+    els = [el(ES, page=13), el("Tamaño: 12 tazas", page=13, label="table_row", top=400.0),
+           el(EN, page=13, top=500.0), el(EN, page=13, top=530.0)]
+    chunks = build_chunks(BY_ID["mrcoffee-2003"], els)
+    assert [(c.chunk_type, c.lang) for c in chunks] == [("text", "es"), ("table_row", "es"), ("text", "en")]
+
+
+def test_language_change_is_a_chunk_boundary(no_pdf):
+    assert len(build_chunks(BY_ID["mrcoffee-2003"], [el(ES, page=13, top=100.0), el(EN, page=13, top=130.0)])) == 2
+    assert len(build_chunks(BY_ID["mrcoffee-2003"], [el(EN, page=13, top=100.0), el(EN, page=13, top=130.0)])) == 1
+
+
+def test_ocr_garbage_does_not_get_a_language():
+    junk = "3a i CO ao h-3 ^ © CD <n S3 © af t ©g p-^ bn CO bo C Os © o © a cd © ©© CO P CD © © t T3 P " * 6
+    assert chunk_mod.detect_lang(junk)[0] is None
+    assert chunk_mod.element_languages([el(EN, page=1), el(junk, page=2), el("Size: M", page=3)]) == ["en"] * 3
+
+
+def test_figure_language_is_position_not_template(no_pdf):
+    # şekil metnindeki Türkçe şablon ("Şekildeki yazılar") dili belirlemez
+    fig = {"desc": "A drawing of the bobbin case.", "labels": ["bobbin"], "caption": ""}
+    els = [el(EN, page=2), el("", label="picture", eid="p1", page=2, top=500.0)]
+    chunks = build_chunks(BY_ID["brother-s7300a"], els, figures={"p1": fig})
+    assert [(c.chunk_type, c.lang) for c in chunks] == [("text", "en"), ("figure", "en")]
+
+
+def test_registry_language_is_only_a_declaration():
+    els = [el(EN, page=3), el(ES, page=13), el(EN, page=13, top=500.0)]
+    langs = chunk_mod.element_languages(els)
+    assert chunk_mod.lang_conflicts(BY_ID["mrcoffee-2003"], els, langs) == [(13, "en", "en+es")]
+    bosch = [el(EN, page=10), el(FR, page=40), el(ES, page=70)]
+    assert chunk_mod.lang_conflicts(BY_ID["bosch-ra1171"], bosch, chunk_mod.element_languages(bosch)) == []
 
 
 def test_text_chunks_respect_max_length(no_pdf):
@@ -308,3 +351,9 @@ def test_tracked_heading_becomes_one_word():
 
 def test_soft_hyphen_line_break_is_joined():
     assert _clean_block_text("have to over\xad\ncome the inertia") == "have to overcome the inertia"
+
+
+def test_uncertain_first_element_of_page_takes_page_majority():
+    # Bosch s. 32: Fransızca bölümün ilk sayfasındaki kısa içindekiler satırı önceki (İngilizce) sayfadan dil almaz
+    els = [el(EN, page=31), el("Assemblage . . . 40-48", page=32, top=50.0), el(FR, page=32, top=100.0)]
+    assert chunk_mod.element_languages(els) == ["en", "fr", "fr"]

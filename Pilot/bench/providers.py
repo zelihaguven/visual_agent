@@ -221,6 +221,72 @@ def refresh(key: str, collection: str | None = None, dry_run: bool = False, part
     return changed
 
 
+def replace_doc(key: str, doc_id: str, collection: str | None = None, scale: bool = False,
+                sync: tuple[str, ...] = ("lang",)) -> dict[str, int]:
+    """Parça sınırları değişen bir dokümanın noktalarını koleksiyonda yenisiyle değiştirir (chunks.jsonl'a göre):
+    eskiler silinir, yeniler koleksiyonun en büyük kimliğinden sonra eklenir; vektörler refresh'teki gibi.
+    scale: ölçek koleksiyonu (yalnız gerçek parçalar silinir, payload korpus biçiminde: kind=gercek, kademe=0).
+    sync: öteki dokümanlarda chunks.jsonl'dan payload'a yazılan alanlar (ör. dil tespiti sonrası 'lang')."""
+    from qdrant_client import models
+
+    from bench.server import server_client
+    from pilot.chunk import read_chunks
+    from pilot.index import point_vectors, with_access
+    from pilot.sparse import bm25_docs
+
+    spec = specs()[key]
+    collection = collection or collection_name(key)
+    chunks = read_chunks()
+    new = [c for c in chunks if c["doc_id"] == doc_id]
+    qc = server_client()
+    params = qc.get_collection(collection).config.params
+    short = tuple(sorted(int(n[len("dense_s"):]) for n in params.vectors if n.startswith("dense_s")))
+    must = [models.FieldCondition(key="doc_id", match=models.MatchValue(value=doc_id))]
+    if scale:
+        must.append(models.FieldCondition(key="kind", match=models.MatchValue(value="gercek")))
+    old_ids, max_id, offset = [], -1, None
+    while True:
+        pts, offset = qc.scroll(collection, limit=2000, offset=offset, with_payload=["doc_id", "kind"])
+        for p in pts:
+            max_id = max(max_id, int(p.id))
+            if p.payload.get("doc_id") == doc_id and (not scale or p.payload.get("kind") == "gercek"):
+                old_ids.append(p.id)
+        if offset is None:
+            break
+    dense = reuse_vectors(spec["reuse_vectors_from"], new) if spec.get("reuse_vectors_from") \
+        else doc_vectors(spec, new)[0]
+    sparse = bm25_docs([c["embed_text"] for c in new])
+    if scale:
+        from bench.scale_index import payload as scale_payload
+        pay = lambda c, pid: scale_payload({**c, "kind": "gercek", "kademe": 0}, pid)
+    else:
+        pay = lambda c, pid: with_access(c)
+    qc.delete(collection, points_selector=models.PointIdsList(points=old_ids), wait=True)
+    for i in range(0, len(new), 64):
+        qc.upsert(collection, wait=True, points=[models.PointStruct(
+            id=max_id + 1 + j, vector=point_vectors({"dense": dense[j], "sparse": sparse[j]}, sparse="bm25",
+                                                    short_dims=short),
+            payload=pay(new[j], max_id + 1 + j)) for j in range(i, min(i + 64, len(new)))])
+    by_id = {c["chunk_id"]: c for c in chunks}
+    synced, offset = 0, None
+    while sync:
+        pts, offset = qc.scroll(collection, limit=2000, offset=offset, with_payload=["chunk_id", *sync],
+                                scroll_filter=models.Filter(must=[models.FieldCondition(
+                                    key="kind", match=models.MatchValue(value="gercek"))]) if scale else None)
+        for p in pts:
+            c = by_id.get(p.payload.get("chunk_id"))
+            diff = {f: c[f] for f in sync if c and p.payload.get(f) != c[f]}
+            if diff:
+                qc.set_payload(collection, payload=diff, points=[p.id])
+                synced += 1
+        if offset is None:
+            break
+    qc.close()
+    out = {"silinen": len(old_ids), "eklenen": len(new), "payload_esitlenen": synced}
+    log.info("%s: %s %s", collection, doc_id, out)
+    return out
+
+
 # ---------- aday toplama ----------
 
 class QueryEncoder:
@@ -457,6 +523,11 @@ def main() -> None:
     r.add_argument("--collection")
     r.add_argument("--dry-run", action="store_true")
     r.add_argument("--partial", action="store_true", help="ölçek koleksiyonu: yalnız gerçek parçalar")
+    d = sub.add_parser("replace-doc", help="parça sınırları değişen dokümanı koleksiyonda yenisiyle değiştir")
+    d.add_argument("--key", required=True)
+    d.add_argument("--doc", required=True)
+    d.add_argument("--collection")
+    d.add_argument("--scale", action="store_true", help="ölçek koleksiyonu (yalnız gerçek parçalar)")
     sub.add_parser("matrix")
     k = sub.add_parser("costs")
     k.add_argument("--name", default="asama4_maliyet")
@@ -470,6 +541,8 @@ def main() -> None:
         build(a.key, a.yes)
     elif a.cmd == "refresh":
         refresh(a.key, a.collection, a.dry_run, a.partial)
+    elif a.cmd == "replace-doc":
+        replace_doc(a.key, a.doc, a.collection, a.scale)
     elif a.cmd == "matrix":
         matrix("asama4_matris")
     elif a.cmd == "costs":

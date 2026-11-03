@@ -11,6 +11,8 @@ QDRANT_DIR = DATA_DIR / "qdrant"
 
 PAGES_PER_BATCH = 10          # Docling'e verilen sayfa aralığı uzunluğu
 CHUNK_MAX_CHARS = 900         # metin parçası üst sınırı (başlık sınırını aşmaz)
+# Parça dili otomatik tespit edilir (chunk.py, lingua); aday diller kuruluma göre, dokümana göre değil
+LANGS = tuple(os.environ.get("PILOT_LANGS", "en,tr,fr,es,de,it,pt").split(","))
 EDGE_BAND = 0.12              # üst/alt bilgi tespiti için sayfa kenar oranı
 FURNITURE_MIN_RATIO = 0.5     # üst/alt bilgi: sayfaların en az bu oranında tekrar eder
 SENTENCE_END = (".", "!", "?", ":", ";", '"', ")")
