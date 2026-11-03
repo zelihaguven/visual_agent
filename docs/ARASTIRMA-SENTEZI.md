@@ -2,7 +2,7 @@
 
 > **Tarih:** 2026-10-09 · **Güncelleme:** 2026-10-13 (pilot sonuçları, alınan kararlar ve risk durumları işlendi) · **Aşama:** Araştırma (Faz 5: Sentez) + pilot
 > **Kapsam:** Manuel tabanlı soru-cevap, kaynak sayfa gösterimi ve sesli yanıt sisteminin araştırma bulguları, önerilen mimari, araç seçimleri, riskler ve bekleyen kararlar.
-> **Diğer belgeler:** Pilot: [PILOT-RAPORU.md](PILOT-RAPORU.md) · Pilotun ve hedefin mimarisi: [MIMARI.md](MIMARI.md) · Uygulama planı: [UYGULAMA-PLANI.md](UYGULAMA-PLANI.md) · Bekleyen sorular: [sorulacaklar.md](calisma-notlari/notlar/sorulacaklar.md) · Ayrıntılı notlar: [Ek A](#ek-a-ayrıntılı-araştırma-notları)
+> **Diğer belgeler:** Pilot: [PILOT-RAPORU.md](PILOT-RAPORU.md) · Pilotun ve hedefin mimarisi: [MIMARI.md](MIMARI.md) · Uygulama planı: [UYGULAMA-PLANI.md](arsiv/UYGULAMA-PLANI.md) · Bekleyen sorular: [sorulacaklar.md](arsiv/calisma-notlari/notlar/sorulacaklar.md) · Ayrıntılı notlar: [Ek A](#ek-a-ayrıntılı-araştırma-notları)
 
 ---
 
@@ -31,7 +31,7 @@ Araştırma aşamasının ana sonuçları:
 - Kurum içinde veya sunucuda GPU kullanılabilir mi? Pilot 7B modelin yetersiz, 30B modelin 24 GB makineye sığmadığını gösterdi (Q5, bütçe)
 - Yanlış değer için kabul edilebilir oran nedir? (Hata toleransı)
 
-*Karara bağlananlar:* test setini AI hazırlar, uzman kontrol eder · atölye ağı kesilebilir (yedek gerekli) · giriş e-posta/kod ile · marka bazlı yetki · ses kaydı saklanmaz · sözleşme bitince veri silinir. Tam liste: [calisma-notlari/notlar/sorulacaklar.md](calisma-notlari/notlar/sorulacaklar.md).
+*Karara bağlananlar:* test setini AI hazırlar, uzman kontrol eder · atölye ağı kesilebilir (yedek gerekli) · giriş e-posta/kod ile · marka bazlı yetki · ses kaydı saklanmaz · sözleşme bitince veri silinir. Tam liste: [calisma-notlari/notlar/sorulacaklar.md](arsiv/calisma-notlari/notlar/sorulacaklar.md).
 
 ---
 
@@ -279,7 +279,7 @@ Araştırma aşamasının ana sonuçları:
 
 ## 9. Bekleyen kararlar ve açık sorular
 
-Ayrıntılı liste (kime sorulacağı ve cevap alanlarıyla): [calisma-notlari/notlar/sorulacaklar.md](calisma-notlari/notlar/sorulacaklar.md). **Cevaplananlar** (2026-10-10, [cevaplar.md](calisma-notlari/cevaplar.md)) listeden çıkarıldı.
+Ayrıntılı liste (kime sorulacağı ve cevap alanlarıyla): [calisma-notlari/notlar/sorulacaklar.md](arsiv/calisma-notlari/notlar/sorulacaklar.md). **Cevaplananlar** (2026-10-10, [cevaplar.md](arsiv/calisma-notlari/cevaplar.md)) listeden çıkarıldı.
 
 | Öncelik | Soru | Muhatap | Etkilediği karar |
 |---------|------|---------|------------------|
@@ -298,7 +298,7 @@ Ayrıntılı liste (kime sorulacağı ve cevap alanlarıyla): [calisma-notlari/n
 
 ## 10. Pilot: sonuçlar ve sonraki adımlar
 
-**Ayrıntı:** [PILOT-RAPORU.md](PILOT-RAPORU.md) (ölçümler, sorunlar ve çözümleri, açık kalanlar) · Mimari: [MIMARI.md](MIMARI.md) · Plan: [UYGULAMA-PLANI.md](UYGULAMA-PLANI.md)
+**Ayrıntı:** [PILOT-RAPORU.md](PILOT-RAPORU.md) (ölçümler, sorunlar ve çözümleri, açık kalanlar) · Mimari: [MIMARI.md](MIMARI.md) · Plan: [UYGULAMA-PLANI.md](arsiv/UYGULAMA-PLANI.md)
 
 **Planlanan kapsam:** Tek marka, 3–5 manuel, uçtan uca prototip.
 **Yapılan:** 7 doküman (611 sayfa, 5 kurum), tamamen lokal, iki makine (Mac M4 Pro, GPU'suz Windows), yazılı ve sesli soru.
@@ -329,7 +329,7 @@ Ayrıntılı liste (kime sorulacağı ve cevap alanlarıyla): [calisma-notlari/n
 | Docling | **Yeterli, ama yedek ve kalite kontrolüyle** |
 | STT (isteğe bağlı) | **Uygulandı.** Terim ipucu ve onay adımı zorunlu |
 
-Hedef mimari: [MIMARI.md, Bölüm B](MIMARI.md). Uygulama aşamaları ve karar kapıları: [UYGULAMA-PLANI.md](UYGULAMA-PLANI.md).
+Hedef mimari: [MIMARI.md, Bölüm B](MIMARI.md). Uygulama aşamaları ve karar kapıları: [UYGULAMA-PLANI.md](arsiv/UYGULAMA-PLANI.md).
 
 ---
 
@@ -337,21 +337,21 @@ Hedef mimari: [MIMARI.md, Bölüm B](MIMARI.md). Uygulama aşamaları ve karar k
 
 | Konu | Not dosyası |
 |------|-------------|
-| RAG temelleri (bölümleme, embedding, vektör DB, hibrit arama, rerank, metadata) | [calisma-notlari/notlar/rag-temelleri.md](calisma-notlari/notlar/rag-temelleri.md) |
-| PDF işleme (ayrıştırma araçları, OCR, şekiller, metadata şeması) | [calisma-notlari/notlar/pdf-isleme.md](calisma-notlari/notlar/pdf-isleme.md) |
-| Kaynak gösterme ve sayfa vurgulama, görsel tabanlı arama | [calisma-notlari/notlar/kaynak-gosterme.md](calisma-notlari/notlar/kaynak-gosterme.md) |
-| Çekirdek deneme raporu (27/27 test) | [calisma-notlari/faz1-test/faz1_output/report.md](calisma-notlari/faz1-test/faz1_output/report.md) |
-| TTS (sesli okuma), metin normalizasyonu | [calisma-notlari/notlar/tts.md](calisma-notlari/notlar/tts.md) |
-| Arayüz, orkestrasyon, STT | [calisma-notlari/notlar/arayuz-orkestrasyon.md](calisma-notlari/notlar/arayuz-orkestrasyon.md) |
-| LLM seçimi, doğruluk güvencesi, değerlendirme | [calisma-notlari/notlar/llm-degerlendirme.md](calisma-notlari/notlar/llm-degerlendirme.md) |
-| Taslak sistem talimatı ve çıktı şeması | [calisma-notlari/notlar/prompt-taslak.md](calisma-notlari/notlar/prompt-taslak.md) |
-| Veri güvenliği ve erişim | [calisma-notlari/notlar/guvenlik.md](calisma-notlari/notlar/guvenlik.md) |
-| Test doküman envanteri | [calisma-notlari/notlar/manual-envanteri.md](calisma-notlari/notlar/manual-envanteri.md) |
-| **Görev özetleri** (her görev için karar tablosu ve önerilen sistem) | [calisma-notlari/notlar/gorev-ozetleri.md](calisma-notlari/notlar/gorev-ozetleri.md) |
-| Hazırlık (cevaplar, doküman listesi, test soruları) | [calisma-notlari/notlar/00-hazirlik.md](calisma-notlari/notlar/00-hazirlik.md) |
-| Bekleyen sorular | [calisma-notlari/notlar/sorulacaklar.md](calisma-notlari/notlar/sorulacaklar.md) |
+| RAG temelleri (bölümleme, embedding, vektör DB, hibrit arama, rerank, metadata) | [calisma-notlari/notlar/rag-temelleri.md](arsiv/calisma-notlari/notlar/rag-temelleri.md) |
+| PDF işleme (ayrıştırma araçları, OCR, şekiller, metadata şeması) | [calisma-notlari/notlar/pdf-isleme.md](arsiv/calisma-notlari/notlar/pdf-isleme.md) |
+| Kaynak gösterme ve sayfa vurgulama, görsel tabanlı arama | [calisma-notlari/notlar/kaynak-gosterme.md](arsiv/calisma-notlari/notlar/kaynak-gosterme.md) |
+| Çekirdek deneme raporu (27/27 test) | [calisma-notlari/faz1-test/faz1_output/report.md](arsiv/calisma-notlari/faz1-test/faz1_output/report.md) |
+| TTS (sesli okuma), metin normalizasyonu | [calisma-notlari/notlar/tts.md](arsiv/calisma-notlari/notlar/tts.md) |
+| Arayüz, orkestrasyon, STT | [calisma-notlari/notlar/arayuz-orkestrasyon.md](arsiv/calisma-notlari/notlar/arayuz-orkestrasyon.md) |
+| LLM seçimi, doğruluk güvencesi, değerlendirme | [calisma-notlari/notlar/llm-degerlendirme.md](arsiv/calisma-notlari/notlar/llm-degerlendirme.md) |
+| Taslak sistem talimatı ve çıktı şeması | [calisma-notlari/notlar/prompt-taslak.md](arsiv/calisma-notlari/notlar/prompt-taslak.md) |
+| Veri güvenliği ve erişim | [calisma-notlari/notlar/guvenlik.md](arsiv/calisma-notlari/notlar/guvenlik.md) |
+| Test doküman envanteri | [calisma-notlari/notlar/manual-envanteri.md](arsiv/calisma-notlari/notlar/manual-envanteri.md) |
+| **Görev özetleri** (her görev için karar tablosu ve önerilen sistem) | [calisma-notlari/notlar/gorev-ozetleri.md](arsiv/calisma-notlari/notlar/gorev-ozetleri.md) |
+| Hazırlık (cevaplar, doküman listesi, test soruları) | [calisma-notlari/notlar/00-hazirlik.md](arsiv/calisma-notlari/notlar/00-hazirlik.md) |
+| Bekleyen sorular | [calisma-notlari/notlar/sorulacaklar.md](arsiv/calisma-notlari/notlar/sorulacaklar.md) |
 | Pilot raporu (kurulum, ölçüm, problemler, öneriler) | [PILOT-RAPORU.md](PILOT-RAPORU.md) |
-| Araştırma planı ve günlük | [req.md](calisma-notlari/req.md) |
+| Araştırma planı ve günlük | [req.md](arsiv/calisma-notlari/req.md) |
 
 ## Ek B: Terimler
 

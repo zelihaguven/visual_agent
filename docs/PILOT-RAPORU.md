@@ -3,7 +3,7 @@
 > **Dönem:** 2026-10-10 – 2026-10-16 · **Ortam:** iki makine, tamamen lokal (Apple M4 Pro 24 GB; GPU'suz Windows dizüstü, i5-1335U, 32 GB)
 > **Son güncelleme (2026-10-16):** İkinci dönem. Şekil açıklaması (VLM) entegre edildi, geliştirmede kullanılmamış bir dokümanla (JUKI MO-6800S) "görülmemiş doküman" testi yapıldı, bulunan hataların dokümandan bağımsız (genel) çözümleri eklendi. Ayrıntı: §5.6, §6 ve §8'deki 2026-10-16 satırları.
 > **Kapsam:** Pilotta ne kuruldu, hangi bileşenler denendi, ne ölçüldü, hangi sorunlar çıktı ve nasıl çözüldü, ne açık kaldı, gerçek sistem için ne öneriliyor.
-> **İlgili belgeler:** Pilotun mimarisi ve önerilen hedef mimari: [MIMARI.md](MIMARI.md) · Uygulama aşaması: [UYGULAMA-PLANI.md](UYGULAMA-PLANI.md) · Araştırma: [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md) · Kod ve çalıştırma: [pilot/README.md](pilot/README.md)
+> **İlgili belgeler:** Pilotun mimarisi ve önerilen hedef mimari: [MIMARI.md](MIMARI.md) · Uygulama aşaması: [UYGULAMA-PLANI.md](arsiv/UYGULAMA-PLANI.md) · Araştırma: [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md) · Kod ve çalıştırma: [pilot/README.md](../Pilot/README.md)
 
 ---
 
@@ -140,7 +140,7 @@ flowchart TB
 
 ### 5.1 18 soruluk ölçüm (son, 2026-10-13, GPU'suz Windows)
 
-**Yöntem:** [pilot/eval/questions.json](pilot/eval/questions.json), tek çalıştırma, sıcaklık 0, qwen2.5:7b. Sorular yapay zekâ tarafından yazıldı, beklenen sayfa ve değerler PDF'ten doğrulandı. "Doğru" ölçütleri:
+**Yöntem:** [pilot/eval/questions.json](../Pilot/eval/questions.json), tek çalıştırma, sıcaklık 0, qwen2.5:7b. Sorular yapay zekâ tarafından yazıldı, beklenen sayfa ve değerler PDF'ten doğrulandı. "Doğru" ölçütleri:
 - **Cevaplanabilir soru:** beklenen sayfa ilk 5'te, beklenen değer cevapta ve doğrulama başarısız değil.
 - **Belirsiz soru:** doğru netleştirme sorusu gelmiş ve seçenekler beklenen kaynakları içeriyor.
 - **Cevapsız soru:** sistem reddetmiş.
@@ -235,7 +235,7 @@ Skorlar iç içe. Tek bir eşik, cevapsızları reddederken cevaplıları da red
 
 ### 5.6 İkinci dönem: elle denemeler (2026-10-16, GPU'suz Windows)
 
-**Yöntem:** Otomatik ölçüm (`run_eval.py`) çalıştırılmadı. Sorular arayüzde **elle** denendi, sonuçlar kullanıcı tarafından bildirildi; hataların sebebi aynı soru tekrar çalıştırılarak ya da yalnız arama çalıştırılarak bulundu. Soru setleri: [questions_ek.json](pilot/eval/questions_ek.json) (14), [sekil_sorular.json](pilot/eval/sekil_sorular.json) (12), [gorulmemis_juki.json](pilot/eval/gorulmemis_juki.json) (14). Beklenen cevaplar PDF metninden çıkarıldı.
+**Yöntem:** Otomatik ölçüm (`run_eval.py`) çalıştırılmadı. Sorular arayüzde **elle** denendi, sonuçlar kullanıcı tarafından bildirildi; hataların sebebi aynı soru tekrar çalıştırılarak ya da yalnız arama çalıştırılarak bulundu. Soru setleri: [questions_ek.json](../Pilot/eval/questions_ek.json) (14), [sekil_sorular.json](../Pilot/eval/sekil_sorular.json) (12), [gorulmemis_juki.json](../Pilot/eval/gorulmemis_juki.json) (14). Beklenen cevaplar PDF metninden çıkarıldı.
 
 **Görülmemiş doküman testi:** JUKI MO-6800S overlok kılavuzu (50 sayfa, üreticinin sitesinden), geliştirmede hiç kullanılmamıştı. Yalnız bir yükleyicinin gireceği doküman kaydı (marka, ürün, tür, model kodu) eklendi; **sözlük ve kural eklenmedi.** Ayrıştırma 2,5 dk, indeksleme 3,7 dk (217 parça).
 
@@ -389,10 +389,10 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 | | – | Sözlük ve doküman kurallarının koddan "departman profili"ne taşınması | MIMARI B2.3 |
 | | – | Brother kılavuzlarının şekilleri; JUKI şekillerinin tamamlanıp indekslenmesi | Gece / GPU |
 | | – | Pilotun kendi `.venv`'i (şu an eski kopyanın ortamı kullanılıyor) | Kurulum |
-| **Arama benchmark'ından (2026-10-27)** | – | "Hangi ürün/model?" koruması (arama sonrası netleştirme): rerank kapalı varsayılan yolda eşik devre dışı (skor yok). Bugün yanlış pozitif yok, alakasız soruda da yok. Onaylı setlerde 4 filtresiz sorunun 2'si doğru netleştirme, 0 yanlış negatif. Onaysız aday taslakta 36 sorudan 5 yanlış negatif var; nedeni eşik değil, ilk 3 sonuca iki ürünün birlikte girmemesi. Eşik, onaylı soru setiyle hibrit/RRF skoruna göre yeniden ayarlanacak. Yanlış negatifler için aday kümesi genişletilmeli ([netlestirme_korumasi](Pilot/eval/bench/netlestirme_korumasi_2026-10-27.md)). **Olumsuz bulgu: doküman düzeyinde skor işe yaramadı.** İlk 20 adayın RRF skorunu dokümana göre toplayan yöntem (`PILOT_CLARIFY_METHOD=doc_score`), taslakta 10 doğru / 5 yanlış negatif / 0 yanlış pozitiften 7 / 8 / 2'ye geriledi. Onaylı sette de 2 doğrudan 1'e indi. Neden: toplam, çok sayıda zayıf eşleşmesi olan dokümanı ödüllendiriyor. Örneğin "E050 ne demek?" sorusunda en iyi doküman Bosch çıkıyor; Strickland sorularında da S-7300A/B öne geçiyor. Oran eşiği (0,4–0,8) sonucu neredeyse hiç değiştirmiyor; sorun eşikte değil, toplamada. Seçenek kodda duruyor, kapalı; varsayılan `top3`. Başka deneme yapılmadı ([netlestirme_yontem](Pilot/eval/bench/netlestirme_yontem_2026-10-27.md)) | Onaylı soru seti hazır olunca |
-| | K1 | **"Bulunamadı" davranışı (model ve rozet):** 21 cevapsız soruyu tam hattan geçirdik. Yeni varsayılan yolda doğru reddetme %48 (10/21), eski rerank yolunda %62 (13/21). Model iki yolda da 7 soruda alakasız kaynaktan cevap yazdı; bunların 3'ü (yeni yol: A114, A126, A129) "⚠ Kısmen doğrulandı" rozeti aldı, yani kullanıcıya güvenilir görünüyor. Arama katmanında "cevap yok" eşiği yok: `MIN_RERANK_SCORE = None`. Rerank kapalıyken skor da yok. Kural tabanlı kontroller yalnız yabancı marka ve hata kodu; gerisini model (`bulunamadi` alanı) karar veriyor. **Hedef: doğru reddetme ≥ %90, "doğrulandı/kısmen doğrulandı" rozetli yanlış değer = 0.** Rozet kontrolü (`verify.py`'nin cevapsız soruda neden "kısmen" verdiği, boş cevapların nedeni) Aşama 3 VM koşuları beklerken yapılacak ([bulunamadi_analiz](Pilot/eval/bench/bulunamadi_analiz_2026-10-27.md)) | Model ve doğruluk turu |
+| **Arama benchmark'ından (2026-10-27)** | – | "Hangi ürün/model?" koruması (arama sonrası netleştirme): rerank kapalı varsayılan yolda eşik devre dışı (skor yok). Bugün yanlış pozitif yok, alakasız soruda da yok. Onaylı setlerde 4 filtresiz sorunun 2'si doğru netleştirme, 0 yanlış negatif. Onaysız aday taslakta 36 sorudan 5 yanlış negatif var; nedeni eşik değil, ilk 3 sonuca iki ürünün birlikte girmemesi. Eşik, onaylı soru setiyle hibrit/RRF skoruna göre yeniden ayarlanacak. Yanlış negatifler için aday kümesi genişletilmeli ([netlestirme_korumasi](../Pilot/eval/bench/bulunamadi/netlestirme_korumasi_2026-10-27.md)). **Olumsuz bulgu: doküman düzeyinde skor işe yaramadı.** İlk 20 adayın RRF skorunu dokümana göre toplayan yöntem (`PILOT_CLARIFY_METHOD=doc_score`), taslakta 10 doğru / 5 yanlış negatif / 0 yanlış pozitiften 7 / 8 / 2'ye geriledi. Onaylı sette de 2 doğrudan 1'e indi. Neden: toplam, çok sayıda zayıf eşleşmesi olan dokümanı ödüllendiriyor. Örneğin "E050 ne demek?" sorusunda en iyi doküman Bosch çıkıyor; Strickland sorularında da S-7300A/B öne geçiyor. Oran eşiği (0,4–0,8) sonucu neredeyse hiç değiştirmiyor; sorun eşikte değil, toplamada. Seçenek kodda duruyor, kapalı; varsayılan `top3`. Başka deneme yapılmadı ([netlestirme_yontem](../Pilot/eval/bench/bulunamadi/netlestirme_yontem_2026-10-27.md)) | Onaylı soru seti hazır olunca |
+| | K1 | **"Bulunamadı" davranışı (model ve rozet):** 21 cevapsız soruyu tam hattan geçirdik. Yeni varsayılan yolda doğru reddetme %48 (10/21), eski rerank yolunda %62 (13/21). Model iki yolda da 7 soruda alakasız kaynaktan cevap yazdı; bunların 3'ü (yeni yol: A114, A126, A129) "⚠ Kısmen doğrulandı" rozeti aldı, yani kullanıcıya güvenilir görünüyor. Arama katmanında "cevap yok" eşiği yok: `MIN_RERANK_SCORE = None`. Rerank kapalıyken skor da yok. Kural tabanlı kontroller yalnız yabancı marka ve hata kodu; gerisini model (`bulunamadi` alanı) karar veriyor. **Hedef: doğru reddetme ≥ %90, "doğrulandı/kısmen doğrulandı" rozetli yanlış değer = 0.** Rozet kontrolü (`verify.py`'nin cevapsız soruda neden "kısmen" verdiği, boş cevapların nedeni) Aşama 3 VM koşuları beklerken yapılacak ([bulunamadi_analiz](../Pilot/eval/bench/bulunamadi/bulunamadi_analiz_2026-10-27.md)) | Model ve doğruluk turu |
 | | – | **Aşama 5 kapsamına eklendi:** Rerank atlama ve iki kademeli rerank denemeleri yalnız hit@1 ile değil, "bulunamadı" davranışıyla da (doğru reddetme, rozetli yanlış değer) değerlendirilecek. Bulut reranker (qwen3-reranker-8b) skoruyla "cevap yok" eşiği de orada denenecek. Not: rerank kapalıyken RRF skoru yalnız sıradan geliyor, alakasızlık sinyali vermiyor. Q10'un alakasız ilk sonucu, doğru bir sonuçla aynı skoru (0,500) alıyor | Aşama 5 |
-| | – | **Aşama 3 bölündü (2026-10-27):** 3b (kalabalıkta doğruluk, 10k → 1M, filtreli + filtresiz) dizüstünde koşuluyor; Qwen3-8B embed bulutta, local bge-m3 yolu 10k–30k. Bu koşunun süreleri "dizüstü, üretimi temsil etmez" diye işaretli, karar için kullanılmayacak. **Şirket içi sunucuya kalanlar** (Hetzner açılmayacak; BT'den sunucu isteniyor): 3a süre ölçümleri (Qdrant 8 vCPU / 16 GB ve 4 vCPU / 16 GB sınırlı, sayfa önbelleği dahil) ve 3c yük testi (istemci Qdrant'ın çekirdekleri dışında). İnternetsiz paket hazır: indeksler dizüstünde snapshot olarak hazırlanıyor; Python 3.12 ve Qdrant v1.19.2 ikilisi pakette. Sınırı Docker yoksa systemd veriyor. SSH izni çıkmazsa tek komut: `sudo bash asama3_sunucu.sh`, sonuç tek bir tar.gz ([bench/onprem](Pilot/bench/onprem/BENIOKU.txt)) | Şirket içi sunucu açılınca |
+| | – | **Aşama 3 bölündü (2026-10-27):** 3b (kalabalıkta doğruluk, 10k → 1M, filtreli + filtresiz) dizüstünde koşuluyor; Qwen3-8B embed bulutta, local bge-m3 yolu 10k–30k. Bu koşunun süreleri "dizüstü, üretimi temsil etmez" diye işaretli, karar için kullanılmayacak. **Şirket içi sunucuya kalanlar** (Hetzner açılmayacak; BT'den sunucu isteniyor): 3a süre ölçümleri (Qdrant 8 vCPU / 16 GB ve 4 vCPU / 16 GB sınırlı, sayfa önbelleği dahil) ve 3c yük testi (istemci Qdrant'ın çekirdekleri dışında). İnternetsiz paket hazır: indeksler dizüstünde snapshot olarak hazırlanıyor; Python 3.12 ve Qdrant v1.19.2 ikilisi pakette. Sınırı Docker yoksa systemd veriyor. SSH izni çıkmazsa tek komut: `sudo bash asama3_sunucu.sh`, sonuç tek bir tar.gz ([bench/onprem](../Pilot/bench/onprem/BENIOKU.txt)) | Şirket içi sunucu açılınca |
 | **Kapsam dışı (planda)** | | Yetki ve denetim izi, soru niyeti sınıflandırması, gerçek seslerle STT ölçümü, kod okunuşu kuralları (açık soru Q10-a) | Aşama 1–5 |
 
 **Bilerek bırakılanlar:** Seste "Ceketin → Tekitin" (C4), büyük ihtimalle TTS'nin ilk sesi kırpması. Kullanıcı kararıyla sorun sayılmadı.
@@ -403,7 +403,7 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 
 ## 8. Öğrenilenler ve öneriler
 
-Önerilerin mimariye yansıması [MIMARI.md, Bölüm B](MIMARI.md)'de, zamanlaması [UYGULAMA-PLANI.md](UYGULAMA-PLANI.md)'de.
+Önerilerin mimariye yansıması [MIMARI.md, Bölüm B](MIMARI.md)'de, zamanlaması [UYGULAMA-PLANI.md](arsiv/UYGULAMA-PLANI.md)'de.
 
 | # | Öğrenilen | Öneri |
 |---|-----------|-------|
@@ -452,20 +452,20 @@ Bu grup pilotun en çok öğreten kısmı oldu. Kullanıcı denemelerinde buluna
 - **Sorular yapay zekâ tarafından yazıldı.** Gerçek kullanıcı soruları farklı olacak; kullanıcı denemeleri bunu gösterdi.
 - **İki makine, tek model.** Süreler donanıma bağlı.
 - **STT ölçümü sentetik sesle** yapıldı. Kullanıcı sesiyle yalnız birkaç deneme var.
-- **Dokümanlar telifli olabilir:** [test-dokumanlari/](test-dokumanlari/) "yeniden dağıtılmayacak" notuyla toplandı ([envanter](calisma-notlari/notlar/manual-envanteri.md)). Repo herkese açık yapılacaksa bu karar yeniden verilmeli.
+- **Dokümanlar telifli olabilir:** [test-dokumanlari/](../test-dokumanlari/) "yeniden dağıtılmayacak" notuyla toplandı ([envanter](arsiv/calisma-notlari/notlar/manual-envanteri.md)). Repo herkese açık yapılacaksa bu karar yeniden verilmeli.
 
 ---
 
 ## 11. Ek: çalıştırma ve ham veriler
 
-Kurulum ve çalıştırma (macOS ve Windows): [pilot/README.md](pilot/README.md).
+Kurulum ve çalıştırma (macOS ve Windows): [pilot/README.md](../Pilot/README.md).
 
 | Ham veri | Dosya |
 |----------|-------|
-| Son ölçüm (18 soru) | [pilot/eval/sonuc.md](pilot/eval/sonuc.md) · [sonuc.json](pilot/eval/sonuc.json) |
-| İlk ölçüm (Mac, 10 soru) | [pilot/eval/sonuc_onceki.md](pilot/eval/sonuc_onceki.md) |
-| Rerank skorları (eşik ölçümü) | [pilot/eval/rerank_skorlari.json](pilot/eval/rerank_skorlari.json) |
-| STT ölçümü | [pilot/eval/stt_sonuc_small.json](pilot/eval/stt_sonuc_small.json) · [stt_sonuc_large-v3-turbo.json](pilot/eval/stt_sonuc_large-v3-turbo.json) |
-| İkinci dönem soru setleri (elle denendi, otomatik ölçülmedi) | [questions_ek.json](pilot/eval/questions_ek.json) · [sekil_sorular.json](pilot/eval/sekil_sorular.json) · [gorulmemis_juki.json](pilot/eval/gorulmemis_juki.json) |
-| Şekil açıklamaları (VLM) | [pilot/data/figures/](pilot/data/figures/) (JUKI dosyası yarım: işlem sürüyordu) |
-| Mac kurulum logu (boyut, süre, sorunlar) | [pilot/KURULUM-LOGU.md](pilot/KURULUM-LOGU.md) |
+| Son ölçüm (18 soru) | [pilot/eval/sonuc.md](../Pilot/eval/sonuc.md) · [sonuc.json](../Pilot/eval/sonuc.json) |
+| İlk ölçüm (Mac, 10 soru) | [pilot/eval/sonuc_onceki.md](arsiv/pilot-eval/sonuc_onceki.md) |
+| Rerank skorları (eşik ölçümü) | [pilot/eval/rerank_skorlari.json](../Pilot/eval/rerank_skorlari.json) |
+| STT ölçümü | [pilot/eval/stt_sonuc_small.json](../Pilot/eval/stt_sonuc_small.json) · [stt_sonuc_large-v3-turbo.json](../Pilot/eval/stt_sonuc_large-v3-turbo.json) |
+| İkinci dönem soru setleri (elle denendi, otomatik ölçülmedi) | [questions_ek.json](../Pilot/eval/questions_ek.json) · [sekil_sorular.json](../Pilot/eval/sekil_sorular.json) · [gorulmemis_juki.json](../Pilot/eval/gorulmemis_juki.json) |
+| Şekil açıklamaları (VLM) | [pilot/data/figures/](../Pilot/data/figures/) (JUKI dosyası yarım: işlem sürüyordu) |
+| Mac kurulum logu (boyut, süre, sorunlar) | [pilot/KURULUM-LOGU.md](../Pilot/KURULUM-LOGU.md) |

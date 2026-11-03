@@ -2,7 +2,7 @@
 
 > **Tarih:** 2026-10-10 · **Kaynak görev:** [tasks.md](tasks.md) · **Ayrıntılı notlar:** her görevin başlığında bağlantı var
 > **Amaç:** `tasks.md` "Beklenen Çıktılar" bölümü her konu için *kısa araştırma notu (özet, seçenekler, artı/eksi)* ister. Ayrıntılı notlar 400–800 satırlık öğrenme notlarıdır. Bu dosya her görevin **son karar tablosunu ve önerilen sistemi** tek sayfada verir.
-> **Pilot ile ilişkisi:** Pilot, bu kararların küçük bir kısmını ölçtü. Her görevde "Pilotta gördüğümüz" satırı var. Ayrıntı: [../../PILOT-RAPORU.md](../../PILOT-RAPORU.md)
+> **Pilot ile ilişkisi:** Pilot, bu kararların küçük bir kısmını ölçtü. Her görevde "Pilotta gördüğümüz" satırı var. Ayrıntı: [../../PILOT-RAPORU.md](../../../PILOT-RAPORU.md)
 
 **Durum:** ✅ kararlaştı / doğrulandı · 🧪 ölçülerek kesinleşecek · ⏳ paydaş kararına bağlı · ❌ yapılmadı
 
@@ -13,13 +13,13 @@
 | tasks.md "Beklenen Çıktılar" | Durum | Nerede |
 |------------------------------|-------|--------|
 | Her konu için kısa araştırma notu (özet, seçenekler, artı/eksi) | ✅ | Bu dosya (§1–7) + ayrıntılı notlar |
-| Önerilen mimari taslağı (akış diyagramı) | ✅ | [ARASTIRMA-SENTEZI.md §3](../../ARASTIRMA-SENTEZI.md) (Şekil 1), bu dosya §8 |
-| Araç/model seçim önerileri (embedding, vector DB, LLM, TTS, arayüz) | ✅ | [ARASTIRMA-SENTEZI.md §4](../../ARASTIRMA-SENTEZI.md), bu dosya §1–7 karar tabloları |
+| Önerilen mimari taslağı (akış diyagramı) | ✅ | [ARASTIRMA-SENTEZI.md §3](../../../ARASTIRMA-SENTEZI.md) (Şekil 1), bu dosya §8 |
+| Araç/model seçim önerileri (embedding, vector DB, LLM, TTS, arayüz) | ✅ | [ARASTIRMA-SENTEZI.md §4](../../../ARASTIRMA-SENTEZI.md), bu dosya §1–7 karar tabloları |
 | Kullanılacak manuallerin envanteri ve format değerlendirmesi | ✅ test seti, ⏳ gerçek doküman | [manual-envanteri.md](manual-envanteri.md) (ölçülmüş envanter tablosu eklendi) |
-| Açık sorular ve riskler listesi | ✅ | [sorulacaklar.md](sorulacaklar.md), [ARASTIRMA-SENTEZI.md §8–9](../../ARASTIRMA-SENTEZI.md) |
-| Uygulama aşaması için önerilen task/aşama planı | ✅ | Bu dosya §9, [ARASTIRMA-SENTEZI.md §10](../../ARASTIRMA-SENTEZI.md) |
+| Açık sorular ve riskler listesi | ✅ | [sorulacaklar.md](sorulacaklar.md), [ARASTIRMA-SENTEZI.md §8–9](../../../ARASTIRMA-SENTEZI.md) |
+| Uygulama aşaması için önerilen task/aşama planı | ✅ | Bu dosya §9, [ARASTIRMA-SENTEZI.md §10](../../../ARASTIRMA-SENTEZI.md) |
 | *Not:* Önceliklendirme 1,2,3 → 5,6 → 4 → 7 | ✅ Uygulandı | [req.md](../req.md) faz sırası |
-| *Not:* Küçük pilot (tek marka, birkaç manual) uçtan uca | ✅ Yapıldı | [Pilot/](../../PILOT-RAPORU.md) |
+| *Not:* Küçük pilot (tek marka, birkaç manual) uçtan uca | ✅ Yapıldı | [Pilot/](../../../PILOT-RAPORU.md) |
 
 ### Önerilen sistem tek bakışta
 
@@ -395,7 +395,7 @@ flowchart TB
     P --> G
 ```
 
-Ayrıntılı gerçek sistem mimarisi ve pilot↔gerçek karşılaştırması: [MIMARI.md, Bölüm B](../../MIMARI.md).
+Ayrıntılı gerçek sistem mimarisi ve pilot↔gerçek karşılaştırması: [MIMARI.md, Bölüm B](../../../MIMARI.md).
 
 ---
 
@@ -427,4 +427,4 @@ flowchart LR
     G --> H
 ```
 
-**Pilot başarı kriterleri (taslak, paydaşlarla kesinleştirilecek):** Recall@5 ≥ %90 · değer doğruluğu ≥ %98 · doğru reddetme ≥ %90 · tuzak ve yetki %100 · yanıt süresi ≤ 5 sn. Pilot sonuçları: [ARASTIRMA-SENTEZI.md §10.1](../../ARASTIRMA-SENTEZI.md).
+**Pilot başarı kriterleri (taslak, paydaşlarla kesinleştirilecek):** Recall@5 ≥ %90 · değer doğruluğu ≥ %98 · doğru reddetme ≥ %90 · tuzak ve yetki %100 · yanıt süresi ≤ 5 sn. Pilot sonuçları: [ARASTIRMA-SENTEZI.md §10.1](../../../ARASTIRMA-SENTEZI.md).

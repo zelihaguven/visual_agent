@@ -3,7 +3,7 @@
 > **A. Pilotun mimarisi:** Bugün çalışan sistem. Her aşamada ne yapılıyor, ne kullanılıyor, neden.
 > **B. Önerilen hedef mimari:** Pilottan öğrenilenlerle gerçek sistemin nasıl olması gerektiği.
 >
-> **Son güncelleme:** 2026-10-16 · **İlgili:** [PILOT-RAPORU.md](PILOT-RAPORU.md) (ölçümler, sorunlar) · [UYGULAMA-PLANI.md](UYGULAMA-PLANI.md) (aşamalar) · [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md) (araç seçimlerinin araştırma gerekçesi) · Kod: [pilot/](pilot/)
+> **Son güncelleme:** 2026-10-16 · **İlgili:** [PILOT-RAPORU.md](PILOT-RAPORU.md) (ölçümler, sorunlar) · [UYGULAMA-PLANI.md](arsiv/UYGULAMA-PLANI.md) (aşamalar) · [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md) (araç seçimlerinin araştırma gerekçesi) · Kod: [pilot/](../Pilot/)
 
 ---
 
@@ -69,24 +69,24 @@ flowchart TB
 
 | Aşama | Ne yapıyor | Kullanılan | Neden bu | Dosya |
 |-------|-----------|------------|----------|-------|
-| **Doküman kaydı** | Her PDF'in marka, ürün, tür, dil, eşanlamlılarını tutar | Python tablosu | Filtre, kaynak uyumu ve netleştirme bu bilgilere dayanır | [registry.py](pilot/pilot/registry.py) |
-| **Ayrıştırma** | PDF → metin, başlık, tablo + sayfa ve konum | **Docling** (OCR kapalı) + **PyMuPDF** yedekleri | Docling yerel, MIT lisanslı, tablo yapısı ve konum veriyor. Yedekler Docling'in kaçırdığı sayfa ve tabloları kurtarıyor | [parse.py](pilot/pilot/parse.py) |
-| **Şekil açıklaması** | Şekil → aranabilir metin (başlık + şekildeki yazılar + otomatik açıklama) | **qwen2.5vl:3b** (Ollama), CPU; aynı görsel bir kez | Çizimdeki bilgi metinde yok ("körük alttan açık"). Açıklama "kaynak metni değil" diye işaretli | [figures.py](pilot/pilot/figures.py) |
-| **Parçalama** | Öğeler → arama parçaları | Başlık sınırlı, tablo satırı ayrı, şekil ayrı | Bir parça iki konuyu karıştırmasın, tek satır bulunup vurgulansın | [chunk.py](pilot/pilot/chunk.py) |
-| **Embedding** | Parça → vektör | **bge-m3** (yoğun + seyrek), CPU | Çok dilli (TR soru ↔ EN kılavuz). Tek modelden hem anlam hem kelime vektörü | [embed.py](pilot/pilot/embed.py) |
-| **İndeks** | Vektör ve kayıt saklama | **Qdrant**, gömülü mod | Kurulumsuz, yerel. Filtre ve hibrit arama yerleşik | [index.py](pilot/pilot/index.py) |
-| **Sesli soru** | Ses → metin | **faster-whisper** small, CPU int8 + terim ipucu | Yerel, ses dışarı çıkmıyor. İpucuyla model kodları doğru | [stt.py](pilot/pilot/stt.py) |
-| **Sorgu analizi** | Sorudaki makine, ürün, marka, dil; söylenmiş kodlar | Kural (eşanlamlı tablosu) | Hızlı, test edilebilir, nedeni görülebilir. Küçük model bu kararı güvenilir veremiyor | [query.py](pilot/pilot/query.py) |
-| **Karar noktaları** | Netleştirme, kaynak uyumu, bulunamadı | Kural + kullanıcı seçimi | Yanlış kaynaktan cevap (R4, R14) modelden önce önlenir | [pipeline.py](pilot/pilot/pipeline.py) |
-| **Terim sözlüğü** | Atölye terimi → kılavuz terimi (aramaya eklenir) | Elle yazılmış taslak sözlük (29 terim) | bge-m3 ve qwen jargonu bilmiyor (1/5, 0/5) | [terms.py](pilot/pilot/terms.py) |
-| **Arama** | Soruya en uygun 5 parça | Hibrit (yoğun + seyrek, **RRF**) + **bge-reranker-v2-m3** | Kodlar (E050, S-7300A) kelime aramasıyla, anlam yoğun aramayla bulunur. Reranker isabeti artırıyor | [retrieve.py](pilot/pilot/retrieve.py) |
-| **Cevap üretimi** | Alıntı + cevap + sesli metin | **qwen2.5:7b** (Ollama), JSON şeması | Bu makinelere sığan en iyi lokal model. Kalitesi yetersiz (B2) | [llm.py](pilot/pilot/llm.py), [prompts.py](pilot/pilot/prompts.py) |
-| **Kod tam eşleşmesi** | Sorudaki kodu (E050) kapsamda birebir arar | Kural | Kelime araması benzer kodu (E05) getirebiliyor | [pipeline.py](pilot/pilot/pipeline.py) |
-| **Doğrulama** | Cevabı kaynağa karşı denetler | Kod (kural) | Model yanılsa da yanlış değer "doğrulandı" diye gitmesin | [verify.py](pilot/pilot/verify.py) |
-| **Tablo varyant kontrolü** | Değer tablodaki bir varyanta (model, tip, beden) özgüyse ve söylenmemişse seçenek sunar | Kural, seçenekler tablodan | Doğrulama "sayı kaynakta var mı"ya bakıyor, "doğru sütun mu"ya bakmıyor | [tables.py](pilot/pilot/tables.py) |
-| **Sesli metin** | Sayı, tolerans, birim → okunacak kelime | Kural tablosu | Türkçe için hazır araç yok. Alan dar, test edilebilir | [speech.py](pilot/pilot/speech.py) |
-| **Seslendirme** | Metin → ses | **Chatterbox Multilingual**, CPU, ayrı ortam | Yerel, Türkçe kalitesi iyi | [tools/tts_say.py](pilot/tools/tts_say.py) |
-| **Arayüz** | Soru, netleştirme, cevap, vurgulu sayfa, ses | **Streamlit** + sayfa çizici (pypdfium2) | Pilot için en hızlı yol | [app.py](pilot/app.py), [render.py](pilot/pilot/render.py) |
+| **Doküman kaydı** | Her PDF'in marka, ürün, tür, dil, eşanlamlılarını tutar | Python tablosu | Filtre, kaynak uyumu ve netleştirme bu bilgilere dayanır | [registry.py](../Pilot/pilot/registry.py) |
+| **Ayrıştırma** | PDF → metin, başlık, tablo + sayfa ve konum | **Docling** (OCR kapalı) + **PyMuPDF** yedekleri | Docling yerel, MIT lisanslı, tablo yapısı ve konum veriyor. Yedekler Docling'in kaçırdığı sayfa ve tabloları kurtarıyor | [parse.py](../Pilot/pilot/parse.py) |
+| **Şekil açıklaması** | Şekil → aranabilir metin (başlık + şekildeki yazılar + otomatik açıklama) | **qwen2.5vl:3b** (Ollama), CPU; aynı görsel bir kez | Çizimdeki bilgi metinde yok ("körük alttan açık"). Açıklama "kaynak metni değil" diye işaretli | [figures.py](../Pilot/pilot/figures.py) |
+| **Parçalama** | Öğeler → arama parçaları | Başlık sınırlı, tablo satırı ayrı, şekil ayrı | Bir parça iki konuyu karıştırmasın, tek satır bulunup vurgulansın | [chunk.py](../Pilot/pilot/chunk.py) |
+| **Embedding** | Parça → vektör | **bge-m3** (yoğun + seyrek), CPU | Çok dilli (TR soru ↔ EN kılavuz). Tek modelden hem anlam hem kelime vektörü | [embed.py](../Pilot/pilot/embed.py) |
+| **İndeks** | Vektör ve kayıt saklama | **Qdrant**, gömülü mod | Kurulumsuz, yerel. Filtre ve hibrit arama yerleşik | [index.py](../Pilot/pilot/index.py) |
+| **Sesli soru** | Ses → metin | **faster-whisper** small, CPU int8 + terim ipucu | Yerel, ses dışarı çıkmıyor. İpucuyla model kodları doğru | [stt.py](../Pilot/pilot/stt.py) |
+| **Sorgu analizi** | Sorudaki makine, ürün, marka, dil; söylenmiş kodlar | Kural (eşanlamlı tablosu) | Hızlı, test edilebilir, nedeni görülebilir. Küçük model bu kararı güvenilir veremiyor | [query.py](../Pilot/pilot/query.py) |
+| **Karar noktaları** | Netleştirme, kaynak uyumu, bulunamadı | Kural + kullanıcı seçimi | Yanlış kaynaktan cevap (R4, R14) modelden önce önlenir | [pipeline.py](../Pilot/pilot/pipeline.py) |
+| **Terim sözlüğü** | Atölye terimi → kılavuz terimi (aramaya eklenir) | Elle yazılmış taslak sözlük (29 terim) | bge-m3 ve qwen jargonu bilmiyor (1/5, 0/5) | [terms.py](../Pilot/pilot/terms.py) |
+| **Arama** | Soruya en uygun 5 parça | Hibrit (yoğun + seyrek, **RRF**) + **bge-reranker-v2-m3** | Kodlar (E050, S-7300A) kelime aramasıyla, anlam yoğun aramayla bulunur. Reranker isabeti artırıyor | [retrieve.py](../Pilot/pilot/retrieve.py) |
+| **Cevap üretimi** | Alıntı + cevap + sesli metin | **qwen2.5:7b** (Ollama), JSON şeması | Bu makinelere sığan en iyi lokal model. Kalitesi yetersiz (B2) | [llm.py](../Pilot/pilot/llm.py), [prompts.py](../Pilot/pilot/prompts.py) |
+| **Kod tam eşleşmesi** | Sorudaki kodu (E050) kapsamda birebir arar | Kural | Kelime araması benzer kodu (E05) getirebiliyor | [pipeline.py](../Pilot/pilot/pipeline.py) |
+| **Doğrulama** | Cevabı kaynağa karşı denetler | Kod (kural) | Model yanılsa da yanlış değer "doğrulandı" diye gitmesin | [verify.py](../Pilot/pilot/verify.py) |
+| **Tablo varyant kontrolü** | Değer tablodaki bir varyanta (model, tip, beden) özgüyse ve söylenmemişse seçenek sunar | Kural, seçenekler tablodan | Doğrulama "sayı kaynakta var mı"ya bakıyor, "doğru sütun mu"ya bakmıyor | [tables.py](../Pilot/pilot/tables.py) |
+| **Sesli metin** | Sayı, tolerans, birim → okunacak kelime | Kural tablosu | Türkçe için hazır araç yok. Alan dar, test edilebilir | [speech.py](../Pilot/pilot/speech.py) |
+| **Seslendirme** | Metin → ses | **Chatterbox Multilingual**, CPU, ayrı ortam | Yerel, Türkçe kalitesi iyi | [tools/tts_say.py](../Pilot/tools/tts_say.py) |
+| **Arayüz** | Soru, netleştirme, cevap, vurgulu sayfa, ses | **Streamlit** + sayfa çizici (pypdfium2) | Pilot için en hızlı yol | [app.py](../Pilot/app.py), [render.py](../Pilot/pilot/render.py) |
 
 ---
 
@@ -108,7 +108,7 @@ flowchart LR
     EMB --> QD[("Qdrant")]
 ```
 
-### A3.1 Doküman kaydı: [registry.py](pilot/pilot/registry.py)
+### A3.1 Doküman kaydı: [registry.py](../Pilot/pilot/registry.py)
 
 Her PDF için: `doc_id`, dosya, **marka**, **ürün**, **tür** (`machine_manual`, `product_standard`, `tailoring_guide`), dil aralıkları (Bosch üç dilli) ve sorguda aranan **eşanlamlılar** ("ceket", "coat", "jacket"). Ayrıca:
 - `BRAND_ALIASES`: makine markası → modelleri ("brother" → S-7300A, S-7300B).
@@ -116,7 +116,7 @@ Her PDF için: `doc_id`, dosya, **marka**, **ürün**, **tür** (`machine_manual
 
 **Neden:** Soru hattındaki bütün kararlar (filtre, netleştirme, kaynak uyumu) bu kayda dayanır. Gerçek sistemde bu tablo elle değil, doküman yükleme sırasında ve müşteri/yetki kaydından üretilir (B4).
 
-### A3.2 Ayrıştırma: [parse.py](pilot/pilot/parse.py)
+### A3.2 Ayrıştırma: [parse.py](../Pilot/pilot/parse.py)
 
 | Adım | Ne yapıyor | Neden |
 |------|-----------|-------|
@@ -131,7 +131,7 @@ Her PDF için: `doc_id`, dosya, **marka**, **ürün**, **tür** (`machine_manual
 
 Sonuç önbelleğe yazılır: `pilot/data/parsed/<doc_id>.json`.
 
-### A3.3 Parçalama: [chunk.py](pilot/pilot/chunk.py)
+### A3.3 Parçalama: [chunk.py](../Pilot/pilot/chunk.py)
 
 | Öğe | Ne olur | Neden |
 |-----|---------|-------|
@@ -144,7 +144,7 @@ Sonuç önbelleğe yazılır: `pilot/data/parsed/<doc_id>.json`.
 
 Bugünkü indeks (2026-10-16): 9 doküman, **4.122 parça** (2.341 metin, 1.601 tablo satırı, 179 şekil). Şekil açıklaması olan dokümanlar: ceket, pantolon, kahve makinesi, Granovsky (JUKI'de işlem sürüyordu, Brother'da yok).
 
-### A3.4 Embedding: [embed.py](pilot/pilot/embed.py)
+### A3.4 Embedding: [embed.py](../Pilot/pilot/embed.py)
 
 **bge-m3** tek geçişte iki vektör üretir:
 - **Yoğun (1024 boyut):** Anlam benzerliği. Türkçe soru ile İngilizce metni eşleştirir.
@@ -152,7 +152,7 @@ Bugünkü indeks (2026-10-16): 9 doküman, **4.122 parça** (2.341 metin, 1.601 
 
 **CPU'da** çalışır. Apple GPU'da (MPS) hata vermeden yanlış sonuç verdi: bütün benzerlikler 1,0 çıktı (R12).
 
-### A3.5 İndeks: [index.py](pilot/pilot/index.py)
+### A3.5 İndeks: [index.py](../Pilot/pilot/index.py)
 
 **Qdrant, gömülü mod:** Sunucu yok, `pilot/data/qdrant/` klasöründe dosya olarak duruyor. Tek koleksiyonda iki vektör (`dense`, `sparse`) var; parçanın bütün alanları kayıtla saklanıyor.
 
@@ -168,7 +168,7 @@ Bugünkü indeks (2026-10-16): 9 doküman, **4.122 parça** (2.341 metin, 1.601 
 
 ## A4. Soru hattı ve karar noktaları
 
-Kaynak: [pipeline.py](pilot/pilot/pipeline.py) (`soru_cevapla`), kurallar [query.py](pilot/pilot/query.py). **Sıra önemli:** Önce en ucuz ve en kesin kararlar verilir; model en sonda ve yalnızca soru netse çalışır.
+Kaynak: [pipeline.py](../Pilot/pilot/pipeline.py) (`soru_cevapla`), kurallar [query.py](../Pilot/pilot/query.py). **Sıra önemli:** Önce en ucuz ve en kesin kararlar verilir; model en sonda ve yalnızca soru netse çalışır.
 
 ```mermaid
 flowchart TD
@@ -263,11 +263,11 @@ Kullanıcı bir kaynak seçtiğinde her varlık için şu sorulur: **Bu tür kay
   - **Ayrıntı kutusu:** Beden tablosu gibi konular için ("Medium Regular kol boyu").
   - **Neden:** Bu kontrol yokken arama rastgele beden satırları getiriyor, model boş ya da uydurma cevap veriyordu. SPI seçeneği dikiş türüne bölündü, çünkü değer dikişe göre değişiyor (11 (± 1), 10 (± 2), 8 (± 1)).
 
-### A4.6 K6: terim sözlüğü ([terms.py](pilot/pilot/terms.py))
+### A4.6 K6: terim sözlüğü ([terms.py](../Pilot/pilot/terms.py))
 
 "Çağanoz" kılavuzda "rotary hook", "takılır" ise "installing" olarak geçer. Sözlük terimi bulursa arama sorgusuna kılavuz karşılığını ekler: `"S-7300A çağanoz tipi (rotary hook)"`. **Modele giden soru değişmez.** Sözlük 29 terimlik bir taslak, uzman onayı bekliyor. Neden sözlük: bge-m3 beş atölye teriminin birini, qwen hiçbirini doğru eşleyemedi.
 
-### A4.7 Arama ([retrieve.py](pilot/pilot/retrieve.py))
+### A4.7 Arama ([retrieve.py](../Pilot/pilot/retrieve.py))
 
 ```mermaid
 flowchart LR
@@ -294,7 +294,7 @@ Soruda kaynak yoksa ve ilk 3 sonuç **farklı ürün şartnamelerinden** ("Dış
 
 **KK: kod tam eşleşmesi (2026-10-16).** Soruda harf+rakam bir kod varsa (`E050`, `P41`; tireli model adları ve kayıttaki eşanlamlılar hariç) kapsamdaki parçalarda birebir aranır; harf ile rakam arasındaki tire/boşluk yok sayılır. Kapsamda hiç yoksa model çağrılmaz: "E050 kodu MO-6800S overlok makinesi içinde geçmiyor. Bu kod şu kaynakta geçiyor: S-7300A, S-7300B" + "o kaynakta ara" düğmeleri. Varsa ve arama getirmediyse (tablo satırı öncelikli) kaynakların başına eklenir. Neden: kelime araması "E050"yi "E05"e yakın buldu, model E05'i anlattı (JUKI J9).
 
-### A4.9 Cevap üretimi ([prompts.py](pilot/pilot/prompts.py), [llm.py](pilot/pilot/llm.py))
+### A4.9 Cevap üretimi ([prompts.py](../Pilot/pilot/prompts.py), [llm.py](../Pilot/pilot/llm.py))
 
 | Ne | Nasıl | Neden |
 |----|-------|-------|
@@ -306,7 +306,7 @@ Soruda kaynak yoksa ve ilk 3 sonuç **farklı ürün şartnamelerinden** ("Dış
 
 **K8:** Model cevap yazmadan netleştirme sorusu yazarsa sonuç "doğrulanamadı" değil **netleştirme** olarak gösterilir; bulunan kaynaklar ve kaynakta geçen seçenekler düğme olur. Model cevapla birlikte soru da yazarsa: seçenekleri kaynakta geçiyorsa soru düğmelerle gösterilir, geçmiyorsa gösterilmez (`atlanan_netlestirme` olarak saklanır). Neden: SPI cevabının yanında "Hangi boy ceket için?" soruldu; SPI bedene göre değişmiyor, kullanıcı cevaplayamıyordu.
 
-### A4.10 Doğrulama ([verify.py](pilot/pilot/verify.py))
+### A4.10 Doğrulama ([verify.py](../Pilot/pilot/verify.py))
 
 Kod ile yapılır, LLM'e sorulmaz.
 
@@ -321,7 +321,7 @@ Kod ile yapılır, LLM'e sorulmaz.
 | Cevap boş mu ("bulunamadı" denmeden) | ✖ |
 | Tolerans **sesli metinde** tam mı | Sert hata değil: Ses doğrulanmış cevaptan kodla üretilir (R15) |
 | Geçerli [n] atfı var mı | ⚠ Kısmen doğrulandı |
-| **K9 tablo varyantı** ([tables.py](pilot/pilot/tables.py)): değer tablodaki bir varyanta özgü mü, soru ya da cevap hangisi olduğunu söylüyor mu | ⚠ Kısmen + varyant düğmeleri, ses üretilmez |
+| **K9 tablo varyantı** ([tables.py](../Pilot/pilot/tables.py)): değer tablodaki bir varyanta özgü mü, soru ya da cevap hangisi olduğunu söylüyor mu | ⚠ Kısmen + varyant düğmeleri, ses üretilmez |
 
 **K9 ayrıntısı (2026-10-16).** Seçenekler tablonun kendisinden gelir; doküman kaydı ya da elle kural gerekmez.
 - **Sütun varyantı:** Matris tablo satırında (`Overedge width | MO-6804: 1.5, 4.0 mm | MO-6814S: 3.0, 4.0 mm | ...`) değerler başlığa göre farklıysa ve cevaptaki sayı bu satırdan geliyorsa, soru ya da cevap sütun adını söylemeli.
@@ -338,7 +338,7 @@ Bunlar B bölümünde öneri olarak duruyor.
 
 ### A4.11 Sesli metin ve seslendirme
 
-- [speech.py](pilot/pilot/speech.py) kural tablosu:
+- [speech.py](../Pilot/pilot/speech.py) kural tablosu:
   - atıflar okunmaz;
   - `11 (± 1)` → "on bir, artı eksi bir";
   - `10-14` → "on ile on dört arası";
@@ -348,9 +348,9 @@ Bunlar B bölümünde öneri olarak duruyor.
   - İngilizce cevapta tolerans "plus or minus" olarak okunur.
 - Model sesli metni farklı dilde yazar ya da toleransı düşürürse ses, doğrulanmış cevaptan üretilir.
 - Doğrulanamayan cevap ve K9'a takılan cevap seslendirilmez (yanlış varyantın değeri yanlış değerdir).
-- Seslendirme ([tools/tts_say.py](pilot/tools/tts_say.py)): Chatterbox Multilingual. Ayrı Python ortamında (`.venv-tts`) çalışır, çünkü kendi torch sürümünü sabitliyor. Çıktı `pilot/data/audio/` altına kaydedilir.
+- Seslendirme ([tools/tts_say.py](../Pilot/tools/tts_say.py)): Chatterbox Multilingual. Ayrı Python ortamında (`.venv-tts`) çalışır, çünkü kendi torch sürümünü sabitliyor. Çıktı `pilot/data/audio/` altına kaydedilir.
 
-### A4.12 Sesli soru ([stt.py](pilot/pilot/stt.py))
+### A4.12 Sesli soru ([stt.py](../Pilot/pilot/stt.py))
 
 STT hattın **önüne** eklenir; hattın kendisini değiştirmez.
 
@@ -378,7 +378,7 @@ flowchart LR
 
 ## A5. Arayüz
 
-[app.py](pilot/app.py), Streamlit.
+[app.py](../Pilot/app.py), Streamlit.
 
 | Bölüm | Ne yapıyor |
 |-------|-----------|
@@ -390,7 +390,7 @@ flowchart LR
 | **Sonuç ekranı** | Rozet, "sorudan okunan", sözlük ve bağlam notları, cevap, alıntılar (doküman, bölüm, sayfa), sorunlar, sesli metin ve "🔊 Sesli oku" |
 | **Kaynak sayfa** | Sağda **yalnız cevabın dayandığı** kaynak, vurgulu sayfa görseliyle. Cevap doğrulanamadıysa başlık "Modelin gösterdiği kaynak (cevap doğrulanamadı)" |
 | **"Bulunamadı" sonrası** | [Doğru kaynakta ara] · [Ürün adı olmadan ara] · [Diğer modelin kılavuzunda ara] (cevabın o model için olduğu uyarısıyla) · [Kodun geçtiği kaynakta ara] (KK) |
-| **Başlatma** | [pilot/baslat.bat](pilot/baslat.bat): çift tıkla (Windows) |
+| **Başlatma** | [pilot/baslat.bat](../Pilot/baslat.bat): çift tıkla (Windows) |
 | **Sesli soru** | 🎤 bileşeni, onay kutusu |
 | **Kenar çubuğu** | Üretilen sesler |
 
@@ -444,42 +444,42 @@ Küçük model belirsizlikte "sor" demek yerine uydurmaya kayıyor. Kuralların 
 
 | Dosya | Görevi | Model kullanır mı? |
 |-------|--------|--------------------|
-| [config.py](pilot/pilot/config.py) | Yollar ve sabitler, çevrimdışı ayarı | – |
-| [registry.py](pilot/pilot/registry.py) | Doküman kaydı, makine aileleri, müşteri markaları | – |
-| [parse.py](pilot/pilot/parse.py) | Ayrıştırma + yedekler + temizlik + basılı sayfa | Docling yerleşim modeli |
-| [figures.py](pilot/pilot/figures.py) | Şekil seçimi, kırpma, VLM açıklaması, aynı görselin tekrar kullanımı | qwen2.5vl:3b |
-| [chunk.py](pilot/pilot/chunk.py) | Parçalama (metin, tablo satırı, şekil) | – |
-| [embed.py](pilot/pilot/embed.py) | bge-m3 ve reranker | ✔ |
-| [index.py](pilot/pilot/index.py) | Qdrant'a yazma, kısmi yeniden indeksleme | ✔ |
-| [retrieve.py](pilot/pilot/retrieve.py) | Hibrit arama, içindekiler filtresi, reranker | ✔ |
-| [query.py](pilot/pilot/query.py) | Varlıklar, kaynak uyumu, "soru neyi soruyor", konu seçenekleri, söylenmiş kodlar, dil | – (kural) |
-| [terms.py](pilot/pilot/terms.py) | Terim sözlüğü | – |
-| [pipeline.py](pilot/pilot/pipeline.py) | `soru_cevapla()`: karar noktaları sırayla, KK kod tam eşleşmesi | LLM'i çağırır |
-| [prompts.py](pilot/pilot/prompts.py), [llm.py](pilot/pilot/llm.py) | Talimat, şema, Ollama çağrısı | ✔ |
-| [verify.py](pilot/pilot/verify.py) | Doğrulama, netleştirme seçeneklerinin kaynakta olup olmadığı | – |
-| [tables.py](pilot/pilot/tables.py) | Tablo satırı biçimi, K9 tablo varyant kontrolü | – |
-| [speech.py](pilot/pilot/speech.py) | Sesli metin kuralları | – |
-| [stt.py](pilot/pilot/stt.py) | Sesli soru | ✔ |
-| [render.py](pilot/pilot/render.py) | Sayfa görseli ve vurgu | – |
-| [app.py](pilot/app.py) | Arayüz | – |
-| [run_parse.py](pilot/run_parse.py), [run_index.py](pilot/run_index.py), [run_reindex_docs.py](pilot/run_reindex_docs.py) | İndeksleme | ✔ |
-| [run_figures.py](pilot/run_figures.py) | Şekil açıklaması (kaldığı yerden sürer) | ✔ VLM |
-| [run_eval.py](pilot/run_eval.py), [tools/measure_stt.py](pilot/tools/measure_stt.py), [tools/measure_rerank.py](pilot/tools/measure_rerank.py) | Ölçümler | ✔ |
+| [config.py](../Pilot/pilot/config.py) | Yollar ve sabitler, çevrimdışı ayarı | – |
+| [registry.py](../Pilot/pilot/registry.py) | Doküman kaydı, makine aileleri, müşteri markaları | – |
+| [parse.py](../Pilot/pilot/parse.py) | Ayrıştırma + yedekler + temizlik + basılı sayfa | Docling yerleşim modeli |
+| [figures.py](../Pilot/pilot/figures.py) | Şekil seçimi, kırpma, VLM açıklaması, aynı görselin tekrar kullanımı | qwen2.5vl:3b |
+| [chunk.py](../Pilot/pilot/chunk.py) | Parçalama (metin, tablo satırı, şekil) | – |
+| [embed.py](../Pilot/pilot/embed.py) | bge-m3 ve reranker | ✔ |
+| [index.py](../Pilot/pilot/index.py) | Qdrant'a yazma, kısmi yeniden indeksleme | ✔ |
+| [retrieve.py](../Pilot/pilot/retrieve.py) | Hibrit arama, içindekiler filtresi, reranker | ✔ |
+| [query.py](../Pilot/pilot/query.py) | Varlıklar, kaynak uyumu, "soru neyi soruyor", konu seçenekleri, söylenmiş kodlar, dil | – (kural) |
+| [terms.py](../Pilot/pilot/terms.py) | Terim sözlüğü | – |
+| [pipeline.py](../Pilot/pilot/pipeline.py) | `soru_cevapla()`: karar noktaları sırayla, KK kod tam eşleşmesi | LLM'i çağırır |
+| [prompts.py](../Pilot/pilot/prompts.py), [llm.py](../Pilot/pilot/llm.py) | Talimat, şema, Ollama çağrısı | ✔ |
+| [verify.py](../Pilot/pilot/verify.py) | Doğrulama, netleştirme seçeneklerinin kaynakta olup olmadığı | – |
+| [tables.py](../Pilot/pilot/tables.py) | Tablo satırı biçimi, K9 tablo varyant kontrolü | – |
+| [speech.py](../Pilot/pilot/speech.py) | Sesli metin kuralları | – |
+| [stt.py](../Pilot/pilot/stt.py) | Sesli soru | ✔ |
+| [render.py](../Pilot/pilot/render.py) | Sayfa görseli ve vurgu | – |
+| [app.py](../Pilot/app.py) | Arayüz | – |
+| [run_parse.py](../Pilot/run_parse.py), [run_index.py](../Pilot/run_index.py), [run_reindex_docs.py](../Pilot/run_reindex_docs.py) | İndeksleme | ✔ |
+| [run_figures.py](../Pilot/run_figures.py) | Şekil açıklaması (kaldığı yerden sürer) | ✔ VLM |
+| [run_eval.py](../Pilot/run_eval.py), [tools/measure_stt.py](../Pilot/tools/measure_stt.py), [tools/measure_rerank.py](../Pilot/tools/measure_rerank.py) | Ölçümler | ✔ |
 
 | Test dosyası | Kapsadığı |
 |--------------|-----------|
-| [test_query.py](pilot/tests/test_query.py) | Varlıklar, belirsizlik, dokümansız marka, varlık rolleri, "soru neyi soruyor", söylenmiş kodlar, dil |
-| [test_pipeline.py](pilot/tests/test_pipeline.py) | Karar noktalarının sırası, modelin çağrılıp çağrılmadığı, dil, ses |
-| [test_verify.py](pilot/tests/test_verify.py) | Yanlış değer, tolerans, uydurma alıntı, atıf, döngü, alfabe, adım numaraları |
-| [test_speech.py](pilot/tests/test_speech.py) | Sayı, tolerans, kesir, birim okunuşu |
-| [test_terms.py](pilot/tests/test_terms.py) | Terim sözlüğü |
-| [test_retrieve.py](pilot/tests/test_retrieve.py) | İçindekiler filtresi |
-| [test_stt.py](pilot/tests/test_stt.py) | Ses çözme, terim ipucu, güven, kod dönüşümü |
-| [test_parse_chunk.py](pilot/tests/test_parse_chunk.py) | Tablo satırı, tablo kayması, üst/alt bilgi, sayfa geçişi, harf aralıklı OCR, parçalama |
-| [test_figures.py](pilot/tests/test_figures.py) | Şekil seçimi, başlık bulma, açıklama temizliği, şekil parçası |
-| [test_tables.py](pilot/tests/test_tables.py) | Birleşik hücre, sütun ve satır varyantı, yanlış alarm durumları |
+| [test_query.py](../Pilot/tests/test_query.py) | Varlıklar, belirsizlik, dokümansız marka, varlık rolleri, "soru neyi soruyor", söylenmiş kodlar, dil |
+| [test_pipeline.py](../Pilot/tests/test_pipeline.py) | Karar noktalarının sırası, modelin çağrılıp çağrılmadığı, dil, ses |
+| [test_verify.py](../Pilot/tests/test_verify.py) | Yanlış değer, tolerans, uydurma alıntı, atıf, döngü, alfabe, adım numaraları |
+| [test_speech.py](../Pilot/tests/test_speech.py) | Sayı, tolerans, kesir, birim okunuşu |
+| [test_terms.py](../Pilot/tests/test_terms.py) | Terim sözlüğü |
+| [test_retrieve.py](../Pilot/tests/test_retrieve.py) | İçindekiler filtresi |
+| [test_stt.py](../Pilot/tests/test_stt.py) | Ses çözme, terim ipucu, güven, kod dönüşümü |
+| [test_parse_chunk.py](../Pilot/tests/test_parse_chunk.py) | Tablo satırı, tablo kayması, üst/alt bilgi, sayfa geçişi, harf aralıklı OCR, parçalama |
+| [test_figures.py](../Pilot/tests/test_figures.py) | Şekil seçimi, başlık bulma, açıklama temizliği, şekil parçası |
+| [test_tables.py](../Pilot/tests/test_tables.py) | Birleşik hücre, sütun ve satır varyantı, yanlış alarm durumları |
 
-Toplam **271 test**; arama, LLM, VLM ve STT taklit edildiği için model ve PDF gerektirmez. Çalıştırma: [pilot/README.md](pilot/README.md).
+Toplam **271 test**; arama, LLM, VLM ve STT taklit edildiği için model ve PDF gerektirmez. Çalıştırma: [pilot/README.md](../Pilot/README.md).
 
 ---
 
@@ -644,7 +644,7 @@ flowchart LR
 
 Arama iki katmanda birlikte, yetki filtresiyle yapılır. Cevapta kaynağın hangi katmandan geldiği görünür.
 
-**Neden:** Kullanıcılar ana yapıya ek dosya ekleyebilecek. Pilotta doküman eklemek geliştirici işi: [registry.py](pilot/pilot/registry.py) elle düzenleniyor, eşanlamlılar elle yazılıyor, ardından ayrıştırma ve indeksleme gerekiyor.
+**Neden:** Kullanıcılar ana yapıya ek dosya ekleyebilecek. Pilotta doküman eklemek geliştirici işi: [registry.py](../Pilot/pilot/registry.py) elle düzenleniyor, eşanlamlılar elle yazılıyor, ardından ayrıştırma ve indeksleme gerekiyor.
 
 **İlke: Her modül elle hazırlık olmadan da çalışır; uzman onayı yalnız iyileştirir.**
 
@@ -678,9 +678,9 @@ Profil boşken de sistem çalışır; profil yalnız iyileştirir. İyileştirme
 
 | Pilotta kodda | Ne | Hedefte |
 |---------------|----|---------|
-| [registry.py](pilot/pilot/registry.py) | Doküman listesi, eşanlamlılar, marka grupları, müşteri markaları | Doküman kaydı (yüklemede) + profil |
-| [query.py](pilot/pilot/query.py) | `MUST_MATCH` varlık rolleri, `FOREIGN_BRANDS` (Nike ...), `ASPECTS` konu listeleri, `DETAIL_HINT`, `GENERIC_PREFIXES` (konfeksiyon kelimeleri) | Profil; boşken karar katmanı yalnız genel kurallarla çalışır |
-| [terms.py](pilot/pilot/terms.py) | 29 terimlik konfeksiyon sözlüğü | Profil; yerine ya da yanında genel yol: sorgunun kaynak diline çevrilip birlikte aranması (ölçülerek) |
+| [registry.py](../Pilot/pilot/registry.py) | Doküman listesi, eşanlamlılar, marka grupları, müşteri markaları | Doküman kaydı (yüklemede) + profil |
+| [query.py](../Pilot/pilot/query.py) | `MUST_MATCH` varlık rolleri, `FOREIGN_BRANDS` (Nike ...), `ASPECTS` konu listeleri, `DETAIL_HINT`, `GENERIC_PREFIXES` (konfeksiyon kelimeleri) | Profil; boşken karar katmanı yalnız genel kurallarla çalışır |
+| [terms.py](../Pilot/pilot/terms.py) | 29 terimlik konfeksiyon sözlüğü | Profil; yerine ya da yanında genel yol: sorgunun kaynak diline çevrilip birlikte aranması (ölçülerek) |
 
 **Nasıl doğrulanır: görülmemiş doküman testi.** Geliştirmede kullanılmamış dokümanlar eklenir, profile hiçbir şey eklenmeden ayrı bir soru setiyle ölçülür. Pilotta ilk kez 2026-10-16'da yapıldı (JUKI MO-6800S overlok kılavuzu): birleşik hücre, modele özgü değer, benzer kod, binlik ayırıcı ve terim çevirisi olmak üzere 5 genel zayıflık çıktı, ilk dördünün motor çözümü eklendi ([PILOT-RAPORU.md §5.6](PILOT-RAPORU.md)). Test seti de ikiye ayrılır: geliştirme soruları ve görülmemiş doküman soruları.
 
@@ -807,7 +807,7 @@ flowchart TD
 
 ## B7. Açık kararlar
 
-Hedef mimariyi kesinleştirecek kararlar ve hangi aşamayı engelledikleri: [UYGULAMA-PLANI.md §9](UYGULAMA-PLANI.md). En önemlileri:
+Hedef mimariyi kesinleştirecek kararlar ve hangi aşamayı engelledikleri: [UYGULAMA-PLANI.md §9](arsiv/UYGULAMA-PLANI.md). En önemlileri:
 - müşteri sözleşmelerinin bulutta işlemeye izin verip vermediği (Q1);
 - GPU ve bütçe (Q5);
 - kabul edilebilir yanlış değer oranı;

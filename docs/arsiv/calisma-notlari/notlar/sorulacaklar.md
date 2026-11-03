@@ -118,11 +118,11 @@
 
 ## B. Bizim tarafımızda açık kalanlar (soru değil, yapılacak iş)
 
-Kimseye sorulmayacak. Pilot sonucu ve kalan işler: [../../PILOT-RAPORU.md](../../PILOT-RAPORU.md).
+Kimseye sorulmayacak. Pilot sonucu ve kalan işler: [../../PILOT-RAPORU.md](../../../PILOT-RAPORU.md).
 
 | Konu | Durum | Nerede takip ediliyor |
 |------|-------|-----------------------|
-| Retrieval doğrulamaları (hybrid vs dense, BM25 vs sparse, TR→EN sorgu çevirisi, reranker gecikmesi) | **Kısmen:** 5 soruda hibrit ve dense sıralaması aynı çıktı (TR sorgu ile sparse kol işe yaramıyor). Çeviri, A/B ve gecikme optimizasyonu yapılmadı | [PILOT-RAPORU.md](../../PILOT-RAPORU.md) §8 |
+| Retrieval doğrulamaları (hybrid vs dense, BM25 vs sparse, TR→EN sorgu çevirisi, reranker gecikmesi) | **Kısmen:** 5 soruda hibrit ve dense sıralaması aynı çıktı (TR sorgu ile sparse kol işe yaramıyor). Çeviri, A/B ve gecikme optimizasyonu yapılmadı | [PILOT-RAPORU.md](../../../PILOT-RAPORU.md) §8 |
 | Parser karşılaştırması (Marker, PyMuPDF4LLM) | Yapılmadı. Docling + PyMuPDF yedeği kullanıldı | pdf-isleme.md 2.3 |
 | Faz 1'den devredilenler | **Çözüldü:** basılı↔PDF sayfa eşleme (kısmen), OCR satır kaybına karşı PDF metin katmanı yedeği. **Açık:** tablo satırı başlık tekrarı, gerçek iki-OCR birleştirme | PILOT-RAPORU.md §6.2 |
 | Görsel anlama (VLM vs ColPali) | Yapılmadı (şekiller atlanıyor) | kaynak-gosterme.md 5. bölüm |

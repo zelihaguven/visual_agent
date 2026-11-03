@@ -1,22 +1,22 @@
 # Araştırma notları (Adım 1–7): dizin
 
 > Manuel tabanlı, kaynak gösteren ve sesli cevap veren soru-cevap sistemi için araştırma notlarının temizlenmiş, numaralı hali (2026-10-08 / 09).
-> Kontrol soruları ve cevap/değerlendirme alışverişi çıkarıldı; içlerindeki teknik bilgiler ilgili bölümlere işlendi. Kontrol sorularını da içeren ayrıntılı sürümler: [../calisma-notlari/notlar/](../calisma-notlari/notlar/).
+> Kontrol soruları ve cevap/değerlendirme alışverişi çıkarıldı; içlerindeki teknik bilgiler ilgili bölümlere işlendi. Kontrol sorularını da içeren ayrıntılı sürümler: [../calisma-notlari/notlar/](../arsiv/calisma-notlari/notlar/).
 > Bu notların özeti ve pilotla güncellenmiş hali: [../ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md).
 
 ## Adım raporları (1–7)
 
 | Adım | Konu | Rapor (bu set) | Ayrıntılı sürüm (kontrol soruları dahil) |
 |------|------|----------------|-------------------------------------------|
-| 1 | RAG temelleri | [07-rag-temelleri.md](07-rag-temelleri.md) | [../calisma-notlari/notlar/rag-temelleri.md](../calisma-notlari/notlar/rag-temelleri.md) |
-| 2 | Manual / PDF işleme | [02-pdf-isleme.md](02-pdf-isleme.md), [01-manual-envanteri.md](01-manual-envanteri.md) | [pdf-isleme.md](../calisma-notlari/notlar/pdf-isleme.md), [manual-envanteri.md](../calisma-notlari/notlar/manual-envanteri.md) |
-| 3 | Kaynak gösterme ve sayfa görüntüleme | [03-kaynak-gosterme.md](03-kaynak-gosterme.md) | [kaynak-gosterme.md](../calisma-notlari/notlar/kaynak-gosterme.md) |
-| 4 | LLM seçimi ve yanıt kalitesi | [04-llm-secimi-ve-degerlendirme.md](04-llm-secimi-ve-degerlendirme.md), [09-prompt-taslagi.md](09-prompt-taslagi.md) | [llm-degerlendirme.md](../calisma-notlari/notlar/llm-degerlendirme.md), [prompt-taslak.md](../calisma-notlari/notlar/prompt-taslak.md) |
-| 5 | TTS | [08-tts.md](08-tts.md) | [tts.md](../calisma-notlari/notlar/tts.md) |
-| 6 | Arayüz ve orkestrasyon | [05-arayuz-ve-orkestrasyon.md](05-arayuz-ve-orkestrasyon.md) | [arayuz-orkestrasyon.md](../calisma-notlari/notlar/arayuz-orkestrasyon.md) |
-| 7 | Veri güvenliği ve erişim | [06-veri-guvenligi-ve-erisim.md](06-veri-guvenligi-ve-erisim.md) | [guvenlik.md](../calisma-notlari/notlar/guvenlik.md) |
+| 1 | RAG temelleri | [07-rag-temelleri.md](07-rag-temelleri.md) | [../calisma-notlari/notlar/rag-temelleri.md](../arsiv/calisma-notlari/notlar/rag-temelleri.md) |
+| 2 | Manual / PDF işleme | [02-pdf-isleme.md](02-pdf-isleme.md), [01-manual-envanteri.md](01-manual-envanteri.md) | [pdf-isleme.md](../arsiv/calisma-notlari/notlar/pdf-isleme.md), [manual-envanteri.md](../arsiv/calisma-notlari/notlar/manual-envanteri.md) |
+| 3 | Kaynak gösterme ve sayfa görüntüleme | [03-kaynak-gosterme.md](03-kaynak-gosterme.md) | [kaynak-gosterme.md](../arsiv/calisma-notlari/notlar/kaynak-gosterme.md) |
+| 4 | LLM seçimi ve yanıt kalitesi | [04-llm-secimi-ve-degerlendirme.md](04-llm-secimi-ve-degerlendirme.md), [09-prompt-taslagi.md](09-prompt-taslagi.md) | [llm-degerlendirme.md](../arsiv/calisma-notlari/notlar/llm-degerlendirme.md), [prompt-taslak.md](../arsiv/calisma-notlari/notlar/prompt-taslak.md) |
+| 5 | TTS | [08-tts.md](08-tts.md) | [tts.md](../arsiv/calisma-notlari/notlar/tts.md) |
+| 6 | Arayüz ve orkestrasyon | [05-arayuz-ve-orkestrasyon.md](05-arayuz-ve-orkestrasyon.md) | [arayuz-orkestrasyon.md](../arsiv/calisma-notlari/notlar/arayuz-orkestrasyon.md) |
+| 7 | Veri güvenliği ve erişim | [06-veri-guvenligi-ve-erisim.md](06-veri-guvenligi-ve-erisim.md) | [guvenlik.md](../arsiv/calisma-notlari/notlar/guvenlik.md) |
 
-**Diğer teslimatlar:** Sentez → [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md) · Açık sorular ve riskler → [13-acik-sorular-ve-riskler.md](13-acik-sorular-ve-riskler.md) · **Uygulama aşaması planı → [UYGULAMA-PLANI.md](../UYGULAMA-PLANI.md)** (2026-10-13, akış şemalı) · Pilot raporu → [../PILOT-RAPORU.md](../PILOT-RAPORU.md)
+**Diğer teslimatlar:** Sentez → [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md) · Açık sorular ve riskler → [13-acik-sorular-ve-riskler.md](13-acik-sorular-ve-riskler.md) · **Uygulama aşaması planı → [UYGULAMA-PLANI.md](../arsiv/UYGULAMA-PLANI.md)** (2026-10-13, akış şemalı) · Pilot raporu → [../PILOT-RAPORU.md](../PILOT-RAPORU.md)
 
 ## Notlar
 
@@ -38,7 +38,7 @@
 | Araç/model seçim önerileri | Embedding → 06 §5.1 (yalnızca ad: `bge-m3`) · Vektör DB → 06 §5.1, §6 (Qdrant) · LLM → 04 · TTS → 06 §5.1 (yalnızca ad) · UI → 05, 03 · Parser/OCR → 02 · STT → 05 |
 | Kullanılacak manuellerin envanteri ve format değerlendirmesi | 01 (+ 02 §2.2–3) |
 | Açık sorular ve riskler listesi | Her notun son bölümü; en kapsamlı: 06 §9, 04 §8 |
-| Uygulama için görev/faz planı | **[UYGULAMA-PLANI.md](../UYGULAMA-PLANI.md)** (birleşik plan: 8 aşama, karar kapıları, zaman çizelgesi, öneriler, geçiş kontrol listesi) |
+| Uygulama için görev/faz planı | **[UYGULAMA-PLANI.md](../arsiv/UYGULAMA-PLANI.md)** (birleşik plan: 8 aşama, karar kapıları, zaman çizelgesi, öneriler, geçiş kontrol listesi) |
 
 ## Araç/model önerileri — notlardan derlenmiş özet
 

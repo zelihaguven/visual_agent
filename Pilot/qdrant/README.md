@@ -1,6 +1,6 @@
 # Qdrant sunucu modu
 
-Pilot varsayılan olarak Qdrant'ı **gömülü** modda kullanır (`data/qdrant/`, tek süreç, kaba kuvvetle arama). Gömülü mod 1M parçayı taşımaz: HNSW, quantization ve payload indeksi yok, koleksiyonun tamamı RAM'de. Hedef ortamda (tablet + arka uç sunucu, çok kullanıcı) Qdrant ayrı bir **sunucu** olarak çalışır. Ölçümler: [../../BENCHMARK-RAPORU.md](../../BENCHMARK-RAPORU.md).
+Pilot varsayılan olarak Qdrant'ı **gömülü** modda kullanır (`data/qdrant/`, tek süreç, kaba kuvvetle arama). Gömülü mod 1M parçayı taşımaz: HNSW, quantization ve payload indeksi yok, koleksiyonun tamamı RAM'de. Hedef ortamda (tablet + arka uç sunucu, çok kullanıcı) Qdrant ayrı bir **sunucu** olarak çalışır. Ölçümler: [../eval/bench/README.md](../eval/bench/README.md).
 
 ## Windows (geliştirme makinesi, Docker'sız)
 

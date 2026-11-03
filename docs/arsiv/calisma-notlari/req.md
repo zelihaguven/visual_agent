@@ -178,7 +178,7 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
 
 ## Faz 5: Sentez (Beklenen Çıktılar)
 
-**Çıktı:** [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md) (sunulabilir özet doküman) + şekiller: [sentez-sekiller/](../sekiller) (SVG + PNG)
+**Çıktı:** [ARASTIRMA-SENTEZI.md](../../ARASTIRMA-SENTEZI.md) (sunulabilir özet doküman) + şekiller: [sentez-sekiller/](../../sekiller) (SVG + PNG)
 
 - [x] **5.1** Her konu için araştırma notu (özet, seçenekler, artı/eksi). Faz 1–4 notlarının tamamlanmış hali. → sentez.md Ek A
 - [x] **5.2** Önerilen mimari taslağı (akış diyagramı). → sentez.md Bölüm 3, Şekil 1
@@ -192,11 +192,11 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
 ## Faz 6: Uygulama Planı ve Pilot
 
 - [x] **6.1** Pilot tanımı: **tek marka, 3–5 manual**, uçtan uca prototip (soru → retrieval → yanıt + kaynak → sayfa highlight → TTS).
-  - **Durum (2026-10-10):** ✅ Pilot yapıldı ([PILOT-RAPORU.md](../PILOT-RAPORU.md)). Kapsam: 7 doküman, tamamen lokal, yalnızca yazılı soru
+  - **Durum (2026-10-10):** ✅ Pilot yapıldı ([PILOT-RAPORU.md](../../PILOT-RAPORU.md)). Kapsam: 7 doküman, tamamen lokal, yalnızca yazılı soru
   - Pilotta yapılacak doğrulamalar (Adım 1'den ertelendi, bkz. [rag-temelleri.md → Doğrulanacaklar](notlar/rag-temelleri.md)): `bge-m3` TR↔EN eşleşmesi, hybrid vs. sadece dense (A–D deneyi), BM25 vs. BGE-M3 sparse, Türkçe kök bulucu seçimi, reranker gecikmesi, query translation gerekliliği (Q6).
   - Adım 5'ten ertelenen: TTS adaylarının 4 test cümlesiyle karşılaştırılması (ham + normalize, kritik değer doğruluğu, round-trip STT, atölye gürültüsünde dinleme), Chatterbox Multilingual Türkçe kalitesi (R6), ilk ses gecikmesi ölçümü (bkz. [tts.md 2.2](notlar/tts.md)).
 - [x] **6.2** Uygulama aşaması task listesi. İlk öneri:
-  - **Durum (2026-10-10):** ✅ Güncel plan: [gorev-ozetleri.md §9](notlar/gorev-ozetleri.md), [ARASTIRMA-SENTEZI.md §10](../ARASTIRMA-SENTEZI.md)
+  - **Durum (2026-10-10):** ✅ Güncel plan: [gorev-ozetleri.md §9](notlar/gorev-ozetleri.md), [ARASTIRMA-SENTEZI.md §10](../../ARASTIRMA-SENTEZI.md)
   1. Ingestion pipeline (parse + chunk + metadata + indeksleme)
   2. Retrieval (hybrid + filtre + rerank) ve test seti ile ölçüm
   3. Yanıt üretimi + citation
@@ -215,7 +215,7 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
   | Tarayıcıda vurgunun (streamlit-pdf-viewer) gözle doğrulanması | 4. Sayfa görüntüleyici | Otomatik testte görüntüleyici hatasız açılıyor, vurgu henüz gözle kontrol edilmedi |
   | Docling dışındaki parser'larla karşılaştırma (Adım 2.3) | 1. Ingestion | Marker, PyMuPDF4LLM vb. aynı sayfalarda |
 - [x] **6.3** Pilot başarı kriterleri (örn. test setinde doğru sayfa ilk 3'te %80+, yanıt gecikmesi < X sn).
-  - **Durum (2026-10-10):** ✅ Taslak kriterler ve pilot sonuçları: [ARASTIRMA-SENTEZI.md §10.1](../ARASTIRMA-SENTEZI.md). Hedefler paydaşlarla kesinleşecek
+  - **Durum (2026-10-10):** ✅ Taslak kriterler ve pilot sonuçları: [ARASTIRMA-SENTEZI.md §10.1](../../ARASTIRMA-SENTEZI.md). Hedefler paydaşlarla kesinleşecek
 
 ---
 
@@ -271,5 +271,5 @@ Kullanıcı bir **visual board** üzerinden soru sorar (örn. *"Nike için diki�
 | 2026-10-09 | Adım 4 kapandı | Araştırma seviyesinde tamam. Model ölçümü pilotta. | [llm-degerlendirme.md](notlar/llm-degerlendirme.md) |
 | 2026-10-09 | Adım 7: Güvenlik | İlk tur. Ana bulgu: Ingestion'da bulut = dokümanın tamamı dışarı, sorguda bulut LLM = 3–5 parça → **hibrit senaryo** (ingestion/embedding/vektör DB lokal, LLM+TTS kurumsal bulut + ZDR). Yetki kararı LLM'de değil kodda, retrieval öncesi. Kararlar Q1/NDA/7.3 cevaplarına bağlı. Yeni sorular sorulacaklar.md A1'e eklendi. | [guvenlik.md](notlar/guvenlik.md) |
 | 2026-10-09 | Adım 7: kontrol soruları | K1–K5 değerlendirildi (4 🟡, 1 boş → K4 yan kapılar tablosu yazıldı). | [guvenlik.md](notlar/guvenlik.md) |
-| 2026-10-09 | Faz 5: Sentez | Sunulabilir sentez dokümanı: özet, mimari (Şekil 1), araç seçimleri, doğruluk güvencesi (Şekil 2), dağıtım senaryoları (Şekil 3), riskler (R1–R10), bekleyen kararlar, pilot önerisi. Yeni riskler sentezde: R7 OCR satır kaybı, R8 yetki filtresi sızıntısı, R9 STT kod tanıma, R10 test setinin temsiliyeti. | [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md) |
-| 2026-10-10 | Cevaplar + Pilot | Paydaş cevapları işlendi (sorulacaklar.md). Lokal pilot kuruldu ve ölçüldü: 7 doküman, 10 soruda 5 doğru, ortalama 14,5 sn. 30B model 24 GB makineye sığmadı, 7B yetersiz. 83 birim test. Sentez ve riskler güncellendi (R11–R14). | [PILOT-RAPORU.md](../PILOT-RAPORU.md) · [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md) |
+| 2026-10-09 | Faz 5: Sentez | Sunulabilir sentez dokümanı: özet, mimari (Şekil 1), araç seçimleri, doğruluk güvencesi (Şekil 2), dağıtım senaryoları (Şekil 3), riskler (R1–R10), bekleyen kararlar, pilot önerisi. Yeni riskler sentezde: R7 OCR satır kaybı, R8 yetki filtresi sızıntısı, R9 STT kod tanıma, R10 test setinin temsiliyeti. | [ARASTIRMA-SENTEZI.md](../../ARASTIRMA-SENTEZI.md) |
+| 2026-10-10 | Cevaplar + Pilot | Paydaş cevapları işlendi (sorulacaklar.md). Lokal pilot kuruldu ve ölçüldü: 7 doküman, 10 soruda 5 doğru, ortalama 14,5 sn. 30B model 24 GB makineye sığmadı, 7B yetersiz. 83 birim test. Sentez ve riskler güncellendi (R11–R14). | [PILOT-RAPORU.md](../../PILOT-RAPORU.md) · [ARASTIRMA-SENTEZI.md](../../ARASTIRMA-SENTEZI.md) |

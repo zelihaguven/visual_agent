@@ -1,7 +1,7 @@
 # Araştırma Görevi Tanımı: Manual Tabanlı RAG + Sesli Yanıt Visual Board — Temel Konu Araştırması
 
 > **Kaynak not:** Danışmanın görev tanımı (diğer notlarda `tasks.md` olarak anılıyor; araştırma planı ayrı bir dosya: [15-plan.md](15-plan.md), eski adıyla req.md). Kaynak zaten düz bir görev metni; burada yapılandırıldı, içerik değiştirilmedi.
-> **Bağlantılı:** tüm notlar ([README.md](README.md)) · [12-uctan-uca-mimari.md](12-uctan-uca-mimari.md) · [UYGULAMA-PLANI.md](../UYGULAMA-PLANI.md)
+> **Bağlantılı:** tüm notlar ([README.md](README.md)) · [12-uctan-uca-mimari.md](12-uctan-uca-mimari.md) · [UYGULAMA-PLANI.md](../arsiv/UYGULAMA-PLANI.md)
 > **Beslediği çıktılar:** Tüm çıktıların tanımı (kapsam ve beklenen çıktılar listesi)
 
 ## 1. Amaç
@@ -42,7 +42,7 @@ flowchart TD
 | Araç/model seçim önerileri (embedding, vector DB, LLM, TTS, arayüz) | [README.md](README.md) özet tablosu; [12](12-uctan-uca-mimari.md) §3 |
 | Kullanılacak manuellerin envanteri ve format değerlendirmesi | [01](01-manual-envanteri.md), [02](02-pdf-isleme.md) |
 | Açık sorular ve riskler listesi | [13](13-acik-sorular-ve-riskler.md), [10](10-sorulacaklar.md) |
-| Uygulama aşaması için önerilen task/aşama planı | [14](../UYGULAMA-PLANI.md), [15-plan.md](15-plan.md) Faz 6 |
+| Uygulama aşaması için önerilen task/aşama planı | [14](../arsiv/UYGULAMA-PLANI.md), [15-plan.md](15-plan.md) Faz 6 |
 
 ## 5. Notlar (görev tanımından)
 

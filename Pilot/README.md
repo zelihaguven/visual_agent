@@ -6,8 +6,10 @@ Araştırma aşamasının **tamamen lokal** pilotu:
 yazılı / sesli soru → netleştirme → hibrit arama + reranker → kaynaklı cevap → otomatik doğrulama → vurgulu kaynak sayfa → sesli okuma
 ```
 
-- **Ne yapıldı, ne ölçüldü:** [../PILOT-RAPORU.md](../PILOT-RAPORU.md)
-- **Kod nasıl çalışıyor, her aşamada ne kullanılıyor, neden:** [../MIMARI.md](../MIMARI.md)
+- **Ürün tanımı (hedefler, Adım 1–6):** [../docs/PRD.md](../docs/PRD.md)
+- **Ne yapıldı, ne ölçüldü:** [../docs/PILOT-RAPORU.md](../docs/PILOT-RAPORU.md)
+- **Kod nasıl çalışıyor, her parçada ne kullanılıyor, neden:** [../docs/MIMARI.md](../docs/MIMARI.md)
+- **Arama benchmark'ı (B0–B5):** [eval/bench/README.md](eval/bench/README.md)
 
 ## Gereksinimler
 
@@ -69,12 +71,12 @@ Kullanım:
 - `PILOT_LLM_MODEL`: başka LLM. 24 GB RAM'de 14B'den büyüğü önerilmez, bkz. [KURULUM-LOGU.md](KURULUM-LOGU.md).
 - `PILOT_STT_MODEL`: başka STT modeli.
 
-Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), ölçüm kodu `bench/`). Hepsi isteğe bağlı; varsayılan pilotun ölçülen yapısıdır:
+Arama katmanı (benchmark: [eval/bench/README.md](eval/bench/README.md), ölçüm kodu `bench/`). Hepsi isteğe bağlı; varsayılan pilotun ölçülen yapısıdır:
 
 | Değişken | Varsayılan | Seçenekler |
 |----------|------------|------------|
-| `PILOT_RERANK_PROVIDER` | `none` | Aşama 4 kararı: rerank kapalı, hibrit arama sonucu doğrudan. `local` (aşağıdaki model/backend), `openrouter` (`qwen/qwen3-reranker-8b`, ZDR; anahtar yalnız `OPENROUTER_API_KEY`'den) |
-| `PILOT_RERANK_PASSAGE`, `PILOT_RERANK_FUSION`, `PILOT_RERANK_FUSION_K` | `embed_text`, `rrf`, `60` | Rerank açıkken: reranker'a başlıklı metin, reranker sırası hibrit sırayla RRF birleşimi (Aşama 4 teşhisi; filtresiz hit@1 +0,06…+0,25). Eski davranış: `text`, `none` |
+| `PILOT_RERANK_PROVIDER` | `none` | B4 kararı: rerank kapalı, hibrit arama sonucu doğrudan. `local` (aşağıdaki model/backend), `openrouter` (`qwen/qwen3-reranker-8b`, ZDR; anahtar yalnız `OPENROUTER_API_KEY`'den) |
+| `PILOT_RERANK_PASSAGE`, `PILOT_RERANK_FUSION`, `PILOT_RERANK_FUSION_K` | `embed_text`, `rrf`, `60` | Rerank açıkken: reranker'a başlıklı metin, reranker sırası hibrit sırayla RRF birleşimi (B4 teşhisi; filtresiz hit@1 +0,06…+0,25). Eski davranış: `text`, `none` |
 | `PILOT_RERANK_MODEL` | `BAAI/bge-reranker-v2-m3` | ör. `jinaai/jina-reranker-v2-base-multilingual`, bulutta `cohere/rerank-v3.5` |
 | `PILOT_RERANK_BACKEND` | `torch` | `flag` (FlagEmbedding, eski varsayılan; aynı skor, ~3,6 kat yavaş), `onnx`, `onnx-int8` (önce `python -m bench.onnx_export <model>`) |
 | `PILOT_RERANK_MAX_LENGTH` | `512` | token sınırı (soru + parça) |
@@ -85,7 +87,7 @@ Arama katmanı (benchmark: [../BENCHMARK-RAPORU.md](../BENCHMARK-RAPORU.md), öl
 | `PILOT_OPENROUTER_URL` | `https://openrouter.ai/api/v1` | |
 | `PILOT_EMBED_PROVIDER` | `local` | `openrouter`: bulut dense (ZDR zorunlu) + BM25 sparse; koleksiyon o modelle kurulmuş olmalı (`bench.providers build`) |
 | `PILOT_EMBED_MODEL`, `PILOT_EMBED_QUERY_PREFIX`, `PILOT_EMBED_DOC_PREFIX` | boş | bulut model adı ve modelin sorgu/doküman biçimi (`bench/models.json`) |
-| `PILOT_SPARSE` | `bm25` | fastembed `Qdrant/bm25` + Qdrant IDF (Aşama 4: rerank'sız hit@1 0,44 → 0,72). `bge-m3`: eski yol. 2026-10-27 öncesi indekse bir kez `python run_add_bm25.py` |
+| `PILOT_SPARSE` | `bm25` | fastembed `Qdrant/bm25` + Qdrant IDF (B4: rerank'sız hit@1 0,44 → 0,72). `bge-m3`: eski yol. 2026-10-27 öncesi indekse bir kez `python run_add_bm25.py` |
 | `PILOT_DENSE_MODE`, `PILOT_DENSE_SHORT_DIM`, `PILOT_SHORT_OVERSAMPLE` | `full`, `256`, `4` | `short`: yalnız MRL kısa vektör; `short_rescore`: kısa vektörle aday, tam vektörle sıra |
 | `PILOT_CLARIFY_METHOD`, `PILOT_CLARIFY_DOC_RATIO` | `top3`, `0.6` | Arama sonrası "hangi ürün/model?" sorusu. `doc_score` (ilk 20 adayın RRF toplamı dokümana göre) denendi, olumsuz çıktı (taslakta doğru netleştirme 10 → 7); kapalı tutulur |
 | `PILOT_CLARIFY_METHOD`, `PILOT_CLARIFY_DOC_RATIO` | `top3`, `0.6` | Arama sonrası "hangi ürün/model?" sorusu. `doc_score` (ilk 20 adayın RRF toplamı dokümana göre) denendi ve olumsuz çıktı (taslakta 10 → 7 doğru netleştirme); kapalı tutulur |
@@ -109,13 +111,14 @@ Sonuç `data/figures/<doc_id>.json` (repoda gelir). Kaldığı yerden sürer; ay
 
 **Hazır veri:** Ayrıştırılmış dokümanlar (`data/parsed/`, `data/chunks.jsonl`) repoda gelir, yalnız indeks üretilir. Sıfırdan ayrıştırmak için `run_parse.py`. Bir dokümanın ayrıştırması değişirse yalnız onu yeniden indekslemek için `run_reindex_docs.py <doc_id>`.
 
-## Kalınan yer (2026-10-27, arama benchmark'ı)
+## Kalınan yer (2026-11-03, arama benchmark'ı)
 
-Benchmark aşamaları 0, 1, 2, 2.5 ve 4 bitti. Varsayılan arama: bge-m3 dense + BM25, rerank kapalı (Aşama 4 kararı). Sonuçlar `eval/bench/` altında.
+Benchmark aşamaları B0, B1, B2, B2.5, B4 ve B3b bitti. Varsayılan arama: bge-m3 dense + BM25, rerank kapalı (B4 kararı). Sonuçlar `eval/bench/` altında aşama klasörlerinde; dizin: [eval/bench/README.md](eval/bench/README.md).
 
-- **"Bulunamadı" davranışı (2026-10-27):** 21 cevapsız soruda doğru reddetme %48. Model 7 soruda alakasız kaynaktan cevap yazıyor; 3'ü "kısmen doğrulandı" rozeti alıyor. Bu iş model ve doğruluk turuna (K1) bırakıldı. Rozet kontrolü Aşama 3 sırasında yapılacak: [eval/bench/bulunamadi_analiz_2026-10-27.md](eval/bench/bulunamadi_analiz_2026-10-27.md).
-- **Aşama 3 (ölçek ve yük testi):** 3b dizüstünde koşuluyor; 3a süre ve 3c yük şirket içi sunucuda (internetsiz paket: `bench/onprem/`, tek komut `sudo bash asama3_sunucu.sh`). Betikler hazır ve kuru çalıştırıldı: `bench/scale_corpus.py`, `bench/scale_index.py`, `bench/vm/`. Plan ve maliyet: [eval/bench/asama3_hazirlik_2026-10-27.md](eval/bench/asama3_hazirlik_2026-10-27.md). Kalan: 3b koşusu (dizüstü), sunucu paketi ve şirket içi sunucuda 3a/3c koşusu.
-- **Aşama 5 (Optuna):** rerank denemeleri "bulunamadı" davranışıyla da değerlendirilecek. Bulut reranker skoruyla "cevap yok" eşiği de orada denenecek.
+- **B3b (1M kalabalıkta doğruluk, 2026-11-03):** hit@5 1M'e kadar sabit (Qwen3-8B filtreli 0,92, filtresiz 0,86); hit@1 100k'dan sonra 0,76 → 0,70 (2 soru). Rapor: [eval/bench/b3/asama3b_sonuc_2026-11-03.md](eval/bench/b3/asama3b_sonuc_2026-11-03.md).
+- **B3a ve B3c (süre ve yük):** şirket içi sunucuda (internetsiz paket: `bench/onprem/`, tek komut `sudo bash asama3_sunucu.sh`). Plan: [eval/bench/b3/asama3_hazirlik_2026-10-27.md](eval/bench/b3/asama3_hazirlik_2026-10-27.md). Hetzner betikleri kullanılmayacak, arşivde (`docs/arsiv/pilot-bench-vm/`).
+- **"Bulunamadı" davranışı (2026-10-27):** 21 cevapsız soruda doğru reddetme %48. Model 7 soruda alakasız kaynaktan cevap yazıyor; 3'ü "kısmen doğrulandı" rozeti alıyor. Adım 2'de (cevap modeli) ele alınacak (K1): [eval/bench/bulunamadi/bulunamadi_analiz_2026-10-27.md](eval/bench/bulunamadi/bulunamadi_analiz_2026-10-27.md).
+- **B5 (parametre ayarı, Optuna):** onaylı soru seti hazır olunca. Rerank ve "cevap yok" eşiği denemeleri Adım 2'ye alındı.
 - **Onay bekleyen:** aday soru taslağı (`eval/aday_sorular.json`, 155 soru; fark listesi `eval/aday_sorular_fark.md`). "Hangi ürün/model?" eşiği onaylı setle seçilecek.
 
 ## Kalınan yer (2026-10-16)
@@ -128,13 +131,13 @@ $env:PYTHONUTF8="1"; ..\..\visual_agent_repo\.venv\Scripts\python.exe run_reinde
 
 Ortam şimdilik eski kopyadan (`Desktop\visual_agent_repo\.venv`) kullanılıyor; kendi `..\.venv` kurulunca komutta `..\.venv\Scripts\python.exe` yazılır. İndeksleme bitince `chunks.jsonl` değişir, commit'lenmeli.
 
-Ayrıca bekleyenler: birleşik hücre düzeltmesi için diğer dokümanların yeniden ayrıştırılıp indekslenmesi (birkaç saat, gece), JUKI şekil soruları, yeni soru setlerinin otomatik ölçümü. Ayrıntı: [../PILOT-RAPORU.md §7](../PILOT-RAPORU.md).
+Ayrıca bekleyenler: birleşik hücre düzeltmesi için diğer dokümanların yeniden ayrıştırılıp indekslenmesi (birkaç saat, gece), JUKI şekil soruları, yeni soru setlerinin otomatik ölçümü. Ayrıntı: [../docs/PILOT-RAPORU.md §7](../docs/PILOT-RAPORU.md).
 
 ## Yapı
 
 ```
-pilot/
-├── pilot/                kütüphane (her dosyanın görevi: ../MIMARI.md §A8)
+Pilot/
+├── pilot/                kütüphane (her dosyanın görevi: ../docs/MIMARI.md §A8)
 │   ├── registry.py       doküman kaydı
 │   ├── parse.py          Docling + PyMuPDF yedekleri
 │   ├── figures.py        şekil açıklaması (VLM)
@@ -153,11 +156,12 @@ pilot/
 │   └── render.py         vurgulu sayfa görseli
 ├── app.py                Streamlit arayüzü
 ├── run_parse.py, run_figures.py, run_index.py, run_reindex_docs.py, run_eval.py
-├── eval/                 test soruları (18 + 5 sesli), ölçüm sonuçları
-├── tests/                271 birim test
+├── bench/                benchmark kodu, koşu betikleri (run_asama*.ps1), şirket içi sunucu paketi (onprem/)
+├── eval/                 soru setleri, ölçüm sonuçları; bench/ altında benchmark sonuçları (b0-b1 … b4, bulunamadi, genel)
+├── tests/                393 birim test
 ├── tools/                seslendirme, ölçüm ve duman testi betikleri
 ├── data/                 parsed/, figures/, chunks.jsonl (repoda) · qdrant/, audio/ (yerel, repoda değil)
 └── KURULUM-LOGU.md       Mac kurulumunun boyut/süre/sorun kaydı
 ```
 
-Test dokümanları: [../test-dokumanlari/](../test-dokumanlari/). Kaynakları ve lisans notu: [manual-envanteri.md](../calisma-notlari/notlar/manual-envanteri.md).
+Test dokümanları: [../test-dokumanlari/](../test-dokumanlari/). Kaynakları ve lisans notu: [manual-envanteri.md](../docs/arsiv/calisma-notlari/notlar/manual-envanteri.md).

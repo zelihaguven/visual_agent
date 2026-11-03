@@ -1,7 +1,7 @@
 # Plan: Araştırma Planı, Fazlar, Riskler ve Karar Günlüğü
 
 > **Kaynak not:** Diğer notlarda `req.md` olarak anılan dosya ("Visual Agent: Pre Req", son güncelleme 2026-10-09). Bu sette adı **plan** olarak değiştirildi; diğer notlardaki "req.md" atıfları bu nota bağlandı.
-> **Bağlantılı:** [11-arastirma-gorevi-tanimi.md](11-arastirma-gorevi-tanimi.md) (görev tanımı, `tasks.md`) · [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md) (Faz 5 çıktısı, `sentez.md`) · [10-sorulacaklar.md](10-sorulacaklar.md) · [13-acik-sorular-ve-riskler.md](13-acik-sorular-ve-riskler.md) · [UYGULAMA-PLANI.md](../UYGULAMA-PLANI.md)
+> **Bağlantılı:** [11-arastirma-gorevi-tanimi.md](11-arastirma-gorevi-tanimi.md) (görev tanımı, `tasks.md`) · [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md) (Faz 5 çıktısı, `sentez.md`) · [10-sorulacaklar.md](10-sorulacaklar.md) · [13-acik-sorular-ve-riskler.md](13-acik-sorular-ve-riskler.md) · [UYGULAMA-PLANI.md](../arsiv/UYGULAMA-PLANI.md)
 > **Beslediği çıktılar:** **Görev/aşama planı** (Faz 1–6 tanımları, uygulama task listesi, pilot) · **Açık sorular ve riskler** (Q1–Q11, R1–R10) · Tüm konu notlarının adım numaraları
 
 **Numaralandırma uyarısı (kaynaktaki çakışma):** Plan hem **Adım** (0–7; konu numaraları) hem **Faz** (1–6; çalışma sırası) kullanıyor. Adım 6'nın alt maddeleri (6.1–6.4: arayüz, ekran, orkestrasyon, STT) ile Faz 6'nın maddeleri (6.1 pilot, 6.2 task listesi, 6.3 başarı kriterleri) **aynı numaraları** taşıyor. Diğer notlarda "plan 6.1 / 6.2 / 6.3" pilot bağlamında geçtiğinde **Faz 6** maddeleri kastediliyor; bu notta karışmaması için **"Faz 6.1"** ve **"Adım 6.1"** diye ayrıldı.

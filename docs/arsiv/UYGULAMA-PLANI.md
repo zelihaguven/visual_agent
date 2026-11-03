@@ -1,7 +1,7 @@
 # Uygulama Aşaması Planı
 
 > **Tarih:** 2026-10-13 (pilotun son sonuçlarıyla güncellendi) · **Durum:** Öneri (paydaş onayı bekliyor)
-> **Dayanak:** Araştırma notları (Adım 1–7), [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md), pilot sonuçları ([PILOT-RAPORU.md](PILOT-RAPORU.md)), paydaş cevapları ([10-sorulacaklar.md](arastirma/10-sorulacaklar.md), [calisma-notlari/notlar/sorulacaklar.md](calisma-notlari/notlar/sorulacaklar.md))
+> **Dayanak:** Araştırma notları (Adım 1–7), [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md), pilot sonuçları ([PILOT-RAPORU.md](../PILOT-RAPORU.md)), paydaş cevapları ([10-sorulacaklar.md](../arastirma/10-sorulacaklar.md), [calisma-notlari/notlar/sorulacaklar.md](calisma-notlari/notlar/sorulacaklar.md))
 > **Önceki sürüm:** Bu dosyanın 2026-10-09 tarihli hali (pilot öncesi T1–T9 listesi). Bu sürüm pilot bulgularıyla yeniden yazıldı.
 
 ---
@@ -22,13 +22,13 @@ Plan bu üç açığı **sırayla değil, kritik yol + paralel geliştirme** şe
 
 **Kaba süre:** 1–2 geliştiriciyle yaklaşık **4–5 ay**. Paydaş kararlarının hızına ve model/donanım seçimine bağlıdır (Bölüm 6).
 
-Hedef mimari: [MIMARI.md, Bölüm B](MIMARI.md).
+Hedef mimari: [MIMARI.md, Bölüm B](../MIMARI.md).
 
 ---
 
 ## 2. Başlangıç noktası: pilot sonuçları
 
-Ayrıntı: [PILOT-RAPORU.md](PILOT-RAPORU.md).
+Ayrıntı: [PILOT-RAPORU.md](../PILOT-RAPORU.md).
 
 | Ölçüt | Hedef | Pilot (18 soru, 2026-10-13) | Açık |
 |-------|-------|-----------------------------|------|
@@ -52,7 +52,7 @@ Ayrıntı: [PILOT-RAPORU.md](PILOT-RAPORU.md).
 
 ### 2.1 Pilotta yapılanlar ve plana etkisi
 
-Pilot sırasında bulunan sorunların bir kısmı pilotta düzeltildi. Bunlar uygulama aşamasında **sıfırdan yapılmayacak, servis koduna taşınacak.** Ayrıntı: [PILOT-RAPORU.md §6](PILOT-RAPORU.md).
+Pilot sırasında bulunan sorunların bir kısmı pilotta düzeltildi. Bunlar uygulama aşamasında **sıfırdan yapılmayacak, servis koduna taşınacak.** Ayrıntı: [PILOT-RAPORU.md §6](../PILOT-RAPORU.md).
 
 | Pilotta yapılan | Plandaki karşılığı |
 |-----------------|--------------------|
@@ -74,9 +74,9 @@ Pilot sırasında bulunan sorunların bir kısmı pilotta düzeltildi. Bunlar uy
 
 ## 3. Plan akışı
 
-![Uygulama planı akışı](sekiller/uygulama-plani.svg)
+![Uygulama planı akışı](../sekiller/uygulama-plani.svg)
 
-*Şekil 1. Aşamalar ve karar kapıları. Kırmızı baklava: karar kapısı. Kesikli kırmızı ok: ölçüt tutmazsa geri dönüş. Noktalı ok: dolaylı bağımlılık (model kararı ses ve gecikmeyi etkiler). PNG: [sekiller/uygulama-plani.png](sekiller/uygulama-plani.png)*
+*Şekil 1. Aşamalar ve karar kapıları. Kırmızı baklava: karar kapısı. Kesikli kırmızı ok: ölçüt tutmazsa geri dönüş. Noktalı ok: dolaylı bağımlılık (model kararı ses ve gecikmeyi etkiler). PNG: [sekiller/uygulama-plani.png](../sekiller/uygulama-plani.png)*
 
 Düzenlenebilir sürüm (Mermaid):
 
@@ -135,7 +135,7 @@ flowchart LR
 | İngilizce eşanlamlılar | Ürün/model eşanlamlılarına İngilizce karşılıklar (coat, trousers...) | Q16 (İngilizce soru) pantolon şartnamesine gitti |
 | Atölye terim sözlüğü | Türkçe atölye terimi → kılavuzdaki İngilizce terim (çağanoz → rotary hook, masura → bobbin, baskı ayağı → presser foot, dizlik → knee lifter, transportör → feed dog). Sorgu genişletme ve sorgu çevirisiyle birlikte. Sözlük kullanıcılarla birlikte büyütülür. LLM sözlüğe aday önerebilir, uzman onaylar; sorgu anında doğrulanmamış LLM çevirisi kullanılmaz | "Çağanoz" sorusu bulunamadı. **R16:** Deneyde bge-m3 5 terimin 1'ini, qwen2.5:7b 0'ını doğru eşledi ("dizlik = bobbin") |
 | Belirsizlik akışlarının genişletilmesi | Pilotta model (A / B / ikisi ayrı, "diğer modelde ara"), ürün (ceket / pantolon) ve müşteri markası için var (2026-10-13). Gerçek sistemde varlık listeleri elle değil doküman kaydından ve yetkiden üretilir | R14: "Dış görünür dikişlerde SPI" sorusunda seçim sunulmuyor |
-| Soru niyeti ve eksik bilgi | Sorunun **neyi** sorduğunu belirleme: makine ayarı mı, ürün gereksinimi mi ("ceket dikerken iplik gerginliği" kılavuza, "ceket ölçüsü" şartnameye). Gerekli bilgi eksikse (hangi ölçü, hangi beden, hangi dikiş) sorulur. Pilottaki kural tabanlı tablo ve kelime kuralı test setinde yanlış alarm oranıyla ölçülür; yetmezse model tabanlı tespit | Pilot: "Brother A makinesi ceket ölçüsü" önce alakasız "5 mm", sonra rastgele beden satırları getirdi. Kural tabanlı çözümün sınırları: [MIMARI.md §7](MIMARI.md) |
+| Soru niyeti ve eksik bilgi | Sorunun **neyi** sorduğunu belirleme: makine ayarı mı, ürün gereksinimi mi ("ceket dikerken iplik gerginliği" kılavuza, "ceket ölçüsü" şartnameye). Gerekli bilgi eksikse (hangi ölçü, hangi beden, hangi dikiş) sorulur. Pilottaki kural tabanlı tablo ve kelime kuralı test setinde yanlış alarm oranıyla ölçülür; yetmezse model tabanlı tespit | Pilot: "Brother A makinesi ceket ölçüsü" önce alakasız "5 mm", sonra rastgele beden satırları getirdi. Kural tabanlı çözümün sınırları: [MIMARI.md §7](../MIMARI.md) |
 | Belirsiz soru akışı | Ürün/marka/model belirtilmemişse: yazılı soruda tüm yetkili dokümanlar + ürün başına ayrı cevap veya netleştirme, sesli soruda marka sorulur (karar) | R14: Q07'de yanlış doküman |
 | Sorgu çevirisi + hibrit A/B | TR soru → EN kelime araması için çeviri. Dense / hibrit / hibrit+çeviri karşılaştırması | Hibrit ile dense aynı sonucu verdi |
 | Prompt iyileştirme | Alıntı birebirliği oranı, atıf yazma, Türkçe terim karşılıkları | Uydurma alıntı gözlendi |
@@ -201,7 +201,7 @@ flowchart LR
 | Log saklama | Süre ve anonimleştirme politikası (KVKK sorumlusu). Ses kaydı tutulmaz, metni tutulabilir (karar) |
 | Yetki testleri | Test setinde yetki soruları (ör. GL-PD kullanıcısı başka markayı soruyor) + yan kapı testleri |
 
-**Başlangıç noktası:** Arşivdeki taslak `security.py` (e-posta/kod girişi, rol → marka filtresi, ±1 sayfa): [_arsiv/README.md](_arsiv/README.md).
+**Başlangıç noktası:** Arşivdeki taslak `security.py` (e-posta/kod girişi, rol → marka filtresi, ±1 sayfa): [_arsiv/README.md](README.md).
 **Kabul ölçütü:** Yetki testleri %100, silme testi geçer, log erişimi rol bazlı.
 **Kaba süre:** 2–3 hafta.
 
@@ -221,7 +221,7 @@ flowchart LR
 
 #### STT (sesli soru) hedef mimarisi
 
-Pilotta ilk sürümü var (2026-10-13, [MIMARI.md §A4.12](MIMARI.md)). Gerçek sistemdeki hali:
+Pilotta ilk sürümü var (2026-10-13, [MIMARI.md §A4.12](../MIMARI.md)). Gerçek sistemdeki hali:
 
 ```
  Cihaz (tablet / PC, atölye)              Sunucu (yerel ağ, TLS)                             Arayüz
@@ -363,8 +363,8 @@ Ayrıntılı liste: [calisma-notlari/notlar/sorulacaklar.md](calisma-notlari/not
 
 | Konu | Dosya |
 |------|-------|
-| Araştırma sentezi (mimari, araç seçimi, riskler) | [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md) |
-| Pilotun ve hedefin mimarisi | [MIMARI.md](MIMARI.md) |
-| Pilot raporu (ölçümler, sorunlar ve çözümleri, öneriler) | [PILOT-RAPORU.md](PILOT-RAPORU.md) |
-| Adım raporları 1–7 | [README.md](arastirma/README.md) |
-| Açık sorular ve riskler | [13-acik-sorular-ve-riskler.md](arastirma/13-acik-sorular-ve-riskler.md) · [calisma-notlari/notlar/sorulacaklar.md](calisma-notlari/notlar/sorulacaklar.md) |
+| Araştırma sentezi (mimari, araç seçimi, riskler) | [ARASTIRMA-SENTEZI.md](../ARASTIRMA-SENTEZI.md) |
+| Pilotun ve hedefin mimarisi | [MIMARI.md](../MIMARI.md) |
+| Pilot raporu (ölçümler, sorunlar ve çözümleri, öneriler) | [PILOT-RAPORU.md](../PILOT-RAPORU.md) |
+| Adım raporları 1–7 | [README.md](../arastirma/README.md) |
+| Açık sorular ve riskler | [13-acik-sorular-ve-riskler.md](../arastirma/13-acik-sorular-ve-riskler.md) · [calisma-notlari/notlar/sorulacaklar.md](calisma-notlari/notlar/sorulacaklar.md) |
