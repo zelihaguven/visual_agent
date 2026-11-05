@@ -1,0 +1,1389 @@
+{
+ "model": "qwen36",
+ "spec": {
+  "id": "qwen/qwen3.6-35b-a3b",
+  "provider": "deepinfra",
+  "reasoning": {
+   "enabled": false
+  }
+ },
+ "tag": "nihai_bugun",
+ "zdr_providers": [
+  "akashml",
+  "coreweave",
+  "deepinfra",
+  "dekallm",
+  "parasail",
+  "phala",
+  "primeintellect",
+  "siliconflow",
+  "venice"
+ ],
+ "verify": "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı",
+ "deger": "değer olarak, 2026-11-05",
+ "sema": "bugun",
+ "netlestirme_sorulari": "yalniz",
+ "start": "2026-11-05T16:16:42",
+ "rows": {
+  "questions:Q07": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "S-7300B makinesi için ana dikiş parametrelerinde (SPI) hedef değerler bölge ve spesifikasyona göre değişir [3]:",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      45
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      45
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      45
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "cevap",
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 1.3526275000003807,
+   "toplam": 5.0959824999990815,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 5.095981099999335
+    }
+   ],
+   "giris": 2210,
+   "cikis_token": 336,
+   "dusunce_token": 0,
+   "maliyet": 0.0005402,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 3,\n      \"metin\": \"(*1) For China: 4300 (sti/min) For Japan and General Export: 4000 sti/min For -3 specifications for Europe and America: 4700 sti/min For -5 specifications for Europe and America: 4500 sti/min\"\n    }\n  ],\n  \"cevap\": \"S-7300B makinesi için ana dikiş parametrelerinde (SPI) hedef değerler bölge ve spesifikasyona göre değişir [3]:\",\n  \"sesli_metin\": \"Ana dikiş hızı bölgeye göre değişir: Çin için 4300, Japonya ve genel ihracat için 4000, Avrupa ve Amerika için -3 spesifikasyonunda 4700, -5 spesifikasyonunda 4500 sti/min.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"Hangi bölge veya spesifikasyon için (Çin, Japonya/Genel İhracat, Avrupa/Amerika -3, Avrupa/Amerika -5) SPI değerini arıyorsunuz?\",\n  \"netlestirme_secenekleri\": [\n    \"China\",\n    \"Japan and General Export\",\n    \"-3 specifications for Europe and America\",\n    \"-5 specifications for Europe and America\"\n  ],\n  \"bulunamadi\": false\n}"
+  },
+  "questions:Q17": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "S-7300 modeli için kaynaklarda iki farklı makine modeli (S-7300A ve S-7300B) bulunmaktadır ve maksimum dikiş hızı makine modeline ve dikiş adımına (pitch) göre değişmektedir [1, 3, 5]. S-7300B modeli için maksimum hız, dikiş adımına bağlı olarak 5000 sti/min veya 4500 sti/min'dir [1]. S-7300A modeli için ise dikiş adımına bağlı olarak 4000 sti/min, 3500 sti/min veya 2000 sti/min hız sınırları belirtilmiştir [3].",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      64
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      76
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      64
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": false,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "atlanan_netlestirme": "S-7300A mı yoksa S-7300B mi kullanıyorsunuz?",
+   "netlestirme_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.7135361999971792,
+   "toplam": 8.615682899999229,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 8.615681799998129
+    }
+   ],
+   "giris": 2343,
+   "cikis_token": 588,
+   "dusunce_token": 0,
+   "maliyet": 0.0007929,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Max. sewing speed * Standard feed locus full swing | Pitch 4 or less /5000 sti/min More than pitch 4/4000 sti/min | Pitch 4 or less /4500 sti/min More than pitch 4/4000 sti/min\"\n    },\n    {\n      \"kaynak_no\": 3,\n      \"metin\": \"The sewing speed will be subjected to the following limits (sewing speed/sewing pitch). ・4000sti/min / 3.0 ・3500sti/min / 4.0 ・2000sti/min / 5.0\"\n    },\n    {\n      \"kaynak_no\": 5,\n      \"metin\": \"Max. sewing speed * Standard feed locus | Pitch 4 or less /5000 sti/min More than pitch 4/4000 sti/min | Pitch 4 or less /4500 sti/min More than pitch 4/4000 sti/min\"\n    }\n  ],\n  \"cevap\": \"S-7300 modeli için kaynaklarda iki farklı makine modeli (S-7300A ve S-7300B) bulunmaktadır ve maksimum dikiş hızı makine modeline ve dikiş adımına (pitch) göre değişmektedir [1, 3, 5]. S-7300B modeli için maksimum hız, dikiş adımına bağlı olarak 5000 sti/min veya 4500 sti/min'dir [1]. S-7300A modeli için ise dikiş adımına bağlı olarak 4000 sti/min, 3500 sti/min veya 2000 sti/min hız sınırları belirtilmiştir [3].\",\n  \"sesli_metin\": \"S-7300 modeli için kaynaklarda S-7300A ve S-7300B olarak iki farklı makine bilgisi bulunmaktadır. Maksimum hız, makine modeline ve dikiş adımına göre 2000 sti/min ile 5000 sti/min arasında değişmektedir.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"S-7300A mı yoksa S-7300B mi kullanıyorsunuz?\",\n  \"netlestirme_secenekleri\": [\n    \"S-7300A\",\n    \"S-7300B\"\n  ],\n  \"bulunamadi\": false\n}"
+  },
+  "questions_ek:Q30": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "E050 hatası, dikişe başlanırken makine başının geriye doğru eğildiğinin algılanması anlamına gelir [1]. Bu hatayı çözmek için öncelikle makinenin gücünü kapatın ve makine başını orijinal konumuna getirin [1]. Ardından, makinenin gücünü tekrar kapatın ve P2 konnektörünün bağlantısını kontrol edin [1].",
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      46
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      46
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.4649261000013212,
+   "toplam": 3.745123300002888,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 3.7451213999993342
+    }
+   ],
+   "giris": 2250,
+   "cikis_token": 297,
+   "dusunce_token": 0,
+   "maliyet": 0.00050715,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Code: E050 | Cause: Machine head is detected as being tilted back when start sewing. | Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"\n    }\n  ],\n  \"cevap\": \"E050 hatası, dikişe başlanırken makine başının geriye doğru eğildiğinin algılanması anlamına gelir [1]. Bu hatayı çözmek için öncelikle makinenin gücünü kapatın ve makine başını orijinal konumuna getirin [1]. Ardından, makinenin gücünü tekrar kapatın ve P2 konnektörünün bağlantısını kontrol edin [1].\",\n  \"sesli_metin\": \"E050 hatası, dikişe başlarken makine başının geriye eğildiğinin algılanmasıdır. Makineyi kapatıp başı düzeltin ve P2 konnektör bağlantısını kontrol edin.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A131": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "E050 hatası, dikişe başlarken makine başının geriye doğru eğildiği algılandığında oluşur [1]. Hatanın giderilmesi için makinenin gücü kapatılmalı ve makine başı orijinal konumuna getirilmelidir [1]. Ayrıca, makinenin gücü kapatılarak P2 konnektörünün bağlantısı kontrol edilmelidir [1].",
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      46
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      46
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.5167275999992853,
+   "toplam": 4.021971300000587,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 4.021970399997372
+    }
+   ],
+   "giris": 2248,
+   "cikis_token": 290,
+   "dusunce_token": 0,
+   "maliyet": 0.0005003,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Code: E050 | Cause: Machine head is detected as being tilted back when start sewing. | Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"\n    }\n  ],\n  \"cevap\": \"E050 hatası, dikişe başlarken makine başının geriye doğru eğildiği algılandığında oluşur [1]. Hatanın giderilmesi için makinenin gücü kapatılmalı ve makine başı orijinal konumuna getirilmelidir [1]. Ayrıca, makinenin gücü kapatılarak P2 konnektörünün bağlantısı kontrol edilmelidir [1].\",\n  \"sesli_metin\": \"E050 hatası, dikiş başlarken makine başının geriye eğik algılanması anlamına gelir. Makine başını düzeltmek ve P2 konnektör bağlantısını kontrol etmek gerekir.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A132": {
+   "durum": "not_found",
+   "sorunlar": [],
+   "kontroller": {
+    "bos_cevap": true
+   },
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      74
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      58,
+      59
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      32
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      146
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "bulunamadi",
+   "atif_dogru_biri": null,
+   "atif_dogru_hepsi": null,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.855245400001877,
+   "toplam": 2.036796799999138,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.036796200001845
+    }
+   ],
+   "giris": 2811,
+   "cikis_token": 68,
+   "dusunce_token": 0,
+   "maliyet": 0.0003457,
+   "ham": "{\n  \"alintilar\": [],\n  \"cevap\": \"\",\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": true\n}"
+  },
+  "aday_sorular:A133": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "S-7300B makinesinde standart üst iplik kuyruk uzunluğu 30 ile 45 mm arasındadır; Premier spesifikasyonları için bu değer 25 ile 30 mm olmalıdır [1]. S-7300A makinesinde standart üst iplik kuyruk uzunluğu 25 ile 30 mm arasındadır [3].",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      82
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      93,
+      94
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      79
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      99,
+      100
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      106
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.5446699999993143,
+   "toplam": 4.8343227000004845,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 4.834321500002261
+    }
+   ],
+   "giris": 2735,
+   "cikis_token": 304,
+   "dusunce_token": 0,
+   "maliyet": 0.0005623,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"The standard length for the upper thread trailing length is 30 to 45 mm, or 25 to 30 mm for Premier specifications.\"\n    },\n    {\n      \"kaynak_no\": 3,\n      \"metin\": \"The standard upper thread trailing length is 25 to 30 mm.\"\n    }\n  ],\n  \"cevap\": \"S-7300B makinesinde standart üst iplik kuyruk uzunluğu 30 ile 45 mm arasındadır; Premier spesifikasyonları için bu değer 25 ile 30 mm olmalıdır [1]. S-7300A makinesinde standart üst iplik kuyruk uzunluğu 25 ile 30 mm arasındadır [3].\",\n  \"sesli_metin\": \"S-7300B için standart değer 30-45 mm, Premier spesifikasyonunda 25-30 mm'dir. S-7300A için standart değer 25-30 mm'dir.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A134": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "Alt iplik sayacı, dikiş sayısı ile dikiş adımının (sewing pitch) çarpımı 0.1 metreye ulaştığında, başlangıç ayar değerinden 0.1 azalarak azalır [1].",
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      48
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      48
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      19
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      48
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      48
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "cevap",
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.4645258999989892,
+   "toplam": 2.4713866999991296,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.471385199998622
+    }
+   ],
+   "giris": 2268,
+   "cikis_token": 240,
+   "dusunce_token": 0,
+   "maliyet": 0.0004548,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"The value displayed by the lower thread counter display is reduced by 0.1 from the initial setting value each time the number of stitches x sewing pitch reaches 0.1 m, and a warning is given when the counter goes below 0.\"\n    }\n  ],\n  \"cevap\": \"Alt iplik sayacı, dikiş sayısı ile dikiş adımının (sewing pitch) çarpımı 0.1 metreye ulaştığında, başlangıç ayar değerinden 0.1 azalarak azalır [1].\",\n  \"sesli_metin\": \"Alt iplik sayacı, dikiş sayısı ile dikiş adımının çarpımı 0.1 metreye ulaştığında 0.1 azalır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A135": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "Aydınlatma LED'i, 'Illumination LED on key' (Aydınlatma LED'i açma tuşu) veya 'Illumination LED off key' (Aydınlatma LED'i kapatma tuşu) olarak adlandırılan tuşa basarak açılıp kapatılır [2]. Bu tuşa basmak, aydınlatma LED'inin durumunu değiştirir [3].",
+   "kaynaklar": [
+    [
+     "juki-mo6800s",
+     [
+      30
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      33
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      33
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      32
+     ]
+    ]
+   ],
+   "sira": 3,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": false,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.5225533999982872,
+   "toplam": 3.743268199999875,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 3.7432654999975057
+    }
+   ],
+   "giris": 2242,
+   "cikis_token": 300,
+   "dusunce_token": 0,
+   "maliyet": 0.0005092,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 2,\n      \"metin\": \"Press this key to switch the illumination LED between on and off.\"\n    },\n    {\n      \"kaynak_no\": 3,\n      \"metin\": \"Press this key to switch the illumination LED between on and off.\"\n    },\n    {\n      \"kaynak_no\": 4,\n      \"metin\": \"Press this key to switch the illumination LED between on and off.\"\n    }\n  ],\n  \"cevap\": \"Aydınlatma LED'i, 'Illumination LED on key' (Aydınlatma LED'i açma tuşu) veya 'Illumination LED off key' (Aydınlatma LED'i kapatma tuşu) olarak adlandırılan tuşa basarak açılıp kapatılır [2]. Bu tuşa basmak, aydınlatma LED'inin durumunu değiştirir [3].\",\n  \"sesli_metin\": \"Aydınlatma LED'i, aydınlatma LED'i açma veya kapatma tuşuna basarak açılıp kapatılır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A136": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "Topraklama vidası, kaynaklara göre 1.0±0.1 Nm (veya N.m) torkla sıkılmalıdır [1][2].",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      21
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      20
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      93
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      93,
+      94
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      84
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": false,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.5745931999990717,
+   "toplam": 2.9960709999977553,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.9960679999967397
+    }
+   ],
+   "giris": 2547,
+   "cikis_token": 219,
+   "dusunce_token": 0,
+   "maliyet": 0.00046275,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Ground wire [2 pcs] Screw [2 pcs] (Recommended tightening torque 1.0±0.1 Nm)\"\n    },\n    {\n      \"kaynak_no\": 2,\n      \"metin\": \"Ground wire Screw (Recommended tightening torque 1.0±0.1 N.m)\"\n    }\n  ],\n  \"cevap\": \"Topraklama vidası, kaynaklara göre 1.0±0.1 Nm (veya N.m) torkla sıkılmalıdır [1][2].\",\n  \"sesli_metin\": \"Topraklama vidası 1.0±0.1 Nm torkla sıkılmalıdır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A137": {
+   "durum": "partial",
+   "sorunlar": [
+    "Geçersiz atıf: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]"
+   ],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": false,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "Çağanoz (rotary hook) ile masura kovanı tutucu konum braket (bobbin case holder position bracket) arasındaki boşluk, makine spesifikasyonuna göre şu olmalıdır [1]: [2]: [3]: [4]: [5]: [6]: [7]: [8]: [9]: [10]: [11]: [12]: [13]: [14]: [15]: [16]: [17]: [18]: [19]: [20]: [21]: [22]: [23]: [24]: [25]: [26]: [27]: [28]: [29]: [30]: [31]: [32]: [33]: [34]: [35]: [36]: [37]: [38]: [39]: [40]: [41]: [42]: [43]: [44]: [45]: [46]: [47]: [48]: [49]: [50]: [51]: [52]: [53]: [54]: [55]: [56]: [57]: [58]: [59]: [60]: [61]: [62]: [63]: [64]: [65]: [66]: [67]: [68]: [69]: [70]: [71]: [72]: [73]: [74]: [75]: ",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      94
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      91
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      81
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      84
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      28
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "atlanan_netlestirme": "Makinenin spesifikasyonu nedir (-[][]3 veya -[][]5)?",
+   "netlestirme_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.6332694000011543,
+   "toplam": 8.246622900001967,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 8.24662040000112
+    }
+   ],
+   "giris": 2509,
+   "cikis_token": 611,
+   "dusunce_token": 0,
+   "maliyet": 0.00083135,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"The clearance should be 0.4 to 0.7 mm (for -[][]3 specifications) and 0.6 to 1.1 mm (for -[][]5 specifications).\"\n    },\n    {\n      \"kaynak_no\": 2,\n      \"metin\": \"The clearance should be 0.4 to 0.7 mm (for -[][]3 specifications) and 0.6 to 1.1 mm (for -[][]5 specifications).\"\n    }\n  ],\n  \"cevap\": \"Çağanoz (rotary hook) ile masura kovanı tutucu konum braket (bobbin case holder position bracket) arasındaki boşluk, makine spesifikasyonuna göre şu olmalıdır [1]: [2]: [3]: [4]: [5]: [6]: [7]: [8]: [9]: [10]: [11]: [12]: [13]: [14]: [15]: [16]: [17]: [18]: [19]: [20]: [21]: [22]: [23]: [24]: [25]: [26]: [27]: [28]: [29]: [30]: [31]: [32]: [33]: [34]: [35]: [36]: [37]: [38]: [39]: [40]: [41]: [42]: [43]: [44]: [45]: [46]: [47]: [48]: [49]: [50]: [51]: [52]: [53]: [54]: [55]: [56]: [57]: [58]: [59]: [60]: [61]: [62]: [63]: [64]: [65]: [66]: [67]: [68]: [69]: [70]: [71]: [72]: [73]: [74]: [75]: \",\n  \"sesli_metin\": \"Çağanoz ile masura kovanı tutucu arasındaki boşluk, makine spesifikasyonuna göre 0.4 ile 0.7 mm veya 0.6 ile 1.1 mm olmalıdır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"Makinenin spesifikasyonu nedir (-[][]3 veya -[][]5)?\",\n  \"netlestirme_secenekleri\": [\n    \"-[][]3\",\n    \"-[][]5\"\n  ],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A138": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "İplik kesme kamı ayarı için iğne mili kaldırma mesafesi makine modeline göre değişir [1]. S-7300A modeli için iğne mili 6 mm kaldırılır [1]. S-7300B modeli için iğne mili 5 mm kaldırılır [4].",
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      96
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      91
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      102,
+      103
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      94
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": false,
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.5418804000000819,
+   "toplam": 4.297734300002048,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 4.297732700000779
+    }
+   ],
+   "giris": 3059,
+   "cikis_token": 392,
+   "dusunce_token": 0,
+   "maliyet": 0.0006783,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"\n    },\n    {\n      \"kaynak_no\": 3,\n      \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"\n    },\n    {\n      \"kaynak_no\": 4,\n      \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush, and then push the plunger (1) of the thread trimmer solenoid in the direction of the arrow with your finger.\"\n    }\n  ],\n  \"cevap\": \"İplik kesme kamı ayarı için iğne mili kaldırma mesafesi makine modeline göre değişir [1]. S-7300A modeli için iğne mili 6 mm kaldırılır [1]. S-7300B modeli için iğne mili 5 mm kaldırılır [4].\",\n  \"sesli_metin\": \"S-7300A modeli için iğne mili 6 mm, S-7300B modeli için 5 mm kaldırılır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A139": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "Makine kafasını dik konuma getirmek için şu adımları izleyin [1]: 1. Masanın hareket etmemesi için masayı sabitleyin [1]. 2. Sol elinizle ön paneli (face plate) tutun [1]. 3. Sağ elinizle makine kafasını nazikçe dik konuma getirin [1]. 4. Çalışma paneline (operation panel) dokunmayın [1].",
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      14
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      14
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      14
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      16
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      14
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.5020337999994808,
+   "toplam": 4.681334600001719,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 4.681332399999519
+    }
+   ],
+   "giris": 2243,
+   "cikis_token": 331,
+   "dusunce_token": 0,
+   "maliyet": 0.00053875,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"While holding the face plate with your left hand, gently return the machine head to the upright position with your right hand.\"\n    },\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Do not hold the operation panel.\"\n    },\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Secure the table so that it will not move when tilting back the machine head.\"\n    }\n  ],\n  \"cevap\": \"Makine kafasını dik konuma getirmek için şu adımları izleyin [1]: 1. Masanın hareket etmemesi için masayı sabitleyin [1]. 2. Sol elinizle ön paneli (face plate) tutun [1]. 3. Sağ elinizle makine kafasını nazikçe dik konuma getirin [1]. 4. Çalışma paneline (operation panel) dokunmayın [1].\",\n  \"sesli_metin\": \"Makine kafasını dik konuma getirmek için sol elinizle ön paneli tutun, sağ elinizle kafayı nazikçe dik hale getirin ve çalışma paneline dokunmayın.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A140": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      93,
+      94
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      94,
+      95,
+      96
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular:A141": {
+   "durum": "not_found",
+   "sorunlar": [],
+   "kontroller": {
+    "bos_cevap": true
+   },
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      71
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      80
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      32
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      77
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "bulunamadi",
+   "atif_dogru_biri": null,
+   "atif_dogru_hepsi": null,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.5486993999984406,
+   "toplam": 1.702816900000471,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.7028151999984402
+    }
+   ],
+   "giris": 2813,
+   "cikis_token": 68,
+   "dusunce_token": 0,
+   "maliyet": 0.0003459,
+   "ham": "{\n  \"alintilar\": [],\n  \"cevap\": \"\",\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": true\n}"
+  },
+  "aday_sorular:A142": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      18
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      16
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      15
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      13
+     ]
+    ]
+   ],
+   "sira": 5,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular:A143": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      44
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      38
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      37,
+      38
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      38,
+      39
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      16
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular:A144": {
+   "durum": "verified",
+   "sorunlar": [],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true
+   },
+   "cevap": "Permetrin geri kazanımı, herhangi bir numune boyutu ve kompozisyonu için %95 veya daha fazla olmalıdır [1].",
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      33
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      67
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      67
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35,
+      36
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "gl-pd-07-14a"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.7526680000009947,
+   "toplam": 2.662808999997651,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.6628074000000197
+    }
+   ],
+   "giris": 2633,
+   "cikis_token": 180,
+   "dusunce_token": 0,
+   "maliyet": 0.0004343,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Verify that the percent recovery of permethrin for any specimen size and composition, is 95% or greater by comparing the recovery level from the first extraction, to that of subsequent extractions.\"\n    }\n  ],\n  \"cevap\": \"Permetrin geri kazanımı, herhangi bir numune boyutu ve kompozisyonu için %95 veya daha fazla olmalıdır [1].\",\n  \"sesli_metin\": \"Permetrin geri kazanımı en az %95 olmalıdır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  },
+  "aday_sorular:A145": {
+   "durum": "partial",
+   "sorunlar": [
+    "Değer tablodaki seçeneğe göre değişiyor; cevap hangisi için olduğunu söylemiyor. Aşağıdan seçin."
+   ],
+   "kontroller": {
+    "alinti_var": true,
+    "alinti_birebir": true,
+    "alinti_kaynak_metni": true,
+    "atif_gecerli": true,
+    "sayilar_alintida": true,
+    "tolerans_tam": true,
+    "sesli_tolerans_tam": true,
+    "cevap_var": true,
+    "tekrar_yok": true,
+    "alfabe_dogru": true,
+    "varyant_belirli": false
+   },
+   "cevap": "Cep kapağı (flap) punterizleri 36 dikişlidir [3]. Göğüs cepleri ve kapaklarındaki döngü bandı (loop tape) punterizleri de 36 dikişlidir [5].",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      64
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      64
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "cevap",
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "atif_dokumanlari": [
+    "gl-pd-14-04a"
+   ],
+   "atlanan_netlestirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.6530903000020771,
+   "toplam": 4.6510702000014135,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 4.651068999999552
+    }
+   ],
+   "giris": 2393,
+   "cikis_token": 282,
+   "dusunce_token": 0,
+   "maliyet": 0.0005072,
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 3,\n      \"metin\": \"Bar-tack or back-tack placement: b. Hook tape (flap) | Size of tack (inches): 5/8 | Stitches per tack 1/: 36\"\n    },\n    {\n      \"kaynak_no\": 5,\n      \"metin\": \"Bar-tack or back-tack placement: Chest pockets and flaps a. Loop tape (pocket) | Size of tack (inches): 5/8 | Stitches per tack 1/: 36\"\n    }\n  ],\n  \"cevap\": \"Cep kapağı (flap) punterizleri 36 dikişlidir [3]. Göğüs cepleri ve kapaklarındaki döngü bandı (loop tape) punterizleri de 36 dikişlidir [5].\",\n  \"sesli_metin\": \"Cep kapağı punterizleri 36 dikişlidir.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+  }
+ },
+ "cost_usd": 0.0082318,
+ "dusunme_kontrolu": {
+  "reasoning_tokens": 0,
+  "reasoning_text": 0,
+  "provider": "DeepInfra",
+  "ok": true,
+  "cost": 0.0002207,
+  "err": null,
+  "json": "ok"
+ },
+ "end": "2026-11-05T16:17:49",
+ "tamam": true
+}
