@@ -1,21 +1,131 @@
 {
- "_aciklama": "Netleştirme beklenen 18 sorunun sınıfı (2026-11-05, kullanıcı kararı; model çağrılmadan sorunun anahtarlarından). deger_farkli: değer ürüne/modele göre değişiyor, netleştirme zorunlu. deger_ayni: değer iki üründe aynı; netleştirme YA DA iki kaynağı birlikte gösteren cevap doğru.",
- "questions:Q07": {"sinif": "deger_farkli", "gerekce": "ceket 11 (± 1), pantolon 10–14 SPI"},
- "questions:Q17": {"sinif": "deger_ayni", "gerekce": "S-7300A ve B s.12: pitch ≤ 4 5000, > 4 4000 sti/min (aynı tablo)"},
- "questions_ek:Q30": {"sinif": "deger_ayni", "gerekce": "E050 iki kılavuzda aynı satır"},
- "aday_sorular:A131": {"sinif": "deger_ayni", "gerekce": "E050 iki kılavuzda aynı satır"},
- "aday_sorular:A132": {"sinif": "deger_ayni", "gerekce": "aynı sorun satırı (A s.101, B s.109)"},
- "aday_sorular:A133": {"sinif": "deger_farkli", "gerekce": "S-7300A 25–30 mm, S-7300B 30–45 mm"},
- "aday_sorular:A134": {"sinif": "deger_ayni", "gerekce": "iki modelde aynı sayaç kuralı"},
- "aday_sorular:A135": {"sinif": "deger_ayni", "gerekce": "iki modelde LED tuşu (A s.32, B s.33)"},
- "aday_sorular:A136": {"sinif": "deger_ayni", "gerekce": "iki modelde 1,0 ± 0,1 N·m"},
- "aday_sorular:A137": {"sinif": "deger_ayni", "gerekce": "iki modelde -3 tipi 0,4–0,7, -5 tipi 0,6–1,1 mm"},
- "aday_sorular:A138": {"sinif": "deger_farkli", "gerekce": "S-7300A 6 mm, S-7300B 5 mm"},
- "aday_sorular:A139": {"sinif": "deger_ayni", "gerekce": "iki modelde s.14 aynı yöntem"},
- "aday_sorular:A140": {"sinif": "deger_farkli", "gerekce": "ceket 54 ± 2, pantolon 52–56"},
- "aday_sorular:A141": {"sinif": "deger_ayni", "gerekce": "ceket ve pantolonda 1/8–3/16 inç"},
- "aday_sorular:A142": {"sinif": "deger_farkli", "gerekce": "ceket iç orta arka, pantolon iç bel bandı"},
- "aday_sorular:A143": {"sinif": "deger_ayni", "gerekce": "ceket ve pantolonda 15 dakika"},
- "aday_sorular:A144": {"sinif": "deger_ayni", "gerekce": "ceket ve pantolonda %95 ve üzeri"},
- "aday_sorular:A145": {"sinif": "deger_ayni", "gerekce": "iki tabloda 36 dikiş, 5/8 inç"}
+ "_aciklama": "Netleştirme beklenen 18 sorunun sınıfı (2026-11-05, kullanıcı kararı; model çağrılmadan sorunun anahtarlarından). deger_farkli: değer ürüne/modele göre değişiyor, netleştirme zorunlu. deger_ayni: değer iki üründe aynı; netleştirme YA DA iki kaynağı birlikte gösteren cevap doğru. belge_ici_varyant (karar 2026-11-05 gece): aynı belgede varyanta göre farklı değer; netleştirme YA DA bütün varyantların değerlerini (varyant_degerleri) veren cevap doğru; gereksiz netleştirme sayılmaz. Gereksiz = değer aynıyken ya da soruda ürün/varyant belirtilmişken sorulan netleştirme.",
+ "questions:Q07": {
+  "sinif": "deger_farkli",
+  "gerekce": "ceket 11 (± 1), pantolon 10–14 SPI"
+ },
+ "questions:Q17": {
+  "sinif": "deger_ayni",
+  "gerekce": "S-7300A ve B s.12: pitch ≤ 4 5000, > 4 4000 sti/min (aynı tablo)"
+ },
+ "questions_ek:Q30": {
+  "sinif": "deger_ayni",
+  "gerekce": "E050 iki kılavuzda aynı satır"
+ },
+ "aday_sorular:A131": {
+  "sinif": "deger_ayni",
+  "gerekce": "E050 iki kılavuzda aynı satır"
+ },
+ "aday_sorular:A132": {
+  "sinif": "deger_ayni",
+  "gerekce": "aynı sorun satırı (A s.101, B s.109)"
+ },
+ "aday_sorular:A133": {
+  "sinif": "deger_farkli",
+  "gerekce": "S-7300A 25–30 mm, S-7300B 30–45 mm"
+ },
+ "aday_sorular:A134": {
+  "sinif": "deger_ayni",
+  "gerekce": "iki modelde aynı sayaç kuralı"
+ },
+ "aday_sorular:A135": {
+  "sinif": "deger_ayni",
+  "gerekce": "iki modelde LED tuşu (A s.32, B s.33)"
+ },
+ "aday_sorular:A136": {
+  "sinif": "deger_ayni",
+  "gerekce": "iki modelde 1,0 ± 0,1 N·m"
+ },
+ "aday_sorular:A137": {
+  "sinif": "deger_ayni",
+  "gerekce": "iki modelde -3 tipi 0,4–0,7, -5 tipi 0,6–1,1 mm"
+ },
+ "aday_sorular:A138": {
+  "sinif": "deger_farkli",
+  "gerekce": "S-7300A 6 mm, S-7300B 5 mm"
+ },
+ "aday_sorular:A139": {
+  "sinif": "deger_ayni",
+  "gerekce": "iki modelde s.14 aynı yöntem"
+ },
+ "aday_sorular:A140": {
+  "sinif": "deger_farkli",
+  "gerekce": "ceket 54 ± 2, pantolon 52–56"
+ },
+ "aday_sorular:A141": {
+  "sinif": "deger_ayni",
+  "gerekce": "ceket ve pantolonda 1/8–3/16 inç"
+ },
+ "aday_sorular:A142": {
+  "sinif": "deger_farkli",
+  "gerekce": "ceket iç orta arka, pantolon iç bel bandı"
+ },
+ "aday_sorular:A143": {
+  "sinif": "deger_ayni",
+  "gerekce": "ceket ve pantolonda 15 dakika"
+ },
+ "aday_sorular:A144": {
+  "sinif": "deger_ayni",
+  "gerekce": "ceket ve pantolonda %95 ve üzeri"
+ },
+ "aday_sorular:A145": {
+  "sinif": "deger_ayni",
+  "gerekce": "iki tabloda 36 dikiş, 5/8 inç"
+ },
+ "questions_ek:Q26": {
+  "sinif": "belge_ici_varyant",
+  "varyant_degerleri": [
+   "31-35",
+   "40"
+  ],
+  "gerekce": "pantolon s.8 ham kenar overlok Tex 31–35; s.9 emniyet dikişi kenar örtüsü 40 / 39 / 16 / 24–27. Beklenen cevap yalnız 31–35 (varyantı kapsamıyor)"
+ },
+ "aday_sorular:A070": {
+  "sinif": "belge_ici_varyant",
+  "varyant_degerleri": [
+   "5",
+   "6"
+  ],
+  "gerekce": "S-7300B s.98: iğne mili 5 mm; s.102–103: 6 mm. Beklenen cevap yalnız 5 mm (varyantı kapsamıyor)"
+ },
+ "aday_sorular_ek:C001": {
+  "sinif": "deger_farkli",
+  "gerekce": "S-7300A: 16 mm (s.12) · S-7300B: 13 mm (s.12): değer modele göre değişiyor"
+ },
+ "aday_sorular_ek:C002": {
+  "sinif": "deger_farkli",
+  "gerekce": "S-7300A: 34,5 kg (s.4) · S-7300B: 39 kg (s.4): değer modele göre değişiyor"
+ },
+ "aday_sorular_ek:C003": {
+  "sinif": "deger_farkli",
+  "gerekce": "S-7300A: 2000 sti/min (s.76) · S-7300B: -3: 2500, -5: 3000 sti/min (s.78): değer modele göre değişiyor"
+ },
+ "aday_sorular_ek:C004": {
+  "sinif": "deger_farkli",
+  "gerekce": "Ceket: 10 ± 2 (s.22–23) · Pantolon: 6–10 (s.19): değer ürüne göre değişiyor"
+ },
+ "aday_sorular_ek:C005": {
+  "sinif": "deger_farkli",
+  "gerekce": "Ceket: Type I ≥%90, Type II/III ≥%80 (s.7) · Pantolon: ≥%90 (s.6): değer ürüne göre değişiyor"
+ },
+ "aday_sorular_ek:C006": {
+  "sinif": "deger_farkli",
+  "gerekce": "Ceket: Type I 0,095–0,135; Type II 0,087–0,130; Type III 0,095–0,140 (s.6) · Pantolon: 0,087–0,130 (s.6): değer ürüne göre değişiyor"
+ },
+ "aday_sorular_ek:C007": {
+  "sinif": "deger_farkli",
+  "gerekce": "Ceket: iç yüz (s.11) · Pantolon: dış yüz (s.11): değer ürüne göre değişiyor"
+ },
+ "aday_sorular_ek:C008": {
+  "sinif": "deger_farkli",
+  "gerekce": "Ceket: 3/16–1/4 inç (s.23) · Pantolon: 3/16–9/32 inç (s.20): değer ürüne göre değişiyor"
+ },
+ "aday_sorular_ek:C009": {
+  "sinif": "deger_farkli",
+  "gerekce": "Ceket: 1/2–3/4 inç (çift kıvrım) (s.24) · Pantolon: 1 inç (s.20): değer ürüne göre değişiyor"
+ },
+ "aday_sorular_ek:C010": {
+  "sinif": "deger_farkli",
+  "gerekce": "Ceket: sol kol manşeti (s.25) · Pantolon: sol kargo cebi kapağı (s.20): değer ürüne göre değişiyor"
+ }
 }

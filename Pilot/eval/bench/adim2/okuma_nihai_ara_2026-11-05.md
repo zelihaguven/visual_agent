@@ -109,3 +109,35 @@ Nihai tur harcaması: **1,17 / 3,0 USD.**
 3. **BRAND_ALIASES ve S-7300 grubu: silinebilir.** Şema C kurallar kapalıyken değer farklı 4/5, değer aynı 8–9/13 aldı. §11'in tabanı (a) 4/5 ve 8/13'tü; silme koşulu sağlanıyor.
 4. **Q07** arama tarafında ayrıca incelenir (B4).
 5. **Ertelenenler (sonraki oturum):** süre turu 2 ve şema ek süresi s2 (başka saatte), yerel taban (en düşük öncelik), yeni aday sorular (onayınızdan sonra, ilk iki model şema C ile).
+
+## Şema C'nin kalite bedeli, Gemma 4 DeepInfra (kayıtlardan; karar 2026-11-05 gece)
+
+Bugünkü şema (16:16 yeniden koşu) ile şema C (aynı oturum, aynı sağlayıcı), 180 soru.
+
+**Yeni ✖ (12; ✖ → ✓ dönenlerle net +7):**
+
+| Neden | Sorular | Sayı | Şemaya bağlı mı |
+|---|---|---|---|
+| Alıntıyı parçalayıp birleştirme: tablo satırının başlığı ("Remedy:", "Code:") ikinci maddeyle tek alıntıda, kaynakta bitişik değil | Q14, A146, A039, A075, A089 | 5 | **evet**: her cümle kendi alıntısını istediği için model satırı bölüyor |
+| İki alıntıyı tek cümlede birleştirme (sayı başka öğenin alıntısında) | Q01 (IFF 8 (± 1) ile genel 11 (± 1) aynı cümlede) | 1 | **evet**: c150b (öğe başına 1–2 alıntı) bunu hedefliyor |
+| OCR yorumu ("112 inch" = ½) | A021, A025 | 2 | hayır (bugünkü şemada da riskli; burada sıkı kontrol yakaladı) |
+| Cümleye başka alfabeden karakter ("들") | N3, A015 | 2 | hayır (model hatası) |
+| Diğer (alıntı sınırında kesilme vb.) | 2 | 2 | |
+
+- Sizin tahmininiz (-3 ve -5 değerleri tek cümlede) bu sette 1 vakada (Q01) görüldü.
+- Asıl bedel tablo satırlarının bölünmesi (5). c150b'de bir öğe iki alıntı alabildiği için ikisini de azaltması beklenir; ölçüm sürüyor.
+
+**Yeni yanlış ret (7):**
+- Çok parçalı ya da varyantlı soru (Q09 kumaş + gramaj, A033 iki etiket yeri): model her cümleye tek alıntı bulamayınca reddediyor (c150b ile ölçülecek).
+- Uzun liste ya da prosedür (G7 panel düğmeleri, A102 kireç temizliği, A106 koruyucu ekipman): her maddeye alıntı gerektiği için ret.
+- **Ret doğru yönde (2):** A024 (bugünkü şemada da "spesifik bilgi yok" diyen kaçamak cevap), A086 (bugünkü şemada yanlış konunun değeri: ilik boyu).
+- Net: 7 retten 2'si iyileşme, 5'i şemanın bedeli.
+
+**Netleştirme kapısı, yeni tanım (yeniden puanlandı):**
+- Gereksiz netleştirme = değer aynıyken ya da soruda ürün/varyant belirtilmişken sorulan netleştirme.
+- Belge içi varyant: netleştirme YA DA bütün varyantların değerleri doğru.
+- Q26 ve A070 belge içi varyant ([eval/netlestirme_siniflari.json](../../netlestirme_siniflari.json)):
+  - A070: S-7300B s.98'de 5 mm, s.102–103'te 6 mm.
+  - Q26: pantolon s.8'de Tex 31–35, s.9'da 40 / 39 / 16 / 24–27.
+- **İkisinin de beklenen cevabı varyantları kapsamıyor** (yalnız 5 ve 31–35). Güncelleme önerisi: beklenen "5 / 6 mm" ve "31–35 / 40…", onayınızla.
+- Yeni tanımla Gemma 4 DeepInfra ve Venice: **gereksiz netleştirme 0**, belge içi varyant 2/2. Kalan kapı farkları: Q07 (arama; plan §21) ve süre.

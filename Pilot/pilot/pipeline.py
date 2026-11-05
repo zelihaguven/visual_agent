@@ -10,7 +10,7 @@ from .config import (CHUNKS_PATH, CLARIFY_DOC_RATIO, CLARIFY_METHOD, CLARIFY_MIN
                      TOP_K_SOURCES)
 from .llm import chat_json
 from .query import (CODE_IN_TEXT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific, code_key,
-                    context_entities, family, missing_entities, normalize_codes, question_lang,
+                    context_entities, missing_entities, normalize_codes, question_lang,
                     source_aliases, spoken_codes, strip_source_phrases, strip_terms)
 from .registry import BY_ID, DOCS, visible
 from .retrieve import FUSED_K, Hit, search
@@ -140,11 +140,10 @@ def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None
 
 
 def interchangeable(d1: str, d2: str) -> bool:
-    """Birbirinin yerine geçebilecek kaynaklar: iki ürün şartnamesi ya da aynı makine ailesinin modelleri."""
+    """Birbirinin yerine geçebilecek kaynaklar: iki ürün şartnamesi (makine ailesi kuralı 2026-11-05'te silindi)."""
     if d1 == d2:
         return False
-    both_products = BY_ID[d1].doc_type == BY_ID[d2].doc_type == "product_standard"
-    return both_products or d2 in family(d1)
+    return BY_ID[d1].doc_type == BY_ID[d2].doc_type == "product_standard"
 
 
 def doc_scores(hits: list[Hit]) -> list[tuple[str, float]]:
@@ -181,12 +180,9 @@ def post_search_ambiguity(hits: list[Hit], min_score: float = CLARIFY_MIN_SCORE,
         return doc_score_ambiguity(hits, ratio) if relevant else None
     top = list(dict.fromkeys(h.chunk["doc_id"] for h in hits[:3]))
     products = [d for d in top if BY_ID[d].doc_type == "product_standard"]
-    models = next((ms for ms in ([d for d in top if d in family(x)] for x in top) if len(ms) >= 2), [])
     relevant = hits[0].rerank_score is None or hits[0].rerank_score >= min_score
     if relevant and len(products) >= 2:
         return "products", products
-    if relevant and models:
-        return "models", models
     return None
 
 

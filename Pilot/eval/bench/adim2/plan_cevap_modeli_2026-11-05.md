@@ -599,3 +599,35 @@ B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfr
 5. Başka saatte süre turu 2 ve şemalı/şemasız ölçüm.
 6. Yerel taban.
 7. Rapor (`--report-c`), kapılar (§18), seçim önerisi. BRAND_ALIASES kararı netleştirme sonuçlarıyla.
+
+## 21. Karar ve bağlama planı (2026-11-05 gece; uygulamaya henüz bağlanmadı)
+
+**Karar:** Cevap modeli **Gemma 4 26B A4B, şema C**.
+
+**Sağlayıcı listesi:**
+- YALNIZ **Venice (bf16, birincil)** ve **DeepInfra (fp8, ikincil)**.
+- OpenRouter isteğinde `provider: {"order": ["venice", "deepinfra"], "only": ["venice", "deepinfra"], "allow_fallbacks": true}`. Yedeğe düşme bu ikisiyle sınırlı; ZDR kısıtı ve Safety Retention dışlaması (`cloud.openrouter_body`) aynen kalır.
+- Nicemleme farkı (bf16/fp8) bu sette kaliteyi değiştirmedi (bulunamadı, değer, netleştirme aynı). Yine de yanıtı veren sağlayıcı her cevapta denetim kaydına yazılır.
+
+**Bağlama adımları (sırayla; her biri ayrı commit, testli, ölçümle doğrulanır):**
+1. `pilot/prompts.py`: şema C (`ANSWER_SCHEMA_C`) ve istemi. Süre ölçümü (c150 / c150b) sonucuna göre son biçim seçilir. `bench/schema_c.py`'deki kod `pilot/verify.py`'ye taşınır: öğe başına doğrulama, iki biçim geçiş süresince birlikte.
+2. `pilot/llm.py` / `pilot/cloud.py`: bulut cevap modeli istemcisi (akışlı, UTF-8 bayt satır, düşünme kapalı, yukarıdaki sağlayıcı listesi). Yerel Ollama yolu taban olarak kalır.
+3. `pilot/pipeline.py`:
+   - `tur=netlestirme` → seçenekler kaynak numarasından doküman ve ürün adı (arayüz gösterir); `clarify_options` C yolunda kullanılmaz.
+   - `tur=bulunamadi` → mevcut "bulunamadı" akışı.
+   - Akışta her öğe tamamlanınca doğrulama ve gösterim: ilk doğrulanmış cümle.
+4. `app.py`: öğe listesi gösterimi (tek öğe paragraf, çok öğe numaralı liste, kaynak etiketleri koddan); sesli metin R15 kurallarıyla.
+5. `verify.py` yamalarının kaldırılması (§15.1 listesi): eski biçim bir sürüm daha okunur, sonra kalkar.
+6. Ölçüm: uygulama yolundan uçtan uca 30 soru (ilk doğrulanmış cümle ≤ 3 sn kapısı, arama öncesi dahil), sonra onaylı setin tamamı.
+
+**Çeviri (BM25 kolu; dondurulan aday yol bağlanırken):**
+- Gemma 4, **NextBit birincil**.
+- **İkinci sağlayıcı: Venice ya da DeepInfra.** Çeviri ölçümünde DeepInfra Gemma 3 yavaştı (p50 2,1 sn); Gemma 4'ün DeepInfra ve Venice'teki çeviri süresi ölçülmedi. Bağlamadan önce 30 çağrı × 2 sağlayıcı kısa ölçüm (~0,001 USD), sonra `only: [nextbit, <ikinci>]`.
+- **Kayıtlardan takılma kontrolü:** Çeviri ölçümlerinde (t1/t2, 2 × 1050 çağrı) takılma yok. Gemma 4 NextBit'te en uzun çağrı 1,64 sn, en uzun çıktı 87 token; DeepInfra Gemma 3'te 5–6 sn'lik birkaç çağrı. NextBit'in cevap modelindeki takılmaları uzun ve şemaya zorlanmış çıktılarda; çevirinin kısa `json_object` çıktısında görülmedi.
+
+**Q07 arama bulgusu (B4):**
+- Uygulamanın varsayılan yolunda (Türkçe soruyla BM25) BM25 İngilizce belgelerde hiçbir şey bulamıyor. Dense arama "stitch"ten Brother kılavuzlarını getiriyor; ceket ve pantolon ilk 5'te yok.
+- Çevirili BM25'te:
+  - Gemma 3 çevirisi ("stitches per inch (SPI) … exterior seams"): pantolon s.19 ve ceket s.22–23 ilk 5'te; netleştirme mümkün.
+  - Gemma 4 çevirisi ("SPI … visible stitches"): pantolon s.19 ve ceket s.25 (başka tablo); ceket s.22–23 BM25'te 5. sırada, birleşik ilk 5'e girmiyor.
+- **Sonuç:** Q07 cevap modelinin değil, çevirisiz varsayılan aramanın sorunu. Dondurulan aday yolun (çevirili BM25) bağlanması gerekiyor. Gemma 4 çevirisinde terim seçimi ("visible stitches") bu soruda Gemma 3'ten zayıf; tek soruda karar verilmez, onaylı setteki BM25 isabeti §10.8'de.

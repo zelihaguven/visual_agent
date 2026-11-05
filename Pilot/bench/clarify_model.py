@@ -1,4 +1,6 @@
-"""Netleştirme, MODELLE (Gemma 4): ürün belli olmayan sorularda netleştirme soruluyor mu, seçenekler doğru mu
+"""TARİHSEL ARAÇ: BRAND_ALIASES ve "S-7300" aile grubu 2026-11-05'te silindi; kural bayrağı artık etkisiz.
+
+Netleştirme, MODELLE (Gemma 4): ürün belli olmayan sorularda netleştirme soruluyor mu, seçenekler doğru mu
 (Adım 2 planı §11, onay 2026-11-05). Önceki ölçüm (bench/doc_rules_diff.py) modeli çağırmadan yapılmıştı.
 
 Durumlar (arama uygulamanın varsayılan yolu, canlı; cevap modeli Gemma 4, DeepInfra, düşünme kapalı, aynı istem):

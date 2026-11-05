@@ -58,11 +58,6 @@ DOCS: tuple[DocMeta, ...] = (
 
 BY_ID = {d.doc_id: d for d in DOCS}
 
-# Aynı üreticinin birden çok modeli olduğunda yalnızca marka adı geçerse tüm modelleri kapsar.
-BRAND_ALIASES: dict[str, tuple[str, ...]] = {
-    "brother": ("brother-s7300a", "brother-s7300b"),
-}
-
 # Müşteri (ürün sahibi) markaları ve şartnameleri. Soruda yalnız marka geçerse o markanın tüm şartnameleri kapsanır
 # ("US Army SPI?" → ceket mi pantolon mu sorulur). Gerçek sistemde bu tablo müşteri kaydından ve yetkiden gelir.
 # Dokümanı olmayan markalar (Nike ...) query.FOREIGN_BRANDS'te: aynı türden varlık, şartnamesi yok.

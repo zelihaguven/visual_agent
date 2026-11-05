@@ -1,3 +1,5 @@
+> **Durum (2026-11-05, kullanıcı kararı):** B001, B035, B036, B037 çıkarıldı (JUKI'ye dokunuyor). C008'e `ocr` etiketi. Kalan 46 soru onaylandı (onaylayan: geliştirme ekibi) ve `eval/aday_sorular_ek.json` setine girdi (36 "bulunamadı", 10 "değer farklı" netleştirme). Aşağıdaki tablo taslak dökümüdür.
+
 # Aday sorular ek seti (2026-11-05)
 
 Değerlendirme setini büyütmek için model önerisi adaylar. **Hiçbiri onaylı değil** (`dogrulandi: false`); her satır kullanıcı onayı bekliyor. Model ya da bulut çağrısı yapılmadı. Kanıt, `data/chunks.jsonl` (juki dahil tüm korpus) ve PDF metin katmanında düzenli ifade araması (Granovsky'nin harf aralıklı metninde boşluksuz arama). juki-mo6800s'e dayanan soru yok. juki yalnız 'bulunamadı' kontrolünde arandı; B001, B035–B037'de tuzak olarak anılıyor.

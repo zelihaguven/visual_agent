@@ -5,14 +5,8 @@ import re
 from dataclasses import dataclass
 from functools import lru_cache
 
-from . import config
 from .config import CHUNKS_PATH
-from .registry import BRAND_ALIASES, BY_ID, CUSTOMER_BRANDS, DOCS
-
-
-def brand_aliases() -> dict[str, tuple[str, ...]]:
-    """Elle yazılmış makine markası grupları; yalnız "brand_aliases" kuralı açıkken (config.DOC_SPECIFIC_RULES)."""
-    return BRAND_ALIASES if "brand_aliases" in config.DOC_SPECIFIC_RULES else {}
+from .registry import BY_ID, CUSTOMER_BRANDS, DOCS
 
 
 _TR_LOWER = str.maketrans({"I": "ı", "İ": "i"})
@@ -219,12 +213,8 @@ def analyze_query(question: str) -> QueryContext:
                 matched.append(alias)
                 entities.append((alias, KIND_OF_DOC_TYPE.get(doc.doc_type, "rehber"), (doc.doc_id,)))
                 break
-    # Model kodu belirtilmemiş makine markası ("Brother") ya da aile kodu ("S-7300"): modellerin hepsi, belirsiz.
     # Müşteri markası ("US Army"), ürün belirtilmemişse: o markanın şartnamelerinin hepsi, belirsiz.
-    groups = [(b, "makine", ids) for b, ids in brand_aliases().items()]
-    if "s7300_family" in config.DOC_SPECIFIC_RULES:
-        groups.append(("s7300", "makine", ("brother-s7300a", "brother-s7300b")))
-    groups += [(b, "marka", ids) for b, ids in CUSTOMER_BRANDS.items()]
+    groups = [(b, "marka", ids) for b, ids in CUSTOMER_BRANDS.items()]
     for alias, kind, ids in groups:
         # "s7300", "S-7300A" eşleşmesinin bir parçasıysa ayrı varlık değildir
         if alias not in q or any(e[2] == ids or alias in _squash(e[0]) for e in entities):
@@ -240,32 +230,24 @@ def analyze_query(question: str) -> QueryContext:
                         tuple(dict.fromkeys(variants)), tuple(entities))
 
 
-def family(doc_id: str) -> set[str]:
-    """Aynı makine ailesindeki dokümanlar (S-7300A → {A, B}). Aile yoksa (ya da kurallar kapalıysa) yalnız kendisi."""
-    for ids in brand_aliases().values():
-        if doc_id in ids:
-            return set(ids)
-    return {doc_id}
-
-
 def _must_match(kind: str, scope: list[str]) -> bool:
     return any(MUST_MATCH.get(BY_ID[d].doc_type, {}).get(kind, False) for d in scope)
 
 
 def missing_entities(ctx: QueryContext, scope: list[str]) -> list[tuple[str, str, tuple[str, ...]]]:
     """Sorudaki varlıklardan, seçilen kaynak türü için eşleşmesi gerekip (MUST_MATCH) seçilen kaynakta karşılığı
-    olmayanlar. Aynı ailedeki modeller birbirinin yerine geçebilir ("diğer modelde ara" engellenmez).
+    olmayanlar.
 
     "Brother A makinesi ceket ölçüsü" + S-7300A → 'ceket' eksik (kılavuz ürüne özgü bilgi içermez).
     Aynı soru + Ceket şartnamesi → 'brother' bağlamdır, eksik sayılmaz (şartname makineden bağımsız).
     """
-    reach = set().union(*(family(d) for d in scope)) if scope else set()
+    reach = set(scope)
     return [e for e in ctx.entities if _must_match(e[1], scope) and not reach & set(e[2])]
 
 
 def context_entities(ctx: QueryContext, scope: list[str]) -> list[str]:
     """Seçilen kaynak için bağlam olan (aramayı ve cevabı etkilememesi gereken) varlık ifadeleri."""
-    reach = set().union(*(family(d) for d in scope)) if scope else set()
+    reach = set(scope)
     return [e[0] for e in ctx.entities if not _must_match(e[1], scope) and not reach & set(e[2])]
 
 

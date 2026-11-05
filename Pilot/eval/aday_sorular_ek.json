@@ -1,25 +1,5 @@
 [
  {
-  "id": "B001",
-  "kind": "bulunamadı",
-  "q": "S-7300A çalışırken gürültü seviyesi kaç dB?",
-  "zorluk": [
-   "bulunamadi",
-   "komsu_deger"
-  ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
-  "expect_docs": [],
-  "expect_pages": [],
-  "expect_in_answer": [],
-  "expect_not_found": true,
-  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bdB\\b|dB\\(A\\)|decibel|sound (pressure|level)|noise level/. Sonuç: S-7300A ve S-7300B'de dB değeri yok; 'noise' yalnız elektriksel gürültü uyarısında (brother-s7300a-00005). Ses basıncı değeri (83,0 dB) yalnız ayrı tutulan juki-mo6800s-00020'de: model onu S-7300A'ya mal etmemeli.",
-  "en_yakin_parcalar": [
-   "brother-s7300a-00005",
-   "juki-mo6800s-00020"
-  ]
- },
- {
   "id": "B002",
   "kind": "bulunamadı",
   "q": "Ceket kumaşının gramajı (birim alan ağırlığı, oz/yd²) ne olmalı?",
@@ -27,8 +7,8 @@
    "bulunamadi",
    "komsu_deger"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -37,7 +17,9 @@
   "en_yakin_parcalar": [
    "gl-pd-14-04a-00044",
    "gl-pd-07-14a-00044"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B003",
@@ -47,8 +29,8 @@
    "bulunamadi",
    "komsu_deger"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -57,7 +39,9 @@
   "en_yakin_parcalar": [
    "gl-pd-07-14a-00215",
    "gl-pd-07-14a-00058"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B004",
@@ -67,8 +51,8 @@
    "bulunamadi",
    "komsu_deger"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -76,7 +60,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /°|degree|fahrenheit|celsius/ (mrcoffee-2003), /warm(er|ing) (plate|temperature)/. Sonuç: Derece/sıcaklık değeri yok. Yalnız ayarlanabilir ısıtma plakası ve 'Warmer Temperature Knob' anılıyor (mrcoffee-2003-00045, -00035), sayı yok.",
   "en_yakin_parcalar": [
    "mrcoffee-2003-00045"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B005",
@@ -86,8 +72,8 @@
    "bulunamadi",
    "komsu_deger"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -95,7 +81,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\d+(-\\d/\\d)?\\s*(″|\\\"|in\\.?|inch(es)?)\\s*(x|×|by)\\s*\\d+/, /\\d+\\s*(mm|cm)\\s*(x|×)/, /dimension|table size|tabletop/ (bosch-ra1171). Sonuç: Tabla ölçüsü yok; 'x' içeren ölçüler yalnız vida boyları (ör. bosch-ra1171-00092 '#10-32 x 1/2″'). 'Tabletop' geçen yerler montaj/ek halka anlatımı (bosch-ra1171-00139: 4 montaj deliği, 1/4″ vida).",
   "en_yakin_parcalar": [
    "bosch-ra1171-00139"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B006",
@@ -105,8 +93,8 @@
    "bulunamadi",
    "komsu_deger"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -114,7 +102,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /altitude|elevation|above sea/ (tüm korpus). Sonuç: Rakım hiçbir belgede yok. Komşu çevre koşulları var: ortam 5–35 °C, bağıl nem %45–85 (brother-s7300a-00007); rakım değil.",
   "en_yakin_parcalar": [
    "brother-s7300a-00007"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B007",
@@ -124,8 +114,8 @@
    "bulunamadi",
    "komsu_deger"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -134,7 +124,9 @@
   "en_yakin_parcalar": [
    "strickland-1956-00020",
    "strickland-1956-00026"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B008",
@@ -144,8 +136,8 @@
    "bulunamadi",
    "baska_urunde_var"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -153,7 +145,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /belt loop|beltloop/ (gl-pd-14-04a). Sonuç: Cekette kemer köprüsü yok. Pantolonda var: 7 adet, 3/8–1/2 inç (gl-pd-07-14a-00084): ceket için kullanılmamalı.",
   "en_yakin_parcalar": [
    "gl-pd-07-14a-00084"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B009",
@@ -163,8 +157,8 @@
    "bulunamadi",
    "baska_urunde_var"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -172,7 +166,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /drawcord|draw cord|cord lock|elastic cord/, /cargo/ (gl-pd-14-04a). Sonuç: Cekette kargo cebi ve lastikli bağcık yok. Pantolonda 1/8 inç çaplı lastik kordon (gl-pd-07-14a-00057).",
   "en_yakin_parcalar": [
    "gl-pd-07-14a-00057"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B010",
@@ -182,8 +178,8 @@
    "bulunamadi",
    "baska_urunde_var"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -191,7 +187,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /pencil/ (gl-pd-07-14a). Sonuç: Pantolonda kalem cebi yok. Cekette sol kolda 2 bölmeli, 2-3/8 (± 1/8) inç (gl-pd-14-04a-00101).",
   "en_yakin_parcalar": [
    "gl-pd-14-04a-00101"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B011",
@@ -201,8 +199,8 @@
    "bulunamadi",
    "baska_urunde_var"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -210,7 +208,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\brank\\b|rank patch|name tape|IFF/ (gl-pd-07-14a). Sonuç: Pantolonda rütbe arması yok ('U.S. Army' yalnız adreslerde). Cekette 2 x 2 inç cırt bant (gl-pd-14-04a-00113).",
   "en_yakin_parcalar": [
    "gl-pd-14-04a-00113"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B012",
@@ -220,8 +220,8 @@
    "bulunamadi",
    "baska_urunde_var"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -230,7 +230,9 @@
   "en_yakin_parcalar": [
    "brother-s7300b-00194",
    "brother-s7300b-00024"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B013",
@@ -240,8 +242,8 @@
    "bulunamadi",
    "baska_urunde_var"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -250,7 +252,9 @@
   "en_yakin_parcalar": [
    "brother-s7300b-00057",
    "brother-s7300b-00063"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B014",
@@ -260,8 +264,8 @@
    "bulunamadi",
    "baska_urunde_var"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -269,7 +273,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /premier/ (brother-s7300a). Sonuç: S-7300A'da 'Premier' tipi hiç geçmiyor. S-7300B'de '12-11-1. Thread trimming (Premier specifications)' bölümü var (brother-s7300b-00431..-00433, s.99–101).",
   "en_yakin_parcalar": [
    "brother-s7300b-00431"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B015",
@@ -279,8 +285,8 @@
    "bulunamadi",
    "baska_urunde_var"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -289,7 +295,9 @@
   "en_yakin_parcalar": [
    "gl-pd-07-14a-00045",
    "gl-pd-14-04a-00044"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B016",
@@ -299,8 +307,8 @@
    "bulunamadi",
    "terim_eslesir"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -309,7 +317,9 @@
   "en_yakin_parcalar": [
    "gl-pd-14-04a-00037",
    "gl-pd-14-04a-00053"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B017",
@@ -319,8 +329,8 @@
    "bulunamadi",
    "terim_eslesir"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -329,7 +339,9 @@
   "en_yakin_parcalar": [
    "gl-pd-07-14a-00240",
    "gl-pd-07-14a-00044"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B018",
@@ -339,8 +351,8 @@
    "bulunamadi",
    "terim_eslesir"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -349,7 +361,9 @@
   "en_yakin_parcalar": [
    "gl-pd-14-04a-00351",
    "gl-pd-14-04a-00061"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B019",
@@ -359,8 +373,8 @@
    "bulunamadi",
    "terim_eslesir"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -369,7 +383,9 @@
   "en_yakin_parcalar": [
    "brother-s7300a-00086",
    "brother-s7300a-00238"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B020",
@@ -379,8 +395,8 @@
    "bulunamadi",
    "terim_eslesir"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -388,7 +404,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /vacuum port|vacuum hose|hose|dust/, /watt|\\bW\\b|air ?flow|cfm/ (bosch-ra1171). Sonuç: Vakum portu var ama güç/debi değeri yok: yalnız 2-1/2″ ağızlı ıslak/kuru süpürge (bosch-ra1171-00161) ve kablonun yuvadan geçirilmesi (-00162).",
   "en_yakin_parcalar": [
    "bosch-ra1171-00161"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B021",
@@ -398,8 +416,8 @@
    "bulunamadi",
    "terim_eslesir"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -407,7 +425,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /micron|pore|activated|charcoal|carbon/ (mrcoffee-2003). Sonuç: Mikron değeri yok. Filtre 'karbon esaslı', klorun %97'sini alıyor ve ayda bir değişiyor (mrcoffee-2003-00057): gözenek boyutu değil.",
   "en_yakin_parcalar": [
    "mrcoffee-2003-00057"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B022",
@@ -417,8 +437,8 @@
    "bulunamadi",
    "alan_disi_tekstil"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -426,7 +446,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /knit|hosiery|stocking|sock/, /cylinder needle|latch needle|sinker/ (tüm korpus). Sonuç: Örme makinesi hiçbir belgede yok ('knit' yalnız Strickland'da ince örme tişört malzemesi, strickland-1956-00027). Granovsky'deki 'iğne' konuları tarak/iğne şeridi (tarak makinesi), örme değil.",
   "en_yakin_parcalar": [
    "strickland-1956-00027"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B023",
@@ -436,8 +458,8 @@
    "bulunamadi",
    "alan_disi_tekstil"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -445,7 +467,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /jacquard|dobby/ (granovsky-1986). Sonuç: Granovsky jakarı açıkça kapsam dışı bırakıyor: 'Jacquard shedding motions are not discussed in this book' (granovsky-1986-00622). Armür (dobby) anlatılıyor, jakar değil.",
   "en_yakin_parcalar": [
    "granovsky-1986-00622"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B024",
@@ -455,8 +479,8 @@
    "bulunamadi",
    "alan_disi_tekstil"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -464,7 +488,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bdye|dyeing|bleach|stenter|tenter|mercer|finishing machine/ (tüm korpus). Sonuç: Boyama makinesi yok. 'dye' yalnız şartnamelerde kusur ('dye streak') ve kumaş boyama şartı (gl-pd-07-14a-00043); Granovsky PDF eşleşmeleri boşluksuz metinde kelime sınırı hatası.",
   "en_yakin_parcalar": [
    "gl-pd-07-14a-00043"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B025",
@@ -474,8 +500,8 @@
    "bulunamadi",
    "alan_disi_tekstil"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -483,7 +509,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /stenter|tenter|ram\\b|pin chain/ (tüm korpus). Sonuç: Ram makinesi hiçbir parçada yok (PDF boşluksuz eşleşmeleri kelime sınırı hatası, ör. 'p-ram'). Granovsky kapsamı: harman/hallaç, tarak, cer, fitil, ring/open-end iplik, çözgü, haşıl, dokuma (granovsky-1986-00002/-00003 içindekiler).",
   "en_yakin_parcalar": [
    "granovsky-1986-00003"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B026",
@@ -493,8 +521,8 @@
    "bulunamadi",
    "alan_disi_tekstil"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -502,7 +530,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /tuft|carpet|pile height|loop height/ (tüm korpus). Sonuç: Halı makinesi yok. 'tufts' yalnız Granovsky'de yarım tamburu temizleyen fırça kılı demetleri (granovsky-1986-00371); 'pile' Brother'da tüylü kumaşta ayak yüzdürme (brother-s7300a-00402).",
   "en_yakin_parcalar": [
    "granovsky-1986-00371"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B027",
@@ -512,8 +542,8 @@
    "bulunamadi",
    "alan_disi_tekstil"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -522,7 +552,9 @@
   "en_yakin_parcalar": [
    "gl-pd-07-14a-00058",
    "granovsky-1986-00445"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B028",
@@ -532,14 +564,16 @@
    "bulunamadi",
    "alan_disi_tekstil"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /nonwoven|non-woven|needle.?punch|needle ?board|needle ?loom|felting/ (tüm korpus). Sonuç: Nonwoven/iğneleme makinesi hiçbir belgede yok.",
-  "en_yakin_parcalar": []
+  "en_yakin_parcalar": [],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B029",
@@ -549,8 +583,8 @@
    "bulunamadi",
    "ingilizce"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -559,7 +593,9 @@
   "en_yakin_parcalar": [
    "mrcoffee-2003-00110",
    "mrcoffee-2003-00082"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B030",
@@ -569,8 +605,8 @@
    "bulunamadi",
    "ingilizce"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -578,7 +614,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\$|price|cost/ (mrcoffee-2003). Sonuç: Fiyat yok; yalnız nereden alınacağı (perakendeci veya 1-800-MR-COFFEE, mrcoffee-2003-00142; A105 kapsamı).",
   "en_yakin_parcalar": [
    "mrcoffee-2003-00142"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B031",
@@ -588,8 +626,8 @@
    "bulunamadi",
    "ingilizce"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -597,7 +635,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bIP ?\\d\\d|ingress|protection class/ (tüm korpus). Sonuç: IP koruma sınıfı hiçbir belgede yok ('protection Class 2' yalnız pantolon böcek koruma etiketi, gl-pd-07-14a-00125).",
   "en_yakin_parcalar": [
    "gl-pd-07-14a-00125"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B032",
@@ -607,8 +647,8 @@
    "bulunamadi",
    "ingilizce"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -617,7 +657,9 @@
   "en_yakin_parcalar": [
    "bosch-ra1171-00038",
    "bosch-ra1171-00015"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B033",
@@ -627,8 +669,8 @@
    "bulunamadi",
    "ingilizce"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -636,7 +678,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /shelf.?life|storage life|expir/ (gl-pd-14-04a, gl-pd-07-14a). Sonuç: Raf ömrü yok. 'stored ... no longer than three (3) months' yalnız GC numune şişeleri için laboratuvar kuralı (gl-pd-14-04a-00380): giysi değil.",
   "en_yakin_parcalar": [
    "gl-pd-14-04a-00380"
-  ]
+  ],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B034",
@@ -646,8 +690,8 @@
    "bulunamadi",
    "ingilizce"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -655,64 +699,9 @@
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /torque|in\\.?-?lbs?\\b|N·m|ft\\.?-?lbs?/ (bosch-ra1171). Sonuç: Tork değeri yok; 'torque' yalnız sembol tablosunda (bosch-ra1171-00039). Montaj adımları 'SECURELY tighten' der, değer vermez.",
   "en_yakin_parcalar": [
    "bosch-ra1171-00039"
-  ]
- },
- {
-  "id": "B035",
-  "kind": "bulunamadı",
-  "q": "S-7300A'da E07 hatası ne demek?",
-  "zorluk": [
-   "bulunamadi",
-   "kod_kural_disi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
-  "expect_docs": [],
-  "expect_pages": [],
-  "expect_in_answer": [],
-  "expect_not_found": true,
-  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /(?<![A-Za-z0-9])E[- ]?0*7(?![0-9])/ (tüm korpus; kod anahtarı E,7). Sonuç: S-7300A/B'de E07/E007 yok (Brother kodları E050–E890). Yalnız ayrı tutulan juki-mo6800s-00209'da 'E07 Lock error': kapsam dışı belgede geçen kod.",
-  "en_yakin_parcalar": [
-   "juki-mo6800s-00209"
-  ]
- },
- {
-  "id": "B036",
-  "kind": "bulunamadı",
-  "q": "S-7300B ekranında E14 çıktı, ne yapmalıyım?",
-  "zorluk": [
-   "bulunamadi",
-   "kod_kural_disi"
-  ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
-  "expect_docs": [],
-  "expect_pages": [],
-  "expect_in_answer": [],
-  "expect_not_found": true,
-  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /(?<![A-Za-z0-9])E[- ]?0*14(?![0-9])/ (tüm korpus). Sonuç: S-7300A/B'de E14/E014 yok. Yalnız juki-mo6800s-00211'de (enkoder sinyali): kapsam dışı belgede geçen kod.",
-  "en_yakin_parcalar": [
-   "juki-mo6800s-00211"
-  ]
- },
- {
-  "id": "B037",
-  "kind": "bulunamadı",
-  "q": "S-7300A'da P54 parametresi neyi ayarlar?",
-  "zorluk": [
-   "bulunamadi",
-   "kod_kural_disi"
-  ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
-  "expect_docs": [],
-  "expect_pages": [],
-  "expect_in_answer": [],
-  "expect_not_found": true,
-  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /(?<![A-Za-z0-9])P[- ]?54(?![0-9])/ (tüm korpus). Sonuç: Brother'da P54 yok (bellek anahtarları 001–599 numaralı, P önekli değil; 'P2/P3' yalnız konektör). Yalnız juki-mo6800s-00124..'de 'Model selection (P54)'.",
-  "en_yakin_parcalar": [
-   "juki-mo6800s-00124"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B038",
@@ -722,14 +711,16 @@
    "bulunamadi",
    "kod_kural_disi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bErr\\b|\\bErr[- .]?\\d/, /E[- ]?0*4(?![0-9])/ (tüm korpus). Sonuç: 'Err' biçimi hiçbir belgede yok; E4/E004 de yok. Biçim CODE_TOKEN_RE'ye ([A-Za-z]{1,3}\\d{2,5}) uymuyor (tek hane, tire).",
-  "en_yakin_parcalar": []
+  "en_yakin_parcalar": [],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B039",
@@ -739,14 +730,16 @@
    "bulunamadi",
    "kod_kural_disi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /(?<![A-Za-z0-9])F[- ]?0*12(?![0-9])/ (tüm korpus). Sonuç: F önekli hata kodu hiçbir belgede yok (Brother yalnız E kodu kullanıyor).",
-  "en_yakin_parcalar": []
+  "en_yakin_parcalar": [],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "B040",
@@ -756,14 +749,16 @@
    "bulunamadi",
    "kod_kural_disi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /E[- ]?4096/ (tüm korpus); Brother kod listesi E050–E890. Sonuç: Dört haneli E kodu hiçbir belgede yok; Brother listesi E050–E890 arası üç haneli. Tireli biçim CODE_TOKEN_RE'ye birebir uymuyor.",
-  "en_yakin_parcalar": []
+  "en_yakin_parcalar": [],
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C001",
@@ -773,8 +768,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -824,7 +819,9 @@
     "alinti": "Presser foot height | Lifting lever | Knee lifter | 6mm | 13mm"
    }
   ],
-  "kanit_notu": "kaldırma kolu iki modelde 6 mm; ayar metni de 16/13 mm (A -00058 s.17, B -00056 s.17)"
+  "kanit_notu": "kaldırma kolu iki modelde 6 mm; ayar metni de 16/13 mm (A -00058 s.17, B -00056 s.17)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C002",
@@ -834,8 +831,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -885,7 +882,9 @@
     "alinti": "The sewing machine weighs approximately 39 kg (86lb)."
    }
   ],
-  "kanit_notu": "juki de korpusta: kapsam S-7300 ailesi değilse olası ürün listesi daha geniş çıkabilir"
+  "kanit_notu": "juki de korpusta: kapsam S-7300 ailesi değilse olası ürün listesi daha geniş çıkabilir",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C003",
@@ -895,8 +894,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -947,7 +946,9 @@
     "alinti": "-3 specifications 5000sti/min / 2.0 4000sti/min / 3.0 3500sti/min / 4.0 2500sti/min / 5.0 -5 specifications 4500sti/min / 2.5 4000sti/min / 3.0 3500sti/min / 4.0 3000sti/min / 5.0"
    }
   ],
-  "kanit_notu": "tablo satırı; 'yörünge 2' satırında da aynı fark var (A -00355, B -00375)"
+  "kanit_notu": "tablo satırı; 'yörünge 2' satırında da aynı fark var (A -00355, B -00375)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C004",
@@ -957,8 +958,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -1012,7 +1013,9 @@
     "alinti": "Overedge or pre-hemming shall be 6-10 stitches per inch."
    }
   ],
-  "kanit_notu": "Q11/Q12 aynı değerleri tek ürünlü soruyor; netleştirme sürümü yok"
+  "kanit_notu": "Q11/Q12 aynı değerleri tek ürünlü soruyor; netleştirme sürümü yok",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C005",
@@ -1022,8 +1025,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -1074,7 +1077,9 @@
     "alinti": "Condition: After 20 launderings | % Bite Protection: >/=90%"
    }
   ],
-  "kanit_notu": "ceket Type I ile pantolon aynı (%90); Type II'de fark var (ceket %80, pantolon %90)"
+  "kanit_notu": "ceket Type I ile pantolon aynı (%90); Type II'de fark var (ceket %80, pantolon %90)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C006",
@@ -1084,8 +1089,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -1135,7 +1140,9 @@
     "alinti": "Initial | Min: mg/cm2: 0.087 | Max: mg/cm2: 0.130"
    }
   ],
-  "kanit_notu": "ceket Type II = pantolon; Type I/III farklı. 20 yıkama sonrası alt sınır (0,025) iki belgede aynı (A029)"
+  "kanit_notu": "ceket Type II = pantolon; Type I/III farklı. 20 yıkama sonrası alt sınır (0,025) iki belgede aynı (A029)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C007",
@@ -1145,8 +1152,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -1196,7 +1203,9 @@
     "alinti": "The purling shall be on the outside surface."
    }
   ],
-  "kanit_notu": "A140 ile aynı öğe (ilik) ama farklı özellik; kesim boyu 3/4–7/8 inç iki belgede aynı"
+  "kanit_notu": "A140 ile aynı öğe (ilik) ama farklı özellik; kesim boyu 3/4–7/8 inç iki belgede aynı",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C008",
@@ -1204,10 +1213,11 @@
   "q": "Yan dikişlerde LSc-2 çift bindirme dikişinin aralığı (gauge) ne olmalı?",
   "zorluk": [
    "netlestirme",
-   "deger_farkli"
+   "deger_farkli",
+   "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -1258,7 +1268,9 @@
     "alinti": "Gage: 3116 to 9/32 inch gauge (double lap seam)"
    }
   ],
-  "kanit_notu": "pantolon metninde OCR: '3116' = 3/16"
+  "kanit_notu": "pantolon metninde OCR: '3116' = 3/16",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C009",
@@ -1268,8 +1280,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -1320,7 +1332,9 @@
     "alinti": "Gage: 1 inch wide hem"
    }
   ],
-  "kanit_notu": "dikiş tipi iki belgede EFb-1 / 301"
+  "kanit_notu": "dikiş tipi iki belgede EFb-1 / 301",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "C010",
@@ -1330,8 +1344,8 @@
    "netlestirme",
    "deger_farkli"
   ],
-  "dogrulandi": false,
-  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): taslak model önerisiydi, korpus kontrolü yapıldı",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -1382,6 +1396,8 @@
     "alinti": "FR identification marker to left cargo pocket flap (Type II trouser only)"
    }
   ],
-  "kanit_notu": "A004 ceket için tek ürünlü soruyor; netleştirme sürümü yok"
+  "kanit_notu": "A004 ceket için tek ürünlü soruyor; netleştirme sürümü yok",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  }
 ]

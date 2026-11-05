@@ -82,13 +82,12 @@ def test_foreign_brand_returns_not_found_without_search_or_llm(calls):
     assert "Nike" in r.answer["neden"]
 
 
-@pytest.mark.usefixtures("doc_rules")
-def test_ambiguous_model_asks_before_search_or_llm(calls):
+def test_model_family_question_goes_to_search_and_model(calls):
+    # "S-7300" aile kuralı 2026-11-05'te silindi: kural katmanı sormaz, arama filtresiz; ürünler arası
+    # belirsizliği cevap modeli şema C'nin netleştirme moduyla sorar (Adım 2 planı §11, §20).
     r = pipeline.soru_cevapla("S-7300'ün maksimum dikiş hızı nedir?")
-    assert r.verification.status == "clarify"
-    assert calls["search"] == [] and calls["llm"] == []
-    assert {o["doc_id"] for o in r.answer["secenekler"]} == {"brother-s7300a", "brother-s7300b"}
-    assert r.answer["netlestirme_sorusu"]
+    assert calls["search"] and calls["search"][0]["doc_ids"] is None and calls["llm"]
+    assert r.llm_called
 
 
 def test_chosen_variant_runs_normally(calls):
@@ -139,15 +138,6 @@ PANTOLON = dict(CHUNK, chunk_id="gl-pd-07-14a-00001", doc_id="gl-pd-07-14a", pro
                 text="The seams for all outside visible stitching shall be sewn with 10-14 stitches per inch.")
 
 
-@pytest.mark.usefixtures("doc_rules")
-def test_machine_plus_product_question_offers_all_sources(calls):
-    # "Brother A makinesi ceket ölçüsü": A / B seçenekleri yanında ceket şartnamesi de seçenek olmalı
-    r = pipeline.soru_cevapla("brother marka a makinesi ceket ölçüsü")
-    assert r.verification.status == "clarify"
-    assert {o["doc_id"] for o in r.answer["secenekler"]} == {"brother-s7300a", "brother-s7300b", "gl-pd-14-04a"}
-    assert calls["search"] == [] and calls["llm"] == []
-
-
 def test_explicit_model_plus_product_asks_which_source(calls):
     # Kullanıcı denemesi: model adı yazılınca belirsizlik yoktu, arama A + cekette yapıldı,
     # cevap A kılavuzundan "ceket ölçüsü 5 mm veya 7 mm" oldu
@@ -178,28 +168,14 @@ def test_product_missing_in_machine_manual_offers_search_without_product_name(ca
     assert r.answer["yalin_soru"] == "dikerken S-7300A'da iplik gerginliği"
 
 
-@pytest.mark.usefixtures("doc_rules")
 def test_choosing_the_product_source_with_vague_question_asks_what_is_wanted(calls):
     # Windows denemesi: Ceket seçilince "ceket ölçüsü" beden tablosu ve punteriz satırları getirdi, model boş cevap
     # verdi ("doğrulanamadı"). Soru neyi sorduğunu söylemiyor: model çağrılmadan sorulur, kullanıcı ayrıntıyı yazar
     # (elle yazılmış konu seçenekleri, ASPECTS, 2026-11-05'te silindi).
-    r = pipeline.soru_cevapla("brother marka a makinesi ceket ölçüsü", doc_ids=["gl-pd-14-04a"])
+    r = pipeline.soru_cevapla("Ceketin ölçüleri nedir?", doc_ids=["gl-pd-14-04a"])
     assert r.verification.status == "clarify"
     assert calls["search"] == [] and calls["llm"] == []
     assert r.answer["secenekler"] == [] and r.answer["ipucu"]
-
-
-@pytest.mark.usefixtures("doc_rules")
-def test_chosen_topic_runs_and_machine_brand_is_only_context(monkeypatch, calls):
-    seen = []
-    monkeypatch.setattr(pipeline, "search", lambda q, **kw: (seen.append(q), [Hit(CHUNK, 0, 3.0)])[1])
-    r = pipeline.soru_cevapla("brother marka a makinesi ceket ölçüsü (dış görünür dikişlerde inç başına dikiş)",
-                              doc_ids=["gl-pd-14-04a"])
-    assert r.verification.status == "verified"
-    # Şartname makineden bağımsız: "brother" aramadan ve modele giden sorudan çıkarılır, kullanıcıya gösterilir
-    assert "brother" not in seen[0].lower()
-    assert "brother" not in calls["llm"][0].split("<soru>")[1].lower()
-    assert r.context_terms == ["brother"]
 
 
 def test_customer_brand_without_product_asks_which_product(calls):
@@ -246,14 +222,12 @@ S7300A = dict(CHUNK, chunk_id="brother-s7300a-00087", doc_id="brother-s7300a", b
 S7300B = dict(S7300A, chunk_id="brother-s7300b-00090", doc_id="brother-s7300b", product="S-7300B düz dikiş makinesi")
 
 
-@pytest.mark.usefixtures("doc_rules")
-def test_model_ambiguity_after_search_asks_before_llm(monkeypatch, calls):
-    # "Masura kovanı nasıl takılır?": aynı bölüm A ve B'de. Eskiden model 158 sn çalışıp "hangi model?" diye soruyordu
+def test_model_ambiguity_after_search_is_left_to_the_model(monkeypatch, calls):
+    # "Masura kovanı nasıl takılır?": aynı bölüm A ve B'de. Aile kuralı silindi (2026-11-05): kural katmanı
+    # "hangi model?" sormaz; değer aynıysa model iki kaynakla cevaplar, farklıysa netleştirme sorar (şema C).
     monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(S7300A, 0, -0.7), Hit(S7300B, 1, -0.7)])
-    r = pipeline.soru_cevapla("Masura kovanı nasıl takılır?")
-    assert r.verification.status == "clarify" and calls["llm"] == []
-    assert [o["doc_id"] for o in r.answer["secenekler"]] == ["brother-s7300a", "brother-s7300b"]
-    assert "model" in r.answer["netlestirme_sorusu"]
+    pipeline.soru_cevapla("Masura kovanı nasıl takılır?")
+    assert calls["llm"]
 
 
 def test_irrelevant_results_do_not_trigger_model_question(monkeypatch, calls):
@@ -287,13 +261,6 @@ def test_model_clarification_without_answer_becomes_clarify(monkeypatch, calls):
     r = pipeline.soru_cevapla("Ceketin kol boyu toleransı nedir?")
     assert r.verification.status == "clarify"
     assert r.answer["netlestirme_sorusu"] == "Hangi beden için?" and r.llm_called
-
-
-@pytest.mark.usefixtures("doc_rules")
-def test_sibling_model_switch_is_not_blocked(calls):
-    # "diğer modelde ara": S-7300A sorusu S-7300B kılavuzunda aranabilmeli
-    pipeline.soru_cevapla("S-7300A'da E133 hatası", doc_ids=["brother-s7300b"])
-    assert calls["search"][0]["doc_ids"] == ["brother-s7300b"]
 
 
 def test_product_ambiguity_asks_after_search_without_llm(monkeypatch, calls):
@@ -474,19 +441,17 @@ def test_doc_score_ambiguity_asks_when_rival_product_is_close():
     assert doc_score_ambiguity(hits, 0.6) is None
 
 
-@pytest.mark.usefixtures("doc_rules")
-def test_doc_score_ambiguity_models_and_non_interchangeable_top():
+def test_doc_score_ambiguity_only_between_products():
     from pilot.pipeline import doc_score_ambiguity
     models = [_h("brother-s7300b", 0.5), _h("brother-s7300a", 0.45)]
-    assert doc_score_ambiguity(models, 0.6) == ("models", ["brother-s7300b", "brother-s7300a"])
+    assert doc_score_ambiguity(models, 0.6) is None              # makine modelleri yer değiştirmez (aile kuralı yok)
     # en iyi doküman terzilik kitabı: kimseyle yer değiştiremez, sorulmaz
     book = [_h("strickland-1956", 0.5), _h("brother-s7300a", 0.45), _h("brother-s7300b", 0.44)]
     assert doc_score_ambiguity(book, 0.5) is None
 
 
-@pytest.mark.usefixtures("doc_rules")
 def test_post_search_ambiguity_default_is_top3():
     from pilot.pipeline import post_search_ambiguity
     hits = [_h("brother-s7300a", 0.5), _h("brother-s7300b", 0.1), _h("brother-s7300a", 0.1)]
-    assert post_search_ambiguity(hits) == ("models", ["brother-s7300a", "brother-s7300b"])        # top3: iki model
+    assert post_search_ambiguity(hits) is None                    # iki makine modeli: kural katmanı sormaz
     assert post_search_ambiguity(hits, method="doc_score", ratio=0.5) is None                     # 0.1 / 0.6 düşük

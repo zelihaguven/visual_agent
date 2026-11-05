@@ -80,6 +80,54 @@ def system_prompt_c() -> str:
     return p
 
 
+# Süre ölçümü varyantları (karar 2026-11-05 gece; bütün modellerde aynı genel değişiklik):
+#   c150   alıntı en fazla 150 karakter, ilk öğe yalnız cevabın özü
+#   c150b  c150 + öğe başına 1–2 alıntı ("alintilar", en fazla 2); öğenin sayıları alıntılarının birleşiminde aranır
+VARIANTS = ("c", "c150", "c150b")
+_C150_RULES = [
+    ("(1-2 cümle; çevirme, kısaltma, düzeltme)",
+     "(en fazla 150 karakter: cümlenin dayandığı en kısa kaynak parçası; çevirme, kısaltma, düzeltme)"),
+    ("   - Cevap kısa ve doğrudan olsun: ilk öğe cevabın özü, sonra gerekiyorsa adımlar ayrı öğeler.",
+     "   - Cevap kısa ve doğrudan olsun: İLK ÖĞE YALNIZ CEVABIN ÖZÜ (değer ya da tek kısa cümle), sonra gerekiyorsa "
+     "adımlar ayrı öğeler."),
+]
+_C150B_RULES = [
+    ('Her öğede ÖNCE "alinti": o cümlenin dayandığı kaynak cümlesi',
+     'Her öğede ÖNCE "alintilar": o cümlenin dayandığı 1-2 kaynak parçası (her biri kendi kaynak numarasıyla)'),
+    ("ve kaynak numarası; SONRA", "; SONRA"),
+    ("Cümledeki her sayı ve kod o öğenin alıntısında geçmeli.", "Cümledeki her sayı ve kod o öğenin alıntılarında geçmeli."),
+]
+
+
+def schema_variant(name: str) -> tuple[dict[str, Any], str]:
+    """(şema, sistem talimatı) varyanta göre; uygulama istemi değişmişse hata verir."""
+    import copy
+    schema, prompt = copy.deepcopy(ANSWER_SCHEMA_C), system_prompt_c()
+    if name == "c":
+        return schema, prompt
+    item = schema["properties"]["cevap"]["items"]
+    item["properties"]["alinti"]["properties"]["metin"]["maxLength"] = 150
+    rules = list(_C150_RULES)
+    if name == "c150b":
+        quote = item["properties"].pop("alinti")
+        item["properties"] = {"alintilar": {"type": "array", "minItems": 1, "maxItems": 2, "items": quote},
+                              "metin": item["properties"]["metin"]}
+        item["required"] = ["alintilar", "metin"]
+        rules += _C150B_RULES
+    for old, new in rules:
+        if old not in prompt:
+            raise ValueError(f"istem parçası bulunamadı: {old[:60]!r}")
+        prompt = prompt.replace(old, new)
+    return schema, prompt
+
+
+def item_quotes(item: dict) -> list[dict]:
+    """Öğenin alıntıları: "alintilar" (c150b) ya da tek "alinti"."""
+    if isinstance(item.get("alintilar"), list):
+        return [q for q in item["alintilar"] if isinstance(q, dict)]
+    return [item["alinti"]] if isinstance(item.get("alinti"), dict) else []
+
+
 THOUGHT = re.compile(r"^\s*(?:<think>.*?</think>|<thought>.*?</thought>|<\|?channel\|?>[^{]*?<\|?channel\|?>|"
                      r"<\|?channel\|?>thought[^{]*)\s*", re.S)
 
@@ -96,7 +144,7 @@ def parse_c(content: str, finish: str | None) -> tuple[dict[str, Any] | None, st
         return None, "kesik" if finish == "length" or text.count("{") > text.count("}") else "gecersiz"
     ok = (isinstance(ans, dict) and ans.get("tur") in ("cevap", "netlestirme", "bulunamadi")
           and isinstance(ans.get("cevap", []), list)
-          and all(isinstance(x, dict) and isinstance(x.get("alinti"), dict) and isinstance(x.get("metin"), str)
+          and all(isinstance(x, dict) and item_quotes(x) and isinstance(x.get("metin"), str)
                   for x in ans.get("cevap") or []))
     if ok and ans["tur"] == "netlestirme":
         n = ans.get("netlestirme") or {}
@@ -113,12 +161,15 @@ def _quote_ok(text: str, no: Any, sources: dict[int, str]) -> bool:
 
 def check_item(item: dict, sources: dict[int, str], generated: dict[int, str] | None = None) -> dict[str, Any]:
     """Bir öğe: alıntı birebir, sayılar yalnız kendi alıntısında, tolerans, şekil açıklamasından mı."""
-    q = item.get("alinti") or {}
-    quote, no, text = q.get("metin") or "", q.get("kaynak_no"), item.get("metin") or ""
+    qs = item_quotes(item)
+    nos = [q.get("kaynak_no") for q in qs]
+    no, text = (nos[0] if nos else None), item.get("metin") or ""
+    quote = " ".join(q.get("metin") or "" for q in qs)
     problems = []
-    exact = _quote_ok(quote, no, sources)
-    if not exact:
-        problems.append(f"alıntı [{no}] kaynakta birebir değil")
+    bad = [q.get("kaynak_no") for q in qs if not _quote_ok(q.get("metin") or "", q.get("kaynak_no"), sources)]
+    exact = bool(qs) and not bad
+    for b in bad:
+        problems.append(f"alıntı [{b}] kaynakta birebir değil")
     stray = sorted(V.numbers_in(text) - V.numbers_in(quote) - V.word_numbers(quote))
     if stray:
         problems.append(f"cümlede kendi alıntısında olmayan sayı: {stray}")
@@ -129,10 +180,13 @@ def check_item(item: dict, sources: dict[int, str], generated: dict[int, str] | 
         if n in V.numbers_in(text) and f"±{t}" not in flat and f"artıeksi{t}" not in flat:
             tol = False
             problems.append(f"tolerans düşmüş: {m.group(0)}")
-    figure = bool(generated and no in generated and generated[no] and V.normalize(quote) in V.normalize(generated[no]))
+    figure = any(generated and q.get("kaynak_no") in generated and generated[q.get("kaynak_no")]
+                 and V.normalize(q.get("metin") or "") in V.normalize(generated[q.get("kaynak_no")]) for q in qs)
     foreign = bool(V.FOREIGN_SCRIPT_RE.search(text))
+    if foreign:
+        problems.append("cümlede başka alfabeden karakter")
     ok = exact and not stray and tol and bool(text.strip()) and not foreign
-    return {"ok": ok, "sekil": figure, "sorunlar": problems, "kaynak_no": no}
+    return {"ok": ok, "sekil": figure, "sorunlar": problems, "kaynak_no": no, "kaynaklar": nos}
 
 
 def verify_c(ans: dict, sources: dict[int, str], generated: dict[int, str] | None = None) -> dict[str, Any]:
@@ -149,7 +203,7 @@ def verify_c(ans: dict, sources: dict[int, str], generated: dict[int, str] | Non
                 "problems": [] if ok else ["netleştirme seçenekleri geçersiz ya da cevapla birlikte"]}
     items = [check_item(x, sources, generated) for x in ans.get("cevap") or []]
     problems = [p for it in items for p in it["sorunlar"]]
-    quotes = " ".join((x.get("alinti") or {}).get("metin") or "" for x in ans.get("cevap") or [])
+    quotes = " ".join(q.get("metin") or "" for x in ans.get("cevap") or [] for q in item_quotes(x))
     voice = ans.get("sesli_metin") or ""
     voice_stray = sorted(V.numbers_in(voice) - V.numbers_in(quotes) - V.word_numbers(quotes))
     if voice_stray:
@@ -209,8 +263,9 @@ def to_legacy(ans: dict) -> dict[str, Any]:
     """Pipeline'ın akışı bozulmasın diye C cevabının bugünkü biçimdeki karşılığı (ölçümde karar C'den verilir)."""
     tur = ans.get("tur")
     items = ans.get("cevap") or []
-    return {"alintilar": [x.get("alinti") or {} for x in items],
-            "cevap": " ".join(f'{x.get("metin", "")} [{(x.get("alinti") or {}).get("kaynak_no")}]' for x in items),
+    return {"alintilar": [q for x in items for q in item_quotes(x)],
+            "cevap": " ".join(x.get("metin", "") + "".join(f" [{q.get('kaynak_no')}]" for q in item_quotes(x))
+                              for x in items),
             "sesli_metin": ans.get("sesli_metin") or "", "celiski_var": bool(ans.get("celiski_var")),
             "netlestirme_sorusu": (ans.get("netlestirme") or {}).get("soru") if tur == "netlestirme" else None,
             "netlestirme_secenekleri": [], "bulunamadi": tur == "bulunamadi"}

@@ -61,9 +61,9 @@ SCHEMA = "bugun"
 
 def schema_and_prompt() -> tuple[dict[str, Any], str]:
     from pilot.prompts import ANSWER_SCHEMA, SYSTEM_PROMPT
-    if SCHEMA == "c":
-        from bench.schema_c import ANSWER_SCHEMA_C, system_prompt_c
-        return ANSWER_SCHEMA_C, system_prompt_c()
+    if SCHEMA.startswith("c"):
+        from bench.schema_c import schema_variant
+        return schema_variant(SCHEMA)
     return ANSWER_SCHEMA, SYSTEM_PROMPT
 # Ayrıştırıcının attığı düşünce blokları (boş ya da dolu): <think>…</think>, <thought>…</thought>, Gemma kanal işaretleri
 THOUGHT = re.compile(r"^\s*(?:<think>.*?</think>|<thought>.*?</thought>|<\|?channel\|?>[^{]*?<\|?channel\|?>|"
@@ -250,14 +250,14 @@ def questions(include_clarify: bool = False) -> list[dict[str, Any]]:
 def prepare() -> None:
     """Arama ve kural çıkışları, model çağrılmadan (bulut yok). Arama önbelleği ve kural çıkışları yazılır."""
     from pilot import config, pipeline
-    assert not config.DOC_SPECIFIC_RULES, "ilke dışı kurallar kapalı olmalı (varsayılan)"
     cache = install_search_cache(frozen=False)
 
     def stop(_user: str) -> Any:
         raise _Reached
 
     pipeline.chat_json = stop
-    rules = {}
+    path = RAW_DIR / "kural_cikislari.json"      # önceki setlerin kayıtları korunur (birleştirilir)
+    rules = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     for q in questions(include_clarify=True):      # nihai tur netleştirme sorularını da kapsar
         try:
             res = pipeline.soru_cevapla(q["q"])
@@ -314,7 +314,7 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int, clarify: st
     m = LocalModel(key) if MODELS[key].get("local") else CloudModel(key)
     system_prompt = schema_and_prompt()[1]
     # Netleştirme soruları: C'de varsayılan dahil (nihai tur, plan §18); bugünkü şemada varsayılan hariç (ilk tur gibi)
-    clarify = clarify or ("dahil" if SCHEMA == "c" else "haric")
+    clarify = clarify or ("dahil" if SCHEMA.startswith("c") else "haric")
     qs = questions(include_clarify=clarify != "haric")
     if clarify == "yalniz":
         qs = [q for q in qs if q.get("expect_clarify")]
@@ -350,7 +350,7 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int, clarify: st
         current["rec"] = rec
         if rec.get("unanswered"):
             raise Unanswered(rec["unanswered"])
-        if SCHEMA == "c":
+        if SCHEMA.startswith("c"):
             from bench.schema_c import parse_c, to_legacy
             ans_c, status = parse_c(rec["content"], rec.get("finish"))
             current.update(json=status, thought=False, c=ans_c)
@@ -369,7 +369,7 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int, clarify: st
         row: dict[str, Any] = {}
         try:
             res = pipeline.soru_cevapla(q["q"])
-            row = judge_c(q, res, current) if SCHEMA == "c" and current.get("c") is not None else judge(q, res)
+            row = judge_c(q, res, current) if SCHEMA.startswith("c") and current.get("c") is not None else judge(q, res)
         except Unanswered as e:
             row = {"cikis": "cevapsiz", "hata": str(e)}
         except Budget:
@@ -415,7 +415,7 @@ def judge_c(q: dict[str, Any], res: Any, current: dict[str, Any]) -> dict[str, A
                            "ogeler": [i["ok"] for i in v["items"]]}
     if tur == "cevap":
         row["ilk_dogrulanmis_cumle"] = first_verified_time(rec.get("content", ""), rec.get("zaman") or [], v["items"])
-        cited = [i["kaynak_no"] for i in v["items"]]
+        cited = [n for i in v["items"] for n in i.get("kaynaklar") or [i["kaynak_no"]]]
         ok = [is_match(chunks[n - 1], q) for n in cited if isinstance(n, int) and 1 <= n <= len(chunks)]
         row["atif_dogru_biri"] = any(ok) if ok else None
         row["atif_dogru_hepsi"] = all(ok) if ok else None
@@ -597,11 +597,16 @@ def report_c(tag: str) -> str:
         ft = [R[q]["ilk_token"] for q in model if R[q].get("ilk_token")]
         fv = [R[q]["ilk_dogrulanmis_cumle"] for q in an if R[q].get("ilk_dogrulanmis_cumle")]
         js = sum(R[q].get("json") not in (None, "ok") for q in R)
+        classes = json.loads(CLARIFY_CLASSES.read_text(encoding="utf-8"))
+        var = [q for q in model if classes.get(q, {}).get("sinif") == "belge_ici_varyant"]
+        var_ok = sum(R[q].get("cikis") == "netlestirme" or all(value_in(v, R[q].get("cevap", ""))
+                                                              for v in classes[q]["varyant_degerleri"]) for q in var)
+        unnec = sum(R[q].get("cikis") == "netlestirme" for q in an + nf if q not in var)
         L.append(f"| {k} | {len(model)} | {js} | {pct_(sum(R[q]['cikis'] == 'bulunamadi' for q in nf), len(nf))} | **{bad}** | "
                  f"{st['verified']} / {st['partial']} / {st['failed']} | {pct_(sum(dv), len(dv))} | "
                  f"{pct_(sum(bool(R[q].get('netlestirme_dogru')) for q in fark), len(fark))} | "
                  f"{pct_(sum(bool(R[q].get('netlestirme_dogru')) for q in ayni), len(ayni))} | "
-                 f"{sum(R[q].get('cikis') == 'netlestirme' for q in an + nf)} | {s_(percentile(ft, .5))} / {s_(percentile(ft, .95))} | "
+                 f"{unnec} (belge içi varyant doğru {var_ok}/{len(var)}) | {s_(percentile(ft, .5))} / {s_(percentile(ft, .95))} | "
                  f"{s_(percentile(fv, .5))} / {s_(percentile(fv, .95))} | {r.get('cost_usd', 0):.4f} USD |")
     L += ["", "İlk doğrulanmış cümle: model isteğinden, akışta ilk geçen öğenin tamamlandığı ana (model tarafı; uçtan uca "
           "süre ayrıca, arama öncesi dahil). Değer aynı: netleştirme ya da iki ürünün kaynağını birlikte gösteren doğrulanmış "
@@ -776,12 +781,16 @@ def main() -> None:
                     help="kayıtları bugünkü verify.py ile yeniden puanla (model çağrısı yok); örn. --rescore ana bozuk1")
     ap.add_argument("--latency-tag", default="sure2")
     ap.add_argument("--report-c", metavar="TAG", help="şema C turunun raporu (eval/bench/adim2/<TAG>_rapor_<tarih>.md)")
+    ap.add_argument("--setler", nargs="+", help="soru setleri (varsayılan: bilinen setler + aday_sorular); "
+                    "örn. --setler aday_sorular_ek (yeni onaylanan sorular; arama önbelleği --prepare ile)")
     ap.add_argument("--netlestirme", choices=["haric", "dahil", "yalniz"],
                     help="netleştirme beklenen 18 soru (varsayılan: C'de dahil, bugünkü şemada hariç)")
-    ap.add_argument("--schema", choices=["bugun", "c"], default="bugun", help="cevap şeması (c: plan §15.0, yalnız ölçüm aracı)")
+    ap.add_argument("--schema", choices=["bugun", "c", "c150", "c150b"], default="bugun", help="cevap şeması (c: plan §15.0, yalnız ölçüm aracı)")
     a = ap.parse_args()
-    global SCHEMA
+    global SCHEMA, SETS
     SCHEMA = a.schema
+    if a.setler:
+        SETS = list(a.setler)
     if a.prepare:
         prepare()
     for t in a.rescore or []:

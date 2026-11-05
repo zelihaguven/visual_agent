@@ -1,4 +1,6 @@
-"""İlke dışı kurallar (PILOT_DOC_SPECIFIC_RULES: brand_aliases = BRAND_ALIASES, s7300_family = sabit "s7300" grubu) kural
+"""TARİHSEL ARAÇ: BRAND_ALIASES ve "S-7300" aile grubu 2026-11-05'te silindi; kural bayrağı artık etkisiz.
+
+İlke dışı kurallar (PILOT_DOC_SPECIFIC_RULES: brand_aliases = BRAND_ALIASES, s7300_family = sabit "s7300" grubu) kural
 bazında açık/kapalı farkı (kapalı, yalnız biri, ikisi), iki arama yolunda: varsayılan (bge-m3 + BM25) ve dondurulan aday (Qwen3-8B + bge-m3 + çevirili BM25), 10k, rerank'sız.
 
 Ölçülen: hattın karar katmanı (pipeline.soru_cevapla'nın kendisi; model çağrılmaz) ve arama isabeti. soru_cevapla'daki

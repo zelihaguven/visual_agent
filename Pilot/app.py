@@ -105,12 +105,6 @@ def start(q: str, brands: list[str] | None, doc_ids: list[str] | None = None, ea
     st.rerun()
 
 
-def siblings(doc_id: str) -> list[str]:
-    """Aynı makine ailesindeki diğer modellerin dokümanları (S-7300A → S-7300B; aile kuralı kapalıysa yok)."""
-    from pilot.query import family
-    return sorted(family(doc_id) - {doc_id})
-
-
 if st.button("Sor", type="primary") and question.strip():
     start(question.strip(), chosen or None, voice=st.session_state.pop("stt", None) is not None)
 
@@ -217,15 +211,6 @@ def render_result(res: Result, key: str) -> None:
             if ans.get("yalin_soru") and state_.get("doc_ids"):
                 if st.button(f"🔎 Ürün adı olmadan bu kaynakta ara: \"{ans['yalin_soru']}\"", key=f"bare-{key}"):
                     start(ans["yalin_soru"], state_.get("brands"), doc_ids=state_["doc_ids"])
-            # Tek bir model kılavuzunda bulunamadıysa aynı ailedeki diğer modelleri önerir ("şunu mu demek istediniz?")
-            scope = state_.get("doc_ids") or list(res.context.doc_ids)
-            if len(scope) == 1 and not state_.get("switched_from") and not ans.get("neden"):
-                for other in siblings(scope[0]):
-                    if st.button(f"🔎 {BY_ID[other].product} kılavuzunda ara", key=f"alt-{key}-{other}"):
-                        start(res.question, state_.get("brands"), doc_ids=[other], switched_from=scope[0])
-                if siblings(scope[0]):
-                    st.caption("Bilgi aynı ailedeki başka bir modelin kılavuzunda olabilir. "
-                               "Gelen cevap o model için geçerlidir, sizin makinenizle farklı olabilir.")
         else:
             if ans.get("cevap"):
                 st.markdown(ans["cevap"])

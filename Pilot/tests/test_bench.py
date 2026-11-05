@@ -179,11 +179,10 @@ def test_candidate_generator_main_refuses_current_file():
     assert path.read_bytes() == before
 
 
-@pytest.mark.usefixtures("doc_rules")
 def test_prepare_scopes_like_pipeline():
     p = prepare("S-7300A'da E050 hatası ne demek?")
     assert p["skip"] is None and p["doc_ids"] == ["brother-s7300a"]
-    assert prepare("S-7300'de iplik nasıl takılır?")["skip"] == "netlestirme"     # A mı B mi
+    assert prepare("S-7300'de iplik nasıl takılır?")["skip"] is None             # aile kuralı silindi (2026-11-05)
     assert prepare("Nike tişörtte dikiş sıklığı kaç olmalı?")["skip"] == "yabanci_marka"
     free = prepare("İğne nasıl değiştirilir?")
     assert free["skip"] is None and free["doc_ids"] is None
