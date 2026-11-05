@@ -265,3 +265,18 @@ Aynı uyarı geçerli: onaysız set, aşırı uyum riski; sayılar karar değil.
 - Okuma: Qwen'in bulut gecikmesi bu dönemde öyle değişken ki aday, korumalı yolda çoğu soruda fiilen ikili yol oluyor. Adayın değeri Qwen sağlayıcısının gecikmesine bağlı; sunucuda yerel embedding seçeneği (§9.3) ağırlık kazanıyor.
 
 Bugünkü bulut harcaması: süre sınırı ölçümü 0,023 USD (ilk deneme dahil ~0,024), bayrak ölçümü 0,0002 USD.
+
+### 10.4 İlke dışı kurallar, kural bazında (2026-11-05, `e23525e`)
+
+`ASPECTS`/`DETAIL_HINT` silindi (etkisizdi). Bayrak artık kural listesi: `PILOT_DOC_SPECIFIC_RULES=brand_aliases,s7300_family` (varsayılan kapalı). Ham: [asama4_ilke_kurallari_10k](asama4_ilke_kurallari_10k_2026-11-05.md).
+
+| Beklenen netleştirme → netleştirme (18) | kapalı | yalnız BRAND_ALIASES | yalnız S-7300 grubu | ikisi |
+|---|---|---|---|---|
+| Varsayılan (bge-m3 + BM25) | 2 | **10** | 3 | 10 |
+| Aday | 4 | **14** | 5 | 14 |
+
+hit@k ve kural çıkışları (yabancı marka, kod yok) dört durumda da aynı; netleştirme beklenmeyen bir soruda netleştirme her durumda 1 (kurallardan bağımsız). **Netleştirme etkisinin neredeyse tamamı `BRAND_ALIASES`'tan:** aile ilişkisi (`family()`) bu tablodan geliyor ve arama sonrası "hangi model?" sorusunu o tetikliyor. S-7300 grubu tek başına yalnız Q17'yi arama öncesi netleştirmeye çeviriyor; Q17'yi `BRAND_ALIASES` da arama sonrası yakalıyor. Dikkat: ölçüm yalnız "netleştirme soruldu mu"ya bakıyor, seçeneklerin doğruluğuna bakmıyor; Q07'de (beklenen kaynak 19. sırada) sorulan büyük olasılıkla "hangi model?", beklenen ise ceket/pantolon. Karar sizde; aile kaynağı açık konu (Adım 2 planı §11).
+
+### 10.5 Süre sınırı: ilk kelime p95'inin aşama dökümü
+
+[asama4_sure_siniri](asama4_sure_siniri_2026-11-05.md) raporuna eklendi (kayıttan). Korumalı yolda 1,5 sn'nin aşıldığı yer: cevap modelinin ilk tokeni 64 soru (%43), Qwen beklemesi 23 (%15), bge-m3 1; 61 soruda (%41) aşılmadı. Grup 1 (embed'ler ‖ çeviri) p50 1,12 sn, p95 1,51 sn; Qdrant 3 kol + füzyon p95 42 ms; cevap ilk token p50 460 ms, p95 1,01 sn. En yavaş %10'da sürenin %57'si grup 1, %42'si cevabın ilk tokeni. Okuma: 1,5 sn hedefi için grup 1'in ~0,5 sn'ye inmesi gerekiyor (çeviri ve Qwen beklemesi); cevap modeli tek başına bütçenin yarısını alıyor.

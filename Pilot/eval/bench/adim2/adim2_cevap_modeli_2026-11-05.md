@@ -1,0 +1,82 @@
+# Adım 2: cevap modeli seçimi, ilk tur (ön eleme)
+
+> **"Bulunamadı" kararının 17 sorusu onaysız** (A114–A130, aday taslak; 21 sorunun 17'si; kural çıkışları hariç modelin karar verdiği 17 sorunun 15'i). **Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş sette yapılacak.** Cevaplı sorularda da 123/160 onaysız. Süreler geliştirme makinesinin bağlantısından; üretimi temsil etmez.
+
+Arama sabit: uygulamanın varsayılan yolu (bge-m3 + BM25, rerank kapalı, ilke dışı kurallar kapalı), `manuals` koleksiyonu; bütün modeller aynı kaynakları gördü. Aynı sistem talimatı ve şema, temperature 0, düşünme kapalı; modele özel istem ayarı yok. Yeniden deneme bütün modellerde aynı: ilk token gelmeden 429/5xx/bağlantı hatasında 30 sn sonra bir kez; yine olmazsa soru cevapsız (kalite metriklerine girmez). Plan: [plan_cevap_modeli_2026-11-05.md](plan_cevap_modeli_2026-11-05.md).
+
+**Kural çıkışları (modelden bağımsız, bir kez):** {'yabanci_marka': 2, 'kod_yok': 2}; "bulunamadı" beklenen 21 sorudan 4 kuralla çıkıyor.
+
+## Dayanıklılık
+
+| Model | Sağlayıcı (sabit) | ZDR sağlayıcı sayısı | çağrı | 429 | diğer hata | yeniden deneme | cevapsız kalan | başka sağlayıcıdan gelen | düşünme kontrolü |
+|---|---|---|---|---|---|---|---|---|---|
+| gemma4 (`google/gemma-4-26b-a4b-it`) | deepinfra | 13 | 177 | 0 | 0 | 0 | 0 | 0 | tamam |
+| qwen36 (`qwen/qwen3.6-35b-a3b`) | deepinfra | 9 | 177 | 0 | 0 | 0 | 0 | 0 | tamam |
+| gpt54mini (`openai/gpt-5.4-mini`) | azure | 1 | 177 | 0 | 0 | 0 | 0 | 0 | tamam |
+| mistral2603 (`mistralai/mistral-small-2603`) | mistral | 1 | 177 | 0 | 0 | 0 | 0 | 0 | tamam |
+
+## "Bulunamadı" (21 soru: 4 onaylı + 17 onaysız)
+
+| Model | doğru "bulunamadı", toplam | … modelin karar verdiği soruda | netleştirme | cevap üretti | … doğrulanmış görünen yanlış (✓/⚠) | JSON hatası | cevapsız (kaliteden ayrı) |
+|---|---|---|---|---|---|---|---|
+| gemma4 | 21/21 (100%) | 17/17 (100%) | 0 | 0 | **0** | 0 | 0 |
+| qwen36 | 14/21 (67%) | 10/17 (59%) | 0 | 7 | **4** | 0 | 0 |
+| gpt54mini | 16/21 (76%) | 12/17 (71%) | 0 | 5 | **5** | 0 | 0 |
+| mistral2603 | 21/21 (100%) | 17/17 (100%) | 0 | 0 | **0** | 0 | 0 |
+
+Taban (2026-10-27, yerel qwen2.5:7b, aynı 21 soru, o günkü arama): doğru "bulunamadı" %48, doğrulanmış görünen yanlış 3.
+
+## Cevaplı sorular (kalite, cevap gelen sorularda)
+
+| Model | Set | soru | yanlış ret | … kaynak ilk 5'teydi (model hatası) | … arama getirmedi | netleştirme | ✓ / ⚠ / ✖ | beklenen değer cevapta | atıf: en az biri doğru sayfa | atıf: hepsi doğru | JSON hatası |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| gemma4 | onaylı | 37 | 4/37 (11%) | 1 | 3 | 0 | 27 / 5 / 1 | 17/18 (94%) | 29/33 (88%) | 29/33 (88%) | 0 |
+| gemma4 | onaysız | 123 | 14/123 (11%) | 3 | 11 | 0 | 74 / 6 / 29 | 60/82 (73%) | 99/109 (91%) | 87/109 (80%) | 0 |
+| qwen36 | onaylı | 37 | 0/37 (0%) | 0 | 0 | 0 | 24 / 5 / 8 | 17/21 (81%) | 33/37 (89%) | 27/37 (73%) | 0 |
+| qwen36 | onaysız | 123 | 8/123 (7%) | 2 | 6 | 0 | 90 / 7 / 18 | 57/85 (67%) | 98/115 (85%) | 85/115 (74%) | 0 |
+| gpt54mini | onaylı | 37 | 2/37 (5%) | 1 | 1 | 0 | 29 / 4 / 2 | 18/20 (90%) | 31/35 (89%) | 23/35 (66%) | 0 |
+| gpt54mini | onaysız | 123 | 7/123 (6%) | 2 | 5 | 0 | 98 / 10 / 8 | 57/86 (66%) | 99/116 (85%) | 83/116 (72%) | 0 |
+| mistral2603 | onaylı | 37 | 2/37 (5%) | 1 | 1 | 0 | 6 / 17 / 10 | 18/19 (95%) | 29/33 (88%) | 26/33 (79%) | 2 |
+| mistral2603 | onaysız | 123 | 10/123 (8%) | 3 | 7 | 0 | 40 / 29 / 41 | 50/83 (60%) | 97/110 (88%) | 76/110 (69%) | 3 |
+
+Atıf doğruluğu: cevabın alıntı yaptığı kaynak numaralarının parçaları beklenen doküman ve sayfayla (`is_match`) eşleşiyor mu; alıntısız cevap paydada yok.
+
+**Rozet nedenleri** (cevaplı sorularda üretilen cevaplar; `verify.py` kontrolleri, bir cevapta birden çok olabilir):
+
+| Model | ✖: alıntıda olmayan sayı | ✖: alıntı birebir değil | ✖ / ⚠: geçerli [n] atfı yok | ⚠: değer varyanta göre değişiyor | ⚠: alıntı şekil açıklamasından |
+|---|---|---|---|---|---|
+| gemma4 | 28 | 5 | 15 | 6 | 3 |
+| qwen36 | 20 | 9 | 0 | 9 | 4 |
+| gpt54mini | 6 | 4 | 0 | 10 | 4 |
+| mistral2603 | 35 | 23 | 61 | 6 | 7 |
+
+## JSON (ayrı metrik, modele giden bütün çağrılar)
+
+| Model | çağrı | ok | şema dışı | boş | yarıda kesik | ayrıştırılamadı | düşünce bloğu / öntext atıldı |
+|---|---|---|---|---|---|---|---|
+| gemma4 | 177 | 177 | 0 | 0 | 0 | 0 | 0 |
+| qwen36 | 177 | 177 | 0 | 0 | 0 | 0 | 0 |
+| gpt54mini | 177 | 177 | 0 | 0 | 0 | 0 | 0 |
+| mistral2603 | 177 | 172 | 0 | 0 | 5 | 0 | 0 |
+
+## İlk token ve süre (§9.3 eşikleri: 1,2 sn hedge, 1,5 sn yedek sağlayıcı, 20 sn toplam)
+
+| Model | Tur | n | ilk token p50 | p95 | ≤ 1,2 sn | ≤ 1,5 sn | toplam p50 | p95 | > 20 sn | sağlayıcı |
+|---|---|---|---|---|---|---|---|---|---|---|
+| gemma4 | ana (11:16) | 177 | 388 ms | 1,04 sn | 169/177 (95%) | 170/177 (96%) | 2,97 sn | 10,26 sn | 1 | {'DeepInfra': 177} |
+| qwen36 | ana (11:28) | 177 | 648 ms | 1,57 sn | 164/177 (93%) | 166/177 (94%) | 7,41 sn | 17,14 sn | 6 | {'DeepInfra': 177} |
+| gpt54mini | ana (11:59) | 177 | 762 ms | 1,36 sn | 163/177 (92%) | 171/177 (97%) | 1,72 sn | 3,17 sn | 0 | {'Azure': 177} |
+| mistral2603 | ana (11:52) | 177 | 449 ms | 991 ms | 172/177 (97%) | 175/177 (99%) | 2,04 sn | 5,18 sn | 0 | {'Mistral': 177} |
+
+qwen2.5:7b yerelde (dizüstü CPU): süreleri bulutla karşılaştırılamaz.
+
+## Maliyet
+
+| Model | Tur | USD | soru başına |
+|---|---|---|---|
+| gemma4 | ana | 0.0415 | 0.00023 |
+| qwen36 | ana | 0.0847 | 0.00047 |
+| gpt54mini | ana | 0.3559 | 0.00197 |
+| mistral2603 | ana | 0.0608 | 0.00034 |
+
+Bu rapordaki koşular: 0.5428 USD. Adım 2 turunun toplam harcaması (geçersiz sayılan koşular dahil, `ham/` altındaki bütün dosyalar): 1.0755 USD (sınır 1,5 USD).

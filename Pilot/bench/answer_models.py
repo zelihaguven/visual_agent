@@ -475,7 +475,16 @@ def report(tag: str, latency_tag: str | None) -> str:
                      f"{st['failed']} | {pct_(sum(dv), len(dv))} | {pct_(sum(a1), len(a1))} | {pct_(sum(a2), len(a2))} | "
                      f"{sum(R[q]['cikis'] == 'json_hata' for q in qq)} |")
     L += ["", "Atıf doğruluğu: cevabın alıntı yaptığı kaynak numaralarının parçaları beklenen doküman ve sayfayla "
-          "(`is_match`) eşleşiyor mu; alıntısız cevap paydada yok.", ""]
+          "(`is_match`) eşleşiyor mu; alıntısız cevap paydada yok.", "",
+          "**Rozet nedenleri** (cevaplı sorularda üretilen cevaplar; `verify.py` kontrolleri, bir cevapta birden çok olabilir):", "",
+          "| Model | ✖: alıntıda olmayan sayı | ✖: alıntı birebir değil | ✖ / ⚠: geçerli [n] atfı yok | "
+          "⚠: değer varyanta göre değişiyor | ⚠: alıntı şekil açıklamasından |", "|---|---|---|---|---|---|"]
+    for k in order:
+        made = [r for q, r in runs[k]["rows"].items() if q in ans and r.get("cikis") == "cevap"]
+        bad = lambda key: sum((r.get("kontroller") or {}).get(key) is False for r in made)
+        L.append(f"| {k} | {bad('sayilar_alintida')} | {bad('alinti_birebir')} | {bad('atif_gecerli')} | "
+                 f"{bad('varyant_belirli')} | {bad('alinti_kaynak_metni')} |")
+    L.append("")
 
     L += ["## JSON (ayrı metrik, modele giden bütün çağrılar)", "", "| Model | çağrı | ok | şema dışı | boş | yarıda kesik | "
           "ayrıştırılamadı | düşünce bloğu / öntext atıldı |", "|---|---|---|---|---|---|---|---|"]
@@ -508,7 +517,8 @@ def report(tag: str, latency_tag: str | None) -> str:
                 tot += src["cost_usd"]
                 n = max(1, len(src["rows"]))
                 L.append(f"| {k} | {tur} | {src['cost_usd']:.4f} | {src['cost_usd'] / n:.5f} |")
-    L += ["", f"Toplam: {tot:.4f} USD (sınır 1,5 USD).", ""]
+    L += ["", f"Bu rapordaki koşular: {tot:.4f} USD. Adım 2 turunun toplam harcaması (geçersiz sayılan koşular "
+          f"dahil, `ham/` altındaki bütün dosyalar): {spent_all():.4f} USD (sınır 1,5 USD).", ""]
     return "\n".join(L)
 
 
