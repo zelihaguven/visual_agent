@@ -73,3 +73,39 @@ Harcama (nihai_* toplamı, NextBit kısmi dahil): 0,95 USD; sınır 3,0 USD.
 - **NextBit:** ilk token en hızlısı ama 30 çağrının 7'si akış ortasında takılıp 20 sn'yi aşıyor (p95 135 sn). Ana koşuda da aynı. Üretim için uygun değil.
 - **Şemaya zorlamanın ilk token ek süresi** (eşli p50, [sema_ek_suresi_2026-11-05.md](sema_ek_suresi_2026-11-05.md)): DeepInfra 9 ms, Mistral ~0, Venice 60, NextBit 72, Qwen3.6 81, Crusoe 86 (5 hata), Parasail 146, Azure 395 ms (şemalı p95 4,8 sn).
 - Süre turu 2 (başka saatte), şema ek süresi s2 ve yerel taban sonraki oturumda.
+
+## Tamamlandı: Gemma 4 NextBit (17:45) ve seçim önerisi
+
+**NextBit (şema C, tam set):**
+- 29 yarıda kesik JSON; bunların hepsi akış ortasında takılıp 20 sn'yi aşan çağrılar.
+- Doğru "bulunamadı" 14/17 (%82).
+- ✓ / ⚠ / ✖ 96 / 3 / 20; beklenen değer %86.
+- İlk doğrulanmış cümle p95 4,79 sn; maliyet 0,12 USD.
+- **Kalite kapısında ve JSON'da elenir.**
+
+Nihai tur harcaması: **1,17 / 3,0 USD.**
+
+**Kapı özeti (şema C, onaylı set):**
+
+| Yapılandırma | kalite (bulunamadı ≥ %90, yanlış 0, değer ≥ %85) | JSON | netleştirme farklı 5/5 | gereksiz 0 | ≥ 2 ZDR | ilk doğrulanmış cümle ≤ 2,0 sn |
+|---|---|---|---|---|---|---|
+| Gemma 4, DeepInfra fp8 | **geçer** (17/17, 0, %95) | 2 | 4/5 (Q07) | 2 (Q26, A070) | geçer (13) | 3,55 sn (tur 1) |
+| Gemma 4, Venice bf16 | **geçer** (17/17, 0, %96) | 1 | 4/5 (Q07) | 2 (Q26, A070) | geçer | 3,03 sn |
+| Gemma 4, Parasail bf16 | değer %82 | **34 kesik** | 2/5 | 0 | geçer | 2,44 sn |
+| Gemma 4, NextBit bf16 | bulunamadı %82 | **29 kesik** | 2/5 | 1 | geçer | 3,15 sn, takılmalar |
+| Gemma 4 31B, Crusoe | değer %70 | **32 kesik** | 4/5 | 3 | geçer | 3,08 sn |
+| Qwen3.6 | yanlış 1 | 9 | 3/5 | 2 | geçer (9) | 8,89 sn |
+| GPT-5.4 mini | yanlış 1 | 2 | 2/5 | 0 | **1** | 2,20 sn |
+| Mistral 2603 | değer %81 | 5 | 3/5 | 0 | **1** | 2,16 sn |
+
+**Kapıların hepsini geçen yapılandırma yok.** Kalan farkların nedenleri:
+- **Q07 (değer farklı, Gemma'da tek kaçan):** "Dış görünür dikişlerde SPI kaç olmalı?" Arama ceket/pantolon yerine makine kılavuzlarını getiriyor; Gemma "bulunamadı" diyor, Mistral S-7300A/B'yi soruyor. Bu bir **arama** sorunu, cevap modelinden bağımsız.
+- **Gereksiz netleştirme Q26, A070:** İkisinde de belge içinde gerçek bir varyant ayrımı var (pantolon Type I/II overlok Tex'i; S-7300B -3/-5 spesifikasyonu). Kapı tanımı ürünler arası netleştirmeyi kastediyorsa bunlar gereksiz sayılmamalı. **Tanım kararı sizde.**
+- **Süre:** Gemma 4'te ilk doğrulanmış cümle p95 3,0–3,6 sn (tur 1). C'de her öğe alıntıyla başlıyor; ilk öğenin alıntısı uzun.
+
+**Öneri (karar sizde):**
+1. **Cevap modeli: Gemma 4 26B A4B, şema C.** Sağlayıcılar **Venice (bf16) birincil, DeepInfra (fp8) ikincil.** İkisi bu sette aynı kalitede: bulunamadı, değer, netleştirme sonuçları aynı; nicemleme farkı burada etkisiz. ≥ 2 ZDR böyle sağlanır. Parasail, NextBit ve Crusoe şemaya zorlamada yarıda kesildiği için dışarıda (§16: yama yok).
+2. **Süre kapısı için bir sonraki ölçüm (koşulmadı):** Bütün modellerde aynı şema değişikliği, alıntı üst sınırı 300 → 150 karakter ve "ilk öğe cevabın özü" kuralı. Yalnız ilk doğrulanmış cümle ve değer etkisi ölçülür. Tahmin: Gemma 4 iki sağlayıcı × 199 soru ≈ 0,13 USD.
+3. **BRAND_ALIASES ve S-7300 grubu: silinebilir.** Şema C kurallar kapalıyken değer farklı 4/5, değer aynı 8–9/13 aldı. §11'in tabanı (a) 4/5 ve 8/13'tü; silme koşulu sağlanıyor.
+4. **Q07** arama tarafında ayrıca incelenir (B4).
+5. **Ertelenenler (sonraki oturum):** süre turu 2 ve şema ek süresi s2 (başka saatte), yerel taban (en düşük öncelik), yeni aday sorular (onayınızdan sonra, ilk iki model şema C ile).
