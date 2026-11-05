@@ -1,0 +1,6244 @@
+{
+ "vakalar": {
+  "gemma4": [
+   {
+    "qid": "aday_sorular:A004",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "atif",
+      "[1, 2]"
+     ]
+    ],
+    "cevap": "Type II ve Type III ceketlerde FR tanıtım bandı (FR identification marker), giyildiğinde sol kol manşetinin (left sleeve cuff) dış kısmında bulunmalıdır [1, 2].",
+    "alinti": "The Types II and III coat shall have a tape FR identification marker (see figure 1) on the left sleeve cuff as worn (see pattern for placement) and shall be visible from the outside when worn. The Type II and Type III coat has an FR indicator located on the outside of the left sleeve cuff.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A008",
+    "onayli": false,
+    "nums": [
+     [
+      "6",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Ceketin üst kol cepleri (Upper sleeve pocket - through all layers) için toplam 6 adet punteriz (bar-tack) atılmalıdır [3]. Punteriz dağılımı şu şekildedir [3]: 2 adet üst ön (Top front), 2 adet alt ön (Bottom front) ve 2 adet üst arka (Top back).",
+    "alinti": "Bar-tack or back-tack placement: Upper sleeve pocket - through all layers a. Top front b. Bottom front c. Top back (opposite | Size of tack (inches): 5/8 5/8 5/8 | Stitches per tack 1/: 36 36 36 | # of Bar- tacks per garment: 2 2 2 | # of Back- tacks per garment: ---- ---- ---- | Horizontal: X X X |",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A014",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "soruda",
+      ""
+     ]
+    ],
+    "cevap": "Class 2 ceketlerde böcek koruma/tanımlama/bakım etiketi (insect protection/identification/care label), ceketin iç kısmına, sol göğüs cebinin (giyildiğinde) altına dikilmelidir [1]. Etiket, dikey olarak veya cep açısına paralel olarak, etiketin üst kısmı ceketin üst kısmına bakacak şekilde dikilmelidir [1].",
+    "alinti": "The combination insect protection/identification/care label shall conform to Type VI, Class 15 of MIL-DTL-32075 and shall be stitched on inside of coat under the left chest pocket (as worn) vertically or parallel with the pocket angle with the top of the label facing the top of the coat.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A015",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "atif",
+      "[1, 2]"
+     ]
+    ],
+    "cevap": "Ceketin tasarımı (Style A-Unisex ve Style B-Female için) şunları içerir: [2] 1. Yaka tipi: Band yaka (band collar) [2]. 2. Ön kapanış: Çift sürgülü (double slider) bir fermuar (slide fastener) ve ikincil bir cırt cırtlı bant (hook and loop fastener tape) kapanışı ile tek sıra düğmeli (single-breasted) bir ön yapıya sahiptir [1, 2]. İkincil kapanış, üç (3) çift cırt cırtlı banttan oluşur [1].",
+    "alinti": "The front closure is a (double slider) slide fastener with a secondary hook and loop tape closure (see figure 1). The secondary closure consists of three (3) pairs of hook and loop fastener tape. The coat design for Style A-Unisex and Style B-Female has a single-breasted front with a slide fastener (double slider) closure and a secondary hook and loop fastener tape closure; a band collar; long sleeves with cuffs and one (1) button, three (3) buttonholes adjustable cuff tab; and a bi-swing背後.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A016",
+    "onayli": false,
+    "nums": [
+     [
+      "3",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Ceket yaka çiziminde (FIGURE 3), yaka çevresi ve rütbe yaması halkası (rank patch loop) gösterilmektedir; diyagramda ayrıca bir 'Box 'X' stitch' (Kutu 'X' dikişi) bulunmaktadır [1].",
+    "alinti": "The figure shows a diagram of a coat collar, specifically the area around the collar and the rank patch loop. The diagram includes a 'Box 'X' stitch' and a 'Rank Patch Loop.'",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A022",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "kaynakta",
+      ""
+     ],
+     [
+      "4",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Pantolonun iki adet ön yan asma cebi bulunmalıdır ve bu ceplerin ağız açıklıkları (pocket openings) bartack'ler (dikiş sabitleme noktaları) arasında 6 inç'ten az olmamalı ve 7-1/4 inç'ten fazla olmamalıdır. [1]",
+    "alinti": "Front side pockets. The trouser shall have two (2) front side hanging pockets with pocket openings measuring not less than 6 inches and not more than 7-114 inches between bartacks.",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A025",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "yok",
+      ""
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Pantolon cep kapakları (pocket flaps), cep üstünün katlanmış kenarından (folded edge of pocket top) 1 1/2 inch içeride yerleştirilmelidir [3].",
+    "alinti": "The pocket flaps shall be set 112 inch fi'om the folded edge of pocket top (see pattem for placement).",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A030",
+    "onayli": false,
+    "nums": [
+     [
+      "15",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Kontrol ve işlenmiş numuneleri içeren kollar, 15 dakika boyunca bir böcek kafesine maruz bırakılmalıdır [3].",
+    "alinti": "Arms containing the controls and treated specimens shall be exposed to a cage of insects for IS min.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A033",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 3]"
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ],
+     [
+      "3",
+      "atif",
+      "[1, 3]"
+     ]
+    ],
+    "cevap": "Kaynaklarda pantolon için iki farklı etiket yerleşimi belirtilmiştir: Class 2 pantolonlar için kombinasyon böcek koruma/tanımlama/bakım etiketi giyildiği haliyle sol kalça cebinin içine [1], Type II alev dirençli pantolonlar için kombinasyon tanımlama/bakım etiketi ise giyildiği haliyle sağ kalça cebinin içine [3] yerleştirilmelidir. Her iki durumda da etiket, bitmiş pantolon üzerinde giyen kişiye bakacak şekilde konumlandırılmalıdır [1, 3].",
+    "alinti": "The combination insect protection/identification/care label shall conform to Type VI, Class 15 of MIL­ DTL-32075 and shall be placed in the inside ofthe left hip pocket as worn, so that on the finished trouser the label shall face the wearer. The combination identification/care label shall confonn to Type VI, Class 15 ofMIL-DTL-32075 and shall be placed in the inside of the right hip pocket as worn, so that on the finished trouser the label shall face the wearer.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A045",
+    "onayli": false,
+    "nums": [
+     [
+      "6",
+      "kaynakta",
+      ""
+     ],
+     [
+      "7",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "S-7300A -3 tipindeki spesifikasyonlar için rotary hook (6) ile bobbin case holder position bracket (7) arasındaki boşluk 0.4 ile 0.7 mm arasında olmalıdır [1].",
+    "alinti": "The clearance should be 0.4 to 0.7 mm (for -[][]3 specifications) and 0.6 to 1.1 mm (for -[][]5 specifications).",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A047",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "atif",
+      "[2, 3, 5]"
+     ],
+     [
+      "5",
+      "atif",
+      "[2, 3, 5]"
+     ]
+    ],
+    "cevap": "S-7300A -3 spesifikasyonuna sahip model için en yüksek dikiş hızı 5000 sti/min değeridir [2, 3, 5].",
+    "alinti": "Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A048",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "atif",
+      "[2, 4]"
+     ],
+     [
+      "4",
+      "atif",
+      "[2, 4]"
+     ]
+    ],
+    "cevap": "S-7300A düz dikiş makinesinde başlangıç punterizinde (start backtack) B dikiş sayısı 1 - 19 dikiş aralığında ayarlanabilir [2, 4].",
+    "alinti": "No. of stitches B | Setting value: 1 - 19 stitches No. of stitches B | Setting value: 1 - 19 stitches | Setting units: 1 stitch | Initial value: 1",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A049",
+    "onayli": false,
+    "nums": [
+     [
+      "4",
+      "atif",
+      "[1, 4]"
+     ]
+    ],
+    "cevap": "S-7300A düz dikiş makinesinde alt iplik sayacı 0'ın altına düştüğünde şu durumlar gerçekleşir: [1, 4] 1. Bir uyarı verilir [1]. 2. Dikiş durduğunda uyarı buzzer'ı (warning buzzer) 5 kez (1 saniye açık/1 saniye kapalı) çalar ve bir alt iplik sayacı uyarı mesajı görüntülenir [4]. 3. Pedal (treadle) ileri doğru basılsa bile dikiş yapılması mümkün olmaz [4].",
+    "alinti": "a warning is given when the counter goes below 0. If the lower thread counter has dropped to below 0 when the sewing machine stops sewing, the warning buzzer sounds 5 times (1 second on/1 second off), and a lower thread counter warning message is displayed. Sewing will not be possible even if the treadle is depressed forward.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A052",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "atif",
+      "[2, 3, 5]"
+     ],
+     [
+      "3",
+      "atif",
+      "[2, 3, 5]"
+     ],
+     [
+      "5",
+      "atif",
+      "[2, 3, 5]"
+     ]
+    ],
+    "cevap": "S-7300A modelinde panelin otomatik kilitlenmesi MSW-310 bellek anahtarı (memory switch MSW-310) ile ayarlanabilir [2, 3, 5]. Otomatik panel kilidini kapatmak için ayar aralığı OFF olarak seçilmelidir [2].",
+    "alinti": "No.: 310 | Setting range: OFF, 30 - 300 (sec) | Initial value: 60 | Setting units: 30 | Setting details: Automatic panel lock ON standby time OFF: Automatic panel lock is disabled 30 - 300: Panel open time before panel lock turns on (sec) NOTE: At the time of shipment from the factory, the screen is set to lock automatically if no operations are carried out for one minute. (Refer to memory switch MSW-310.) NOTE: At the time of shipment from the factory, the screen is set to lock automatically | if no operations are carried out for one minute. (Refer to memory switch MSW-310.)",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A065",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "atif",
+      "[2, 3]"
+     ],
+     [
+      "3",
+      "atif",
+      "[2, 3]"
+     ]
+    ],
+    "cevap": "S-7300B düz dikiş makinesinde başlangıç punteriz dikiş hızı (start backtack sewing speed) için varsayılan (initial) değer 1800 sti/min'dir [2, 3].",
+    "alinti": "Sewing speed | Setting value: 220 - 3000 sti/min | Setting units: 100 sti/min | Initial value: 1800 Sewing speed | Setting value: 220 - 3000 sti/min | Setting units: 100 sti/min | Initial value: 1800",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A066",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 3]"
+     ]
+    ],
+    "cevap": "S-7300B düz dikiş makinesinde dikiş adımının (stitch pitch) varsayılan değeri (initial value) 2.00'dir ve ayar birimi (setting units) 0.05 mm'dir [1, 3].",
+    "alinti": "Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00 Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A073",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "kaynakta",
+      ""
+     ],
+     [
+      "4",
+      "kaynakta",
+      ""
+     ],
+     [
+      "5",
+      "atif",
+      "[1, 5 1, 3]"
+     ]
+    ],
+    "cevap": "S-7300B düz dikiş makinesinde kısayol tuşlarına fabrikadan çıkış sırasında (başlangıçta) şu işlevler atanmıştır: [1] 1. Başlangıçta geri dikiş (start backtack) tuşu [1, 5], 2. Sona geri dikiş (end backtack) tuşu [1], 3. Yavaş başlangıç (slow start) tuşu [1, 3], 4. İplik kesme kilidi (thread trimming lock) tuşu [1].",
+    "alinti": "Initially, the start backtack key, end backtack key, slow start key and thread trimming lock key are assigned. (10) | Shortcut 3 key | This key is set to operate as a 'Slow start key' at the time of shipment from the factory. (8) | Shortcut 1 key | This key is set to operate as a 'Start backtack key' at the time of shipment from the factory.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A092",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 3]"
+     ],
+     [
+      "2",
+      "yazi",
+      "alıntıda yazıyla"
+     ],
+     [
+      "3",
+      "atif",
+      "[1, 3]"
+     ],
+     [
+      "4",
+      "yazi",
+      "alıntıda yazıyla"
+     ],
+     [
+      "6",
+      "yazi",
+      "alıntıda yazıyla"
+     ]
+    ],
+    "cevap": "Dokuma tezgâhında orta onarım (medium repairs) sıklığı çalışma düzenine göre değişmektedir: iki vardiya halinde çalışıldığında en az altı ayda bir, üç vardiya halinde çalışıldığında ise en az dört ayda bir yapılmalıdır [1, 3]. Ayrıca, tezgahın ağır aşınma durumunda bu süre daha sık olabilir [1]. Onarımlar iki işçiden oluşan bir ekip tarafından gerçekleştirilir [1].",
+    "alinti": "The medium repairs are carried out according to the schedule at least twice a year, and in case of the loom’s heavy wear more frequently. The repairs are carried out by a team of two workers. Medium repairs are effected by a team of repair workers at least every six months when working in two shifts, and at least every four months when working in three shifts.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A099",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 3]"
+     ],
+     [
+      "3",
+      "atif",
+      "[1, 3]"
+     ]
+    ],
+    "cevap": "Karbon bazlı su filtresi, kahve demlemek için kullanılan sudaki klorun %97'sini gidererek kahvenin tadını iyileştirir [1, 3].",
+    "alinti": "Este filtro de agua a base de carbono mejora el sabor de su café al remover el 97% del cloro del agua que usted utiliza para colar su café. This carbon-based water filter improves the taste of your coffee by removing up to 97% of the chlorine from the water you may use to brew your coffee.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A100",
+    "onayli": false,
+    "nums": [
+     [
+      "3",
+      "atif",
+      "[1, 3, 5]"
+     ]
+    ],
+    "cevap": "Kahve makinesinde 1 fincan (taza), 5 onza (oz) veya 5 sıvı onza (fl. oz.) olarak sayılmaktadır [1, 3, 5].",
+    "alinti": "Llene la jarra con agua fresca y fría hasta la capacidad deseada (1 taza es igual a 5 onzas) 1 cup = 5 fl. oz. of brewed coffee 1 taza = 5 onzas fluidas de café colado",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A104",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "atif",
+      "[2, 4]"
+     ],
+     [
+      "4",
+      "atif",
+      "[2, 4]"
+     ]
+    ],
+    "cevap": "Programlanabilir modeller (FTX20/FTX23/FTX25/FTX26, FTXSS20/FTXSS23/FTXSS26) için temizleme döngüsünün tamamlanması 45-60 dakika sürer [2, 4].",
+    "alinti": "The entire cycle will take 45-60 minutes to complete. El ciclo completo tomará de 45 a 60 minutos en completarse.",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A105",
+    "onayli": false,
+    "nums": [
+     [
+      "5",
+      "atif",
+      "[1, 5]"
+     ]
+    ],
+    "cevap": "Yedek su filtrasyon diskleri yerel perakendeciler aracılığıyla veya şu numaralar aranarak satın alınabilir: ABD'de 1-800-MR COFFEE (1-800-672-6333) veya Kanada'da 1-800-667-8623 [1, 5].",
+    "alinti": "Los discos de filtración de agua de reemplazo pueden adquirirse a través de tiendas de ventas detallistas o llamando al 1-800-MR COFFEE (1-800-6726333) en los EE.UU. o al 1-800-667-8623 en el Canadá. Replacement water filtration disks can be purchased through your local retailer or by calling 1-800-MR-COFFEE (1-800-672-6333) in the U.S. or 1-800-6678623 in Canada.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A106",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "3",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "4",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "5",
+      "atif",
+      "[1, 5 1, 5 1, 5 1, 5 ]"
+     ]
+    ],
+    "cevap": "RA1171 freze tezgâhı için kullanılması gereken kişisel koruyucu ekipmanlar şunlardır: [1, 5] 1. Her zaman ANSI Z87.1 standardına uygun emniyet gözlüğü (baş koruması) kullanılmalıdır. [1, 5] 2. Uygun durumlarda kaymaz ayakkabı ve sert kask kullanılmalıdır. [1, 5] 3. Kesme işlemi tozluysa yüz veya toz maskesi kullanılmalıdır. [1, 5] 4. Uzun süreli operasyonlar sırasında kulak koruyucular (tıkaç veya manşon) kullanılmalıdır. [1, 5]",
+    "alinti": "Use safety goggles (head protection). Wear safety goggles (must comply with ANSI Standard Z87.1) at all times. Wear non-slip footwear and a hard hat, if appropriate. Also, use face or dust mask if cutting operation is dusty and ear protectors (plugs or muffs) during extended periods of operation. Utilice gafas de seguridad (protección para la cabeza): Utilice gafas de seguridad (deben cumplir con el estándar Z87.1 de ANSI) en todo momento. Utilice calzado antideslizante y un casco fuerte, si es apropiado. Utilice también una máscara para la cara o para evitar el polvo si la operación de cort",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A108",
+    "onayli": false,
+    "nums": [
+     [
+      "5",
+      "atif",
+      "[1, 5]"
+     ]
+    ],
+    "cevap": "Eğer freze modeliniz tabloda listelenmiyorsa, ayrı olarak temin edilebilen bir BOSCH RA1186 freze adaptör plakası (Router Adapter Plate) satın almalısınız [1, 5].",
+    "alinti": "Si su modelo de fresadora aparece en la página 77 siga el paso 1 a continuación. Si NO aparece, usted debe comprar una placa adaptadora para fresadora BOSCH RA1186, la cual está disponible por separado. If your router model is listed in the chart on page 15, proceed to step 1 below. If it is NOT listed, you must purchase a BOSCH RA1186 Router Adapter Plate, available separately.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A112",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 5]"
+     ],
+     [
+      "5",
+      "atif",
+      "[1, 5]"
+     ]
+    ],
+    "cevap": "Bosch RA1171 freze tezgâhı şalterini KAPALI (ARRÊT) konumda kilitlemek için şu adımlar izlenmelidir: 1. Şalteri kapatmak için kapak (clapet) üzerine bastırın. 2. Şalterin yanındaki emniyet anahtarını (clé de sécurité) tamamen çıkarın [1]. Emniyet anahtarı çıkarıldığında, kırmızı sürgü (glissière rouge) şalterin üst kısmını kapatarak şalterin AÇIK (MARCHE) konumuna getirilmesini engeller ve onu KAPALI konumda kilitler [1, 5].",
+    "alinti": "Pour verrouiller l'interrupteur à la position ARRÊT, poussez sur le clapet pour éteindre l'interrupteur et retirez complètement la clé de sécurité du côté de l'interrupteur. Lorsque la clé de sécurité est retirée et que la glissière rouge couvre la partie du haut du bouton à bascule, l'interrupteur NE peut PAS être basculé à la position MARCHE. La clé de sécurité étant enlevée, la glissière rouge recouvre la partie supérieure de l'interrupteur, ce qui le bloque à la position ARRÊT.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A113",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 2, 3]"
+     ],
+     [
+      "2",
+      "atif",
+      "[1, 2, 3]"
+     ],
+     [
+      "3",
+      "atif",
+      "[1, 2, 3]"
+     ]
+    ],
+    "cevap": "Parça listesine göre 38 numaralı Allen başlı bağlantı vidasından (Allen-Head Connector Screw) 13 adet bulunmaktadır [1, 2, 3].",
+    "alinti": "Key No.: 38 | Description: Allen-Head Connector Screw | Quantity: 13 Clave No.: 38 | Descripción: Tornillo conector de cabeza Allen | Cantidad: 13 N o Rep.: 38 | Description: Vis de raccordement à tête Allen | Quantité: 13",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A149",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "kaynakta",
+      ""
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ],
+     [
+      "3",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "S-7300B modelinde masura (bobbin) takma işlemi için şu adımlar izlenmelidir: 1. Yaralanmaları önlemek için masura takılmadan önce güç anahtarını kapatın [1]. 2. İğneyi iğne plakasının üzerine çıkana kadar makine kasnağını (pulley) çevirerek yükseltin [1]. 3. İpliğin sağa doğru sarılmasını sağlayacak şekilde masurayı tutarak masura kasesine (bobbin case) yerleştirin [1]. 4. İpliği kanaldan (1) ve gerginlik yayı (tension spring) (2) altından geçirin, ardından kılavuzdan (thread guide) (3) dışarı çekin [1]. 5. İplik çekildiğinde masuranın saat yönünde döndüğünü kontrol edin [1]. 6. Masura kasesi'",
+    "alinti": "Turn off the power switch before installing the bobbin case. The machine may operate if the treadle is depressed by mistake, which could result in injury. Turn the machine pulley to raise the needle until it is above the needle plate. ",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A155",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "E050 hata kodu, dikişe başlarken makine kafasının arkaya eğik olduğunun algılanması durumunda ortaya çıkar [1]. Çözüm için şu adımlar izlenmelidir: [1] 1. Gücü kapatın ve makine kafasını orijinal konumuna geri getirin. 2. Gücü kapatın ve P2 konnektörünün bağlantısını kontrol edin.",
+    "alinti": "Code: E050 | Cause: Machine head is detected as being tilted back when start sewing. | Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   }
+  ],
+  "qwen36": [
+   {
+    "qid": "questions:Q09",
+    "onayli": true,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 2]"
+     ]
+    ],
+    "cevap": "Pantolonun cep astarı (yan ve kalça cepleri için) temel kumaç, zemin gölge kumaç veya baskılı UCP sekant kumaçlarından yapılmalıdır [4]. Gramaj, pantolon tipine göre değişir [1, 2]:<br>1. Type I pantolonlar için: Minimum 5.04 oz/sq. yd. ağırlığında, düz örgü, %75 polyester ve %25 pamuk kumaç kullanılmalıdır [1].<br>2. Type II pantolonlar için: 7.0 ile 8.0 oz/sq. yd. ağırlığında, 2x sol el çapraz kumaç, %80 pamuk/%20 meta aramid fiber karışımı kumaç kullanılmalıdır [2].",
+    "alinti": "The cloth for waistband lining, side and hip pockets, shall be basic material or ground shade cloth or printed UCP seconds. As an alternate for Type I trouser only, a 5.04 ozlsq. yd. minimum, plain weave, 75% polyester 25% cotton, material or equal may be used for side and hip hanging pockets only. As an alternate for Type II trouser, the following material type may be used for side and hip hanging pockets only, 7.0 to 8.0 ozlsq. yd., 2xlleft hand twill, with 91 x 47 warp/filling ends per inch (minimum), 80% cotton/20% meta aramid fiber blend.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": true
+   },
+   {
+    "qid": "sekil_sorular:G2",
+    "onayli": true,
+    "nums": [
+     [
+      "3",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Rütbe arması ilmeği (rank patch loop), ceketin ön yakası (front placket) üzerinde yer alır [5]. Şekil 3'te, ilmeğin yaka çevresindeki alanda olduğu gösterilmektedir [2].",
+    "alinti": "The figure shows a diagram of a coat collar, specifically the area around the collar and the rank patch loop. The front placket has a loop tape for the Rank Patch.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "sekil_sorular:G6",
+    "onayli": true,
+    "nums": [
+     [
+      "3",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Filtre sepeti takmak için şu adımları izleyin [3]: 1. Filtre sepeti kapağını kaldırın ve açın [3]. 2. Gerekirse çıkarılabilir filtre sepetini dışarı alın [3]. 3. 10-12 fincanlık kağıt filtre veya kalıcı (permanente) MR. COFFEE® filtresini çıkarılabilir filtre sepetine yerleştirin [3]. 4. Kağıt filtre kullanıyorsanız, filtrenin kenarlarının filtre sepetinin kenarlarına düzgün şekilde temas ettiğinden emin olun [3]. 5. Filtre çöküyorsa, sepete yerleştirmeden önce filtreyi ıslatın [3].",
+    "alinti": "Lift and open the filter basket lid. For your convenience, you can lift out the removable filter basket. Place a MR. COFFEE ® brand 10-12 cup paper basket-style filter or a MR. COFFEE ® permanent filter into the removable filter basket (Figure 5). NOTE: If using paper filters, it is important that the sides of the filter fit flush against the side of the filter basket. If filter collapse occurs, dampen the filter before placing in the filter basket and adding ground coffee and water.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "sekil_sorular:G7",
+    "onayli": true,
+    "nums": [
+     [
+      "1",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "2",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "3",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "4",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "5",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "6",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "7",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "8",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "9",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Kahve makinesinin kontrol panelinde şu düğmeler ve göstergeler bulunmaktadır [1]: [3]:<br>1. Saat Ekranı / Taze Demleme Zamanlayıcı Ekranı (Clock Display / Fresh Brew Timer Display) [3]<br>2. Temizleme Döngüsü Göstergesi (Clean Cycle Indicator) [3]<br>3. Gecikmeli Demleme Göstergesi (Delay Brew Indicator) [3]<br>4. Şimdi Demle Göstergesi (Brew Now Indicator) [3]<br>5. Seçici Düğme (Select Button) [3]<br>6. Demleme Gücü Göstergeleri (Regular/Strong) (Brew Strength Indicators) [3]<br>7. Demleme Gücü Düğmesi (Brew Strength Button) [3]<br>8. Sıcaklık Ayar Düğmesi (Warmer Temperature Knob) [3]<br>9",
+    "alinti": "e. Pantalla del Reloj/Pantalla del Contador Regresivo del Colado f. Pantalla del Reloj/Botón de la Pantalla del Contador Regresivo del Colado g. Luz del Ciclo de Limpieza h. Luz de Demora del Colado i. Luz de Colar Ahora j. Botón Selector k. Luces de Intensidad del Colado (Regular/Cargado) l. Botón Clock Display / Fresh Brew Timer Display Clock Display / Fresh Brew Timer Display Button Clean Cycle Indicator Delay Brew Indicator Brew Now Indicator Select Button Brew Strength Indicators (Regular/Strong) Brew Strength Button m.Warmer Temperature Knob Set Delay Button Hour Button Minute Button",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": true
+   },
+   {
+    "qid": "sekil_sorular:G9",
+    "onayli": true,
+    "nums": [
+     [
+      "2",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Kimlik etiketinin (ID marker) yeri ceketin tipine göre değişmektedir [1]:<br>1. **Type II ve Type III ceketler için:** Kimlik etiketi, giyildiğinde sol kol manşetinde bulunur ve dışarıdan görünür olmalıdır [3].<br>2. **Diğer tipler için:** Kaynaklarda Type II ve III dışındaki tipler için kimlik etiketinin ön görünüşteki yeri belirtilmemiştir [1].",
+    "alinti": "See pocket detail ID Marker for Type II III left side only The Types II and III coat shall have a tape FR identification marker (see figure 1) on the left sleeve cuff as worn (see pattern for placement) and shall be visible from the outside when worn.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "sekil_sorular:N3",
+    "onayli": true,
+    "nums": [
+     [
+      "1",
+      "kaynakta",
+      ""
+     ],
+     [
+      "15",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Tekstil makinelerinde kullanılan dişli çark türleri şunlardır: düz ve helisel dişliler, silindirik, konik ve karma dişliler, vidalı dişliler ve dış ve iç dişli özel dişlilerdir [2]. Ayrıca farklı diş açılına sahip katı ve bölünmüş dişliler ile 1'den 15'e ve daha yüksek modüllere sahip dişliler bulunur [2].",
+    "alinti": "Gears used in textile machines may be of most different kinds: spur and helical gears, cylindrical, bevel and combined gears, worm gears, and special gears with external and internal toothing; solid and split gears with different angles of meshing (for machines of Soviet and foreign makes); with a",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A006",
+    "onayli": false,
+    "nums": [
+     [
+      "3",
+      "kaynakta",
+      ""
+     ],
+     [
+      "8",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Kaynaklarda üst cep dikişinin kenardan ne kadar içeride olması gerektiğine dair spesifik bir ölçü veya tolerans verilmemiştir. Sadece kol ceplerindeki loop bandının (döngü bandı) cebin alt ve üst kenarlarından 3/8-inch içeride konumlandırılması gerektiği belirtilmiştir [1].",
+    "alinti": "The loop tape shall be additionally stitched with a crisscrossed-X pattern of stitching (see figure 4). Şekil başlığı: Figure 5b - Sleeve Pocket 'X' Stitch with Bar-tack Stitch",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A008",
+    "onayli": false,
+    "nums": [
+     [
+      "6",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Ceketin üst kol ceplerine toplam 6 punteriz (bar-tack) atılır [3]. Bu punterizler şunlardır: [3]: 1. Üst ön (Top front): 2 adet [3]. 2. Alt ön (Bottom front): 2 adet [3]. 3. Üst arka (Top back): 2 adet [3].",
+    "alinti": "Bar-tack or back-tack placement: Upper sleeve pocket - through all layers a. Top front b. Bottom front c. Top back (opposite | Size of tack (inches): 5/8 5/8 5/8 | Stitches per tack 1/: 36 36 36 | # of Bar- tacks per garment: 2 2 2 | # of Back- tacks per garment: ---- ---- ---- | Horizontal: X X X |",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A014",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "soruda",
+      ""
+     ]
+    ],
+    "cevap": "Class 2 ceketlerde böcek koruma etiketi, giyildiğinde sol göğüs cebinin altında, dikey olarak veya cep açısına paralel olacak şekilde, etiketin üst kısmı ceketin üstünü gösterecek şekilde dikilir [1].",
+    "alinti": "The combination insect protection/identification/care label shall conform to Type VI, Class 15 of MIL-DTL-32075 and shall be stitched on inside of coat under the left chest pocket (as worn) vertically or parallel with the pocket angle with the top of the label facing the top of the coat.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A016",
+    "onayli": false,
+    "nums": [
+     [
+      "3",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Ceket yaka çiziminde (Şekil 3), rütbe yaması halkası (Rank Patch Loop), yaka çevresindeki alanın bir parçası olarak gösterilmektedir [1]. Çizimde ayrıca 'Box 'X' stitch' (Kutu 'X' dikişi) ile birlikte yer almaktadır [1].",
+    "alinti": "The figure includes a 'Box 'X' stitch' and a 'Rank Patch Loop.'",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A027",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "kaynakta",
+      ""
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Pantolonun fermuar (fly) dikişi, J-dikişinin 3/8 - 1/2 inç (inch) üstünde bitmelidir [1].",
+    "alinti": "The fly constmction stitching offront center crotch seam shall end 3/8 - 112 inch above J-stitch.",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A028",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "yok",
+      ""
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Pantolon iç bacağı (inseam) için 5 iplik emniyet dikişi kullanıldığında, kalıplar 1/2 inçlik çift iğne dikişleri yerine 3/8 inçlik kalınlık (gauge) için ayarlanmalıdır [1].",
+    "alinti": "NOTE: When the 5-thread safety stitch is used for the inseam, contractor must adjust pattems for 3/8-inch gauge in lieu of 112 inch double needle seams.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A034",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "kaynakta",
+      ""
+     ],
+     [
+      "4",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Pantolon temizlik muayenesinde (Cleanness), 1/4 inçten fazla olan ve kırpılmamış veya çıkarılmamış **3'ten fazla** iplik (excessive thread) kusur sayılır [1].",
+    "alinti": "Defect: Spot stain, less than 114 inch, excessive thread (more than 3) over 114 inch not trimmed or removed, odor, affecting appearance Of serviceability",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A036",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 3, 5]"
+     ],
+     [
+      "2",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "5",
+      "atif",
+      "[1, 3, 5]"
+     ]
+    ],
+    "cevap": "Pantolon çiziminde (finished measurements) verilen ölçüler (inches cinsinden) bedenlere göre değişmektedir [1]. Kaynaklarda üç farklı uzunluk/konfigürasyon için ölçüler belirtilmiştir [1, 3, 5]: 1. **Long** boyu için: X-Small: 44-7/8, Small: 45-3/8, Medium: 45-7/8, Large: 46-3/8, X-Large: 46-7/8, XX-Large: 47-3/8 [1]. 2. **XX-Long** boyu için (ilk grup): Tüm bedenler (X-Small'den XX-Large'e) 38-3/8 olarak verilmiştir [3]. 3. **XX-Long** boyu için (ikinci grup): X-Small: 49-7/8, Small: 50-3/8, Medium: 50-7/8, Large: 51-3/8, X-Large: 51-7/8, XX-Large: 52-3/8 [5].",
+    "alinti": "Size: Long | X-Small: 44-7/8 | Small: 45-3/8 | Medium: 45-7/8 | Large: 46-3/8 | X-Large: 46-7/8 | XX-Large: 47-3/8 Size: XX-Long | X-Small: 38-3/8 | Small: 38-3/8 | Medium: 38-3/8 | Large: 38-3/8 | X-Large: 38-3/8 | XX-Large: 38-3/8 Size: XX-Long | X-Small: 49-7/8 | Small: 50-3/8 | Medium: 50-7/8 | Large: 51-3/8 | X-Large: 51-7/8 | XX-Large: 52-3/8",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A053",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 5]"
+     ],
+     [
+      "5",
+      "atif",
+      "[1, 5]"
+     ]
+    ],
+    "cevap": "S-7300A'da dikiş dalgalı ve düzensiz çıkmasıyla doğrudan ilişkili spesifik bir hata kodu veya neden kaynaklarda listelenmemiştir [1, 5]. Ancak kaynaklarda şu olası sorunlar belirtilmiştir: Makinenin yüksek hızda çalışmaması durumunda dikiş hızı veya geri dikiş hızı ayarının çok yavaş olup olmadığını kontrol ediniz [1]. Ayrıca üst iplik gerginliğinin yeterli olmaması durumunda dikişte halkalar oluşabileceği belirtilmiştir [5].",
+    "alinti": "Problem: 28 | Problem: Machine does not operate at high speed. | Possible cause: ・ Is the sewing speed setting or backtack stitch speed setting too slow? Set a higher sewing speed. Upper thread is not tight. 0573M Loops appear in seam. 0977M Skipped stitches occur while sewing 0470M",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A092",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "yazi",
+      "alıntıda yazıyla"
+     ],
+     [
+      "4",
+      "yazi",
+      "alıntıda yazıyla"
+     ],
+     [
+      "6",
+      "yazi",
+      "alıntıda yazıyla"
+     ]
+    ],
+    "cevap": "Dokuma tezgâhında orta onarım sıklığı çalışma vardiyalarına göre değişir: İki vardiya çalışmasında en az 6 ayda bir (yılda en az 2 kez), üç vardiya çalışmasında en az 4 ayda bir yapılır [1][3]. Onarımı yapan ekip sayısı ise 2 kişiden oluşur [1].",
+    "alinti": "The medium repairs are carried out according to the schedule at least twice a year... The repairs are carried out by a team of two workers. Medium repairs are effected by a team of repair workers at least every six months when working in two shifts, and at least every four months when working in three shifts.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A106",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "3",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "4",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Freze tezgâhı (RA1171) ile çalışırken aşağıdaki kişisel koruyucu ekipmanlar kullanılmalıdır [1]:<br>1. Her zaman güvenlik gözlüğü (ANSI Z87.1 standardına uygun) [1].<br>2. Uygun olduğunda kaymaz ayakkabı ve baret [1].<br>3. Kesim işlemi tozlu ise yüz veya toz maskesi [1].<br>4. Uzun süreli çalışmalarda kulak koruyucular (tıkacı veya kulaklık) [1].",
+    "alinti": "Wear safety goggles (must comply with ANSI Standard Z87.1) at all times. Wear non-slip footwear and a hard hat, if appropriate. Also, use face or dust mask if cutting operation is dusty and ear protectors (plugs or muffs) during extended periods of operation.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A108",
+    "onayli": false,
+    "nums": [
+     [
+      "15",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Frezinizin modeli bağlantı tablosunda (sayfa 15'teki tablo) yoksa, ayrı olarak satın alınabilen bir BOSCH RA1186 Freze Adaptör Plakası satın almanız gerekmektedir [1][5].",
+    "alinti": "Si NO aparece, usted debe comprar una placa adaptadora para fresadora BOSCH RA1186, la cual está disponible por separado. If it is NOT listed, you must purchase a BOSCH RA1186 Router Adapter Plate, available separately.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A109",
+    "onayli": false,
+    "nums": [
+     [
+      "1617",
+      "soruda",
+      ""
+     ]
+    ],
+    "cevap": "Bosch 1617 serisi (sabit tabanlı modeller) freze tezgâhını tablaya bağlamak için 46 adet 10-24 x 3/4″ Phillips makine vidası gereklidir [3].",
+    "alinti": "Fasteners Required: 10-24 x 3/4″ Phillips machine screws (46)",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A112",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "2",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "3",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Şalteri kapalı (ARRÊT) konumda kilitlemek için şu adımlar izlenmelidir [1]:<br>1. Şalteri kapatmak için kapağa (clapet) basın [1].<br>2. Şalterin yanından güvenlik anahtarını (clé de sécurité) tamamen çıkarın [1].<br>3. Güvenlik anahtarı çıkarıldığında ve kırmızı kaydırıcı (glissière rouge) şalterin üst kısmını kapattığında, şalter çalıştırma (MARCHE) konumuna getirilemez ve kilitlenmiş olur [1].",
+    "alinti": "Pour verrouiller l'interrupteur à la position ARRÊT, poussez sur le clapet pour éteindre l'interrupteur et retirez complètement la clé de sécurité du côté de l'interrupteur. La glissière rouge couvre la partie supérieure de l'interrupteur, comme illustré en C ci-dessus. Lorsque la clé de sécurité est retirée et que la glissière rouge couvre la partie du haut du bouton à bascule, l'interrupteur NE peut PAS être basculé à la position MARCHE.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   }
+  ],
+  "gpt54mini": [
+   {
+    "qid": "questions_ek:Q26",
+    "onayli": true,
+    "nums": [
+     [
+      "1",
+      "yok",
+      ""
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Kaynaklarda pantolonun overlok / ham kenar dikişleri için iki farklı Tex bilgisi var ve ayırt edici ayrıntı verilmediği için netleştirme gerekir. Type I trouser için kaynak 1'de Needle thread ve Bobbin! Looper thread Tex size 31-35; kaynak 2'de ise Overedge/Serge / raw edge cover için Tex size 40 39 16 24-27 veriliyor. [1][2]",
+    "alinti": "Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35 Component area: Overedge/Serge/ for portions of safety stitch operation for raw edge cover | Tlu·ead· specification: A-A-50195 (Soft or Bonded) A-A-55195, Type I A-A-55195, Type II A-A-55217, Type I | Needle thread (Tex size): 40 39 16 24-27 | Bobbin! Looper thread (Tex size): 40 39 16 24-27",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A008",
+    "onayli": false,
+    "nums": [
+     [
+      "6",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Üst kol cepleri için toplam bar-tack sayısı, a. Top front, b. Bottom front ve c. Top back (opposite) için 2 + 2 + 2 olarak verilmiş; yani toplam 6 punterizdir. [3]",
+    "alinti": "Bar-tack or back-tack placement: Upper sleeve pocket - through all layers a. Top front b. Bottom front c. Top back (opposite | Size of tack (inches): 5/8 5/8 5/8 | Stitches per tack 1/: 36 36 36 | # of Bar- tacks per garment: 2 2 2 | # of Back- tacks per garment: ---- ---- ---- | Horizontal: X X X | Vertical: ---- ---- ----",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A014",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "soruda",
+      ""
+     ]
+    ],
+    "cevap": "Class 2 ceketlerde böcek koruma/kimlik/bakım etiketi ceketin iç kısmında, giyildiğinde sol göğüs cebinin altına dikilir; etiket dikey ya da cep açısına paralel olmalı ve etiketin üst kısmı ceketin üstüne bakmalıdır. [1]",
+    "alinti": "The combination insect protection/identification/care label shall conform to Type VI, Class 15 of MIL-DTL-32075 and shall be stitched on inside of coat under the left chest pocket (as worn) vertically or parallel with the pocket angle with the top of the label facing the top of the coat.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A038",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "E050 için makine başı dikişe başlarken geriye yatırılmış olarak algılanmış. [1] Yapman gerekenler: 1) Gücü kapatıp makine başını orijinal konumuna geri getir. [1] 2) Gücü kapatıp connector P2 bağlantısını kontrol et. [1]",
+    "alinti": "Code: E050 | Cause: Machine head is detected as being tilted back when start sewing. | Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A078",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Makine dikişinde inç başına 15 to 20 dikiş kullanılmalı; daha kalın materyaller için daha uzun dikiş seçilir. [1]",
+    "alinti": "Use 15 to 20 stitches per inch, the longer stitch for bulky materials.",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A092",
+    "onayli": false,
+    "nums": [
+     [
+      "4",
+      "yazi",
+      "alıntıda yazıyla"
+     ],
+     [
+      "6",
+      "yazi",
+      "alıntıda yazıyla"
+     ]
+    ],
+    "cevap": "Dokuma tezgahinda orta onarim, iki vardiyada calisiliyorsa en az her 6 ayda bir, uc vardiyada calisiliyorsa en az her 4 ayda bir yapilir. Onarimi bir tamirci ekibi yapar; kaynakta kisi sayisi verilmemis. [3]",
+    "alinti": "Medium repairs are effected by a team of repair workers at least every six months when working in two shifts, and at least every four months when working in three shifts. For the time of medium repairs, the warper is stopped and excluded from the production plan.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   }
+  ],
+  "mistral2603": [
+   {
+    "qid": "questions_ek:Q24",
+    "onayli": true,
+    "nums": [
+     [
+      "3",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "1. Malzemeyi dikim sırasında aşırı kuvvetle itip çekmeyin. [1]\n2. İğneyi doğru şekilde takıp takmadığınızı kontrol edin. Yanlışsa iğneyi doğru şekilde takın. [1]\n3. İğne ucunun eğri, kırık veya iğne deliğinin tıkalı olup olmadığını kontrol edin. Gerekirse iğneyi değiştirin. [1]\n4. İğne ve rotary kanca (rotary hook) zamanlamasının doğru olup olmadığını kontrol edin. İğne çubuğu yüksekliğini ve iğne ile rotary kanca ucu arasındaki boşluğu ayarlayın. [1]\n5. İğne ve besleme mekanizması (feed mechanism) zamanlamasının standartlara uygun olup olmadığını kontrol edin ve gerekirse ayarlayın. [1]\n6. Öz",
+    "alinti": "Possible cause: Is the material being pushed or pulled with excessive force during sewing? Is the needle properly installed? If it is incorrect, install the needle correctly. Is the needle tip bent? Is the needle tip broken, or is the needle hole blocked? Replace the needle. Is the needle and rotary hook timing correct? Adjust the height of the needle bar. Adjust the clearance between the needle and the tip of the rotary hook. Is the needle and feed mechanism timing correct? Adjust to the standard timing. Try pressing the special locus key and selecting No. 2 or No. 3. It is extremely dangerous to leave any pieces of broken needle sticking in the material. If the needle breaks, search for all pieces until the whole of the needle is found again.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": true
+   },
+   {
+    "qid": "questions_ek:Q27",
+    "onayli": true,
+    "nums": [
+     [
+      "1",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Cırt bant (hook fastener tape), göğüs cebi klapesinin alt tarafına dikilmelidir. Klapenin gövdeye temas eden kenarından 1/4 inç içeriden başlamalıdır. [5]",
+    "alinti": "The underside of each chest pocket flap shall have a piece of hook fastener tape, 5/8-inch wide by 63/4-inches in cut length, sewn onto it for pocket closure.",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "sekil_sorular:G2",
+    "onayli": true,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 5]"
+     ],
+     [
+      "5",
+      "atif",
+      "[1, 5]"
+     ]
+    ],
+    "cevap": "Rütbe arması ilmeği (rank patch loop), ceketin ön plaketinde (front placket) yer almaktadır. [1, 5]",
+    "alinti": "The rank patch shall be a piece of loop fastener tape, 2-inches wide by 2inches in cut length. The front placket has a loop tape for the Rank Patch.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "sekil_sorular:G6",
+    "onayli": true,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[3, 1 3, 1 3, 1]"
+     ],
+     [
+      "3",
+      "atif",
+      "[3, 1 3, 1 3, 1]"
+     ]
+    ],
+    "cevap": "1. Filtre sepetinin kapağını kaldırıp açın. [3]\n2. Çıkarılabilir filtre sepetini yukarı doğru kaldırıp çıkarın. [3]\n3. MR. COFFEE marka 10-12 fincan kağıt sepet tipi filtreyi veya MR. COFFEE marka kalıcı filtreyi çıkarılan sepetin içine yerleştirin. [3, 1]\n4. Kağıt filtre kullanılıyorsa, filtre kenarlarının sepetin yanlarına tam olarak oturduğundan emin olun. [3, 1]\n5. Filtrede çökme meydana geliyorsa, filtreyi sepetin içine yerleştirmeden ve kahve ile su eklemeden önce ıslatın. [3, 1]",
+    "alinti": "Lift and open the filter basket lid. For your convenience, you can lift out the removable filter basket. Place a MR. COFFEE ® brand 10-12 cup paper basket-style filter or a MR. COFFEE ® permanent filter into the removable filter basket (Figure 5). If using paper filters, it is important that the sides of the filter fit flush against the side of the filter basket. Inserte un filtro de papel para 10-12 tazas marca MR. COFFEE ® o un filtro permanente marca MR. COFFEE ® en la canasta removible del filtro (Figura 5). Si se está colapsando el filtro, humedézcalo antes de colocarlo en la canasta del filtro y añadir café molido y agua.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": true
+   },
+   {
+    "qid": "sekil_sorular:G7",
+    "onayli": true,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 3]"
+     ],
+     [
+      "3",
+      "atif",
+      "[1, 3]"
+     ]
+    ],
+    "cevap": "Kahve makinesinin kontrol panelinde bulunan düğmeler ve göstergeler şunlardır:\n1. Select Button (Seçici Düğme) [1, 3]\n2. Brew Strength Button (Demleme Yoğunluğu Düğmesi) [3]\n3. Set Delay Button (Gecikme Ayarlama Düğmesi) [3]\n4. Hour Button (Saat Düğmesi) [3]\n5. Minute Button (Dakika Düğmesi) [3]\n6. Warmer Temperature Knob (Isıtıcı Sıcaklık Ayar Döner Düğmesi) [3]",
+    "alinti": "e. Pantalla del Reloj/Pantalla del Contador Regresivo del Colado f. Pantalla del Reloj/Botón de la Pantalla del Contador Regresivo del Colado g. Luz del Ciclo de Limpieza h. Luz de Demora del Colado i. Luz de Colar Ahora j. Botón Selector k. Luces de Intensidad del Colado (Regular/Cargado) l. Botón Select Button Brew Strength Indicators (Regular/Strong) Brew Strength Button m.Warmer Temperature Knob Set Delay Button Hour Button Minute Button",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A008",
+    "onayli": false,
+    "nums": [
+     [
+      "3",
+      "kaynakta",
+      ""
+     ],
+     [
+      "6",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Ceketin üst kol ceplerine toplam 6 punteriz atılması gerekmektedir. Üst kol cebinde 3 farklı konumda (üst ön, alt ön, üst arka) her birine 2 punteriz atılmaktadır [3].",
+    "alinti": "Bar-tack or back-tack placement: Upper sleeve pocket - through all layers a. Top front b. Bottom front c. Top back (opposite # of Bar- tacks per garment: 2 2 2",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A009",
+    "onayli": false,
+    "nums": [
+     [
+      "6.35",
+      "birim",
+      "0.25 (inç→mm)"
+     ]
+    ],
+    "cevap": "İsim ve U.S. Army bantları yatay hizadan en fazla 1/4 inç (yaklaşık 6.35 mm) kayabilir. Bu durumda kusur olarak sınıflandırılır [1]. Bantlar birbirleriyle de tam olarak hizalı olmalıdır [2].",
+    "alinti": "Examination: Front name and U.S. Army loop tapes | Defect: Not in horizontal alignment or uneven by more than 1/4-inch | Classification: 139 Both loop tapes shall be in horizontal alignment with each other when coat is zipped.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A010",
+    "onayli": false,
+    "nums": [
+     [
+      "1.2",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "ASTM D 5034, tekstil kumaşlarının kopma dayanımı (breaking strength) ve uzama (elongation) özelliklerini ölçen bir test yöntemidir [1,2].",
+    "alinti": "Characteristic: Button pull/break (Class 2 prior to treatment) | Requirement paragraph: 3.5.8 | Test method: ASTM D 5034 ASTM D 5034 - Standard Test Method for Breaking Strength and Elongation of Textile Fabrics (Grab Test)",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A012",
+    "onayli": false,
+    "nums": [
+     [
+      "1.3",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Ceket ısırma testinde gönüllünün test bölgesi kolun bilekten dirseğin yaklaşık 1/2 inç önüne kadar olan önkol (forearm) bölgesidir. Test sırasında kol pronasyon pozisyonunda olmalı ve sabitleme dikişi önkolun üst kısmında konumlandırılmalıdır [1,3].",
+    "alinti": "The test area shall consist of the region from the wrist to approximately 1/2-inch before the elbow. ensure it covers the entire forearm of the test subject without gaps for insect access. With the arm in the pronated position, the fastening seam that closes the specimen on the volunteer's arm shall be located on the top of the forearm.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A013",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 5]"
+     ],
+     [
+      "5",
+      "atif",
+      "[1, 5]"
+     ]
+    ],
+    "cevap": "Bitmiş ceketin toksisite şartı aşağıdaki gibidir:\n1. Bitmiş ceket sağlık tehlikesi oluşturmamalıdır [1].\n2. Bitmiş ceket, uzun süreli doğrudan deri temasına uyumlu olmalıdır [1].\n3. Bu şartlar, 4.5.3 bölümünde belirtilen test yöntemiyle doğrulanmalıdır [1, 5].",
+    "alinti": "The finished coat shall not present a health hazard and shall show compatibility with prolonged, direct skin contact when tested as specified in 4.5.3. Characteristic: Toxicity | Requirement paragraph: 3.13 | Test method: 4.5.3",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A014",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "soruda",
+      ""
+     ]
+    ],
+    "cevap": "Class 2 ceketlerde böcek koruma etiketi, sol göğüs cebinin (giyildiği haliyle) altında, dikey olarak veya cebin açısıyla paralel şekilde dikilmelidir. Etiketin üst kısmı ceketin üst kısmına bakacak şekilde yerleştirilir.",
+    "alinti": "The combination insect protection/identification/care label shall be stitched on inside of coat under the left chest pocket (as worn) vertically or parallel with the pocket angle with the top of the label facing the top of the coat.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A017",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 2]"
+     ],
+     [
+      "2",
+      "atif",
+      "[1, 2]"
+     ]
+    ],
+    "cevap": "Uzun boy ceketlerde 36 beden ön fermuar uzunluğu 16 inç olmalıdır [1, 2].",
+    "alinti": "36 - Long Height: 66 to 70 in. Chest: 36 to 39 in. NSN No. NATO Size: 7080/9404 Size 36: 16",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A024",
+    "onayli": false,
+    "nums": [
+     [
+      "1.5",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Punterizin (bartack) boyu 5/8 inç olmalıdır. Bu değer, ön cep kapağının üst ve alt kısmında uygulanacak punterizler için geçerlidir [1,5].",
+    "alinti": "Bartack Placement: Top and bottom of opening on front hanging pockets @ right angles to front edge (top 114-3/8 inch from stitch line of waistband) | Size of Tack: 5/8 | Stitches per Tack: 36 | # of Bartacks per Side Of Piece: 2 Bartacks on the tops of front hanging pockets ... shall be 5/8 inches in length with approximately 36 stitches per bartack.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A025",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "yok",
+      ""
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Pantolon cep kapaklarının üst dikişi, cep üst kenarının katlanmış kenarından 1/2 inç içeride olmalıdır [3].",
+    "alinti": "The pocket flaps shall be set 112 inch fi'om the folded edge of pocket top (see pattem for placement).",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A026",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "kaynakta",
+      ""
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Cırt bant kenar şeridinden 1 1/2 inç içeriden dikilir. Kaynakta bu ölçü '112 inch' olarak belirtilmiştir.",
+    "alinti": "The waistband also has a flat tubular braided drawstring inserted through 112 inch straight cut vertical buttonholes or 3/8 inch sewn eyelets, with knotted ends for waist adjustment.",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A027",
+    "onayli": false,
+    "nums": [
+     [
+      "0.375",
+      "bicim",
+      "alıntıda değer olarak var"
+     ],
+     [
+      "0.5",
+      "yok",
+      ""
+     ],
+     [
+      "1",
+      "kaynakta",
+      ""
+     ]
+    ],
+    "cevap": "Pantolonun fermuar (fly) dikişi, J-dikişinin 3/8 - 1/2 inç (0.375 - 0.5 inç) üstünde bitmelidir [1].",
+    "alinti": "The fly constmction stitching offront center crotch seam shall end 3/8 - 112 inch above J-stitch. The fly shall have \"J\" stitching 2-inches from fly edge.",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A028",
+    "onayli": false,
+    "nums": [
+     [
+      "11",
+      "kaynakta",
+      ""
+     ],
+     [
+      "2",
+      "kaynakta",
+      ""
+     ],
+     [
+      "9.5",
+      "birim",
+      "0.375 (inç→mm)"
+     ]
+    ],
+    "cevap": "Pantolon iç bacağında 5 iplik emniyet dikişi kullanıldığında kalıp, 3/8 inç (yaklaşık 9.5 mm) ölçüsüne göre ayarlanmalıdır. Bu ayar, 11/2 inçlik çift iğneli dikişe göre yapılmaktadır.",
+    "alinti": "When the 5-thread safety stitch is used for the inseam, contractor must adjust pattems for 3/8-inch gauge in lieu of 112 inch double needle seams.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A030",
+    "onayli": false,
+    "nums": [
+     [
+      "15",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Pantolon ısırma testinde kollar böcek kafesinde 15 dakika tutulur [3].",
+    "alinti": "Arms containing the controls and treated specimens shall be exposed to a cage of insects for IS min.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A043",
+    "onayli": false,
+    "nums": [
+     [
+      "10",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "E442 hatası, yedek bellek verilerinin anormal olması nedeniyle ayarların sıfırlandığını göstermektedir. Aşağıdaki adımları uygulayın:\n1. Makinenin güç düğmesini kapatın.\n2. 10 saniye bekleyin.\n3. Makinenin güç düğmesini tekrar açın. [1]",
+    "alinti": "Code: E442 | Cause: Back up memory (main internal P.C. board) data was abnormal, so settings were initialized. Remedy: Turn the power off and then back on again.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A047",
+    "onayli": false,
+    "nums": [
+     [
+      "2.3",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "5",
+      "atif",
+      "[2,3,5]"
+     ]
+    ],
+    "cevap": "S-7300A -3 tipinin en yüksek dikiş hızı 5000 sti/dakika olarak belirlenmiştir [2,3,5].",
+    "alinti": "Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A048",
+    "onayli": false,
+    "nums": [
+     [
+      "2.4",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "S-7300A düz dikiş makinesinde başlangıç punterizinde B dikiş sayısı 1 ila 19 dikiş arasında ayarlanır. [2,4]",
+    "alinti": "No. of stitches B | Setting value: 1 - 19 stitches No. of stitches B | Setting value: 1 - 19 stitches | Setting units: 1 stitch | Initial value: 1",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A052",
+    "onayli": false,
+    "nums": [
+     [
+      "2.3",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "5",
+      "atif",
+      "[2,3,5]"
+     ]
+    ],
+    "cevap": "S-7300A'da panelin otomatik kilitlenmesi MSW-310 bellek anahtarı ile kapatılır [2,3,5].",
+    "alinti": "Setting details: Automatic panel lock ON standby time OFF: Automatic panel lock is disabled 30 - 300: Panel open time before panel lock turns on (sec) NOTE: At the time of shipment from the factory, the screen is set to lock automatically if no operations are carried out for one minute. (Refer to memory switch MSW-310.) NOTE: At the time of shipment from the factory, the screen is set to lock automatically if no operations are carried out for one minute. (Refer to memory switch MSW-310.)",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A066",
+    "onayli": false,
+    "nums": [
+     [
+      "1",
+      "atif",
+      "[1, 3, 5]"
+     ]
+    ],
+    "cevap": "S-7300B düz dikiş makinesinde dikiş adımının (stitch pitch) varsayılan değeri 2.00 mm'dir. Ayar birimi 0.05 mm olarak belirlenmiştir [1, 3, 5].",
+    "alinti": "Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00 Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00 Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 (design stitches) -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 (design stitches)",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A081",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "kaynakta",
+      ""
+     ],
+     [
+      "2.5",
+      "birim",
+      "1 (inç→cm)"
+     ],
+     [
+      "38",
+      "yok",
+      ""
+     ]
+    ],
+    "cevap": "Uzun kruvaze paltoda düğmelenmeyen alt kat, astar malzemesinden veya astarla eşleşen yaklaşık 2.5 cm genişliğinde grosgrain şeritten yapılan bir bağ (tie) ile sabitlenir. Bu bağın yapımı ve yerleştirilmesi aşağıdaki adımlarla gerçekleştirilir:\n\n1. Astar malzemesinden 38 cm uzunluğunda ve 2xh cm genişliğinde (h: astar kalınlığı) iki adet şerit kesilir. [1]\n2. Her şerit uzunlamasına ortadan katlanır (iç yüzü dışta kalacak şekilde), bastırılır ve uzun kenarları boyunca dikilir. Bir ucu da dikilerek kapatılır. [1]\n3. Şeritler ters yüzünden çıkarılır, ütülenir ve astar kenarına bastırılır. [1]\n4. P",
+    "alinti": "In the long double-breasted coat, the under extension, if not buttoned, should be held in place by a tie made of the lining, or of matching grosgrain ribbon about 1 inch wide.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": true
+   },
+   {
+    "qid": "aday_sorular:A082",
+    "onayli": false,
+    "nums": [
+     [
+      "1.27",
+      "yok",
+      ""
+     ],
+     [
+      "1.4",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "2.54",
+      "birim",
+      "1 (inç→cm)"
+     ]
+    ],
+    "cevap": "Kırım (break) çizgisinin 1 inç (2.54 cm) gerisinden başlanır. Dikişler Vi inç (1.27 cm) aralıklarla ve Vi inç (1.27 cm) genişlikte yapılmalıdır [1,4].",
+    "alinti": "The stitches are Vi inch across, with Vi inch between stitches. On the lapels, start the pad stitch 1 inch behind the break line, paralleling this line from neck edge to edge of garment just below the top button.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A083",
+    "onayli": false,
+    "nums": [
+     [
+      "1.3",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Gömme ceplerin dikiş hattında tela (canvas) kullanılması, kumaşa binen gerilimi azaltmak içindir. Bu destek sayesinde cep dikişlerinde oluşabilecek aşırı gerilme ve yırtılma riski önlenir. Özellikle cep üst köşelerinde dikişin güçlendirilmesi gerektiğinden, tela bu bölgelerde gizli dikişlerle sabitlenir [1,3].",
+    "alinti": "All set-in pockets should be reinforced with canvas along the stitching line on the wrong side of the garment. This canvas prevents too great strain on the fabric. The strain on the pocket is at the two top corners where stitching should be reinforced. These stitches should catch through the reinforcing canvas on the wrong side of the garment.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A092",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "yazi",
+      "alıntıda yazıyla"
+     ]
+    ],
+    "cevap": "Dokuma tezgâhında orta onarımın sıklığı çalışma vardiyalarına göre değişir:\n1. İki vardiya çalışıldığında: en az altı ayda bir [3].\n2. Üç vardiya çalışıldığında: en az dört ayda bir [3].\n3. Genel olarak en az yılda iki kez yapılmalıdır [1].\n\nOrta onarım, bir ekip tarafından gerçekleştirilir:\n- En az 2 kişi [1].",
+    "alinti": "The medium repairs are carried out according to the schedule at least twice a year, and in case of the loom’s heavy wear more frequently. The repairs are carried out by a team of two workers. Medium repairs are effected by a team of repair workers at least every six months when working in two shifts, and at least every four months when working in three shifts.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A104",
+    "onayli": false,
+    "nums": [
+     [
+      "2.4",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Programlanabilir Mr. Coffee kahve makinelerinde (FTX20/FTX23/FTX25/FTX26, FTXSS20/FTXSS23/FTXSS26) temizleme döngüsü 45-60 dakika sürmektedir [2,4].",
+    "alinti": "The entire cycle will take 45-60 minutes to complete. El ciclo completo tomará de 45 a 60 minutos en completarse.",
+    "durum": "failed",
+    "deger_dogru": false,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A106",
+    "onayli": false,
+    "nums": [
+     [
+      "1.5",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Freze tablasıyla çalışırken aşağıdaki kişisel koruyucu ekipmanlar kullanılmalıdır:\n1. ANSI Standard Z87.1'e uygun koruyucu gözlük [1,5]\n2. Kaymayan ayakkabı [1,5]\n3. Gerekliyse sert başlık (kask) [1,5]\n4. Kesme işlemi tozluysa yüz maskesi veya toz maskesi [1,5]\n5. Uzun süreli çalışmalarda kulak koruyucu (kulak tıkacı veya kulaklık) [1,5]",
+    "alinti": "Wear safety goggles (must comply with ANSI Standard Z87.1) at all times. Wear non-slip footwear and a hard hat, if appropriate. Use face or dust mask if cutting operation is dusty and ear protectors (plugs or muffs) during extended periods of operation. Utilice gafas de seguridad (deben cumplir con el estándar Z87.1 de ANSI) en todo momento. Utilice calzado antideslizante y un casco fuerte, si es apropiado. Utilice también una máscara para la cara o para evitar el polvo si la operación de corte produce polvo, y protectores para los oídos (tapones u orejeras) durante periodos prolongados de operación.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A107",
+    "onayli": false,
+    "nums": [
+     [
+      "1.5",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Freze tablası şalteri için en az 14 gauge (veya daha kalın) üç telli uzatma kablosu kullanılmalıdır. Kablo, topraklı priz ve topraklı fişe sahip olmalıdır [1,5].",
+    "alinti": "A 14-gauge (or heavier) three-wire extension cord with a three-hole grounding receptacle and three-hole grounding plug is to be used for connecting the switch to an electrical outlet. Grounded tools must use 3-wire extension cords that have 3-prong plugs and receptacles. Capacidad nominal en amperes de la herramienta: 12-16 | Tamaño del cordón en A.W.G.: 14",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A108",
+    "onayli": false,
+    "nums": [
+     [
+      "1.5",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Frezemin modeli bağlantı tablosunda yoksa BOSCH RA1186 modeli için üretilen bağlantı plakasını (adaptör plakası) satın almalısınız [1,5].",
+    "alinti": "Si NO aparece, usted debe comprar una placa adaptadora para fresadora BOSCH RA1186, la cual está disponible por separado. If it is NOT listed, you must purchase a BOSCH RA1186 Router Adapter Plate, available separately.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A109",
+    "onayli": false,
+    "nums": [
+     [
+      "1613",
+      "kaynakta",
+      ""
+     ],
+     [
+      "1617",
+      "soruda",
+      ""
+     ]
+    ],
+    "cevap": "Bosch 1617 serisi frezeyi tablaya bağlamak için modelinize bağlı olarak iki farklı vida seti gereklidir:\n\n1. **1617 serisi (sabit taban modelleri) için:**\n   - Vida tipi: 10-24 x 3/4″ Phillips makine vidaları (46 adet) [3].\n\n2. **1613 serisi için:**\n   - Vida tipi: 1/4-20 x 1 1/2″ Phillips makine vidaları (45 adet), büyük rondelalar (31 adet) ve somunlar 1/4-20 (48 adet) [4].",
+    "alinti": "Fasteners Required: 10-24 x 3/4″ Phillips machine screws (46) Tornillos necesarios: Tornillos de máquina Phillips 1/4-20 x 1 1 ⁄2″ (45), arandelas grandes (31), y tuercas 1/4-20 (48)",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A110",
+    "onayli": false,
+    "nums": [
+     [
+      "1.5",
+      "sira",
+      "liste numarası"
+     ],
+     [
+      "6.35",
+      "birim",
+      "0.25 (inç→mm)"
+     ]
+    ],
+    "cevap": "Çit yüzleri (fence facings), freze ucundan 1/4 inç (yaklaşık 6.35 mm) mesafede konumlandırılmalıdır. Bu ayar, hem freze ucunun serbestçe dönmesini sağlar hem de iş parçasının sürekli desteklenmesini garanti eder [1,5].",
+    "alinti": "Position both fence facings so that they clear the bit by 1/4″. Position both fence facings so that they provide continuous support of the workpiece.",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A112",
+    "onayli": false,
+    "nums": [
+     [
+      "1.5",
+      "sira",
+      "liste numarası"
+     ]
+    ],
+    "cevap": "Freze tablası şalterini kapalı konuma getirdikten sonra:\n1. Klapeti (kapakçığı) aşağıya doğru iterek şalteri kapatın [1].\n2. Güvenlik anahtarını (clé de sécurité) tamamen çıkarın [1,5].\n3. Kırmızı kaydırma parçası (glissière rouge) şalterin üst kısmını kaplayacaktır. Bu durumda şalter artık açık konuma getirilemez [1,5].",
+    "alinti": "Pour verrouiller l'interrupteur à la position ARRÊT, poussez sur le clapet pour éteindre l'interrupteur et retirez complètement la clé de sécurité du côté de l'interrupteur. La glissière rouge couvre la partie supérieure de l'interrupteur, comme illustré en C ci-dessus. Lorsque la clé de sécurité est retirée et que la glissière rouge couvre la partie du haut du bouton à bascule, l'interrupteur NE peut PAS être basculé à la position MARCHE. La clé de sécurité étant enlevée, la glissière rouge recouvre la partie supérieure de l'interrupteur, ce qui le bloque à la position ARRÊT.",
+    "durum": "failed",
+    "deger_dogru": null,
+    "kesik_kayit": false
+   },
+   {
+    "qid": "aday_sorular:A113",
+    "onayli": false,
+    "nums": [
+     [
+      "2",
+      "yazi",
+      "alıntıda yazıyla"
+     ]
+    ],
+    "cevap": "Parça listesinde 38 numaralı Allen başlı bağlantı vidasından 13 adet bulunmaktadır. Montaj talimatında ise sol ve sağ yan panellerin her birinin arkaya montajında 2 adet kullanılmaktadır.",
+    "alinti": "Key No.: 38 | Description: Allen-Head Connector Screw | Quantity: 13 attach the left side panel (4) to the back panel using two Allen-head connector screws (38) Attach the right side panel (5) to the back panel using two Allen-head connector screws (38)",
+    "durum": "failed",
+    "deger_dogru": true,
+    "kesik_kayit": false
+   }
+  ]
+ },
+ "rozetler": {
+  "gemma4": {
+   "questions:Q01": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q02": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q03": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q04": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "questions:Q05": [
+    "partial",
+    "partial",
+    "partial",
+    true,
+    []
+   ],
+   "questions:Q06": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "questions:Q09": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q11": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q12": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q13": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q14": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q16": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q19": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q20": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q21": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q22": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q23": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q24": [
+    "partial",
+    "partial",
+    "partial",
+    true,
+    []
+   ],
+   "questions_ek:Q25": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q26": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q29": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q32": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G1": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G2": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G3": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "sekil_sorular:G4": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G5": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:G6": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G7": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G8": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G9": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:N2": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:N3": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A002": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A003": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A004": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A005": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A007": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A008": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A009": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A010": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A011": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A012": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A013": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A014": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A015": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A016": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "alinti_kaynak_metni",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A017": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A018": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A019": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A020": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A021": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A022": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A023": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A024": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A025": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A027": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A028": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A029": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A030": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A031": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A032": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A033": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A034": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A037": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A038": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A039": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A040": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A041": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A042": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A043": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A045": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A046": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A047": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A048": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A049": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A050": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A051": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A052": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A054": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A055": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A057": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A058": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A059": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A060": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A061": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A062": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A063": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A064": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A065": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A066": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A067": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A068": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A069": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A070": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A071": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A072": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A073": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A074": [
+    "failed",
+    "failed",
+    "failed",
+    true,
+    []
+   ],
+   "aday_sorular:A075": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A076": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A077": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A078": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A079": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A080": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "aday_sorular:A081": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A082": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A083": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A084": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A085": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A086": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A087": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A088": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A089": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A090": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A091": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A092": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A093": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A094": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A095": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A097": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A098": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A099": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A100": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A101": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A102": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A103": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A104": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A105": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A106": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A107": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A108": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A109": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A110": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A111": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A112": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A113": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A146": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A147": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A149": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A153": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A155": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ]
+  },
+  "qwen36": {
+   "questions:Q01": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q02": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q03": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q04": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q05": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q06": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q09": [
+    "failed",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "questions:Q11": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q12": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q13": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q14": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q15": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q16": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q19": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q20": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q21": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q22": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q23": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q24": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q25": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "questions_ek:Q26": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "questions_ek:Q27": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q28": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q29": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q32": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G1": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:G2": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_kaynak_metni",
+     "sayilar_alintida"
+    ]
+   ],
+   "sekil_sorular:G3": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "sekil_sorular:G4": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:G5": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:N1": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G6": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "sekil_sorular:G7": [
+    "failed",
+    "failed",
+    "failed",
+    true,
+    []
+   ],
+   "sekil_sorular:G8": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "sekil_sorular:G9": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:N2": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:N3": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A002": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A003": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A004": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A005": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A006": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A007": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A008": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A009": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A010": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A011": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A012": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A013": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A014": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A015": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A016": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A017": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A018": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A019": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A020": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A021": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A022": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A023": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A024": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A025": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A026": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A027": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A028": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A029": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A030": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A031": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A032": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A033": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A034": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A036": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A037": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A038": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A039": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A040": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A041": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A042": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A043": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A045": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A046": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A047": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A048": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A049": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A050": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A051": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A052": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A053": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A054": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A055": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A057": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A058": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A059": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A060": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A061": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A062": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A063": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A064": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A065": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A066": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A067": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A068": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A069": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A070": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A071": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A072": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A073": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A074": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A075": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A076": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A077": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A078": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A079": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A080": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A081": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A082": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A083": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A084": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A085": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A086": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A087": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A088": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A089": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A090": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A091": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A092": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A093": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A094": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A095": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A096": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A097": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A098": [
+    "failed",
+    "failed",
+    "failed",
+    true,
+    []
+   ],
+   "aday_sorular:A099": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A100": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A101": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A102": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A103": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A104": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A105": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A106": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A107": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A108": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A109": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A110": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A111": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A112": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A113": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A146": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A147": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A149": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A151": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A153": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A155": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ]
+  },
+  "gpt54mini": {
+   "questions:Q01": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q02": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q03": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q04": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q05": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "questions:Q06": [
+    "failed",
+    "failed",
+    "failed",
+    true,
+    []
+   ],
+   "questions:Q09": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "questions:Q11": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q12": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q13": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q14": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q16": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q19": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q20": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q21": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q22": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q23": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q24": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q25": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "questions_ek:Q26": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "questions_ek:Q27": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q28": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q29": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q32": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "sekil_sorular:G1": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G2": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G3": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G4": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:G5": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:G6": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G7": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G8": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:G9": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:N2": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:N3": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A001": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A002": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A003": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A004": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A005": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A006": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A007": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A008": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A009": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A010": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A011": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A012": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A013": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A014": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A015": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A016": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "aday_sorular:A017": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A018": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A019": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A020": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A021": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A022": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A023": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A024": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A025": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A026": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A027": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A028": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A029": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A030": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A031": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A032": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A033": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A034": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A036": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A037": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A038": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A039": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A040": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A041": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A042": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A043": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A045": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A046": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A047": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A048": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A049": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A050": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A051": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A052": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A053": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A054": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A055": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A057": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A058": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A059": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A060": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A061": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A062": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A063": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A064": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A065": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A066": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A067": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A068": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A069": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A070": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A071": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A072": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A073": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A074": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A075": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A076": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A077": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A078": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A079": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A080": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A081": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A082": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A083": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A084": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A085": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A086": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A087": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A088": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A089": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A090": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A091": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A092": [
+    "failed",
+    "failed",
+    "verified",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A093": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A094": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A095": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A096": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A097": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A098": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A099": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A100": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A101": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A102": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A103": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A104": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A105": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A106": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A107": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A108": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A109": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A110": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A111": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A112": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A113": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A146": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A147": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A149": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "aday_sorular:A151": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A153": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A155": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ]
+  },
+  "mistral2603": {
+   "questions:Q01": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q02": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions:Q03": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions:Q04": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "questions:Q09": [
+    "failed",
+    "failed",
+    "failed",
+    true,
+    []
+   ],
+   "questions:Q11": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions:Q12": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions:Q13": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions:Q14": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions:Q16": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions_ek:Q19": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions_ek:Q20": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions_ek:Q21": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions_ek:Q22": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions_ek:Q23": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "questions_ek:Q24": [
+    "failed",
+    "failed",
+    "failed",
+    true,
+    []
+   ],
+   "questions_ek:Q25": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "questions_ek:Q26": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "questions_ek:Q27": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "questions_ek:Q29": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "questions_ek:Q32": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "sekil_sorular:G1": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni",
+     "atif_gecerli"
+    ]
+   ],
+   "sekil_sorular:G2": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G3": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:G4": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "alinti_kaynak_metni",
+     "atif_gecerli"
+    ]
+   ],
+   "sekil_sorular:G5": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:N1": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G6": [
+    "failed",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "sekil_sorular:G7": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "sekil_sorular:G8": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:G9": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni"
+    ]
+   ],
+   "sekil_sorular:N2": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "sekil_sorular:N3": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A002": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A003": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A004": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A005": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A006": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A007": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A008": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A009": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A010": [
+    "failed",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A011": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A012": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A013": [
+    "failed",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A014": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "atif_gecerli",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A015": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A016": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "alinti_kaynak_metni",
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A017": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A018": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A019": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A020": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A021": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A022": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A023": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A024": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A025": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A026": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "atif_gecerli",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A027": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A028": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "atif_gecerli",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A029": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A030": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A031": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A032": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A033": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A034": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A037": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A038": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A039": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A040": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A041": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A042": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A043": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A045": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A046": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A047": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A048": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A049": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A050": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A051": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A052": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A053": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A054": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A055": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A057": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A058": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A059": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A060": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A061": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A062": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A063": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A064": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A065": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A066": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A067": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A068": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A069": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A070": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A071": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A072": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli",
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A073": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A075": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "varyant_belirli"
+    ]
+   ],
+   "aday_sorular:A076": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A077": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A078": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A079": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A081": [
+    "failed",
+    "failed",
+    "failed",
+    true,
+    []
+   ],
+   "aday_sorular:A082": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A083": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A084": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A085": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "aday_sorular:A086": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A087": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A088": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A089": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A090": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A091": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A092": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A093": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A094": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A095": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A096": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A097": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A098": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "aday_sorular:A099": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A100": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A101": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A103": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A104": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A105": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir",
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A106": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A107": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A108": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A109": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A110": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A111": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A112": [
+    "failed",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A113": [
+    "failed",
+    "failed",
+    "partial",
+    false,
+    [
+     "atif_gecerli",
+     "sayilar_alintida"
+    ]
+   ],
+   "aday_sorular:A146": [
+    "failed",
+    "failed",
+    "failed",
+    false,
+    [
+     "alinti_birebir"
+    ]
+   ],
+   "aday_sorular:A147": [
+    "partial",
+    "partial",
+    "partial",
+    false,
+    [
+     "atif_gecerli"
+    ]
+   ],
+   "aday_sorular:A149": [
+    "verified",
+    "verified",
+    "verified",
+    true,
+    []
+   ],
+   "aday_sorular:A153": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ],
+   "aday_sorular:A155": [
+    "verified",
+    "verified",
+    "verified",
+    false,
+    []
+   ]
+  }
+ }
+}

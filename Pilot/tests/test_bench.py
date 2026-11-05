@@ -432,3 +432,26 @@ def test_answer_stream_is_decoded_as_utf8(monkeypatch):
     m = answer_models.CloudModel("t")
     monkeypatch.setattr(m.session, "post", lambda *a, **k: R())
     assert m.stream([{"role": "user", "content": "x"}])["content"] == "11 (± 1) dikiş, ölçü"
+
+
+def test_proposed_number_check_handles_multi_citations_lists_and_number_words():
+    from bench.adim2_analiz import numbers_in_v2, proposed_verify, split_cites, word_numbers
+    assert split_cites("a [1, 2] b [2,3,5] c [1-3] d [4]") == "a [1][2] b [2][3][5] c [1][2][3] d [4]"
+    assert numbers_in_v2("kullanılmalıdır. [1, 5] 2. Uygun durumlarda 2.00 ve .5 mm [2, 3]") == {"2", "0.5"}
+    assert numbers_in_v2("adımlar [1]:<br>1. Saat<br>2. Düğme") == set()
+    assert numbers_in_v2("ölçüler [1, 3]: 1. **Long** boyu") == set()
+    assert word_numbers("every six months, a team of two workers, back on again, once") == {"6", "2"}
+    src = {1: "The tape shall be 11 (± 1) stitches per inch.", 2: "Other text."}
+    ans = {"alintilar": [{"kaynak_no": 1, "metin": "The tape shall be 11 (± 1) stitches per inch."}],
+           "cevap": "İnç başına 11 (± 1) dikiş [1, 2].", "sesli_metin": ""}
+    v = proposed_verify(ans, src)
+    assert v.status == "verified" and v.checks["sayilar_alintida"] and v.checks["atif_gecerli"]
+
+
+def test_clarify_options_verdict():
+    from bench.doc_rules_diff import options_verdict
+    exp = ["gl-pd-14-04a", "gl-pd-07-14a"]
+    assert options_verdict(["gl-pd-07-14a", "gl-pd-14-04a"], exp) == "dogru"
+    assert options_verdict(["gl-pd-07-14a", "gl-pd-14-04a", "x"], exp) == "fazlasi_var"
+    assert options_verdict(["gl-pd-14-04a", "gl-pd-14-04b"], exp) == "eksik_yanlis"
+    assert options_verdict([], exp) == "secenek_yok"

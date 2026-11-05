@@ -33,6 +33,18 @@ Ayarlar: Qwen hedge 1.0 sn, yedek yol 1.5 sn, devre kesici 3/5/120 (aşım/son N
 
 Adım süreleri (p50 / p95; Qwen ve çeviri: çağrının kendi süresi, beklensin beklenmesin): Qwen embed 1,70 sn / 10,76 sn, bge-m3 embed 260 ms / 466 ms, çeviri 777 ms / 2,68 sn, grup 1 (korumalı) 1,07 sn / 1,51 sn, grup 2 Qdrant 22 ms / 42 ms
 
+## Grup 1 ayrıştırma: çeviri, Qwen embed, bge-m3 (kayıttan; yeni koşu yok)
+
+Kendi süresi: çağrının başından cevabına (beklensin beklenmesin, bütün çağrılar). Bekleme: korumalı yolun o kolu beklediği süre (sınırda kesilir; Qwen devre kesici açıkken 0). Grup 1 duvar saati = üçünün en uzun beklemesi.
+
+| Kol | çağrı | kendi süresi p50 | p90 | p95 | sınırı aşan | bekleme p50 | p95 | grup 1'i belirleyen |
+|---|---|---|---|---|---|---|---|---|
+| Çeviri (google/gemma-3-12b-it, sınır 1,2 sn) | 156 | 818 ms | 2,36 sn | 2,69 sn | 57/156 (37%) | 844 ms | 1,20 sn | 107/149 (72%) |
+| Qwen3-8B embed (bulut, sınır 1,5 sn; devre kesici açıkken beklenmez) | 160 | 1,70 sn | 9,44 sn | 10,76 sn | 88/160 (55%) | 0 ms | 1,50 sn | 37/149 (25%) |
+| bge-m3 embed (yerel CPU, sınır yok) | 160 | 260 ms | 396 ms | 466 ms | 0/160 (0%) | 262 ms | 470 ms | 5/149 (3%) |
+
+Çeviri çağrısı 156/160 soruda yapıldı; diğerlerinde soru dili hedef dil.
+
 ## İlk kelime p95'inin aşama dökümü (korumalı yol, kayıttan; yeni koşu yok)
 
 149 soru (cevabı gelen). Grup 2'de BM25 kolu ayrı kaydedilmedi: üç kol paralel, birlikte ölçüldü; BM25'e özgü bekleme çeviridir (grup 1).

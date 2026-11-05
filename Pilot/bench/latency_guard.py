@@ -311,6 +311,38 @@ def crossing(s: dict[str, float], limit: float = 1.5) -> str:
     return "cevap modeli ilk token"
 
 
+def group1(rows: list[dict[str, Any]], a: argparse.Namespace) -> list[str]:
+    """Grup 1'in üç kolu ayrı: kendi çağrı süresi (bütün çağrılar) ve korumalı yoldaki bekleme; duvar saatini hangisi
+    belirledi. Çeviri yalnız çağrı yapılan sorularda (soru dili hedef dillerden biriyse çağrı yok)."""
+    f = lambda x: "–" if x != x else (f"{x * 1000:.0f} ms" if x < 1 else f"{x:.2f} sn".replace(".", ","))
+    ok = [(r, stages(r, a)) for r in rows if r["ilk_kelime"] == r["ilk_kelime"]]
+    tr_rows = [r for r in rows if r["ceviri_cagri"]]
+    own = {"ceviri": [r["ceviri_sn"] for r in tr_rows if r["ceviri_sn"] == r["ceviri_sn"]],
+           "qwen": [r["qwen_ilk_sn"] for r in rows if r["qwen_ilk_sn"] is not None],
+           "bge": [r["bge_sn"] for r in rows]}
+    waits = {"ceviri": [s["ceviri_bekleme"] for r, s in ok if r["ceviri_cagri"]],
+             "qwen": [s["qwen_bekleme"] for _r, s in ok], "bge": [s["bge"] for _r, s in ok]}
+    limit = {"ceviri": a.translate_limit, "qwen": a.qwen_limit, "bge": float("inf")}
+    top = Counter(max(("ceviri_bekleme", "qwen_bekleme", "bge"), key=lambda k: s[k]) for _r, s in ok)
+    top = {"ceviri": top["ceviri_bekleme"], "qwen": top["qwen_bekleme"], "bge": top["bge"]}
+    names = {"ceviri": f"Çeviri ({a.translate_model}, sınır {a.translate_limit:g} sn)".replace(".", ","),
+             "qwen": f"Qwen3-8B embed (bulut, sınır {a.qwen_limit:g} sn; devre kesici açıkken beklenmez)".replace(".", ","),
+             "bge": "bge-m3 embed (yerel CPU, sınır yok)"}
+    out = ["## Grup 1 ayrıştırma: çeviri, Qwen embed, bge-m3 (kayıttan; yeni koşu yok)", "",
+           "Kendi süresi: çağrının başından cevabına (beklensin beklenmesin, bütün çağrılar). Bekleme: korumalı yolun o "
+           "kolu beklediği süre (sınırda kesilir; Qwen devre kesici açıkken 0). Grup 1 duvar saati = üçünün en uzun "
+           "beklemesi.", "",
+           "| Kol | çağrı | kendi süresi p50 | p90 | p95 | sınırı aşan | bekleme p50 | p95 | grup 1'i belirleyen |",
+           "|---|---|---|---|---|---|---|---|---|"]
+    for k, label in names.items():
+        xs = own[k]
+        over = sum(x > limit[k] for x in xs)
+        out.append(f"| {label} | {len(xs)} | {f(pct(xs, 50))} | {f(pct(xs, 90))} | {f(pct(xs, 95))} | "
+                   f"{over}/{len(xs)} ({over / len(xs):.0%}) | {f(pct(waits[k], 50))} | {f(pct(waits[k], 95))} | "
+                   f"{top[k]}/{len(ok)} ({top[k] / len(ok):.0%}) |".replace("(inf", "(–"))
+    return out + ["", f"Çeviri çağrısı {len(tr_rows)}/{len(rows)} soruda yapıldı; diğerlerinde soru dili hedef dil.", ""]
+
+
 def breakdown(rows: list[dict[str, Any]], a: argparse.Namespace) -> list[str]:
     f = lambda x: "–" if x != x else (f"{x * 1000:.0f} ms" if x < 1 else f"{x:.2f} sn".replace(".", ","))
     ok = [stages(r, a) for r in rows if r["ilk_kelime"] == r["ilk_kelime"]]
@@ -390,7 +422,7 @@ def report(rows: list[dict[str, Any]], cost: dict[str, float], a: argparse.Names
                   f"{f(pct([r[k] for r in rows if r[k] is not None], 95))}"
                   for k, label in (("qwen_ilk_sn", "Qwen embed"), ("bge_sn", "bge-m3 embed"), ("ceviri_sn", "çeviri"),
                                    ("grup1", "grup 1 (korumalı)"), ("grup2", "grup 2 Qdrant"))), "",
-              *breakdown(rows, a),
+              *group1(rows, a), *breakdown(rows, a),
               "Sağlayıcılar: Qwen " + json.dumps(Counter(r["qwen_provider"] for r in rows), ensure_ascii=False)
               + ", cevap " + json.dumps(Counter(r["cevap_provider"] for r in rows), ensure_ascii=False) + ".", "",
               f"Harcama: Qwen {cost['qwen']:.5f}, çeviri {cost['ceviri']:.4f}, cevap {cost['cevap']:.4f} USD "

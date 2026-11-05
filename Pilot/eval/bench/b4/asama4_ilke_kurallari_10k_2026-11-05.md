@@ -17,6 +17,88 @@ Bayrak: `PILOT_DOC_SPECIFIC_RULES` (varsayılan kapalı; kurallar: brand_aliases
 
 hit@k yalnız aranan sorular üzerinden (kural çıkışıyla aranmayan soru paydada yok).
 
+## Netleştirme seçenekleri doğru mu (netleştirme beklenen sorular)
+
+Beklenen: sorunun `expect_docs`'u, yani ayırt edilmesi gereken ürünler (ceket/pantolon, S-7300A/B). Netleştirme soruldu ama seçenekler başka ürünlerse (Q07: aynı ailenin modelleri) soru sorulmuş sayılır ama doğru değildir.
+
+| Yol | Kurallar | netleştirme soruldu | doğru (tam beklenen ürünler) | beklenenleri kapsıyor, fazlası var | eksik ya da yanlış | seçenek yok |
+|---|---|---|---|---|---|---|
+| Varsayılan: bge-m3 + BM25 | kapalı | 2/18 | 2 | 0 | 0 | 0 |
+| Varsayılan: bge-m3 + BM25 | yalnız BRAND_ALIASES | 10/18 | 9 | 0 | 1 | 0 |
+| Varsayılan: bge-m3 + BM25 | yalnız S-7300 grubu | 3/18 | 3 | 0 | 0 | 0 |
+| Varsayılan: bge-m3 + BM25 | ikisi (eski davranış) | 10/18 | 9 | 0 | 1 | 0 |
+| Aday: Qwen3-8B + bge-m3 + çevirili BM25 | kapalı | 4/18 | 4 | 0 | 0 | 0 |
+| Aday: Qwen3-8B + bge-m3 + çevirili BM25 | yalnız BRAND_ALIASES | 14/18 | 14 | 0 | 0 | 0 |
+| Aday: Qwen3-8B + bge-m3 + çevirili BM25 | yalnız S-7300 grubu | 5/18 | 5 | 0 | 0 | 0 |
+| Aday: Qwen3-8B + bge-m3 + çevirili BM25 | ikisi (eski davranış) | 14/18 | 14 | 0 | 0 | 0 |
+
+Netleştirme sorulan sorular, seçenekler (kısaltılmış doküman kimlikleri):
+
+| Soru | beklenen ürünler | Yol | Kurallar | seçenekler | değerlendirme |
+|---|---|---|---|---|---|
+| questions:Q07 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | yalnız BRAND_ALIASES | brother-s7300b, brother-s7300a | eksik ya da yanlış |
+| questions:Q07 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | ikisi (eski davranış) | brother-s7300b, brother-s7300a | eksik ya da yanlış |
+| questions:Q07 | gl-pd-14-04a, gl-pd-07-14a | aday | kapalı | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| questions:Q07 | gl-pd-14-04a, gl-pd-07-14a | aday | yalnız BRAND_ALIASES | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| questions:Q07 | gl-pd-14-04a, gl-pd-07-14a | aday | yalnız S-7300 grubu | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| questions:Q07 | gl-pd-14-04a, gl-pd-07-14a | aday | ikisi (eski davranış) | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| questions:Q17 | brother-s7300a, brother-s7300b | varsayilan | yalnız BRAND_ALIASES | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| questions:Q17 | brother-s7300a, brother-s7300b | varsayilan | yalnız S-7300 grubu | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| questions:Q17 | brother-s7300a, brother-s7300b | varsayilan | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| questions:Q17 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| questions:Q17 | brother-s7300a, brother-s7300b | aday | yalnız S-7300 grubu | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| questions:Q17 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| questions_ek:Q30 | brother-s7300a, brother-s7300b | varsayilan | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| questions_ek:Q30 | brother-s7300a, brother-s7300b | varsayilan | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| questions_ek:Q30 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| questions_ek:Q30 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A131 | brother-s7300a, brother-s7300b | varsayilan | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A131 | brother-s7300a, brother-s7300b | varsayilan | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A131 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A131 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A132 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| aday_sorular:A132 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| aday_sorular:A133 | brother-s7300a, brother-s7300b | varsayilan | yalnız BRAND_ALIASES | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| aday_sorular:A133 | brother-s7300a, brother-s7300b | varsayilan | ikisi (eski davranış) | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| aday_sorular:A133 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| aday_sorular:A133 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| aday_sorular:A134 | brother-s7300a, brother-s7300b | varsayilan | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A134 | brother-s7300a, brother-s7300b | varsayilan | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A134 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A134 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A136 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A136 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A137 | brother-s7300a, brother-s7300b | varsayilan | yalnız BRAND_ALIASES | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| aday_sorular:A137 | brother-s7300a, brother-s7300b | varsayilan | ikisi (eski davranış) | brother-s7300b, brother-s7300a | doğru (tam beklenen ürünler) |
+| aday_sorular:A137 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A137 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A138 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A138 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A139 | brother-s7300a, brother-s7300b | varsayilan | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A139 | brother-s7300a, brother-s7300b | varsayilan | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A139 | brother-s7300a, brother-s7300b | aday | yalnız BRAND_ALIASES | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A139 | brother-s7300a, brother-s7300b | aday | ikisi (eski davranış) | brother-s7300a, brother-s7300b | doğru (tam beklenen ürünler) |
+| aday_sorular:A140 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | kapalı | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A140 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | yalnız BRAND_ALIASES | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A140 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | yalnız S-7300 grubu | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A140 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | ikisi (eski davranış) | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A140 | gl-pd-14-04a, gl-pd-07-14a | aday | kapalı | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| aday_sorular:A140 | gl-pd-14-04a, gl-pd-07-14a | aday | yalnız BRAND_ALIASES | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| aday_sorular:A140 | gl-pd-14-04a, gl-pd-07-14a | aday | yalnız S-7300 grubu | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| aday_sorular:A140 | gl-pd-14-04a, gl-pd-07-14a | aday | ikisi (eski davranış) | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| aday_sorular:A143 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | kapalı | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A143 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | yalnız BRAND_ALIASES | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A143 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | yalnız S-7300 grubu | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A143 | gl-pd-14-04a, gl-pd-07-14a | varsayilan | ikisi (eski davranış) | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A143 | gl-pd-14-04a, gl-pd-07-14a | aday | kapalı | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A143 | gl-pd-14-04a, gl-pd-07-14a | aday | yalnız BRAND_ALIASES | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A143 | gl-pd-14-04a, gl-pd-07-14a | aday | yalnız S-7300 grubu | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A143 | gl-pd-14-04a, gl-pd-07-14a | aday | ikisi (eski davranış) | gl-pd-14-04a, gl-pd-07-14a | doğru (tam beklenen ürünler) |
+| aday_sorular:A144 | gl-pd-14-04a, gl-pd-07-14a | aday | kapalı | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| aday_sorular:A144 | gl-pd-14-04a, gl-pd-07-14a | aday | yalnız BRAND_ALIASES | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| aday_sorular:A144 | gl-pd-14-04a, gl-pd-07-14a | aday | yalnız S-7300 grubu | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+| aday_sorular:A144 | gl-pd-14-04a, gl-pd-07-14a | aday | ikisi (eski davranış) | gl-pd-07-14a, gl-pd-14-04a | doğru (tam beklenen ürünler) |
+
 ## Çıkışlar (bütün sorular; kural çıkışları model çıkışından ayrı)
 
 | Yol | Kurallar | kod_yok | model | netlestirme_once | netlestirme_sonra | yabanci_marka |

@@ -57,6 +57,26 @@ def outcome(res: Any) -> str:
     return "diger"
 
 
+def option_docs(res: Any) -> list[str]:
+    """Netleştirmede seçenek olarak sunulan dokümanlar (kaynak seçimi; konu ekleme seçenekleri sayılmaz)."""
+    return [o["doc_id"] for o in res.answer.get("secenekler") or [] if "doc_id" in o]
+
+
+def options_verdict(opts: list[str], expected: list[str]) -> str:
+    """Seçenekler doğru mu: beklenen dokümanlar (ayırt edilmesi gereken ürünler) ile karşılaştırma."""
+    if not opts:
+        return "secenek_yok"
+    if set(opts) == set(expected):
+        return "dogru"
+    if set(expected) <= set(opts):
+        return "fazlasi_var"
+    return "eksik_yanlis"
+
+
+VERDICTS = {"dogru": "doğru (tam beklenen ürünler)", "fazlasi_var": "beklenenleri kapsıyor, fazlası var",
+            "eksik_yanlis": "eksik ya da yanlış", "secenek_yok": "seçenek yok"}
+
+
 def main() -> None:
     from bench.providers import QueryEncoder, specs
     from bench.server import server_client
@@ -131,18 +151,21 @@ def main() -> None:
             config.DOC_SPECIFIC_RULES = frozenset(rules)
             for it in qs:
                 state["ranked"] = None
+                opts: list[str] = []
                 try:
-                    out = outcome(pipeline.soru_cevapla(it["q"]))
+                    res = pipeline.soru_cevapla(it["q"])
+                    out, opts = outcome(res), option_docs(res)
                 except ModelReached:
                     out = "model"
                 ranked = state["ranked"]
                 rows.setdefault(it["qid"], {"qid": it["qid"], "q": it["q"], "kind": it.get("kind", ""),
                                             "clarify": bool(it.get("expect_clarify")),
                                             "not_found": bool(it.get("expect_not_found")),
-                                            "answered": bool(it.get("expect_docs") or it.get("kabul"))})
+                                            "answered": bool(it.get("expect_docs") or it.get("kabul")),
+                                            "expect_docs": it.get("expect_docs") or []})
                 rows[it["qid"]][f"{path}_{cfg}"] = {
                     "out": out, "rank": first_rank(ranked, it) if ranked is not None else None,
-                    "searched": ranked is not None}
+                    "searched": ranked is not None, "options": opts}
                 cost = (chat.stats["cost_usd"] if chat else 0) + (qwen.cloud.stats["cost_usd"] if qwen.cloud else 0)
                 if cost > a.max_usd:
                     raise SystemExit(f"harcama sınırı aşıldı: {cost}")
@@ -185,6 +208,30 @@ def report(rows: dict[str, dict[str, Any]], stats: dict[str, Any], a: argparse.N
             out.append(f"| {title} | {CONFIG_TITLES[cfg]} | {acc['n']} | {fmt_pct(acc['hit@1'])} | {fmt_pct(acc['hit@5'])} | "
                        f"{sum(c['out'] == 'model' for c in cells)} | {okc}/{len(cl)} | {fp} | {okn}/{len(nf)} |")
     out += ["", "hit@k yalnız aranan sorular üzerinden (kural çıkışıyla aranmayan soru paydada yok).", "",
+            "## Netleştirme seçenekleri doğru mu (netleştirme beklenen sorular)", "",
+            "Beklenen: sorunun `expect_docs`'u, yani ayırt edilmesi gereken ürünler (ceket/pantolon, S-7300A/B). "
+            "Netleştirme soruldu ama seçenekler başka ürünlerse (Q07: aynı ailenin modelleri) soru sorulmuş sayılır "
+            "ama doğru değildir.", "",
+            "| Yol | Kurallar | netleştirme soruldu | " + " | ".join(VERDICTS.values()) + " |",
+            "|---|---|---|" + "---|" * len(VERDICTS)]
+    for path, title in PATHS.items():
+        for cfg in CONFIGS:
+            asked = [r for r in cl if r[f"{path}_{cfg}"]["out"].startswith(("netlestirme", "konu"))]
+            v = Counter(options_verdict(r[f"{path}_{cfg}"].get("options") or [], r.get("expect_docs") or [])
+                        for r in asked)
+            out.append(f"| {title} | {CONFIG_TITLES[cfg]} | {len(asked)}/{len(cl)} | "
+                       + " | ".join(str(v[k]) for k in VERDICTS) + " |")
+    out += ["", "Netleştirme sorulan sorular, seçenekler (kısaltılmış doküman kimlikleri):", "",
+            "| Soru | beklenen ürünler | Yol | Kurallar | seçenekler | değerlendirme |", "|---|---|---|---|---|---|"]
+    for r in cl:
+        for path in PATHS:
+            for cfg in CONFIGS:
+                c = r[f"{path}_{cfg}"]
+                if c["out"].startswith(("netlestirme", "konu")):
+                    out.append(f"| {r['qid']} | {', '.join(r.get('expect_docs') or [])} | {path} | {CONFIG_TITLES[cfg]} | "
+                               f"{', '.join(c.get('options') or []) or '–'} | "
+                               f"{VERDICTS[options_verdict(c.get('options') or [], r.get('expect_docs') or [])]} |")
+    out += ["",
             "## Çıkışlar (bütün sorular; kural çıkışları model çıkışından ayrı)", ""]
     kinds = sorted({r[f"{p}_{c}"]["out"] for r in rs for p in PATHS for c in CONFIGS})
     out += ["| Yol | Kurallar | " + " | ".join(kinds) + " |", "|---|---|" + "---|" * len(kinds)]

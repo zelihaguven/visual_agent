@@ -153,3 +153,83 @@ Bugün "S-7300" aile grubu ve `BRAND_ALIASES` elle yazılmış ve bayrakla kapal
 2. **Yükleme sırasında ürün/model alanı:** Dokümanı yükleyen kişi ürün ailesini kayıtta seçer.
 
 İkisinde de **yanlış aile oranı** ölçülmeli: aile sayılıp aslında farklı ürün olan, ve aile sayılmayıp aynı ürün olan çiftler. Bu şimdi yapılmayacak.
+
+**`BRAND_ALIASES` da bu açık konunun parçası (karar 2026-11-05):** Silinmedi, bayrak kapalı. Tablo, marka adlarını ve aynı ürünün eş adlarını elle eşliyor. Netleştirme etkisinin neredeyse tamamı ondan geliyor: beklenen netleştirme varsayılan yolda 2 → 10/18, adayda 4 → 14/18. §11'in çözümü ölçülürken **taban olarak** kullanılacak: Otomatik türetme ya da yükleme alanı, bugünkü elle yazılmış tabloyla (bayrak açık) aynı soruda karşılaştırılır. Metrikler:
+- netleştirme soruldu mu;
+- **seçenekler doğru mu**: seçenekler sorunun ayırt edilmesi gereken ürünleri mi (`expect_docs`). Q07'de soru soruluyor ama seçenekler aynı ailenin modelleri; ceket/pantolon değil.
+- yanlış aile oranı.
+
+Seçenek metriği ölçüm aracına eklendi (`bench/doc_rules_diff.py`, 2026-11-05). İlk sonuç: BRAND_ALIASES açıkken varsayılan yolda netleştirmelerin 9/10'u doğru seçenekli (Q07 yanlış: S-7300A/B), adayda 14/14 ([B4 özet §10.7](../b4/ozet_dondurulan_aday_2026-11-03.md)).
+
+## 12. Plan (koşulmadı): Gemma 4 üretim sağlayıcıları
+
+İlk tur Gemma 4'ü **DeepInfra fp8** üzerinde ölçtü. ZDR'li 13 sağlayıcının çoğu bf16. Aşağıdaki gecikme ve hız değerleri OpenRouter'ın son 30 dakikalık anlık değerleri (2026-11-05 ~13:30); saatten saate değişir, kendi ölçümümüzün yerini tutmaz.
+
+| Sağlayıcı (ZDR) | nicemleme | giriş / çıkış USD/M | ilk token p50 / p90 | hız p50 (tk/sn) | json_schema (structured_outputs) | 30 dk / 1 gün erişilebilirlik | not |
+|---|---|---|---|---|---|---|---|
+| **NextBit** | bf16 | 0,09 / 0,30 | 306 ms / 728 ms | 42 | var | 100 | önerilen |
+| **Parasail** | bf16 | 0,13 / 0,40 | 599 ms / 1,37 sn | 61 | var | 100 | önerilen |
+| **Venice** | bf16 | 0,13 / 0,40 | 706 ms / 1,21 sn | 44 | var | 100 | önerilen; çıktı sınırı 16k |
+| DeepInfra | **fp8** | 0,07 / 0,34 | 420 ms / 1,34 sn | 41 | var | 100 | ilk turun sağlayıcısı (referans) |
+| SiliconFlow | fp8 | 0,14 / 0,40 | 1,13 sn / 2,42 sn | 38 | var | 100 | fp8 ikinci seçenek |
+| PrimeIntellect | bf16 | 0,036 / 0,108 | 525 ms / 9,40 sn | 43 | var | 100 / 95,8 | kuyruk uzun |
+| DekaLLM | bf16 | 0,06 / 0,33 | 947 ms / 3,85 sn | 58 | **yok** | 100 | şema yok |
+| Io Net | bf16 | 0,09 / 0,31 | 731 ms / 1,54 sn | 43 | **yok** (response_format da yok) | 100 | şema yok |
+| CoreWeave | bf16 | 0,10 / 0,30 | 1,30 sn / 9,47 sn | 18 | var | 70 | erişilebilirlik düşük |
+| Novita | bf16 | 0,13 / 0,40 | 6,67 sn / 17,5 sn | 48 | yok | 0 | o an erişilemiyordu |
+| AkashML | fp4 | 0,07 / 0,24 | 916 ms / 1,88 sn | 51 | var | 100 | fp4 |
+| Makora, Cloudflare | bilinmiyor | — | 1,05 sn / 9,26 sn; 2,29 sn / 8,13 sn | — | — | 100 | nicemleme açıklanmamış |
+
+Google Vertex Safety Retention'lı olduğu için dışarıda (§0); Darkbloom ZDR listesinde yok.
+
+**Öneri: NextBit, Parasail, Venice (üçü bf16, aynı nicemleme).** Üçünde de ilk token p90 düşük, structured outputs var, erişilebilirlik 100. Uygulamada `provider.order` bu üçü olur, `allow_fallbacks` yalnız bu üçü arasında. fp8'e düşmemesi için `quantizations: ["bf16"]` kullanılır. 429 durumunda bir sonrakine geçilir; tek sağlayıcı riskini bu kapatır. Aynı nicemleme tercih edildi: Sağlayıcı değişince cevap kalitesi değişmesin.
+
+**Kısa kalite ve süre ölçümü (koşulmadı):**
+1. Araç: `bench/answer_models.py`'e sağlayıcı ve nicemleme parametresi (yalnız ölçüm aracı). Her sağlayıcı ayrı koşu, `allow_fallbacks: false`. Arama, istem ve şema aynı (§3, ek c).
+2. Kalite: tam set (177 çağrı), NextBit, Parasail ve Venice'te. Referans, DeepInfra fp8 ilk tur sonucu. Karşılaştırılacaklar:
+   - doğru "bulunamadı" ve doğrulanmış görünen yanlış (cevapsız 17 soru);
+   - ✓/⚠/✖ ve beklenen değer (onaylı ve onaysız ayrı);
+   - JSON sorunu;
+   - aynı soruda farklı karar sayısı (sağlayıcılar arası tutarlılık).
+3. Süre: 30 soru × 4 sağlayıcı (DeepInfra dahil), iç içe sırayla, günün iki farklı saatinde. Ölçülen: ilk token p50/p95, toplam p95, 429 ve hata.
+4. Tahmini maliyet: kalite 0,048 + 0,068 + 0,068 = **0,18 USD**, süre 2 × 0,039 = **0,08 USD**. Toplam **~0,26 USD**. Bugünkü harcama 1,08 USD, 16:30 süre turu tahmini 0,09 USD; bu ölçümle ~1,43 USD olur, 1,5 USD sınırının altında ama yakın. Onaylı ve büyütülmüş setteki nihai tur için ayrı bütçe gerekecek.
+
+## 13. Cevap uzunluğu: ortak sınır (öneri: şimdilik yok)
+
+Kayıtlardan ([adim2_analiz_2026-11-05.md](adim2_analiz_2026-11-05.md) §4), çıktı tokeni bütün JSON (alıntılar, cevap, sesli metin):
+
+| Model | çıktı tokeni p50 / p95 | ✖ oranı (öneri A ile) < 200 / 200–399 / ≥ 400 tk |
+|---|---|---|
+| Gemma 4 | 205 / 424 | %4 / %11 / %25 |
+| Qwen3.6 | 228 / 450 | %6 / %18 / %16 |
+| GPT-5.4 mini | 217 / 440 | %3 / %6 / %17 |
+| Mistral 2603 | 230 / 519 | %18 / %29 / %31 |
+
+- Hiçbir cevap 700 token sınırına değmedi.
+- Cevap metni dört modelde benzer (p95 370–445 karakter). JSON'un ~%40'ı alıntılar.
+- Uzun cevaplarda ✖ daha sık, ama uzun cevaplar çok adımlı ve çok parçalı sorulardan geliyor. Uzunluk sebep olmayabilir.
+- Gemma 4'ün toplam süre p95'i (10,3 sn) uzunluktan değil, DeepInfra'nın hızından (~41 tk/sn) geliyor. GPT-5.4 mini aynı uzunlukta 3,2 sn. Parasail (61 tk/sn) bunu kısaltır (§12).
+
+**Öneri:** Bir sonraki turda ortak uzunluk sınırı **konmasın**. `max_tokens` ile kesmek yarım JSON üretir. İstemle sınırlamanın etkisi bu veriyle ayrıştırılamıyor.
+
+İstenirse ayrı bir A/B olarak ölçülür (koşulmadı). Bütün modellerde aynı sistem talimatına tek bir cümle eklenir: "Cevap en fazla 4 cümle; adım sorularında en fazla 6 madde." `max_tokens` 700'de kalır. Ölçülecekler: ✖, beklenen değer cevapta, yanlış ret, toplam süre p95. Kural: Beklenen değer düşerse uygulanmaz. Maliyet, tam setin bir kez daha koşulması kadar: ilk turda 4 model 0,54 USD tuttu, GPT-5.4 mini hariç ~0,2 USD.
+
+## 14. Plan (koşulmadı): Gemma 4 çeviri modeli olarak (yalnız ölçüm aracında)
+
+Neden: Süre sınırı ölçümünde grup 1'i (arama öncesi paralel adımlar) **çeviri belirliyor**: 149 sorunun 107'sinde (%72) en uzun bekleme çeviriydi. Gemma 3 12B çeviri süresi p50 818 ms, p95 2,69 sn; 1,2 sn sınırını %37'sinde aştı ([asama4_sure_siniri](../b4/asama4_sure_siniri_2026-11-05.md), "Grup 1 ayrıştırma").
+
+1. Araç:
+   - `bench/translate_bm25.py`, `--model google/gemma-4-26b-a4b-it`.
+   - Yalnız ölçüm aracında sağlayıcı sabitleme ve düşünme kapatma (`reasoning.enabled false`). `CloudChat` uygulamada değişmez.
+   - Sağlayıcı §12'deki seçimle aynı (NextBit bf16).
+2. Kalite (BM25 isabeti):
+   - Aynı 160 soru, 10k.
+   - `bench.triple_fusion --bm25-translations` ile Gemma 3 ve Gemma 4 çevirileri karşılaştırılır: BM25 kolu tek başına hit@1/hit@5, üçlü füzyon hit@1/hit@5.
+   - Ayrıca birebir aynı çeviri sayısı ve farklı çevirilerin listesi (elle okunur).
+3. Süre:
+   - Çağrı başına süre p50/p95 ve 1,2 sn sınırını aşma oranı.
+   - Gemma 3 ile **aynı saatte**, iç içe sırayla, günün iki farklı saatinde.
+4. Tahmini maliyet:
+   - Gemma 3'ün aynı seti 350 çağrıda 0,0038 USD tuttu. Gemma 4 NextBit fiyatıyla ~0,006 USD/koşu.
+   - Toplam: 2 saat × (Gemma 4 + Gemma 3) ≈ **0,02–0,03 USD**. Arama değerlendirmesi yerel (Qdrant), bulutsuz.
+5. Uygulamaya bağlanmaz. Sonuç B4 özet raporuna (§10) yazılır.

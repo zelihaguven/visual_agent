@@ -280,3 +280,27 @@ hit@k ve kural çıkışları (yabancı marka, kod yok) dört durumda da aynı; 
 ### 10.5 Süre sınırı: ilk kelime p95'inin aşama dökümü
 
 [asama4_sure_siniri](asama4_sure_siniri_2026-11-05.md) raporuna eklendi (kayıttan). Korumalı yolda 1,5 sn'nin aşıldığı yer: cevap modelinin ilk tokeni 64 soru (%43), Qwen beklemesi 23 (%15), bge-m3 1; 61 soruda (%41) aşılmadı. Grup 1 (embed'ler ‖ çeviri) p50 1,12 sn, p95 1,51 sn; Qdrant 3 kol + füzyon p95 42 ms; cevap ilk token p50 460 ms, p95 1,01 sn. En yavaş %10'da sürenin %57'si grup 1, %42'si cevabın ilk tokeni. Okuma: 1,5 sn hedefi için grup 1'in ~0,5 sn'ye inmesi gerekiyor (çeviri ve Qwen beklemesi); cevap modeli tek başına bütçenin yarısını alıyor.
+
+### 10.6 Grup 1 ayrıştırma: çeviri, Qwen embed, bge-m3
+
+[asama4_sure_siniri](asama4_sure_siniri_2026-11-05.md) raporuna eklendi (kayıttan, yeni koşu yok).
+
+| Kol | kendi süresi p50 / p95 | sınırı aşan | grup 1'in duvar saatini belirlediği soru |
+|---|---|---|---|
+| Çeviri (gemma-3-12b, sınır 1,2 sn; 156/160 soruda çağrı) | 818 ms / 2,69 sn | %37 | 107/149 (%72) |
+| Qwen3-8B embed (sınır 1,5 sn) | 1,70 sn / 10,8 sn | %55 | 37/149 (%25) |
+| bge-m3 (yerel CPU) | 260 ms / 466 ms | — | 5/149 (%3) |
+
+Kendi süresi: çağrının başından cevabına, beklensin beklenmesin. Önceki satırdaki "çeviri 777 ms" değeri çağrı yapılmayan 4 soruyu da içeriyordu.
+
+Okuma: Grup 1'i çoğunlukla çeviri belirliyor; Qwen'in yavaş olduğu bu dönemde devre kesici çoğu zaman açıktı. Gemma 4'ü çeviri modeli olarak deneme planı (yalnız ölçüm aracında): [Adım 2 planı §14](../adim2/plan_cevap_modeli_2026-11-05.md).
+
+Akış okuma hatası (Adım 2'de bulundu: SSE yanıtı Latin-1 çözülüyordu) bu bölümün süre ölçümlerini etkilemez: Araçlar içeriği yalnız "ilk token geldi mi" diye okuyor ([kapsam listesi](../adim2/okuma_sayi_uzunluk_2026-11-05.md) §1).
+
+### 10.7 Netleştirme seçenekleri doğru mu
+
+[asama4_ilke_kurallari_10k](asama4_ilke_kurallari_10k_2026-11-05.md) yeni metrikle yeniden koşuldu. Model çağrısı ve bulut harcaması yok; hit@k ve çıkış sayıları öncekiyle aynı. Seçenekler, sorunun ayırt edilmesi gereken ürünleriyle (`expect_docs`) karşılaştırıldı:
+- Netleştirme sorulan bütün durumlarda seçenekler doğru, bir istisna hariç.
+- **İstisna, Q07** ("Dış görünür dikişlerde SPI kaç olmalı?"): Varsayılan yolda `BRAND_ALIASES` açıkken seçenekler S-7300A / S-7300B oluyor; beklenen ceket / pantolon.
+- Adayda Q07 bayrak kapalıyken de doğru seçeneklerle soruluyor.
+- Sonuç: Varsayılan yolda BRAND_ALIASES ile 10 netleştirmenin 9'u doğru, adayda 14'ün 14'ü.

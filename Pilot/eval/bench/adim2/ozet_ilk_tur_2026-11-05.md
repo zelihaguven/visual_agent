@@ -42,6 +42,18 @@ Rapor, ikisi bitince aynı araçla yeniden üretilecek.
 - **Ön eleme önerisi:** Gemma 4 önde. "Bulunamadı" hedefini tutuyor, en ucuz, en çok sağlayıcılı, ilk tokeni hızlı. Zayıf yanı cevaplardaki alıntıda olmayan sayılar ve yanlış ret. Mistral Small 2603 ikinci; format sorunları onaylı sette yeniden bakılmalı.
   - Nihai seçim onaylı ve büyütülmüş "bulunamadı" setinde yapılacak (plan §8).
 
+## Kayıtlardan ek analiz (model kararı bunu bekliyor)
+
+[okuma_sayi_uzunluk_2026-11-05.md](okuma_sayi_uzunluk_2026-11-05.md); araç çıktısı [adim2_analiz_2026-11-05.md](adim2_analiz_2026-11-05.md). Yeni model çağrısı yok.
+- **"Alıntıda olmayan sayı" vakalarının çoğu doğrulayıcıdan.** `verify.py` yalnız `[1]` biçimini atıf sayıyor: Gemma'nın `[1, 2]` yazdığı atıfların içindeki sayılar ✖ yapıyor. Genel düzeltme önerildi, uygulanmadı. Önerinin etkisi:
+  - Gemma 4 onaysız sette ✖ 29 → 12;
+  - GPT-5.4 mini 8 → 7;
+  - hiçbir cevap kötüleşmiyor.
+- **Gerçek uydurma:** Gemma 0, Qwen3.6 0, GPT-5.4 mini 0, Mistral 2.
+- **OCR'ı bozuk kaynak değerleri** ("112 inch" = ½): Modeller yorumluyor, bazen yanlış. Doğrulayıcı bunları doğru yakalıyor.
+- **Uzunluk:** Uzun cevapta ✖ daha sık. Ortak sınır şimdilik önerilmiyor (plan §13).
+- **Gemma 4 sağlayıcıları:** İlk tur DeepInfra **fp8** üzerindeydi. Önerilen üretim listesi NextBit, Parasail ve Venice; üçü de bf16. Ölçüm planı §12'de, ~0,26 USD.
+
 ## Ölçümle ilgili not
 
 İlk koşu geçersiz sayıldı ve saklanıyor: [adim2_cevap_modeli_2026-11-05_bozuk.md](adim2_cevap_modeli_2026-11-05_bozuk.md). Nedeni ölçüm aracındaki bir hataydı: akış satırları Latin-1 çözüldü, "±" ve Türkçe harfler bozuldu, alıntı doğrulaması yanlış sonuç verdi.
