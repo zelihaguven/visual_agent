@@ -15,6 +15,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from bench.common import sse_events
+
 DIR = Path(__file__).resolve().parent.parent / "data" / "bench_cache" / "kuyruk"
 EMBED_MODEL = "qwen/qwen3-embedding-8b"
 TRANSLATE_MODEL = "google/gemma-3-12b-it"
@@ -46,10 +48,7 @@ def call(session: Any, path: str, body: dict[str, Any], stream: bool = False) ->
             if not stream:
                 cost = float((r.json().get("usage") or {}).get("cost") or 0.0)
             else:
-                for line in r.iter_lines(decode_unicode=True):
-                    if not line or not line.startswith("data: ") or line == "data: [DONE]":
-                        continue
-                    d = json.loads(line[6:])
+                for d in sse_events(r):
                     cost = float((d.get("usage") or {}).get("cost") or cost)
                     if first is None and (d.get("choices") or [{}])[0].get("delta", {}).get("content"):
                         first = time.perf_counter() - t0

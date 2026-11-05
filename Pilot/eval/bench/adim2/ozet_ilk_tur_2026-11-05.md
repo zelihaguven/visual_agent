@@ -19,7 +19,8 @@ Rapor, ikisi bitince aynı araçla yeniden üretilecek.
 | … doğrulanmış görünen yanlış cevap (hedef 0) | **0** | 4 | 5 | **0** |
 | Yanlış ret, onaylı / onaysız | 11% / 11% | 0% / 7% | 5% / 6% | 5% / 8% |
 | … bunların kaynağı ilk 5'teydi (model hatası) | 1 / 3 | 0 / 2 | 1 / 2 | 1 / 3 |
-| Cevaplarda ✓ / ⚠ / ✖, onaylı | 27 / 5 / 1 | 24 / 5 / 8 | **29 / 4 / 2** | 6 / 17 / 10 |
+| Cevaplarda ✓ / ⚠ / ✖, onaylı (verify A+B) | 27 / 5 / 1 | 26 / 5 / 6 | **29 / 4 / 2** | 9 / 17 / 7 |
+| … onaysız (verify A+B; önceki ✖) | 91 / 6 / 12 (29) | 94 / 7 / 14 (18) | 100 / 10 / 6 (8) | 49 / 32 / 29 (41) |
 | Beklenen değer cevapta, onaylı | 17/18 | 17/21 | 18/20 | 18/19 |
 | JSON sorunu (177 çağrı) | 0 | 0 | 0 | 5 yarıda kesik |
 | İlk token p50 / p95 | 388 ms / 1,04 sn | 648 ms / 1,57 sn | 762 ms / 1,36 sn | 449 ms / 991 ms |
@@ -42,17 +43,18 @@ Rapor, ikisi bitince aynı araçla yeniden üretilecek.
 - **Ön eleme önerisi:** Gemma 4 önde. "Bulunamadı" hedefini tutuyor, en ucuz, en çok sağlayıcılı, ilk tokeni hızlı. Zayıf yanı cevaplardaki alıntıda olmayan sayılar ve yanlış ret. Mistral Small 2603 ikinci; format sorunları onaylı sette yeniden bakılmalı.
   - Nihai seçim onaylı ve büyütülmüş "bulunamadı" setinde yapılacak (plan §8).
 
-## Kayıtlardan ek analiz (model kararı bunu bekliyor)
+## Kayıtlardan ek analiz ve verify.py A+B (model kararı bekliyor)
 
 [okuma_sayi_uzunluk_2026-11-05.md](okuma_sayi_uzunluk_2026-11-05.md); araç çıktısı [adim2_analiz_2026-11-05.md](adim2_analiz_2026-11-05.md). Yeni model çağrısı yok.
-- **"Alıntıda olmayan sayı" vakalarının çoğu doğrulayıcıdan.** `verify.py` yalnız `[1]` biçimini atıf sayıyor: Gemma'nın `[1, 2]` yazdığı atıfların içindeki sayılar ✖ yapıyor. Genel düzeltme önerildi, uygulanmadı. Önerinin etkisi:
+- **"Alıntıda olmayan sayı" vakalarının çoğu doğrulayıcıdan.** `verify.py` yalnız `[1]` biçimini atıf sayıyor: Gemma'nın `[1, 2]` yazdığı atıfların içindeki sayılar ✖ yapıyor. Genel düzeltme (A+B) 2026-11-05'te **uygulandı**; ilk tur kayıtlardan yeniden puanlandı (yukarıdaki tablo). Etkisi:
   - Gemma 4 onaysız sette ✖ 29 → 12;
-  - GPT-5.4 mini 8 → 7;
-  - hiçbir cevap kötüleşmiyor.
+  - GPT-5.4 mini 8 → 6;
+  - hiçbir cevap kötüleşmedi.
+  - Bu son yama; sonraki adım yapılandırılmış cevap şeması (plan §15) ve "model değişikliği yalnız yapılandırma" ilkesi (§16).
 - **Gerçek uydurma:** Gemma 0, Qwen3.6 0, GPT-5.4 mini 0, Mistral 2.
 - **OCR'ı bozuk kaynak değerleri** ("112 inch" = ½): Modeller yorumluyor, bazen yanlış. Doğrulayıcı bunları doğru yakalıyor.
 - **Uzunluk:** Uzun cevapta ✖ daha sık. Ortak sınır şimdilik önerilmiyor (plan §13).
-- **Gemma 4 sağlayıcıları:** İlk tur DeepInfra **fp8** üzerindeydi. Önerilen üretim listesi NextBit, Parasail ve Venice; üçü de bf16. Ölçüm planı §12'de, ~0,26 USD.
+- **Gemma 4 sağlayıcıları:** İlk tur DeepInfra **fp8** üzerindeydi. Önerilen üretim listesi NextBit, Parasail ve Venice; üçü de bf16. Bu ölçüm nihai tura taşındı (§12): Gemma 4 orada doğrudan bu üç sağlayıcıda koşulacak, DeepInfra fp8 referans. Nihai tur için ayrı bütçe gerekiyor (~1,3 USD tahmini).
 
 ## Ölçümle ilgili not
 

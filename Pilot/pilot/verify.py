@@ -11,6 +11,10 @@ NUM = r"\d+(?:[.,]\d+)?"
 NUM_RE = re.compile(NUM)
 TOL_RE = re.compile(rf"({NUM})\s*\(\s*±\s*({NUM})\s*\)")
 CITE_RE = re.compile(r"\[(\d+)\]")
+# Çoklu atıf: "[1, 2]", "[2,3,5]", "[1; 4]", "[1-3]". Modeller (Gemma 4, Mistral) böyle yazıyor; yalnız "[1]" tanındığında
+# içindeki sayılar "alıntıda olmayan sayı" sayılıyor, yalnız çoklu atıf kullanan cevap "atıf yok" alıyordu (Adım 2,
+# 2026-11-05). Bu, atıf ve sayı ayıklamasındaki son yamadır; sonraki adım yapılandırılmış cevap şeması (Adım 2 planı §15).
+MULTI_CITE_RE = re.compile(r"\[(\d+(?:\s*[,;–-]\s*\d+)+)\]")
 # Şema alıntıyı 300 karakterde kesiyor: Model sona atıf yazmaya başlamışsa "... to the right, [" kalıyor
 # (masura kovanı sorusu: ilk 299 karakter kaynakla birebir aynıydı). Yarım atıf alıntıdan ayıklanır.
 CUT_CITE_RE = re.compile(r"\s*\[\d*$")
@@ -30,20 +34,68 @@ def normalize(text: str) -> str:
     return re.sub(r"\s+", " ", t).strip()
 
 
+def split_cites(text: str) -> str:
+    """Çoklu atıfı tekliye çevirir: '[1, 2]' → '[1][2]', '[1-3]' → '[1][2][3]'."""
+    def one(m: re.Match) -> str:
+        nums: list[int] = []
+        for part in re.split(r"\s*[,;]\s*", m.group(1)):
+            a, b = (re.split(r"\s*[–-]\s*", part) + [""])[:2]
+            if b and 0 <= int(b) - int(a) < 20:
+                nums += range(int(a), int(b) + 1)
+            else:
+                nums += [int(a)] + ([int(b)] if b else [])
+        return "".join(f"[{n}]" for n in nums)
+    return MULTI_CITE_RE.sub(one, text)
+
+
+def cites_in(text: str) -> set[int]:
+    """Metindeki atıf numaraları (tekli ve çoklu)."""
+    return {int(c) for c in CITE_RE.findall(split_cites(text))}
+
+
+def strip_cites(text: str) -> str:
+    """Atıfları (tekli ve çoklu) metinden çıkarır."""
+    return CITE_RE.sub("", split_cites(text))
+
+
 def _canon_num(s: str) -> str:
-    return s.replace(",", ".")
+    """Değer olarak kanonik: ondalık virgül → nokta, ondalıktaki sondaki sıfırlar atılır ("2.00" = "2", "0.50" = "0.5")."""
+    s = s.replace(",", ".")
+    return s.rstrip("0").rstrip(".") if "." in s else s
 
 
 # Satır başındaki liste numarası ("4. İplik gerginliğini ölçün"): Talimat numaralı adım istiyor, bunlar değer değil
 # (iplik gerginliği sorusunda "alıntıda olmayan sayı: 4, 6" yanlış alarmı).
 # Satır içi de olabilir: "...izleyin: 1) Güçten ayrıl. 2) Makine başını..." (değerlendirme Q14, Q06). Satır içinde
 # yalnız cümle sonu ya da iki noktadan sonra gelip büyük harfle devam eden numara sayılır ("Hız 4. kademe" sayılmaz).
-LIST_MARK_RE = re.compile(r"(?:^\s*|(?<=[.:;])\s+)\d{1,2}[.)]\s+(?=[A-ZÇĞİÖŞÜ])|^\s*\d{1,2}[.)]\s+", re.MULTILINE)
+# Markdown kalın madde başı da madde sayılır ("1. **Long** boyu için"). Atıflar liste işaretinden ÖNCE ayıklanır
+# ("...kullanılmalıdır. [1, 5] 2. Uygun..."), <br> satır sonu sayılır (Adım 2, 2026-11-05).
+LIST_MARK_RE = re.compile(r"(?:^\s*|(?<=[.:;])\s+)\d{1,2}[.)]\s+(?=[A-ZÇĞİÖŞÜ*])|^\s*\d{1,2}[.)]\s+", re.MULTILINE)
+BR_RE = re.compile(r"<br\s*/?>", re.I)
 
 
 def numbers_in(text: str) -> set[str]:
-    cleaned = CODE_RE.sub(" ", CITE_RE.sub("", LIST_MARK_RE.sub("", text)))
+    """Metindeki değer sayıları (kanonik): atıf, liste numarası ve harf önekli kod içindeki rakamlar hariç.
+    ".5" → "0.5"."""
+    t = strip_cites(BR_RE.sub("\n", text))
+    t = re.sub(r"(?<![\d.,])[.,](\d)", r"0.\1", t)
+    cleaned = CODE_RE.sub(" ", LIST_MARK_RE.sub("", t))
     return {_canon_num(m.group(0)) for m in NUM_RE.finditer(cleaned)}
+
+
+# Alıntıda yazıyla geçen 1–12 (EN/ES/FR/TR): "every six months" → cevapta "6 ayda bir". Yalnız alıntı tarafında
+# kullanılır (cevaptaki "bir ekip" sayı sayılmaz). Başka dilde sık kelime olanlar yok: "on" (TR 10 / EN on),
+# "once" (ES 11 / EN once), "un"/"une"/"una" (artikel).
+WORD_NUMBERS = {w: i for ws in ("one two three four five six seven eight nine ten eleven twelve",
+                                "uno dos tres cuatro cinco seis siete ocho nueve diez - doce",
+                                "- deux trois quatre cinq six sept huit neuf dix onze douze",
+                                "bir iki üç dört beş altı yedi sekiz dokuz - onbir oniki")
+                for i, w in enumerate(ws.split(), 1) if w != "-"} | {"twice": 2}
+WORD_NUMBER_RE = re.compile(r"(?<!\w)(" + "|".join(sorted(WORD_NUMBERS, key=len, reverse=True)) + r")(?!\w)", re.I)
+
+
+def word_numbers(text: str) -> set[str]:
+    return {str(WORD_NUMBERS[w.lower()]) for w in WORD_NUMBER_RE.findall(text)}
 
 
 def clarify_options(options: list, sources: dict[int, str]) -> list[str]:
@@ -137,14 +189,14 @@ def verify(answer: dict, sources: dict[int, str], generated: dict[int, str] | No
     checks["alinti_birebir"] = exact
     checks["alinti_kaynak_metni"] = not from_figure
 
-    cites = {int(c) for c in CITE_RE.findall(answer.get("cevap", ""))}
+    cites = cites_in(answer.get("cevap", ""))
     cites_ok = bool(cites) and cites <= set(sources)
     checks["atif_gecerli"] = cites_ok
     if not cites_ok:
         problems.append("Cevapta geçerli [n] atfı yok" if not cites else f"Geçersiz atıf: {sorted(cites - set(sources))}")
 
     quote_text = " ".join(q.get("metin", "") for q in quotes)
-    quote_nums = numbers_in(quote_text)
+    quote_nums = numbers_in(quote_text) | word_numbers(quote_text)
     text_ans = answer.get("cevap", "")
     text_voice = answer.get("sesli_metin", "")
     stray = sorted((numbers_in(text_ans) | numbers_in(text_voice)) - quote_nums)
@@ -176,7 +228,7 @@ def verify(answer: dict, sources: dict[int, str], generated: dict[int, str] | No
 
     # Tekrar döngüsü: Küçük model aynı cümleyi defalarca yazabiliyor (masura kovanı sorusu, 2026-10-13: alıntı doğru,
     # cevap "Dili wraps ettirdiğiniz bir masura tutarak..." x4). Sayı içermediği için diğer kontrollerden geçiyordu.
-    sentences = [normalize(CITE_RE.sub("", s)) for s in re.split(r"[.!?]+", text_ans)]
+    sentences = [normalize(strip_cites(s)) for s in re.split(r"[.!?]+", text_ans)]
     sentences = [s for s in sentences if len(s.split()) >= 4]
     checks["tekrar_yok"] = len(sentences) == len(set(sentences))
     if not checks["tekrar_yok"]:

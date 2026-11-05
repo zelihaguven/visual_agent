@@ -55,7 +55,11 @@ Sınıf başına örnekler:
 - Gemma'nın ✖ fazlasının çoğu doğrulayıcıdan geliyor: Gemma çoklu atıf `[1, 2]` yazıyor, GPT-5.4 mini yazmıyor (156 cevabın hepsinde tek atıf).
 - Uydurma yalnız Mistral'de (2).
 
-## 3. Öneri: `verify.py`'ye genel düzeltme (UYGULANMADI, onayınızı bekliyor)
+## 3. `verify.py`'ye genel düzeltme (A+B birlikte UYGULANDI, 2026-11-05)
+
+**Karar ve durum:** A ve B birlikte uygulandı, testleri yazıldı. Bu, atıf ve sayı ayıklamasındaki son yamadır; sonraki adım yapılandırılmış cevap şeması (plan §15). Ekrandaki kaynak kartları (`app.cited_sources`) ve sesli metindeki atıf temizliği (`speech.py`) de çoklu atıfı tanıyor. İlk turun kayıtları yeni `verify.py` ile yeniden puanlandı (`python -m bench.answer_models --rescore ana`); 16:30 ve 23:00 koşuları doğrudan yeni sürümle puanlanıyor. Aşağıdaki öneri metni ve tablo kararın dayanağı olarak duruyor.
+
+Raporda uygulanan sürümle (A+B) ilk tur: Gemma 4 onaysız ✖ 29 → 12, GPT-5.4 mini 8 → 6, Qwen3.6 18 → 14, Mistral 41 → 29; onaylı sette Gemma 1 → 1, GPT 2 → 2, Qwen 8 → 6, Mistral 10 → 7. Kesik kayıtlarda yalnız koşu anında kalan sayı ve atıf kontrolleri yeniden hesaplandı (A+B yalnız gevşetir); "bulunamadı" setindeki doğrulanmış görünen yanlışlar değişmedi (Gemma 0, Qwen 4, GPT 5, Mistral 0).
 
 Biçim farkı baskın. Hepsi doğrulayıcının atıf ve liste numarası okumasından geliyor; belgeye özel kural yok.
 1. Çoklu atıf tanınsın: `[1, 2]`, `[2,3,5]`, `[1; 4]`, `[1-3]`. Hem atıf kontrolünde, hem sayı ayıklamada.
@@ -88,9 +92,6 @@ Birim dönüşümü, türetilmiş sayı, OCR yorumu ve "kaynakta var, alıntıda
   - 4'ünde alıntı birebir değil.
 - B seçeneği küçük fark yapıyor (GPT ve Mistral'de birer cevap).
 - Kayıt sınırı: Bu turun ham çıktısı 1500 karakterde kesik kaydedilmiş. 21 kesik kaydın rozeti yaklaşık; tabloda ayrı sayıldı ([araç çıktısı](adim2_analiz_2026-11-05.md) §2). Araç sonradan tam kayda geçti.
-- Uygulanırsa iki şey birlikte yapılır:
-  - `verify.py` değişikliği ve testleri;
-  - Adım 2 raporunun bu turu için yeniden puanlama (kayıttan; yeni model çağrısı yok).
 - Mistral'in "atıf yok" sorunu çoğunlukla gerçek: 45 cevapta hiç atıf yok. Yalnız çoklu atıf kullandığı 16 cevap bu düzeltmeyle ⚠'den çıkabilir.
 
 ## 4. Cevap uzunluğu

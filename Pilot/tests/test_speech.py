@@ -38,6 +38,10 @@ def test_citation_markers_are_not_read_aloud():
     assert say("11 dikiş [1] olmalı [2].") == "on bir dikiş olmalı."
 
 
+def test_multi_citation_markers_are_not_read_aloud():
+    assert say("11 dikiş olmalı [1, 2].") == "on bir dikiş olmalı."
+
+
 def test_no_space_before_punctuation_after_citation_removal():
     assert "olmalı ." not in say("dikiş olmalı [1].")
 

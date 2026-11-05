@@ -13,6 +13,7 @@ import streamlit as st
 from pilot.pipeline import Result, soru_cevapla
 from pilot.registry import BY_ID, DOCS
 from pilot.render import page_image
+from pilot.verify import cites_in
 
 ROOT = Path(__file__).parent
 # Sesli okuma ayrı ortamda çalışır (.venv-tts). macOS/Linux: bin/python, Windows: Scripts/python.exe
@@ -140,7 +141,7 @@ if "pending" in st.session_state:
 def cited_sources(r: Result) -> list[int]:
     """Cevabın dayandığı kaynak numaraları: alıntı yapılanlar + cevaptaki [n] atıfları (aramadaki sırayla)."""
     nos = {q.get("kaynak_no") for q in r.answer.get("alintilar", [])}
-    nos |= {int(n) for n in re.findall(r"\[(\d+)\]", r.answer.get("cevap") or "")}
+    nos |= cites_in(r.answer.get("cevap") or "")
     return sorted(n for n in nos if isinstance(n, int) and 1 <= n <= len(r.hits))
 
 

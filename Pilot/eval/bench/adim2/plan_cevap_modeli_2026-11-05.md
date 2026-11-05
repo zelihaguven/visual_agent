@@ -214,7 +214,30 @@ Kayıtlardan ([adim2_analiz_2026-11-05.md](adim2_analiz_2026-11-05.md) §4), ç�
 
 İstenirse ayrı bir A/B olarak ölçülür (koşulmadı). Bütün modellerde aynı sistem talimatına tek bir cümle eklenir: "Cevap en fazla 4 cümle; adım sorularında en fazla 6 madde." `max_tokens` 700'de kalır. Ölçülecekler: ✖, beklenen değer cevapta, yanlış ret, toplam süre p95. Kural: Beklenen değer düşerse uygulanmaz. Maliyet, tam setin bir kez daha koşulması kadar: ilk turda 4 model 0,54 USD tuttu, GPT-5.4 mini hariç ~0,2 USD.
 
-## 14. Plan (koşulmadı): Gemma 4 çeviri modeli olarak (yalnız ölçüm aracında)
+**Karar (2026-11-05): şimdi koşulmuyor, nihai tura taşındı.** Nihai turda (onaylı ve büyütülmüş set):
+- Gemma 4 doğrudan **NextBit, Parasail ve Venice (bf16)** üzerinde koşulur.
+- **DeepInfra fp8 referans** olarak kalır.
+- Diğer modeller kendi ZDR sağlayıcılarında.
+- Yukarıdaki ölçüm adımları (kalite tam set, süre iki saatte iç içe) o turun parçasıdır.
+
+**Nihai tur için ayrı bütçe gerekiyor.** Bu turun 1,5 USD sınırı ön elemeye ait; bugünkü harcama 1,08 USD ve 16:30 turuyla ~1,17 USD olacak. Nihai turun kaba tahmini, büyütülmüş set ilk turdakinin ~1,5 katıysa:
+- Dört model + taban, tek sağlayıcıda: ~0,8 USD (GPT-5.4 mini ~0,5).
+- Gemma 4'ün 3 bf16 sağlayıcısı: ~0,3 USD.
+- Süre turları: ~0,15 USD.
+- Yeni cevap şeması varsa (§15) aynı tur o şemayla koşulur, ek maliyet yok.
+
+Toplam **~1,3 USD**. Set büyüklüğü kesinleşince yeniden hesaplanıp onayınıza sunulur.
+
+## 14. Plan (onaylandı 2026-11-05): Gemma 4 çeviri modeli olarak (yalnız ölçüm aracında)
+
+**Onayla gelen değişiklikler:**
+- **Üç kol, model etkisi ve sağlayıcı etkisi ayrışsın diye:**
+  - Gemma 3 DeepInfra
+  - Gemma 3 NextBit
+  - Gemma 4 NextBit
+- **Süre ölçütü çağrının tamamı** (ilk token değil; çeviri bitmeden BM25 başlayamaz). Başarı ölçütü p95 ve 1,2 sn sınırını aşma oranı; p50 de raporlanır.
+- **Çeviri çıktı tokeni p50/p95** kaydedilir.
+- Uygulamaya bağlanmaz; sonuç B4 özet §10'a.
 
 Neden: Süre sınırı ölçümünde grup 1'i (arama öncesi paralel adımlar) **çeviri belirliyor**: 149 sorunun 107'sinde (%72) en uzun bekleme çeviriydi. Gemma 3 12B çeviri süresi p50 818 ms, p95 2,69 sn; 1,2 sn sınırını %37'sinde aştı ([asama4_sure_siniri](../b4/asama4_sure_siniri_2026-11-05.md), "Grup 1 ayrıştırma").
 
@@ -233,3 +256,75 @@ Neden: Süre sınırı ölçümünde grup 1'i (arama öncesi paralel adımlar) *
    - Gemma 3'ün aynı seti 350 çağrıda 0,0038 USD tuttu. Gemma 4 NextBit fiyatıyla ~0,006 USD/koşu.
    - Toplam: 2 saat × (Gemma 4 + Gemma 3) ≈ **0,02–0,03 USD**. Arama değerlendirmesi yerel (Qdrant), bulutsuz.
 5. Uygulamaya bağlanmaz. Sonuç B4 özet raporuna (§10) yazılır.
+
+## 15. Öneri (koşulmadı): yapılandırılmış cevap şeması
+
+**Neden:** `verify.py`'deki atıf ve sayı ayıklama yamalarının kaynağı, cevabın tek bir serbest metin olması ve atıfların metne gömülmesi. Doğrulayıcı aynı metinde hangi rakamın atıf, liste numarası, kod ya da değer olduğunu tahmin ediyor. Yamaların listesi:
+- 16 Ekim: alıntı sonunda yarım atıf;
+- liste numaraları;
+- 5 Kasım: çoklu atıf, `<br>`, Markdown.
+
+Her yeni model yeni bir biçim getiriyor. **A+B (2026-11-05) bu türden son yamadır.**
+
+**Önerilen şema** (yalnız `cevap` değişir; diğer alanlar aynı):
+```json
+"cevap": [{"metin": "Dış görünür dikişlerde inç başına 11 (± 1) dikiş olmalıdır.", "kaynaklar": [1]},
+          {"metin": "Overlok dikişlerinde 10 (± 2) dikiş olmalıdır.", "kaynaklar": [1, 2]}]
+```
+- Her öğe bir cümle ya da bir madde. `metin` içinde `[n]` olmaz.
+- Liste numarası yazılmaz; sıra dizinin sırasıdır.
+- `kaynaklar` boş olamaz (`minItems: 1`). `cevap` en fazla 8 öğe; `metin` en fazla 250 karakter.
+- İstemde yalnız biçim değişir: "her cümleyi ayrı öğe yaz, dayandığı kaynak numaralarını `kaynaklar`a koy".
+
+**`verify.py`:**
+- Sayılar yalnız `metin`lerden okunur: atıf ve liste numarası metinde olmadığı için ayıklama gerekmez.
+- Atıf geçerliliği `kaynaklar`dan okunur: her öğenin kaynakları geçerli kaynak numarası mı. Ayrıca bir öğenin sayıları, o öğenin kaynaklarından alıntılanan metinde mi (bugün bütün alıntılara bakılıyor; öğe bazında daha sıkı).
+- Tolerans kontrolü, tekrar kontrolü (öğeler arası) ve yabancı alfabe kontrolü aynı kalır.
+
+**Ekranda gösterim ve sesli metin:**
+- Ekran: öğeler sırayla. Tek öğe paragraf; birden çok öğe numaralı liste (numara koddan). Her öğenin sonuna kaynak etiketleri `[1][2]`, koddan.
+- Kaynak kartları `kaynaklar` birleşiminden (`app.cited_sources` bugün metinden ayıklıyor).
+- `sesli_metin` model alanı olarak kalır; seslendirme kuralları (R15) aynı. Yedek yol, sesli metin yoksa ya da tolerans düşmüşse öğe `metin`lerinin birleşimidir; atıf temizliği gerekmez.
+
+**Kaldırılabilecek yamalar** (şema geçişinden ve ölçümden sonra):
+- `CITE_RE` ile cevap metninden atıf ayıklama, `MULTI_CITE_RE` / `split_cites` / `cites_in` / `strip_cites`;
+- `LIST_MARK_RE` ve `<br>` işleme (yalnız cevap tarafı; alıntılar kaynak metni olduğu için sayı ayıklamada kod (`CODE_RE`) yine gerekir);
+- `speech.py`'deki atıf silme;
+- **16 Ekim yarım atıf (`CUT_CITE_RE`)**: alıntıda atıf yazma gerekçesi kalkıyor; istem "alıntıya atıf yazma" der, yine yazılırsa alıntı birebir tutmaz (✖).
+- **Kalacaklar:** `_cut_quote_prefix` (300 karakter sınırında kesilen alıntı; atıfla değil uzunluk sınırıyla ilgili), `CODE_RE`, değer kanonikleştirme ve alıntıda yazıyla sayı (bunlar biçim değil anlam karşılaştırması).
+
+**Geriye uyumluluk:**
+- `verify` iki biçimi de kabul eder: `cevap` metinse bugünkü yol, diziyse yeni yol. Geçiş süresince ikisi de çalışır.
+- Kayıtlı eski cevaplar ve eski ölçüm dosyaları yeniden puanlanabilir kalır.
+- Uygulamada `answer["cevap"]` metin bekleyen yerler (app, `tables.variant_check`, denetim kaydı) tek bir yardımcıdan (`answer_text(answer)`) okur.
+- Eski yol, yeni şema nihai turda geçince ve bir sürüm sonra kaldırılır.
+
+**Yerel model (Ollama):**
+- `format=<JSON şeması>` iç içe dizi ve nesneyi destekliyor (bugün `ANSWER_SCHEMA` böyle gidiyor).
+- Ollama'nın şemadaki `maxLength`/`maxItems`'ı üretimde ne ölçüde uyguladığı denemede kontrol edilecek. Sınırlar her durumda `verify`'de de kontrol edilir.
+- Önce taban qwen2.5:7b ile 20 soruda biçim denemesi (yerel, maliyetsiz).
+
+**Ölçüm:**
+- Adım 2 nihai turunda dört model + taban bu şemayla koşulur. Bugünkü şemayla aynı soruda karşılaştırma için ilk turun kayıtları referans.
+- Ek metrik: şemaya uyma (öğe yapısı, boş `kaynaklar`, metinde `[n]` kalması) JSON metriğinin parçası. Bir model uymuyorsa bu metrikte görünür; ona özel yama yazılmaz (§16).
+
+**Tahmini maliyet:**
+- Şema denemesi: yerel, 0 USD.
+- Bulutta tek başına bir ön deneme istenirse: 4 model × 30 soru ≈ 0,12 USD.
+- Nihai turun kendisi zaten koşulacak (§12 notu); şema ek maliyet getirmez, yalnız çıktı tokeni ~%10 artabilir.
+
+**Uygulama sırası (onaydan sonra):**
+1. `verify` ikili biçim + testler.
+2. İstem ve şema değişikliği yalnız ölçüm aracında.
+3. Yerel deneme.
+4. Nihai tur.
+5. Sonuçlar iyiyse uygulamaya geçiş ve yamaların kaldırılması.
+
+## 16. İlke (öneri): model değişikliği yalnız yapılandırma değişikliğidir
+
+Cevap modelini değiştirmek yalnız yapılandırmadır (model kimliği, sağlayıcı listesi, düşünme kapatma parametresi).
+- **Bir model ölçüm setinden kod değişmeden geçmiyorsa elenir.**
+- Ona özel istem, ayrıştırıcı ya da doğrulama yaması yazılmaz.
+- Biçim sorunları JSON ve rozet metriklerinde görünür. Ortak bir hata birden çok modelde görülürse genel çözüm şemadır (§15), modele özel yama değildir.
+
+PRD açık kararlar listesine **A11** olarak önerildi ([docs/PRD.md](../../../../docs/PRD.md)).

@@ -108,6 +108,16 @@ def overlap_at_k(approx: Sequence[Any], exact: Sequence[Any], k: int) -> float:
 
 # ---------- süre ----------
 
+def sse_events(response: Any) -> Iterable[dict[str, Any]]:
+    """OpenRouter akışının (text/event-stream) olayları. Satırlar bayt olarak okunup UTF-8 çözülür: Yanıtta charset yok,
+    requests'in decode_unicode'u Latin-1 varsayıyor; "±" ve Türkçe harfler bozuluyor, 0x85 baytı satırı bölüyordu
+    (2026-11-05, Adım 2 ilk koşu)."""
+    for raw in response.iter_lines():
+        line = raw.decode("utf-8") if raw else ""
+        if line.startswith("data: ") and line != "data: [DONE]":
+            yield json.loads(line[6:])
+
+
 def percentile(xs: Sequence[float], q: float) -> float:
     """Doğrusal aralıklı yüzdelik (numpy 'linear' ile aynı)."""
     if not xs:

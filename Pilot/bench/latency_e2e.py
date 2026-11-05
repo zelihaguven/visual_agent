@@ -19,7 +19,7 @@ from concurrent.futures import ThreadPoolExecutor
 from statistics import median
 from typing import Any
 
-from bench.common import KNOWN_SETS, load_questions, meta, prepare, write_result
+from bench.common import KNOWN_SETS, load_questions, meta, prepare, sse_events, write_result
 
 STAGES = ("qwen_embed", "bge_embed", "ceviri", "grup1_duvar", "qdrant_qwen", "qdrant_bge", "qdrant_bm25",
           "grup2_duvar", "fuzyon", "cevap_ilk_token", "cevap_toplam", "toplam_ilk_token", "toplam")
@@ -53,10 +53,7 @@ def stream_answer(session: Any, model: str, messages: list[dict[str, str]], max_
     with session.post(f"{OPENROUTER_URL}/chat/completions", json=body, stream=True, timeout=120) as r:
         if r.status_code != 200:
             raise RuntimeError(f"{model} {r.status_code}: {r.text[:300]}")
-        for line in r.iter_lines(decode_unicode=True):
-            if not line or not line.startswith("data: ") or line == "data: [DONE]":
-                continue
-            d = json.loads(line[6:])
+        for d in sse_events(r):
             if d.get("usage"):
                 usage = d["usage"]
             delta = (d.get("choices") or [{}])[0].get("delta", {}).get("content")

@@ -186,6 +186,63 @@ class TestModelCodesAreNotValues:
         assert v.status == "verified", v.problems
 
 
+class TestCitationAndNumberFormat:
+    """Adım 2 (2026-11-05): atıf ve liste numarası biçimi "alıntıda olmayan sayı" yapmamalı; değer biçimi farkı (sondaki
+    sıfır, baştaki nokta, alıntıda yazıyla) yanlış alarm olmamalı. Birim dönüşümü ve alıntıda olmayan değer yine ✖."""
+
+    def test_multi_citation_digits_are_not_values(self):
+        assert numbers_in("Bantlar sol kolda olmalıdır [1, 2]. Hız 5000 sti/min [2,3,5]; ayar [1-3] ve [1; 4].") == {"5000"}
+
+    def test_multi_citation_counts_as_valid_citation(self):
+        v = verify(make(cevap="Dış görünür dikişler inç başına 11 (± 1) dikiş olmalıdır [1, 2]."), SRC)
+        assert v.status == "verified", v.problems
+        assert v.checks["atif_gecerli"] and v.checks["sayilar_alintida"]
+
+    def test_multi_citation_with_invalid_number_is_invalid(self):
+        v = verify(make(cevap="Dış görünür dikişler inç başına 11 (± 1) dikiş olmalıdır [1, 7]."), SRC)
+        assert v.status == "partial" and not v.checks["atif_gecerli"]
+
+    def test_list_numbers_after_citation_br_and_markdown(self):
+        assert numbers_in("ekipmanlar: [1, 5] 1. Gözlük takın. [1, 5] 2. Uygun ayakkabı giyin.") == set()
+        assert numbers_in("Paneldeki düğmeler [1]:<br>1. Saat ekranı<br>2. Seçici düğme") == set()
+        assert numbers_in("Ölçüler [1, 3]: 1. **Long** boyu için 44") == {"44"}
+
+    def test_trailing_and_leading_zeros_are_same_value(self):
+        assert numbers_in("varsayılan 2.00, ayar 0,50 ve .5 mm") == {"2", "0.5"}
+        src = {1: "Stitch pitch | Initial value: 2.00 | Setting units: 0.05 mm"}
+        ans = make(alintilar=[{"kaynak_no": 1, "metin": "Initial value: 2.00"}],
+                   cevap="Dikiş adımının varsayılan değeri 2 mm'dir [1].", sesli_metin="")
+        assert verify(ans, src).status == "verified"
+
+    def test_number_written_as_word_in_quote(self):
+        src = {1: "Medium repairs are effected at least every six months when working in two shifts."}
+        ans = make(alintilar=[{"kaynak_no": 1, "metin": "at least every six months when working in two shifts"}],
+                   cevap="İki vardiyada en az 6 ayda bir yapılır [1].", sesli_metin="2 vardiyada 6 ayda bir.")
+        assert verify(ans, src).status == "verified"
+
+    def test_ambiguous_words_are_not_numbers(self):
+        """'on' (TR 10 / EN on), 'once', 'un' sayı sayılmaz: Mistral A043'teki uydurma '10 saniye' yakalanır."""
+        src = {1: "Remedy: Turn the power off and then back on again once."}
+        ans = make(alintilar=[{"kaynak_no": 1, "metin": "Turn the power off and then back on again once."}],
+                   cevap="Gücü kapatın, 10 saniye bekleyin, tekrar açın [1].", sesli_metin="")
+        v = verify(ans, src)
+        assert v.status == "failed" and "10" in " ".join(v.problems)
+
+    def test_answer_side_words_are_not_quote_numbers(self):
+        """Yazıyla sayı yalnız alıntı tarafında: cevaptaki 'bir' alıntıdaki 1 yerine geçmez, alıntıdaki rakamı aramaz."""
+        src = {1: "Use 15 to 20 stitches per inch."}
+        ans = make(alintilar=[{"kaynak_no": 1, "metin": "Use 15 to 20 stitches per inch."}],
+                   cevap="Bir inçte 15 ile 20 dikiş kullanılır [1].", sesli_metin="")
+        assert verify(ans, src).status == "verified"
+
+    def test_unit_conversion_is_still_stray(self):
+        src = {1: "Defect: uneven by more than 1/4-inch"}
+        ans = make(alintilar=[{"kaynak_no": 1, "metin": "uneven by more than 1/4-inch"}],
+                   cevap="En fazla 1/4 inç (yaklaşık 6.35 mm) kayabilir [1].", sesli_metin="")
+        v = verify(ans, src)
+        assert v.status == "failed" and "6.35" in " ".join(v.problems)
+
+
 class TestNormalize:
     @pytest.mark.parametrize("a,b", [
         ("Stitches  per\ninch", "stitches per inch"),

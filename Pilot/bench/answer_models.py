@@ -28,12 +28,15 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from bench.common import KNOWN_SETS, PILOT_DIR, first_rank, is_match, load_questions, percentile, write_result
+from bench.common import (KNOWN_SETS, PILOT_DIR, first_rank, is_match, load_questions, percentile, sse_events,
+                          write_result)
 
 CACHE = PILOT_DIR / "data" / "bench_cache" / "adim2_arama.json"
 RAW_DIR = PILOT_DIR / "eval" / "bench" / "adim2" / "ham"
 SETS = [*KNOWN_SETS, "aday_sorular"]            # JUKI (ayrı tutulan doğrulama seti) yok
 RETRY_WAIT = 30.0
+# Rozeti veren verify.py sürümü; ham dosyaya yazılır. Önceki sürümle puanlanmış kayıtlar --rescore ile yeniden puanlanır.
+VERIFY_TAG = "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı"
 MODELS: dict[str, dict[str, Any]] = {
     "gemma4": {"id": "google/gemma-4-26b-a4b-it", "provider": "deepinfra", "reasoning": {"enabled": False}},
     "qwen36": {"id": "qwen/qwen3.6-35b-a3b", "provider": "deepinfra", "reasoning": {"enabled": False}},
@@ -116,13 +119,7 @@ class CloudModel:
                     if r.status_code != 200:
                         err = f"{r.status_code}: {r.text[:200]}"
                     else:
-                        # Satırlar bayt olarak okunup UTF-8 çözülür: text/event-stream'de charset yok, requests'in
-                        # decode_unicode'u Latin-1 varsayıp "±" ve Türkçe harfleri bozuyordu (2026-11-05 ilk koşu).
-                        for raw in r.iter_lines():
-                            line = raw.decode("utf-8") if raw else ""
-                            if not line or not line.startswith("data: ") or line == "data: [DONE]":
-                                continue
-                            d = json.loads(line[6:])
+                        for d in sse_events(r):
                             if d.get("error"):
                                 err = f"akış hatası: {json.dumps(d['error'])[:200]}"
                                 break
@@ -292,6 +289,7 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int) -> Path:
     if n:
         qs = random.Random(seed).sample([q for q in qs if not q.get("expect_not_found")], n)
     out: dict[str, Any] = {"model": key, "spec": MODELS[key], "tag": tag, "zdr_providers": m.zdr_providers,
+                           "verify": VERIFY_TAG,
                            "start": datetime.now().isoformat(timespec="seconds"), "rows": {}, "cost_usd": 0.0}
     path = RAW_DIR / f"{tag}_{key}.json"
     RAW_DIR.mkdir(parents=True, exist_ok=True)
@@ -385,6 +383,82 @@ def judge(q: dict[str, Any], res: Any) -> dict[str, Any]:
     return row
 
 
+# ---------- kayıttan yeniden puanlama (model çağrısı yok) ----------
+
+QUOTE_RE = re.compile(r'"metin"\s*:\s*"((?:[^"\\]|\\.)*)"')
+HARD_CHECKS = ("alinti_var", "alinti_birebir", "sayilar_alintida", "tolerans_tam", "cevap_var", "tekrar_yok",
+               "alfabe_dogru")
+
+
+def status_from(checks: dict[str, Any]) -> str:
+    """verify.py ve pipeline'ın varyant kuralıyla aynı karar (kesik kayıtlar için)."""
+    if any(checks.get(k) is False for k in HARD_CHECKS):
+        return "failed"
+    ok = checks.get("atif_gecerli") and checks.get("alinti_kaynak_metni", True) and checks.get("varyant_belirli", True)
+    return "verified" if ok else "partial"
+
+
+def rescore(tag: str) -> list[str]:
+    """<tag>_*.json kayıtlarını bugünkü verify.py ile yeniden puanlar; kayıtlı model çıktısı aynı arama önbelleğiyle
+    pipeline'dan geçer. Eski puan satırda 'onceki_puan'da kalır. Ham çıktısı kesik kaydedilmiş satırlarda (2026-11-05
+    "ana" turu, 1500 karakter) cevap ayrıştırılamaz: kaynaklar yine pipeline'dan, alıntılar kesik metinden, cevap
+    kayıttaki ilk 600 karakterden; koşu anında kalan sayı ve atıf kontrolleri yeniden, diğerleri kayıttan (yaklaşık,
+    'kesik_kayit')."""
+    from pilot import pipeline
+    from pilot.verify import cites_in, numbers_in, word_numbers
+    install_search_cache(frozen=True)
+    qs = {q["qid"]: q for q in questions()}
+    orig, cur, done = pipeline.verify, {}, []
+
+    def cap(answer: dict, sources: dict, generated: dict | None = None) -> Any:
+        cur["sources"] = sources
+        return orig(answer, sources, generated)
+
+    pipeline.verify = cap
+    try:
+        for f in sorted(RAW_DIR.glob(f"{tag}_*.json")):
+            d = json.loads(f.read_text(encoding="utf-8"))
+            if d.get("verify") == VERIFY_TAG or not isinstance(d.get("rows"), dict):
+                continue
+            n_cut = n_changed = 0
+            for qid, row in d["rows"].items():
+                if row.get("cikis") != "cevap" or qid not in qs:
+                    continue
+                keep = ("durum", "sorunlar", "kontroller", "atif_dogru_biri", "atif_dogru_hepsi", "deger_dogru")
+                old = {k: row[k] for k in keep if k in row}
+                ans = parse_answer(row.get("ham", ""), row.get("finish"))[0]
+                if ans is not None:
+                    pipeline.chat_json = lambda _u, a=ans: (dict(a), {"llm_seconds": 0.0})
+                    new = judge(qs[qid], pipeline.soru_cevapla(qs[qid]["q"]))
+                    row.update({k: new[k] for k in keep if k in new})
+                else:
+                    n_cut += 1
+                    dummy = {"alintilar": [], "cevap": "-", "sesli_metin": "", "bulunamadi": False}
+                    pipeline.chat_json = lambda _u, a=dummy: (dict(a), {"llm_seconds": 0.0})
+                    cur.clear()
+                    pipeline.soru_cevapla(qs[qid]["q"])
+                    quote = " ".join(json.loads(f'"{m}"') for m in QUOTE_RE.findall(row.get("ham", "")))
+                    checks = dict(row.get("kontroller") or {})
+                    text = row.get("cevap", "")
+                    # A+B yalnız gevşetir: koşu anında tam metinle geçen kontrol geçer kalır; yalnız kalanlar yeniden.
+                    cites = cites_in(text)
+                    checks["sayilar_alintida"] = bool(checks.get("sayilar_alintida")) or not (
+                        numbers_in(text) - numbers_in(quote) - word_numbers(quote))
+                    checks["atif_gecerli"] = bool(checks.get("atif_gecerli")) or (
+                        bool(cites) and cites <= set(cur.get("sources") or {}))
+                    row.update(durum=status_from(checks), kontroller=checks, kesik_kayit=True)
+                n_changed += row["durum"] != old.get("durum")
+                row["onceki_puan"] = old
+            d["verify"] = VERIFY_TAG
+            d["yeniden_puanlama"] = {"tarih": datetime.now().isoformat(timespec="seconds"), "kesik_kayit": n_cut,
+                                     "rozeti_degisen": n_changed}
+            f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+            done.append(f"{f.name}: rozeti değişen {n_changed}, kesik kayıt {n_cut}")
+    finally:
+        pipeline.verify = orig
+    return done
+
+
 # ---------- rapor ----------
 
 def report(tag: str, latency_tag: str | None) -> str:
@@ -413,6 +487,17 @@ def report(tag: str, latency_tag: str | None) -> str:
          "düşünme kapalı; modele özel istem ayarı yok. Yeniden deneme bütün modellerde aynı: ilk token gelmeden "
          f"429/5xx/bağlantı hatasında {RETRY_WAIT:.0f} sn sonra bir kez; yine olmazsa soru cevapsız (kalite "
          "metriklerine girmez). Plan: [plan_cevap_modeli_2026-11-05.md](plan_cevap_modeli_2026-11-05.md).", ""]
+    rescored = {k: r["yeniden_puanlama"] for k, r in runs.items() if r.get("yeniden_puanlama")}
+    L += [f"**Rozetler `verify.py` {VERIFY_TAG} ile.** Rozet davranışı değişti: çoklu atıf (`[1, 2]`) atıf sayılıyor ve "
+          "içindeki rakamlar değer sayılmıyor; atıftan sonra, `<br>` sonrası ve Markdown kalın madde numaraları liste "
+          "numarası; `2.00` = `2`, `.5` = `0.5`; alıntıda yazıyla geçen 1–12 (`six months`) alıntı sayısı. Birim "
+          "dönüşümü, türetilmiş sayı ve alıntıda olmayan değer yine ✖. Gerekçe ve önce/sonra: "
+          "[okuma_sayi_uzunluk_2026-11-05.md](okuma_sayi_uzunluk_2026-11-05.md)."
+          + (" Önceki sürümle koşulan kayıtlar model çağrısı olmadan yeniden puanlandı (`--rescore`): "
+             + ", ".join(f"{k} rozeti değişen {v['rozeti_degisen']}, kesik kayıt {v['kesik_kayit']}"
+                         for k, v in rescored.items())
+             + ". Kesik kayıt: ham çıktı 1500 karakterde kesik kaydedilmiş, rozeti yaklaşık (sayı ve atıf kontrolleri "
+               "kayıttaki cevabın ilk 600 karakterinden); tablolarda ayrı sütunda." if rescored else ""), ""]
     rc = Counter(v for v in rules.values() if v)
     L += [f"**Kural çıkışları (modelden bağımsız, bir kez):** {dict(rc)}; \"bulunamadı\" beklenen 21 sorudan "
           f"{sum(1 for k in nf if rules.get(k) in ('yabanci_marka', 'kod_yok'))} kuralla çıkıyor.", ""]
@@ -437,7 +522,8 @@ def report(tag: str, latency_tag: str | None) -> str:
 
     L += ["", "## \"Bulunamadı\" (21 soru: 4 onaylı + 17 onaysız)", "",
           "| Model | doğru \"bulunamadı\", toplam | … modelin karar verdiği soruda | netleştirme | cevap üretti | "
-          "… doğrulanmış görünen yanlış (✓/⚠) | JSON hatası | cevapsız (kaliteden ayrı) |", "|---|---|---|---|---|---|---|---|"]
+          "… doğrulanmış görünen yanlış (✓/⚠) | … kesik kayıt (yaklaşık) | JSON hatası | cevapsız (kaliteden ayrı) |",
+          "|---|---|---|---|---|---|---|---|---|"]
     for k in order:
         R = runs[k]["rows"]
         got = [q for q in nf if q in R and R[q]["cikis"] != "cevapsiz"]
@@ -448,14 +534,16 @@ def report(tag: str, latency_tag: str | None) -> str:
         bad = sum(R[q]["durum"] in ("verified", "partial") for q in made)
         L.append(f"| {k} | {pct_(ok_rule + ok_model, len(got))} | {pct_(ok_model, len(model_q))} | "
                  f"{sum(R[q]['cikis'] == 'netlestirme' for q in model_q)} | {len(made)} | **{bad}** | "
+                 f"{sum(bool(R[q].get('kesik_kayit')) for q in made)} | "
                  f"{sum(R[q]['cikis'] == 'json_hata' for q in model_q)} | {sum(R[q]['cikis'] == 'cevapsiz' for q in nf if q in R)} |")
     L += ["", "Taban (2026-10-27, yerel qwen2.5:7b, aynı 21 soru, o günkü arama): doğru \"bulunamadı\" %48, doğrulanmış "
           "görünen yanlış 3.", ""]
 
     L += ["## Cevaplı sorular (kalite, cevap gelen sorularda)", "",
           "| Model | Set | soru | yanlış ret | … kaynak ilk 5'teydi (model hatası) | … arama getirmedi | netleştirme | "
-          "✓ / ⚠ / ✖ | beklenen değer cevapta | atıf: en az biri doğru sayfa | atıf: hepsi doğru | JSON hatası |",
-          "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+          "✓ / ⚠ / ✖ | … kesik kayıt (yaklaşık) | beklenen değer cevapta | atıf: en az biri doğru sayfa | "
+          "atıf: hepsi doğru | JSON hatası |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for k in order:
         R = runs[k]["rows"]
         for label, sel in (("onaylı", True), ("onaysız", False)):
@@ -472,7 +560,8 @@ def report(tag: str, latency_tag: str | None) -> str:
             a2 = [R[q]["atif_dogru_hepsi"] for q in made if R[q].get("atif_dogru_hepsi") is not None]
             L.append(f"| {k} | {label} | {len(qq)} | {pct_(len(ref), len(qq))} | {ref_in} | {len(ref) - ref_in} | "
                      f"{sum(R[q]['cikis'] == 'netlestirme' for q in qq)} | {st['verified']} / {st['partial']} / "
-                     f"{st['failed']} | {pct_(sum(dv), len(dv))} | {pct_(sum(a1), len(a1))} | {pct_(sum(a2), len(a2))} | "
+                     f"{st['failed']} | {sum(bool(R[q].get('kesik_kayit')) for q in made)} | "
+                     f"{pct_(sum(dv), len(dv))} | {pct_(sum(a1), len(a1))} | {pct_(sum(a2), len(a2))} | "
                      f"{sum(R[q]['cikis'] == 'json_hata' for q in qq)} |")
     L += ["", "Atıf doğruluğu: cevabın alıntı yaptığı kaynak numaralarının parçaları beklenen doküman ve sayfayla "
           "(`is_match`) eşleşiyor mu; alıntısız cevap paydada yok.", "",
@@ -531,10 +620,14 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=20261105)
     ap.add_argument("--max-usd", type=float, default=1.5, help="bütün turlar ve modeller toplamı")
     ap.add_argument("--report", action="store_true")
+    ap.add_argument("--rescore", nargs="*", metavar="TAG",
+                    help="kayıtları bugünkü verify.py ile yeniden puanla (model çağrısı yok); örn. --rescore ana bozuk1")
     ap.add_argument("--latency-tag", default="sure2")
     a = ap.parse_args()
     if a.prepare:
         prepare()
+    for t in a.rescore or []:
+        print("\n".join(rescore(t)) or f"{t}: yeniden puanlanacak kayıt yok", flush=True)
     for k in a.models:
         path = run_model(k, a.tag, a.n, a.max_usd, a.seed)
         print(path, flush=True)

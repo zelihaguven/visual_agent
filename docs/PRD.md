@@ -209,6 +209,7 @@ Bu kararlar ilerlemeyi bugün durdurmuyor. Her biri, engellediği adıma gelmede
 | A8 | Denetim kayıtları ne kadar saklanacak, kim görecek? | BT, hukuk | Adım 6 |
 | A9 | Müşteri sözleşmeleri, parçaların ZDR'li buluta gönderilmesine izin veriyor mu? | Hukuk | Adım 6 |
 | A10 | Kodlar atölyede nasıl okunuyor; sesli cevap ne uzunlukta olmalı? | Kullanıcılar | Adım 5 |
+| A11 | (Öneri, 2026-11-05) Model değişikliği yalnız yapılandırma değişikliği mi olacak? Önerilen ilke: Bir model ölçüm setinden kod değişmeden geçmiyorsa elenir, ona özel yama yazılmaz; ortak biçim sorunları yapılandırılmış cevap şemasıyla çözülür ([Adım 2 planı §15–16](../Pilot/eval/bench/adim2/plan_cevap_modeli_2026-11-05.md)) | Geliştirme ekibi | Adım 2 sonu |
 
 ## Kapsam dışı ve terimler
 

@@ -455,3 +455,36 @@ def test_clarify_options_verdict():
     assert options_verdict(["gl-pd-07-14a", "gl-pd-14-04a", "x"], exp) == "fazlasi_var"
     assert options_verdict(["gl-pd-14-04a", "gl-pd-14-04b"], exp) == "eksik_yanlis"
     assert options_verdict([], exp) == "secenek_yok"
+
+
+def test_sse_events_decode_utf8_bytes_and_tools_use_them():
+    """Akış satırları bayt + UTF-8: "±", Türkçe harfler ve 0x85 baytı içeren karakter ("Å" = C3 85) bozulmaz,
+    satır bölünmez. Akış okuyan bütün ölçüm araçları bu yardımcıyı kullanır (Latin-1 hatası, 2026-11-05)."""
+    from pathlib import Path
+
+    from bench.common import sse_events
+    text = "11 (± 1) dikiş, ölçü, Ångström"
+
+    class R:
+        def iter_lines(self, decode_unicode=False):
+            assert not decode_unicode
+            yield ("data: " + json.dumps({"c": text}, ensure_ascii=False)).encode("utf-8")
+            yield b""
+            yield b": keep-alive"
+            yield b"data: [DONE]"
+
+    assert [d["c"] for d in sse_events(R())] == [text]
+    bench = Path(__file__).resolve().parent.parent / "bench"
+    for tool in ("answer_models", "latency_e2e", "latency_guard", "tail_probe"):
+        src = (bench / f"{tool}.py").read_text(encoding="utf-8")
+        assert "sse_events(" in src and "decode_unicode" not in src, tool
+
+
+def test_rescore_status_matches_verify_rules():
+    from bench.answer_models import status_from
+    ok = {k: True for k in ("alinti_var", "alinti_birebir", "sayilar_alintida", "tolerans_tam", "cevap_var",
+                            "tekrar_yok", "alfabe_dogru", "atif_gecerli", "alinti_kaynak_metni")}
+    assert status_from(ok) == "verified"
+    assert status_from({**ok, "atif_gecerli": False}) == "partial"
+    assert status_from({**ok, "varyant_belirli": False}) == "partial"
+    assert status_from({**ok, "sayilar_alintida": False}) == "failed"

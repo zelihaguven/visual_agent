@@ -1,6 +1,8 @@
 """Sesli okunacak metni hazırla: sayı, tolerans, aralık, kesir -> Türkçe kelimeler (kural tablosu)."""
 import re
 
+from .verify import strip_cites
+
 _NUM = r"\d+(?:[.,]\d+)?"
 
 
@@ -77,7 +79,7 @@ def _units(t: str) -> str:
 
 def normalize_for_speech_en(text: str) -> str:
     """İngilizce cevap için: atıflar atılır, tolerans okunur hale gelir. Sayıları TTS kendisi okur (İngilizce)."""
-    t = re.sub(r"\[\d+\]", "", text)
+    t = strip_cites(text)
     t = re.sub(rf"({_NUM})\s*\(\s*±\s*({_NUM})\s*\)", r"\1, plus or minus \2", t)
     t = re.sub(rf"({_NUM})\s*±\s*({_NUM})", r"\1 plus or minus \2", t)
     t = re.sub(r"\bSPI\b", "stitches per inch", t)
@@ -86,7 +88,7 @@ def normalize_for_speech_en(text: str) -> str:
 
 
 def normalize_for_speech(text: str) -> str:
-    t = re.sub(r"\[\d+\]", "", text)                                              # atıf numaraları okunmaz
+    t = strip_cites(text)                                              # atıf numaraları okunmaz
     t = _THOUSANDS_RE.sub(lambda m: m.group(1) + re.sub(r"[.,]", "", m.group(2)), t)   # 7,000 -> 7000
     t = _RATE_RE.sub(_rate, t)                                                    # 7000 sti/min
     t = _units(t)

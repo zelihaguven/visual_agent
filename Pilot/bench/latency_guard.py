@@ -23,7 +23,8 @@ from collections import Counter, deque
 from concurrent.futures import ThreadPoolExecutor, wait
 from typing import Any
 
-from bench.common import KNOWN_SETS, accuracy, first_rank, fmt_pct, load_questions, meta, prepare, write_result
+from bench.common import (KNOWN_SETS, accuracy, first_rank, fmt_pct, load_questions, meta, prepare, sse_events,
+                          write_result)
 
 QWEN_MODEL = "qwen/qwen3-embedding-8b"
 _local = threading.local()
@@ -79,10 +80,7 @@ def stream_call(body: dict[str, Any], t_start: float, rec: dict[str, Any], first
             if r.status_code != 200:
                 rec["err"] = f"{r.status_code}: {r.text[:120]}"
                 return
-            for line in r.iter_lines(decode_unicode=True):
-                if not line or not line.startswith("data: ") or line == "data: [DONE]":
-                    continue
-                d = json.loads(line[6:])
+            for d in sse_events(r):
                 rec["provider"] = d.get("provider") or rec.get("provider")
                 if d.get("usage"):
                     rec["cost"] = float(d["usage"].get("cost") or 0.0)

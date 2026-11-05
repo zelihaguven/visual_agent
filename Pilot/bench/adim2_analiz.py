@@ -27,79 +27,36 @@ from collections import Counter
 from datetime import date
 from typing import Any
 
-from bench.answer_models import MODELS, RAW_DIR, install_search_cache, parse_answer, questions
+from bench.answer_models import MODELS, QUOTE_RE, RAW_DIR, install_search_cache, parse_answer, questions
 from bench.common import percentile
+from pilot import verify as _V
+from pilot.verify import MULTI_CITE_RE, split_cites, word_numbers
+from pilot.verify import _canon_num as canon_v2
+from pilot.verify import numbers_in as numbers_in_v2
 
 OUT_DIR = RAW_DIR.parent
-QUOTE_RE = re.compile(r'"metin"\s*:\s*"((?:[^"\\]|\\.)*)"')
 STRAY_RE = re.compile(r"Alıntıda olmayan sayı\(lar\): \[(.*?)\]")
-# Çoklu atıf: "[1, 2]", "[2,3,5]", "[1; 4]", "[1-3]"
-MULTI_CITE_RE = re.compile(r"\[(\d+(?:\s*[,;–-]\s*\d+)+)\]")
 FACTORS = {"inç→mm": 25.4, "inç→cm": 2.54, "lb→kg": 0.45359, "oz→g": 28.35, "ft→m": 0.3048, "bar→psi": 14.504}
 LABEL = {"atif": "doğrulayıcı: çoklu atıf [1, 2]", "sira": "doğrulayıcı: liste numarası",
          "bicim": "biçim farkı (virgül/nokta, sıfır, kesir)", "yazi": "alıntıda yazıyla", "soruda": "soruda var",
          "kaynakta": "kaynakta var, alıntıda yok", "birim": "birim dönüşümü", "yok": "kaynakta da yok"}
 
 
-# ---------- önerilen genel düzeltme (verify.py'ye uygulanmadı) ----------
+# ---------- öneri: 2026-11-05'te verify.py'ye uygulandı (A+B); "önce" eski numbers_in ile ----------
 
-def split_cites(text: str) -> str:
-    """'[1, 2]' → '[1][2]', '[1-3]' → '[1][2][3]': tek biçim atıf."""
-    def one(m: re.Match) -> str:
-        nums: list[int] = []
-        for part in re.split(r"\s*[,;]\s*", m.group(1)):
-            a, b = (re.split(r"\s*[–-]\s*", part) + [""])[:2]
-            nums += list(range(int(a), int(b) + 1)) if b and 0 <= int(b) - int(a) < 20 else [int(a)] + ([int(b)] if b else [])
-        return "".join(f"[{n}]" for n in nums)
-    return MULTI_CITE_RE.sub(one, text)
+# 2026-11-05 öncesi verify.numbers_in: liste işaretinde Markdown yok, atıf liste işaretinden sonra, çoklu atıf yok,
+# <br> yok, değer kanonik değil. Kayıtlardaki "alıntıda olmayan sayı" listesi bununla üretildi.
+_OLD_LIST_MARK = re.compile(_V.LIST_MARK_RE.pattern.replace("*]", "]"), re.MULTILINE)
 
 
-def canon_v2(s: str) -> str:
-    """Değer olarak kanonik: virgül → nokta, ondalık sondaki sıfırlar atılır ("2.00" → "2", "0.50" → "0.5")."""
-    s = s.replace(",", ".")
-    return s.rstrip("0").rstrip(".") if "." in s else s
-
-
-# Liste işareti: verify.LIST_MARK_RE ile aynı; büyük harfe ek olarak Markdown kalın da madde başı ("1. **Long**")
-LIST_MARK_V2 = re.compile(r"(?:^\s*|(?<=[.:;])\s+)\d{1,2}[.)]\s+(?=[A-ZÇĞİÖŞÜ*])|^\s*\d{1,2}[.)]\s+", re.MULTILINE)
-# Alıntıda yazıyla sayı, EN/ES/FR/TR 1–12 (yalnız alıntı tarafında: cevaptaki "bir ekip" sayı sayılmaz). Başka dilde
-# sık kelime olanlar yok: "on" (TR 10 / EN on), "once" (ES 11 / EN once), "un"/"une"/"una" (FR/ES artikel).
-WORDS = {w: i for ws in ("one two three four five six seven eight nine ten eleven twelve",
-                         "uno dos tres cuatro cinco seis siete ocho nueve diez - doce",
-                         "- deux trois quatre cinq six sept huit neuf dix onze douze",
-                         "bir iki üç dört beş altı yedi sekiz dokuz - onbir oniki")
-         for i, w in enumerate(ws.split(), 1) if w != "-"} | {"twice": 2}
-WORD_RE = re.compile(r"(?<!\w)(" + "|".join(sorted(WORDS, key=len, reverse=True)) + r")(?!\w)", re.I)
-
-
-def word_numbers(text: str) -> set[str]:
-    return {str(WORDS[w.lower()]) for w in WORD_RE.findall(text)}
-
-
-def numbers_in_v2(text: str) -> set[str]:
-    """Atıflar liste işaretlerinden ÖNCE ayıklanır; çoklu atıf tanınır; <br> satır sonu; ".5" → "0.5"; kanonik."""
-    from pilot import verify as V
-    t = V.CITE_RE.sub("", split_cites(re.sub(r"<br\s*/?>", "\n", text, flags=re.I)))
-    t = re.sub(r"(?<![\d.,])[.,](\d)", r"0.\1", t)
-    cleaned = V.CODE_RE.sub(" ", LIST_MARK_V2.sub("", t))
-    return {canon_v2(m.group(0)) for m in V.NUM_RE.finditer(cleaned)}
+def numbers_in_old(text: str) -> set[str]:
+    cleaned = _V.CODE_RE.sub(" ", _V.CITE_RE.sub("", _OLD_LIST_MARK.sub("", text)))
+    return {m.group(0).replace(",", ".") for m in _V.NUM_RE.finditer(cleaned)}
 
 
 def proposed_verify(answer: dict, sources: dict, generated: dict | None = None, words: bool = False) -> Any:
-    """verify.py + öneri: cevap ve sesli metindeki çoklu atıflar tekliye çevrilir, sayılar numbers_in_v2 ile.
-    words: alıntıda yazıyla geçen sayılar (1–12) da alıntı sayısı kabul edilir."""
-    from pilot import verify as V
-    a = dict(answer)
-    for f in ("cevap", "sesli_metin"):
-        if isinstance(a.get(f), str):
-            a[f] = split_cites(a[f])
-    quote_text = " ".join(q.get("metin", "") for q in a.get("alintilar") or [] if isinstance(q, dict))
-    old = V.numbers_in
-    V.numbers_in = lambda t: numbers_in_v2(t) | (word_numbers(t) if words and t == quote_text else set())
-    try:
-        return V.verify(a, sources, generated)
-    finally:
-        V.numbers_in = old
+    """Öneri artık verify.py'nin kendisi (A+B birlikte; words yalnız eski çağrılarla uyum için)."""
+    return _V.verify(answer, sources, generated)
 
 
 # ---------- yeniden oynatma ----------
@@ -200,7 +157,7 @@ def classify(n: str, answer_text: str, quote: str, source: str, question: str) -
 
 
 def number_cases(key: str, tag: str) -> list[dict[str, Any]]:
-    from pilot.verify import numbers_in
+    numbers_in = numbers_in_old
     cases = []
     for qid, c in replay(key, tag).items():
         checks = c["row"]["kontroller"] if c["kesik_kayit"] else c["res"].verification.checks
