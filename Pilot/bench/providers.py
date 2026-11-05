@@ -53,10 +53,10 @@ def doc_text(spec: dict[str, Any], chunk: dict[str, Any]) -> str:
 # ---------- maliyet ----------
 
 def prices() -> dict[str, float]:
-    """Model → USD/token (sağlayıcılar arasında en düşük; ZDR uyumlu uç noktalardan)."""
-    from pilot.cloud import _fetch_zdr_endpoints
+    """Model → USD/token (sağlayıcılar arasında en düşük; Safety Retention'sız ZDR uç noktalarından)."""
+    from pilot.cloud import _fetch_zdr_endpoints, strict_zdr
     out: dict[str, float] = {}
-    for e in _fetch_zdr_endpoints():
+    for e in filter(strict_zdr, _fetch_zdr_endpoints()):
         p = float((e.get("pricing") or {}).get("prompt") or 0)
         mid = e.get("model_id")
         if mid and p and (mid not in out or p < out[mid]):

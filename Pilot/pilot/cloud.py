@@ -5,6 +5,9 @@
   sağlayıcıya geri düşmez (istek 404 döner).
 - ZDR'siz modeller çağrılmaz: istemci kurulurken modelin ZDR uyumlu uç noktası olup olmadığı /endpoints/zdr listesinden
   kontrol edilir; yoksa hiç istek gönderilmeden hata verilir.
+- Saklama sınıfı uç nokta düzeyinde: /endpoints/zdr listesi "Safety Retention" uç noktalarını da içeriyor (güvenlik
+  incelemesi için istemi saklayabilir; ör. google-vertex). Bunlar ZDR sayılmaz: kontrol yalnız safety_retention=false
+  uç noktalara bakar, o sağlayıcılar da isteğe provider.ignore olarak yazılır (zdr: true tek başına onları dışlamıyor).
 - Buluta yalnız sorgu metni ve seçilmiş parçalar gider. Kullanıcı kimliği, yetki bilgisi, ses, doküman tamamı gönderilmez.
 - Anahtar yalnız OPENROUTER_API_KEY ortam değişkeninden okunur, hiçbir yere yazılmaz.
 """
@@ -16,11 +19,17 @@ from typing import Any
 from .config import OPENROUTER_URL
 
 ZDR_PROVIDER = {"zdr": True, "data_collection": "deny"}
+# require_zdr'nin kaydettiği, model başına dışlanacak sağlayıcılar (Safety Retention uç noktası olanlar)
+_IGNORE: dict[str, tuple[str, ...]] = {}
 
 
 def openrouter_body(body: dict[str, Any]) -> dict[str, Any]:
-    """İstek gövdesi + zorunlu sağlayıcı kısıtı. Gövdede provider varsa kısıt yine uygulanır (diğer alanları korunur)."""
+    """İstek gövdesi + zorunlu sağlayıcı kısıtı. Gövdede provider varsa kısıt yine uygulanır (diğer alanları korunur);
+    modelin Safety Retention sağlayıcıları çağıranın ignore listesine eklenir."""
     provider = {**(body.get("provider") or {}), **ZDR_PROVIDER}
+    ignore = set(provider.get("ignore") or ()) | set(_IGNORE.get(body.get("model", ""), ()))
+    if ignore:
+        provider["ignore"] = sorted(ignore)
     return {**body, "provider": provider}
 
 
@@ -63,15 +72,41 @@ def _fetch_zdr_endpoints() -> list[dict[str, Any]]:
     return r.json().get("data", [])
 
 
+def strict_zdr(endpoint: dict[str, Any]) -> bool:
+    """Gerçek ZDR uç noktası: safety_retention açıkça false. Alan yoksa ZDR sayılmaz."""
+    return endpoint.get("safety_retention") is False
+
+
+def provider_slug(endpoint: dict[str, Any]) -> str:
+    """Uç nokta etiketinin sağlayıcı kısmı ("google-vertex/global" → "google-vertex"): provider.ignore bu adı alır."""
+    return (endpoint.get("tag") or endpoint.get("provider_name") or "").split("/")[0]
+
+
 @lru_cache(maxsize=1)
+def zdr_index() -> dict[str, dict[str, frozenset[str]]]:
+    """Model → {"strict": ZDR sağlayıcıları, "safety": Safety Retention sağlayıcıları} (süreç başına bir kez, ücretsiz uç).
+    Aynı sağlayıcının modelde Safety Retention uç noktası varsa o sağlayıcı ZDR sayılmaz (temkinli)."""
+    raw: dict[str, dict[str, set[str]]] = {}
+    for e in _fetch_zdr_endpoints():
+        if e.get("model_id"):
+            d = raw.setdefault(e["model_id"], {"strict": set(), "safety": set()})
+            d["strict" if strict_zdr(e) else "safety"].add(provider_slug(e))
+    return {m: {"strict": frozenset(d["strict"] - d["safety"]), "safety": frozenset(d["safety"])}
+            for m, d in raw.items()}
+
+
 def zdr_model_ids() -> frozenset[str]:
-    """ZDR uyumlu uç noktası olan modeller (süreç başına bir kez, ücretsiz uç)."""
-    return frozenset(e.get("model_id") for e in _fetch_zdr_endpoints() if e.get("model_id"))
+    """En az bir gerçek ZDR (Safety Retention'sız) uç noktası olan modeller."""
+    return frozenset(m for m, d in zdr_index().items() if d["strict"])
 
 
-def require_zdr(model: str, ids: Callable[[], frozenset[str]] = zdr_model_ids) -> None:
-    if model not in ids():
-        raise ValueError(f"{model}: ZDR uyumlu sağlayıcısı yok; ZDR zorunlu olduğu için kullanılamaz ve ölçülmez")
+def require_zdr(model: str, index: Callable[[], dict[str, dict[str, frozenset[str]]]] = zdr_index) -> None:
+    """Modelin gerçek ZDR uç noktası yoksa hata. Varsa Safety Retention sağlayıcıları bu modelin isteklerinde dışlanır."""
+    d = index().get(model)
+    if not d or not d["strict"]:
+        why = "yalnız Safety Retention uç noktası var" if d else "ZDR uyumlu sağlayıcısı yok"
+        raise ValueError(f"{model}: {why}; ZDR zorunlu olduğu için kullanılamaz ve ölçülmez")
+    _IGNORE[model] = tuple(sorted(d["safety"]))
 
 
 # ---------- embedding (OpenAI uyumlu /embeddings) ----------

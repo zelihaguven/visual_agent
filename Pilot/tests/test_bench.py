@@ -250,14 +250,39 @@ def test_zdr_is_mandatory_and_cannot_be_overridden():
 def test_models_without_zdr_are_refused_before_any_request(monkeypatch):
     from pilot import cloud, rerankers
     monkeypatch.setenv("OPENROUTER_API_KEY", "sahte-deger-123")
-    monkeypatch.setattr(cloud, "_fetch_zdr_endpoints", lambda: [{"model_id": "qwen/qwen3-reranker-8b"}])
-    cloud.zdr_model_ids.cache_clear()
+    monkeypatch.setattr(cloud, "_fetch_zdr_endpoints", lambda: [
+        {"model_id": "qwen/qwen3-reranker-8b", "tag": "fireworks", "safety_retention": False}])
+    cloud.zdr_index.cache_clear()
     try:
         with pytest.raises(ValueError, match="ZDR"):
             rerankers.make_reranker("openrouter", "cohere/rerank-v3.5")
         assert rerankers.make_reranker("openrouter", "qwen/qwen3-reranker-8b").model == "qwen/qwen3-reranker-8b"
     finally:
-        cloud.zdr_model_ids.cache_clear()
+        cloud.zdr_index.cache_clear()
+
+
+def test_safety_retention_endpoints_do_not_count_as_zdr(monkeypatch):
+    """/endpoints/zdr listesi Safety Retention uç noktalarını da içeriyor: yalnız onlar varsa model reddedilir,
+    karışıksa o sağlayıcı isteklerde provider.ignore ile dışlanır. Alanı olmayan uç nokta da ZDR sayılmaz."""
+    from pilot import cloud
+    eps = [{"model_id": "a/only-safety", "tag": "google-vertex/global", "safety_retention": True},
+           {"model_id": "a/mixed", "tag": "google-vertex/global", "safety_retention": True},
+           {"model_id": "a/mixed", "tag": "deepinfra/fp8", "safety_retention": False},
+           {"model_id": "a/no-field", "tag": "x"}]
+    monkeypatch.setattr(cloud, "_fetch_zdr_endpoints", lambda: eps)
+    monkeypatch.setattr(cloud, "_IGNORE", {})
+    cloud.zdr_index.cache_clear()
+    try:
+        for m in ("a/only-safety", "a/no-field", "a/unknown"):
+            with pytest.raises(ValueError, match="ZDR"):
+                cloud.require_zdr(m)
+        cloud.require_zdr("a/mixed")
+        assert cloud.zdr_model_ids() == {"a/mixed"}
+        body = cloud.openrouter_body({"model": "a/mixed", "provider": {"ignore": ["y"], "sort": "latency"}})
+        assert body["provider"] == {"zdr": True, "data_collection": "deny", "sort": "latency",
+                                    "ignore": ["google-vertex", "y"]}
+    finally:
+        cloud.zdr_index.cache_clear()
 
 
 def test_cpu_window_mean():

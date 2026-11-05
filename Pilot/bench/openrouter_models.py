@@ -40,7 +40,8 @@ def main() -> None:
     zdr_list = zdr["body"].get("data", []) if isinstance(zdr["body"], dict) else []
     zdr_models: dict[str, list[str]] = {}
     for e in zdr_list:
-        zdr_models.setdefault(e.get("model_id"), []).append(e.get("provider_name"))
+        if e.get("safety_retention") is False:            # Safety Retention uç noktaları ZDR sayılmaz (pilot/cloud.py)
+            zdr_models.setdefault(e.get("model_id"), []).append(e.get("provider_name"))
     out["zdr"] = {"status": zdr["status"], "n_endpoints": len(zdr_list)}
     for kind in ("embeddings", "rerank"):
         for m in out[kind]["models"]:
