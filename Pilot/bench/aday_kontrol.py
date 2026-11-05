@@ -5,6 +5,7 @@ Onay ölçütü (model çıktısı KULLANILMAZ: sistemin zorlandığı soruları
     netleştirme   kabul edilen parçalar var ve beklenen sayfalarda
     bulunamadı    27 Ekim korpus araması kaydı (nf_kontrol) var
     OCR           yukarıdakine ek olarak beklenen değer okunaklı (OCR biçimini kopyalamıyor); `ocr` etiketi eklenir
+Elle onay (elle_onay alanı, kullanıcı kararı) otomatik kontrolün önüne geçer.
 Bilgi (onayı etkilemez): Adım 2 ilk turunda arama ve dört modelin beklenenle çelişmesi (`model_celiskisi`).
 
 Kullanım (Pilot klasöründe):
@@ -91,6 +92,8 @@ def check(items: list[dict]) -> dict[str, dict]:
                     why.append(f"beklenen değer OCR biçimini kopyalıyor: {form!r}")
                 if not (it.get("expect_in_answer") or it.get("cevap")):
                     why.append("OCR sorusu ama beklenen değer yazılmamış")
+        if it.get("elle_onay"):      # kullanıcının elle verdiği onay otomatik kontrolün önüne geçer
+            why = []
         out[it["id"]] = {"q": it["q"], "kind": it["kind"], "neden": why, "ocr": ocr,
                          "model_celiskisi": model_conflict(qid, it, rows)}
     return out
@@ -111,6 +114,9 @@ def main() -> None:
     if a.yaz:
         for it in items:
             r = res[it["id"]]
+            if it.get("elle_onay"):
+                it.pop("kontrol_supheleri", None)
+                continue
             for f in ("kontrol_supheleri", "onaylayan", "onay_tarihi", "model_celiskisi"):
                 it.pop(f, None)
             if r["model_celiskisi"]:

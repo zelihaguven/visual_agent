@@ -23,7 +23,7 @@
    "expect_docs": ["mrcoffee-2003"], "expect_pages": [6], "expect_in_answer": [],
    "note": "s.6 panel çizimi (a-d). İspanyolca bölümdeki (s.18) aynı çizim değil, İngilizce olan öne gelmeli"},
   {"id": "G8", "kind": "görsel + değer", "q": "Pantolon çiziminde gösterilen ölçüler kaç inç?",
-   "expect_docs": ["gl-pd-07-14a"], "expect_pages": [48], "expect_in_answer": ["14"],
+   "expect_docs": ["gl-pd-07-14a"], "expect_pages": [48], "expect_in_answer": ["14 1/2"],
    "note": "Şekildeki yazılar (PDF metni, kaynak sayılır): '14 1/2 inches', '12 1/4 inches'. Değer otomatik açıklamadan değil şekildeki yazıdan alıntılanırsa 'doğrulandı' olabilir"},
   {"id": "G9", "kind": "görsel, doğrulama", "q": "Ceketin ön görünüşünde kimlik etiketi (ID marker) nerede?",
    "expect_docs": ["gl-pd-14-04a"], "expect_pages": [51], "expect_in_answer": [],

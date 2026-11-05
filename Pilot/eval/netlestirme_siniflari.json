@@ -1,0 +1,21 @@
+{
+ "_aciklama": "Netleştirme beklenen 18 sorunun sınıfı (2026-11-05, kullanıcı kararı; model çağrılmadan sorunun anahtarlarından). deger_farkli: değer ürüne/modele göre değişiyor, netleştirme zorunlu. deger_ayni: değer iki üründe aynı; netleştirme YA DA iki kaynağı birlikte gösteren cevap doğru.",
+ "questions:Q07": {"sinif": "deger_farkli", "gerekce": "ceket 11 (± 1), pantolon 10–14 SPI"},
+ "questions:Q17": {"sinif": "deger_ayni", "gerekce": "S-7300A ve B s.12: pitch ≤ 4 5000, > 4 4000 sti/min (aynı tablo)"},
+ "questions_ek:Q30": {"sinif": "deger_ayni", "gerekce": "E050 iki kılavuzda aynı satır"},
+ "aday_sorular:A131": {"sinif": "deger_ayni", "gerekce": "E050 iki kılavuzda aynı satır"},
+ "aday_sorular:A132": {"sinif": "deger_ayni", "gerekce": "aynı sorun satırı (A s.101, B s.109)"},
+ "aday_sorular:A133": {"sinif": "deger_farkli", "gerekce": "S-7300A 25–30 mm, S-7300B 30–45 mm"},
+ "aday_sorular:A134": {"sinif": "deger_ayni", "gerekce": "iki modelde aynı sayaç kuralı"},
+ "aday_sorular:A135": {"sinif": "deger_ayni", "gerekce": "iki modelde LED tuşu (A s.32, B s.33)"},
+ "aday_sorular:A136": {"sinif": "deger_ayni", "gerekce": "iki modelde 1,0 ± 0,1 N·m"},
+ "aday_sorular:A137": {"sinif": "deger_ayni", "gerekce": "iki modelde -3 tipi 0,4–0,7, -5 tipi 0,6–1,1 mm"},
+ "aday_sorular:A138": {"sinif": "deger_farkli", "gerekce": "S-7300A 6 mm, S-7300B 5 mm"},
+ "aday_sorular:A139": {"sinif": "deger_ayni", "gerekce": "iki modelde s.14 aynı yöntem"},
+ "aday_sorular:A140": {"sinif": "deger_farkli", "gerekce": "ceket 54 ± 2, pantolon 52–56"},
+ "aday_sorular:A141": {"sinif": "deger_ayni", "gerekce": "ceket ve pantolonda 1/8–3/16 inç"},
+ "aday_sorular:A142": {"sinif": "deger_farkli", "gerekce": "ceket iç orta arka, pantolon iç bel bandı"},
+ "aday_sorular:A143": {"sinif": "deger_ayni", "gerekce": "ceket ve pantolonda 15 dakika"},
+ "aday_sorular:A144": {"sinif": "deger_ayni", "gerekce": "ceket ve pantolonda %95 ve üzeri"},
+ "aday_sorular:A145": {"sinif": "deger_ayni", "gerekce": "iki tabloda 36 dikiş, 5/8 inç"}
+}

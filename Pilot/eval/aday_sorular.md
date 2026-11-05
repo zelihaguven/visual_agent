@@ -1,14 +1,14 @@
-# Aday soru seti (2026-11-05: 154 onaylı, 1 onay bekliyor)
+# Aday soru seti (2026-11-05: 155/155 onaylı)
 
 155 soru (17 bulunamadı, 15 netleştirme). **2026-11-05 (ölçüt düzeltildi):** 154 soru onaylandı (`dogrulandi: true`, onaylayan: geliştirme ekibi). Onay ölçütü model çıktısı DEĞİL: kanıt cümlesi beklenen sayfada ve beklenen değer kanıtta (OCR soruları hariç; onlarda beklenen değer okunaklı yazılmış olmalı), "bulunamadı" sorularında 27 Ekim korpus araması (`python -m bench.aday_kontrol`). Model çelişkisi yalnız bilgi (`model_celiskisi`). **Aşırı uyum notu:** aday arama ayarları bu setle seçildi; görülmemiş doküman testi ayrı tutulan JUKI seti. Aşağıdaki ana tablo ilk taslağın dökümüdür.
 
-## Onay bekleyen
+## Kullanıcı kararları (2026-11-05)
 
-| # | Soru | Neden |
-|---|---|---|
-| A038 | S-7300A ekranında E 050 yazıyor, ne yapmalıyım? | beklenen değer kanıt cümlesinde yok: ['E050'] |
-
-Ayrıca bakılması önerilen (onaylı, model çıktısından bağımsız ölçütü geçti): **A008**. Beklenen 8 (s.26, "Upper sleeve pockets a. Loop tape … # of Bar-tacks per garment: 8"); dört model aynı sayfadaki başka satırdan 6 diyor ("Upper sleeve pocket – through all layers a. Top front b. Bottom front c. Top back … 2 2 2"). Soru ("üst kol ceplerine toplam kaç punteriz") iki satırı da kapsıyor.
+| # | Karar |
+|---|---|
+| A038 | Onaylandı: kanıt cümlesi çözüm satırı; E050 kodu aynı sayfada (`elle_onay`). |
+| A008 | Soru yeniden yazıldı: "Ceketin üst kol cebindeki cırt banda (loop tape) giysi başına kaç punteriz atılır?"; beklenen 8; onaylandı. Eski soru iki tablo satırını kapsıyordu (loop tape 8 / through all layers 2+2+2). İlk turun A008 cevabı eski soruya ait, kalite tablolarında yok. |
+| G8 (şekil seti) | Beklenen değer "14" → "14 1/2". |
 
 ## OCR soruları (onaylı, `ocr` etiketli; raporlarda ayrıca gösterilir)
 

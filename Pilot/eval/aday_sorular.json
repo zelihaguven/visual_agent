@@ -263,13 +263,13 @@
  {
   "id": "A008",
   "kind": "değer",
-  "q": "Ceketin üst kol ceplerine toplam kaç punteriz atılır?",
+  "q": "Ceketin üst kol cebindeki cırt banda (loop tape) giysi başına kaç punteriz atılır?",
   "zorluk": [
    "sayi",
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
+  "note": "onaylandı 2026-11-05 (kullanıcı): soru loop tape satırına göre yeniden yazıldı, beklenen 8",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -295,8 +295,10 @@
   "kanit": "# of Bar- tacks per garment: 8",
   "bolum": "3.11.3 Bar-tacks and back-tacks",
   "model_celiskisi": "4 model beklenenle çelişti (arama getirdi)",
-  "onaylayan": "geliştirme ekibi",
-  "onay_tarihi": "2026-11-05"
+  "onaylayan": "kullanıcı",
+  "onay_tarihi": "2026-11-05",
+  "onceki_soru": "Ceketin üst kol ceplerine toplam kaç punteriz atılır?",
+  "elle_onay": "soru yeniden yazıldı: loop tape satırı (giysi başına 8); eski soru iki satırı kapsıyordu"
  },
  {
   "id": "A009",
@@ -1401,8 +1403,8 @@
   "zorluk": [
    "kod_varyant"
   ],
-  "dogrulandi": false,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (kullanıcı): kanıt çözüm satırı, kod aynı sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1427,9 +1429,9 @@
   "cevap": "Gücü kapatıp makine kafasını yerine getirin; P2 konektörünün bağlantısını kontrol edin",
   "kanit": "Turn off the power, and then return the machine head to its original position",
   "bolum": "Switch-related errors",
-  "kontrol_supheleri": [
-   "beklenen değer kanıt cümlesinde yok: ['E050']"
-  ]
+  "onaylayan": "kullanıcı",
+  "onay_tarihi": "2026-11-05",
+  "elle_onay": "kanıt cümlesi çözüm satırı; E050 kodu aynı sayfada (kullanıcı kararı 2026-11-05)"
  },
  {
   "id": "A039",

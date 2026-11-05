@@ -46,7 +46,25 @@ MODELS: dict[str, dict[str, Any]] = {
     "gpt54mini": {"id": "openai/gpt-5.4-mini", "provider": "azure", "reasoning": {"effort": "none"}},
     "mistral2603": {"id": "mistralai/mistral-small-2603", "provider": "mistral", "reasoning": {"effort": "none"}},
     "qwen25_7b": {"id": "qwen2.5:7b", "provider": "yerel (Ollama)", "local": True},
+    # Nihai tur (plan §12, §18): Gemma 4'ün bf16 sağlayıcıları ve üst sınıf referans Gemma 4 31B (bf16)
+    "gemma4_nextbit": {"id": "google/gemma-4-26b-a4b-it", "provider": "nextbit", "quant": "bf16",
+                       "reasoning": {"enabled": False}},
+    "gemma4_parasail": {"id": "google/gemma-4-26b-a4b-it", "provider": "parasail", "quant": "bf16",
+                        "reasoning": {"enabled": False}},
+    "gemma4_venice": {"id": "google/gemma-4-26b-a4b-it", "provider": "venice", "quant": "bf16",
+                      "reasoning": {"enabled": False}},
+    "gemma4_31b": {"id": "google/gemma-4-31b-it", "provider": "crusoe", "quant": "bf16", "reasoning": {"enabled": False}},
 }
+# Cevap şeması: "bugun" (pilot.prompts.ANSWER_SCHEMA) ya da "c" (bench.schema_c; plan §15.0). --schema ile seçilir.
+SCHEMA = "bugun"
+
+
+def schema_and_prompt() -> tuple[dict[str, Any], str]:
+    from pilot.prompts import ANSWER_SCHEMA, SYSTEM_PROMPT
+    if SCHEMA == "c":
+        from bench.schema_c import ANSWER_SCHEMA_C, system_prompt_c
+        return ANSWER_SCHEMA_C, system_prompt_c()
+    return ANSWER_SCHEMA, SYSTEM_PROMPT
 # Ayrıştırıcının attığı düşünce blokları (boş ya da dolu): <think>…</think>, <thought>…</thought>, Gemma kanal işaretleri
 THOUGHT = re.compile(r"^\s*(?:<think>.*?</think>|<thought>.*?</thought>|<\|?channel\|?>[^{]*?<\|?channel\|?>|"
                      r"<\|?channel\|?>thought[^{]*)\s*", re.S)
@@ -102,17 +120,20 @@ class CloudModel:
     def body(self, messages: list[dict[str, str]]) -> dict[str, Any]:
         from pilot.cloud import openrouter_body
         from pilot.config import LLM_NUM_PREDICT
-        from pilot.prompts import ANSWER_SCHEMA
+        schema = schema_and_prompt()[0]
+        provider = {"order": [self.spec["provider"]], "allow_fallbacks": False}
+        if self.spec.get("quant"):
+            provider["quantizations"] = [self.spec["quant"]]
         return openrouter_body({
             "model": self.spec["id"], "messages": messages, "temperature": 0, "max_tokens": LLM_NUM_PREDICT,
             "stream": True, "usage": {"include": True}, "reasoning": self.spec["reasoning"],
             "response_format": {"type": "json_schema",
-                                "json_schema": {"name": "cevap", "strict": False, "schema": ANSWER_SCHEMA}},
-            "provider": {"order": [self.spec["provider"]], "allow_fallbacks": False}})
+                                "json_schema": {"name": "cevap", "strict": False, "schema": schema}},
+            "provider": provider})
 
     def stream(self, messages: list[dict[str, str]]) -> dict[str, Any]:
         from pilot.config import OPENROUTER_URL
-        rec: dict[str, Any] = {"attempts": [], "content": "", "reasoning_text": ""}
+        rec: dict[str, Any] = {"attempts": [], "content": "", "reasoning_text": "", "zaman": []}
         for attempt in range(2):
             t0 = time.perf_counter()
             err, first = "", None
@@ -137,6 +158,8 @@ class CloudModel:
                                 if first is None:
                                     first = time.perf_counter() - t0
                                 rec["content"] += delta["content"]
+                                # akış zaman çizelgesi: [istekten sn, o ana kadarki karakter] (ilk doğrulanmış cümle)
+                                rec["zaman"].append([round(time.perf_counter() - t0, 3), len(rec["content"])])
                             if ch.get("finish_reason"):
                                 rec["finish"] = ch["finish_reason"]
             except Exception as e:  # noqa: BLE001 — bağlantı/zaman aşımı
@@ -169,17 +192,19 @@ class LocalModel:
         import ollama
 
         from pilot.config import LLM_NUM_CTX, LLM_NUM_PREDICT
-        from pilot.prompts import ANSWER_SCHEMA
-        rec: dict[str, Any] = {"attempts": [], "content": "", "reasoning_text": "", "provider": "yerel"}
+        schema = schema_and_prompt()[0]
+        rec: dict[str, Any] = {"attempts": [], "content": "", "reasoning_text": "", "provider": "yerel", "zaman": []}
         t0, first = time.perf_counter(), None
         try:
-            for part in ollama.chat(model=self.spec["id"], messages=messages, format=ANSWER_SCHEMA, stream=True,
+            for part in ollama.chat(model=self.spec["id"], messages=messages, format=schema, stream=True,
                                     options={"temperature": 0, "num_ctx": LLM_NUM_CTX, "num_predict": LLM_NUM_PREDICT},
                                     keep_alive="30m"):
                 piece = part["message"]["content"]
                 if piece and first is None:
                     first = time.perf_counter() - t0
                 rec["content"] += piece
+                if piece:
+                    rec["zaman"].append([round(time.perf_counter() - t0, 3), len(rec["content"])])
                 if part.get("done"):
                     rec["finish"] = "length" if part.get("done_reason") == "length" else "stop"
                     rec["usage"] = {"prompt_tokens": part.get("prompt_eval_count"),
@@ -217,9 +242,9 @@ def install_search_cache(frozen: bool) -> dict[str, Any]:
     return cache
 
 
-def questions() -> list[dict[str, Any]]:
-    """Modele gidebilecek sorular: cevaplı + "bulunamadı" (netleştirme beklenenler bu turda yok)."""
-    return [q for q in load_questions(SETS, include_unapproved=True) if not q.get("expect_clarify")]
+def questions(include_clarify: bool = False) -> list[dict[str, Any]]:
+    """Modele gidebilecek sorular: cevaplı + "bulunamadı"; include_clarify ile netleştirme beklenenler de (nihai tur)."""
+    return [q for q in load_questions(SETS, include_unapproved=True) if include_clarify or not q.get("expect_clarify")]
 
 
 def prepare() -> None:
@@ -233,7 +258,7 @@ def prepare() -> None:
 
     pipeline.chat_json = stop
     rules = {}
-    for q in questions():
+    for q in questions(include_clarify=True):      # nihai tur netleştirme sorularını da kapsar
         try:
             res = pipeline.soru_cevapla(q["q"])
             rules[q["qid"]] = rule_exit(res)
@@ -260,10 +285,10 @@ def rule_exit(res: Any) -> str:
     return "bulunamadi_kural" if a.get("bulunamadi") else "diger"
 
 
-def spent_all(exclude: Path | None = None) -> float:
+def spent_all(exclude: Path | None = None, prefix: str | None = None) -> float:
     """Bu Adım 2 turunun bütün koşularının harcaması (ham sonuç dosyalarından; bütçe sınırı toplam için)."""
     total = 0.0
-    for f in RAW_DIR.glob("*_*.json"):
+    for f in RAW_DIR.glob(f"{prefix}*_*.json" if prefix else "*_*.json"):
         d = json.loads(f.read_text(encoding="utf-8"))
         if f != exclude and isinstance(d, dict) and isinstance(d.get("cost_usd"), float):
             total += d["cost_usd"]
@@ -272,7 +297,7 @@ def spent_all(exclude: Path | None = None) -> float:
 
 def thinking_check(m: Any) -> dict[str, Any]:
     """Düşünmenin kapalı olduğu: düşünce tokeni 0 (ya da alan yok) ve düşünce metni yok."""
-    from pilot.prompts import SYSTEM_PROMPT
+    SYSTEM_PROMPT = schema_and_prompt()[1]
     rec = m.stream([{"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": "<kaynaklar>\n</kaynaklar>\n\n<cevap_dili>TR</cevap_dili>\n\n"
                                                 "<soru>\nDeneme sorusu: kaynak yok.\n</soru>"}])
@@ -285,14 +310,14 @@ def thinking_check(m: Any) -> dict[str, Any]:
 
 def run_model(key: str, tag: str, n: int, max_usd: float, seed: int) -> Path:
     from pilot import pipeline
-    from pilot.prompts import SYSTEM_PROMPT
     install_search_cache(frozen=True)
     m = LocalModel(key) if MODELS[key].get("local") else CloudModel(key)
-    qs = questions()
+    system_prompt = schema_and_prompt()[1]
+    qs = questions(include_clarify=SCHEMA == "c")      # nihai tur: netleştirme 18 soru da yeni şemayla (plan §18)
     if n:
         qs = random.Random(seed).sample([q for q in qs if not q.get("expect_not_found")], n)
     out: dict[str, Any] = {"model": key, "spec": MODELS[key], "tag": tag, "zdr_providers": m.zdr_providers,
-                           "verify": VERIFY_TAG, "deger": VALUE_TAG,
+                           "verify": VERIFY_TAG, "deger": VALUE_TAG, "sema": SCHEMA,
                            "start": datetime.now().isoformat(timespec="seconds"), "rows": {}, "cost_usd": 0.0}
     path = RAW_DIR / f"{tag}_{key}.json"
     RAW_DIR.mkdir(parents=True, exist_ok=True)
@@ -310,16 +335,24 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int) -> Path:
             save()
             return path
     current: dict[str, Any] = {}
-    others = spent_all(exclude=path)
+    # nihai_* turlarının bütçesi ayrı (karar 2026-11-05: 3,0 USD); ön eleme dosyaları sayılmaz
+    others = spent_all(exclude=path, prefix="nihai" if tag.startswith("nihai") else None)
 
     def chat(user: str) -> tuple[dict[str, Any], dict[str, float]]:
         if others + out["cost_usd"] > max_usd:
             raise Budget
-        rec = m.stream([{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": user}])
+        rec = m.stream([{"role": "system", "content": system_prompt}, {"role": "user", "content": user}])
         out["cost_usd"] += m.cost(rec)
         current["rec"] = rec
         if rec.get("unanswered"):
             raise Unanswered(rec["unanswered"])
+        if SCHEMA == "c":
+            from bench.schema_c import parse_c, to_legacy
+            ans_c, status = parse_c(rec["content"], rec.get("finish"))
+            current.update(json=status, thought=False, c=ans_c)
+            if status in ("bos", "kesik", "gecersiz") or ans_c is None:
+                raise json.JSONDecodeError(status, rec["content"][:50], 0)
+            return to_legacy(ans_c), {"llm_seconds": rec["total"]}   # pipeline akışı için; puan C'den (judge_c)
         ans, status, thought = parse_answer(rec["content"], rec.get("finish"))
         current.update(json=status, thought=thought)
         if status in ("bos", "kesik", "gecersiz"):
@@ -332,7 +365,7 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int) -> Path:
         row: dict[str, Any] = {}
         try:
             res = pipeline.soru_cevapla(q["q"])
-            row = judge(q, res)
+            row = judge_c(q, res, current) if SCHEMA == "c" and current.get("c") is not None else judge(q, res)
         except Unanswered as e:
             row = {"cikis": "cevapsiz", "hata": str(e)}
         except Budget:
@@ -355,6 +388,46 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int) -> Path:
     out["tamam"] = not out.get("durdu")
     save()
     return path
+
+
+CLARIFY_CLASSES = PILOT_DIR / "eval" / "netlestirme_siniflari.json"
+
+
+def judge_c(q: dict[str, Any], res: Any, current: dict[str, Any]) -> dict[str, Any]:
+    """Şema C sonucu (plan §15.0): çıkış modelin "tur"u; rozet öğe başına doğrulamadan; ilk doğrulanmış cümle akıştan;
+    netleştirmede seçenekler kaynak numarası → doküman. Pipeline'ın varyant kuralı C'de uygulanmaz (not)."""
+    from bench.doc_rules_diff import options_verdict
+    from bench.schema_c import first_verified_time, verify_c
+    ans, rec = current["c"], current.get("rec") or {}
+    chunks = [h.chunk for h in res.hits]
+    sources = {no: c["text"] for no, c in enumerate(chunks, start=1)}
+    generated = {no: c.get("generated", "") for no, c in enumerate(chunks, start=1)}
+    v = verify_c(ans, sources, generated)
+    tur = ans.get("tur")
+    row: dict[str, Any] = {"cikis": {"cevap": "cevap", "netlestirme": "netlestirme", "bulunamadi": "bulunamadi"}[tur],
+                           "durum": v["status"], "sorunlar": v["problems"][:4], "kaynaklar": [[c["doc_id"], c["pages"]] for c in chunks],
+                           "sira": first_rank(chunks, q) if (q.get("expect_docs") or q.get("kabul")) else None,
+                           "cevap": " ".join(x.get("metin", "") for x in ans.get("cevap") or [])[:600],
+                           "ogeler": [i["ok"] for i in v["items"]]}
+    if tur == "cevap":
+        row["ilk_dogrulanmis_cumle"] = first_verified_time(rec.get("content", ""), rec.get("zaman") or [], v["items"])
+        cited = [i["kaynak_no"] for i in v["items"]]
+        ok = [is_match(chunks[n - 1], q) for n in cited if isinstance(n, int) and 1 <= n <= len(chunks)]
+        row["atif_dogru_biri"] = any(ok) if ok else None
+        row["atif_dogru_hepsi"] = all(ok) if ok else None
+        row["atif_dokumanlari"] = sorted({chunks[n - 1]["doc_id"] for n in cited if isinstance(n, int) and 1 <= n <= len(chunks)})
+        if q.get("expect_in_answer"):
+            text = " ".join(x.get("metin", "") for x in ans.get("cevap") or []) + " " + (ans.get("sesli_metin") or "")
+            row["deger_dogru"] = all(value_in(s_, text) for s_ in q["expect_in_answer"])
+    if q.get("expect_clarify"):
+        cls = json.loads(CLARIFY_CLASSES.read_text(encoding="utf-8")).get(q["qid"], {}).get("sinif")
+        docs = [chunks[n - 1]["doc_id"] for n in v.get("secenekler") or [] if 1 <= n <= len(chunks)]
+        verdict = options_verdict(list(dict.fromkeys(docs)), q.get("expect_docs") or []) if tur == "netlestirme" else None
+        both = set(q.get("expect_docs") or []) <= set(row.get("atif_dokumanlari") or [])
+        row.update(netlestirme_sinifi=cls, secenek_dokumanlari=docs, secenek_degerlendirme=verdict,
+                   netlestirme_dogru=(verdict == "dogru") or (cls == "deger_ayni" and tur == "cevap" and both
+                                                               and v["status"] in ("verified", "partial")))
+    return row
 
 
 def judge(q: dict[str, Any], res: Any) -> dict[str, Any]:
@@ -401,7 +474,7 @@ def status_from(checks: dict[str, Any]) -> str:
     return "verified" if ok else "partial"
 
 
-def rescore(tag: str) -> list[str]:
+def rescore(tag: str, force: bool = False) -> list[str]:
     """<tag>_*.json kayıtlarını bugünkü verify.py ile yeniden puanlar; kayıtlı model çıktısı aynı arama önbelleğiyle
     pipeline'dan geçer. Eski puan satırda 'onceki_puan'da kalır. Ham çıktısı kesik kaydedilmiş satırlarda (2026-11-05
     "ana" turu, 1500 karakter) cevap ayrıştırılamaz: kaynaklar yine pipeline'dan, alıntılar kesik metinden, cevap
@@ -421,7 +494,7 @@ def rescore(tag: str) -> list[str]:
     try:
         for f in sorted(RAW_DIR.glob(f"{tag}_*.json")):
             d = json.loads(f.read_text(encoding="utf-8"))
-            if (d.get("verify") == VERIFY_TAG and d.get("deger") == VALUE_TAG) or not isinstance(d.get("rows"), dict):
+            if (not force and d.get("verify") == VERIFY_TAG and d.get("deger") == VALUE_TAG) or not isinstance(d.get("rows"), dict):
                 continue
             n_cut = n_changed = n_value = 0
             for qid, row in d["rows"].items():
@@ -430,7 +503,13 @@ def rescore(tag: str) -> list[str]:
                 keep = ("durum", "sorunlar", "kontroller", "atif_dogru_biri", "atif_dogru_hepsi", "deger_dogru")
                 old = {k: row[k] for k in keep if k in row}
                 ans = parse_answer(row.get("ham", ""), row.get("finish"))[0]
-                if ans is not None:
+                if qs[qid].get("onceki_soru"):
+                    # Soru metni sonradan yeniden yazıldı: kayıtlı cevap eski soruya ait, arama önbelleği yeni soruyu
+                    # bilmiyor. Rozet kayıttan kalır; beklenen değer kayıttaki cevaptan (bilgi), satır işaretlenir.
+                    row["soru_degisti"] = True
+                    if qs[qid].get("expect_in_answer"):
+                        row["deger_dogru"] = all(value_in(s_, row.get("cevap", "")) for s_ in qs[qid]["expect_in_answer"])
+                elif ans is not None:
                     pipeline.chat_json = lambda _u, a=ans: (dict(a), {"llm_seconds": 0.0})
                     new = judge(qs[qid], pipeline.soru_cevapla(qs[qid]["q"]))
                     row.update({k: new[k] for k in keep if k in new})
@@ -466,6 +545,45 @@ def rescore(tag: str) -> list[str]:
 
 
 # ---------- rapor ----------
+
+def report_c(tag: str) -> str:
+    """Şema C turu (nihai tur): tur dağılımı, rozet, beklenen değer, "bulunamadı", netleştirme (değer farklı/aynı),
+    ilk token ve ilk doğrulanmış cümle. Kalite yalnız cevap gelen sorularda; onaysız sorular ayrı tutulmaz (set onaylı)."""
+    qs = {q["qid"]: q for q in questions(include_clarify=True)}
+    runs = {f.stem[len(tag) + 1:]: json.loads(f.read_text(encoding="utf-8")) for f in sorted(RAW_DIR.glob(f"{tag}_*.json"))}
+    pct_ = lambda a, b: f"{a}/{b} ({a / b:.0%})" if b else "–"
+    s_ = lambda x: "–" if x is None or x != x else (f"{x * 1000:.0f} ms" if x < 1 else f"{x:.2f} sn".replace(".", ","))
+    L = [f"# Adım 2 nihai tur, şema C: `{tag}`", "", "Şema C (plan §15.0): her cümle kendi alıntısıyla; tur = cevap | "
+         "netlestirme | bulunamadi. Rozet öğe başına doğrulamadan (`bench/schema_c.py`). Pipeline'ın varyant kuralı C'de "
+         "uygulanmadı.", "",
+         "| Model | çağrı | JSON/şema hatası | doğru \"bulunamadı\" (model) | doğrulanmış görünen yanlış | cevaplı: ✓ / ⚠ / ✖ | "
+         "beklenen değer | netleştirme, değer farklı | netleştirme, değer aynı | gereksiz netleştirme | ilk token p50 / p95 | "
+         "ilk doğrulanmış cümle p50 / p95 | maliyet |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    for k, r in runs.items():
+        R = r["rows"]
+        model = {q: x for q, x in R.items() if not str(x.get("cikis", "")).startswith("kural:") and x.get("cikis") != "cevapsiz"}
+        nf = [q for q in model if qs.get(q, {}).get("expect_not_found")]
+        cl = [q for q in model if qs.get(q, {}).get("expect_clarify")]
+        an = [q for q in model if q not in nf and q not in cl]
+        st = Counter(R[q]["durum"] for q in an if R[q].get("cikis") == "cevap")
+        dv = [R[q]["deger_dogru"] for q in an if "deger_dogru" in R[q]]
+        bad = sum(R[q].get("cikis") == "cevap" and R[q].get("durum") in ("verified", "partial") for q in nf)
+        fark = [q for q in cl if R[q].get("netlestirme_sinifi") == "deger_farkli"]
+        ayni = [q for q in cl if R[q].get("netlestirme_sinifi") == "deger_ayni"]
+        ft = [R[q]["ilk_token"] for q in model if R[q].get("ilk_token")]
+        fv = [R[q]["ilk_dogrulanmis_cumle"] for q in an if R[q].get("ilk_dogrulanmis_cumle")]
+        js = sum(R[q].get("json") not in (None, "ok") for q in R)
+        L.append(f"| {k} | {len(model)} | {js} | {pct_(sum(R[q]['cikis'] == 'bulunamadi' for q in nf), len(nf))} | **{bad}** | "
+                 f"{st['verified']} / {st['partial']} / {st['failed']} | {pct_(sum(dv), len(dv))} | "
+                 f"{pct_(sum(bool(R[q].get('netlestirme_dogru')) for q in fark), len(fark))} | "
+                 f"{pct_(sum(bool(R[q].get('netlestirme_dogru')) for q in ayni), len(ayni))} | "
+                 f"{sum(R[q].get('cikis') == 'netlestirme' for q in an + nf)} | {s_(percentile(ft, .5))} / {s_(percentile(ft, .95))} | "
+                 f"{s_(percentile(fv, .5))} / {s_(percentile(fv, .95))} | {r.get('cost_usd', 0):.4f} USD |")
+    L += ["", "İlk doğrulanmış cümle: model isteğinden, akışta ilk geçen öğenin tamamlandığı ana (model tarafı; uçtan uca "
+          "süre ayrıca, arama öncesi dahil). Değer aynı: netleştirme ya da iki ürünün kaynağını birlikte gösteren doğrulanmış "
+          "cevap doğru sayılır.", ""]
+    return "\n".join(L)
+
 
 def report(tag: str, latency_tag: str | None) -> str:
     qs = {q["qid"]: q for q in questions()}
@@ -555,7 +673,7 @@ def report(tag: str, latency_tag: str | None) -> str:
         ocr = lambda q: "ocr" in (qs[q].get("zorluk") or [])
         for label, sel in (("onaylı", lambda q: approved(q)), ("… onaylı, OCR soruları", lambda q: approved(q) and ocr(q)),
                            ("onaysız", lambda q: not approved(q))):
-            qq = [q for q in ans if q in R and sel(q) and R[q]["cikis"] not in ("cevapsiz",)
+            qq = [q for q in ans if q in R and sel(q) and R[q]["cikis"] not in ("cevapsiz",) and not R[q].get("soru_degisti")
                   and not R[q]["cikis"].startswith("kural:")]
             if not qq:
                 continue
@@ -571,7 +689,8 @@ def report(tag: str, latency_tag: str | None) -> str:
                      f"{st['failed']} | {sum(bool(R[q].get('kesik_kayit')) for q in made)} | "
                      f"{pct_(sum(dv), len(dv))} | {pct_(sum(a1), len(a1))} | {pct_(sum(a2), len(a2))} | "
                      f"{sum(R[q]['cikis'] == 'json_hata' for q in qq)} |")
-    L += ["", "Atıf doğruluğu: cevabın alıntı yaptığı kaynak numaralarının parçaları beklenen doküman ve sayfayla "
+    L += ["", "Soru metni sonradan yeniden yazılan sorular (A008, 2026-11-05) bu turun kalite tablolarında yok: kayıtlı cevap eski soruya ait. "
+          "Atıf doğruluğu: cevabın alıntı yaptığı kaynak numaralarının parçaları beklenen doküman ve sayfayla "
           "(`is_match`) eşleşiyor mu; alıntısız cevap paydada yok.", "",
           "**Rozet nedenleri** (cevaplı sorularda üretilen cevaplar; `verify.py` kontrolleri, bir cevapta birden çok olabilir):", "",
           "| Model | ✖: alıntıda olmayan sayı | ✖: alıntı birebir değil | ✖ / ⚠: geçerli [n] atfı yok | "
@@ -628,19 +747,27 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=20261105)
     ap.add_argument("--max-usd", type=float, default=1.5, help="bütün turlar ve modeller toplamı")
     ap.add_argument("--report", action="store_true")
+    ap.add_argument("--force", action="store_true", help="--rescore: aynı sürümle puanlanmış kayıtları da (etiket değişince)")
     ap.add_argument("--rescore", nargs="*", metavar="TAG",
                     help="kayıtları bugünkü verify.py ile yeniden puanla (model çağrısı yok); örn. --rescore ana bozuk1")
     ap.add_argument("--latency-tag", default="sure2")
+    ap.add_argument("--report-c", metavar="TAG", help="şema C turunun raporu (eval/bench/adim2/<TAG>_rapor_<tarih>.md)")
+    ap.add_argument("--schema", choices=["bugun", "c"], default="bugun", help="cevap şeması (c: plan §15.0, yalnız ölçüm aracı)")
     a = ap.parse_args()
+    global SCHEMA
+    SCHEMA = a.schema
     if a.prepare:
         prepare()
     for t in a.rescore or []:
-        print("\n".join(rescore(t)) or f"{t}: yeniden puanlanacak kayıt yok", flush=True)
+        print("\n".join(rescore(t, a.force)) or f"{t}: yeniden puanlanacak kayıt yok", flush=True)
     for k in a.models:
         path = run_model(k, a.tag, a.n, a.max_usd, a.seed)
         print(path, flush=True)
         if "bütçe" in json.loads(path.read_text(encoding="utf-8")).get("durdu", ""):
             break
+    if a.report_c:
+        md = report_c(a.report_c)
+        print(write_result(f"{a.report_c}_rapor", {"rapor": md}, md, out_dir=RAW_DIR.parent))
     if a.report:
         md = report("ana", a.latency_tag)
         print(write_result("adim2_cevap_modeli", {"rapor": md}, md, out_dir=RAW_DIR.parent))

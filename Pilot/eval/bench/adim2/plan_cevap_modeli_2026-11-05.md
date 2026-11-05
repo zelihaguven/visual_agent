@@ -535,3 +535,62 @@ B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfr
 - Bu ölçüm koşulmadı (onayınızla). Sonuç olumsuzsa Qwen'i sunucuya taşıma (B4) ya da mevcut koruma (1,5 sn yedek yol + devre kesici) yolu kalır.
 
 **Ölçüm, tur p1 (2026-11-05 15:32; 30 sorgu × 3 sağlayıcı, iç içe, sabitlenmiş; 0,00004 USD; [qwen_saglayici_2026-11-05.md](../b4/qwen_saglayici_2026-11-05.md)):** DeepInfra p50 1,94 / p95 4,33 sn, Nebius 2,07 / 5,43 sn, SiliconFlow 2,90 / 12,2 sn; üçünde de çağrıların ~2/3'ü 1,5 sn'nin üstünde, 429 yok. **Bu saatte hiçbir sağlayıcı ölçütü tutmuyor: sabitleme seçenek değil.** İkinci tur başka bir saatte (bir sonraki oturum); o da tutmazsa Qwen'i sunucuya taşıma ya da yalnız koruma (1,5 sn yedek yol + devre kesici) kalır.
+
+## 20. Nihai tur planı (hazır; onayınızı bekliyor)
+
+**Karar (2026-11-05 gece):** Netleştirme için (e) düzeltmesi yapılmadı. Netleştirme bir şema sorunu (serbest metin ↔ alan); kalıcı çözüm şema C'nin netleştirme modu.
+
+**Şema C, netleştirme modu dahil (ölçüm aracında hazır; uygulamaya bağlı değil)** — `bench/schema_c.py`, `python -m bench.answer_models --schema c`:
+- Üst düzey `tur`: `cevap` | `netlestirme` | `bulunamadi` (enum). Model birini seçer; hem sorup hem cevap yazarsa şema dışı sayılır (JSON metriğinde görünür).
+- `netlestirme`: `{soru, secenekler: [{kaynak_no}]}`, en az 2. Seçenekler kaynak numarası; ölçümde dokümana çevrilip `expect_docs` ile karşılaştırılır. Arayüz belge/ürün adını kendisi gösterir; `clarify_options` süzgecine gerek yok.
+- `cevap`: `[{alinti: {kaynak_no, metin}, metin}]`. `bulunamadi`: cevap boş.
+- Doğrulama öğe başına: alıntı birebir; cümlenin sayıları yalnız kendi alıntısında; tolerans; sesli metnin sayıları alıntıların birleşiminde.
+- **İlk doğrulanmış cümle:** akış zaman çizelgesinden (istekten ilk geçen öğenin tamamlandığı an).
+- İstem uygulamanınki; yalnız alan ve biçim kuralları uyarlandı (`system_prompt_c`). Uygulama istemi değişirse araç hata verir.
+- Sınama: testler; sahte modelle 199 soruluk kuru koşu (model çağrısı yok) uçtan uca geçti.
+- Pipeline'ın varyant kuralı (beden/stil tablosu) C'de uygulanmadı; ayrıca raporlanır.
+
+**Netleştirme metriği, iki sınıf** ([eval/netlestirme_siniflari.json](../../netlestirme_siniflari.json), model çağrılmadan anahtarlardan):
+- **Değer farklı (5):** Q07, A133, A138, A140, A142. Netleştirme zorunlu, seçenekler doğru olmalı.
+- **Değer aynı (13):** Q17, Q30, A131, A132, A134, A135, A136, A137, A139, A141, A143, A144, A145. Netleştirme YA DA iki ürünün kaynağını birlikte gösteren doğrulanmış cevap doğru.
+- §11 ölçümü bu tanımla kayıtlardan yeniden puanlandı:
+
+| Durum | değer farklı: doğru netleştirme | değer aynı: netleştirmeyle doğru | değer aynı: sorulmadı (cevap kaydedilmemiş, sonuç bilinmiyor) |
+|---|---|---|---|
+| (a) BRAND_ALIASES açık | 4/5 (Q07 yanlış seçenek) | 8/13 | 5 |
+| (b) kurallar kapalı | 2/5 (Q07, A133, A138 sorulmadı) | 1/13 | 12 |
+| (c) + ürün adı | 2/5 | 1/13 | 12 |
+
+- Değer aynı sorularda modelin iki kaynağı birlikte gösterip göstermediği o ölçümde kaydedilmemişti. C ölçümü bunu kaydediyor (`atif_dokumanlari`).
+- **BRAND_ALIASES kararı şema C ölçümünden sonra.**
+
+**Set:** 199 soru = 160 cevaplı + 21 "bulunamadı" + 18 netleştirme. 155/155 aday onaylı (A038 ve A008 kullanıcı kararıyla; A008 yeniden yazıldı, G8 beklenen değeri "14 1/2").
+- "Bulunamadı" setinin büyütülmesi (§8) sizin onayınızı bekliyor. Büyütülmezse nihai tur bu 199 soruyla koşulur.
+- Arama önbelleği netleştirme soruları ve A008'in yeni metniyle genişletildi (yerel; eski kural çıkışları değişmedi).
+
+**Koşular ve kesin maliyet tahmini** (soru başına maliyet ilk turdan; C çıktısı için %10 pay; model çağrısı 192/199, 7'si kural çıkışı):
+
+| Koşu | Model / sağlayıcı | Çağrı | Tahmin |
+|---|---|---|---|
+| C, tam set | Gemma 4 (DeepInfra fp8, referans), Qwen3.6, GPT-5.4 mini, Mistral 2603 | 4 × 192 | 0,64 USD |
+| C, tam set | Gemma 4 bf16: NextBit, Parasail, Venice | 3 × 192 | 0,22 USD |
+| C ve bugünkü şema, tam set | Gemma 4 31B (Crusoe bf16, üst sınıf referans) | 2 × 192 | 0,17 USD |
+| Bugünkü şema, yalnız 18 netleştirme sorusu | 4 model | 4 × 18 | 0,05 USD |
+| Süre turları: iki ayrı saat × 30 soru, C | 8 yapılandırma | 480 | 0,27 USD |
+| Şemalı / şemasız ilk istek ek süresi, sağlayıcı bazında | 8 yapılandırma × 10 × 2 | 160 | 0,09 USD |
+| Yerel taban qwen2.5:7b, iki şema | yerel | 2 × 192 | 0 |
+| Düşünme kontrolleri, tekrar payı (%10) | | | ~0,15 USD |
+| **Toplam** | | | **~1,6 USD** (sınır 3,0 USD) |
+
+- Bugünkü şemanın 181 sorusu için ilk turun sonuçları kullanılır: aynı arama önbelleği, yeni `verify.py` ve eşleştiriciyle yeniden puanlanmış.
+- Aynı saatte yan yana istenirse bugünkü şema da tam set yeniden koşulur: +0,60 USD → ~2,2 USD.
+- Yerel taban gece değil gündüz koşulmalı (dizüstü ~2–3 saat).
+
+**Koşu sırası:**
+1. Düşünme kontrolleri.
+2. C tam set, 8 bulut yapılandırması sırayla.
+3. 18 netleştirme sorusu bugünkü şemayla.
+4. Süre turu 1.
+5. Başka saatte süre turu 2 ve şemalı/şemasız ölçüm.
+6. Yerel taban.
+7. Rapor (`--report-c`), kapılar (§18), seçim önerisi. BRAND_ALIASES kararı netleştirme sonuçlarıyla.

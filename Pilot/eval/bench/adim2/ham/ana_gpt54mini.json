@@ -3176,7 +3176,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
-   "deger_dogru": false,
+   "deger_dogru": true,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Azure",
@@ -4217,7 +4217,8 @@
     "atif_dogru_biri": true,
     "atif_dogru_hepsi": true,
     "deger_dogru": false
-   }
+   },
+   "soru_degisti": true
   },
   "aday_sorular:A009": {
    "durum": "verified",
@@ -15639,10 +15640,10 @@
  "tamam": true,
  "verify": "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı",
  "yeniden_puanlama": {
-  "tarih": "2026-11-05T15:27:43",
+  "tarih": "2026-11-05T15:59:29",
   "kesik_kayit": 6,
   "rozeti_degisen": 0,
-  "degeri_degisen": 16
+  "degeri_degisen": 1
  },
  "deger": "değer olarak, 2026-11-05"
 }

@@ -502,3 +502,28 @@ def test_expected_value_matcher_formats():
     assert value_in("E050", "E050 hata kodu") and not value_in("E050", "E05 hata")
     assert value_in("± 1", "11 (± 1)") and not value_in("± 1", "11 dikiş 1")
     assert value_in("2.00", "varsayılan 2 mm") and not value_in("3", "3/8 inç")
+
+
+def test_schema_c_parse_verify_and_first_verified_sentence():
+    """Şema C (plan §15.0): tur seçimi; öğe başına doğrulama (sayı yalnız kendi alıntısında); ilk doğrulanmış cümle."""
+    from bench.schema_c import first_verified_time, parse_c, system_prompt_c, to_legacy, verify_c
+    p = system_prompt_c()
+    assert '"tur"' in p and "[1] biçiminde" not in p and "netlestirme.secenekler" in p
+    src = {1: "The seams shall be sewn with 11 (± 1) stitches per inch.", 2: "Overedge shall be 10 (± 2) stitches per inch."}
+    q1 = {"kaynak_no": 1, "metin": "The seams shall be sewn with 11 (± 1) stitches per inch."}
+    ans = {"tur": "cevap", "cevap": [{"alinti": q1, "metin": "Dikişler inç başına 11 (± 1) dikiş olmalı."},
+                                     {"alinti": q1, "metin": "Overlok 10 (± 2) dikiş."}],
+           "sesli_metin": "11 artı eksi 1 dikiş", "celiski_var": False}
+    raw = json.dumps(ans, ensure_ascii=False)
+    assert parse_c(raw, "stop")[1] == "ok" and parse_c(raw[:-30], "length")[1] == "kesik"
+    v = verify_c(ans, src)
+    assert [i["ok"] for i in v["items"]] == [True, False] and v["status"] == "failed"   # 10, kendi alıntısında yok
+    timeline = [[0.1 * i, n] for i, n in enumerate(range(0, len(raw) + 20, 20))]
+    assert first_verified_time(raw, timeline, v["items"]) is not None
+    assert to_legacy(ans)["cevap"].endswith("[1]")
+    clar = {"tur": "netlestirme", "netlestirme": {"soru": "Hangi model?", "secenekler": [{"kaynak_no": 1}, {"kaynak_no": 2}]},
+            "cevap": [], "sesli_metin": "", "celiski_var": False}
+    assert parse_c(json.dumps(clar), "stop")[1] == "ok" and verify_c(clar, src)["status"] == "clarify"
+    both = dict(clar, cevap=ans["cevap"])
+    assert parse_c(json.dumps(both, ensure_ascii=False), "stop")[1] == "sema_disi"     # aynı anda hem sorup hem cevap
+    assert verify_c({"tur": "bulunamadi", "cevap": []}, src)["status"] == "not_found"
