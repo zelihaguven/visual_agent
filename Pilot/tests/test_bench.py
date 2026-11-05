@@ -352,9 +352,11 @@ def test_unverified_questions_are_not_measured(tmp_path):
     assert [it["id"] for it in common.load_questions(["x"], tmp_path)] == ["A2", "Q1"]
 
 
-def test_candidate_draft_is_all_unverified():
+def test_candidate_set_is_approved_or_flagged():
+    """2026-11-05: otomatik kontrolden geçenler onaylı (onaylayan + tarih), şüpheliler nedenleriyle onaysız kalır."""
     items = json.loads((common.EVAL_DIR / "aday_sorular.json").read_text(encoding="utf-8"))
-    assert items and all(it["dogrulandi"] is False for it in items)
+    assert items and all((it["dogrulandi"] is True and it.get("onaylayan") and it.get("onay_tarihi"))
+                         or (it["dogrulandi"] is False and it.get("kontrol_supheleri")) for it in items)
     assert not {d for it in items for d in it["expect_docs"]} & {"juki-mo6800s"}     # ayrı tutulan set dışarıda
 
 

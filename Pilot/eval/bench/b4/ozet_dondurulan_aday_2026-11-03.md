@@ -321,6 +321,16 @@ Yalnız ölçüm aracında; uygulamaya bağlanmadı ([Adım 2 planı §14](../ad
 | Gemma 3, NextBit | 838 ms | 2,05 sn | 35% | 24 / 37 | 0 |
 | **Gemma 4, NextBit** | **530 ms** | **1,04 sn** | **2%** | 23 / 59 | 0 |
 
+**Tur t2 (14:59–15:20, aynı gün; t1'den ~1 saat sonra, gerçekten farklı bir zaman dilimi değil):**
+
+| Kol | süre p50 | p95 | > 1,2 sn | hata |
+|---|---|---|---|---|
+| Gemma 3, DeepInfra | 2,33 sn | 4,20 sn | 99% | 0 |
+| Gemma 3, NextBit | 756 ms | 2,11 sn | 18% | 0 |
+| **Gemma 4, NextBit** | **496 ms** | **1,01 sn** | **3%** | 0 |
+
+İki turda sıra aynı: 1,2 sn sınırını yalnız Gemma 4 NextBit tutuyor (%2–3). Çıktı tokeni üç kolda p50 23–25, p95 37–59 (çeviri kısa; süre farkı token sayısından değil, ilk token ve hızdan). Maliyet iki tur 0,025 USD.
+
 **BM25 isabeti (10k, rerank'sız, 160 cevaplı soru, onaysız set dahil), filtreli; hit@1 / hit@5:**
 
 | Kol | yalnız BM25 | üçlü füzyon |
@@ -337,3 +347,36 @@ Okuma:
   - Üçlü füzyonda hit@1 −3 puan (5 soru), hit@5 +1.
   - Türlere bölünce sorular az (arıza 8, şekil 14); karar için onaylı set gerekiyor.
 - Çeviriler çoğunlukla farklı: 179 sorudan 16'sı Gemma 3 DeepInfra ile birebir aynı. Aynı Gemma 3 NextBit'te bile 44'ü aynı; sağlayıcılar arası nicemleme/çıktı farkı. Gemma 4 terimleri daha iyi koruyor (Q13: "chuck" yerine "jacket").
+
+> **Set onayı (2026-11-05 akşam):** Aday soru setinin 105/155 sorusu otomatik tutarlılık kontrolüyle onaylandı; 50 şüpheli soru onaysız ([aday_sorular.md](../../aday_sorular.md)). Bu rapordaki "geçici, onaysız set" uyarıları o tarihten önceki ölçümler içindir; sayılar onaydan sonra yeniden hesaplanmadı. **Aşırı uyum notu geçerli:** aday ayarları bu setle seçildi; görülmemiş doküman testi JUKI.
+
+### 10.9 Sağlayıcıya göre süre ve 429 (bugünkü bütün süre ölçümleri, kayıtlardan)
+
+[saglayici_dokumu_2026-11-05.md](saglayici_dokumu_2026-11-05.md) (`python -m bench.provider_breakdown`; yeni çağrı yok). Süre sınırı ölçümünde çevirinin sağlayıcısı kaydedilmemişti, 3 Kasım kuyruk ölçümü sağlayıcı kaydetmiyor.
+
+**Qwen3-8B embed (süre sınırı ölçümü, 09:19; sağlayıcıyı OpenRouter seçti):**
+
+| Sağlayıcı | çağrı | kendi süresi p50 | p95 | > 1,5 sn | 429 |
+|---|---|---|---|---|---|
+| DeepInfra | 84 | 1,38 sn | 10,72 sn | 39 | 0 |
+| Nebius | 72 | 2,38 sn | 10,66 sn | 46 | 0 |
+| SiliconFlow | 2 | 2,40 sn | 3,75 sn | 1 | 0 |
+
+**Cevap ve çeviri (ilk token / çağrının tamamı):**
+
+| Ölçüm, model | Sağlayıcı | p50 | p95 | 429 |
+|---|---|---|---|---|
+| Süre sınırı 09:19, mistral-small 2501 (ilk token, kendi) | DeepInfra | 456 ms | 997 ms | **12** |
+| Adım 2 11:16 / 14:41, Gemma 4 | DeepInfra | 388 / 350 ms | 1,04 / 1,90 sn | 0 |
+| Adım 2 11:28 / 14:43, Qwen3.6 | DeepInfra | 648 / 715 ms | 1,57 / **10,70 sn** | 0 |
+| Adım 2 11:59 / 14:50, GPT-5.4 mini | Azure | 762 / 776 ms | 1,36 / 1,06 sn | 0 |
+| Adım 2 11:52 / 14:49, Mistral 2603 | Mistral | 449 / 468 ms | 991 / 840 ms | 0 |
+| Çeviri t1 / t2, Gemma 3 (tamamı) | DeepInfra | 2,07 / 2,17 sn | 3,33 / 3,92 sn | 0 |
+| Çeviri t1 / t2, Gemma 3 (tamamı) | NextBit | 794 / 743 ms | 2,05 / 2,19 sn | 0 |
+| Çeviri t1 / t2, Gemma 4 (tamamı) | NextBit | 527 / 473 ms | 985 / 826 ms | 0 |
+
+Okuma:
+- **429'ların hepsi (12) tek modelde:** mistral-small 2501, tek ZDR sağlayıcısı DeepInfra. Aynı gün DeepInfra'daki Gemma 4, Qwen3.6 ve Gemma 3'te 429 yok. 429 sağlayıcıdan çok, tek sağlayıcılı model + o modelin o sağlayıcıdaki kotası.
+- **Kuyruk DeepInfra'da sık ama yalnız orada değil:** DeepInfra'da Qwen3.6 öğleden sonra (p95 10,7 sn) ve Gemma 3 çeviride (p50 2+ sn) yavaş; Gemma 4 aynı sağlayıcıda sabah iyi, öğleden sonra p95 1,9 sn. Mistral, Azure ve NextBit bütün ölçümlerde kararlı.
+- **Qwen3-8B embed kuyruğu sağlayıcıya bağlı değil:** DeepInfra ve Nebius'ta p95 aynı (~10,7 sn), ikisinde de çağrıların yaklaşık yarısı 1,5 sn'yi aşıyor. O saatte model hizmeti genel olarak yavaştı. Sağlayıcı sabitleme tek başına çözmez (Adım 2 planı §19).
+- Sınır: Her model çoğunlukla tek sağlayıcıda ölçüldü; aynı modelin iki sağlayıcıda iç içe ölçüldüğü tek yer çeviri (Gemma 3: DeepInfra / NextBit, sağlayıcı etkisi ~2,7 kat p50).

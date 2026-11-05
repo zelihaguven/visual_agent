@@ -1,6 +1,63 @@
-# Aday soru taslağı (doğrulanmadı)
+# Aday soru seti (2026-11-05: 105 onaylı, 50 şüpheli)
 
-155 soru (17 bulunamadı, 15 netleştirme). Hepsi `dogrulandi: false`: ölçüme girmez. Kontrol: soru doğru mu, kabul edilen kaynak ve cevap doğru mu (kanıt cümlesi parçanın kendisinden, OCR biçimiyle). Onaylananlarda `eval/aday_sorular.json` içinde `dogrulandi: true`.
+155 soru (17 bulunamadı, 15 netleştirme). **2026-11-05:** otomatik tutarlılık kontrolünden (model çağrısı yok) şüphesiz geçen 105 soru onaylandı (`dogrulandi: true`, onaylayan: geliştirme ekibi). 50 şüpheli soru `dogrulandi: false` kalıyor (kullanıcı bakana kadar); nedenleri JSON'da `kontrol_supheleri` alanında ve aşağıdaki tabloda. **Aşırı uyum notu:** aday arama ayarları bu setle seçildi; görülmemiş doküman testi ayrı tutulan JUKI seti. Aşağıdaki ana tablo ilk taslağın dökümüdür.
+
+## Otomatik kontrolde şüpheli bulunanlar (onay bekliyor)
+
+Kontroller: beklenen değer beklenen sayfa/parçada geçiyor mu; OCR bozukluğu kalıbı ("112 inch" = ½, "IS min" = 15, "fi'om"); "bulunamadı" sorusunda bir model doğrulanmış (✓/⚠) cevap üretti mi; arama ve dört modelin beklenenle çelişmesi (Adım 2 ilk tur kayıtları, verify A+B).
+
+| # | Tür | Soru | Neden |
+|---|---|---|---|
+| A001 | değer | Ceketin kol manşetindeki ayar tırnağı hangi genişlik ve uzunlukta olmalı? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A005 | değer | Ceketin arka körük (bi-swing) pli üst dikişinde iki sıra arası mesafe ne kadar? | 4 model de beklenenle çelişti (arama getirdi) |
+| A006 | değer | Ceket ceplerini otomatik cep makinesiyle takarken üst dikiş kenardan ne kadar içeride olmalı? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A008 | değer | Ceketin üst kol ceplerine toplam kaç punteriz atılır? | 4 model de beklenenle çelişti (arama getirdi) |
+| A019 | değer | Pantolon iliklerinde inç başına kaç dikiş olmalı? | OCR şüphesi: kesir OCR (112 = ½) «112 inch»; 4 model de beklenenle çelişti (arama getirdi) |
+| A020 | değer | How many stitches per inch are required for trouser buttonholes? | OCR şüphesi: kesir OCR (112 = ½) «112 inch»; 4 model de beklenenle çelişti (arama getirdi) |
+| A021 | değer | Pantolon iliklerinin kesim boyu ne kadar? | OCR şüphesi: kesir OCR (112 = ½) «112 inch»; 4 model de beklenenle çelişti (arama getirdi) |
+| A022 | değer | Pantolonun ön yan cep ağzı kaç inç olmalı? | beklenen değer parçada yok: '6–7-1/4' (ocr_bicimi notlu); OCR şüphesi: kesir OCR (112 = ½) «114 inch» (ocr_bicimi notlu); 4 model de beklenenle çelişti (arama getirdi) |
+| A025 | değer | Pantolon cep kapaklarının üst dikişi kenardan ne kadar içeride olmalı? | beklenen değer parçada yok: '3/16–1/4' (ocr_bicimi notlu); OCR şüphesi: kesir OCR (112 = ½) «114 inch» (ocr_bicimi notlu); arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A026 | değer | Pantolonda cırt bant kenar şeridinden ne kadar içeriden dikilir? | beklenen değer parçada yok: '1/8–3/16' (ocr_bicimi notlu); OCR şüphesi: kesir OCR (112 = ½) «118 inch» (ocr_bicimi notlu); 4 model de beklenenle çelişti (arama getirdi) |
+| A027 | değer | Pantolonun fermuar (fly) dikişi J-dikişinin ne kadar üstünde bitmeli? | beklenen değer parçada yok: '3/8–1/2' (ocr_bicimi notlu); OCR şüphesi: kesir OCR (112 = ½) «112 inch» (ocr_bicimi notlu); 4 model de beklenenle çelişti (arama getirdi) |
+| A028 | prosedür | Pantolon iç bacağında 5 iplik emniyet dikişi kullanılırsa kalıp nasıl ayarlanır? | OCR şüphesi: kesir OCR (112 = ½) «112 inch» (ocr_bicimi notlu) |
+| A030 | değer | Pantolon ısırma testinde kollar böcek kafesinde kaç dakika tutulur? | beklenen değer parçada yok: '15' (ocr_bicimi notlu); OCR şüphesi: IS = 15 «IS min» (ocr_bicimi notlu) |
+| A033 | değer | Pantolon beden etiketi nereye dikilir? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A034 | değer | Pantolon temizlik muayenesinde kaç iplikten fazlası kusur sayılır? | OCR şüphesi: kesir OCR (112 = ½) «114 inch» (ocr_bicimi notlu) |
+| A035 | değer | Pantolonda cırt bant genişliklerinin toleransı ne kadar? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A036 | şekil | Pantolon çiziminde hangi ölçüler verilmiş? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A044 | değer | S-7300A'da iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu kaç mm? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A045 | değer | S-7300A -3 tipinde çağanoz ile masura kovanı tutucusu arasındaki boşluk ne olmalı? | 4 model de beklenenle çelişti (arama getirdi) |
+| A048 | değer | S-7300A'da başlangıç punterizinde B dikiş sayısı hangi aralıkta ayarlanır? | 4 model de beklenenle çelişti (arama getirdi) |
+| A050 | değer | S-7300A'da aydınlatma LED parlaklığı hangi aralıkta ayarlanır? | 4 model de beklenenle çelişti (arama getirdi) |
+| A052 | değer | S-7300A'da açılışta panelin otomatik kilitlenmesi hangi bellek anahtarıyla kapatılır? | 4 model de beklenenle çelişti (arama getirdi) |
+| A053 | arıza | S-7300A'da dikiş dalgalı ve düzensiz çıkıyor, olası nedenler neler? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A056 | değer | S-7300A topraklama vidasının önerilen sıkma torku nedir? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A067 | değer | S-7300B'de iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu kaç mm? | 4 model de beklenenle çelişti (arama getirdi) |
+| A068 | değer | What is the standard upper thread trailing length on the S-7300B after thread trimming? | 4 model de beklenenle çelişti (arama getirdi) |
+| A078 | değer | Terzilik kitabına göre makine dikişinde inç başına kaç dikiş kullanılmalı? | 4 model de beklenenle çelişti (arama getirdi) |
+| A086 | değer | Terzilik kitabına göre pantolon cebinin yün yüz parçası kaç inç kesilir? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A089 | değer | Kalın cidarlı dökme demir parçaları kaynatırken çelik pim çapı nasıl seçilir? | 4 model de beklenenle çelişti (arama getirdi) |
+| A090 | değer | Ring iplik makinesinde kondansatörün toplam stroku kaç mm olmalı? | 4 model de beklenenle çelişti (arama getirdi) |
+| A091 | değer | Birinci tip çözgü makinesinin tamburunda koni açısı hangi aralıkta değişir? | 4 model de beklenenle çelişti (arama getirdi) |
+| A093 | değer | Mekik kutusunda mekik yokken çözgü koruyucu uçları pedlerin kaç mm üstünde olmalı? | 4 model de beklenenle çelişti (arama getirdi) |
+| A096 | değer | Tekstil makinesi parçalarında bakır kaplama ne için kullanılır? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A104 | değer | Programlanabilir kahve makinelerinde temizleme döngüsü ne kadar sürer? | 4 model de beklenenle çelişti (arama getirdi) |
+| A114 | bulunamadı | Bosch freze tablası kaç kilogram ağırlığında? | bulunamadı sorusu ama doğrulanmış cevap üreten model: qwen36 |
+| A118 | bulunamadı | S-7300A'da E-740 kodu çıktı, ne yapmalıyım? | bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini |
+| A123 | bulunamadı | S-7300B'nin güç tüketimi kaç watt? | bulunamadı sorusu ama doğrulanmış cevap üreten model: qwen36 |
+| A124 | bulunamadı | Ceketin kapüşon ölçüleri nedir? | bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini |
+| A126 | bulunamadı | Strickland kitabına göre deri ceket nasıl dikilir? | bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini, qwen36 |
+| A128 | bulunamadı | Pantolon kumaşının su geçirmezlik (hidrostatik basınç) değeri ne olmalı? | bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini |
+| A130 | bulunamadı | Mr. Coffee makinesiyle espresso nasıl yapılır? | bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini |
+| A140 | netleştirme | İliklerde inç başına kaç dikiş olmalı? | OCR şüphesi: kesir OCR (112 = ½) «112 inch» |
+| A141 | netleştirme | Cırt bant kenardan ne kadar içeriden dikilir? | OCR şüphesi: kesir OCR (112 = ½) «118 inch» |
+| A143 | netleştirme | Isırma testinde kollar böcek kafesinde kaç dakika tutulur? | OCR şüphesi: IS = 15 «IS min» |
+| A147 | değer | ceket ilik dikis sayisi? | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A148 | değer | pantolon cep agzi kac inc | beklenen değer parçada yok: '6–7-1/4' (ocr_bicimi notlu); OCR şüphesi: kesir OCR (112 = ½) «114 inch» (ocr_bicimi notlu); arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A150 | prosedür | kahve makinası kireç nasil temizlenir | 4 model de beklenenle çelişti (arama getirdi) |
+| A151 | prosedür | freze tablası şalteri nasıl kitlenir | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A152 | değer | granovsky sabun kaç gram | arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti |
+| A154 | değer | pantolonda cırt bant ne kadar içerde | beklenen değer parçada yok: '1/8–3/16' (ocr_bicimi notlu); OCR şüphesi: kesir OCR (112 = ½) «118 inch» (ocr_bicimi notlu); 4 model de beklenenle çelişti (arama getirdi) |
 
 Etiket dağılımı: parafraz 41, sayi 32, benzer_bolum 25, tablo 20, bulunamadi 17, netlestirme 15, kod_varyant 14, ocr 12, karisan_dokuman 10, gundelik 10, kaynak_ifadesi 7, ters_soru 4, sekil 2, ingilizce 2
 

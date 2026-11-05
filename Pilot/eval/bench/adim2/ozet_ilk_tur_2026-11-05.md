@@ -1,7 +1,8 @@
 # Adım 2, ilk tur: okuma (2026-11-05)
 
-> **"Bulunamadı" kararının 17 sorusu onaysız (A114–A130). Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş
-> sette yapılacak.** Modelin karar verdiği 17 cevapsız sorunun 15'i onaysız: bir soru ≈ 6 puan.
+> **Set onayı (2026-11-05 akşam):** Aday setin 155 sorusundan 105'i otomatik tutarlılık kontrolünden şüphesiz geçti ve onaylandı; 50 şüpheli soru kullanıcı bakana kadar onaysız ([aday_sorular.md](../../aday_sorular.md)). "Bulunamadı" sorularının 7'si, cevaplı soruların 40/160'ı onaysız.
+> **Yanlılık uyarısı:** Kontrolün bir ölçütü "dört model de beklenenle çelişiyor" idi; bu sorular onaylı kümeden çıktı. Bu turun onaylı/onaysız ayrımındaki kalite sayıları bu yüzden iyimser ve modeller arası karşılaştırma için tasarlanmadı. Aşağıdaki özet tablo onaydan önceki ayrımla (37 onaylı soru) duruyor. **Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş sette, setin bu kayıtlardan bağımsız sorularıyla yapılacak.**
+> **Aşırı uyum notu:** Aday arama ayarları bu setle seçildi; görülmemiş doküman testi ayrı tutulan JUKI seti.
 
 Ham tablo: [adim2_cevap_modeli_2026-11-05.md](adim2_cevap_modeli_2026-11-05.md). Plan: [plan_cevap_modeli_2026-11-05.md](plan_cevap_modeli_2026-11-05.md).
 

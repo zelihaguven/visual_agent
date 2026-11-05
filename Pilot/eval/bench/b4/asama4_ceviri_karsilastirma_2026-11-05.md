@@ -9,6 +9,9 @@
 | t1 (14:25) | g3_deepinfra | 175 | 2,14 sn | 4,06 sn | 168/175 (96%) | 25 | 55 | 0 | 0 | {'DeepInfra': 175} | 0.0020 |
 | t1 (14:25) | g3_nextbit | 175 | 838 ms | 2,05 sn | 62/175 (35%) | 24 | 37 | 0 | 0 | {'NextBit': 175} | 0.0017 |
 | t1 (14:25) | g4_nextbit | 175 | 530 ms | 1,04 sn | 3/175 (2%) | 23 | 59 | 0 | 0 | {'NextBit': 175} | 0.0028 |
+| t2 (15:20) | g3_deepinfra | 175 | 2,33 sn | 4,20 sn | 173/175 (99%) | 25 | 55 | 0 | 0 | {'DeepInfra': 175} | 0.0022 |
+| t2 (15:20) | g3_nextbit | 175 | 756 ms | 2,11 sn | 31/175 (18%) | 24 | 37 | 0 | 0 | {'NextBit': 175} | 0.0017 |
+| t2 (15:20) | g4_nextbit | 175 | 496 ms | 1,01 sn | 5/175 (3%) | 23 | 59 | 0 | 0 | {'NextBit': 175} | 0.0028 |
 
 Sınırı aşan: süre > 1,2 sn ya da hata (uygulamada ikisi de çevirisiz BM25 demek).
 
@@ -19,6 +22,9 @@ Sınırı aşan: süre > 1,2 sn ya da hata (uygulamada ikisi de çevirisiz BM25 
 | t1 | g3_deepinfra | 350 | 2,07 sn | 3,33 sn | 96% | 0 |
 | t1 | g3_nextbit | 350 | 794 ms | 2,05 sn | 28% | 0 |
 | t1 | g4_nextbit | 350 | 527 ms | 985 ms | 1% | 0 |
+| t2 | g3_deepinfra | 350 | 2,17 sn | 3,92 sn | 97% | 0 |
+| t2 | g3_nextbit | 350 | 743 ms | 2,19 sn | 17% | 0 |
+| t2 | g4_nextbit | 350 | 473 ms | 826 ms | 1% | 0 |
 
 ## Çeviri farkı (tur t1, filtreli, g3_deepinfra'ya göre)
 

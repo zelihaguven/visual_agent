@@ -1,6 +1,6 @@
 # Adım 2: cevap modeli seçimi, ilk tur (ön eleme)
 
-> **"Bulunamadı" kararının 17 sorusu onaysız** (A114–A130, aday taslak; 21 sorunun 17'si; kural çıkışları hariç modelin karar verdiği 17 sorunun 15'i). **Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş sette yapılacak.** Cevaplı sorularda da 123/160 onaysız. Süreler geliştirme makinesinin bağlantısından; üretimi temsil etmez.
+> **"Bulunamadı" kararının 7 sorusu onaysız** (A114–A130, aday taslak; 21 sorunun 7'si; kural çıkışları hariç modelin karar verdiği 17 sorunun 7'i). **Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş sette yapılacak.** Cevaplı sorularda da 40/160 onaysız. Süreler geliştirme makinesinin bağlantısından; üretimi temsil etmez.
 
 Arama sabit: uygulamanın varsayılan yolu (bge-m3 + BM25, rerank kapalı, ilke dışı kurallar kapalı), `manuals` koleksiyonu; bütün modeller aynı kaynakları gördü. Aynı sistem talimatı ve şema, temperature 0, düşünme kapalı; modele özel istem ayarı yok. Yeniden deneme bütün modellerde aynı: ilk token gelmeden 429/5xx/bağlantı hatasında 30 sn sonra bir kez; yine olmazsa soru cevapsız (kalite metriklerine girmez). Plan: [plan_cevap_modeli_2026-11-05.md](plan_cevap_modeli_2026-11-05.md).
 
@@ -32,14 +32,14 @@ Taban (2026-10-27, yerel qwen2.5:7b, aynı 21 soru, o günkü arama): doğru "bu
 
 | Model | Set | soru | yanlış ret | … kaynak ilk 5'teydi (model hatası) | … arama getirmedi | netleştirme | ✓ / ⚠ / ✖ | … kesik kayıt (yaklaşık) | beklenen değer cevapta | atıf: en az biri doğru sayfa | atıf: hepsi doğru | JSON hatası |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gemma4 | onaylı | 37 | 4/37 (11%) | 1 | 3 | 0 | 27 / 5 / 1 | 3 | 17/18 (94%) | 29/33 (88%) | 29/33 (88%) | 0 |
-| gemma4 | onaysız | 123 | 14/123 (11%) | 3 | 11 | 0 | 91 / 6 / 12 | 2 | 60/82 (73%) | 99/109 (91%) | 87/109 (80%) | 0 |
-| qwen36 | onaylı | 37 | 0/37 (0%) | 0 | 0 | 0 | 26 / 5 / 6 | 2 | 17/21 (81%) | 33/37 (89%) | 27/37 (73%) | 0 |
-| qwen36 | onaysız | 123 | 8/123 (7%) | 2 | 6 | 0 | 94 / 7 / 14 | 1 | 57/85 (67%) | 98/115 (85%) | 85/115 (74%) | 0 |
-| gpt54mini | onaylı | 37 | 2/37 (5%) | 1 | 1 | 0 | 29 / 4 / 2 | 4 | 18/20 (90%) | 31/35 (89%) | 23/35 (66%) | 0 |
-| gpt54mini | onaysız | 123 | 7/123 (6%) | 2 | 5 | 0 | 100 / 10 / 6 | 1 | 57/86 (66%) | 99/116 (85%) | 83/116 (72%) | 0 |
-| mistral2603 | onaylı | 37 | 2/37 (5%) | 1 | 1 | 0 | 9 / 17 / 7 | 4 | 18/19 (95%) | 29/33 (88%) | 26/33 (79%) | 2 |
-| mistral2603 | onaysız | 123 | 10/123 (8%) | 3 | 7 | 0 | 49 / 32 / 29 | 4 | 50/83 (60%) | 97/110 (88%) | 76/110 (69%) | 3 |
+| gemma4 | onaylı | 120 | 4/120 (3%) | 1 | 3 | 0 | 98 / 11 / 7 | 5 | 74/75 (99%) | 106/116 (91%) | 96/116 (83%) | 0 |
+| gemma4 | onaysız | 40 | 14/40 (35%) | 3 | 11 | 0 | 20 / 0 / 6 | 0 | 3/25 (12%) | 22/26 (85%) | 20/26 (77%) | 0 |
+| qwen36 | onaylı | 120 | 0/120 (0%) | 0 | 0 | 0 | 97 / 10 / 13 | 3 | 71/78 (91%) | 109/120 (91%) | 93/120 (78%) | 0 |
+| qwen36 | onaysız | 40 | 8/40 (20%) | 2 | 6 | 0 | 23 / 2 / 7 | 0 | 3/28 (11%) | 22/32 (69%) | 19/32 (59%) | 0 |
+| gpt54mini | onaylı | 120 | 2/120 (2%) | 1 | 1 | 0 | 102 / 13 / 3 | 5 | 73/77 (95%) | 108/118 (92%) | 87/118 (74%) | 0 |
+| gpt54mini | onaysız | 40 | 7/40 (18%) | 2 | 5 | 0 | 27 / 1 / 5 | 0 | 2/29 (7%) | 22/33 (67%) | 19/33 (58%) | 0 |
+| mistral2603 | onaylı | 120 | 3/120 (2%) | 2 | 1 | 0 | 46 / 41 / 26 | 8 | 65/75 (87%) | 103/113 (91%) | 83/113 (73%) | 4 |
+| mistral2603 | onaysız | 40 | 9/40 (22%) | 2 | 7 | 0 | 12 / 8 / 10 | 0 | 3/27 (11%) | 23/30 (77%) | 19/30 (63%) | 1 |
 
 Atıf doğruluğu: cevabın alıntı yaptığı kaynak numaralarının parçaları beklenen doküman ve sayfayla (`is_match`) eşleşiyor mu; alıntısız cevap paydada yok.
 

@@ -146,9 +146,49 @@ Tahmin, bugünkü uçtan uca ölçümün token sayılarından: giriş medyanı 2
 4. qwen2.5:7b, gece, arka planda.
 5. Tek rapor: model başına metrikler (onaylı/onaysız ayrı), kural çıkışları ayrı, JSON sorunları, sağlayıcı ve maliyet. Sonra commit; push sizin onayınızla.
 
-## 11. Açık konu: makine ailesinin kaynağı (Adım 2'den sonra konuşulacak)
+## 11. Netleştirme: aile kavramı gerekmiyor (güncelleme 2026-11-05 akşam)
 
-Bugün "S-7300" aile grubu ve `BRAND_ALIASES` elle yazılmış ve bayrakla kapalı (`PILOT_DOC_SPECIFIC_RULES`). Bayrak kapalıyken aynı ailenin iki modelinin kılavuzu aynı bölümü içerdiğinde "hangi model?" netleştirmesi sorulmuyor (ölçüm: [asama4_ilke_kurallari_10k](../b4/)). İki seçenek var:
+**Karar:** Makine "ailesi" kavramı gerekmiyor.
+- Model, kaynaklarda doküman ve ürün adını zaten görüyor (`format_sources`: `<kaynak doküman="brother-s7300a" ürün="S-7300A düz dikiş makinesi" …>`).
+- İstemin 6. maddesi, soruda ürün belli değilse ve değerler ürüne göre değişiyorsa netleştirmeyi zaten istiyor.
+- Aşağıdaki eski görüş (otomatik türetme / yükleme alanı ile aile) bu yüzden kapandı. Kaldığı yer yalnız "ürün" alanının kaynağı.
+
+**Önceki netleştirme ölçümü geçerli değil.** `bench/doc_rules_diff.py` modeli çağırmadan yapıldı: Yalnız kural katmanının netleştirmesini ölçtü. Modelin netleştirme sorup sormadığı ve seçeneklerinin ekrana gelip gelmediği hiç ölçülmedi.
+
+**Bulgu: `clarify_options` bugün ürün adlarını atıyor** (kayıtlardan, model çağrısı yok):
+- Netleştirme beklenen 18 sorunun 15'inde netleştirme modele kalıyor. Kalan 3'ü (A140, A142, A143) kural katmanında "Ceket / Pantolon" seçenekleriyle soruluyor.
+- Bu 15 soruda bulunan kaynakların ürün adlarını ("S-7300A düz dikiş makinesi", "Pantolon"…) ve doküman kimliklerini `clarify_options`'a verdiğimde **hepsi atıldı (15/15 soruda 0 seçenek kaldı)**.
+- Neden: `clarify_options` seçeneği yalnız parça metninde arıyor (`pipeline.py`: `sources = {no: chunk["text"]}`). Ürün adı ve doküman kimliği, modelin gördüğü başlıkta var, metinde yok.
+- 2'den az seçenek kalınca pipeline netleştirmeyi hiç göstermiyor (`atlanan_netlestirme`). Yani model doğru "hangi ürün?" sorusunu sorsa bile kullanıcıya ulaşmıyor.
+- Adım 2 kayıtlarında modelin sorduğu 18 netleştirmenin hepsi tek doküman içi varyant (Type I/II, beden, reçete); ürün adı seçeneği hiç geçmiyor. O turda netleştirme beklenen sorular sete alınmamıştı.
+
+**Ölçüm planı (koşulmadı; model çağrısı, onayınızla):** Netleştirme beklenen 18 soru, **Gemma 4 ile**, arama uygulamanın varsayılan yolu, dört durum:
+
+| Durum | Açıklama |
+|---|---|
+| (a) taban | `BRAND_ALIASES` açık (bugünkü elle yazılmış tablo) |
+| (b) | ilke dışı kurallar kapalı (varsayılan) |
+| (c) | kurallar kapalı + `clarify_options` seçenekleri bulunan kaynakların **doküman/ürün adıyla da** eşleştirir (genel; belgeye özel değil) |
+| (d) | (c) + netleştirme beklenmeyen sorularda gereksiz netleştirme (160 cevaplı + 21 "bulunamadı" soru) |
+
+- Metrikler:
+  - netleştirme soruldu mu;
+  - seçenekler doğru mu (`expect_docs` ile; `doc_rules_diff`'teki metrik);
+  - gereksiz netleştirme oranı (d).
+- Ayrıca soruldu ama `clarify_options` yüzünden gösterilmedi sayısı.
+- **Tahmini maliyet:** (a)–(c) 3 × 18 = 54 çağrı + (d) ~181 çağrı = ~235 çağrı × 0,00024 USD ≈ **0,06 USD** (Gemma 4, DeepInfra fiyatıyla).
+- **Karar kuralı: (c) tabanı (a) yakalıyorsa** (soruldu ve seçenekler doğru en az aynı) ve (d)'de gereksiz netleştirme artmıyorsa `BRAND_ALIASES` ve S-7300 grubu silinir.
+
+**"Ürün" alanı nereden geliyor:**
+- Bugün kayıtta elle yazılı (`pilot/registry.py`, `DocMeta(..., product="Ceket", ...)`).
+- Gerçek yüklemede otomatik çıkarma güvenilir değil:
+  - PDF metadata 9 test dokümanının 7'sinde boş; doluysa da dosya adı ("GL-PD-14-04A.pdf").
+  - İlk sayfa makine kılavuzlarında model adını veriyor ("S-7300A", "MO-6800S"); ama taranmış belgelerde OCR bozuk ("GLlPD 07-14A"), kitaplarda (Granovsky, Strickland) ürün yok.
+- **Öneri:** Yükleme formunda zorunlu "ürün / model" alanı. Form ilk sayfadan bir öneri doldurur, yükleyen kişi onaylar ya da düzeltir.
+
+---
+
+*Önceki görüş (kapandı):* Bugün "S-7300" aile grubu ve `BRAND_ALIASES` elle yazılmış ve bayrakla kapalı (`PILOT_DOC_SPECIFIC_RULES`). Bayrak kapalıyken aynı ailenin iki modelinin kılavuzu aynı bölümü içerdiğinde "hangi model?" netleştirmesi sorulmuyor (ölçüm: [asama4_ilke_kurallari_10k](../b4/)). İki seçenek var:
 1. **Otomatik türetme:** Aile, aynı markanın model adlarının ortak önekinden çıkarılır (s7300 ⊂ s7300a, s7300b).
 2. **Yükleme sırasında ürün/model alanı:** Dokümanı yükleyen kişi ürün ailesini kayıtta seçer.
 
@@ -259,6 +299,67 @@ Neden: Süre sınırı ölçümünde grup 1'i (arama öncesi paralel adımlar) *
 
 ## 15. Öneri (koşulmadı): yapılandırılmış cevap şeması
 
+### 15.0 Güncelleme 2026-11-05 akşam: önerilen seçenek **C**, karşılaştırma için B
+
+| Seçenek | `cevap` | Not |
+|---|---|---|
+| A (aşağıdaki ilk öneri) | `[{metin, kaynaklar: [no]}]`, alıntılar ayrı `alintilar` alanında | Cümlenin sayısı yalnız kaynak numarasıyla bağlı; hangi alıntı belli değil |
+| B | `alintilar: [{no, kaynak_no, metin}]` numaralı; `cevap: [{metin, alinti: [no]}]` | Karşılaştırma için tutuluyor |
+| **C (önerilen)** | `[{alinti: {kaynak_no, metin}, metin}]`: her cümle kendi alıntısını **hemen önünde** taşır | Alıntı ile cümle aynı öğede; akışta cümle cümle doğrulanabilir |
+
+**C ile `verify.py`:**
+- Her cümlenin sayıları **yalnız kendi alıntısında** aranır (bugün bütün alıntıların birleşiminde).
+- `sesli_metin`'deki sayılar da kontrol edilir: bütün cümlelerin alıntılarının birleşiminde.
+- Alıntı birebir kontrolü, tolerans, tekrar ve yabancı alfabe kontrolleri öğe başına.
+- Atıf ve liste numarası ayıklama gerekmez: metinde `[n]` yok, sıra dizinin sırası.
+
+**Akış sırasında doğrulama (C'nin asıl kazancı):**
+- Model öğe öğe yazar. Her öğe (alıntı + cümle) tamamlanınca doğrulanır; geçen cümle hemen gösterilir ve seslendirilir.
+- Yarıda kesilen cevapta (süre sınırı, bağlantı, JSON kesilmesi) tamamlanmış ve doğrulanmış cümleler geçerli kalır.
+- Bugünkü şemada bütün JSON bitmeden doğrulama yapılamıyor.
+
+**Yeni süre metriği: kullanıcının gördüğü ilk doğrulanmış cümle (p50/p95).**
+- "İlk token"dan ayrı raporlanır.
+- Bugünkü şema için kayıtlardan tahmin edildi (yeni koşu yok; araç: kayıttaki ham çıktıda `"cevap"` alanının konumu ve çağrının kendi token hızı):
+  - **cevap ilk kelimesi** = ilk token + (cevap alanından önceki JSON, yani alıntılar) / token hızı;
+  - **ilk cümle sonu** = cevabın ilk cümlesinin bittiği an. Bugünkü şemada doğrulama tüm JSON'u bekliyor; bu değer C'de olabilecek en iyi durumun yaklaşığı.
+
+| Model | Tur | ilk token p50 / p95 | cevap ilk kelimesi p50 / p95 | ilk cümle sonu p50 / p95 |
+|---|---|---|---|---|
+| Gemma 4 (DeepInfra) | ana | 386 ms / 871 ms | 1,39 / 4,72 sn | 2,02 / 5,76 sn |
+| Gemma 4 | ikinci | 343 ms / 1,96 sn | 1,37 / 2,98 sn | 1,91 / 3,85 sn |
+| Qwen3.6 (DeepInfra) | ana | 648 ms / 1,25 sn | 3,13 / 8,63 sn | 4,50 / 10,98 sn |
+| Qwen3.6 | ikinci | 738 ms / 11,17 sn | 5,33 / 15,44 sn | 7,27 / 17,40 sn |
+| GPT-5.4 mini (Azure) | ana | 765 ms / 1,40 sn | 1,19 / 2,28 sn | 1,31 / 2,15 sn |
+| GPT-5.4 mini | ikinci | 753 ms / 1,06 sn | 1,14 / 1,90 sn | 1,30 / 2,11 sn |
+| Mistral 2603 (Mistral) | ana | 449 ms / 1,01 sn | 1,07 / 2,53 sn | 1,25 / 2,25 sn |
+| Mistral 2603 | ikinci | 468 ms / 897 ms | 1,00 / 2,38 sn | 1,26 / 2,68 sn |
+
+Kapsam: cevaplı sorularda üretilen cevaplar. "İlk token" bu tabloda yalnız bu cevaplar için; rapordaki değer bütün çağrılar.
+- Bugünkü şemada alıntılar cevaptan önce yazılıyor: ilk token ile cevabın ilk kelimesi arasında p50 ~0,4 sn (GPT-5.4 mini) ile ~2,5 sn (Qwen3.6) arası var.
+- Gemma ve Qwen'de alıntılar uzun ve DeepInfra yavaş.
+
+**Kayıtlardan: "sayı başka bir alıntıda var ama yanlış cümlede" (C'nin daha sıkı kontrolü kaç cevabı etkiler):**
+- Bugünkü cevaplarda her cümlenin sayısı, cümlenin atıf yaptığı kaynağın alıntısında mı diye bakıldı. Atıf, cümle sonundaki noktadan sonra da yazılabiliyor; önceki cümleye bağlandı.
+
+| Model (ana tur) | kendi alıntısında | **yanlış cümlede** (başka alıntıda var) | hiçbir alıntıda | atıfsız cümlede |
+|---|---|---|---|---|
+| Gemma 4 | 179 | **2** | 17 | 54 |
+| Qwen3.6 | 214 | **5** | 37 | 36 |
+| GPT-5.4 mini | 202 | **0** | 3 | 69 |
+| Mistral 2603 | 134 | **1** | 9 | 220 |
+
+- Yanlış cümle vakası nadir (0–5).
+- C'de asıl değişecek olan **atıfsız cümleler**: her cümle kendi alıntısını taşımak zorunda. Bugün giriş ya da özet cümlesinde geçen sayılar (Mistral'de 220) C'de ya kendi alıntısıyla yazılır ya ✖ olur.
+
+**Karar kuralı (nihai tur):**
+- Bugünkü şema ile C, dört model + taban, aynı sorularda yan yana.
+- **C'ye geçilir, eğer** ilk doğrulanmış cümle p95 kötüleşmiyorsa ve JSON hatası (şemaya uymama dahil) artmıyorsa.
+- Şemaya zorlamanın (`response_format` json_schema) ilk istekteki ek süresi **sağlayıcı bazında** ölçülür: Aynı modelde şemalı ve şemasız ilk token, aynı sağlayıcıda iç içe.
+- C'ye geçişte `verify.py`'den kalkacak yamalar aşağıdaki A metnindeki listeyle aynı.
+
+### 15.1 İlk öneri (A)
+
 **Neden:** `verify.py`'deki atıf ve sayı ayıklama yamalarının kaynağı, cevabın tek bir serbest metin olması ve atıfların metne gömülmesi. Doğrulayıcı aynı metinde hangi rakamın atıf, liste numarası, kod ya da değer olduğunu tahmin ediyor. Yamaların listesi:
 - 16 Ekim: alıntı sonunda yarım atıf;
 - liste numaraları;
@@ -340,3 +441,60 @@ Bütün `VisualAgent_*` zamanlanmış görevleri devre dışı. `StartWhenAvaila
 | Çeviri karşılaştırması tur t2 (19:00) | **onaya bağlı**, görev devre dışı | Süre için başka bir saat gerekiyor; oturum akşam açık değil | Süre turundan sonra onaylanırsa hemen, yoksa bir sonraki oturumda başka bir saatte |
 | Gemma 4 üretim sağlayıcıları (§12) | ertelendi | Kararla nihai tura taşındı | Adım 2 nihai turu (ayrı bütçe) |
 | Kuyruk ölçümü t3 (B4 §9.2) | ertelendi | Kullanıcı elle başlatacak | Kullanıcı kararı |
+
+## 18. Nihai tur: seçim kuralı, referans model, bütçe (öneri, 2026-11-05)
+
+**Set:** Onaylı ve büyütülmüş set (§8). Hesapta büyütülmüş set bugünkü 177 çağrının ~1,5 katı, yani model başına **~265 soru**.
+
+**Set onayı ve yanlılık (2026-11-05):** Aday setin 105 sorusu otomatik kontrolle onaylandı. Kontrolün bir ölçütü ilk turun model çıktılarıydı ("dört model de beklenenle çelişiyor"). Bu yüzden nihai turun kapı ölçütleri:
+- 50 şüpheli soru kullanıcı tarafından karara bağlandıktan sonra,
+- **onay ölçütünde model çıktısı kullanılmamış** sorular (yeni büyütülmüş sorular ve şüphelilerden elle onaylananlar) ayrı raporlanarak uygulanır.
+
+Aşırı uyum notu korunur: arama ayarları bu setle seçildi; görülmemiş doküman testi JUKI.
+
+**Seçim kuralı, sırayla (bir model bir kapıdan geçemezse elenir; §16 gereği modele özel yama yazılmaz):**
+1. **Kalite kapısı** (onaylı sette):
+   - doğru "bulunamadı" (modelin karar verdiği sorularda) **≥ %90**;
+   - doğrulanmış görünen yanlış (✓/⚠ alan yanlış cevap) **0**;
+   - uydurma **0**: ✖'lerdeki "alıntıda olmayan sayı" vakaları elle okunur, kaynakta da olmayan değer uydurmadır;
+   - **beklenen değer cevapta ≥ %85**. Öneri gerekçesi: ilk turda onaylı sette Gemma %94, Mistral %95, GPT %90, Qwen %81; onaysız sette %60–73. %85, bugünkü en iyi üç modelin altında ama Qwen düzeyini dışarıda bırakan bir sınır. Yanlış ret ayrıca raporlanır, kapı değil.
+2. **Dayanıklılık ve süre:**
+   - **≥ 2 ZDR sağlayıcı** (aynı nicemleme). Bugün GPT-5.4 mini ve Mistral 2603 yalnız 1 sağlayıcıda; bu kapıda elenirler, ancak ikinci bir ZDR sağlayıcısı açılırsa geçerler.
+   - **İlk doğrulanmış cümle p95 ≤ 2,5 sn**: model tarafı, istekten ilk doğrulanmış cümleye, iki ayrı saatte.
+   - Bugünkü şemada tahmin: GPT-5.4 mini 2,1, Mistral 2,3–2,7, Gemma 4 (DeepInfra) 3,9–5,8 sn. Gemma 4'ün bf16 sağlayıcıları (NextBit hız 42 tk/sn, ilk token p90 0,7 sn) ve C şeması bunu düşürmeli. Ölçülecek.
+3. **Maliyet:** Kapılardan geçenler arasında soru başına maliyet. Fark %50'den azsa sağlayıcı sayısı fazla olan seçilir.
+
+**Üst sınıf referans model** (kapılara girmez; "daha büyük model ne kazandırır" sorusunun cevabı):
+
+| Aday | ZDR | Fiyat (giriş/çıkış, USD/M) | Soru başına | ~265 soru |
+|---|---|---|---|---|
+| **Gemma 4 31B** (önerilen) | 13 sağlayıcı (bf16: Crusoe, Novita) | 0,14 / 0,40 | ~0,0004 USD | ~0,11 USD |
+| GPT-5.4 | yalnız Azure | 2,50 / 15,00 | ~0,0089 USD | ~2,4 USD |
+
+Öneri: Gemma 4 31B, aynı ailenin büyüğü, ucuz ve çok sağlayıcılı. GPT-5.4 tek sağlayıcılı ve yalnız referans olarak 20 kat pahalı; istenirse yalnız C şemasıyla eklenir.
+
+**Bütçe hesabı** (ilk turun soru başına maliyetleriyle; ~265 soru):
+
+| Kalem | Tahmin |
+|---|---|
+| 4 model, bugünkü şema (Gemma 4 0,06; Qwen3.6 0,12; GPT-5.4 mini 0,52; Mistral 0,09) | 0,80 USD |
+| Aynı 4 model, C şeması (yan yana, §15.0) | 0,80 USD (çıktı tokeni ~%10 fazla olabilir) |
+| Gemma 4, 3 bf16 sağlayıcı (§12), C şeması | 0,27 USD |
+| Referans Gemma 4 31B, iki şema | 0,22 USD |
+| Süre turları: iki saat × 30 soru × 6 yapılandırma, şemalı/şemasız ilk istek ölçümü dahil | ~0,20 USD |
+| Yerel taban qwen2.5:7b, iki şema | 0 |
+| Netleştirme ölçümü (§11, ayrı onay) | 0,06 USD |
+| Düşünme kontrolleri, tekrarlar için pay (%10) | ~0,24 USD |
+| **Toplam** | **~2,6 USD** |
+| GPT-5.4 referansı eklenirse (yalnız C) | +2,4 USD → ~5,0 USD |
+
+**Bugünkü harcama:** 1,17 / 1,5 USD (ön eleme). Nihai tur bu sınırın içine sığmıyor.
+
+**Yeni sınır önerisi: nihai tur için ayrı 3,0 USD** (GPT-5.4 referansı olmadan). Toplam Adım 2 harcaması ~4,2 USD olur. GPT-5.4 referansı istenirse sınır 5,5 USD. Koşu, sınırı geçecekse durur ve haber verir (bugünkü kural).
+
+## 19. Not: Qwen3-8B embed için sağlayıcı sabitleme bir seçenek mi? (kayıtlardan, 2026-11-05)
+
+B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfra (84) ve Nebius (72) arasında bölündü; **ikisinde de p95 ~10,7 sn** ve çağrıların ~yarısı 1,5 sn'nin üstünde. 429 yok.
+- **Sonuç: Sağlayıcı sabitleme tek başına bir çözüm değil.** O ölçümde kuyruk iki ana sağlayıcıda birlikteydi; sabitlemek yalnız hangi kuyruğu beklediğimizi seçer.
+- Sabitleme ancak şu koşulda seçenek olur: Kısa bir iç içe ölçümde (DeepInfra / Nebius / SiliconFlow, aynı dakikalarda, iki farklı saatte, ~30 çağrı × 3 sağlayıcı × 2 saat ≈ 0,001 USD) bir sağlayıcı p95 ≤ 1,5 sn'yi iki saatte de tutarsa. 3 Kasım kuyruk ölçümü sağlayıcı kaydetmediği için bugün bu ayrım yapılamıyor.
+- Bu ölçüm koşulmadı (onayınızla). Sonuç olumsuzsa Qwen'i sunucuya taşıma (B4) ya da mevcut koruma (1,5 sn yedek yol + devre kesici) yolu kalır.
