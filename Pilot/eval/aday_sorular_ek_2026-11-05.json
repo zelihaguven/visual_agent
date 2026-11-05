@@ -1,0 +1,1387 @@
+[
+ {
+  "id": "B001",
+  "kind": "bulunamadı",
+  "q": "S-7300A çalışırken gürültü seviyesi kaç dB?",
+  "zorluk": [
+   "bulunamadi",
+   "komsu_deger"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bdB\\b|dB\\(A\\)|decibel|sound (pressure|level)|noise level/. Sonuç: S-7300A ve S-7300B'de dB değeri yok; 'noise' yalnız elektriksel gürültü uyarısında (brother-s7300a-00005). Ses basıncı değeri (83,0 dB) yalnız ayrı tutulan juki-mo6800s-00020'de: model onu S-7300A'ya mal etmemeli.",
+  "en_yakin_parcalar": [
+   "brother-s7300a-00005",
+   "juki-mo6800s-00020"
+  ]
+ },
+ {
+  "id": "B002",
+  "kind": "bulunamadı",
+  "q": "Ceket kumaşının gramajı (birim alan ağırlığı, oz/yd²) ne olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "komsu_deger"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /oz\\.?\\s*[/l!]\\s*(sq|square)|ounces? per|oz\\b|ounce|g/m|gsm|weigh/ (gl-pd-14-04a). Sonuç: Cekette kumaş ağırlığı yok; 'weigh' yalnız permetrin laboratuvar tartımında (gl-pd-14-04a-00362, -00358). Kumaş GL-PD-07-12'ye atıfla tanımlı (gl-pd-14-04a-00044), değer verilmiyor. Pantolonda yalnız cep alternatif kumaşları için 5.04 / 7.0–8.0 oz/sq yd var (gl-pd-07-14a-00044/-00045): ceket için kullanılmamalı.",
+  "en_yakin_parcalar": [
+   "gl-pd-14-04a-00044",
+   "gl-pd-07-14a-00044"
+  ]
+ },
+ {
+  "id": "B003",
+  "kind": "bulunamadı",
+  "q": "Pantolonun ana kumaşının yırtılma dayanımı en az kaç pound olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "komsu_deger"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\btear|tearing|elmendorf|D ?1424|D ?2261/, /breaking|lbf|pound|tensile/ (gl-pd-07-14a). Sonuç: Yırtılma değeri yok; 'tear' yalnız muayene kusur listesinde (gl-pd-07-14a-00215). Pound değerleri bel bağcığı (400 lb kopma, -00058) ve barrel lock (3 lb tutma, -00059) için; ASTM D 5034 yalnız kaynakçada (-00036).",
+  "en_yakin_parcalar": [
+   "gl-pd-07-14a-00215",
+   "gl-pd-07-14a-00058"
+  ]
+ },
+ {
+  "id": "B004",
+  "kind": "bulunamadı",
+  "q": "Kahve makinesinin ısıtma plakası kaç derecede tutar?",
+  "zorluk": [
+   "bulunamadi",
+   "komsu_deger"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /°|degree|fahrenheit|celsius/ (mrcoffee-2003), /warm(er|ing) (plate|temperature)/. Sonuç: Derece/sıcaklık değeri yok. Yalnız ayarlanabilir ısıtma plakası ve 'Warmer Temperature Knob' anılıyor (mrcoffee-2003-00045, -00035), sayı yok.",
+  "en_yakin_parcalar": [
+   "mrcoffee-2003-00045"
+  ]
+ },
+ {
+  "id": "B005",
+  "kind": "bulunamadı",
+  "q": "Bosch freze tablasının tabla üst yüzeyi kaç inç x kaç inç?",
+  "zorluk": [
+   "bulunamadi",
+   "komsu_deger"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\d+(-\\d/\\d)?\\s*(″|\\\"|in\\.?|inch(es)?)\\s*(x|×|by)\\s*\\d+/, /\\d+\\s*(mm|cm)\\s*(x|×)/, /dimension|table size|tabletop/ (bosch-ra1171). Sonuç: Tabla ölçüsü yok; 'x' içeren ölçüler yalnız vida boyları (ör. bosch-ra1171-00092 '#10-32 x 1/2″'). 'Tabletop' geçen yerler montaj/ek halka anlatımı (bosch-ra1171-00139: 4 montaj deliği, 1/4″ vida).",
+  "en_yakin_parcalar": [
+   "bosch-ra1171-00139"
+  ]
+ },
+ {
+  "id": "B006",
+  "kind": "bulunamadı",
+  "q": "S-7300A deniz seviyesinden en fazla kaç metre yükseklikte (rakımda) kullanılabilir?",
+  "zorluk": [
+   "bulunamadi",
+   "komsu_deger"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /altitude|elevation|above sea/ (tüm korpus). Sonuç: Rakım hiçbir belgede yok. Komşu çevre koşulları var: ortam 5–35 °C, bağıl nem %45–85 (brother-s7300a-00007); rakım değil.",
+  "en_yakin_parcalar": [
+   "brother-s7300a-00007"
+  ]
+ },
+ {
+  "id": "B007",
+  "kind": "bulunamadı",
+  "q": "Terzilik kitabına göre bir ceketin dikimi toplam kaç saat sürer?",
+  "zorluk": [
+   "bulunamadi",
+   "komsu_deger"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bhours?\\b/, /(time|hours?|days?).{0,40}(complete|finish|make).{0,30}(coat|suit|garment)/ (strickland-1956). Sonuç: Toplam dikim süresi yok. Saat geçen yerler: yünün ıslak çarşafta en az 6 saat bekletilmesi (strickland-1956-00020) ve kâğıt manken yapımına 1+1 saat (strickland-1956-00026).",
+  "en_yakin_parcalar": [
+   "strickland-1956-00020",
+   "strickland-1956-00026"
+  ]
+ },
+ {
+  "id": "B008",
+  "kind": "bulunamadı",
+  "q": "Ceketin kemer köprüleri kaç adet ve kaç inç genişliğinde olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "baska_urunde_var"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /belt loop|beltloop/ (gl-pd-14-04a). Sonuç: Cekette kemer köprüsü yok. Pantolonda var: 7 adet, 3/8–1/2 inç (gl-pd-07-14a-00084): ceket için kullanılmamalı.",
+  "en_yakin_parcalar": [
+   "gl-pd-07-14a-00084"
+  ]
+ },
+ {
+  "id": "B009",
+  "kind": "bulunamadı",
+  "q": "Ceketin kargo cebindeki lastikli bağcık (drawcord) kaç inç çapında olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "baska_urunde_var"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /drawcord|draw cord|cord lock|elastic cord/, /cargo/ (gl-pd-14-04a). Sonuç: Cekette kargo cebi ve lastikli bağcık yok. Pantolonda 1/8 inç çaplı lastik kordon (gl-pd-07-14a-00057).",
+  "en_yakin_parcalar": [
+   "gl-pd-07-14a-00057"
+  ]
+ },
+ {
+  "id": "B010",
+  "kind": "bulunamadı",
+  "q": "Pantolonun kalem cebi kaç bölmeli ve kaç inç genişliğinde?",
+  "zorluk": [
+   "bulunamadi",
+   "baska_urunde_var"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /pencil/ (gl-pd-07-14a). Sonuç: Pantolonda kalem cebi yok. Cekette sol kolda 2 bölmeli, 2-3/8 (± 1/8) inç (gl-pd-14-04a-00101).",
+  "en_yakin_parcalar": [
+   "gl-pd-14-04a-00101"
+  ]
+ },
+ {
+  "id": "B011",
+  "kind": "bulunamadı",
+  "q": "Pantolondaki rütbe arması cırt bandı kaç inç olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "baska_urunde_var"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\brank\\b|rank patch|name tape|IFF/ (gl-pd-07-14a). Sonuç: Pantolonda rütbe arması yok ('U.S. Army' yalnız adreslerde). Cekette 2 x 2 inç cırt bant (gl-pd-14-04a-00113).",
+  "en_yakin_parcalar": [
+   "gl-pd-14-04a-00113"
+  ]
+ },
+ {
+  "id": "B012",
+  "kind": "bulunamadı",
+  "q": "S-7300A'da dijital baskı ayağı kaldırıcısının kaldırma yüksekliği nasıl ayarlanır?",
+  "zorluk": [
+   "bulunamadi",
+   "baska_urunde_var"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /digital foot lifter|foot lifter height|presser foot lifter height/ (brother-s7300a). Sonuç: S-7300A'da dijital ayak kaldırıcı yok. S-7300B'de -9 tipi için var (brother-s7300b-00024, ayar: -00194, s.43). S-7300A'da yalnız mekanik baskı ayağı yüksekliği (12-3) ve diz kaldırıcı ayarı var: soru o değil.",
+  "en_yakin_parcalar": [
+   "brother-s7300b-00194",
+   "brother-s7300b-00024"
+  ]
+ },
+ {
+  "id": "B013",
+  "kind": "bulunamadı",
+  "q": "S-7300A'da diz anahtarı (knee switch) nasıl bağlanır?",
+  "zorluk": [
+   "bulunamadi",
+   "baska_urunde_var"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /knee switch/ (brother-s7300a). Sonuç: S-7300A'da diz anahtarı yok (yalnız mekanik diz kaldırıcı). S-7300B'de -9 tipinde diz anahtarı ve potansiyometre konektörü var (brother-s7300b-00057, -00063).",
+  "en_yakin_parcalar": [
+   "brother-s7300b-00057",
+   "brother-s7300b-00063"
+  ]
+ },
+ {
+  "id": "B014",
+  "kind": "bulunamadı",
+  "q": "S-7300A'nın Premier tipinde iplik kesme ayarı nasıl yapılır?",
+  "zorluk": [
+   "bulunamadi",
+   "baska_urunde_var"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /premier/ (brother-s7300a). Sonuç: S-7300A'da 'Premier' tipi hiç geçmiyor. S-7300B'de '12-11-1. Thread trimming (Premier specifications)' bölümü var (brother-s7300b-00431..-00433, s.99–101).",
+  "en_yakin_parcalar": [
+   "brother-s7300b-00431"
+  ]
+ },
+ {
+  "id": "B015",
+  "kind": "bulunamadı",
+  "q": "Alev almaz (FR) ceketin kumaşında kömürleşme (char) uzunluğu en fazla kaç inç olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "baska_urunde_var"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bchar\\b|char length|after.?flame|after.?glow|6413|vertical flame/ (gl-pd-14-04a). Sonuç: Cekette alev testi değeri yok; FR kumaş yalnız GL-PD-07-12'ye atıfla (gl-pd-14-04a-00044). Pantolonda alternatif FR cep kumaşı için char ≤ 4,5 inç, after flame, after glow değerleri var (gl-pd-07-14a-00045): ceket için kullanılmamalı.",
+  "en_yakin_parcalar": [
+   "gl-pd-07-14a-00045",
+   "gl-pd-14-04a-00044"
+  ]
+ },
+ {
+  "id": "B016",
+  "kind": "bulunamadı",
+  "q": "Ceket şartnamesine göre AATCC 135 yıkama testinde kumaşın çekmesi en fazla yüzde kaç olabilir?",
+  "zorluk": [
+   "bulunamadi",
+   "terim_eslesir"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /shrink|dimensional change/, /shrink.{0,80}percent|percent.{0,80}shrink|\\d\\s*%.{0,40}shrink/ (gl-pd-14-04a). Sonuç: AATCC 135 yalnız kaynakçada (gl-pd-14-04a-00037) ve yıkama yöntemi olarak geçiyor; çekme yüzdesi yok. -00053: üretici çekmeyi telafi etmeli (değer yok); -00045: tela için MIL-C-44296'ya atıf.",
+  "en_yakin_parcalar": [
+   "gl-pd-14-04a-00037",
+   "gl-pd-14-04a-00053"
+  ]
+ },
+ {
+  "id": "B017",
+  "kind": "bulunamadı",
+  "q": "Pantolon şartnamesine göre ASTM D 3776 ile ölçülen ana (dış) kumaşın gramajı kaç olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "terim_eslesir"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /3776/, /oz\\.?\\s*[/l!]\\s*(sq|square)|weigh/ (gl-pd-07-14a). Sonuç: ASTM D 3776 pantolonda yalnız lastik kordon ağırlığı (0,20 oz/linear yd) için test yöntemi (gl-pd-07-14a-00240, -00057). Ana kumaş gramajı yok; yalnız alternatif cep kumaşları için 5.04 ve 7.0–8.0 oz/sq yd (-00044/-00045, Q09 kapsamı): ana kumaş değil.",
+  "en_yakin_parcalar": [
+   "gl-pd-07-14a-00240",
+   "gl-pd-07-14a-00044"
+  ]
+ },
+ {
+  "id": "B018",
+  "kind": "bulunamadı",
+  "q": "Ceket ana kumaşının ASTM D 5034 (grab) kopma mukavemeti en az kaç pound olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "terim_eslesir"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /5034|breaking strength|tear strength|lbf|tensile/ (gl-pd-14-04a). Sonuç: D 5034 cekette yalnız kaynakçada (gl-pd-14-04a-00040) ve düğme çekme/kopma testi yöntemi olarak (Tablo IX, -00351). Pound değeri yalnız fermuar için (100 lb, -00061). Ana kumaş kopma değeri yok.",
+  "en_yakin_parcalar": [
+   "gl-pd-14-04a-00351",
+   "gl-pd-14-04a-00061"
+  ]
+ },
+ {
+  "id": "B019",
+  "kind": "bulunamadı",
+  "q": "S-7300A'da masuraya kaç metre iplik sarılabilir?",
+  "zorluk": [
+   "bulunamadi",
+   "terim_eslesir"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /bobbin.*(capacity|meters|length of thread)|thread capacity/, /\\bm\\b|metre|meter/ (brother-s7300a). Sonuç: Kapasite metre değeri yok. Yalnız 'masura kapasitesinin en fazla %80'i' kuralı (brother-s7300a-00086). Alt iplik sayacının ayar aralığı 0,1–99,9 m (brother-s7300a-00238, s.48) ve 0,1 m adımı (-00239) sayaç ayarı, masura kapasitesi değil: model bunu cevap sanabilir (tuzak).",
+  "en_yakin_parcalar": [
+   "brother-s7300a-00086",
+   "brother-s7300a-00238"
+  ]
+ },
+ {
+  "id": "B020",
+  "kind": "bulunamadı",
+  "q": "Bosch freze tablasının vakum portuna bağlanacak süpürgenin emiş gücü en az kaç watt olmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "terim_eslesir"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /vacuum port|vacuum hose|hose|dust/, /watt|\\bW\\b|air ?flow|cfm/ (bosch-ra1171). Sonuç: Vakum portu var ama güç/debi değeri yok: yalnız 2-1/2″ ağızlı ıslak/kuru süpürge (bosch-ra1171-00161) ve kablonun yuvadan geçirilmesi (-00162).",
+  "en_yakin_parcalar": [
+   "bosch-ra1171-00161"
+  ]
+ },
+ {
+  "id": "B021",
+  "kind": "bulunamadı",
+  "q": "Kahve makinesindeki su filtresi diski kaç mikron gözenekli?",
+  "zorluk": [
+   "bulunamadi",
+   "terim_eslesir"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /micron|pore|activated|charcoal|carbon/ (mrcoffee-2003). Sonuç: Mikron değeri yok. Filtre 'karbon esaslı', klorun %97'sini alıyor ve ayda bir değişiyor (mrcoffee-2003-00057): gözenek boyutu değil.",
+  "en_yakin_parcalar": [
+   "mrcoffee-2003-00057"
+  ]
+ },
+ {
+  "id": "B022",
+  "kind": "bulunamadı",
+  "q": "Yuvarlak örme makinesinde iğneler sık kırılıyorsa ne yapılmalı?",
+  "zorluk": [
+   "bulunamadi",
+   "alan_disi_tekstil"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /knit|hosiery|stocking|sock/, /cylinder needle|latch needle|sinker/ (tüm korpus). Sonuç: Örme makinesi hiçbir belgede yok ('knit' yalnız Strickland'da ince örme tişört malzemesi, strickland-1956-00027). Granovsky'deki 'iğne' konuları tarak/iğne şeridi (tarak makinesi), örme değil.",
+  "en_yakin_parcalar": [
+   "strickland-1956-00027"
+  ]
+ },
+ {
+  "id": "B023",
+  "kind": "bulunamadı",
+  "q": "Granovsky kitabına göre jakar makinesinde kanca ve platin ayarı nasıl yapılır?",
+  "zorluk": [
+   "bulunamadi",
+   "alan_disi_tekstil"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /jacquard|dobby/ (granovsky-1986). Sonuç: Granovsky jakarı açıkça kapsam dışı bırakıyor: 'Jacquard shedding motions are not discussed in this book' (granovsky-1986-00622). Armür (dobby) anlatılıyor, jakar değil.",
+  "en_yakin_parcalar": [
+   "granovsky-1986-00622"
+  ]
+ },
+ {
+  "id": "B024",
+  "kind": "bulunamadı",
+  "q": "Jet boyama makinesinde kumaş düğümlenmesi nasıl önlenir?",
+  "zorluk": [
+   "bulunamadi",
+   "alan_disi_tekstil"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bdye|dyeing|bleach|stenter|tenter|mercer|finishing machine/ (tüm korpus). Sonuç: Boyama makinesi yok. 'dye' yalnız şartnamelerde kusur ('dye streak') ve kumaş boyama şartı (gl-pd-07-14a-00043); Granovsky PDF eşleşmeleri boşluksuz metinde kelime sınırı hatası.",
+  "en_yakin_parcalar": [
+   "gl-pd-07-14a-00043"
+  ]
+ },
+ {
+  "id": "B025",
+  "kind": "bulunamadı",
+  "q": "Ram (germe-kurutma) makinesinde iğneli zincir raylarının genişliği nasıl ayarlanır?",
+  "zorluk": [
+   "bulunamadi",
+   "alan_disi_tekstil"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /stenter|tenter|ram\\b|pin chain/ (tüm korpus). Sonuç: Ram makinesi hiçbir parçada yok (PDF boşluksuz eşleşmeleri kelime sınırı hatası, ör. 'p-ram'). Granovsky kapsamı: harman/hallaç, tarak, cer, fitil, ring/open-end iplik, çözgü, haşıl, dokuma (granovsky-1986-00002/-00003 içindekiler).",
+  "en_yakin_parcalar": [
+   "granovsky-1986-00003"
+  ]
+ },
+ {
+  "id": "B026",
+  "kind": "bulunamadı",
+  "q": "Tafting (tufting) halı makinesinde hav yüksekliği nasıl ayarlanır?",
+  "zorluk": [
+   "bulunamadi",
+   "alan_disi_tekstil"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /tuft|carpet|pile height|loop height/ (tüm korpus). Sonuç: Halı makinesi yok. 'tufts' yalnız Granovsky'de yarım tamburu temizleyen fırça kılı demetleri (granovsky-1986-00371); 'pile' Brother'da tüylü kumaşta ayak yüzdürme (brother-s7300a-00402).",
+  "en_yakin_parcalar": [
+   "granovsky-1986-00371"
+  ]
+ },
+ {
+  "id": "B027",
+  "kind": "bulunamadı",
+  "q": "Yalancı büküm (false-twist) tekstüre makinesinde kıvrım (crimp) nasıl ayarlanır?",
+  "zorluk": [
+   "bulunamadi",
+   "alan_disi_tekstil"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /textur|false.?twist|draw.?twist|crimp/ (tüm korpus). Sonuç: Tekstüre makinesi yok. 'textured' yalnız pantolon bağcığı ipliği (gl-pd-07-14a-00058); 'crimped' Granovsky'de silindir flanşının kıvrılması (granovsky-1986-00445).",
+  "en_yakin_parcalar": [
+   "gl-pd-07-14a-00058",
+   "granovsky-1986-00445"
+  ]
+ },
+ {
+  "id": "B028",
+  "kind": "bulunamadı",
+  "q": "İğneleme (needle-punch) nonwoven makinesinde iğne tahtası nasıl değiştirilir?",
+  "zorluk": [
+   "bulunamadi",
+   "alan_disi_tekstil"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /nonwoven|non-woven|needle.?punch|needle ?board|needle ?loom|felting/ (tüm korpus). Sonuç: Nonwoven/iğneleme makinesi hiçbir belgede yok.",
+  "en_yakin_parcalar": []
+ },
+ {
+  "id": "B029",
+  "kind": "bulunamadı",
+  "q": "How many minutes does it take to brew a full 12-cup pot on the Mr. Coffee coffeemaker?",
+  "zorluk": [
+   "bulunamadi",
+   "ingilizce"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /minutes?|brew(ing)? time/ (mrcoffee-2003). Sonuç: Demleme süresi yok. Dakika geçen yerler: temizleme döngüsü 45–60 dk ve 30 dk bekleme (mrcoffee-2003-00110), Fresh Brew zamanlayıcısı 30/60/90/120 dk (-00082), sürahi lekesi için 20 dk (-00116).",
+  "en_yakin_parcalar": [
+   "mrcoffee-2003-00110",
+   "mrcoffee-2003-00082"
+  ]
+ },
+ {
+  "id": "B030",
+  "kind": "bulunamadı",
+  "q": "How much does a pack of replacement water filter disks cost for the coffeemaker?",
+  "zorluk": [
+   "bulunamadi",
+   "ingilizce"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\$|price|cost/ (mrcoffee-2003). Sonuç: Fiyat yok; yalnız nereden alınacağı (perakendeci veya 1-800-MR-COFFEE, mrcoffee-2003-00142; A105 kapsamı).",
+  "en_yakin_parcalar": [
+   "mrcoffee-2003-00142"
+  ]
+ },
+ {
+  "id": "B031",
+  "kind": "bulunamadı",
+  "q": "What IP protection rating does the S-7300A control box have?",
+  "zorluk": [
+   "bulunamadi",
+   "ingilizce"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bIP ?\\d\\d|ingress|protection class/ (tüm korpus). Sonuç: IP koruma sınıfı hiçbir belgede yok ('protection Class 2' yalnız pantolon böcek koruma etiketi, gl-pd-07-14a-00125).",
+  "en_yakin_parcalar": [
+   "gl-pd-07-14a-00125"
+  ]
+ },
+ {
+  "id": "B032",
+  "kind": "bulunamadı",
+  "q": "What router speed in RPM should be used for large-diameter bits on the Bosch router table?",
+  "zorluk": [
+   "bulunamadi",
+   "ingilizce"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /rpm|r\\.p\\.m|/min|speed/, /(large|larger).{0,40}bit.{0,80}(speed|slow)|slower speed|reduce.{0,20}speed/ (bosch-ra1171). Sonuç: Devir önerisi yok; 'speed' ve '/min' yalnız sembol tablosunda (bosch-ra1171-00037, -00038). Büyük uç için yalnız 'ek halka deliğinden büyük uç kullanma' uyarısı (-00015).",
+  "en_yakin_parcalar": [
+   "bosch-ra1171-00038",
+   "bosch-ra1171-00015"
+  ]
+ },
+ {
+  "id": "B033",
+  "kind": "bulunamadı",
+  "q": "What is the shelf life of the permethrin-treated combat coat before it is issued?",
+  "zorluk": [
+   "bulunamadi",
+   "ingilizce"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /shelf.?life|storage life|expir/ (gl-pd-14-04a, gl-pd-07-14a). Sonuç: Raf ömrü yok. 'stored ... no longer than three (3) months' yalnız GC numune şişeleri için laboratuvar kuralı (gl-pd-14-04a-00380): giysi değil.",
+  "en_yakin_parcalar": [
+   "gl-pd-14-04a-00380"
+  ]
+ },
+ {
+  "id": "B034",
+  "kind": "bulunamadı",
+  "q": "What torque should the router mounting plate screws be tightened to on the Bosch router table?",
+  "zorluk": [
+   "bulunamadi",
+   "ingilizce"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /torque|in\\.?-?lbs?\\b|N·m|ft\\.?-?lbs?/ (bosch-ra1171). Sonuç: Tork değeri yok; 'torque' yalnız sembol tablosunda (bosch-ra1171-00039). Montaj adımları 'SECURELY tighten' der, değer vermez.",
+  "en_yakin_parcalar": [
+   "bosch-ra1171-00039"
+  ]
+ },
+ {
+  "id": "B035",
+  "kind": "bulunamadı",
+  "q": "S-7300A'da E07 hatası ne demek?",
+  "zorluk": [
+   "bulunamadi",
+   "kod_kural_disi"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /(?<![A-Za-z0-9])E[- ]?0*7(?![0-9])/ (tüm korpus; kod anahtarı E,7). Sonuç: S-7300A/B'de E07/E007 yok (Brother kodları E050–E890). Yalnız ayrı tutulan juki-mo6800s-00209'da 'E07 Lock error': kapsam dışı belgede geçen kod.",
+  "en_yakin_parcalar": [
+   "juki-mo6800s-00209"
+  ]
+ },
+ {
+  "id": "B036",
+  "kind": "bulunamadı",
+  "q": "S-7300B ekranında E14 çıktı, ne yapmalıyım?",
+  "zorluk": [
+   "bulunamadi",
+   "kod_kural_disi"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /(?<![A-Za-z0-9])E[- ]?0*14(?![0-9])/ (tüm korpus). Sonuç: S-7300A/B'de E14/E014 yok. Yalnız juki-mo6800s-00211'de (enkoder sinyali): kapsam dışı belgede geçen kod.",
+  "en_yakin_parcalar": [
+   "juki-mo6800s-00211"
+  ]
+ },
+ {
+  "id": "B037",
+  "kind": "bulunamadı",
+  "q": "S-7300A'da P54 parametresi neyi ayarlar?",
+  "zorluk": [
+   "bulunamadi",
+   "kod_kural_disi"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /(?<![A-Za-z0-9])P[- ]?54(?![0-9])/ (tüm korpus). Sonuç: Brother'da P54 yok (bellek anahtarları 001–599 numaralı, P önekli değil; 'P2/P3' yalnız konektör). Yalnız juki-mo6800s-00124..'de 'Model selection (P54)'.",
+  "en_yakin_parcalar": [
+   "juki-mo6800s-00124"
+  ]
+ },
+ {
+  "id": "B038",
+  "kind": "bulunamadı",
+  "q": "S-7300A ekranında 'Err-4' yazıyor, ne anlama geliyor?",
+  "zorluk": [
+   "bulunamadi",
+   "kod_kural_disi"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /\\bErr\\b|\\bErr[- .]?\\d/, /E[- ]?0*4(?![0-9])/ (tüm korpus). Sonuç: 'Err' biçimi hiçbir belgede yok; E4/E004 de yok. Biçim CODE_TOKEN_RE'ye ([A-Za-z]{1,3}\\d{2,5}) uymuyor (tek hane, tire).",
+  "en_yakin_parcalar": []
+ },
+ {
+  "id": "B039",
+  "kind": "bulunamadı",
+  "q": "S-7300B'de F12 hatası ne demek?",
+  "zorluk": [
+   "bulunamadi",
+   "kod_kural_disi"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /(?<![A-Za-z0-9])F[- ]?0*12(?![0-9])/ (tüm korpus). Sonuç: F önekli hata kodu hiçbir belgede yok (Brother yalnız E kodu kullanıyor).",
+  "en_yakin_parcalar": []
+ },
+ {
+  "id": "B040",
+  "kind": "bulunamadı",
+  "q": "S-7300A'da E-4096 hata kodu çıktı, sebebi ne?",
+  "zorluk": [
+   "bulunamadi",
+   "kod_kural_disi"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_docs": [],
+  "expect_pages": [],
+  "expect_in_answer": [],
+  "expect_not_found": true,
+  "nf_kontrol": "chunks.jsonl (tüm korpus, juki dahil) ve PDF metin katmanında (harf aralıklı Granovsky için boşluksuz metinde de) arandı 2026-11-05. Aranan: /E[- ]?4096/ (tüm korpus); Brother kod listesi E050–E890. Sonuç: Dört haneli E kodu hiçbir belgede yok; Brother listesi E050–E890 arası üç haneli. Tireli biçim CODE_TOKEN_RE'ye birebir uymuyor.",
+  "en_yakin_parcalar": []
+ },
+ {
+  "id": "C001",
+  "kind": "netleştirme",
+  "q": "Diz kaldırıcıyla baskı ayağı en fazla kaç mm kalkar?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "brother-s7300a",
+   "brother-s7300b"
+  ],
+  "expect_pages": [
+   12
+  ],
+  "kabul": [
+   {
+    "doc": "brother-s7300a",
+    "pages": [
+     12
+    ],
+    "chunk_id": "brother-s7300a-00035"
+   },
+   {
+    "doc": "brother-s7300b",
+    "pages": [
+     12
+    ],
+    "chunk_id": "brother-s7300b-00032"
+   }
+  ],
+  "olasi_urunler": [
+   "brother-s7300a",
+   "brother-s7300b"
+  ],
+  "cevap": "S-7300A: 16 mm (s.12) · S-7300B: 13 mm (s.12): değer modele göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "brother-s7300a",
+    "chunk_id": "brother-s7300a-00035",
+    "pages": [
+     12
+    ],
+    "alinti": "Presser foot height | Lifting lever | Knee lifter | 6mm | 16mm"
+   },
+   {
+    "doc": "brother-s7300b",
+    "chunk_id": "brother-s7300b-00032",
+    "pages": [
+     12
+    ],
+    "alinti": "Presser foot height | Lifting lever | Knee lifter | 6mm | 13mm"
+   }
+  ],
+  "kanit_notu": "kaldırma kolu iki modelde 6 mm; ayar metni de 16/13 mm (A -00058 s.17, B -00056 s.17)"
+ },
+ {
+  "id": "C002",
+  "kind": "netleştirme",
+  "q": "Dikiş makinesi yaklaşık kaç kilogram ağırlığında?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "brother-s7300a",
+   "brother-s7300b"
+  ],
+  "expect_pages": [
+   4
+  ],
+  "kabul": [
+   {
+    "doc": "brother-s7300a",
+    "pages": [
+     4
+    ],
+    "chunk_id": "brother-s7300a-00006"
+   },
+   {
+    "doc": "brother-s7300b",
+    "pages": [
+     4
+    ],
+    "chunk_id": "brother-s7300b-00006"
+   }
+  ],
+  "olasi_urunler": [
+   "brother-s7300a",
+   "brother-s7300b"
+  ],
+  "cevap": "S-7300A: 34,5 kg (s.4) · S-7300B: 39 kg (s.4): değer modele göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "brother-s7300a",
+    "chunk_id": "brother-s7300a-00006",
+    "pages": [
+     4
+    ],
+    "alinti": "The sewing machine weighs approximately 34.5 kg (76lb)."
+   },
+   {
+    "doc": "brother-s7300b",
+    "chunk_id": "brother-s7300b-00006",
+    "pages": [
+     4
+    ],
+    "alinti": "The sewing machine weighs approximately 39 kg (86lb)."
+   }
+  ],
+  "kanit_notu": "juki de korpusta: kapsam S-7300 ailesi değilse olası ürün listesi daha geniş çıkabilir"
+ },
+ {
+  "id": "C003",
+  "kind": "netleştirme",
+  "q": "Besleme dişlisi yörüngesi 1 seçiliyken 5,0 mm dikiş adımında dikiş hızı en fazla kaç olur?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "brother-s7300a",
+   "brother-s7300b"
+  ],
+  "expect_pages": [
+   76,
+   78
+  ],
+  "kabul": [
+   {
+    "doc": "brother-s7300a",
+    "pages": [
+     76
+    ],
+    "chunk_id": "brother-s7300a-00354"
+   },
+   {
+    "doc": "brother-s7300b",
+    "pages": [
+     78
+    ],
+    "chunk_id": "brother-s7300b-00374"
+   }
+  ],
+  "olasi_urunler": [
+   "brother-s7300a",
+   "brother-s7300b"
+  ],
+  "cevap": "S-7300A: 2000 sti/min (s.76) · S-7300B: -3: 2500, -5: 3000 sti/min (s.78): değer modele göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "brother-s7300a",
+    "chunk_id": "brother-s7300a-00354",
+    "pages": [
+     76
+    ],
+    "alinti": "4000sti/min / 3.0 3500sti/min / 4.0 2000sti/min / 5.0"
+   },
+   {
+    "doc": "brother-s7300b",
+    "chunk_id": "brother-s7300b-00374",
+    "pages": [
+     78
+    ],
+    "alinti": "-3 specifications 5000sti/min / 2.0 4000sti/min / 3.0 3500sti/min / 4.0 2500sti/min / 5.0 -5 specifications 4500sti/min / 2.5 4000sti/min / 3.0 3500sti/min / 4.0 3000sti/min / 5.0"
+   }
+  ],
+  "kanit_notu": "tablo satırı; 'yörünge 2' satırında da aynı fark var (A -00355, B -00375)"
+ },
+ {
+  "id": "C004",
+  "kind": "netleştirme",
+  "q": "Overlok (overedge) ya da ön kıvırma dikişlerinde inç başına kaç dikiş olmalı?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "expect_pages": [
+   19,
+   22,
+   23
+  ],
+  "kabul": [
+   {
+    "doc": "gl-pd-14-04a",
+    "pages": [
+     22,
+     23
+    ],
+    "chunk_id": "gl-pd-14-04a-00178"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "pages": [
+     19
+    ],
+    "chunk_id": "gl-pd-07-14a-00141"
+   }
+  ],
+  "olasi_urunler": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "cevap": "Ceket: 10 ± 2 (s.22–23) · Pantolon: 6–10 (s.19): değer ürüne göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "gl-pd-14-04a",
+    "chunk_id": "gl-pd-14-04a-00178",
+    "pages": [
+     22,
+     23
+    ],
+    "alinti": "Overedge or pre-hemming shall be 10 (± 2) stitches per inch."
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "chunk_id": "gl-pd-07-14a-00141",
+    "pages": [
+     19
+    ],
+    "alinti": "Overedge or pre-hemming shall be 6-10 stitches per inch."
+   }
+  ],
+  "kanit_notu": "Q11/Q12 aynı değerleri tek ürünlü soruyor; netleştirme sürümü yok"
+ },
+ {
+  "id": "C005",
+  "kind": "netleştirme",
+  "q": "Permetrinli giysilerde 20 yıkamadan sonra ısırma koruması en az yüzde kaç olmalı?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "expect_pages": [
+   6,
+   7
+  ],
+  "kabul": [
+   {
+    "doc": "gl-pd-14-04a",
+    "pages": [
+     7
+    ],
+    "chunk_id": "gl-pd-14-04a-00057"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "pages": [
+     6
+    ],
+    "chunk_id": "gl-pd-07-14a-00053"
+   }
+  ],
+  "olasi_urunler": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "cevap": "Ceket: Type I ≥%90, Type II/III ≥%80 (s.7) · Pantolon: ≥%90 (s.6): değer ürüne göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "gl-pd-14-04a",
+    "chunk_id": "gl-pd-14-04a-00057",
+    "pages": [
+     7
+    ],
+    "alinti": "After 20 launderings | Type I, Class 2: >/= 90% | Type II, Class 2: >/= 80% | Type III, Class 2: >/= 80%"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "chunk_id": "gl-pd-07-14a-00053",
+    "pages": [
+     6
+    ],
+    "alinti": "Condition: After 20 launderings | % Bite Protection: >/=90%"
+   }
+  ],
+  "kanit_notu": "ceket Type I ile pantolon aynı (%90); Type II'de fark var (ceket %80, pantolon %90)"
+ },
+ {
+  "id": "C006",
+  "kind": "netleştirme",
+  "q": "Permetrin işlemli giyside başlangıçta permetrin miktarı kaç mg/cm² aralığında olmalı?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "expect_pages": [
+   6
+  ],
+  "kabul": [
+   {
+    "doc": "gl-pd-14-04a",
+    "pages": [
+     6
+    ],
+    "chunk_id": "gl-pd-14-04a-00050"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "pages": [
+     6
+    ],
+    "chunk_id": "gl-pd-07-14a-00049"
+   }
+  ],
+  "olasi_urunler": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "cevap": "Ceket: Type I 0,095–0,135; Type II 0,087–0,130; Type III 0,095–0,140 (s.6) · Pantolon: 0,087–0,130 (s.6): değer ürüne göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "gl-pd-14-04a",
+    "chunk_id": "gl-pd-14-04a-00050",
+    "pages": [
+     6
+    ],
+    "alinti": "Initial | Type I, Class 2 mg/cm 2: 0.095 | Type I, Class 2 mg/cm 2: 0.135 | Type II, Class 2 mg/cm 2: 0.087 | Type II, Class 2 mg/cm 2: 0.130 | Type III, Class 2 mg/cm 2: 0.095 | Type III, Class 2 mg/cm 2: 0.140"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "chunk_id": "gl-pd-07-14a-00049",
+    "pages": [
+     6
+    ],
+    "alinti": "Initial | Min: mg/cm2: 0.087 | Max: mg/cm2: 0.130"
+   }
+  ],
+  "kanit_notu": "ceket Type II = pantolon; Type I/III farklı. 20 yıkama sonrası alt sınır (0,025) iki belgede aynı (A029)"
+ },
+ {
+  "id": "C007",
+  "kind": "netleştirme",
+  "q": "İliklerde ilik örgüsü (purl) giysinin hangi yüzünde olmalı?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "expect_pages": [
+   11
+  ],
+  "kabul": [
+   {
+    "doc": "gl-pd-14-04a",
+    "pages": [
+     11
+    ],
+    "chunk_id": "gl-pd-14-04a-00103"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "pages": [
+     11
+    ],
+    "chunk_id": "gl-pd-07-14a-00092"
+   }
+  ],
+  "olasi_urunler": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "cevap": "Ceket: iç yüz (s.11) · Pantolon: dış yüz (s.11): değer ürüne göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "gl-pd-14-04a",
+    "chunk_id": "gl-pd-14-04a-00103",
+    "pages": [
+     11
+    ],
+    "alinti": "The purling shall be on the inside surface."
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "chunk_id": "gl-pd-07-14a-00092",
+    "pages": [
+     11
+    ],
+    "alinti": "The purling shall be on the outside surface."
+   }
+  ],
+  "kanit_notu": "A140 ile aynı öğe (ilik) ama farklı özellik; kesim boyu 3/4–7/8 inç iki belgede aynı"
+ },
+ {
+  "id": "C008",
+  "kind": "netleştirme",
+  "q": "Yan dikişlerde LSc-2 çift bindirme dikişinin aralığı (gauge) ne olmalı?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "expect_pages": [
+   20,
+   23
+  ],
+  "kabul": [
+   {
+    "doc": "gl-pd-14-04a",
+    "pages": [
+     23
+    ],
+    "chunk_id": "gl-pd-14-04a-00182"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "pages": [
+     20
+    ],
+    "chunk_id": "gl-pd-07-14a-00145"
+   }
+  ],
+  "olasi_urunler": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "cevap": "Ceket: 3/16–1/4 inç (s.23) · Pantolon: 3/16–9/32 inç (s.20): değer ürüne göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "gl-pd-14-04a",
+    "chunk_id": "gl-pd-14-04a-00182",
+    "pages": [
+     23
+    ],
+    "alinti": "Gauge: 3/16 to 1/4-inch gauge (double lap seam)"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "chunk_id": "gl-pd-07-14a-00145",
+    "pages": [
+     20
+    ],
+    "alinti": "Gage: 3116 to 9/32 inch gauge (double lap seam)"
+   }
+  ],
+  "kanit_notu": "pantolon metninde OCR: '3116' = 3/16"
+ },
+ {
+  "id": "C009",
+  "kind": "netleştirme",
+  "q": "Alt kenar (etek ya da paça ucu) baskısı kaç inç genişliğinde olmalı?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "expect_pages": [
+   20,
+   24
+  ],
+  "kabul": [
+   {
+    "doc": "gl-pd-14-04a",
+    "pages": [
+     24
+    ],
+    "chunk_id": "gl-pd-14-04a-00197"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "pages": [
+     20
+    ],
+    "chunk_id": "gl-pd-07-14a-00153"
+   }
+  ],
+  "olasi_urunler": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "cevap": "Ceket: 1/2–3/4 inç (çift kıvrım) (s.24) · Pantolon: 1 inç (s.20): değer ürüne göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "gl-pd-14-04a",
+    "chunk_id": "gl-pd-14-04a-00197",
+    "pages": [
+     24
+    ],
+    "alinti": "Gauge: 1/2 to 3/4-inch wide hem, double turned clean finished"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "chunk_id": "gl-pd-07-14a-00153",
+    "pages": [
+     20
+    ],
+    "alinti": "Gage: 1 inch wide hem"
+   }
+  ],
+  "kanit_notu": "dikiş tipi iki belgede EFb-1 / 301"
+ },
+ {
+  "id": "C010",
+  "kind": "netleştirme",
+  "q": "FR tanıtım işareti (FR identification marker) giysinin neresine dikilir?",
+  "zorluk": [
+   "netlestirme",
+   "deger_farkli"
+  ],
+  "dogrulandi": false,
+  "note": "taslak: model önerisi, korpus kontrolü yapıldı, kullanıcı onayı bekliyor",
+  "expect_clarify": true,
+  "expect_docs": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "expect_pages": [
+   20,
+   25
+  ],
+  "kabul": [
+   {
+    "doc": "gl-pd-14-04a",
+    "pages": [
+     25
+    ],
+    "chunk_id": "gl-pd-14-04a-00207"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "pages": [
+     20
+    ],
+    "chunk_id": "gl-pd-07-14a-00151"
+   }
+  ],
+  "olasi_urunler": [
+   "gl-pd-14-04a",
+   "gl-pd-07-14a"
+  ],
+  "cevap": "Ceket: sol kol manşeti (s.25) · Pantolon: sol kargo cebi kapağı (s.20): değer ürüne göre değişiyor",
+  "expect_in_answer": [],
+  "netlestirme_sinifi": "deger_farkli",
+  "kanit": [
+   {
+    "doc": "gl-pd-14-04a",
+    "chunk_id": "gl-pd-14-04a-00207",
+    "pages": [
+     25
+    ],
+    "alinti": "FR identification marker to left sleeve cuff, visible from outside (Types II and III only)"
+   },
+   {
+    "doc": "gl-pd-07-14a",
+    "chunk_id": "gl-pd-07-14a-00151",
+    "pages": [
+     20
+    ],
+    "alinti": "FR identification marker to left cargo pocket flap (Type II trouser only)"
+   }
+  ],
+  "kanit_notu": "A004 ceket için tek ürünlü soruyor; netleştirme sürümü yok"
+ }
+]
