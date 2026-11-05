@@ -1,0 +1,3657 @@
+{
+ "rows": [
+  {
+   "durum": "a",
+   "qid": "questions:Q07",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300b",
+    "brother-s7300a"
+   ],
+   "secenek_etiketleri": [
+    "S-7300B düz dikiş makinesi",
+    "S-7300A düz dikiş makinesi"
+   ],
+   "degerlendirme": "eksik_yanlis",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "questions:Q17",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300b",
+    "brother-s7300a"
+   ],
+   "secenek_etiketleri": [
+    "S-7300B düz dikiş makinesi",
+    "S-7300A düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "questions_ek:Q30",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_etiketleri": [
+    "S-7300A düz dikiş makinesi",
+    "S-7300B düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A131",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_etiketleri": [
+    "S-7300A düz dikiş makinesi",
+    "S-7300B düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A132",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A133",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300b",
+    "brother-s7300a"
+   ],
+   "secenek_etiketleri": [
+    "S-7300B düz dikiş makinesi",
+    "S-7300A düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A134",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_etiketleri": [
+    "S-7300A düz dikiş makinesi",
+    "S-7300B düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A135",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi makine modeli için bilgi istiyorsunuz? (S-7300A veya S-7300B)",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A136",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300b",
+    "brother-s7300a"
+   ],
+   "secenek_etiketleri": [
+    "S-7300B düz dikiş makinesi",
+    "S-7300A düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A137",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300b",
+    "brother-s7300a"
+   ],
+   "secenek_etiketleri": [
+    "S-7300B düz dikiş makinesi",
+    "S-7300A düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A138",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_etiketleri": [
+    "S-7300A düz dikiş makinesi",
+    "S-7300B düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A139",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_etiketleri": [
+    "S-7300A düz dikiş makinesi",
+    "S-7300B düz dikiş makinesi"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Bilgi birden fazla modelin kılavuzunda var; ayar ve değerler modele göre değişebilir. Hangi model için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A140",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A141",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A142",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A143",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A144",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "a",
+   "qid": "aday_sorular:A145",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Bu değer tabloda satıra göre değişiyor (Bar-tack or back-tack placement). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "questions:Q07",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "questions:Q17",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi S-7300 modelinin hızını öğrenmek istiyorsunuz? S-7300A için hız değerleri farklılık gösterebilir.",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "questions_ek:Q30",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A131",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A132",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A133",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi makine modeli için bilgi istiyorsunuz? S-7300A mı yoksa S-7300B mi?",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A134",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A135",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A136",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi makine modeli için topraklama vidası torkunu öğrenmek istiyorsunuz?",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A137",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A138",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi makine modeli için bilgi istiyorsunuz?",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A139",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A140",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A141",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A142",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A143",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A144",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "b",
+   "qid": "aday_sorular:A145",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Bu değer tabloda satıra göre değişiyor (Bar-tack or back-tack placement). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "questions:Q07",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "questions:Q17",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi S-7300 modelinin hızını öğrenmek istiyorsunuz? S-7300A için hız değerleri farklılık gösterebilir.",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "questions_ek:Q30",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A131",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A132",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A133",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi makine modeli için bilgi istiyorsunuz?",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A134",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A135",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A136",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi makine modeli için bilgi istiyorsunuz?",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A137",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi makine modeli için bilgi istiyorsunuz? S-7300A mı yoksa S-7300B mi?",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A138",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Hangi makine modeli için bilgi istiyorsunuz? S-7300A için 6 mm, S-7300B için kaynaklarda 5 mm ve 6 mm değerleri bulunmaktadır.",
+   "soru": null,
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A139",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A140",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A141",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A142",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A143",
+   "beklenen_netlestirme": true,
+   "soruldu": true,
+   "model_cagrildi": false,
+   "secenekler": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_etiketleri": [
+    "Ceket",
+    "Pantolon"
+   ],
+   "degerlendirme": "dogru",
+   "atlanan": null,
+   "soru": "Soru birden fazla ürünün şartnamesine uyuyor ve değerler ürüne göre değişebilir. Hangi ürün için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A144",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "c",
+   "qid": "aday_sorular:A145",
+   "beklenen_netlestirme": true,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Bu değer tabloda satıra göre değişiyor (Bar-tack or back-tack placement). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q01",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q02",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q03",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q04",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Bu değer tabloda satıra göre değişiyor (Possible cause). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q05",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": "Dikiş atlama sorunu tam olarak hangi aşamada gerçekleşiyor? (0470M dikişi sırasında mı, dikiş başlangıcında mı, yoksa dikiş sonunda mı?)",
+   "soru": "Bu değer tabloda satıra göre değişiyor (Possible cause). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q06",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q08",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": false,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": null,
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q09",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q10",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q11",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q12",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q13",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q14",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q15",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q16",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions:Q18",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": false,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": null,
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q19",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q20",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q21",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q22",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q23",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q24",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q25",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q26",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Hangi pantolon tipi için bilgi istiyorsunuz? (Type I veya Type II)",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q27",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q28",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q29",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q31",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "questions_ek:Q32",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G1",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G2",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G3",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G4",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G5",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:N1",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G6",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G7",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G8",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:G9",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:N2",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "sekil_sorular:N3",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A001",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A002",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A003",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A004",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A005",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A006",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A007",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Bu değer tabloda satıra göre değişiyor (Seam placement). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A008",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A009",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A010",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A011",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A012",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A013",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A014",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A015",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A016",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A017",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A018",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A019",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A020",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A021",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A022",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A023",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A024",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A025",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A026",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A027",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A028",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A029",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Bu değer tabloda sütuna göre değişiyor (After 20 launderings). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A030",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A031",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A032",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A033",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Hangi pantolon tipi için etiket yerleşimini öğrenmek istiyorsunuz? (Class 2 pantolon veya Type II alev dirençli pantolon)",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A034",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A035",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A036",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A037",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A038",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A039",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A040",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A041",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A042",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A043",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A044",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A045",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A046",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A047",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A048",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A049",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A050",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A051",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A052",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A053",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A054",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A055",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A056",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A057",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A058",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A059",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A060",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A061",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A062",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A063",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A064",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A065",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A066",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A067",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A068",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A069",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A070",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A071",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Bu değer tabloda satıra göre değişiyor (Setting details). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A072",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A073",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A074",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A075",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "Bu değer tabloda satıra göre değişiyor (Result). Hangisi için?",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A076",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A077",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A078",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A079",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A080",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A081",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A082",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A083",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A084",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A085",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A086",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A087",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "strickland-1956"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A088",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A089",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A090",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A091",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A092",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A093",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A094",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A095",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A096",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A097",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A098",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A099",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A100",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A101",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A102",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A103",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A104",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A105",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A106",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A107",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A108",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A109",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A110",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A111",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A112",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A113",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A114",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A115",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A116",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A117",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": false,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": null,
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A118",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A119",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": false,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": null,
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A120",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A121",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A122",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A123",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A124",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A125",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A126",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A127",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A128",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A129",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A130",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": []
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A146",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A147",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-14-04a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A148",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A149",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A150",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "mrcoffee-2003"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A151",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "bosch-ra1171"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A152",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "granovsky-1986"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A153",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A154",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "gl-pd-07-14a"
+   ]
+  },
+  {
+   "durum": "d",
+   "qid": "aday_sorular:A155",
+   "beklenen_netlestirme": false,
+   "soruldu": false,
+   "model_cagrildi": true,
+   "secenekler": [],
+   "secenek_etiketleri": [],
+   "degerlendirme": null,
+   "atlanan": null,
+   "soru": "",
+   "beklenen_dokumanlar": [
+    "brother-s7300b"
+   ]
+  }
+ ],
+ "cost_usd": 0.05012683999999995,
+ "calls": 212
+}

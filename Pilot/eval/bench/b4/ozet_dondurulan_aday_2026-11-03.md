@@ -380,3 +380,4 @@ Okuma:
 - **Kuyruk DeepInfra'da sık ama yalnız orada değil:** DeepInfra'da Qwen3.6 öğleden sonra (p95 10,7 sn) ve Gemma 3 çeviride (p50 2+ sn) yavaş; Gemma 4 aynı sağlayıcıda sabah iyi, öğleden sonra p95 1,9 sn. Mistral, Azure ve NextBit bütün ölçümlerde kararlı.
 - **Qwen3-8B embed kuyruğu sağlayıcıya bağlı değil:** DeepInfra ve Nebius'ta p95 aynı (~10,7 sn), ikisinde de çağrıların yaklaşık yarısı 1,5 sn'yi aşıyor. O saatte model hizmeti genel olarak yavaştı. Sağlayıcı sabitleme tek başına çözmez (Adım 2 planı §19).
 - Sınır: Her model çoğunlukla tek sağlayıcıda ölçüldü; aynı modelin iki sağlayıcıda iç içe ölçüldüğü tek yer çeviri (Gemma 3: DeepInfra / NextBit, sağlayıcı etkisi ~2,7 kat p50).
+- **Qwen sabitlenmiş ölçüm (15:32):** DeepInfra / Nebius / SiliconFlow p95 4,3 / 5,4 / 12,2 sn; hiçbiri 1,5 sn'yi tutmuyor ([qwen_saglayici_2026-11-05.md](qwen_saglayici_2026-11-05.md); Adım 2 planı §19).

@@ -179,6 +179,22 @@ Tahmin, bugünkü uçtan uca ölçümün token sayılarından: giriş medyanı 2
 - **Tahmini maliyet:** (a)–(c) 3 × 18 = 54 çağrı + (d) ~181 çağrı = ~235 çağrı × 0,00024 USD ≈ **0,06 USD** (Gemma 4, DeepInfra fiyatıyla).
 - **Karar kuralı: (c) tabanı (a) yakalıyorsa** (soruldu ve seçenekler doğru en az aynı) ve (d)'de gereksiz netleştirme artmıyorsa `BRAND_ALIASES` ve S-7300 grubu silinir.
 
+**Sonuç (koşuldu 2026-11-05 15:40–15:55; Gemma 4, DeepInfra; 212 çağrı, 0,050 USD; [netlestirme_modelle_2026-11-05.md](netlestirme_modelle_2026-11-05.md)):**
+
+| Durum | netleştirme soruldu (18) | seçenekler doğru | model sordu ama gösterilmedi |
+|---|---|---|---|
+| (a) BRAND_ALIASES açık (taban) | 13 | 12 (Q07 yanlış: S-7300A/B) | 1 |
+| (b) kurallar kapalı | 3 | 3 | 4 |
+| (c) kapalı + seçenek ürün/doküman adıyla | 3 | 3 | 5 |
+| (d) netleştirme beklenmeyen 181 soru, (c) ile | gereksiz netleştirme **0** | – | 1 |
+
+- **(c) tabanı yakalamıyor (3/18'e karşı 13/18): kurala göre `BRAND_ALIASES` ve S-7300 grubu silinmez.**
+- Tabandaki 13'ün çoğu modelden değil kural katmanından geliyor (aile → model çağrılmadan "hangi model?").
+- **Neden (c) işe yaramadı:** Gemma 4, S-7300 sorularında doğru soruyu soruyor ("Hangi makine modeli için? S-7300A mı yoksa S-7300B mi?"). Ama seçenekleri soru metnine yazıp `netlestirme_secenekleri`'ni boş bırakıyor ve bir cevap da yazıyor. Pipeline bu durumda netleştirmeyi gösterilmeden atlıyor (`asks and len(options) < 2`). Süzülecek seçenek olmadığı için (c) etkisiz.
+- Kalan 10 soruda model hiç sormuyor; iki ürünün değerini birlikte ya da birini veriyor.
+- **Olası genel düzeltme (e), ölçülmedi:** Model netleştirme soruyor ama 2'den az seçenek kalıyorsa ve kaynaklarda ≥ 2 farklı doküman varsa, bulunan dokümanlar düğme olarak sunulsun. Bu, cevapsız netleştirme yolunun bugünkü davranışı.
+- Kayıtlardan tahmin: (c)+(e) en fazla 8/18. Tabana yine yetmiyor; model sormadığı 10 soru için istem ya da şema (C'de ayrı netleştirme öğesi) gerekir. (e) ve şema etkisi nihai turda ölçülür (§15), BRAND_ALIASES o zamana kadar bayrakla kalır.
+
 **"Ürün" alanı nereden geliyor:**
 - Bugün kayıtta elle yazılı (`pilot/registry.py`, `DocMeta(..., product="Ceket", ...)`).
 - Gerçek yüklemede otomatik çıkarma güvenilir değil:
@@ -502,9 +518,20 @@ Aşırı uyum notu korunur: arama ayarları bu setle seçildi; görülmemiş dok
 
 **Yeni sınır önerisi: nihai tur için ayrı 3,0 USD** (GPT-5.4 referansı olmadan). Toplam Adım 2 harcaması ~4,2 USD olur. GPT-5.4 referansı istenirse sınır 5,5 USD. Koşu, sınırı geçecekse durur ve haber verir (bugünkü kural).
 
+**Karar (2026-11-05 akşam):** bütçe **3,0 USD**, referans **Gemma 4 31B**, GPT-5.4 yok.
+
+**Ön koşullar (koşmadan önce bitmeli):**
+1. Beklenen değer eşleştiricisi: **tamam** (`bench.common.value_in`, testli; ilk tur yeniden puanlandı).
+2. `clarify_options` düzeltmesi: ölçüldü (§11), ürün adı eşleştirmesi (c) **etkisiz**. Önerilen yerine geçecek genel düzeltme (e) ölçüm aracına eklenecek: model soruyor ama < 2 seçenek varsa bulunan dokümanlar düğme. **Karar bekliyor.**
+3. Şema C ölçüm aracında: **yapılmadı** (ANSWER_SCHEMA_C, cümle bazlı verify, akışta ilk doğrulanmış cümle zamanı).
+
+Üçü hazır olunca plan ve kesin maliyetle onayınız istenecek.
+
 ## 19. Not: Qwen3-8B embed için sağlayıcı sabitleme bir seçenek mi? (kayıtlardan, 2026-11-05)
 
 B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfra (84) ve Nebius (72) arasında bölündü; **ikisinde de p95 ~10,7 sn** ve çağrıların ~yarısı 1,5 sn'nin üstünde. 429 yok.
 - **Sonuç: Sağlayıcı sabitleme tek başına bir çözüm değil.** O ölçümde kuyruk iki ana sağlayıcıda birlikteydi; sabitlemek yalnız hangi kuyruğu beklediğimizi seçer.
 - Sabitleme ancak şu koşulda seçenek olur: Kısa bir iç içe ölçümde (DeepInfra / Nebius / SiliconFlow, aynı dakikalarda, iki farklı saatte, ~30 çağrı × 3 sağlayıcı × 2 saat ≈ 0,001 USD) bir sağlayıcı p95 ≤ 1,5 sn'yi iki saatte de tutarsa. 3 Kasım kuyruk ölçümü sağlayıcı kaydetmediği için bugün bu ayrım yapılamıyor.
 - Bu ölçüm koşulmadı (onayınızla). Sonuç olumsuzsa Qwen'i sunucuya taşıma (B4) ya da mevcut koruma (1,5 sn yedek yol + devre kesici) yolu kalır.
+
+**Ölçüm, tur p1 (2026-11-05 15:32; 30 sorgu × 3 sağlayıcı, iç içe, sabitlenmiş; 0,00004 USD; [qwen_saglayici_2026-11-05.md](../b4/qwen_saglayici_2026-11-05.md)):** DeepInfra p50 1,94 / p95 4,33 sn, Nebius 2,07 / 5,43 sn, SiliconFlow 2,90 / 12,2 sn; üçünde de çağrıların ~2/3'ü 1,5 sn'nin üstünde, 429 yok. **Bu saatte hiçbir sağlayıcı ölçütü tutmuyor: sabitleme seçenek değil.** İkinci tur başka bir saatte (bir sonraki oturum); o da tutmazsa Qwen'i sunucuya taşıma ya da yalnız koruma (1,5 sn yedek yol + devre kesici) kalır.
