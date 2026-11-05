@@ -9,6 +9,7 @@ import time
 import warnings
 from pathlib import Path
 
+from bench.common import value_in
 from pilot.pipeline import soru_cevapla
 
 warnings.filterwarnings("ignore")
@@ -33,7 +34,7 @@ def judge(item: dict, res) -> dict:
     out["source_hit"] = any((d, p) in pages for d in item["expect_docs"] for p in item["expect_pages"])
     out["wrong_doc_in_sources"] = bool(set(item.get("forbid_docs", [])) & docs)
     text = ans.get("cevap", "") + " " + res.speech_text
-    out["value_ok"] = all(s in text for s in item["expect_in_answer"]) if item["expect_in_answer"] else None
+    out["value_ok"] = all(value_in(s, text) for s in item["expect_in_answer"]) if item["expect_in_answer"] else None
     out["correct"] = (out["source_hit"] and not out["refused"] and out["value_ok"] is not False
                       and not out["wrong_doc_in_sources"] and out["status"] != "failed")
     return out

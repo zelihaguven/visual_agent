@@ -348,7 +348,7 @@ Okuma:
   - Türlere bölünce sorular az (arıza 8, şekil 14); karar için onaylı set gerekiyor.
 - Çeviriler çoğunlukla farklı: 179 sorudan 16'sı Gemma 3 DeepInfra ile birebir aynı. Aynı Gemma 3 NextBit'te bile 44'ü aynı; sağlayıcılar arası nicemleme/çıktı farkı. Gemma 4 terimleri daha iyi koruyor (Q13: "chuck" yerine "jacket").
 
-> **Set onayı (2026-11-05 akşam):** Aday soru setinin 105/155 sorusu otomatik tutarlılık kontrolüyle onaylandı; 50 şüpheli soru onaysız ([aday_sorular.md](../../aday_sorular.md)). Bu rapordaki "geçici, onaysız set" uyarıları o tarihten önceki ölçümler içindir; sayılar onaydan sonra yeniden hesaplanmadı. **Aşırı uyum notu geçerli:** aday ayarları bu setle seçildi; görülmemiş doküman testi JUKI.
+> **Set onayı (2026-11-05 akşam, ölçüt düzeltildi):** Aday soru setinin 154/155 sorusu onaylı (kanıt beklenen sayfada; "bulunamadı" sorularında 27 Ekim korpus araması; model çıktısı onay ölçütü değil); A038 kullanıcıda ([aday_sorular.md](../../aday_sorular.md)). Bu rapordaki "geçici, onaysız set" uyarıları o tarihten önceki ölçümler içindir; sayılar onaydan sonra yeniden hesaplanmadı. **Aşırı uyum notu geçerli:** aday ayarları bu setle seçildi; görülmemiş doküman testi JUKI.
 
 ### 10.9 Sağlayıcıya göre süre ve 429 (bugünkü bütün süre ölçümleri, kayıtlardan)
 

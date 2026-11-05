@@ -490,3 +490,15 @@ def test_rescore_status_matches_verify_rules():
     assert status_from({**ok, "atif_gecerli": False}) == "partial"
     assert status_from({**ok, "varyant_belirli": False}) == "partial"
     assert status_from({**ok, "sayilar_alintida": False}) == "failed"
+
+
+def test_expected_value_matcher_formats():
+    """Beklenen değer değer olarak eşleşir: aralık ayırıcı, ondalık virgül, kesir ve tam kesir biçimi önemsiz."""
+    from bench.common import value_in
+    assert value_in("0.4–0.7", "boşluk 0.4 ile 0.7 mm") and value_in("0.4–0.7", "0,4–0,7 mm")
+    assert value_in("0.4–0.7", "0.4 to 0.7 mm") and value_in("1/8–3/16", "1/8 ile 3/16 inç")
+    assert value_in("52-56", "52 ile 56 dikiş") and not value_in("52-56", "52 dikiş")
+    assert value_in("6–7-1/4", "6 ile 7 1/4 inç") and value_in("2-1/8", "2 1/8 inç") and not value_in("2-1/8", "2 ve 1/8")
+    assert value_in("E050", "E050 hata kodu") and not value_in("E050", "E05 hata")
+    assert value_in("± 1", "11 (± 1)") and not value_in("± 1", "11 dikiş 1")
+    assert value_in("2.00", "varsayılan 2 mm") and not value_in("3", "3/8 inç")

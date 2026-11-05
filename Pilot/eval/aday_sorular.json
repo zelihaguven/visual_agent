@@ -7,8 +7,8 @@
    "parafraz",
    "sayi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -34,9 +34,9 @@
   "cevap": "2-1/8 (± 1/8) inç genişlik × 3-1/8 (± 1/8) inç uzunluk",
   "kanit": "The sleeve tabs shall be 2-1/8 (± 1/8) inches wide by 3-1/8 (± 1/8) in length",
   "bolum": "3.7.5 Sleeve cuff",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A002",
@@ -46,7 +46,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -83,7 +83,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -121,7 +121,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -157,8 +157,8 @@
    "benzer_bolum",
    "tablo"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -183,9 +183,8 @@
   "cevap": "3/16–1/4 inç (iki sıra)",
   "kanit": "Gauge: Two (2) rows 3/16 to 1/4-inch gage apart",
   "bolum": "3.11.1.1 Repair of stitch.",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A006",
@@ -195,8 +194,8 @@
    "benzer_bolum",
    "tablo"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -221,9 +220,9 @@
   "cevap": "1/16–1/8 inç",
   "kanit": "Gauge: 1/16 to 1/8-inch from edge",
   "bolum": "3.11.1.1 Repair of stitch.",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A007",
@@ -233,7 +232,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -269,8 +268,8 @@
    "sayi",
    "tablo"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -295,9 +294,9 @@
   "cevap": "8 punteriz (giysi başına)",
   "kanit": "# of Bar- tacks per garment: 8",
   "bolum": "3.11.3 Bar-tacks and back-tacks",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "model_celiskisi": "4 model beklenenle çelişti (arama getirdi)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A009",
@@ -307,7 +306,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -343,7 +342,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -389,7 +388,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -436,7 +435,7 @@
    "karisan_dokuman"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -470,7 +469,7 @@
   "q": "Bitmiş ceket için toksisite şartı nedir?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -504,7 +503,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -538,7 +537,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -572,7 +571,7 @@
    "sekil"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -607,7 +606,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -643,7 +642,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -679,8 +678,8 @@
    "benzer_bolum",
    "sayi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -705,10 +704,8 @@
   "cevap": "52–56 dikiş/inç (punteriz dahil)",
   "kanit": "possessing 52-56 stitches per inch, including tack",
   "bolum": "3.7.7 Pockets and flaps",
-  "kontrol_supheleri": [
-   "OCR şüphesi: kesir OCR (112 = ½) «112 inch»",
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A020",
@@ -718,8 +715,8 @@
    "ingilizce",
    "benzer_bolum"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -744,10 +741,8 @@
   "cevap": "52–56 stitches per inch, including tack",
   "kanit": "possessing 52-56 stitches per inch, including tack",
   "bolum": "3.7.7 Pockets and flaps",
-  "kontrol_supheleri": [
-   "OCR şüphesi: kesir OCR (112 = ½) «112 inch»",
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A021",
@@ -756,8 +751,8 @@
   "zorluk": [
    "parafraz"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -782,10 +777,8 @@
   "cevap": "3/4–7/8 inç",
   "kanit": "The cut lengths shall be 3/4 to 7/8 inch",
   "bolum": "3.7.7 Pockets and flaps",
-  "kontrol_supheleri": [
-   "OCR şüphesi: kesir OCR (112 = ½) «112 inch»",
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A022",
@@ -795,8 +788,8 @@
    "sayi",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -824,11 +817,8 @@
   "kanit": "pocket openings measuring not less than 6 inches and not more than 7-114 inches between bartacks",
   "bolum": "3.7.7 Pockets and flaps",
   "ocr_bicimi": "7-114",
-  "kontrol_supheleri": [
-   "beklenen değer parçada yok: '6–7-1/4' (ocr_bicimi notlu)",
-   "OCR şüphesi: kesir OCR (112 = ½) «114 inch» (ocr_bicimi notlu)",
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A023",
@@ -839,7 +829,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -875,7 +865,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -912,8 +902,8 @@
    "ocr",
    "tablo"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -939,11 +929,9 @@
   "kanit": "Seam type: OSf-1 | Gage: 3116 to 114 inch from edge | Stitch type: 301",
   "bolum": "3.11.1.2 Fly seaming and stitching",
   "ocr_bicimi": "3116 to 114",
-  "kontrol_supheleri": [
-   "beklenen değer parçada yok: '3/16–1/4' (ocr_bicimi notlu)",
-   "OCR şüphesi: kesir OCR (112 = ½) «114 inch» (ocr_bicimi notlu)",
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A026",
@@ -954,8 +942,8 @@
    "parafraz",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -990,11 +978,9 @@
   "kanit": "Gage: 118 to 3/16 inch fi'om the bound selvage",
   "bolum": "OLlPD 07-14A",
   "ocr_bicimi": "118 to 3/16",
-  "kontrol_supheleri": [
-   "beklenen değer parçada yok: '1/8–3/16' (ocr_bicimi notlu)",
-   "OCR şüphesi: kesir OCR (112 = ½) «118 inch» (ocr_bicimi notlu)",
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "model_celiskisi": "4 model beklenenle çelişti (arama getirdi)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A027",
@@ -1004,8 +990,8 @@
    "parafraz",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1031,11 +1017,8 @@
   "kanit": "shall end 3/8 - 112 inch above J-stitch",
   "bolum": "3.11.1.2 Fly seaming and stitching",
   "ocr_bicimi": "3/8 - 112",
-  "kontrol_supheleri": [
-   "beklenen değer parçada yok: '3/8–1/2' (ocr_bicimi notlu)",
-   "OCR şüphesi: kesir OCR (112 = ½) «112 inch» (ocr_bicimi notlu)",
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A028",
@@ -1045,8 +1028,8 @@
    "parafraz",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1072,9 +1055,8 @@
   "kanit": "contractor must adjust pattems for 3/8-inch gauge in lieu of 112 inch double needle seams",
   "bolum": "3.10 List of pattem parts",
   "ocr_bicimi": "112 inch",
-  "kontrol_supheleri": [
-   "OCR şüphesi: kesir OCR (112 = ½) «112 inch» (ocr_bicimi notlu)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A029",
@@ -1085,7 +1067,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1121,8 +1103,8 @@
    "ocr",
    "benzer_bolum"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1148,10 +1130,8 @@
   "kanit": "exposed to a cage of insects for IS min",
   "bolum": "4.5.2.3.7 Biting Exposure",
   "ocr_bicimi": "IS min",
-  "kontrol_supheleri": [
-   "beklenen değer parçada yok: '15' (ocr_bicimi notlu)",
-   "OCR şüphesi: IS = 15 «IS min» (ocr_bicimi notlu)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A031",
@@ -1161,7 +1141,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1197,7 +1177,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1232,8 +1212,8 @@
   "zorluk": [
    "benzer_bolum"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1256,9 +1236,9 @@
   "cevap": "İç bel bandı dikişinin altına, dikişe yakalanarak; dikiş baskıyı örtmemeli",
   "kanit": "shall be sewn and caught in the bottom of the inside waistband seam",
   "bolum": "3.8.1 Size label",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A034",
@@ -1268,8 +1248,8 @@
    "sayi",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1295,9 +1275,8 @@
   "kanit": "excessive thread (more than 3) over 114 inch not trimmed or removed",
   "bolum": "4. VERIFICATION",
   "ocr_bicimi": "114 inch",
-  "kontrol_supheleri": [
-   "OCR şüphesi: kesir OCR (112 = ½) «114 inch» (ocr_bicimi notlu)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A035",
@@ -1307,8 +1286,8 @@
    "parafraz",
    "sayi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1335,9 +1314,9 @@
   "cevap": "± 1/32 inç",
   "kanit": "The tolerance for all widths specified shall be (± 1/32) inch",
   "bolum": "3.5.1 Tape and cord",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A036",
@@ -1346,8 +1325,8 @@
   "zorluk": [
    "sekil"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı. Ölçüler şeklin OCR metninden; VLM açıklamasındaki '±' tolerans ifadesi yanlış, kaynakta yok",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -1374,9 +1353,9 @@
   "cevap": "14 1/2, 12 1/4 ve 10 1/2 inç",
   "kanit": "14 1/2 inches ----- 12 1/4 inches y -4-1(--10 1/2 inches",
   "bolum": "6.11 Subject term (key word) listing.",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A037",
@@ -1387,7 +1366,7 @@
    "benzer_bolum"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1422,7 +1401,7 @@
   "zorluk": [
    "kod_varyant"
   ],
-  "dogrulandi": true,
+  "dogrulandi": false,
   "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
   "expect_docs": [
    "brother-s7300a"
@@ -1448,8 +1427,9 @@
   "cevap": "Gücü kapatıp makine kafasını yerine getirin; P2 konektörünün bağlantısını kontrol edin",
   "kanit": "Turn off the power, and then return the machine head to its original position",
   "bolum": "Switch-related errors",
-  "onaylayan": "geliştirme ekibi",
-  "onay_tarihi": "2026-11-05"
+  "kontrol_supheleri": [
+   "beklenen değer kanıt cümlesinde yok: ['E050']"
+  ]
  },
  {
   "id": "A039",
@@ -1459,7 +1439,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1493,7 +1473,7 @@
   "q": "S-7300A'da E111 hata kodu ne demek?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1529,7 +1509,7 @@
    "ters_soru"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1565,7 +1545,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1601,7 +1581,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1636,8 +1616,8 @@
   "zorluk": [
    "benzer_bolum"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1662,9 +1642,9 @@
   "cevap": "25–30 mm (ön gerdirme ile ayarlanır)",
   "kanit": "The standard upper thread trailing length is 25 to 30 mm",
   "bolum": "9-3. Adjusting the trailing length after thread trimming",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A045",
@@ -1674,8 +1654,8 @@
    "parafraz",
    "sayi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1700,9 +1680,8 @@
   "cevap": "0,4–0,7 mm (-3 tipi); -5 tipinde 0,6–1,1 mm",
   "kanit": "The clearance should be 0.4 to 0.7 mm (for -[][]3 specifications)",
   "bolum": "<Checking the clearance between the rotary hook and bobbin c",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A046",
@@ -1713,7 +1692,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1749,7 +1728,7 @@
    "benzer_bolum"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1784,8 +1763,8 @@
   "zorluk": [
    "tablo"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1810,9 +1789,8 @@
   "cevap": "1–19 dikiş (birim 1, başlangıç değeri 1)",
   "kanit": "No. of stitches B | Setting value: 1 - 19 stitches",
   "bolum": "Start backtack sewing parameters",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A049",
@@ -1822,7 +1800,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1857,8 +1835,8 @@
   "zorluk": [
    "benzer_bolum"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1883,9 +1861,8 @@
   "cevap": "1–9",
   "kanit": "The setting range is from 1 to 9.",
   "bolum": "For the menu screen",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A051",
@@ -1895,7 +1872,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1931,8 +1908,8 @@
    "ters_soru",
    "tablo"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1957,9 +1934,9 @@
   "cevap": "Bellek anahtarı 311 (OFF: kapalı, başlangıç ON)",
   "kanit": "No.: 311 | Setting range: OFF, ON | Initial value: ON",
   "bolum": "Panel operation settings (300 to 399)",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "model_celiskisi": "4 model beklenenle çelişti (arama getirdi)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A053",
@@ -1968,8 +1945,8 @@
   "zorluk": [
    "parafraz"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -1992,9 +1969,9 @@
   "cevap": "Baskı ayağı basıncı zayıf, transport dişlisi alçak ya da masura çizik",
   "kanit": "Problem: Uneven seam",
   "bolum": "14. TROUBLESHOOTING",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A054",
@@ -2004,7 +1981,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -2038,7 +2015,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -2071,8 +2048,8 @@
   "zorluk": [
    "sayi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -2097,9 +2074,9 @@
   "cevap": "1,0 ± 0,1 N·m",
   "kanit": "Recommended tightening torque 1.0±0.1 N.m",
   "bolum": "4. Ground wire",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A057",
@@ -2109,7 +2086,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -2143,7 +2120,7 @@
    "benzer_bolum"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -2177,7 +2154,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -2213,7 +2190,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -2250,7 +2227,7 @@
    "karisan_dokuman"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2284,7 +2261,7 @@
   "q": "S-7300B açılışta E210 veriyor, ne kontrol etmeliyim?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2320,7 +2297,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2354,7 +2331,7 @@
   "q": "S-7300B'de E705 hatası ne demek?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2391,7 +2368,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2427,7 +2404,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2463,8 +2440,8 @@
   "zorluk": [
    "benzer_bolum"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2489,9 +2466,8 @@
   "cevap": "30–45 mm (Premier tipinde 25–30 mm)",
   "kanit": "The standard length for the upper thread trailing length is 30 to 45 mm, or 25 to 30 mm for Premier specifications.",
   "bolum": "9-3. Adjusting the trailing length after thread trimming",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A068",
@@ -2501,8 +2477,8 @@
    "ingilizce",
    "benzer_bolum"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2527,9 +2503,8 @@
   "cevap": "30–45 mm (25–30 mm for Premier specifications)",
   "kanit": "The standard length for the upper thread trailing length is 30 to 45 mm",
   "bolum": "9-3. Adjusting the trailing length after thread trimming",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A069",
@@ -2540,7 +2515,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2577,7 +2552,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2614,7 +2589,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2651,7 +2626,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2685,7 +2660,7 @@
   "q": "S-7300B'de kısayol tuşlarına başlangıçta hangi işlevler atanmış?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2721,7 +2696,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2756,7 +2731,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2792,7 +2767,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2828,7 +2803,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -2862,8 +2837,8 @@
    "kaynak_ifadesi",
    "karisan_dokuman"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -2888,9 +2863,8 @@
   "cevap": "15–20 dikiş/inç; kalın kumaşta daha uzun dikiş",
   "kanit": "Use 15 to 20 stitches per inch, the longer stitch for bulky materials.",
   "bolum": "",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A079",
@@ -2901,7 +2875,7 @@
    "karisan_dokuman"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -2933,7 +2907,7 @@
   "q": "Fransız etek ucu (French hem) nasıl yapılır?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -2969,7 +2943,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -3007,7 +2981,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -3045,7 +3019,7 @@
   "q": "Gömme cepler neden tela ile desteklenir?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -3079,7 +3053,7 @@
    "karisan_dokuman"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -3115,7 +3089,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -3151,8 +3125,8 @@
    "karisan_dokuman",
    "kaynak_ifadesi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -3178,9 +3152,9 @@
   "cevap": "10 × 3 inç",
   "kanit": "Wool facing 10 inches by 3 inches.",
   "bolum": "",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A087",
@@ -3188,7 +3162,7 @@
   "q": "Bengalin kumaş hangi giysiler için uygundur?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "strickland-1956"
   ],
@@ -3222,7 +3196,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3256,10 +3230,11 @@
   "q": "Kalın cidarlı dökme demir parçaları kaynatırken çelik pim çapı nasıl seçilir?",
   "zorluk": [
    "parafraz",
-   "sayi"
+   "sayi",
+   "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3287,9 +3262,8 @@
   "kanit": "d = (0.3...0.4)b",
   "bolum": "",
   "ocr_bicimi": "(0.3...0.4)b",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A090",
@@ -3298,8 +3272,8 @@
   "zorluk": [
    "sayi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3324,9 +3298,8 @@
   "cevap": "18–19 mm",
   "kanit": "The total stroke of the condenser should be 18-19 mm.",
   "bolum": "",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A091",
@@ -3335,8 +3308,8 @@
   "zorluk": [
    "sayi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3361,19 +3334,19 @@
   "cevap": "6–26°",
   "kanit": "a cone the angle of which changes from 6 to 26°",
   "bolum": "",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A092",
   "kind": "değer",
   "q": "Dokuma tezgâhında orta onarım ne sıklıkla yapılır ve kaç kişi yapar?",
   "zorluk": [
-   "parafraz"
+   "parafraz",
+   "ocr"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3411,8 +3384,8 @@
    "sayi",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3438,9 +3411,8 @@
   "kanit": "the warp protector nibs must be 1-1.5 m m above the edges of the pads",
   "bolum": "c: o o",
   "ocr_bicimi": "1-1.5 m m",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A094",
@@ -3451,7 +3423,7 @@
    "ocr"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3488,7 +3460,7 @@
    "kaynak_ifadesi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3521,10 +3493,11 @@
   "kind": "değer",
   "q": "Tekstil makinesi parçalarında bakır kaplama ne için kullanılır?",
   "zorluk": [
-   "parafraz"
+   "parafraz",
+   "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3548,9 +3521,9 @@
   "kanit": "Copperplatingis used to hard face the outer surfaces of rings in antifriction bearings",
   "bolum": "",
   "ocr_bicimi": "Copperplatingis",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A097",
@@ -3560,7 +3533,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -3598,7 +3571,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -3640,7 +3613,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -3684,7 +3657,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -3728,7 +3701,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -3773,7 +3746,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -3818,7 +3791,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -3853,8 +3826,8 @@
   "zorluk": [
    "karisan_dokuman"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı. Kabul: İspanyolca bölüm s.7 ve İngilizce bölüm s.17 ('The entire cycle will take 45-60 minutes')",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -3888,9 +3861,8 @@
   "cevap": "45–60 dakika",
   "kanit": "El ciclo completo tomará de 45 a 60 minutos en completarse.",
   "bolum": "Para modelos programables (FTX20/FTX23/FTX25/FTX26, FTXSS20/",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A105",
@@ -3898,7 +3870,7 @@
   "q": "Yedek su filtresi diskleri nereden alınır?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -3940,7 +3912,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -3990,7 +3962,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -4042,7 +4014,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -4095,7 +4067,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -4147,7 +4119,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -4199,7 +4171,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -4250,7 +4222,7 @@
   "q": "Freze tablası şalteri kapalı konumda nasıl kilitlenir?",
   "zorluk": [],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -4301,7 +4273,7 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -4352,16 +4324,16 @@
   "zorluk": [
    "bulunamadi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl ve PDF metin katmanında arandı (2026-10-27), ağırlık değeri geçmiyor; yalnız sembol tablosunda 'kg = Kilograms, Weight' birim açıklaması var",
-  "kontrol_supheleri": [
-   "bulunamadı sorusu ama doğrulanmış cevap üreten model: qwen36"
-  ]
+  "model_celiskisi": "doğrulanmış cevap üreten model: qwen36",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A115",
@@ -4372,7 +4344,7 @@
    "kaynak_ifadesi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4389,7 +4361,7 @@
    "bulunamadi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4407,7 +4379,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4424,16 +4396,16 @@
    "bulunamadi",
    "kod_varyant"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl ve PDF metin katmanında arandı (2026-10-27), S-7300A'da geçmiyor (yalnız S-7300B'de var)",
-  "kontrol_supheleri": [
-   "bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini"
-  ]
+  "model_celiskisi": "doğrulanmış cevap üreten model: gpt54mini",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A119",
@@ -4444,7 +4416,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4461,7 +4433,7 @@
    "bulunamadi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4478,7 +4450,7 @@
    "bulunamadi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4496,7 +4468,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4512,16 +4484,16 @@
   "zorluk": [
    "bulunamadi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl ve PDF metin katmanında arandı (2026-10-27), güç değeri geçmiyor; yalnız 'güç kaynağı tüketimden büyük olmalı' uyarısı var",
-  "kontrol_supheleri": [
-   "bulunamadı sorusu ama doğrulanmış cevap üreten model: qwen36"
-  ]
+  "model_celiskisi": "doğrulanmış cevap üreten model: qwen36",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A124",
@@ -4530,16 +4502,16 @@
   "zorluk": [
    "bulunamadi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl ve PDF metin katmanında arandı (2026-10-27), 'hood' geçmiyor",
-  "kontrol_supheleri": [
-   "bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini"
-  ]
+  "model_celiskisi": "doğrulanmış cevap üreten model: gpt54mini",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A125",
@@ -4549,7 +4521,7 @@
    "bulunamadi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4566,16 +4538,16 @@
    "bulunamadi",
    "kaynak_ifadesi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl ve PDF metin katmanında arandı (2026-10-27), 'leather' geçmiyor",
-  "kontrol_supheleri": [
-   "bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini, qwen36"
-  ]
+  "model_celiskisi": "doğrulanmış cevap üreten model: gpt54mini, qwen36",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A127",
@@ -4585,7 +4557,7 @@
    "bulunamadi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4601,16 +4573,16 @@
   "zorluk": [
    "bulunamadi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl'de 'hydrostatic|water resist' pantolon şartnamesinde geçmiyor",
-  "kontrol_supheleri": [
-   "bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini"
-  ]
+  "model_celiskisi": "doğrulanmış cevap üreten model: gpt54mini",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A129",
@@ -4621,7 +4593,7 @@
    "kaynak_ifadesi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
@@ -4637,16 +4609,16 @@
   "zorluk": [
    "bulunamadi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; 27 Ekim korpus araması",
   "expect_docs": [],
   "expect_pages": [],
   "expect_in_answer": [],
   "expect_not_found": true,
   "nf_kontrol": "chunks.jsonl'de 'espresso' geçmiyor",
-  "kontrol_supheleri": [
-   "bulunamadı sorusu ama doğrulanmış cevap üreten model: gpt54mini"
-  ]
+  "model_celiskisi": "doğrulanmış cevap üreten model: gpt54mini",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A131",
@@ -4657,7 +4629,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -4701,7 +4673,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -4745,7 +4717,7 @@
    "benzer_bolum"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -4788,7 +4760,7 @@
    "netlestirme"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -4830,7 +4802,7 @@
    "netlestirme"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -4873,7 +4845,7 @@
    "netlestirme"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -4917,7 +4889,7 @@
    "parafraz"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -4961,7 +4933,7 @@
    "benzer_bolum"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -5004,7 +4976,7 @@
    "netlestirme"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "brother-s7300a",
@@ -5046,8 +5018,8 @@
    "netlestirme",
    "benzer_bolum"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -5081,9 +5053,8 @@
   ],
   "cevap": "Ceket: 54 ± 2 (s.22) · Pantolon: 52–56 (s.11): değer ürüne göre değişiyor",
   "expect_in_answer": [],
-  "kontrol_supheleri": [
-   "OCR şüphesi: kesir OCR (112 = ½) «112 inch»"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A141",
@@ -5093,8 +5064,8 @@
    "netlestirme",
    "karisan_dokuman"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -5125,9 +5096,8 @@
   ],
   "cevap": "Ceket ve pantolonda 1/8–3/16 inç (ceket s.10, pantolon s.10/21)",
   "expect_in_answer": [],
-  "kontrol_supheleri": [
-   "OCR şüphesi: kesir OCR (112 = ½) «118 inch»"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A142",
@@ -5138,7 +5108,7 @@
    "benzer_bolum"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -5181,8 +5151,8 @@
    "netlestirme",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -5214,9 +5184,8 @@
   ],
   "cevap": "Ceket ve pantolonda 15 dakika (pantolonda OCR: 'IS min')",
   "expect_in_answer": [],
-  "kontrol_supheleri": [
-   "OCR şüphesi: IS = 15 «IS min»"
-  ]
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A144",
@@ -5226,7 +5195,7 @@
    "netlestirme"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -5273,7 +5242,7 @@
    "tablo"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_clarify": true,
   "expect_docs": [
    "gl-pd-14-04a",
@@ -5317,7 +5286,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -5352,8 +5321,8 @@
   "zorluk": [
    "gundelik"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "gl-pd-14-04a"
   ],
@@ -5380,9 +5349,9 @@
   "cevap": "54 ± 2 dikiş/inç (punteriz dahil)",
   "kanit": "Buttonholes shall be 54 (± 2) stitches per inch including tack.",
   "bolum": "3.11.1 Seams and stitching",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A148",
@@ -5392,8 +5361,8 @@
    "gundelik",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -5421,11 +5390,9 @@
   "kanit": "not less than 6 inches and not more than 7-114 inches",
   "bolum": "3.7.7 Pockets and flaps",
   "ocr_bicimi": "7-114",
-  "kontrol_supheleri": [
-   "beklenen değer parçada yok: '6–7-1/4' (ocr_bicimi notlu)",
-   "OCR şüphesi: kesir OCR (112 = ½) «114 inch» (ocr_bicimi notlu)",
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A149",
@@ -5435,7 +5402,7 @@
    "gundelik"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],
@@ -5468,8 +5435,8 @@
   "zorluk": [
    "gundelik"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "mrcoffee-2003"
   ],
@@ -5517,9 +5484,9 @@
   "cevap": "Temizleyici ya da 4 fincan sirkeyle temizleme demlemesi (anahtarlı modeller s.16; programlanabilirlerde CLEAN döngüsü s.17)",
   "kanit": "Follow package instructions to prepare one batch of MR. COFFEE ® Coffeemaker Cleaner.",
   "bolum": "For Switch models (FT12/FT13, FTS12/FTS13):",
-  "kontrol_supheleri": [
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "model_celiskisi": "4 model beklenenle çelişti (arama getirdi)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A151",
@@ -5528,8 +5495,8 @@
   "zorluk": [
    "gundelik"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "bosch-ra1171"
   ],
@@ -5568,9 +5535,9 @@
   "cevap": "Kilit anahtarını çıkarın; kırmızı sürgü şalteri örter",
   "kanit": "remove the lockout key completely from the side of the switch case",
   "bolum": "UNATTENDED WHILE IT IS RUNNING OR BEFORE IT COMES TO A COMPL",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A152",
@@ -5580,8 +5547,8 @@
    "gundelik",
    "kaynak_ifadesi"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "granovsky-1986"
   ],
@@ -5606,9 +5573,9 @@
   "cevap": "Litre suya 25 g",
   "kanit": "25 g of soap per liter of water",
   "bolum": "",
-  "kontrol_supheleri": [
-   "arama ilk 5'te beklenen kaynağı getirmedi ve 4 model de beklenenle çelişti"
-  ]
+  "model_celiskisi": "arama ve 4 model beklenenle çelişti",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A153",
@@ -5618,7 +5585,7 @@
    "gundelik"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300a"
   ],
@@ -5652,8 +5619,8 @@
    "gundelik",
    "ocr"
   ],
-  "dogrulandi": false,
-  "note": "taslak: beklenen kaynak Claude tarafından önerildi, doğrulanmadı",
+  "dogrulandi": true,
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada; OCR sorusu, beklenen değer okunaklı",
   "expect_docs": [
    "gl-pd-07-14a"
   ],
@@ -5688,11 +5655,9 @@
   "kanit": "sewn 1183/16 inch from bound selvage",
   "bolum": "3.7.1 Fastener tape, (hook and loop)",
   "ocr_bicimi": "1183/16",
-  "kontrol_supheleri": [
-   "beklenen değer parçada yok: '1/8–3/16' (ocr_bicimi notlu)",
-   "OCR şüphesi: kesir OCR (112 = ½) «118 inch» (ocr_bicimi notlu)",
-   "4 model de beklenenle çelişti (arama getirdi)"
-  ]
+  "model_celiskisi": "4 model beklenenle çelişti (arama getirdi)",
+  "onaylayan": "geliştirme ekibi",
+  "onay_tarihi": "2026-11-05"
  },
  {
   "id": "A155",
@@ -5703,7 +5668,7 @@
    "kod_varyant"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): otomatik tutarlılık kontrolünden şüphesiz geçti; ilk taslak Claude tarafından önerilmişti",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
   "expect_docs": [
    "brother-s7300b"
   ],

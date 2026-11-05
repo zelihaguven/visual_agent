@@ -446,9 +446,11 @@ Bütün `VisualAgent_*` zamanlanmış görevleri devre dışı. `StartWhenAvaila
 
 **Set:** Onaylı ve büyütülmüş set (§8). Hesapta büyütülmüş set bugünkü 177 çağrının ~1,5 katı, yani model başına **~265 soru**.
 
-**Set onayı ve yanlılık (2026-11-05):** Aday setin 105 sorusu otomatik kontrolle onaylandı. Kontrolün bir ölçütü ilk turun model çıktılarıydı ("dört model de beklenenle çelişiyor"). Bu yüzden nihai turun kapı ölçütleri:
-- 50 şüpheli soru kullanıcı tarafından karara bağlandıktan sonra,
-- **onay ölçütünde model çıktısı kullanılmamış** sorular (yeni büyütülmüş sorular ve şüphelilerden elle onaylananlar) ayrı raporlanarak uygulanır.
+**Set onayı (2026-11-05 akşam, ölçüt düzeltildi):** Model çıktıları onay ölçütü değil (döngüsel olurdu: sistemin zorlandığı soruları setten atar). Ölçüt:
+- kanıt cümlesi beklenen sayfada ve beklenen değer kanıtta (OCR soruları hariç; onlarda beklenen değer okunaklı);
+- "bulunamadı" sorularında 27 Ekim korpus araması.
+
+Sonuç: 155 sorudan 154'ü onaylı; A038 kullanıcıda (kanıt cümlesinde E050 kodu yok). 14 OCR sorusu `ocr` etiketli ve raporlarda ayrıca gösteriliyor. "Model çelişkisi" (27 soru) yalnız bilgi alanı (`model_celiskisi`); onayı etkilemiyor. Önceki, model çıktısına dayalı onaydaki yanlılık bu ölçütle kalktı.
 
 Aşırı uyum notu korunur: arama ayarları bu setle seçildi; görülmemiş doküman testi JUKI.
 
@@ -457,11 +459,19 @@ Aşırı uyum notu korunur: arama ayarları bu setle seçildi; görülmemiş dok
    - doğru "bulunamadı" (modelin karar verdiği sorularda) **≥ %90**;
    - doğrulanmış görünen yanlış (✓/⚠ alan yanlış cevap) **0**;
    - uydurma **0**: ✖'lerdeki "alıntıda olmayan sayı" vakaları elle okunur, kaynakta da olmayan değer uydurmadır;
-   - **beklenen değer cevapta ≥ %85**. Öneri gerekçesi: ilk turda onaylı sette Gemma %94, Mistral %95, GPT %90, Qwen %81; onaysız sette %60–73. %85, bugünkü en iyi üç modelin altında ama Qwen düzeyini dışarıda bırakan bir sınır. Yanlış ret ayrıca raporlanır, kapı değil.
+   - **beklenen değer cevapta ≥ %85** (kapsama ölçütü). Yeni eşleştiriciyle ilk turun bütün cevaplı sorularında: Gemma %92, Qwen %85, GPT-5.4 mini %84, Mistral %82. Yanlış ret ayrıca raporlanır, kapı değil.
+   - **PRD'deki "değer doğruluğu ≥ %98" ile farkı:** İkisi farklı şeyi ölçer.
+     - *Beklenen değer cevapta* bir **kapsama** ölçütüdür: Cevap üretilen sorularda beklenen değer cevapta geçiyor mu? Değer eksikse düşer. Cevapta yanlış bir değerin bulunup bulunmadığını ölçmez.
+     - *Değer doğruluğu* bir **kesinlik** ölçütüdür: Cevapta verilen değerlerin yüzde kaçı doğru? Yanlış değer içeren her cevap düşürür.
+     - Nihai turda ikisi ayrı raporlanır. Değer doğruluğu = 1 − (beklenen değerle ya da kaynakla çelişen değer içeren cevap / değer içeren cevap). Çelişki adayları otomatik çıkarılır (beklenen değer cevapta yok ama başka bir sayı var) ve elle okunur.
+     - %98 kapısı ✓/⚠ rozetli cevaplarda uygulanır; ✖ zaten kullanıcıya doğrulanmış gösterilmiyor.
 2. **Dayanıklılık ve süre:**
    - **≥ 2 ZDR sağlayıcı** (aynı nicemleme). Bugün GPT-5.4 mini ve Mistral 2603 yalnız 1 sağlayıcıda; bu kapıda elenirler, ancak ikinci bir ZDR sağlayıcısı açılırsa geçerler.
-   - **İlk doğrulanmış cümle p95 ≤ 2,5 sn**: model tarafı, istekten ilk doğrulanmış cümleye, iki ayrı saatte.
-   - Bugünkü şemada tahmin: GPT-5.4 mini 2,1, Mistral 2,3–2,7, Gemma 4 (DeepInfra) 3,9–5,8 sn. Gemma 4'ün bf16 sağlayıcıları (NextBit hız 42 tk/sn, ilk token p90 0,7 sn) ve C şeması bunu düşürmeli. Ölçülecek.
+   - **Süre kapısı, iki ayrı ölçü (p95, iki ayrı saatte):**
+     - **Uçtan uca ilk doğrulanmış cümle ≤ 3 sn** (PRD: "ilk cümle ekranda ≤ 3 sn"). Soru metni hazır olduğu andan ekrana ilk doğrulanmış cümlenin gelişine kadar. **Arama öncesi süre dahil** (çeviri ve embed beklemesi, Qdrant, füzyon), sonra cevap modeli. Sesli soruda STT ayrı bütçe (≤ 1 sn), dahil değil.
+     - **Yalnız cevap modeli: istekten ilk doğrulanmış cümleye ≤ 2,0 sn.** 3 sn'den PRD'deki arama bütçesi (≤ 1 sn) düşülünce kalan. Önceki taslaktaki 2,5 sn yalnız model içindi ve arama bütçesiyle 3 sn'yi aşıyordu; düzeltildi. PRD'deki "LLM ilk kelime ≤ 1,5 sn" ayrıca raporlanır.
+     - Bugünkü şemada model tarafı tahmini (ilk cümle sonu): GPT-5.4 mini 2,1, Mistral 2,3–2,7, Gemma 4 (DeepInfra) 3,9–5,8 sn. Gemma 4'ün bf16 sağlayıcıları ve C şeması bunu düşürmeli. Ölçülecek.
+     - Arama öncesi süre bugün korumalı yolda grup 1 p95 ~1,5 sn (B4 §10.6). Çeviriyi Gemma 4 NextBit'e almak çeviri p95'ini ~1,0 sn'ye indiriyor (§14). Bu durumda model tarafına ~1,5 sn kalıyor; kapı kararı uçtan uca ölçümle verilir.
 3. **Maliyet:** Kapılardan geçenler arasında soru başına maliyet. Fark %50'den azsa sağlayıcı sayısı fazla olan seçilir.
 
 **Üst sınıf referans model** (kapılara girmez; "daha büyük model ne kazandırır" sorusunun cevabı):

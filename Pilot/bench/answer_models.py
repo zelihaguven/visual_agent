@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from bench.common import (KNOWN_SETS, PILOT_DIR, first_rank, is_match, load_questions, percentile, sse_events,
+                          value_in,
                           write_result)
 
 CACHE = PILOT_DIR / "data" / "bench_cache" / "adim2_arama.json"
@@ -37,6 +38,8 @@ SETS = [*KNOWN_SETS, "aday_sorular"]            # JUKI (ayrı tutulan doğrulama
 RETRY_WAIT = 30.0
 # Rozeti veren verify.py sürümü; ham dosyaya yazılır. Önceki sürümle puanlanmış kayıtlar --rescore ile yeniden puanlanır.
 VERIFY_TAG = "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı"
+# Beklenen değer eşleştiricisi sürümü (bench.common.value_in); değişince --rescore deger_dogru'yu yeniden hesaplar.
+VALUE_TAG = "değer olarak, 2026-11-05"
 MODELS: dict[str, dict[str, Any]] = {
     "gemma4": {"id": "google/gemma-4-26b-a4b-it", "provider": "deepinfra", "reasoning": {"enabled": False}},
     "qwen36": {"id": "qwen/qwen3.6-35b-a3b", "provider": "deepinfra", "reasoning": {"enabled": False}},
@@ -289,7 +292,7 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int) -> Path:
     if n:
         qs = random.Random(seed).sample([q for q in qs if not q.get("expect_not_found")], n)
     out: dict[str, Any] = {"model": key, "spec": MODELS[key], "tag": tag, "zdr_providers": m.zdr_providers,
-                           "verify": VERIFY_TAG,
+                           "verify": VERIFY_TAG, "deger": VALUE_TAG,
                            "start": datetime.now().isoformat(timespec="seconds"), "rows": {}, "cost_usd": 0.0}
     path = RAW_DIR / f"{tag}_{key}.json"
     RAW_DIR.mkdir(parents=True, exist_ok=True)
@@ -379,7 +382,7 @@ def judge(q: dict[str, Any], res: Any) -> dict[str, Any]:
     row["atif_dogru_hepsi"] = all(ok) if ok else None
     if q.get("expect_in_answer"):
         text = ((a.get("cevap") or "") + " " + res.speech_text).casefold()
-        row["deger_dogru"] = all(s.casefold() in text for s in q["expect_in_answer"])
+        row["deger_dogru"] = all(value_in(s, text) for s in q["expect_in_answer"])
     return row
 
 
@@ -418,9 +421,9 @@ def rescore(tag: str) -> list[str]:
     try:
         for f in sorted(RAW_DIR.glob(f"{tag}_*.json")):
             d = json.loads(f.read_text(encoding="utf-8"))
-            if d.get("verify") == VERIFY_TAG or not isinstance(d.get("rows"), dict):
+            if (d.get("verify") == VERIFY_TAG and d.get("deger") == VALUE_TAG) or not isinstance(d.get("rows"), dict):
                 continue
-            n_cut = n_changed = 0
+            n_cut = n_changed = n_value = 0
             for qid, row in d["rows"].items():
                 if row.get("cikis") != "cevap" or qid not in qs:
                     continue
@@ -447,13 +450,16 @@ def rescore(tag: str) -> list[str]:
                     checks["atif_gecerli"] = bool(checks.get("atif_gecerli")) or (
                         bool(cites) and cites <= set(cur.get("sources") or {}))
                     row.update(durum=status_from(checks), kontroller=checks, kesik_kayit=True)
+                    if qs[qid].get("expect_in_answer"):      # kesik kayıt: cevabın kayıttaki ilk 600 karakteri
+                        row["deger_dogru"] = all(value_in(s, text) for s in qs[qid]["expect_in_answer"])
                 n_changed += row["durum"] != old.get("durum")
-                row["onceki_puan"] = old
-            d["verify"] = VERIFY_TAG
+                n_value += row.get("deger_dogru") != old.get("deger_dogru")
+                row.setdefault("onceki_puan", old)        # ilk yeniden puanlamadan önceki puan korunur
+            d["verify"], d["deger"] = VERIFY_TAG, VALUE_TAG
             d["yeniden_puanlama"] = {"tarih": datetime.now().isoformat(timespec="seconds"), "kesik_kayit": n_cut,
-                                     "rozeti_degisen": n_changed}
+                                     "rozeti_degisen": n_changed, "degeri_degisen": n_value}
             f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
-            done.append(f"{f.name}: rozeti değişen {n_changed}, kesik kayıt {n_cut}")
+            done.append(f"{f.name}: rozeti değişen {n_changed}, beklenen değeri değişen {n_value}, kesik kayıt {n_cut}")
     finally:
         pipeline.verify = orig
     return done
@@ -477,7 +483,7 @@ def report(tag: str, latency_tag: str | None) -> str:
     nf_un = sum(not approved(k) for k in nf)
     nf_model = [k for k in nf if rules.get(k) not in ("yabanci_marka", "kod_yok")]
     L = ["# Adım 2: cevap modeli seçimi, ilk tur (ön eleme)", "",
-         f"> **\"Bulunamadı\" kararının {nf_un} sorusu onaysız** (A114–A130, aday taslak; {len(nf)} sorunun {nf_un}'si; "
+         f"> **\"Bulunamadı\" kararının {nf_un} sorusu onaysız** (A114–A130; {len(nf)} sorunun {nf_un}'si; "
          f"kural çıkışları hariç modelin karar verdiği {len(nf_model)} sorunun "
          f"{sum(not approved(k) for k in nf_model)}'i). **Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş sette "
          f"yapılacak.** Cevaplı sorularda da {sum(not approved(k) for k in ans)}/{len(ans)} onaysız. Süreler geliştirme "
@@ -546,8 +552,10 @@ def report(tag: str, latency_tag: str | None) -> str:
           "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for k in order:
         R = runs[k]["rows"]
-        for label, sel in (("onaylı", True), ("onaysız", False)):
-            qq = [q for q in ans if q in R and approved(q) == sel and R[q]["cikis"] not in ("cevapsiz",)
+        ocr = lambda q: "ocr" in (qs[q].get("zorluk") or [])
+        for label, sel in (("onaylı", lambda q: approved(q)), ("… onaylı, OCR soruları", lambda q: approved(q) and ocr(q)),
+                           ("onaysız", lambda q: not approved(q))):
+            qq = [q for q in ans if q in R and sel(q) and R[q]["cikis"] not in ("cevapsiz",)
                   and not R[q]["cikis"].startswith("kural:")]
             if not qq:
                 continue

@@ -82,7 +82,25 @@
    "cikis_token": 485,
    "dusunce_token": 0,
    "maliyet": 0.0006459,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"Clock Display / Fresh Brew Timer Display Button\"}, {\"kaynak_no\": 3, \"metin\": \"Clean Cycle Indicator\"}, {\"kaynak_no\": 3, \"metin\": \"Delay Brew Indicator\"}, {\"kaynak_no\": 3, \"metin\": \"Brew Now Indicator\"}, {\"kaynak_no\": 3, \"metin\": \"Select Button\"}, {\"kaynak_no\": 3, \"metin\": \"Brew Strength Indicators (Regular/Strong)\"}, {\"kaynak_no\": 3, \"metin\": \"Brew Strength Button\"}, {\"kaynak_no\": 3, \"metin\": \"Set Delay Button\"}, {\"kaynak_no\": 3, \"metin\": \"Hour Button\"}, {\"kaynak_no\": 3, \"metin\": \"Minute Button\"}], \"cevap\": \"Kahve makinesinin kontrol panelinde bulunan düğmeler ve göstergeler şunlardır:\\n1. Saat ekranı / Taze demleme zamanlayıcı ekranı düğmesi [3]\\n2. Temizleme döngüsü göstergesi [3]\\n3. Gecikmeli demleme göstergesi [3]\\n4. Şimdi demle göstergesi [3]\\n5. Seçim düğmesi [3]\\n6. Demleme yoğunluğu göstergeleri (Normal/Yoğun) [3]\\n7. Demleme yoğunluğu düğmesi [3]\\n8. Gecikme ayarlama düğmesi [3]\\n9. Saat düğmesi [3]\\n10. Dakika düğmesi [3]\", \"sesli_metin\": \"Kahve makinesinin kontrol panelinde saat ekranı düğmesi, temizleme göstergesi, gecikmeli demleme göstergesi, seçim düğmesi, demleme yoğunluğu düğmesi ve saat/dakika düğmeleri bulunmaktadır.\", \"celiski_var\": false, \"netlestirme_sorusu\": \"\", \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"Clock Display / Fresh Brew Timer Display Button\"}, {\"kaynak_no\": 3, \"metin\": \"Clean Cycle Indicator\"}, {\"kaynak_no\": 3, \"metin\": \"Delay Brew Indicator\"}, {\"kaynak_no\": 3, \"metin\": \"Brew Now Indicator\"}, {\"kaynak_no\": 3, \"metin\": \"Select Button\"}, {\"kaynak_no\": 3, \"metin\": \"Brew Strength Indicators (Regular/Strong)\"}, {\"kaynak_no\": 3, \"metin\": \"Brew Strength Button\"}, {\"kaynak_no\": 3, \"metin\": \"Set Delay Button\"}, {\"kaynak_no\": 3, \"metin\": \"Hour Button\"}, {\"kaynak_no\": 3, \"metin\": \"Minute Button\"}], \"cevap\": \"Kahve makinesinin kontrol panelinde bulunan düğmeler ve göstergeler şunlardır:\\n1. Saat ekranı / Taze demleme zamanlayıcı ekranı düğmesi [3]\\n2. Temizleme döngüsü göstergesi [3]\\n3. Gecikmeli demleme göstergesi [3]\\n4. Şimdi demle göstergesi [3]\\n5. Seçim düğmesi [3]\\n6. Demleme yoğunluğu göstergeleri (Normal/Yoğun) [3]\\n7. Demleme yoğunluğu düğmesi [3]\\n8. Gecikme ayarlama düğmesi [3]\\n9. Saat düğmesi [3]\\n10. Dakika düğmesi [3]\", \"sesli_metin\": \"Kahve makinesinin kontrol panelinde saat ekranı düğmesi, temizleme göstergesi, gecikmeli demleme göstergesi, seçim düğmesi, demleme yoğunluğu düğmesi ve saat/dakika düğmeleri bulunmaktadır.\", \"celiski_var\": false, \"netlestirme_sorusu\": \"\", \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true
+   }
   },
   "aday_sorular:A002": {
    "durum": "partial",
@@ -156,7 +174,28 @@
    "cikis_token": 124,
    "dusunce_token": 0,
    "maliyet": 0.0004362,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 4, \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"}], \"cevap\": \"Ceket manşetinde 3 adet ilik açılır.\", \"sesli_metin\": \"Ceket manşetinde 3 adet ilik açılması gerekmektedir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 4, \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"}], \"cevap\": \"Ceket manşetinde 3 adet ilik açılır.\", \"sesli_metin\": \"Ceket manşetinde 3 adet ilik açılması gerekmektedir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "partial",
+    "sorunlar": [
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A150": {
    "durum": "failed",
@@ -293,7 +332,28 @@
    "cikis_token": 164,
    "dusunce_token": 0,
    "maliyet": 0.0004806,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"The figure also notes that the side bellow is only open at the bottom to show the sewn eyelet.\"}], \"cevap\": \"Kol cebinin yan körüğü (side bellow) sadece alt kısmından açık bırakılmalıdır. Bu sayede alt kısma dikilmiş olan ilik (eyelet) görünür hale gelir.\", \"sesli_metin\": \"Kol cebinin yan körüğü sadece alt kısmından açık bırakılır. Böylece alt kısma dikilmiş ilik görünür.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"The figure also notes that the side bellow is only open at the bottom to show the sewn eyelet.\"}], \"cevap\": \"Kol cebinin yan körüğü (side bellow) sadece alt kısmından açık bırakılmalıdır. Bu sayede alt kısma dikilmiş olan ilik (eyelet) görünür hale gelir.\", \"sesli_metin\": \"Kol cebinin yan körüğü sadece alt kısmından açık bırakılır. Böylece alt kısma dikilmiş ilik görünür.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "partial",
+    "sorunlar": [
+     "Alıntı [3] şeklin otomatik açıklamasından (model üretimi, kaynak metni değil): şekli kaynak sayfada kontrol edin",
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": false,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true
+   }
   },
   "aday_sorular:A069": {
    "durum": "failed",
@@ -367,7 +427,29 @@
    "cikis_token": 223,
    "dusunce_token": 0,
    "maliyet": 0.00033675,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The rotary hook tip (3) should be aligned with the center of the needle (4) when the needle bar (1) moves up 1.8 mm (for -[][]3 specifications) from its lowest position to the position where reference line (b) is aligned with the needle bar bush (2).\"}], \"cevap\": \"S-7300B -3 tipinde çağanoz ucu, iğne milinin en alt konumundan 1.8 mm yükseldiğinde iğnenin ortasına gelmelidir.\", \"sesli_metin\": \"S-7300B -3 tipinde çağanoz ucu iğne milinin en alt konumundan 1.8 milimetre yükseldiğinde iğnenin ortasına gelir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The rotary hook tip (3) should be aligned with the center of the needle (4) when the needle bar (1) moves up 1.8 mm (for -[][]3 specifications) from its lowest position to the position where reference line (b) is aligned with the needle bar bush (2).\"}], \"cevap\": \"S-7300B -3 tipinde çağanoz ucu, iğne milinin en alt konumundan 1.8 mm yükseldiğinde iğnenin ortasına gelmelidir.\", \"sesli_metin\": \"S-7300B -3 tipinde çağanoz ucu iğne milinin en alt konumundan 1.8 milimetre yükseldiğinde iğnenin ortasına gelir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "failed",
+    "sorunlar": [
+     "Alıntı kaynakta birebir bulunamadı: 'The rotary hook tip (3) should be aligned with the center of the needl'",
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": false,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A007": {
    "durum": "failed",
@@ -440,7 +522,28 @@
    "cikis_token": 178,
    "dusunce_token": 0,
    "maliyet": 0.00025173,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 4, \"metin\": \"Seam placement: Hook fastener tape attachment onto IFF tab nylon tape cover | Stitch type: 301\"}], \"cevap\": \"IFF tırnak kapağı (hook fastener tape) cırt bant, IFF tırnak kapağı naylon bandına LSbj-1 dikiş tipiyle takılır. Dikiş tipi: 301 [4].\", \"sesli_metin\": \"IFF tırnak kapağı cırt bant naylon bandına 301 dikiş tipi ile dikilir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 4, \"metin\": \"Seam placement: Hook fastener tape attachment onto IFF tab nylon tape cover | Stitch type: 301\"}], \"cevap\": \"IFF tırnak kapağı (hook fastener tape) cırt bant, IFF tırnak kapağı naylon bandına LSbj-1 dikiş tipiyle takılır. Dikiş tipi: 301 [4].\", \"sesli_metin\": \"IFF tırnak kapağı cırt bant naylon bandına 301 dikiş tipi ile dikilir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "failed",
+    "sorunlar": [
+     "Alıntı kaynakta birebir bulunamadı: 'Seam placement: Hook fastener tape attachment onto IFF tab nylon tape '"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": false,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A072": {
    "durum": "partial",
@@ -515,7 +618,30 @@
    "cikis_token": 195,
    "dusunce_token": 0,
    "maliyet": 0.00026253,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 2, \"metin\": \"No.: 202 | Setting range: 50 - 150% | Initial value: 100 | Setting units: 1 | Setting details: Start backtacking B pitch correction ratio\"}], \"cevap\": \"S-7300B'de başlangıç punterizi B adım düzeltme oranı bellek anahtarı **No. 202**'dir.\", \"sesli_metin\": \"S-7300B'de başlangıç punterizi B adım düzeltme oranı No. 202 bellek anahtarında ayarlanır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 2, \"metin\": \"No.: 202 | Setting range: 50 - 150% | Initial value: 100 | Setting units: 1 | Setting details: Start backtacking B pitch correction ratio\"}], \"cevap\": \"S-7300B'de başlangıç punterizi B adım düzeltme oranı bellek anahtarı **No. 202**'dir.\", \"sesli_metin\": \"S-7300B'de başlangıç punterizi B adım düzeltme oranı No. 202 bellek anahtarında ayarlanır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "partial",
+    "sorunlar": [
+     "Cevapta geçerli [n] atfı yok",
+     "Değer tablodaki seçeneğe göre değişiyor; cevap hangisi için olduğunu söylemiyor. Aşağıdan seçin."
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true,
+     "varyant_belirli": false
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A040": {
    "durum": "partial",
@@ -588,7 +714,28 @@
    "cikis_token": 277,
    "dusunce_token": 0,
    "maliyet": 0.00029046,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Code: E111 | Cause: The needle up stop position exceeded the specified value when the sewing machine motor stopped.\"}, {\"kaynak_no\": 1, \"metin\": \"Remedy: Turn off the power and check if the sewing machine motor or thread trimming mechanism is stiff or not.\"}], \"cevap\": \"E111 hata kodu, dikiş makinesi motoru durduğunda iğnenin yukarı duruş konumunun belirlenen değeri aştığını gösterir. Bu durumda aşağıdaki adımları izleyin:\\n1. Makineyi kapatın.\\n2. Dikiş makinesi motorunun veya iplik kırpma mekanizmasının sertleşip sertleşmediğini kontrol edin.\", \"sesli_metin\": \"E111 hatası iğnenin yukarı duruş konumunun aşılması nedeniyle oluşur. Makineyi kapatıp motor ve iplik kırpma mekanizmasını kontrol edin.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Code: E111 | Cause: The needle up stop position exceeded the specified value when the sewing machine motor stopped.\"}, {\"kaynak_no\": 1, \"metin\": \"Remedy: Turn off the power and check if the sewing machine motor or thread trimming mechanism is stiff or not.\"}], \"cevap\": \"E111 hata kodu, dikiş makinesi motoru durduğunda iğnenin yukarı duruş konumunun belirlenen değeri aştığını gösterir. Bu durumda aşağıdaki adımları izleyin:\\n1. Makineyi kapatın.\\n2. Dikiş makinesi motorunun veya iplik kırpma mekanizmasının sertleşip sertleşmediğini kontrol edin.\", \"sesli_metin\": \"E111 hatası iğnenin yukarı duruş konumunun aşılması nedeniyle oluşur. Makineyi kapatıp motor ve iplik kırpma mekanizmasını kontrol edin.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "partial",
+    "sorunlar": [
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A153": {
    "durum": "verified",
@@ -658,7 +805,25 @@
    "cikis_token": 399,
    "dusunce_token": 0,
    "maliyet": 0.0005934,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Adjust by turning the adjustment screw (1) until the case drops gently by its own weight while the thread end coming out of the bobbin case is held.\"}, {\"kaynak_no\": 3, \"metin\": \"After the lower thread tension has been adjusted, adjust the upper thread tension so that a good, even stitch is obtained. Lower the presser foot. Adjust by turning the tension nut (2).\"}], \"cevap\": \"S-7300A düz dikiş makinesinde iplik gerginliği ayarı aşağıdaki adımlarla yapılır:\\n\\n1. Alt iplik gerginliği ayarı: Bobin kasasının içinden çıkan iplik ucunu tutarken, ayar vidasını (1) çevirerek kasanın kendi ağırlığıyla yavaşça düşmesini sağlayın [1].\\n\\n2. Üst iplik gerginliği ayarı: Alt iplik gerginliği ayarlandıktan sonra, baskı ayağını indirin ve iyi, düzgün bir dikiş elde edilene kadar gerginlik somununu (2) çevirerek ayarlayın [3].\", \"sesli_metin\": \"S-7300A makinesinde iplik gerginliği ayarı için önce alt iplik gerginliğini ayarlayın. Bobin kasasından çıkan ipliği tutarken ayar vidasını çevirin. Ardından üst iplik gerginliğini baskı ayağını indirerek gerginlik somununu çevirerek ayarlayın.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Adjust by turning the adjustment screw (1) until the case drops gently by its own weight while the thread end coming out of the bobbin case is held.\"}, {\"kaynak_no\": 3, \"metin\": \"After the lower thread tension has been adjusted, adjust the upper thread tension so that a good, even stitch is obtained. Lower the presser foot. Adjust by turning the tension nut (2).\"}], \"cevap\": \"S-7300A düz dikiş makinesinde iplik gerginliği ayarı aşağıdaki adımlarla yapılır:\\n\\n1. Alt iplik gerginliği ayarı: Bobin kasasının içinden çıkan iplik ucunu tutarken, ayar vidasını (1) çevirerek kasanın kendi ağırlığıyla yavaşça düşmesini sağlayın [1].\\n\\n2. Üst iplik gerginliği ayarı: Alt iplik gerginliği ayarlandıktan sonra, baskı ayağını indirin ve iyi, düzgün bir dikiş elde edilene kadar gerginlik somununu (2) çevirerek ayarlayın [3].\", \"sesli_metin\": \"S-7300A makinesinde iplik gerginliği ayarı için önce alt iplik gerginliğini ayarlayın. Bobin kasasından çıkan ipliği tutarken ayar vidasını çevirin. Ardından üst iplik gerginliğini baskı ayağını indirerek gerginlik somununu çevirerek ayarlayın.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true
+   }
   },
   "aday_sorular:A080": {
    "durum": "failed",
@@ -792,7 +957,26 @@
    "cikis_token": 198,
    "dusunce_token": 0,
    "maliyet": 0.00024033,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm -5 specifications: 0.05 - 5.00 mm | Setting units: 0.05 mm | Initial value: 2.00\"}], \"cevap\": \"S-7300A'da iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu 2.00 mm'dir [3].\", \"sesli_metin\": \"S-7300A'da iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu 2 milimetredir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm -5 specifications: 0.05 - 5.00 mm | Setting units: 0.05 mm | Initial value: 2.00\"}], \"cevap\": \"S-7300A'da iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu 2.00 mm'dir [3].\", \"sesli_metin\": \"S-7300A'da iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu 2 milimetredir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": false,
+    "atif_dogru_hepsi": false,
+    "deger_dogru": false
+   }
   },
   "aday_sorular:A011": {
    "durum": "verified",
@@ -864,7 +1048,26 @@
    "cikis_token": 229,
    "dusunce_token": 0,
    "maliyet": 0.00032085,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Verify that the percent recovery of permethrin for any specimen size and composition, is 95% or greater by comparing the recovery level from the first extraction, to that of subsequent extractions.\"}, {\"kaynak_no\": 1, \"metin\": \"Combine the permethrin levels obtained from each of the three extractions, if the initial extraction yields permethrin levels 95% or greater than the total percent of permethrin extracted three sequential times, then the extraction efficiency is 95% or greater.\"}], \"cevap\": \"Ceket şartnamesine göre permetrin geri kazanımı en az %95 olmalıdır. [1]\", \"sesli_metin\": \"Ceket şartnamesine göre permetrin geri kazanımı en az 95 yüzde olmalıdır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Verify that the percent recovery of permethrin for any specimen size and composition, is 95% or greater by comparing the recovery level from the first extraction, to that of subsequent extractions.\"}, {\"kaynak_no\": 1, \"metin\": \"Combine the permethrin levels obtained from each of the three extractions, if the initial extraction yields permethrin levels 95% or greater than the total percent of permethrin extracted three sequential times, then the extraction efficiency is 95% or greater.\"}], \"cevap\": \"Ceket şartnamesine göre permetrin geri kazanımı en az %95 olmalıdır. [1]\", \"sesli_metin\": \"Ceket şartnamesine göre permetrin geri kazanımı en az 95 yüzde olmalıdır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A147": {
    "durum": "partial",
@@ -938,7 +1141,28 @@
    "cikis_token": 239,
    "dusunce_token": 0,
    "maliyet": 0.00030693,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The buttonholes shall be eyelet-end tapered bar type (eyelet end toward the cuff edge-see figure 2) worked over gimp for the cuff with not less than four (4) tacking stitches at bar end catching the gimp ends (not counting the crossover stitch).\"}, {\"kaynak_no\": 5, \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"}], \"cevap\": \"Ceketin manşet (sleeve cuff) kısmında 3 adet ilik bulunmalıdır. Her ilikte en az 4 adet dikis (tacking stitch) bulunmalıdır.\", \"sesli_metin\": \"Ceketin manşetinde 3 ilik olmalı. Her ilikte en az 4 dikis bulunur.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The buttonholes shall be eyelet-end tapered bar type (eyelet end toward the cuff edge-see figure 2) worked over gimp for the cuff with not less than four (4) tacking stitches at bar end catching the gimp ends (not counting the crossover stitch).\"}, {\"kaynak_no\": 5, \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"}], \"cevap\": \"Ceketin manşet (sleeve cuff) kısmında 3 adet ilik bulunmalıdır. Her ilikte en az 4 adet dikis (tacking stitch) bulunmalıdır.\", \"sesli_metin\": \"Ceketin manşetinde 3 ilik olmalı. Her ilikte en az 4 dikis bulunur.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "partial",
+    "sorunlar": [
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": false,
+    "atif_dogru_hepsi": false,
+    "deger_dogru": false
+   }
   },
   "questions:Q09": {
    "durum": "failed",
@@ -1072,7 +1296,26 @@
    "cikis_token": 196,
    "dusunce_token": 0,
    "maliyet": 0.0004617,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Code: E700 | Cause: Abnormal rise in power supply voltage was detected when power was turned on.\"}, {\"kaynak_no\": 1, \"metin\": \"Remedy: Turn off the power and check the power supply voltage.\"}], \"cevap\": \"E-700 hatasında aşağıdaki adımlar izlenmelidir:\\n1. Makineyi kapatın. [1]\\n2. Güç kaynağı voltajını kontrol edin. [1]\", \"sesli_metin\": \"E-700 hatasında makineyi kapatıp güç kaynağı voltajını kontrol edin.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Code: E700 | Cause: Abnormal rise in power supply voltage was detected when power was turned on.\"}, {\"kaynak_no\": 1, \"metin\": \"Remedy: Turn off the power and check the power supply voltage.\"}], \"cevap\": \"E-700 hatasında aşağıdaki adımlar izlenmelidir:\\n1. Makineyi kapatın. [1]\\n2. Güç kaynağı voltajını kontrol edin. [1]\", \"sesli_metin\": \"E-700 hatasında makineyi kapatıp güç kaynağı voltajını kontrol edin.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": false
+   }
   },
   "aday_sorular:A032": {
    "durum": "partial",
@@ -1145,7 +1388,28 @@
    "cikis_token": 123,
    "dusunce_token": 0,
    "maliyet": 0.0002289,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The bar coding element shall be a 13 digit national stock number (NSN).\"}], \"cevap\": \"Pantolon barkodundaki NSN 13 hanelidir.\", \"sesli_metin\": \"Pantolon barkodundaki NSN 13 hanelidir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The bar coding element shall be a 13 digit national stock number (NSN).\"}], \"cevap\": \"Pantolon barkodundaki NSN 13 hanelidir.\", \"sesli_metin\": \"Pantolon barkodundaki NSN 13 hanelidir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "partial",
+    "sorunlar": [
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A050": {
    "durum": "verified",
@@ -1199,7 +1463,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
-   "deger_dogru": false,
+   "deger_dogru": true,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Mistral",
@@ -1216,7 +1480,26 @@
    "cikis_token": 153,
    "dusunce_token": 0,
    "maliyet": 0.0004272,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 2, \"metin\": \"The setting range is from 1 to 9.\"}], \"cevap\": \"S-7300A düz dikiş makinesinde aydınlatma LED parlaklığı 1 ila 9 aralığında ayarlanır [2].\", \"sesli_metin\": \"S-7300A'da aydınlatma LED parlaklığı 1 ila 9 aralığında ayarlanır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 2, \"metin\": \"The setting range is from 1 to 9.\"}], \"cevap\": \"S-7300A düz dikiş makinesinde aydınlatma LED parlaklığı 1 ila 9 aralığında ayarlanır [2].\", \"sesli_metin\": \"S-7300A'da aydınlatma LED parlaklığı 1 ila 9 aralığında ayarlanır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": false
+   }
   },
   "questions:Q16": {
    "durum": "partial",
@@ -1291,7 +1574,28 @@
    "cikis_token": 134,
    "dusunce_token": 0,
    "maliyet": 0.00027645,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 4, \"metin\": \"Buttonholes shall be 54 (± 2) stitches per inch including tack.\"}], \"cevap\": \"Buttonholes on the coat require 54 (± 2) stitches per inch, including tacking stitches.\", \"sesli_metin\": \"Buttonholes on the coat require 54 plus or minus 2 stitches per inch.\", \"celiski_var\": false, \"netlestirme_sorusu\": \"\", \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 4, \"metin\": \"Buttonholes shall be 54 (± 2) stitches per inch including tack.\"}], \"cevap\": \"Buttonholes on the coat require 54 (± 2) stitches per inch, including tacking stitches.\", \"sesli_metin\": \"Buttonholes on the coat require 54 plus or minus 2 stitches per inch.\", \"celiski_var\": false, \"netlestirme_sorusu\": \"\", \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "partial",
+    "sorunlar": [
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A088": {
    "durum": "failed",
@@ -1367,7 +1671,29 @@
    "cikis_token": 330,
    "dusunce_token": 0,
    "maliyet": 0.0006369,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"immersed in a soap solution (25 g of soap per liter of water)\"}, {\"kaynak_no\": 3, \"metin\": \"Green soap 3\"}, {\"kaynak_no\": 3, \"metin\": \"Soap 2\"}], \"cevap\": \"Parçaları yıkamak için sabun çözeltisinde litre başına kullanılması gereken sabun miktarı aşağıdaki gibidir:\\n\\n1. İlk reçete: 25 gram sabun (25 g of soap per liter of water) [1]\\n2. İkinci reçete: 3 gram yeşil sabun (Green soap 3) [3]\\n3. Üçüncü reçete: 2 gram sabun (Soap 2) [3]\", \"sesli_metin\": \"Parçaları yıkamak için sabun çözeltisinde litre başına 25 gram sabun kullanılır. Alternatif olarak 3 gram yeşil sabun veya 2 gram sabun kullanılabilir.\", \"celiski_var\": true, \"netlestirme_sorusu\": \"Hangi reçeteye göre yıkama yapılacak?\", \"netlestirme_secenekleri\": [\"25 gram sabun (ilk reçete)\", \"3 gram yeşil sabun (ikinci reçete)\", \"2 gram sabun (üçüncü reçete)\"], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"immersed in a soap solution (25 g of soap per liter of water)\"}, {\"kaynak_no\": 3, \"metin\": \"Green soap 3\"}, {\"kaynak_no\": 3, \"metin\": \"Soap 2\"}], \"cevap\": \"Parçaları yıkamak için sabun çözeltisinde litre başına kullanılması gereken sabun miktarı aşağıdaki gibidir:\\n\\n1. İlk reçete: 25 gram sabun (25 g of soap per liter of water) [1]\\n2. İkinci reçete: 3 gram yeşil sabun (Green soap 3) [3]\\n3. Üçüncü reçete: 2 gram sabun (Soap 2) [3]\", \"sesli_metin\": \"Parçaları yıkamak için sabun çözeltisinde litre başına 25 gram sabun kullanılır. Alternatif olarak 3 gram yeşil sabun veya 2 gram sabun kullanılabilir.\", \"celiski_var\": true, \"netlestirme_sorusu\": \"Hangi reçeteye göre yıkama yapılacak?\", \"netlestirme_secenekleri\": [\"25 gram sabun (ilk reçete)\", \"3 gram yeşil sabun (ikinci reçete)\", \"2 gram sabun (üçüncü reçete)\"], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "failed",
+    "sorunlar": [
+     "Alıntı kaynakta birebir bulunamadı: 'Green soap 3'",
+     "Alıntı kaynakta birebir bulunamadı: 'Soap 2'"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": false,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "questions_ek:Q23": {
    "durum": "verified",
@@ -1438,7 +1764,26 @@
    "cikis_token": 197,
    "dusunce_token": 0,
    "maliyet": 0.0002235,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Code: E740 | Cause: The fan motor is not working.\"}, {\"kaynak_no\": 1, \"metin\": \"Remedy: ・Turn off the power and check if lint is entangled. ・Turn off the power and check the connection of connector P11.\"}], \"cevap\": \"E740 hatasının sebebi fan motorunun çalışmamasıdır [1].\", \"sesli_metin\": \"S-7300B'de E740 hatası fan motorunun çalışmamasından kaynaklanır. Güç kapatılarak fan motoru ve P11 bağlantısı kontrol edilmelidir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Code: E740 | Cause: The fan motor is not working.\"}, {\"kaynak_no\": 1, \"metin\": \"Remedy: ・Turn off the power and check if lint is entangled. ・Turn off the power and check the connection of connector P11.\"}], \"cevap\": \"E740 hatasının sebebi fan motorunun çalışmamasıdır [1].\", \"sesli_metin\": \"S-7300B'de E740 hatası fan motorunun çalışmamasından kaynaklanır. Güç kapatılarak fan motoru ve P11 bağlantısı kontrol edilmelidir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A086": {
    "durum": "failed",
@@ -1511,7 +1856,28 @@
    "cikis_token": 157,
    "dusunce_token": 0,
    "maliyet": 0.00022638,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The cut lengths shall be 3/4 to 7/8 inch.\"}], \"cevap\": \"Pantolon cebinin yün yüz parçasının kesim uzunluğu 3/4 ila 7/8 inç olmalıdır [1].\", \"sesli_metin\": \"Pantolon cebinin yün yüz parçasının kesim uzunluğu 0.75 ila 0.875 inç olmalıdır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The cut lengths shall be 3/4 to 7/8 inch.\"}], \"cevap\": \"Pantolon cebinin yün yüz parçasının kesim uzunluğu 3/4 ila 7/8 inç olmalıdır [1].\", \"sesli_metin\": \"Pantolon cebinin yün yüz parçasının kesim uzunluğu 0.75 ila 0.875 inç olmalıdır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "failed",
+    "sorunlar": [
+     "Alıntıda olmayan sayı(lar): ['0.75', '0.875']"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": false,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": false,
+    "atif_dogru_hepsi": false,
+    "deger_dogru": false
+   }
   },
   "aday_sorular:A112": {
    "durum": "verified",
@@ -1581,7 +1947,25 @@
    "cikis_token": 406,
    "dusunce_token": 0,
    "maliyet": 0.0004008,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Pour verrouiller l'interrupteur à la position ARRÊT, poussez sur le clapet pour éteindre l'interrupteur et retirez complètement la clé de sécurité du côté de l'interrupteur.\"}, {\"kaynak_no\": 1, \"metin\": \"La glissière rouge couvre la partie supérieure de l'interrupteur, comme illustré en C ci-dessus. Lorsque la clé de sécurité est retirée et que la glissière rouge couvre la partie du haut du bouton à bascule, l'interrupteur NE peut PAS être basculé à la position MARCHE.\"}, {\"kaynak_no\": 5, \"metin\": \"La clé de sécurité étant enlevée, la glissière rouge recouvre la partie supérieure de l'interrupteur, ce qui le bloque à la position ARRÊT.\"}], \"cevap\": \"Freze tablası şalterini kapalı konuma getirdikten sonra:\\n1. Klapeti (kapağı) aşağıya doğru iterek şalteri kapatın [1].\\n2. Güvenlik anahtarını (clé de sécurité) tamamen çıkarın [1,5].\\n3. Kırmızı kaydırıcı (glissière rouge) şalterin üst kısmını kaplayarak şalterin MARCHE konumuna geçmesini engelleyecektir [1,5].\", \"sesli_metin\": \"Şalteri kapatın klapeti iterek ve güvenlik anahtarını tamamen çıkarın. Kırmızı kaydırıcı şalteri kilitleyecektir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Pour verrouiller l'interrupteur à la position ARRÊT, poussez sur le clapet pour éteindre l'interrupteur et retirez complètement la clé de sécurité du côté de l'interrupteur.\"}, {\"kaynak_no\": 1, \"metin\": \"La glissière rouge couvre la partie supérieure de l'interrupteur, comme illustré en C ci-dessus. Lorsque la clé de sécurité est retirée et que la glissière rouge couvre la partie du haut du bouton à bascule, l'interrupteur NE peut PAS être basculé à la position MARCHE.\"}, {\"kaynak_no\": 5, \"metin\": \"La clé de sécurité étant enlevée, la glissière rouge recouvre la partie supérieure de l'interrupteur, ce qui le bloque à la position ARRÊT.\"}], \"cevap\": \"Freze tablası şalterini kapalı konuma getirdikten sonra:\\n1. Klapeti (kapağı) aşağıya doğru iterek şalteri kapatın [1].\\n2. Güvenlik anahtarını (clé de sécurité) tamamen çıkarın [1,5].\\n3. Kırmızı kaydırıcı (glissière rouge) şalterin üst kısmını kaplayarak şalterin MARCHE konumuna geçmesini engelleyecektir [1,5].\", \"sesli_metin\": \"Şalteri kapatın klapeti iterek ve güvenlik anahtarını tamamen çıkarın. Kırmızı kaydırıcı şalteri kilitleyecektir.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true
+   }
   },
   "aday_sorular:A103": {
    "durum": "failed",
@@ -1654,7 +2038,28 @@
    "cikis_token": 167,
    "dusunce_token": 0,
    "maliyet": 0.00029985,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"La jarra se retiró del plato calefactor por más de 30 segundos.\"}], \"cevap\": \"Sürahi ısıtma plakasından 30 saniyeden uzun süre çıkarılırsa, makineyi kapatmanız ve fişini çekmeniz gerekmektedir [1].\", \"sesli_metin\": \"Sürahi ısıtma plakasından 30 saniyeden uzun süre çıkarılırsa makineyi kapatın ve fişini çekin.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"La jarra se retiró del plato calefactor por más de 30 segundos.\"}], \"cevap\": \"Sürahi ısıtma plakasından 30 saniyeden uzun süre çıkarılırsa, makineyi kapatmanız ve fişini çekmeniz gerekmektedir [1].\", \"sesli_metin\": \"Sürahi ısıtma plakasından 30 saniyeden uzun süre çıkarılırsa makineyi kapatın ve fişini çekin.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "failed",
+    "sorunlar": [
+     "Alıntı kaynakta birebir bulunamadı: 'La jarra se retiró del plato calefactor por más de 30 segundos.'"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": false,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": false,
+    "atif_dogru_hepsi": false,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A005": {
    "durum": "failed",
@@ -1711,7 +2116,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
-   "deger_dogru": false,
+   "deger_dogru": true,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Mistral",
@@ -1728,7 +2133,28 @@
    "cikis_token": 224,
    "dusunce_token": 0,
    "maliyet": 0.0005109,
-   "ham": "{\n  \"alintilar\": [\n    {\"kaynak_no\": 1, \"metin\": \"Seam placement: Top stitch pleat of bi-swing | Gauge: Two (2) rows 3/16 to 1/4-inch gage apart\"},\n    {\"kaynak_no\": 1, \"metin\": \"Stitch type: 301\"}\n  ],\n  \"cevap\": \"Ceketin arka körük (bi-swing) pli üst dikişinde iki sıra arasındaki mesafe 3/16 ila 1/4 inç aralığındadır [1].\",\n  \"sesli_metin\": \"Ceketin arka körük pli üst dikişinde iki sıra arası mesafe 3/16 ila 1/4 inç aralığındadır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": null,\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+   "ham": "{\n  \"alintilar\": [\n    {\"kaynak_no\": 1, \"metin\": \"Seam placement: Top stitch pleat of bi-swing | Gauge: Two (2) rows 3/16 to 1/4-inch gage apart\"},\n    {\"kaynak_no\": 1, \"metin\": \"Stitch type: 301\"}\n  ],\n  \"cevap\": \"Ceketin arka körük (bi-swing) pli üst dikişinde iki sıra arasındaki mesafe 3/16 ila 1/4 inç aralığındadır [1].\",\n  \"sesli_metin\": \"Ceketin arka körük pli üst dikişinde iki sıra arası mesafe 3/16 ila 1/4 inç aralığındadır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": null,\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}",
+   "onceki_puan": {
+    "durum": "failed",
+    "sorunlar": [
+     "Alıntı kaynakta birebir bulunamadı: 'Seam placement: Top stitch pleat of bi-swing | Gauge: Two (2) rows 3/1'"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": false,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": false
+   }
   },
   "aday_sorular:A060": {
    "durum": "partial",
@@ -1801,7 +2227,28 @@
    "cikis_token": 241,
    "dusunce_token": 0,
    "maliyet": 0.00026133,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Code Cause Remedy: E211 Abnormal feed motor operation detected during sewing.\"}, {\"kaynak_no\": 1, \"metin\": \"Turn off the power and check that the feed mechanism is not abnormal.\"}, {\"kaynak_no\": 1, \"metin\": \"Turn off the power and check the feed motor connector and connector P4.\"}], \"cevap\": \"E-211 kodu çıktığında aşağıdaki adımları uygula:\\n1. Makineyi kapat.\\n2. Besleme mekanizmasının normal çalışıp çalışmadığını kontrol et.\\n3. Besleme motorunun bağlantısını ve P4 bağlantı noktasını kontrol et.\", \"sesli_metin\": \"E-211 kodu çıktığında makineyi kapatın. Besleme mekanizmasını ve P4 bağlantısını kontrol edin.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Code Cause Remedy: E211 Abnormal feed motor operation detected during sewing.\"}, {\"kaynak_no\": 1, \"metin\": \"Turn off the power and check that the feed mechanism is not abnormal.\"}, {\"kaynak_no\": 1, \"metin\": \"Turn off the power and check the feed motor connector and connector P4.\"}], \"cevap\": \"E-211 kodu çıktığında aşağıdaki adımları uygula:\\n1. Makineyi kapat.\\n2. Besleme mekanizmasının normal çalışıp çalışmadığını kontrol et.\\n3. Besleme motorunun bağlantısını ve P4 bağlantı noktasını kontrol et.\", \"sesli_metin\": \"E-211 kodu çıktığında makineyi kapatın. Besleme mekanizmasını ve P4 bağlantısını kontrol edin.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "partial",
+    "sorunlar": [
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": false
+   }
   },
   "sekil_sorular:G4": {
    "durum": "failed",
@@ -1875,7 +2322,29 @@
    "cikis_token": 252,
    "dusunce_token": 0,
    "maliyet": 0.0003651,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Internal waistband drawcord\"}, {\"kaynak_no\": 1, \"metin\": \"Horizontal bartack superimposed on J-stitch\"}, {\"kaynak_no\": 1, \"metin\": \"Vertical bartack on crotch seam\"}], \"cevap\": \"Pantolonun belindeki iç bağcık (drawcord) şekilde 'Internal waistband drawcord' olarak gösterilmektedir. Bağcığın üzerine yatay olarak yerleştirilmiş bir bartack (dikiş takviyesi) ve J-dikiş (J-stitch) bulunmaktadır. Ayrıca kasık dikişinde (crotch seam) dikey bir bartack yer almaktadır.\", \"sesli_metin\": \"Pantolonun belindeki iç bağcık şekilde Internal waistband drawcord olarak gösteriliyor. Üzerinde yatay bartack ve J-dikiş var.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Internal waistband drawcord\"}, {\"kaynak_no\": 1, \"metin\": \"Horizontal bartack superimposed on J-stitch\"}, {\"kaynak_no\": 1, \"metin\": \"Vertical bartack on crotch seam\"}], \"cevap\": \"Pantolonun belindeki iç bağcık (drawcord) şekilde 'Internal waistband drawcord' olarak gösterilmektedir. Bağcığın üzerine yatay olarak yerleştirilmiş bir bartack (dikiş takviyesi) ve J-dikiş (J-stitch) bulunmaktadır. Ayrıca kasık dikişinde (crotch seam) dikey bir bartack yer almaktadır.\", \"sesli_metin\": \"Pantolonun belindeki iç bağcık şekilde Internal waistband drawcord olarak gösteriliyor. Üzerinde yatay bartack ve J-dikiş var.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "failed",
+    "sorunlar": [
+     "Alıntı [1] şeklin otomatik açıklamasından (model üretimi, kaynak metni değil): şekli kaynak sayfada kontrol edin",
+     "Alıntı kaynakta birebir bulunamadı: 'Horizontal bartack superimposed on J-stitch'",
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": false,
+     "alinti_kaynak_metni": false,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true
+   }
   },
   "aday_sorular:A091": {
    "durum": "failed",
@@ -1933,7 +2402,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
-   "deger_dogru": false,
+   "deger_dogru": true,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Mistral",
@@ -1950,7 +2419,29 @@
    "cikis_token": 153,
    "dusunce_token": 0,
    "maliyet": 0.00052875,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The cone angle of the first type warping machine is modified from 6 to 26°.\"}], \"cevap\": \"Birinci tip çözgü makinesinin tamburunda koni açısı 6° ile 26° arasında değişir.\", \"sesli_metin\": \"Birinci tip çözgü makinesinin tamburunda koni açısı 6 ila 26 derece arasında ayarlanır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The cone angle of the first type warping machine is modified from 6 to 26°.\"}], \"cevap\": \"Birinci tip çözgü makinesinin tamburunda koni açısı 6° ile 26° arasında değişir.\", \"sesli_metin\": \"Birinci tip çözgü makinesinin tamburunda koni açısı 6 ila 26 derece arasında ayarlanır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "failed",
+    "sorunlar": [
+     "Alıntı kaynakta birebir bulunamadı: 'The cone angle of the first type warping machine is modified from 6 to'",
+     "Cevapta geçerli [n] atfı yok"
+    ],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": false,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": false,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": false
+   }
   },
   "aday_sorular:A108": {
    "durum": "verified",
@@ -2021,7 +2512,26 @@
    "cikis_token": 228,
    "dusunce_token": 0,
    "maliyet": 0.0003315,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Si NO aparece, usted debe comprar una placa adaptadora para fresadora BOSCH RA1186, la cual está disponible por separado.\"}, {\"kaynak_no\": 5, \"metin\": \"If it is NOT listed, you must purchase a BOSCH RA1186 Router Adapter Plate, available separately.\"}], \"cevap\": \"Frezeminizin modeli bağlantı tablosunda yer almıyorsa, BOSCH RA1186 freze adaptör plakası satın almanız gerekmektedir. Bu parça ayrı olarak temin edilebilir [1,5].\", \"sesli_metin\": \"Frezeminizin modeli bağlantı tablosunda yoksa BOSCH RA1186 adaptör plakası satın alın.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Si NO aparece, usted debe comprar una placa adaptadora para fresadora BOSCH RA1186, la cual está disponible por separado.\"}, {\"kaynak_no\": 5, \"metin\": \"If it is NOT listed, you must purchase a BOSCH RA1186 Router Adapter Plate, available separately.\"}], \"cevap\": \"Frezeminizin modeli bağlantı tablosunda yer almıyorsa, BOSCH RA1186 freze adaptör plakası satın almanız gerekmektedir. Bu parça ayrı olarak temin edilebilir [1,5].\", \"sesli_metin\": \"Frezeminizin modeli bağlantı tablosunda yoksa BOSCH RA1186 adaptör plakası satın alın.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": true
+   }
   },
   "aday_sorular:A074": {
    "durum": "failed",
@@ -2153,7 +2663,26 @@
    "cikis_token": 134,
    "dusunce_token": 0,
    "maliyet": 0.00020415,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Needle bar | -[]0[]P: High-speed spindle\"}], \"cevap\": \"S-7300A makinesinde iğne tipi olarak \\\"High-speed spindle\\\" iğne kullanılmalıdır [1].\", \"sesli_metin\": \"S-7300A makinesinde high-speed spindle iğne tipi kullanılır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Needle bar | -[]0[]P: High-speed spindle\"}], \"cevap\": \"S-7300A makinesinde iğne tipi olarak \\\"High-speed spindle\\\" iğne kullanılmalıdır [1].\", \"sesli_metin\": \"S-7300A makinesinde high-speed spindle iğne tipi kullanılır.\", \"celiski_var\": false, \"netlestirme_sorusu\": null, \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_puan": {
+    "durum": "verified",
+    "sorunlar": [],
+    "kontroller": {
+     "alinti_var": true,
+     "alinti_birebir": true,
+     "alinti_kaynak_metni": true,
+     "atif_gecerli": true,
+     "sayilar_alintida": true,
+     "tolerans_tam": true,
+     "sesli_tolerans_tam": true,
+     "cevap_var": true,
+     "tekrar_yok": true,
+     "alfabe_dogru": true
+    },
+    "atif_dogru_biri": true,
+    "atif_dogru_hepsi": true,
+    "deger_dogru": false
+   }
   }
  },
  "cost_usd": 0.012330090000000002,
@@ -2167,5 +2696,12 @@
   "json": "ok"
  },
  "end": "2026-11-05T14:50:55",
- "tamam": true
+ "tamam": true,
+ "deger": "değer olarak, 2026-11-05",
+ "yeniden_puanlama": {
+  "tarih": "2026-11-05T15:27:46",
+  "kesik_kayit": 0,
+  "rozeti_degisen": 0,
+  "degeri_degisen": 3
+ }
 }

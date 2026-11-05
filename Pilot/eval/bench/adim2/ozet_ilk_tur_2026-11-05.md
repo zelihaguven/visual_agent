@@ -1,7 +1,7 @@
 # Adım 2, ilk tur: okuma (2026-11-05)
 
-> **Set onayı (2026-11-05 akşam):** Aday setin 155 sorusundan 105'i otomatik tutarlılık kontrolünden şüphesiz geçti ve onaylandı; 50 şüpheli soru kullanıcı bakana kadar onaysız ([aday_sorular.md](../../aday_sorular.md)). "Bulunamadı" sorularının 7'si, cevaplı soruların 40/160'ı onaysız.
-> **Yanlılık uyarısı:** Kontrolün bir ölçütü "dört model de beklenenle çelişiyor" idi; bu sorular onaylı kümeden çıktı. Bu turun onaylı/onaysız ayrımındaki kalite sayıları bu yüzden iyimser ve modeller arası karşılaştırma için tasarlanmadı. Aşağıdaki özet tablo onaydan önceki ayrımla (37 onaylı soru) duruyor. **Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş sette, setin bu kayıtlardan bağımsız sorularıyla yapılacak.**
+> **Set onayı (2026-11-05 akşam, ölçüt düzeltildi):** Aday setin 154/155 sorusu onaylı; A038 kullanıcıda. Onay ölçütü model çıktısı değil: kanıt cümlesi beklenen sayfada ve beklenen değer kanıtta, "bulunamadı" sorularında 27 Ekim korpus araması ([aday_sorular.md](../../aday_sorular.md)). Model çelişkisi yalnız bilgi. Daha önce model çıktısına dayanan ilk onaydaki yanlılık bu ölçütle kalktı. OCR soruları (14) raporda ayrıca gösteriliyor. Beklenen değer eşleştiricisi değer olarak karşılaştırıyor ("0.4–0.7" = "0.4 ile 0.7"); ilk tur yeniden puanlandı.
+> **Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş sette yapılacak.**
 > **Aşırı uyum notu:** Aday arama ayarları bu setle seçildi; görülmemiş doküman testi ayrı tutulan JUKI seti.
 
 Ham tablo: [adim2_cevap_modeli_2026-11-05.md](adim2_cevap_modeli_2026-11-05.md). Plan: [plan_cevap_modeli_2026-11-05.md](plan_cevap_modeli_2026-11-05.md).
@@ -20,7 +20,8 @@ Ek koşular:
 | … bunların kaynağı ilk 5'teydi (model hatası) | 1 / 3 | 0 / 2 | 1 / 2 | 1 / 3 |
 | Cevaplarda ✓ / ⚠ / ✖, onaylı (verify A+B) | 27 / 5 / 1 | 26 / 5 / 6 | **29 / 4 / 2** | 9 / 17 / 7 |
 | … onaysız (verify A+B; önceki ✖) | 91 / 6 / 12 (29) | 94 / 7 / 14 (18) | 100 / 10 / 6 (8) | 49 / 32 / 29 (41) |
-| Beklenen değer cevapta, onaylı | 17/18 | 17/21 | 18/20 | 18/19 |
+| Beklenen değer cevapta, onaylı | 17/18 | 17/21 | 18/20 | 18/19 | *(eski eşleştirici, onay öncesi 37 soru)*
+| Beklenen değer cevapta, bütün cevaplı (yeni eşleştirici) | 92/100 (%92) | 90/106 (%85) | 89/106 (%84) | 84/102 (%82) |
 | JSON sorunu (177 çağrı) | 0 | 0 | 0 | 5 yarıda kesik |
 | İlk token p50 / p95 | 388 ms / 1,04 sn | 648 ms / 1,57 sn | 762 ms / 1,36 sn | 449 ms / 991 ms |
 | … ikinci tur (14:41, 30 soru) | 350 ms / 1,90 sn | 715 ms / **10,7 sn** | 776 ms / 1,06 sn | 468 ms / 840 ms |

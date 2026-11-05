@@ -108,6 +108,45 @@ def overlap_at_k(approx: Sequence[Any], exact: Sequence[Any], k: int) -> float:
 
 # ---------- süre ----------
 
+# Beklenen değer eşleştirme: sayılar değer olarak (tam kesir "7-1/4" / "1 1/2", kesir, ondalık virgül/nokta); aralık
+# ayırıcısı ("–", "-", "ile", "to") önemsiz. 2026-11-05: düz metin araması "0.4–0.7"yi "0.4 ile 0.7 mm"de bulamıyordu.
+_VALUE_RE = re.compile(r"(\d+)[ -](\d+)/(\d+)(?!\d)|(\d+)/(\d+)|\d+(?:\.\d+)?")
+_CODE_TOKEN_RE = re.compile(r"[a-z]+-?\d+[a-z0-9]*|\d+[a-z]+\d*", re.I)
+
+
+def _norm_value_text(text: str) -> str:
+    t = text.casefold().replace("–", "-").replace("—", "-").replace("−", "-")
+    return re.sub(r"(?<=\d),(?=\d)", ".", t)
+
+
+def _values(text: str) -> list[float]:
+    out = []
+    for m in _VALUE_RE.finditer(_norm_value_text(_CODE_TOKEN_RE.sub(" ", text))):
+        if m.group(1):
+            out.append(int(m.group(1)) + int(m.group(2)) / max(int(m.group(3)), 1))
+        elif m.group(4):
+            out.append(int(m.group(4)) / max(int(m.group(5)), 1))
+        else:
+            out.append(float(m.group(0)))
+    return out
+
+
+def value_in(expected: str, text: str) -> bool:
+    """Beklenen değer cevapta mı: harfli kodlar (E050, RA1186) metin olarak; sayılar değer olarak, hepsi; '±' beklenende
+    varsa cevapta da ('artı eksi' dahil). Sayı yoksa büyük/küçük harfe duyarsız metin araması."""
+    t = _norm_value_text(text)
+    codes = _CODE_TOKEN_RE.findall(expected)
+    if any(c.casefold() not in t for c in codes):
+        return False
+    want = _values(expected)
+    if not want:
+        return bool(codes) or _norm_value_text(expected).strip() in t
+    have = _values(text)
+    if not all(any(abs(w - h) < 1e-6 for h in have) for w in want):
+        return False
+    return "±" not in expected or "±" in t or "artı eksi" in t or "plus or minus" in t
+
+
 def sse_events(response: Any) -> Iterable[dict[str, Any]]:
     """OpenRouter akışının (text/event-stream) olayları. Satırlar bayt olarak okunup UTF-8 çözülür: Yanıtta charset yok,
     requests'in decode_unicode'u Latin-1 varsayıyor; "±" ve Türkçe harfler bozuluyor, 0x85 baytı satırı bölüyordu
