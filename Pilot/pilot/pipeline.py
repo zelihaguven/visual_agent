@@ -9,8 +9,8 @@ from .chunk import read_chunks
 from .config import (CHUNKS_PATH, CLARIFY_DOC_RATIO, CLARIFY_METHOD, CLARIFY_MIN_SCORE, MIN_RERANK_SCORE,
                      TOP_K_SOURCES)
 from .llm import chat_json
-from .query import (CODE_IN_TEXT, DETAIL_HINT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific,
-                    aspects_for, code_key, context_entities, family, missing_entities, normalize_codes, question_lang,
+from .query import (CODE_IN_TEXT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific, aspects_for,
+                    code_key, context_entities, detail_hint, family, missing_entities, normalize_codes, question_lang,
                     source_aliases, spoken_codes, strip_source_phrases, strip_terms)
 from .registry import BY_ID, DOCS, visible
 from .retrieve import FUSED_K, Hit, search
@@ -265,7 +265,7 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
         timings["total"] = time.time() - t0
         return _clarify(question, ctx, timings, [],
                         f"Soruda hangi bilginin istendiği belli değil (kaynak: {names}). Hangisini arıyorsunuz?",
-                        aspects=aspects_for(scope), hint=DETAIL_HINT.get(BY_ID[scope[0]].doc_type, ""))
+                        aspects=aspects_for(scope), hint=detail_hint(BY_ID[scope[0]].doc_type))
 
     # Atölye terimleri aramada kılavuz terimleriyle genişletilir (R16); kaynak ifadesi ("X kitabına göre") aramadan
     # çıkarılır, kaynak zaten filtrede. Modele giden soru değişmez.
@@ -350,7 +350,7 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
         kind = BY_ID[hits[0].chunk["doc_id"]].doc_type
         return _clarify(question, ctx, timings, found if len(found) >= 2 else [], asks, hits,
                         aspects=[(o, o) for o in options],
-                        hint=DETAIL_HINT.get(kind, "Sorunuza ayrıntı ekleyin."), llm_called=True)
+                        hint=detail_hint(kind, "Sorunuza ayrıntı ekleyin."), llm_called=True)
     if asks and len(options) < 2:
         # Cevap var ama model kaynakta karşılığı olmayan bir ayrım sordu (SPI sorusunda "hangi beden?"):
         # kullanıcının cevaplayamayacağı soru gösterilmez, denetim için saklanır.

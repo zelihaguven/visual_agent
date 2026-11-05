@@ -179,6 +179,7 @@ def test_candidate_generator_main_refuses_current_file():
     assert path.read_bytes() == before
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_prepare_scopes_like_pipeline():
     p = prepare("S-7300A'da E050 hatası ne demek?")
     assert p["skip"] is None and p["doc_ids"] == ["brother-s7300a"]

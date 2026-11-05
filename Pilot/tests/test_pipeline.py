@@ -82,6 +82,7 @@ def test_foreign_brand_returns_not_found_without_search_or_llm(calls):
     assert "Nike" in r.answer["neden"]
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_ambiguous_model_asks_before_search_or_llm(calls):
     r = pipeline.soru_cevapla("S-7300'ün maksimum dikiş hızı nedir?")
     assert r.verification.status == "clarify"
@@ -138,6 +139,7 @@ PANTOLON = dict(CHUNK, chunk_id="gl-pd-07-14a-00001", doc_id="gl-pd-07-14a", pro
                 text="The seams for all outside visible stitching shall be sewn with 10-14 stitches per inch.")
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_machine_plus_product_question_offers_all_sources(calls):
     # "Brother A makinesi ceket ölçüsü": A / B seçenekleri yanında ceket şartnamesi de seçenek olmalı
     r = pipeline.soru_cevapla("brother marka a makinesi ceket ölçüsü")
@@ -176,6 +178,7 @@ def test_product_missing_in_machine_manual_offers_search_without_product_name(ca
     assert r.answer["yalin_soru"] == "dikerken S-7300A'da iplik gerginliği"
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_choosing_the_product_source_with_vague_question_asks_what_is_wanted(calls):
     # Windows denemesi: Ceket seçilince "ceket ölçüsü" beden tablosu ve punteriz satırları getirdi, model boş cevap
     # verdi ("doğrulanamadı"). Soru neyi sorduğunu söylemiyor: model çağrılmadan konu seçenekleri sunulur.
@@ -188,6 +191,7 @@ def test_choosing_the_product_source_with_vague_question_asks_what_is_wanted(cal
     assert "beden" in r.answer["ipucu"]
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_chosen_topic_runs_and_machine_brand_is_only_context(monkeypatch, calls):
     seen = []
     monkeypatch.setattr(pipeline, "search", lambda q, **kw: (seen.append(q), [Hit(CHUNK, 0, 3.0)])[1])
@@ -244,6 +248,7 @@ S7300A = dict(CHUNK, chunk_id="brother-s7300a-00087", doc_id="brother-s7300a", b
 S7300B = dict(S7300A, chunk_id="brother-s7300b-00090", doc_id="brother-s7300b", product="S-7300B düz dikiş makinesi")
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_model_ambiguity_after_search_asks_before_llm(monkeypatch, calls):
     # "Masura kovanı nasıl takılır?": aynı bölüm A ve B'de. Eskiden model 158 sn çalışıp "hangi model?" diye soruyordu
     monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(S7300A, 0, -0.7), Hit(S7300B, 1, -0.7)])
@@ -286,6 +291,7 @@ def test_model_clarification_without_answer_becomes_clarify(monkeypatch, calls):
     assert r.answer["netlestirme_sorusu"] == "Hangi beden için?" and r.llm_called
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_sibling_model_switch_is_not_blocked(calls):
     # "diğer modelde ara": S-7300A sorusu S-7300B kılavuzunda aranabilmeli
     pipeline.soru_cevapla("S-7300A'da E133 hatası", doc_ids=["brother-s7300b"])
@@ -470,6 +476,7 @@ def test_doc_score_ambiguity_asks_when_rival_product_is_close():
     assert doc_score_ambiguity(hits, 0.6) is None
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_doc_score_ambiguity_models_and_non_interchangeable_top():
     from pilot.pipeline import doc_score_ambiguity
     models = [_h("brother-s7300b", 0.5), _h("brother-s7300a", 0.45)]
@@ -479,6 +486,7 @@ def test_doc_score_ambiguity_models_and_non_interchangeable_top():
     assert doc_score_ambiguity(book, 0.5) is None
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_post_search_ambiguity_default_is_top3():
     from pilot.pipeline import post_search_ambiguity
     hits = [_h("brother-s7300a", 0.5), _h("brother-s7300b", 0.1), _h("brother-s7300a", 0.1)]

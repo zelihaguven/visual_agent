@@ -5,8 +5,14 @@ import re
 from dataclasses import dataclass
 from functools import lru_cache
 
+from . import config
 from .config import CHUNKS_PATH
 from .registry import BRAND_ALIASES, BY_ID, CUSTOMER_BRANDS, DOCS
+
+
+def brand_aliases() -> dict[str, tuple[str, ...]]:
+    """Elle yazılmış makine markası grupları; yalnız PILOT_DOC_SPECIFIC_RULES=1 iken (config.DOC_SPECIFIC_RULES)."""
+    return BRAND_ALIASES if config.DOC_SPECIFIC_RULES else {}
 
 
 _TR_LOWER = str.maketrans({"I": "ı", "İ": "i"})
@@ -215,8 +221,9 @@ def analyze_query(question: str) -> QueryContext:
                 break
     # Model kodu belirtilmemiş makine markası ("Brother") ya da aile kodu ("S-7300"): modellerin hepsi, belirsiz.
     # Müşteri markası ("US Army"), ürün belirtilmemişse: o markanın şartnamelerinin hepsi, belirsiz.
-    groups = [(b, "makine", ids) for b, ids in BRAND_ALIASES.items()]
-    groups.append(("s7300", "makine", ("brother-s7300a", "brother-s7300b")))
+    groups = [(b, "makine", ids) for b, ids in brand_aliases().items()]
+    if config.DOC_SPECIFIC_RULES:
+        groups.append(("s7300", "makine", ("brother-s7300a", "brother-s7300b")))
     groups += [(b, "marka", ids) for b, ids in CUSTOMER_BRANDS.items()]
     for alias, kind, ids in groups:
         # "s7300", "S-7300A" eşleşmesinin bir parçasıysa ayrı varlık değildir
@@ -234,8 +241,8 @@ def analyze_query(question: str) -> QueryContext:
 
 
 def family(doc_id: str) -> set[str]:
-    """Aynı makine ailesindeki dokümanlar (S-7300A → {A, B}). Aile yoksa yalnız kendisi."""
-    for ids in BRAND_ALIASES.values():
+    """Aynı makine ailesindeki dokümanlar (S-7300A → {A, B}). Aile yoksa (ya da kurallar kapalıysa) yalnız kendisi."""
+    for ids in brand_aliases().values():
         if doc_id in ids:
             return set(ids)
     return {doc_id}
@@ -378,8 +385,16 @@ def _doc_texts() -> dict[str, str]:
     return {d: "\n".join(t) for d, t in texts.items()}
 
 
+def detail_hint(doc_type: str, default: str = "") -> str:
+    """Kullanıcının ayrıntı yazması için örnek; DETAIL_HINT yalnız PILOT_DOC_SPECIFIC_RULES=1 iken."""
+    return DETAIL_HINT.get(doc_type, default) if config.DOC_SPECIFIC_RULES else default
+
+
 def aspects_for(doc_ids: list[str]) -> list[tuple[str, str]]:
-    """Seçilen kaynak(lar)da geçen konular: [(etiket, eklenecek ifade)]. İndeks yoksa hepsi."""
+    """Seçilen kaynak(lar)da geçen konular: [(etiket, eklenecek ifade)]. İndeks yoksa hepsi.
+    ASPECTS yalnız PILOT_DOC_SPECIFIC_RULES=1 iken; kapalıyken seçenek sunulmaz, kullanıcı ayrıntıyı kendisi yazar."""
+    if not config.DOC_SPECIFIC_RULES:
+        return []
     texts = _doc_texts()
     out: list[tuple[str, str]] = []
     for doc_type in dict.fromkeys(BY_ID[d].doc_type for d in doc_ids):

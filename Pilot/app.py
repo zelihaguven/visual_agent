@@ -11,7 +11,7 @@ from pathlib import Path
 import streamlit as st
 
 from pilot.pipeline import Result, soru_cevapla
-from pilot.registry import BRAND_ALIASES, BY_ID, DOCS
+from pilot.registry import BY_ID, DOCS
 from pilot.render import page_image
 
 ROOT = Path(__file__).parent
@@ -105,11 +105,9 @@ def start(q: str, brands: list[str] | None, doc_ids: list[str] | None = None, ea
 
 
 def siblings(doc_id: str) -> list[str]:
-    """Aynı makine ailesindeki diğer modellerin dokümanları (S-7300A → S-7300B)."""
-    for ids in BRAND_ALIASES.values():
-        if doc_id in ids:
-            return [d for d in ids if d != doc_id]
-    return []
+    """Aynı makine ailesindeki diğer modellerin dokümanları (S-7300A → S-7300B; aile kuralı kapalıysa yok)."""
+    from pilot.query import family
+    return sorted(family(doc_id) - {doc_id})
 
 
 if st.button("Sor", type="primary") and question.strip():

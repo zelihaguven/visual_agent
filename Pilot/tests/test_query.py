@@ -21,11 +21,13 @@ def test_known_product_or_model_sets_filter(question, expected):
     assert set(analyze_query(question).doc_ids) == expected
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_brand_without_model_covers_all_models():
     ctx = analyze_query("Brother makinesinde iplik gerginliği")
     assert set(ctx.doc_ids) == {"brother-s7300a", "brother-s7300b"}
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_model_family_without_letter_covers_both():
     assert set(analyze_query("S-7300 makinesi").doc_ids) == {"brother-s7300a", "brother-s7300b"}
 
@@ -41,6 +43,7 @@ def test_two_products_in_one_question():
     assert set(ctx.doc_ids) == {"gl-pd-14-04a", "gl-pd-07-14a"}
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_model_family_without_letter_is_ambiguous():
     assert set(analyze_query("S-7300'ün maksimum dikiş hızı nedir?").variants) == {"brother-s7300a", "brother-s7300b"}
     assert set(analyze_query("Brother makinesinde iplik gerginliği").variants) == {"brother-s7300a", "brother-s7300b"}
@@ -65,6 +68,7 @@ def test_matched_terms_are_reported_for_the_ui():
     assert analyze_query("S-7300A ayarı").matched == ("s7300a",)
 
 
+@pytest.mark.usefixtures("doc_rules")
 def test_brand_next_to_specific_model_does_not_widen_filter():
     ctx = analyze_query("Brother S-7300A iğne değişimi")
     assert ctx.doc_ids == ("brother-s7300a",) and ctx.variants == ()
@@ -87,6 +91,7 @@ def test_customer_brand_alone_covers_its_products():
     ("US Army ceket SPI", ["gl-pd-14-04a"], set()),                           # müşteri markası şartnamede var
     ("Ceket yaka dikişi", ["strickland-1956"], set()),                        # genel rehber: engellemez
 ])
+@pytest.mark.usefixtures("doc_rules")
 def test_entity_roles_by_chosen_source(question, scope, missing):
     assert {e[0] for e in missing_entities(analyze_query(question), scope)} == missing
 
@@ -101,6 +106,7 @@ def test_entity_roles_by_chosen_source(question, scope, missing):
     ("S-7300A maksimum dikiş hızı", False),
     ("brother marka a makinesi ceket ölçüsü (dikiş tipi (stitch type))", False),
 ])
+@pytest.mark.usefixtures("doc_rules")
 def test_question_that_asks_nothing_specific(question, vague):
     assert asks_nothing_specific(question, analyze_query(question)) is vague
 
@@ -196,3 +202,21 @@ def test_query_translation_targets_and_call(monkeypatch):
     assert "E050" in translate.bm25_text(out, "x") and translate.bm25_text({}, "özgün") == "özgün"
     assert translate.translate_query("How to lock?", "en", ["en"], chat) == {"en": "How to lock?"}
     assert len(chat.calls) == 1                                           # hedef dildeki soru için çağrı yok
+
+
+def test_doc_specific_rules_are_off_by_default():
+    """PILOT_DOC_SPECIFIC_RULES kapalı (varsayılan): elle yazılmış marka/aile grupları ve konu seçenekleri yok.
+    Model adı geçen sorular (kayıttaki takma ad) etkilenmez."""
+    from pilot.query import aspects_for, brand_aliases, detail_hint, family
+    assert analyze_query("Brother makinesinde iplik gerginliği").doc_ids == ()
+    assert analyze_query("S-7300 makinesi").doc_ids == ()
+    assert analyze_query("S-7300A hata kodu").doc_ids == ("brother-s7300a",)
+    assert brand_aliases() == {} and family("brother-s7300a") == {"brother-s7300a"}
+    assert aspects_for(["gl-pd-14-04a"]) == [] and detail_hint("machine_manual", "x") == "x"
+
+
+def test_doc_specific_rules_flag_restores_old_behavior(doc_rules):
+    from pilot.query import detail_hint, family
+    assert set(analyze_query("Brother makinesinde iplik gerginliği").doc_ids) == {"brother-s7300a", "brother-s7300b"}
+    assert family("brother-s7300a") == {"brother-s7300a", "brother-s7300b"}
+    assert "E133" in detail_hint("machine_manual")

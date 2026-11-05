@@ -13,7 +13,11 @@ PAGES_PER_BATCH = 10          # Docling'e verilen sayfa aralığı uzunluğu
 CHUNK_MAX_CHARS = 900         # metin parçası üst sınırı (başlık sınırını aşmaz)
 # Parça dili otomatik tespit edilir (chunk.py, lingua); aday diller kuruluma göre, dokümana göre değil
 LANGS = tuple(os.environ.get("PILOT_LANGS", "en,tr,fr,es,de,it,pt").split(","))
-EDGE_BAND = 0.12              # üst/alt bilgi tespiti için sayfa kenar oranı
+# Dokümana ya da test verisine özgü, elle yazılmış kurallar (ilke dışı; eval/bench/b4/ilke_temizligi_2026-11-03.md):
+# BRAND_ALIASES (brother → S-7300A/B), sabit "s7300" aile grubu, ASPECTS/DETAIL_HINT konu seçenekleri.
+# Varsayılan kapalı; 1: eski davranış (ölçüm ve karşılaştırma için). Silme kararı ölçüm sonucuna göre.
+DOC_SPECIFIC_RULES = os.environ.get("PILOT_DOC_SPECIFIC_RULES", "0") == "1"
+EDGE_BAND = 0.12             # üst/alt bilgi tespiti için sayfa kenar oranı
 FURNITURE_MIN_RATIO = 0.5     # üst/alt bilgi: sayfaların en az bu oranında tekrar eder
 SENTENCE_END = (".", "!", "?", ":", ";", '"', ")")
 
