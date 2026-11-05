@@ -13,10 +13,14 @@ PAGES_PER_BATCH = 10          # Docling'e verilen sayfa aralığı uzunluğu
 CHUNK_MAX_CHARS = 900         # metin parçası üst sınırı (başlık sınırını aşmaz)
 # Parça dili otomatik tespit edilir (chunk.py, lingua); aday diller kuruluma göre, dokümana göre değil
 LANGS = tuple(os.environ.get("PILOT_LANGS", "en,tr,fr,es,de,it,pt").split(","))
-# Dokümana ya da test verisine özgü, elle yazılmış kurallar (ilke dışı; eval/bench/b4/ilke_temizligi_2026-11-03.md):
-# BRAND_ALIASES (brother → S-7300A/B), sabit "s7300" aile grubu, ASPECTS/DETAIL_HINT konu seçenekleri.
-# Varsayılan kapalı; 1: eski davranış (ölçüm ve karşılaştırma için). Silme kararı ölçüm sonucuna göre.
-DOC_SPECIFIC_RULES = os.environ.get("PILOT_DOC_SPECIFIC_RULES", "0") == "1"
+# Dokümana ya da test verisine özgü, elle yazılmış kurallar (ilke dışı; eval/bench/b4/ilke_temizligi_2026-11-03.md),
+# kural bazında açılır: brand_aliases (BRAND_ALIASES: brother → S-7300A/B; aile ilişkisi, arama sonrası "hangi model?"),
+# s7300_family (sabit "s7300" grubu: "S-7300" geçen soru A/B'ye). Varsayılan hepsi kapalı; "1": hepsi (eski davranış).
+# Ör. PILOT_DOC_SPECIFIC_RULES=brand_aliases. ASPECTS/DETAIL_HINT etkisiz olduğu için silindi (2026-11-05).
+DOC_RULE_NAMES = ("brand_aliases", "s7300_family")
+_rules = os.environ.get("PILOT_DOC_SPECIFIC_RULES", "")
+DOC_SPECIFIC_RULES: frozenset[str] = frozenset(DOC_RULE_NAMES if _rules == "1" else
+                                               (r.strip() for r in _rules.split(",") if r.strip() not in ("", "0")))
 EDGE_BAND = 0.12             # üst/alt bilgi tespiti için sayfa kenar oranı
 FURNITURE_MIN_RATIO = 0.5     # üst/alt bilgi: sayfaların en az bu oranında tekrar eder
 SENTENCE_END = (".", "!", "?", ":", ";", '"', ")")

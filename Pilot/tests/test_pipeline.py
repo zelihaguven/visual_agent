@@ -181,14 +181,12 @@ def test_product_missing_in_machine_manual_offers_search_without_product_name(ca
 @pytest.mark.usefixtures("doc_rules")
 def test_choosing_the_product_source_with_vague_question_asks_what_is_wanted(calls):
     # Windows denemesi: Ceket seçilince "ceket ölçüsü" beden tablosu ve punteriz satırları getirdi, model boş cevap
-    # verdi ("doğrulanamadı"). Soru neyi sorduğunu söylemiyor: model çağrılmadan konu seçenekleri sunulur.
+    # verdi ("doğrulanamadı"). Soru neyi sorduğunu söylemiyor: model çağrılmadan sorulur, kullanıcı ayrıntıyı yazar
+    # (elle yazılmış konu seçenekleri, ASPECTS, 2026-11-05'te silindi).
     r = pipeline.soru_cevapla("brother marka a makinesi ceket ölçüsü", doc_ids=["gl-pd-14-04a"])
     assert r.verification.status == "clarify"
     assert calls["search"] == [] and calls["llm"] == []
-    topics = [o["etiket"] for o in r.answer["secenekler"] if "ek" in o]
-    assert "Dış görünür dikiş SPI" in topics and "Overlok SPI" in topics
-    assert not any("doc_id" in o for o in r.answer["secenekler"])
-    assert "beden" in r.answer["ipucu"]
+    assert r.answer["secenekler"] == [] and r.answer["ipucu"]
 
 
 @pytest.mark.usefixtures("doc_rules")

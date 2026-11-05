@@ -205,18 +205,28 @@ def test_query_translation_targets_and_call(monkeypatch):
 
 
 def test_doc_specific_rules_are_off_by_default():
-    """PILOT_DOC_SPECIFIC_RULES kapalı (varsayılan): elle yazılmış marka/aile grupları ve konu seçenekleri yok.
+    """PILOT_DOC_SPECIFIC_RULES kapalı (varsayılan): elle yazılmış marka/aile grupları yok.
     Model adı geçen sorular (kayıttaki takma ad) etkilenmez."""
-    from pilot.query import aspects_for, brand_aliases, detail_hint, family
+    from pilot.query import brand_aliases, family
     assert analyze_query("Brother makinesinde iplik gerginliği").doc_ids == ()
     assert analyze_query("S-7300 makinesi").doc_ids == ()
     assert analyze_query("S-7300A hata kodu").doc_ids == ("brother-s7300a",)
     assert brand_aliases() == {} and family("brother-s7300a") == {"brother-s7300a"}
-    assert aspects_for(["gl-pd-14-04a"]) == [] and detail_hint("machine_manual", "x") == "x"
 
 
 def test_doc_specific_rules_flag_restores_old_behavior(doc_rules):
-    from pilot.query import detail_hint, family
+    from pilot.query import family
     assert set(analyze_query("Brother makinesinde iplik gerginliği").doc_ids) == {"brother-s7300a", "brother-s7300b"}
     assert family("brother-s7300a") == {"brother-s7300a", "brother-s7300b"}
-    assert "E133" in detail_hint("machine_manual")
+
+
+def test_doc_specific_rules_open_one_by_one(monkeypatch):
+    """Kurallar ayrı açılır: brand_aliases aileyi ve marka grubunu getirir, "S-7300" grubunu getirmez."""
+    from pilot import config
+    from pilot.query import family
+    monkeypatch.setattr(config, "DOC_SPECIFIC_RULES", frozenset({"brand_aliases"}))
+    assert family("brother-s7300a") == {"brother-s7300a", "brother-s7300b"}
+    assert analyze_query("S-7300 makinesi").doc_ids == ()
+    monkeypatch.setattr(config, "DOC_SPECIFIC_RULES", frozenset({"s7300_family"}))
+    assert family("brother-s7300a") == {"brother-s7300a"}
+    assert set(analyze_query("S-7300 makinesi").doc_ids) == {"brother-s7300a", "brother-s7300b"}

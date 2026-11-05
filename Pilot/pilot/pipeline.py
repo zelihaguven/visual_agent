@@ -9,8 +9,8 @@ from .chunk import read_chunks
 from .config import (CHUNKS_PATH, CLARIFY_DOC_RATIO, CLARIFY_METHOD, CLARIFY_MIN_SCORE, MIN_RERANK_SCORE,
                      TOP_K_SOURCES)
 from .llm import chat_json
-from .query import (CODE_IN_TEXT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific, aspects_for,
-                    code_key, context_entities, detail_hint, family, missing_entities, normalize_codes, question_lang,
+from .query import (CODE_IN_TEXT, MUST_MATCH, QueryContext, analyze_query, asks_nothing_specific, code_key,
+                    context_entities, family, missing_entities, normalize_codes, question_lang,
                     source_aliases, spoken_codes, strip_source_phrases, strip_terms)
 from .registry import BY_ID, DOCS, visible
 from .retrieve import FUSED_K, Hit, search
@@ -260,12 +260,12 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
 
     if scope and asks_nothing_specific(question, ctx):
         # Kaynak belli ama soru neyi sorduğunu söylemiyor ("ceket ölçüsü"): arama rastgele tablolar getirir.
-        # Model çağrılmadan, seçilen kaynakta gerçekten geçen konular sunulur.
+        # Model çağrılmadan sorulur; kullanıcı ayrıntıyı kendisi yazar.
         names = ", ".join(f"{BY_ID[d].brand} · {BY_ID[d].product}" for d in scope)
         timings["total"] = time.time() - t0
         return _clarify(question, ctx, timings, [],
                         f"Soruda hangi bilginin istendiği belli değil (kaynak: {names}). Hangisini arıyorsunuz?",
-                        aspects=aspects_for(scope), hint=detail_hint(BY_ID[scope[0]].doc_type))
+                        hint="Sorunuza ayrıntı ekleyin.")
 
     # Atölye terimleri aramada kılavuz terimleriyle genişletilir (R16); kaynak ifadesi ("X kitabına göre") aramadan
     # çıkarılır, kaynak zaten filtrede. Modele giden soru değişmez.
@@ -347,10 +347,9 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
         # belliyse kullanıcı ayrıntı yazar ya da kaynakta geçen seçeneklerden birini seçer.
         timings["total"] = time.time() - t0
         found = [] if (doc_ids or ctx.doc_ids) else list(dict.fromkeys(h.chunk["doc_id"] for h in hits))
-        kind = BY_ID[hits[0].chunk["doc_id"]].doc_type
         return _clarify(question, ctx, timings, found if len(found) >= 2 else [], asks, hits,
                         aspects=[(o, o) for o in options],
-                        hint=detail_hint(kind, "Sorunuza ayrıntı ekleyin."), llm_called=True)
+                        hint="Sorunuza ayrıntı ekleyin.", llm_called=True)
     if asks and len(options) < 2:
         # Cevap var ama model kaynakta karşılığı olmayan bir ayrım sordu (SPI sorusunda "hangi beden?"):
         # kullanıcının cevaplayamayacağı soru gösterilmez, denetim için saklanır.

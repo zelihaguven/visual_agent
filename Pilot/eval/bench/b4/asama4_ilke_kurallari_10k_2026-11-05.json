@@ -1,0 +1,9596 @@
+{
+ "meta": {
+  "date": "2026-11-05T10:34:30",
+  "git_commit": "36c2094+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {
+   "PILOT_QDRANT_URL": "http://127.0.0.1:6333"
+  },
+  "params": {
+   "translations": "data/bench_cache/ceviri_gemma3_12b_bayrak.json",
+   "qwen": "scale_qwen3_8b_10000",
+   "bge": "scale_bge_m3_10000",
+   "sets": [
+    "questions",
+    "questions_ek",
+    "sekil_sorular",
+    "aday_sorular"
+   ]
+  }
+ },
+ "stats": {
+  "chat": null,
+  "embed": {
+   "requests": 0,
+   "prompt_tokens": 0,
+   "cost_usd": 0.0,
+   "network_s": 0.0,
+   "cached": 786,
+   "retries": 0
+  },
+  "eklenen_ceviri": []
+ },
+ "rows": {
+  "questions:Q01": {
+   "qid": "questions:Q01",
+   "q": "Ceketin dış görünür dikişlerinde inç başına kaç dikiş olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q02": {
+   "qid": "questions:Q02",
+   "q": "Pantolonun dış dikişlerinde SPI kaç olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q03": {
+   "qid": "questions:Q03",
+   "q": "Ceketteki düğme iliklerinde dikiş sayısı kaç olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "questions:Q04": {
+   "qid": "questions:Q04",
+   "q": "S-7300A'da üst iplik gergin değil, ne yapmalıyım?",
+   "kind": "arıza",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q05": {
+   "qid": "questions:Q05",
+   "q": "S-7300B'de dikiş atlıyor, ne yapmalıyım?",
+   "kind": "tuzak",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q06": {
+   "qid": "questions:Q06",
+   "q": "Kahve makinesi nasıl temizlenir?",
+   "kind": "alan dışı",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "questions:Q07": {
+   "qid": "questions:Q07",
+   "q": "Dış görünür dikişlerde SPI kaç olmalı?",
+   "kind": "belirsiz",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 19,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q08": {
+   "qid": "questions:Q08",
+   "q": "Nike ceketlerinde yaka dikişi kaç mm olmalı?",
+   "kind": "cevapsız",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "varsayilan_brand_aliases": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "varsayilan_s7300_family": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "varsayilan_ikisi": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "aday_kapali": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "aday_brand_aliases": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "aday_s7300_family": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "aday_ikisi": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   }
+  },
+  "questions:Q09": {
+   "qid": "questions:Q09",
+   "q": "Pantolonun cep astarı hangi kumaştan yapılmalı ve gramajı kaç olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q10": {
+   "qid": "questions:Q10",
+   "q": "Uçak motoru yağı kaç derecede değiştirilir?",
+   "kind": "cevapsız",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "questions:Q11": {
+   "qid": "questions:Q11",
+   "q": "Ceketin overlok (overedge) dikişlerinde inç başına kaç dikiş olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q12": {
+   "qid": "questions:Q12",
+   "q": "Pantolonun overlok dikişlerinde SPI kaç olmalı?",
+   "kind": "tuzak",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q13": {
+   "qid": "questions:Q13",
+   "q": "Ceketteki kuşgözü (eyelet) dikişinde en az kaç üst üste dikiş olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q14": {
+   "qid": "questions:Q14",
+   "q": "S-7300A'da E050 hatası ne anlama geliyor, ne yapmalıyım?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q15": {
+   "qid": "questions:Q15",
+   "q": "S-7300A makinesinde hangi iğne tipi kullanılır?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q16": {
+   "qid": "questions:Q16",
+   "q": "How many stitches per inch are required for buttonholes on the coat?",
+   "kind": "EN soru",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "netlestirme_sonra",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "netlestirme_sonra",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions:Q17": {
+   "qid": "questions:Q17",
+   "q": "S-7300'ün maksimum dikiş hızı nedir?",
+   "kind": "belirsiz",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "netlestirme_once",
+    "rank": null,
+    "searched": false
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_once",
+    "rank": null,
+    "searched": false
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "netlestirme_once",
+    "rank": null,
+    "searched": false
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_once",
+    "rank": null,
+    "searched": false
+   }
+  },
+  "questions:Q18": {
+   "qid": "questions:Q18",
+   "q": "Nike tişörtlerinde yaka ribanası kaç cm olmalı?",
+   "kind": "cevapsız",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "varsayilan_brand_aliases": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "varsayilan_s7300_family": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "varsayilan_ikisi": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "aday_kapali": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "aday_brand_aliases": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "aday_s7300_family": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   },
+   "aday_ikisi": {
+    "out": "yabanci_marka",
+    "rank": null,
+    "searched": false
+   }
+  },
+  "questions_ek:Q19": {
+   "qid": "questions_ek:Q19",
+   "q": "S-7300A'da E051 hatası ne demek?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q20": {
+   "qid": "questions_ek:Q20",
+   "q": "S-7300A'da E055 hatası ne demek?",
+   "kind": "çeviri tutarlılığı",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q21": {
+   "qid": "questions_ek:Q21",
+   "q": "S-7300B'de E055 hatası ne demek?",
+   "kind": "çeviri tutarlılığı",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q22": {
+   "qid": "questions_ek:Q22",
+   "q": "S-7300A'da E210 hatası ne demek?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q23": {
+   "qid": "questions_ek:Q23",
+   "q": "S-7300B'de E740 hatası çıktı, sebebi ne?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q24": {
+   "qid": "questions_ek:Q24",
+   "q": "S-7300A'da iğne kırılıyor, ne yapmalıyım?",
+   "kind": "arıza",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q25": {
+   "qid": "questions_ek:Q25",
+   "q": "Pantolonda düğme dikişi için iğne ipliği Tex numarası kaç olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q26": {
+   "qid": "questions_ek:Q26",
+   "q": "Pantolonun overlok (ham kenar) dikişlerinde hangi Tex iplik kullanılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q27": {
+   "qid": "questions_ek:Q27",
+   "q": "Ceketteki cırt bant kenardan ne kadar içeriden dikilmeli?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q28": {
+   "qid": "questions_ek:Q28",
+   "q": "Ceket kalıplarında dikiş payı ne kadar?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   }
+  },
+  "questions_ek:Q29": {
+   "qid": "questions_ek:Q29",
+   "q": "What does error E064 mean on the S-7300B?",
+   "kind": "EN soru",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "questions_ek:Q30": {
+   "qid": "questions_ek:Q30",
+   "q": "E050 hatası ne demek?",
+   "kind": "belirsiz",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "questions_ek:Q31": {
+   "qid": "questions_ek:Q31",
+   "q": "S-7300A'nın motor gücü kaç watt?",
+   "kind": "cevapsız",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "questions_ek:Q32": {
+   "qid": "questions_ek:Q32",
+   "q": "Freze tablasına frezeyi nasıl monte ederim?",
+   "kind": "alan dışı",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G1": {
+   "qid": "sekil_sorular:G1",
+   "q": "Ceketin kol cebinde körük nereden açık bırakılıyor?",
+   "kind": "görsel",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G2": {
+   "qid": "sekil_sorular:G2",
+   "q": "Ceketin yakasında rütbe arması ilmeği (rank patch loop) nerede?",
+   "kind": "görsel",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G3": {
+   "qid": "sekil_sorular:G3",
+   "q": "Ceketin kol cebinde X dikişi ve punteriz nasıl gösteriliyor?",
+   "kind": "görsel",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G4": {
+   "qid": "sekil_sorular:G4",
+   "q": "Pantolonun belindeki iç bağcık (drawcord) şekilde nasıl gösteriliyor?",
+   "kind": "görsel",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G5": {
+   "qid": "sekil_sorular:G5",
+   "q": "Pantolonun arka görünüşünde arka cep nerede?",
+   "kind": "görsel",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:N1": {
+   "qid": "sekil_sorular:N1",
+   "q": "Granovsky kitabına göre tarak (card) şapkalarında aşınmış iğne şeridi nasıl değiştirilir?",
+   "kind": "yeni doküman",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 10,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 10,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 10,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 10,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G6": {
+   "qid": "sekil_sorular:G6",
+   "q": "Kahve makinesinde filtre sepeti nasıl takılır?",
+   "kind": "görsel",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G7": {
+   "qid": "sekil_sorular:G7",
+   "q": "Kahve makinesinin kontrol panelinde hangi düğmeler var?",
+   "kind": "görsel",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G8": {
+   "qid": "sekil_sorular:G8",
+   "q": "Pantolon çiziminde gösterilen ölçüler kaç inç?",
+   "kind": "görsel + değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:G9": {
+   "qid": "sekil_sorular:G9",
+   "q": "Ceketin ön görünüşünde kimlik etiketi (ID marker) nerede?",
+   "kind": "görsel, doğrulama",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:N2": {
+   "qid": "sekil_sorular:N2",
+   "q": "Granovsky kitabına göre makine parçalarının aşınması hangi aşamalardan geçer?",
+   "kind": "yeni doküman",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "sekil_sorular:N3": {
+   "qid": "sekil_sorular:N3",
+   "q": "Dişli çark türleri nelerdir?",
+   "kind": "alan ayrımı",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A001": {
+   "qid": "aday_sorular:A001",
+   "q": "Ceketin kol manşetindeki ayar tırnağı hangi genişlik ve uzunlukta olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A002": {
+   "qid": "aday_sorular:A002",
+   "q": "Ceket manşetinde kaç tane ilik açılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A003": {
+   "qid": "aday_sorular:A003",
+   "q": "Ceketteki rütbe yaması cırt bandı kaç inç olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A004": {
+   "qid": "aday_sorular:A004",
+   "q": "Alev almaz (Type II, III) ceketlerde FR tanıtım bandı hangi kolda bulunur?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A005": {
+   "qid": "aday_sorular:A005",
+   "q": "Ceketin arka körük (bi-swing) pli üst dikişinde iki sıra arası mesafe ne kadar?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A006": {
+   "qid": "aday_sorular:A006",
+   "q": "Ceket ceplerini otomatik cep makinesiyle takarken üst dikiş kenardan ne kadar içeride olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A007": {
+   "qid": "aday_sorular:A007",
+   "q": "Ceketin IFF tırnak kapağına cırt bant hangi dikiş tipiyle takılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A008": {
+   "qid": "aday_sorular:A008",
+   "q": "Ceketin üst kol ceplerine toplam kaç punteriz atılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A009": {
+   "qid": "aday_sorular:A009",
+   "q": "Ceket muayenesinde isim ve U.S. Army bantları ne kadar kayarsa kusur sayılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A010": {
+   "qid": "aday_sorular:A010",
+   "q": "Ceket şartnamesinde ASTM D 5034 neyi ölçen bir test yöntemi?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A011": {
+   "qid": "aday_sorular:A011",
+   "q": "Ceket şartnamesine göre permetrin geri kazanımı en az yüzde kaç olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A012": {
+   "qid": "aday_sorular:A012",
+   "q": "Ceket ısırma testinde gönüllünün test bölgesi kolun neresidir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A013": {
+   "qid": "aday_sorular:A013",
+   "q": "Bitmiş ceket için toksisite şartı nedir?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A014": {
+   "qid": "aday_sorular:A014",
+   "q": "Class 2 ceketlerde böcek koruma etiketi nereye dikilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A015": {
+   "qid": "aday_sorular:A015",
+   "q": "Ceketin yaka tipi ve ön kapanışı nasıl?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A016": {
+   "qid": "aday_sorular:A016",
+   "q": "Ceket yaka çiziminde rütbe yaması halkası nasıl gösteriliyor?",
+   "kind": "şekil",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A017": {
+   "qid": "aday_sorular:A017",
+   "q": "Uzun boy ceketlerde 36 beden ön fermuar uzunluğu kaç inç?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A018": {
+   "qid": "aday_sorular:A018",
+   "q": "Type II ceket kumaşının elyaf karışımı nedir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "aday_sorular:A019": {
+   "qid": "aday_sorular:A019",
+   "q": "Pantolon iliklerinde inç başına kaç dikiş olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A020": {
+   "qid": "aday_sorular:A020",
+   "q": "How many stitches per inch are required for trouser buttonholes?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A021": {
+   "qid": "aday_sorular:A021",
+   "q": "Pantolon iliklerinin kesim boyu ne kadar?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A022": {
+   "qid": "aday_sorular:A022",
+   "q": "Pantolonun ön yan cep ağzı kaç inç olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A023": {
+   "qid": "aday_sorular:A023",
+   "q": "Pantolon cep kapaklarındaki punterizler kaç dikişli olur?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A024": {
+   "qid": "aday_sorular:A024",
+   "q": "Pantolon cep kapağı punterizinin boyu ne kadar?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A025": {
+   "qid": "aday_sorular:A025",
+   "q": "Pantolon cep kapaklarının üst dikişi kenardan ne kadar içeride olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "aday_sorular:A026": {
+   "qid": "aday_sorular:A026",
+   "q": "Pantolonda cırt bant kenar şeridinden ne kadar içeriden dikilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   }
+  },
+  "aday_sorular:A027": {
+   "qid": "aday_sorular:A027",
+   "q": "Pantolonun fermuar (fly) dikişi J-dikişinin ne kadar üstünde bitmeli?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A028": {
+   "qid": "aday_sorular:A028",
+   "q": "Pantolon iç bacağında 5 iplik emniyet dikişi kullanılırsa kalıp nasıl ayarlanır?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A029": {
+   "qid": "aday_sorular:A029",
+   "q": "Pantolonda 20 yıkamadan sonra permetrin miktarı en az ne olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A030": {
+   "qid": "aday_sorular:A030",
+   "q": "Pantolon ısırma testinde kollar böcek kafesinde kaç dakika tutulur?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A031": {
+   "qid": "aday_sorular:A031",
+   "q": "Pantolon permetrin testinde numuneler kaç inç çapında kesilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A032": {
+   "qid": "aday_sorular:A032",
+   "q": "Pantolon barkodundaki NSN kaç haneli?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A033": {
+   "qid": "aday_sorular:A033",
+   "q": "Pantolon beden etiketi nereye dikilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   }
+  },
+  "aday_sorular:A034": {
+   "qid": "aday_sorular:A034",
+   "q": "Pantolon temizlik muayenesinde kaç iplikten fazlası kusur sayılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "aday_sorular:A035": {
+   "qid": "aday_sorular:A035",
+   "q": "Pantolonda cırt bant genişliklerinin toleransı ne kadar?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 17,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 17,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 17,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 17,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A036": {
+   "qid": "aday_sorular:A036",
+   "q": "Pantolon çiziminde hangi ölçüler verilmiş?",
+   "kind": "şekil",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 17,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 17,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 17,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 17,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A037": {
+   "qid": "aday_sorular:A037",
+   "q": "S-7300A'da E-050 hatası ne anlama gelir?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A038": {
+   "qid": "aday_sorular:A038",
+   "q": "S-7300A ekranında E 050 yazıyor, ne yapmalıyım?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A039": {
+   "qid": "aday_sorular:A039",
+   "q": "S-7300A açılırken E065 veriyor, neden?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A040": {
+   "qid": "aday_sorular:A040",
+   "q": "S-7300A'da E111 hata kodu ne demek?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A041": {
+   "qid": "aday_sorular:A041",
+   "q": "S-7300A'da açılışta panel bağlantısı algılanmazsa hangi hata kodu çıkar?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A042": {
+   "qid": "aday_sorular:A042",
+   "q": "S-7300A'da E-700 hatasında ne kontrol edilmeli?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A043": {
+   "qid": "aday_sorular:A043",
+   "q": "S-7300A'da ayarlar kendiliğinden sıfırlandı ve E442 göründü, ne yapmalıyım?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A044": {
+   "qid": "aday_sorular:A044",
+   "q": "S-7300A'da iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu kaç mm?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 14,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 14,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 14,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 14,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A045": {
+   "qid": "aday_sorular:A045",
+   "q": "S-7300A -3 tipinde çağanoz ile masura kovanı tutucusu arasındaki boşluk ne olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A046": {
+   "qid": "aday_sorular:A046",
+   "q": "S-7300A'da iplik kesme kamı ayarlanırken iğne mili en alt konumdan kaç mm kaldırılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A047": {
+   "qid": "aday_sorular:A047",
+   "q": "S-7300A -3 tipinin en yüksek dikiş hızı nedir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   }
+  },
+  "aday_sorular:A048": {
+   "qid": "aday_sorular:A048",
+   "q": "S-7300A'da başlangıç punterizinde B dikiş sayısı hangi aralıkta ayarlanır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A049": {
+   "qid": "aday_sorular:A049",
+   "q": "S-7300A'da alt iplik sayacı sıfırın altına düşünce makine ne yapar?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A050": {
+   "qid": "aday_sorular:A050",
+   "q": "S-7300A'da aydınlatma LED parlaklığı hangi aralıkta ayarlanır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A051": {
+   "qid": "aday_sorular:A051",
+   "q": "S-7300A'ya en fazla kaç farklı desen dikişi kaydedilebilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A052": {
+   "qid": "aday_sorular:A052",
+   "q": "S-7300A'da açılışta panelin otomatik kilitlenmesi hangi bellek anahtarıyla kapatılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A053": {
+   "qid": "aday_sorular:A053",
+   "q": "S-7300A'da dikiş dalgalı ve düzensiz çıkıyor, olası nedenler neler?",
+   "kind": "arıza",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A054": {
+   "qid": "aday_sorular:A054",
+   "q": "S-7300A'da dikişte ilmek (halka) oluşuyor, ne yapmalıyım?",
+   "kind": "arıza",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A055": {
+   "qid": "aday_sorular:A055",
+   "q": "S-7300A'da ayağımı pedala koyunca makine yavaş dönmeye başlıyor, ne yapmalıyım?",
+   "kind": "arıza",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A056": {
+   "qid": "aday_sorular:A056",
+   "q": "S-7300A topraklama vidasının önerilen sıkma torku nedir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A057": {
+   "qid": "aday_sorular:A057",
+   "q": "S-7300A'da çağanoz ve masura kovanı nasıl temizlenir?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A058": {
+   "qid": "aday_sorular:A058",
+   "q": "S-7300A'da iğne mili yüksekliği neye göre ayarlanır?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A059": {
+   "qid": "aday_sorular:A059",
+   "q": "S-7300A'da E210 hatası ne demek?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A060": {
+   "qid": "aday_sorular:A060",
+   "q": "S-7300A'da E-211 kodu çıktı, ne yapmalıyım?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A061": {
+   "qid": "aday_sorular:A061",
+   "q": "S-7300B'de E050 hatası ne anlama gelir?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A062": {
+   "qid": "aday_sorular:A062",
+   "q": "S-7300B açılışta E210 veriyor, ne kontrol etmeliyim?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A063": {
+   "qid": "aday_sorular:A063",
+   "q": "S-7300B dikiş sırasında E-211 veriyor, neden?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A064": {
+   "qid": "aday_sorular:A064",
+   "q": "S-7300B'de E705 hatası ne demek?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A065": {
+   "qid": "aday_sorular:A065",
+   "q": "S-7300B'de başlangıç punteriz dikiş hızının varsayılan değeri kaç?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A066": {
+   "qid": "aday_sorular:A066",
+   "q": "S-7300B'de dikiş adımının varsayılan değeri ve ayar birimi nedir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   }
+  },
+  "aday_sorular:A067": {
+   "qid": "aday_sorular:A067",
+   "q": "S-7300B'de iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu kaç mm?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A068": {
+   "qid": "aday_sorular:A068",
+   "q": "What is the standard upper thread trailing length on the S-7300B after thread trimming?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A069": {
+   "qid": "aday_sorular:A069",
+   "q": "S-7300B -3 tipinde çağanoz ucu, iğne mili kaç mm yükselince iğnenin ortasına gelmeli?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A070": {
+   "qid": "aday_sorular:A070",
+   "q": "S-7300B'de iplik kesme kamı ayarlanırken iğne mili en alt konumdan kaç mm kaldırılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A071": {
+   "qid": "aday_sorular:A071",
+   "q": "S-7300B'de dizlik hareket hızı hangi bellek anahtarıyla ayarlanır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A072": {
+   "qid": "aday_sorular:A072",
+   "q": "S-7300B'de başlangıç punterizi B adım düzeltme oranı hangi bellek anahtarında?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A073": {
+   "qid": "aday_sorular:A073",
+   "q": "S-7300B'de kısayol tuşlarına başlangıçta hangi işlevler atanmış?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A074": {
+   "qid": "aday_sorular:A074",
+   "q": "S-7300B'de dikişin başında atlama ve iplik çözülmesi oluyor, ne yapmalıyım?",
+   "kind": "arıza",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A075": {
+   "qid": "aday_sorular:A075",
+   "q": "S-7300B -3 tipinde 4000 dev/dk hızda dikiş adımı en fazla kaç mm olabilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 12,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 12,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 12,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 12,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 15,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 15,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 15,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 15,
+    "searched": true
+   }
+  },
+  "aday_sorular:A076": {
+   "qid": "aday_sorular:A076",
+   "q": "S-7300B'de alt iplik sayacı ne zaman azalır?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "aday_sorular:A077": {
+   "qid": "aday_sorular:A077",
+   "q": "S-7300B'de punteriz kenarı hizalı çıkmıyor, ne yapmalıyım?",
+   "kind": "arıza",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A078": {
+   "qid": "aday_sorular:A078",
+   "q": "Terzilik kitabına göre makine dikişinde inç başına kaç dikiş kullanılmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A079": {
+   "qid": "aday_sorular:A079",
+   "q": "Kalın kumaşlarda makine dikiş boyu nasıl seçilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A080": {
+   "qid": "aday_sorular:A080",
+   "q": "Fransız etek ucu (French hem) nasıl yapılır?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A081": {
+   "qid": "aday_sorular:A081",
+   "q": "Uzun kruvaze paltoda düğmelenmeyen alt kat nasıl sabitlenir?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A082": {
+   "qid": "aday_sorular:A082",
+   "q": "Klapede pad dikişine kırım çizgisinin ne kadar gerisinden başlanır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A083": {
+   "qid": "aday_sorular:A083",
+   "q": "Gömme cepler neden tela ile desteklenir?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A084": {
+   "qid": "aday_sorular:A084",
+   "q": "Ok başı punteriz (arrowhead) nasıl yapılır?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A085": {
+   "qid": "aday_sorular:A085",
+   "q": "İlik aralıklarını doğru işaretlemek için ne yapılır?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A086": {
+   "qid": "aday_sorular:A086",
+   "q": "Terzilik kitabına göre pantolon cebinin yün yüz parçası kaç inç kesilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   }
+  },
+  "aday_sorular:A087": {
+   "qid": "aday_sorular:A087",
+   "q": "Bengalin kumaş hangi giysiler için uygundur?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A088": {
+   "qid": "aday_sorular:A088",
+   "q": "Parçaları yıkamak için sabun çözeltisinde litre başına kaç gram sabun kullanılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A089": {
+   "qid": "aday_sorular:A089",
+   "q": "Kalın cidarlı dökme demir parçaları kaynatırken çelik pim çapı nasıl seçilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A090": {
+   "qid": "aday_sorular:A090",
+   "q": "Ring iplik makinesinde kondansatörün toplam stroku kaç mm olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A091": {
+   "qid": "aday_sorular:A091",
+   "q": "Birinci tip çözgü makinesinin tamburunda koni açısı hangi aralıkta değişir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A092": {
+   "qid": "aday_sorular:A092",
+   "q": "Dokuma tezgâhında orta onarım ne sıklıkla yapılır ve kaç kişi yapar?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "aday_sorular:A093": {
+   "qid": "aday_sorular:A093",
+   "q": "Mekik kutusunda mekik yokken çözgü koruyucu uçları pedlerin kaç mm üstünde olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A094": {
+   "qid": "aday_sorular:A094",
+   "q": "Topuk konisinin elektrik kıvılcımıyla doldurulmasında katman kalınlığı kaç mm?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A095": {
+   "qid": "aday_sorular:A095",
+   "q": "Granovsky'ye göre santrifüj kavrama ne zaman devreye girer?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A096": {
+   "qid": "aday_sorular:A096",
+   "q": "Tekstil makinesi parçalarında bakır kaplama ne için kullanılır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A097": {
+   "qid": "aday_sorular:A097",
+   "q": "Yağ damperi ayar düzeneğindeki lamba kaç voltluk?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A098": {
+   "qid": "aday_sorular:A098",
+   "q": "Kahve makinesinde gecikmeli demleme saati nasıl ayarlanır?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A099": {
+   "qid": "aday_sorular:A099",
+   "q": "Kahve makinesinin su filtresi klorun yüzde kaçını giderir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A100": {
+   "qid": "aday_sorular:A100",
+   "q": "Kahve makinesinde bir fincan kaç ons su sayılıyor?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A101": {
+   "qid": "aday_sorular:A101",
+   "q": "Kahve makinesinin kirecini temizlerken temizleyici yerine ne kadar sirke kullanılabilir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A102": {
+   "qid": "aday_sorular:A102",
+   "q": "Cam sürahideki beyaz kireç lekeleri nasıl çıkarılır?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A103": {
+   "qid": "aday_sorular:A103",
+   "q": "Sürahi ısıtma plakasından 30 saniyeden uzun alınırsa ne olur, ne yapmalıyım?",
+   "kind": "arıza",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "aday_sorular:A104": {
+   "qid": "aday_sorular:A104",
+   "q": "Programlanabilir kahve makinelerinde temizleme döngüsü ne kadar sürer?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A105": {
+   "qid": "aday_sorular:A105",
+   "q": "Yedek su filtresi diskleri nereden alınır?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A106": {
+   "qid": "aday_sorular:A106",
+   "q": "Freze tablasıyla çalışırken hangi kişisel koruyucu ekipmanlar kullanılmalı?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A107": {
+   "qid": "aday_sorular:A107",
+   "q": "Freze tablası şalteri için en az kaç gauge uzatma kablosu gerekir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A108": {
+   "qid": "aday_sorular:A108",
+   "q": "Frezemin modeli bağlantı tablosunda yoksa ne yapmalıyım?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A109": {
+   "qid": "aday_sorular:A109",
+   "q": "Bosch 1617 serisi frezeyi tablaya bağlamak için hangi vidalar gerekir?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A110": {
+   "qid": "aday_sorular:A110",
+   "q": "Çit yüzleri freze ucuna ne kadar yakın olmalı?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A111": {
+   "qid": "aday_sorular:A111",
+   "q": "Freze tablasının gönye kanalı hangi ölçüdeki gönye kılavuzlarına uyar?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A112": {
+   "qid": "aday_sorular:A112",
+   "q": "Freze tablası şalteri kapalı konumda nasıl kilitlenir?",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A113": {
+   "qid": "aday_sorular:A113",
+   "q": "Parça listesinde 38 numaralı Allen başlı bağlantı vidasından kaç adet var?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A114": {
+   "qid": "aday_sorular:A114",
+   "q": "Bosch freze tablası kaç kilogram ağırlığında?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A115": {
+   "qid": "aday_sorular:A115",
+   "q": "Granovsky kitabına göre bilgisayarlı nakış makinesinin yazılımı nasıl güncellenir?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A116": {
+   "qid": "aday_sorular:A116",
+   "q": "Pantolon şartnamesinde kemer tokası kaç gram olmalı?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A117": {
+   "qid": "aday_sorular:A117",
+   "q": "S-7300A'da E133 hatası ne demek?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A118": {
+   "qid": "aday_sorular:A118",
+   "q": "S-7300A'da E-740 kodu çıktı, ne yapmalıyım?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A119": {
+   "qid": "aday_sorular:A119",
+   "q": "S-7300A'da E582 hatası neden olur?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "kod_yok",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A120": {
+   "qid": "aday_sorular:A120",
+   "q": "Bosch freze tablasının garanti süresi ne kadar?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A121": {
+   "qid": "aday_sorular:A121",
+   "q": "Mr. Coffee kahve makinesi kaç watt?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A122": {
+   "qid": "aday_sorular:A122",
+   "q": "Mr. Coffee kahve makinesiyle süt nasıl köpürtülür?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A123": {
+   "qid": "aday_sorular:A123",
+   "q": "S-7300B'nin güç tüketimi kaç watt?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A124": {
+   "qid": "aday_sorular:A124",
+   "q": "Ceketin kapüşon ölçüleri nedir?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A125": {
+   "qid": "aday_sorular:A125",
+   "q": "Ceket fermuarı hangi markadan olmalı?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A126": {
+   "qid": "aday_sorular:A126",
+   "q": "Strickland kitabına göre deri ceket nasıl dikilir?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A127": {
+   "qid": "aday_sorular:A127",
+   "q": "S-7300A Bluetooth ya da Wi-Fi ile nasıl bağlanır?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A128": {
+   "qid": "aday_sorular:A128",
+   "q": "Pantolon kumaşının su geçirmezlik (hidrostatik basınç) değeri ne olmalı?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A129": {
+   "qid": "aday_sorular:A129",
+   "q": "Terzilik kitabına göre overlok makinesi nasıl ayarlanır?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A130": {
+   "qid": "aday_sorular:A130",
+   "q": "Mr. Coffee makinesiyle espresso nasıl yapılır?",
+   "kind": "bulunamadı",
+   "clarify": false,
+   "not_found": true,
+   "answered": false,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   }
+  },
+  "aday_sorular:A131": {
+   "qid": "aday_sorular:A131",
+   "q": "E050 ne demek?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A132": {
+   "qid": "aday_sorular:A132",
+   "q": "Dikişte ilmek oluşuyor, ne yapmalıyım?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 19,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A133": {
+   "qid": "aday_sorular:A133",
+   "q": "İplik kesildikten sonra üst iplik kuyruğu kaç mm olmalı?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A134": {
+   "qid": "aday_sorular:A134",
+   "q": "Alt iplik sayacı nasıl azalıyor?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 6,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 6,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 6,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 6,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 4,
+    "searched": true
+   }
+  },
+  "aday_sorular:A135": {
+   "qid": "aday_sorular:A135",
+   "q": "Aydınlatma LED'i nasıl açılıp kapatılır?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A136": {
+   "qid": "aday_sorular:A136",
+   "q": "Topraklama vidası hangi torkla sıkılır?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A137": {
+   "qid": "aday_sorular:A137",
+   "q": "Çağanoz ile masura kovanı tutucusu arasındaki boşluk ne olmalı?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A138": {
+   "qid": "aday_sorular:A138",
+   "q": "İplik kesme kamı ayarında iğne mili kaç mm kaldırılır?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A139": {
+   "qid": "aday_sorular:A139",
+   "q": "Makine kafası dik konuma nasıl getirilir?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A140": {
+   "qid": "aday_sorular:A140",
+   "q": "İliklerde inç başına kaç dikiş olmalı?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A141": {
+   "qid": "aday_sorular:A141",
+   "q": "Cırt bant kenardan ne kadar içeriden dikilir?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   }
+  },
+  "aday_sorular:A142": {
+   "qid": "aday_sorular:A142",
+   "q": "Beden etiketi nereye dikilir?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 3,
+    "searched": true
+   }
+  },
+  "aday_sorular:A143": {
+   "qid": "aday_sorular:A143",
+   "q": "Isırma testinde kollar böcek kafesinde kaç dakika tutulur?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A144": {
+   "qid": "aday_sorular:A144",
+   "q": "Permetrin geri kazanımı en az yüzde kaç olmalı?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "netlestirme_sonra",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A145": {
+   "qid": "aday_sorular:A145",
+   "q": "Cep kapağı punterizi kaç dikişli olur?",
+   "kind": "netleştirme",
+   "clarify": true,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   }
+  },
+  "aday_sorular:A146": {
+   "qid": "aday_sorular:A146",
+   "q": "s7300a e50 ne demek",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A147": {
+   "qid": "aday_sorular:A147",
+   "q": "ceket ilik dikis sayisi?",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 9,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 5,
+    "searched": true
+   }
+  },
+  "aday_sorular:A148": {
+   "qid": "aday_sorular:A148",
+   "q": "pantolon cep agzi kac inc",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 7,
+    "searched": true
+   }
+  },
+  "aday_sorular:A149": {
+   "qid": "aday_sorular:A149",
+   "q": "masura nasıl takılır s7300b",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A150": {
+   "qid": "aday_sorular:A150",
+   "q": "kahve makinası kireç nasil temizlenir",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A151": {
+   "qid": "aday_sorular:A151",
+   "q": "freze tablası şalteri nasıl kitlenir",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 2,
+    "searched": true
+   }
+  },
+  "aday_sorular:A152": {
+   "qid": "aday_sorular:A152",
+   "q": "granovsky sabun kaç gram",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": null,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A153": {
+   "qid": "aday_sorular:A153",
+   "q": "s7300a iplik gerginligi nasıl ayarlanır",
+   "kind": "prosedür",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  },
+  "aday_sorular:A154": {
+   "qid": "aday_sorular:A154",
+   "q": "pantolonda cırt bant ne kadar içerde",
+   "kind": "değer",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 4,
+    "searched": true
+   }
+  },
+  "aday_sorular:A155": {
+   "qid": "aday_sorular:A155",
+   "q": "s7300b E-050?",
+   "kind": "kod",
+   "clarify": false,
+   "not_found": false,
+   "answered": true,
+   "varsayilan_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "varsayilan_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_kapali": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_brand_aliases": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_s7300_family": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   },
+   "aday_ikisi": {
+    "out": "model",
+    "rank": 1,
+    "searched": true
+   }
+  }
+ }
+}

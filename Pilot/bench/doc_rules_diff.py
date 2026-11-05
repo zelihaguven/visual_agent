@@ -1,10 +1,10 @@
-"""İlke dışı kurallar bayrağı (PILOT_DOC_SPECIFIC_RULES: BRAND_ALIASES, "s7300" aile grubu, ASPECTS/DETAIL_HINT) açık/kapalı
-farkı, iki arama yolunda: varsayılan (bge-m3 + BM25) ve dondurulan aday (Qwen3-8B + bge-m3 + çevirili BM25), 10k, rerank'sız.
+"""İlke dışı kurallar (PILOT_DOC_SPECIFIC_RULES: brand_aliases = BRAND_ALIASES, s7300_family = sabit "s7300" grubu) kural
+bazında açık/kapalı farkı (kapalı, yalnız biri, ikisi), iki arama yolunda: varsayılan (bge-m3 + BM25) ve dondurulan aday (Qwen3-8B + bge-m3 + çevirili BM25), 10k, rerank'sız.
 
 Ölçülen: hattın karar katmanı (pipeline.soru_cevapla'nın kendisi; model çağrılmaz) ve arama isabeti. soru_cevapla'daki
 search, seçilen yolun üçlü füzyon kodu (bench.triple_fusion.fuse, aynı koleksiyonlar ve ayarlar) ile değiştirilir; cevap
 modeline gelindiğinde durulur ("model" çıkışı). Kural çıkışları (yabancı marka, netleştirme, konu belirsiz, kod yok,
-arama sonrası netleştirme) model çıkışlarından ayrı sayılır. Bayrak her soru için açık ve kapalı iki kez.
+arama sonrası netleştirme) model çıkışlarından ayrı sayılır. Her soru her kural durumunda bir kez.
 
 Sorgu vektörü ve çeviri önbellekten; kapalı/açık durumda ilk kez aranan soru varsa bulut çağrısıyla tamamlanır (ZDR,
 --max-usd). 10k koleksiyonundaki kayıt dışı (dikkat dağıtıcı) dokümanlar karar katmanında "kayıt dışı" tür sayılır.
@@ -24,6 +24,10 @@ from bench.common import KNOWN_SETS, accuracy, first_rank, fmt_pct, load_questio
 log = logging.getLogger("bench")
 
 PATHS = {"varsayilan": "Varsayılan: bge-m3 + BM25", "aday": "Aday: Qwen3-8B + bge-m3 + çevirili BM25"}
+CONFIGS = {"kapali": (), "brand_aliases": ("brand_aliases",), "s7300_family": ("s7300_family",),
+           "ikisi": ("brand_aliases", "s7300_family")}
+CONFIG_TITLES = {"kapali": "kapalı", "brand_aliases": "yalnız BRAND_ALIASES", "s7300_family": "yalnız S-7300 grubu",
+                 "ikisi": "ikisi (eski davranış)"}
 
 
 class ModelReached(Exception):
@@ -70,7 +74,7 @@ def main() -> None:
     ap.add_argument("--bge-collection", default="scale_bge_m3_10000")
     ap.add_argument("--sets", nargs="+", default=list(KNOWN_SETS) + ["aday_sorular"])
     ap.add_argument("--max-usd", type=float, default=0.05)
-    ap.add_argument("--name", default="asama4_ilke_bayragi_10k")
+    ap.add_argument("--name", default="asama4_ilke_kurallari_10k")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
 
@@ -123,8 +127,8 @@ def main() -> None:
     rows: dict[str, dict[str, Any]] = {}
     for path in PATHS:
         state["path"] = path
-        for flag in (False, True):
-            config.DOC_SPECIFIC_RULES = flag
+        for cfg, rules in CONFIGS.items():
+            config.DOC_SPECIFIC_RULES = frozenset(rules)
             for it in qs:
                 state["ranked"] = None
                 try:
@@ -136,13 +140,13 @@ def main() -> None:
                                             "clarify": bool(it.get("expect_clarify")),
                                             "not_found": bool(it.get("expect_not_found")),
                                             "answered": bool(it.get("expect_docs") or it.get("kabul"))})
-                rows[it["qid"]][f"{path}_{int(flag)}"] = {
+                rows[it["qid"]][f"{path}_{cfg}"] = {
                     "out": out, "rank": first_rank(ranked, it) if ranked is not None else None,
                     "searched": ranked is not None}
                 cost = (chat.stats["cost_usd"] if chat else 0) + (qwen.cloud.stats["cost_usd"] if qwen.cloud else 0)
                 if cost > a.max_usd:
                     raise SystemExit(f"harcama sınırı aşıldı: {cost}")
-            log.info("%s bayrak=%d bitti", path, flag)
+            log.info("%s %s bitti", path, cfg)
     qc.close()
 
     if added:                                            # yeni çeviriler sonraki koşular için kopyaya eklenir
@@ -162,43 +166,43 @@ def main() -> None:
 def report(rows: dict[str, dict[str, Any]], stats: dict[str, Any], a: argparse.Namespace) -> str:
     rs = list(rows.values())
     ans = [r for r in rs if r["answered"] and not r["clarify"] and not r["not_found"]]
-    out = ["# İlke dışı kurallar bayrağı: açık / kapalı (10k, rerank'sız, geçici, onaysız set)", "",
-           f"Bayrak: `PILOT_DOC_SPECIFIC_RULES` (varsayılan kapalı). Sorular: {len(rs)} (cevaplı {len(ans)}, "
-           f"netleştirme beklenen {sum(r['clarify'] for r in rs)}, bulunamadı beklenen {sum(r['not_found'] for r in rs)}). "
+    cl, nf = [r for r in rs if r["clarify"]], [r for r in rs if r["not_found"]]
+    out = ["# İlke dışı kurallar, kural bazında (10k, rerank'sız, geçici, onaysız set)", "",
+           f"Bayrak: `PILOT_DOC_SPECIFIC_RULES` (varsayılan kapalı; kurallar: brand_aliases, s7300_family). "
+           f"Sorular: {len(rs)} (cevaplı {len(ans)}, netleştirme beklenen {len(cl)}, bulunamadı beklenen {len(nf)}). "
            f"Hattın karar katmanı model çağrılmadan çalıştı; arama `{a.bge_collection}` / `{a.qwen_collection}`.", "",
-           "## Arama isabeti (cevaplı sorular, hattın verdiği kapsamla)", "",
-           "| Yol | Bayrak | aranan | hit@1 | hit@5 | modele ulaşan |", "|---|---|---|---|---|---|"]
+           "## Arama isabeti ve beklenen davranış", "",
+           "| Yol | Kurallar | aranan cevaplı | hit@1 | hit@5 | cevaplı → modele | netleştirme beklenen → netleştirme | "
+           "netleştirme beklenmeyen → netleştirme | bulunamadı beklenen → kural çıkışı |",
+           "|---|---|---|---|---|---|---|---|---|"]
     for path, title in PATHS.items():
-        for flag in (0, 1):
-            cells = [r[f"{path}_{flag}"] for r in ans]
+        for cfg in CONFIGS:
+            cells = [r[f"{path}_{cfg}"] for r in ans]
             acc = accuracy([c["rank"] for c in cells if c["searched"]])
-            out.append(f"| {title} | {'açık' if flag else 'kapalı'} | {acc['n']} | {fmt_pct(acc['hit@1'])} | "
-                       f"{fmt_pct(acc['hit@5'])} | {sum(c['out'] == 'model' for c in cells)} |")
-    out += ["", "Not: hit@k yalnız aranan sorular üzerinden (kural çıkışıyla aranmayan soru paydada yok).", "",
-            "## Çıkışlar (bütün sorular)", ""]
-    kinds = sorted({r[f"{p}_{f}"]["out"] for r in rs for p in PATHS for f in (0, 1)})
-    out += ["| Yol | Bayrak | " + " | ".join(kinds) + " |", "|---|---|" + "---|" * len(kinds)]
+            okc = sum(r[f"{path}_{cfg}"]["out"].startswith(("netlestirme", "konu")) for r in cl)
+            fp = sum(r[f"{path}_{cfg}"]["out"].startswith(("netlestirme", "konu")) for r in rs if not r["clarify"])
+            okn = sum(r[f"{path}_{cfg}"]["out"] != "model" for r in nf)
+            out.append(f"| {title} | {CONFIG_TITLES[cfg]} | {acc['n']} | {fmt_pct(acc['hit@1'])} | {fmt_pct(acc['hit@5'])} | "
+                       f"{sum(c['out'] == 'model' for c in cells)} | {okc}/{len(cl)} | {fp} | {okn}/{len(nf)} |")
+    out += ["", "hit@k yalnız aranan sorular üzerinden (kural çıkışıyla aranmayan soru paydada yok).", "",
+            "## Çıkışlar (bütün sorular; kural çıkışları model çıkışından ayrı)", ""]
+    kinds = sorted({r[f"{p}_{c}"]["out"] for r in rs for p in PATHS for c in CONFIGS})
+    out += ["| Yol | Kurallar | " + " | ".join(kinds) + " |", "|---|---|" + "---|" * len(kinds)]
     for path, title in PATHS.items():
-        for flag in (0, 1):
-            c = Counter(r[f"{path}_{flag}"]["out"] for r in rs)
-            out.append(f"| {title} | {'açık' if flag else 'kapalı'} | " + " | ".join(str(c[k]) for k in kinds) + " |")
-    out += ["", "## Beklenen davranış", "", "| Yol | Bayrak | netleştirme beklenen → netleştirme | "
-            "bulunamadı beklenen → kural çıkışı |", "|---|---|---|---|"]
-    for path, title in PATHS.items():
-        for flag in (0, 1):
-            cl = [r for r in rs if r["clarify"]]
-            nf = [r for r in rs if r["not_found"]]
-            okc = sum(r[f"{path}_{flag}"]["out"].startswith(("netlestirme", "konu")) for r in cl)
-            okn = sum(r[f"{path}_{flag}"]["out"] not in ("model",) for r in nf)
-            out.append(f"| {title} | {'açık' if flag else 'kapalı'} | {okc}/{len(cl)} | {okn}/{len(nf)} |")
-    out += ["", "## Değişen sorular", "", "| Soru | Yol | kapalı | açık |", "|---|---|---|---|"]
+        for cfg in CONFIGS:
+            c = Counter(r[f"{path}_{cfg}"]["out"] for r in rs)
+            out.append(f"| {title} | {CONFIG_TITLES[cfg]} | " + " | ".join(str(c[k]) for k in kinds) + " |")
+    out += ["", "## Kapalıya göre değişen sorular", "",
+            "| Soru | beklenen | Yol | " + " | ".join(CONFIG_TITLES[c] for c in CONFIGS) + " |",
+            "|---|---|---|" + "---|" * len(CONFIGS)]
     for r in rs:
+        exp = "netleştirme" if r["clarify"] else "bulunamadı" if r["not_found"] else "cevap"
         for path in PATHS:
-            o, n = r[f"{path}_0"], r[f"{path}_1"]
-            if o["out"] != n["out"] or o["rank"] != n["rank"]:
-                out.append(f"| {r['qid']} — {r['q'][:60]} | {path} | {o['out']} (sıra {o['rank']}) | "
-                           f"{n['out']} (sıra {n['rank']}) |")
-    out += ["", f"Bulut: {json.dumps(stats, ensure_ascii=False)}", ""]
+            base = r[f"{path}_kapali"]
+            if any(r[f"{path}_{c}"]["out"] != base["out"] or r[f"{path}_{c}"]["rank"] != base["rank"] for c in CONFIGS):
+                cells = " | ".join(f"{r[f'{path}_{c}']['out']} ({r[f'{path}_{c}']['rank']})" for c in CONFIGS)
+                out.append(f"| {r['qid']} — {r['q'][:55]} | {exp} | {path} | {cells} |")
+    out += ["", "Hücre: çıkış (beklenen kaynağın sırası).", "", f"Bulut: {json.dumps(stats, ensure_ascii=False)}", ""]
     return "\n".join(out)
 
 

@@ -11,8 +11,8 @@ from .registry import BRAND_ALIASES, BY_ID, CUSTOMER_BRANDS, DOCS
 
 
 def brand_aliases() -> dict[str, tuple[str, ...]]:
-    """Elle yazılmış makine markası grupları; yalnız PILOT_DOC_SPECIFIC_RULES=1 iken (config.DOC_SPECIFIC_RULES)."""
-    return BRAND_ALIASES if config.DOC_SPECIFIC_RULES else {}
+    """Elle yazılmış makine markası grupları; yalnız "brand_aliases" kuralı açıkken (config.DOC_SPECIFIC_RULES)."""
+    return BRAND_ALIASES if "brand_aliases" in config.DOC_SPECIFIC_RULES else {}
 
 
 _TR_LOWER = str.maketrans({"I": "ı", "İ": "i"})
@@ -222,7 +222,7 @@ def analyze_query(question: str) -> QueryContext:
     # Model kodu belirtilmemiş makine markası ("Brother") ya da aile kodu ("S-7300"): modellerin hepsi, belirsiz.
     # Müşteri markası ("US Army"), ürün belirtilmemişse: o markanın şartnamelerinin hepsi, belirsiz.
     groups = [(b, "makine", ids) for b, ids in brand_aliases().items()]
-    if config.DOC_SPECIFIC_RULES:
+    if "s7300_family" in config.DOC_SPECIFIC_RULES:
         groups.append(("s7300", "makine", ("brother-s7300a", "brother-s7300b")))
     groups += [(b, "marka", ids) for b, ids in CUSTOMER_BRANDS.items()]
     for alias, kind, ids in groups:
@@ -343,62 +343,3 @@ def asks_nothing_specific(question: str, ctx: QueryContext) -> bool:
             continue
         return False
     return True
-
-
-# Soru bir şey sormuyorsa sunulan konular: (düğme etiketi, soruya eklenecek ifade, kaynakta geçiyor mu deseni).
-# Yalnızca seçilen kaynakta gerçekten geçen konular sunulur.
-ASPECTS: dict[str, tuple[tuple[str, str, str], ...]] = {
-    # Dikiş sıklığı dikiş türüne göre değişir (ceket: dış görünür 11 (± 1), overlok 10 (± 2), IFF 8 (± 1)):
-    # tek bir "SPI" seçeneği yine belirsiz kalıyordu (gerçek veri denemesi), seçenekler dikiş türüyle verilir.
-    "product_standard": (
-        ("Dış görünür dikiş SPI", "dış görünür dikişlerde inç başına dikiş (outside visible stitching, stitches per inch)",
-         r"outside visible stitching"),
-        ("Overlok SPI", "overlok dikişlerinde inç başına dikiş (overedge, stitches per inch)",
-         r"overedge[^.]{0,80}stitches per inch"),
-        ("İlik dikiş sayısı", "düğme iliklerinde dikiş sayısı (buttonhole stitches)", r"buttonhole"),
-        ("Dikiş tipi", "dikiş tipi (stitch type)", r"stitch type|type \d{3}"),
-        ("Punteriz ölçüsü", "punteriz ölçüsü (bartack)", r"bar-?tack"),
-        ("Dikiş payı", "dikiş payı (seam allowance)", r"seam allowance"),
-    ),
-    "machine_manual": (
-        ("Dikiş hızı", "maksimum dikiş hızı (sewing speed)", r"sewing speed"),
-        ("Dikiş uzunluğu", "dikiş uzunluğu (stitch length)", r"stitch length"),
-        ("İplik gerginliği", "iplik gerginliği ayarı (thread tension)", r"thread tension"),
-        ("Baskı ayağı", "baskı ayağı (presser foot)", r"presser foot"),
-        ("İğne", "iğne (needle)", r"\bneedle\b"),
-    ),
-}
-DETAIL_HINT = {
-    "product_standard": "Beden tablosundaki bir ölçü için beden ve ölçü noktasını yazın (ör. 'Medium Regular kol boyu').",
-    "machine_manual": "Ör. 'E133 hatası', 'yağlama', 'geri dikiş ayarı'.",
-}
-
-
-@lru_cache(maxsize=1)
-def _doc_texts() -> dict[str, str]:
-    texts: dict[str, list[str]] = {}
-    if CHUNKS_PATH.exists():
-        with CHUNKS_PATH.open(encoding="utf-8") as f:
-            for line in f:
-                c = json.loads(line)
-                texts.setdefault(c["doc_id"], []).append(c["text"].lower())
-    return {d: "\n".join(t) for d, t in texts.items()}
-
-
-def detail_hint(doc_type: str, default: str = "") -> str:
-    """Kullanıcının ayrıntı yazması için örnek; DETAIL_HINT yalnız PILOT_DOC_SPECIFIC_RULES=1 iken."""
-    return DETAIL_HINT.get(doc_type, default) if config.DOC_SPECIFIC_RULES else default
-
-
-def aspects_for(doc_ids: list[str]) -> list[tuple[str, str]]:
-    """Seçilen kaynak(lar)da geçen konular: [(etiket, eklenecek ifade)]. İndeks yoksa hepsi.
-    ASPECTS yalnız PILOT_DOC_SPECIFIC_RULES=1 iken; kapalıyken seçenek sunulmaz, kullanıcı ayrıntıyı kendisi yazar."""
-    if not config.DOC_SPECIFIC_RULES:
-        return []
-    texts = _doc_texts()
-    out: list[tuple[str, str]] = []
-    for doc_type in dict.fromkeys(BY_ID[d].doc_type for d in doc_ids):
-        for label, phrase, pat in ASPECTS.get(doc_type, ()):
-            if not texts or any(re.search(pat, texts.get(d, "")) for d in doc_ids):
-                out.append((label, phrase))
-    return list(dict.fromkeys(out))
