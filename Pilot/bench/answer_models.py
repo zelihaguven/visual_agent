@@ -308,16 +308,20 @@ def thinking_check(m: Any) -> dict[str, Any]:
             "err": rec.get("unanswered"), "json": parse_answer(rec["content"], rec.get("finish"))[1]}
 
 
-def run_model(key: str, tag: str, n: int, max_usd: float, seed: int) -> Path:
+def run_model(key: str, tag: str, n: int, max_usd: float, seed: int, clarify: str | None = None) -> Path:
     from pilot import pipeline
     install_search_cache(frozen=True)
     m = LocalModel(key) if MODELS[key].get("local") else CloudModel(key)
     system_prompt = schema_and_prompt()[1]
-    qs = questions(include_clarify=SCHEMA == "c")      # nihai tur: netleştirme 18 soru da yeni şemayla (plan §18)
+    # Netleştirme soruları: C'de varsayılan dahil (nihai tur, plan §18); bugünkü şemada varsayılan hariç (ilk tur gibi)
+    clarify = clarify or ("dahil" if SCHEMA == "c" else "haric")
+    qs = questions(include_clarify=clarify != "haric")
+    if clarify == "yalniz":
+        qs = [q for q in qs if q.get("expect_clarify")]
     if n:
         qs = random.Random(seed).sample([q for q in qs if not q.get("expect_not_found")], n)
     out: dict[str, Any] = {"model": key, "spec": MODELS[key], "tag": tag, "zdr_providers": m.zdr_providers,
-                           "verify": VERIFY_TAG, "deger": VALUE_TAG, "sema": SCHEMA,
+                           "verify": VERIFY_TAG, "deger": VALUE_TAG, "sema": SCHEMA, "netlestirme_sorulari": clarify,
                            "start": datetime.now().isoformat(timespec="seconds"), "rows": {}, "cost_usd": 0.0}
     path = RAW_DIR / f"{tag}_{key}.json"
     RAW_DIR.mkdir(parents=True, exist_ok=True)
@@ -440,6 +444,13 @@ def judge(q: dict[str, Any], res: Any) -> dict[str, Any]:
                            "sira": first_rank(chunks, q) if (q.get("expect_docs") or q.get("kabul")) else None}
     if not res.llm_called:
         row["cikis"] = "kural:" + rule_exit(res)
+        if q.get("expect_clarify"):       # kural katmanının netleştirmesi de sistemin davranışı: aynı ölçüt
+            from bench.doc_rules_diff import options_verdict
+            cls = json.loads(CLARIFY_CLASSES.read_text(encoding="utf-8")).get(q["qid"], {}).get("sinif")
+            docs = [o["doc_id"] for o in a.get("secenekler") or [] if "doc_id" in o] if st == "clarify" else []
+            verdict = options_verdict(docs, q.get("expect_docs") or []) if st == "clarify" else None
+            row.update(netlestirme_sinifi=cls, secenek_dokumanlari=docs, secenek_degerlendirme=verdict,
+                       netlestirme_dogru=verdict == "dogru")
         return row
     if st == "clarify":
         row["cikis"] = "netlestirme"
@@ -453,6 +464,18 @@ def judge(q: dict[str, Any], res: Any) -> dict[str, Any]:
     ok = [is_match(chunks[n - 1], q) for n in cited if isinstance(n, int) and 1 <= n <= len(chunks)]
     row["atif_dogru_biri"] = any(ok) if ok else None
     row["atif_dogru_hepsi"] = all(ok) if ok else None
+    if q.get("expect_clarify"):       # bugünkü şemada netleştirme (judge_c ile aynı kurallar)
+        from bench.clarify_model import option_docs
+        from bench.doc_rules_diff import options_verdict
+        cls = json.loads(CLARIFY_CLASSES.read_text(encoding="utf-8")).get(q["qid"], {}).get("sinif")
+        docs = option_docs(res, res.hits) if st == "clarify" else []
+        verdict = options_verdict(docs, q.get("expect_docs") or []) if st == "clarify" else None
+        cited_docs = sorted({chunks[n - 1]["doc_id"] for n in cited if isinstance(n, int) and 1 <= n <= len(chunks)})
+        both = set(q.get("expect_docs") or []) <= set(cited_docs)
+        row.update(netlestirme_sinifi=cls, secenek_dokumanlari=docs, secenek_degerlendirme=verdict,
+                   atif_dokumanlari=cited_docs, atlanan_netlestirme=a.get("atlanan_netlestirme"),
+                   netlestirme_dogru=(verdict == "dogru") or (cls == "deger_ayni" and row["cikis"] == "cevap" and both
+                                                               and st in ("verified", "partial")))
     if q.get("expect_in_answer"):
         text = ((a.get("cevap") or "") + " " + res.speech_text).casefold()
         row["deger_dogru"] = all(value_in(s, text) for s in q["expect_in_answer"])
@@ -568,8 +591,9 @@ def report_c(tag: str) -> str:
         st = Counter(R[q]["durum"] for q in an if R[q].get("cikis") == "cevap")
         dv = [R[q]["deger_dogru"] for q in an if "deger_dogru" in R[q]]
         bad = sum(R[q].get("cikis") == "cevap" and R[q].get("durum") in ("verified", "partial") for q in nf)
-        fark = [q for q in cl if R[q].get("netlestirme_sinifi") == "deger_farkli"]
-        ayni = [q for q in cl if R[q].get("netlestirme_sinifi") == "deger_ayni"]
+        allcl = [q for q in R if qs.get(q, {}).get("expect_clarify") and R[q].get("cikis") != "cevapsiz"]   # kural dahil
+        fark = [q for q in allcl if R[q].get("netlestirme_sinifi") == "deger_farkli"]
+        ayni = [q for q in allcl if R[q].get("netlestirme_sinifi") == "deger_ayni"]
         ft = [R[q]["ilk_token"] for q in model if R[q].get("ilk_token")]
         fv = [R[q]["ilk_dogrulanmis_cumle"] for q in an if R[q].get("ilk_dogrulanmis_cumle")]
         js = sum(R[q].get("json") not in (None, "ok") for q in R)
@@ -752,6 +776,8 @@ def main() -> None:
                     help="kayıtları bugünkü verify.py ile yeniden puanla (model çağrısı yok); örn. --rescore ana bozuk1")
     ap.add_argument("--latency-tag", default="sure2")
     ap.add_argument("--report-c", metavar="TAG", help="şema C turunun raporu (eval/bench/adim2/<TAG>_rapor_<tarih>.md)")
+    ap.add_argument("--netlestirme", choices=["haric", "dahil", "yalniz"],
+                    help="netleştirme beklenen 18 soru (varsayılan: C'de dahil, bugünkü şemada hariç)")
     ap.add_argument("--schema", choices=["bugun", "c"], default="bugun", help="cevap şeması (c: plan §15.0, yalnız ölçüm aracı)")
     a = ap.parse_args()
     global SCHEMA
@@ -761,7 +787,7 @@ def main() -> None:
     for t in a.rescore or []:
         print("\n".join(rescore(t, a.force)) or f"{t}: yeniden puanlanacak kayıt yok", flush=True)
     for k in a.models:
-        path = run_model(k, a.tag, a.n, a.max_usd, a.seed)
+        path = run_model(k, a.tag, a.n, a.max_usd, a.seed, a.netlestirme)
         print(path, flush=True)
         if "bütçe" in json.loads(path.read_text(encoding="utf-8")).get("durdu", ""):
             break

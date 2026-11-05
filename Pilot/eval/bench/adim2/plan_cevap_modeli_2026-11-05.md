@@ -476,6 +476,11 @@ Aşırı uyum notu korunur: arama ayarları bu setle seçildi; görülmemiş dok
    - doğrulanmış görünen yanlış (✓/⚠ alan yanlış cevap) **0**;
    - uydurma **0**: ✖'lerdeki "alıntıda olmayan sayı" vakaları elle okunur, kaynakta da olmayan değer uydurmadır;
    - **beklenen değer cevapta ≥ %85** (kapsama ölçütü). Yeni eşleştiriciyle ilk turun bütün cevaplı sorularında: Gemma %92, Qwen %85, GPT-5.4 mini %84, Mistral %82. Yanlış ret ayrıca raporlanır, kapı değil.
+   - **Netleştirme (karar 2026-11-05 gece):**
+     - Değer farklı netleştirme sorularında **5/5 doğru netleştirme** (seçenekler tam beklenen ürünler);
+     - netleştirme beklenmeyen sorularda **gereksiz netleştirme 0**;
+     - değer aynı sorularda netleştirme YA DA iki ürünün kaynağını birlikte gösteren doğrulanmış cevap doğru sayılır (şema C bunu `atif_dokumanlari` ile kaydediyor). Bu sınıf kapı değil, raporlanır.
+     - Kural katmanının netleştirmesi de sayılır (sistemin davranışı).
    - **PRD'deki "değer doğruluğu ≥ %98" ile farkı:** İkisi farklı şeyi ölçer.
      - *Beklenen değer cevapta* bir **kapsama** ölçütüdür: Cevap üretilen sorularda beklenen değer cevapta geçiyor mu? Değer eksikse düşer. Cevapta yanlış bir değerin bulunup bulunmadığını ölçmez.
      - *Değer doğruluğu* bir **kesinlik** ölçütüdür: Cevapta verilen değerlerin yüzde kaçı doğru? Yanlış değer içeren her cevap düşürür.
