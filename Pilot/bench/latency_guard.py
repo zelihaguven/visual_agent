@@ -288,6 +288,63 @@ def main() -> None:
     print(write_result(a.name, {"meta": meta(vars(a)), "rows": rows, "cost_usd": cost}, report(rows, cost, a)))
 
 
+def stages(r: dict[str, Any], a: argparse.Namespace) -> dict[str, float]:
+    """Korumalı yolda bir sorunun aşama süreleri (kayıttan). Grup 1'deki beklemeler: Qwen (zamanında geldiyse süresi,
+    yedek yolda sınır, devre kesici açıkken 0), çeviri (geldiyse süresi, gelmediyse sınır; çağrı yoksa 0), bge-m3.
+    Cevabın ilk tokeni = ilk kelime − grup 1 − grup 2 (kaynak biçimleme dahil, ms düzeyi)."""
+    qwen = {"ilk": r["qwen_sn"], "hedge": r["qwen_sn"], "yedek": a.qwen_limit, "devre_kesici": 0.0}[r["qwen"]] or 0.0
+    tr = (r["ceviri_sn"] if r["ceviri_ok"] else a.translate_limit) if r["ceviri_cagri"] else 0.0
+    return {"qwen_bekleme": qwen, "ceviri_bekleme": tr, "bge": r["bge_sn"], "grup1": r["grup1"], "grup2": r["grup2"],
+            "cevap_ilk_token": r["ilk_kelime"] - r["grup1"] - r["grup2"], "ilk_kelime": r["ilk_kelime"]}
+
+
+def crossing(s: dict[str, float], limit: float = 1.5) -> str:
+    """İlk kelime süresinin `limit`i hangi aşamada geçtiği (birikimli zaman çizelgesinde)."""
+    if s["ilk_kelime"] <= limit:
+        return "aşılmadı"
+    if s["grup1"] > limit:
+        top = max(("qwen_bekleme", "ceviri_bekleme", "bge"), key=lambda k: s[k])
+        return {"qwen_bekleme": "grup 1: Qwen bekleme", "ceviri_bekleme": "grup 1: çeviri bekleme",
+                "bge": "grup 1: bge-m3 embed"}[top]
+    if s["grup1"] + s["grup2"] > limit:
+        return "grup 2: Qdrant (3 kol + füzyon)"
+    return "cevap modeli ilk token"
+
+
+def breakdown(rows: list[dict[str, Any]], a: argparse.Namespace) -> list[str]:
+    f = lambda x: "–" if x != x else (f"{x * 1000:.0f} ms" if x < 1 else f"{x:.2f} sn".replace(".", ","))
+    ok = [stages(r, a) for r in rows if r["ilk_kelime"] == r["ilk_kelime"]]
+    p95 = pct([s["ilk_kelime"] for s in ok], 95)
+    tail = sorted((s for s in ok if s["ilk_kelime"] >= pct([s["ilk_kelime"] for s in ok], 90)),
+                  key=lambda s: -s["ilk_kelime"])
+    names = {"qwen_bekleme": "Qwen embed bekleme", "ceviri_bekleme": "Çeviri bekleme (BM25 kolu bunu bekler)",
+             "bge": "bge-m3 embed (CPU)", "grup1": "**Grup 1 duvar saati** (üçü paralel)",
+             "grup2": "Grup 2: Qdrant 3 kol (BM25 dahil) + füzyon", "cevap_ilk_token": "Cevap modeli ilk token",
+             "ilk_kelime": "**İlk kelime**"}
+    out = ["## İlk kelime p95'inin aşama dökümü (korumalı yol, kayıttan; yeni koşu yok)", "",
+           f"{len(ok)} soru (cevabı gelen). Grup 2'de BM25 kolu ayrı kaydedilmedi: üç kol paralel, birlikte ölçüldü; "
+           "BM25'e özgü bekleme çeviridir (grup 1).", "",
+           "| Aşama | p50 | p90 | p95 | en uzun | ortalama payı (en yavaş %10) |", "|---|---|---|---|---|---|"]
+    tot_tail = sum(s["ilk_kelime"] for s in tail) or 1.0
+    for k, label in names.items():
+        xs = [s[k] for s in ok]
+        share = (f"{sum(s[k] for s in tail) / tot_tail:.0%}".replace(".", ",")
+                 if k in ("grup1", "grup2", "cevap_ilk_token") else "")
+        out.append(f"| {label} | {f(pct(xs, 50))} | {f(pct(xs, 90))} | {f(pct(xs, 95))} | {f(max(xs))} | {share} |")
+    cross = Counter(crossing(s) for s in ok)
+    out += ["", f"**1,5 sn hangi aşamada aşıldı** (birikimli: grup 1 → grup 2 → cevap ilk token); ilk kelime p95 = "
+            f"{f(p95)}:", "", "| Aşıldığı aşama | soru | oran |", "|---|---|---|"]
+    for k, v in cross.most_common():
+        out.append(f"| {k} | {v} | {v / len(ok):.0%} |".replace(".", ","))
+    out += ["", f"En yavaş %10 ({len(tail)} soru), soru başına zaman çizelgesi:", "",
+            "| İlk kelime | Qwen | çeviri | bge-m3 | grup 1 | grup 2 | cevap ilk token | 1,5 sn aşıldığı yer |",
+            "|---|---|---|---|---|---|---|---|"]
+    for s in tail:
+        out.append(f"| {f(s['ilk_kelime'])} | {f(s['qwen_bekleme'])} | {f(s['ceviri_bekleme'])} | {f(s['bge'])} | "
+                   f"{f(s['grup1'])} | {f(s['grup2'])} | {f(s['cevap_ilk_token'])} | {crossing(s)} |")
+    return out + [""]
+
+
 def report(rows: list[dict[str, Any]], cost: dict[str, float], a: argparse.Namespace) -> str:
     n = len(rows)
     f = lambda x: "–" if x != x else (f"{x * 1000:.0f} ms" if x < 1 else f"{x:.2f} sn".replace(".", ","))
@@ -333,6 +390,7 @@ def report(rows: list[dict[str, Any]], cost: dict[str, float], a: argparse.Names
                   f"{f(pct([r[k] for r in rows if r[k] is not None], 95))}"
                   for k, label in (("qwen_ilk_sn", "Qwen embed"), ("bge_sn", "bge-m3 embed"), ("ceviri_sn", "çeviri"),
                                    ("grup1", "grup 1 (korumalı)"), ("grup2", "grup 2 Qdrant"))), "",
+              *breakdown(rows, a),
               "Sağlayıcılar: Qwen " + json.dumps(Counter(r["qwen_provider"] for r in rows), ensure_ascii=False)
               + ", cevap " + json.dumps(Counter(r["cevap_provider"] for r in rows), ensure_ascii=False) + ".", "",
               f"Harcama: Qwen {cost['qwen']:.5f}, çeviri {cost['ceviri']:.4f}, cevap {cost['cevap']:.4f} USD "
