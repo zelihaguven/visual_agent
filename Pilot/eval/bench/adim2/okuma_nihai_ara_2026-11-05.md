@@ -141,3 +141,34 @@ Bugünkü şema (16:16 yeniden koşu) ile şema C (aynı oturum, aynı sağlayı
   - Q26: pantolon s.8'de Tex 31–35, s.9'da 40 / 39 / 16 / 24–27.
 - **İkisinin de beklenen cevabı varyantları kapsamıyor** (yalnız 5 ve 31–35). Güncelleme önerisi: beklenen "5 / 6 mm" ve "31–35 / 40…", onayınızla.
 - Yeni tanımla Gemma 4 DeepInfra ve Venice: **gereksiz netleştirme 0**, belge içi varyant 2/2. Kalan kapı farkları: Q07 (arama; plan §21) ve süre.
+
+## Süre ölçümü: şema C varyantları (c150, c150b), Gemma 4 DeepInfra + Venice, tam set (17:57–18:20)
+
+Karar 2026-11-05 gece: bütün modellerde aynı genel değişiklik, iki varyant.
+- **c150:** alıntı en fazla 150 karakter, ilk öğe yalnız cevabın özü.
+- **c150b:** c150 + öğe başına 1–2 alıntı (`alintilar`, en fazla 2).
+
+Kabul ölçütü: süre kısalırken beklenen değer ve yanlış ret kötüleşmemeli.
+
+**Ölçüm aracı düzeltmesi:** Doğrulama aracı, sınıra dayanıp kesilen alıntıya toleransı yalnız 300 karakterde tanıyordu (`verify._cut_quote_prefix`, 16 Ekim kuralı). c150'de 150 karakterde kesilen alıntılar ✖ oluyordu. Tolerans artık varyantın kendi sınırına bağlı (`schema_c.QUOTE_LIMIT`). İki varyant kayıtlardan yeniden puanlandı (`--rescore-c`): koşu başına 19–21 rozet düzeldi.
+
+**İlk doğrulanmış cümle:** Bu varyantların kayıtlarına akış zaman çizelgesi yazılmamıştı. Değer yaklaşık: ilk token ile toplam süre arasında, öğenin bittiği karakter konumuna göre doğrusal. Aynı yöntem şema C'nin gerçek akış ölçümüyle karşılaştırıldı: DeepInfra p95'te gerçek 6,33, yaklaşık 6,79 sn. Yakın, biraz kötümser.
+
+| Şema | Sağlayıcı | yanlış ret | cevaplı ✓ / ⚠ / ✖ | beklenen değer | JSON | ilk doğrulanmış cümle p50 / p95 (yaklaşık) | toplam p95 |
+|---|---|---|---|---|---|---|---|
+| C | DeepInfra | 25/159 | 109 / 2 / 19 | 88/93 (%95) | 2 | 2,52 / 6,79 sn | 16,3 sn |
+| C | Venice | 24/159 | 114 / 2 / 16 | 90/94 (%96) | 1 | 2,74 / 6,71 sn | 15,4 sn |
+| c150 | DeepInfra | 24/159 | 103 / 1 / **27** | 88/93 (%95) | 1 | 2,42 / 4,08 sn | 10,2 sn |
+| c150 | Venice | 24/159 | 99 / 2 / **28** | 88/93 (%95) | 3 | 2,57 / 4,14 sn | 10,2 sn |
+| **c150b** | DeepInfra | 24/159 | 112 / 1 / 18 | 88/94 (%94) | 3 | 2,36 / **4,70** sn | 10,4 sn |
+| **c150b** | Venice | 24/159 | 113 / 0 / 17 | 88/93 (%95) | 3 | 2,71 / **4,63** sn | 10,5 sn |
+
+**Okuma:**
+- **c150b kabul ölçütünü geçiyor:** p95 6,7–6,8 → 4,6–4,7 sn, toplam süre p95 16 → 10 sn. Beklenen değer aynı (88 doğru), yanlış ret aynı (24–25), ✖ aynı (19/16 → 18/17).
+- **c150 süreyi biraz daha kısaltıyor (p95 ~4,1 sn) ama ✖ artıyor (19 → 27).** Tek alıntıyla sınırlı cümle, iki kaynak parçasına dayanan bilgiyi bölmek zorunda kalıyor; c150b bunu çözüyor.
+- **Öneri: şema C'nin son biçimi c150b.**
+- **2,0 sn kapısı (model tarafı p95) yine tutmuyor.** p50 ~2,4 sn; ilk öğenin alıntısı ve metni birlikte ~100–150 token. Kalan seçenekler (koşulmadı):
+  - kapı tanımının ilk token + ilk öğe olarak gözden geçirilmesi;
+  - arama öncesi süreyi kısaltıp (çeviri Gemma 4 NextBit, §14) uçtan uca 3 sn kapısını hedeflemek;
+  - Venice/DeepInfra dışında hızlı bir ZDR sağlayıcısı. Parasail p95 2,4 sn'ydi ama şemaya zorlamada JSON kesiyor.
+- Maliyet: dört koşu toplam ~0,24 USD.

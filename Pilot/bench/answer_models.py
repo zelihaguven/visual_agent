@@ -406,7 +406,8 @@ def judge_c(q: dict[str, Any], res: Any, current: dict[str, Any]) -> dict[str, A
     chunks = [h.chunk for h in res.hits]
     sources = {no: c["text"] for no, c in enumerate(chunks, start=1)}
     generated = {no: c.get("generated", "") for no, c in enumerate(chunks, start=1)}
-    v = verify_c(ans, sources, generated)
+    from bench.schema_c import QUOTE_LIMIT
+    v = verify_c(ans, sources, generated, QUOTE_LIMIT.get(SCHEMA, 300))
     tur = ans.get("tur")
     row: dict[str, Any] = {"cikis": {"cevap": "cevap", "netlestirme": "netlestirme", "bulunamadi": "bulunamadi"}[tur],
                            "durum": v["status"], "sorunlar": v["problems"][:4], "kaynaklar": [[c["doc_id"], c["pages"]] for c in chunks],
@@ -432,6 +433,51 @@ def judge_c(q: dict[str, Any], res: Any, current: dict[str, Any]) -> dict[str, A
                    netlestirme_dogru=(verdict == "dogru") or (cls == "deger_ayni" and tur == "cevap" and both
                                                                and v["status"] in ("verified", "partial")))
     return row
+
+
+def rescore_c(tag: str) -> list[str]:
+    """Şema C turlarını (sema c/c150/c150b) bugünkü bench.schema_c doğrulamasıyla kayıttan yeniden puanlar (model çağrısı
+    yok). Kayıtta akış zaman çizelgesi yok: ilk doğrulanmış cümle yaklaşık (ilk token ile toplam süre arasında karakter
+    konumuna göre doğrusal), satırda 'ilk_cumle_yaklasik'."""
+    global SCHEMA
+    from pilot import pipeline
+    from bench.schema_c import QUOTE_LIMIT, item_end_offsets, parse_c, to_legacy, verify_c
+    install_search_cache(frozen=True)
+    qs = {q["qid"]: q for q in questions(include_clarify=True)}
+    done = []
+    for f in sorted(RAW_DIR.glob(f"{tag}_*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        sch = d.get("sema", "c")
+        if not sch.startswith("c"):
+            continue
+        n_changed = 0
+        for qid, row in d["rows"].items():
+            if qid not in qs or not row.get("ham") or str(row.get("cikis", "")).startswith("kural:"):
+                continue
+            ans, status = parse_c(row["ham"], row.get("finish"))
+            if ans is None or status != "ok" or ans.get("tur") != "cevap":
+                continue
+            pipeline.chat_json = lambda _u, a=ans: (to_legacy(a), {"llm_seconds": 0.0})
+            res = pipeline.soru_cevapla(qs[qid]["q"])
+            chunks = [h.chunk for h in res.hits]
+            sources = {no: c["text"] for no, c in enumerate(chunks, start=1)}
+            generated = {no: c.get("generated", "") for no, c in enumerate(chunks, start=1)}
+            v = verify_c(ans, sources, generated, QUOTE_LIMIT.get(sch, 300))
+            old = row.get("durum")
+            first = None
+            ends = item_end_offsets(row["ham"])
+            if row.get("ilk_token") and row.get("toplam") and row["ham"]:
+                for end, it in zip(ends, v["items"]):
+                    if it["ok"]:
+                        first = row["ilk_token"] + (end / len(row["ham"])) * (row["toplam"] - row["ilk_token"])
+                        break
+            row.update(durum=v["status"], sorunlar=v["problems"][:4], ogeler=[i["ok"] for i in v["items"]],
+                       ilk_dogrulanmis_cumle=first, ilk_cumle_yaklasik=True)
+            n_changed += old != v["status"]
+        d["yeniden_puanlama_c"] = {"tarih": datetime.now().isoformat(timespec="seconds"), "rozeti_degisen": n_changed}
+        f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+        done.append(f"{f.name}: rozeti değişen {n_changed}")
+    return done
 
 
 def judge(q: dict[str, Any], res: Any) -> dict[str, Any]:
@@ -780,6 +826,7 @@ def main() -> None:
     ap.add_argument("--rescore", nargs="*", metavar="TAG",
                     help="kayıtları bugünkü verify.py ile yeniden puanla (model çağrısı yok); örn. --rescore ana bozuk1")
     ap.add_argument("--latency-tag", default="sure2")
+    ap.add_argument("--rescore-c", nargs="*", metavar="TAG", help="şema C turlarını kayıttan yeniden puanla")
     ap.add_argument("--report-c", metavar="TAG", help="şema C turunun raporu (eval/bench/adim2/<TAG>_rapor_<tarih>.md)")
     ap.add_argument("--setler", nargs="+", help="soru setleri (varsayılan: bilinen setler + aday_sorular); "
                     "örn. --setler aday_sorular_ek (yeni onaylanan sorular; arama önbelleği --prepare ile)")
@@ -800,6 +847,9 @@ def main() -> None:
         print(path, flush=True)
         if "bütçe" in json.loads(path.read_text(encoding="utf-8")).get("durdu", ""):
             break
+    for t in a.rescore_c or []:
+        for line in rescore_c(t):
+            print(line, flush=True)
     if a.report_c:
         md = report_c(a.report_c)
         print(write_result(f"{a.report_c}_rapor", {"rapor": md}, md, out_dir=RAW_DIR.parent))

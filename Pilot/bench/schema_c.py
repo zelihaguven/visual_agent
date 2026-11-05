@@ -152,21 +152,34 @@ def parse_c(content: str, finish: str | None) -> tuple[dict[str, Any] | None, st
     return (ans, "ok") if ok else (ans if isinstance(ans, dict) else None, "sema_disi")
 
 
-def _quote_ok(text: str, no: Any, sources: dict[int, str]) -> bool:
+# Varyantın alıntı uzunluk sınırı: sınıra dayanıp kesilen alıntıya verify._cut_quote_prefix ile aynı tolerans
+# (16 Ekim kuralı; sınır şemadan gelir). 2026-11-05: c150'de sınır 300 sanıldığı için kesik alıntılar ✖ oluyordu.
+QUOTE_LIMIT = {"c": 300, "c150": 150, "c150b": 150}
+
+
+def _quote_ok(text: str, no: Any, sources: dict[int, str], limit: int = 300) -> bool:
     if no not in sources:
         return False
     t, s = V.normalize(V.CUT_CITE_RE.sub("", text)), V.normalize(sources[no])
-    return t in s or bool(V._cut_quote_prefix(text, s))
+    if t in s:
+        return True
+    old = V.QUOTE_MAX
+    V.QUOTE_MAX = limit
+    try:
+        return bool(V._cut_quote_prefix(text, s))
+    finally:
+        V.QUOTE_MAX = old
 
 
-def check_item(item: dict, sources: dict[int, str], generated: dict[int, str] | None = None) -> dict[str, Any]:
+def check_item(item: dict, sources: dict[int, str], generated: dict[int, str] | None = None,
+               limit: int = 300) -> dict[str, Any]:
     """Bir öğe: alıntı birebir, sayılar yalnız kendi alıntısında, tolerans, şekil açıklamasından mı."""
     qs = item_quotes(item)
     nos = [q.get("kaynak_no") for q in qs]
     no, text = (nos[0] if nos else None), item.get("metin") or ""
     quote = " ".join(q.get("metin") or "" for q in qs)
     problems = []
-    bad = [q.get("kaynak_no") for q in qs if not _quote_ok(q.get("metin") or "", q.get("kaynak_no"), sources)]
+    bad = [q.get("kaynak_no") for q in qs if not _quote_ok(q.get("metin") or "", q.get("kaynak_no"), sources, limit)]
     exact = bool(qs) and not bad
     for b in bad:
         problems.append(f"alıntı [{b}] kaynakta birebir değil")
@@ -189,7 +202,8 @@ def check_item(item: dict, sources: dict[int, str], generated: dict[int, str] | 
     return {"ok": ok, "sekil": figure, "sorunlar": problems, "kaynak_no": no, "kaynaklar": nos}
 
 
-def verify_c(ans: dict, sources: dict[int, str], generated: dict[int, str] | None = None) -> dict[str, Any]:
+def verify_c(ans: dict, sources: dict[int, str], generated: dict[int, str] | None = None,
+             limit: int = 300) -> dict[str, Any]:
     """Durum: verified | partial | failed | not_found | clarify; öğe sonuçları ve sesli metin kontrolü."""
     tur = ans.get("tur")
     if tur == "bulunamadi":
@@ -201,7 +215,7 @@ def verify_c(ans: dict, sources: dict[int, str], generated: dict[int, str] | Non
         ok = len(valid) >= 2 and not ans.get("cevap")
         return {"status": "clarify" if ok else "failed", "items": [], "secenekler": valid,
                 "problems": [] if ok else ["netleştirme seçenekleri geçersiz ya da cevapla birlikte"]}
-    items = [check_item(x, sources, generated) for x in ans.get("cevap") or []]
+    items = [check_item(x, sources, generated, limit) for x in ans.get("cevap") or []]
     problems = [p for it in items for p in it["sorunlar"]]
     quotes = " ".join(q.get("metin") or "" for x in ans.get("cevap") or [] for q in item_quotes(x))
     voice = ans.get("sesli_metin") or ""
