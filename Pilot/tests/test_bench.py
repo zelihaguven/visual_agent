@@ -390,3 +390,45 @@ def test_triple_fusion_rrf_by_chunk_id_with_first_arm_tiebreak():
     # a: 1/2 + 1/3, b: 1/3 + 1/2, c: 1/3 + 1/2 → eşitlik: ilk kolun skoru (a 0,9 > b 0,8 > c yok)
     assert out == ["a", "b", "c"]
     assert [p.payload["chunk_id"] for p in fuse([qwen, bge, bm25], 1, rrf_k=2)] == ["a"]
+
+
+def test_answer_parser_tolerates_thought_blocks_and_classifies_json_problems():
+    """Adım 2: boş düşünce bloğu (Gemma 4 kanal işareti, <think>), kod çiti tolere edilir ve sayılır; boş, kesik,
+    ayrıştırılamayan ve şema dışı çıktı ayrı sınıflanır."""
+    from bench.answer_models import parse_answer
+    full = json.dumps({"alintilar": [], "cevap": "", "sesli_metin": "", "celiski_var": False,
+                       "netlestirme_sorusu": "", "netlestirme_secenekleri": [], "bulunamadi": True})
+    assert parse_answer(full, "stop")[1:] == ("ok", False)
+    for wrapped in (f"<think></think>\n{full}", f"<|channel>thought\n<channel|>{full}", f"```json\n{full}\n```"):
+        obj, status, thought = parse_answer(wrapped, "stop")
+        assert status == "ok" and thought and obj["bulunamadi"] is True
+    assert parse_answer("", "stop")[1] == "bos"
+    assert parse_answer("<think></think>  ", "stop")[1] == "bos"
+    assert parse_answer(full[:40], "length")[1] == "kesik"
+    assert parse_answer("Üzgünüm, cevap veremem.", "stop")[1] == "gecersiz"
+    assert parse_answer('{"cevap": "x"}', "stop")[1] == "sema_disi"
+
+
+def test_answer_stream_is_decoded_as_utf8(monkeypatch):
+    """SSE akışında charset yok: satırlar UTF-8 çözülmeli ("±", Türkçe harfler); Latin-1 varsayımı "Â±" üretiyordu."""
+    from bench import answer_models
+    from pilot import cloud
+    monkeypatch.setattr(cloud, "require_zdr", lambda m: None)
+    monkeypatch.setattr(cloud, "zdr_index", lambda: {"m/x": {"strict": frozenset({"p"}), "safety": frozenset()}})
+    monkeypatch.setenv("OPENROUTER_API_KEY", "sahte-deger-123")
+    monkeypatch.setitem(answer_models.MODELS, "t", {"id": "m/x", "provider": "p", "reasoning": {"enabled": False}})
+    chunk = {"provider": "P", "choices": [{"delta": {"content": "11 (± 1) dikiş, ölçü"}, "finish_reason": "stop"}]}
+
+    class R:
+        status_code = 200
+        encoding = "ISO-8859-1"
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def iter_lines(self, decode_unicode=False):
+            assert not decode_unicode
+            yield ("data: " + json.dumps(chunk, ensure_ascii=False)).encode("utf-8")
+            yield b"data: [DONE]"
+
+    m = answer_models.CloudModel("t")
+    monkeypatch.setattr(m.session, "post", lambda *a, **k: R())
+    assert m.stream([{"role": "user", "content": "x"}])["content"] == "11 (± 1) dikiş, ölçü"

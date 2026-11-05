@@ -1,4 +1,14 @@
-# Adım 2 planı: cevap modeli seçimi, ilk tur (2026-11-05, onay bekliyor, koşulmadı)
+# Adım 2 planı: cevap modeli seçimi, ilk tur (2026-11-05, onaylandı, ekleriyle)
+
+> **"Bulunamadı" kararının 17 sorusu onaysız (A114–A130). Bu koşu ön elemedir; nihai seçim onaylı ve büyütülmüş
+> sette yapılacak.**
+
+**Onayla gelen ekler (2026-11-05):**
+- **(a) Dayanıklılık metriği.** Her model için ZDR sağlayıcı sayısı, 429 ve hata oranı, cevapsız kalan soru sayısı ölçülecek. Yeniden deneme politikası bütün modellerde aynı ve raporda yazılı: ilk token gelmeden 429, 5xx ya da bağlantı hatası olursa 30 sn sonra bir kez yeniden denenir. 429 yüzünden cevapsız kalan sorular kalite metriklerinden ayrı sayılır; kalite yalnız cevap gelen sorularda ölçülür.
+- **(b)** Raporun başına yukarıdaki not yazılacak.
+- **(c)** Bütün modellerde aynı istem ve temperature 0. Modele özel istem ayarı yapılmayacak; formata uymayan model JSON metriğinde görünecek.
+- **(d)** Bütçe sınırı 1,5 USD. Aşılırsa koşu durur ve haber verilir.
+- Yerel taban gece koşulacak.
 
 Amaç: Cevap modelini (PRD A1) aynı arama sonuçları üzerinde karşılaştırmak. K1'in en uzak ölçütü doğru "bulunamadı" oranı: bugün %48, hedef ≥ %90; "doğrulanmış görünen yanlış cevap" hedefi 0.
 
@@ -135,3 +145,11 @@ Tahmin, bugünkü uçtan uca ölçümün token sayılarından: giriş medyanı 2
 3. 4 bulut modeli sırayla, her biri tek sağlayıcıda; sonra ikinci süre turu (30 soru, başka saatte).
 4. qwen2.5:7b, gece, arka planda.
 5. Tek rapor: model başına metrikler (onaylı/onaysız ayrı), kural çıkışları ayrı, JSON sorunları, sağlayıcı ve maliyet. Sonra commit; push sizin onayınızla.
+
+## 11. Açık konu: makine ailesinin kaynağı (Adım 2'den sonra konuşulacak)
+
+Bugün "S-7300" aile grubu ve `BRAND_ALIASES` elle yazılmış ve bayrakla kapalı (`PILOT_DOC_SPECIFIC_RULES`). Bayrak kapalıyken aynı ailenin iki modelinin kılavuzu aynı bölümü içerdiğinde "hangi model?" netleştirmesi sorulmuyor (ölçüm: [asama4_ilke_kurallari_10k](../b4/)). İki seçenek var:
+1. **Otomatik türetme:** Aile, aynı markanın model adlarının ortak önekinden çıkarılır (s7300 ⊂ s7300a, s7300b).
+2. **Yükleme sırasında ürün/model alanı:** Dokümanı yükleyen kişi ürün ailesini kayıtta seçer.
+
+İkisinde de **yanlış aile oranı** ölçülmeli: aile sayılıp aslında farklı ürün olan, ve aile sayılmayıp aynı ürün olan çiftler. Bu şimdi yapılmayacak.
