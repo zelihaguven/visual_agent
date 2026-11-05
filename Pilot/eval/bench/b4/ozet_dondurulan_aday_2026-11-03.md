@@ -222,3 +222,46 @@ Hedef (PRD): arama ≤ 1 sn, ilk kelime ≤ 1,5 sn, ilk cümle ≤ 3 sn (p95). E
 | Arayüz | Arama bitince kaynaklar hemen gösterilir; cevap akarken "hazırlanıyor" | Algılanan bekleme azalır |
 
 Önerilen birleşim: **1,2 sn'de ilk token hedge'i, 1,5 sn'de yedek sağlayıcı, 20 sn toplam sınır**; eşikler 9.2'deki ilk token dağılımına göre ayarlanır.
+
+## 10. Ek (2026-11-05): ZDR uç nokta kontrolü, ilke dışı kurallar bayrağı, süre sınırı ölçümü
+
+Aynı uyarı geçerli: onaysız set, aşırı uyum riski; sayılar karar değil. Pipeline'a hiçbir şey bağlanmadı (bayrak dışında: varsayılanı kapalı).
+
+### 10.1 ZDR: Safety Retention uç noktaları ZDR sayılmıyor (`323efdb`)
+
+`/endpoints/zdr` listesi "Safety Retention" uç noktalarını da içeriyor (1118 uç noktanın 56'sı, hepsi `google-vertex`); bunlar istemi güvenlik incelemesi için saklayabilir. `require_zdr` artık uç noktanın saklama sınıfına bakıyor (`safety_retention: false`; alan yoksa ZDR sayılmaz) ve modelin Safety Retention sağlayıcıları her istekte `provider.ignore` ile dışlanıyor (`zdr: true` tek başına onları dışlamıyordu). Bugünkü modellerin hepsi geçiyor: Qwen3-8B embed (deepinfra, nebius, siliconflow), gemma-3-12b-it (deepinfra, nextbit), mistral-small 2501 (deepinfra), qwen3-reranker-8b (fireworks); hiçbirinde Safety Retention uç noktası yok. Adım 2 adayı `google/gemma-4-26b-a4b-it`'de `google-vertex` dışlanıyor.
+
+### 10.2 İlke dışı kurallar bayrağı (`40c1684`)
+
+`BRAND_ALIASES`, sabit "s7300" aile grubu ve `ASPECTS`/`DETAIL_HINT` silinmedi; `PILOT_DOC_SPECIFIC_RULES=1` iken kullanılıyor, **varsayılan kapalı**. Ölçüm: hattın karar katmanı (`soru_cevapla`, model çağrılmadan), 199 soru, 10k, iki arama yolu. Ham: [asama4_ilke_bayragi_10k](asama4_ilke_bayragi_10k_2026-11-05.md).
+
+| | Varsayılan (bge-m3 + BM25): kapalı / açık | Aday: kapalı / açık |
+|---|---|---|
+| hit@1 / hit@5 (160 cevaplı) | 0,66 / 0,85 — aynı | 0,86 / 0,98 — aynı |
+| Beklenen netleştirme → netleştirme (18 soru) | **2 / 10** | **4 / 14** |
+| Bulunamadı beklenen → kural çıkışı (21) | 4 / 4 | 4 / 4 |
+
+- Bayrak aramayı değiştirmiyor (etkilediği tek arama sorusu Q17, o da netleştirme sorusu olduğu için hit@k'da yok).
+- Değişen 8 (varsayılan) / 10 (aday) sorunun **hepsi netleştirme beklenen** sorular (Q07, Q17, Q30, A131–A139): S-7300A ve S-7300B kılavuzlarında aynı bölüm var; aile kuralı olmadan "hangi model?" sorulmuyor, model iki kılavuzdan birini seçip cevap yazıyor. Bu sette kuralın yanlış netleştirmesi yok.
+- `ASPECTS`'in etkisi bu sette yok ("konu belirsiz" çıkışı iki durumda da 0).
+- Okuma: aile kuralının işlevi gerçek; sorun elle yazılmış olması. Silmek yerine ilke temizliği raporundaki öneri (aile, aynı markanın model adlarının ortak önekinden otomatik) uygulanabilir; karar sizde.
+
+### 10.3 Süre sınırı ve yedek yol, ölçüm aracında (§9.3'ün birleşimi)
+
+`bench/latency_guard.py`, 160 cevaplı soru, aday yapılandırma, 10k, hattın kapsamıyla; aynı çağrılar korumalı ve korumasız değerlendirildi (bırakılan çağrılar arka planda bitirilip süresi kaydedildi). Ayarlar: Qwen 1 sn'de hedge, 1,5 sn'de yedek yol, devre kesici (son 5'in 3'ü → 120 sn); çeviri 1,2 sn (aşınca BM25 çevirisiz); cevap 1,2 sn'de hedge, 20 sn toplam. Gösterge cevap modeli mistral-small 2501. Ham: [asama4_sure_siniri](asama4_sure_siniri_2026-11-05.md). 2026-11-05, 09:19–09:41.
+
+| | Korumasız | **Korumalı** |
+|---|---|---|
+| hit@1 / hit@5 (160) | 0,82 / 0,96 | **0,77 / 0,94** |
+| İlk kelime p50 | 2,76 sn | **1,56 sn** |
+| İlk kelime p90 / p95 | 9,85 / 11,44 sn | **2,21 / 2,42 sn** |
+| İlk kelime en uzun | 19,53 sn | 5,53 sn |
+
+- **Yedek yola düşme oranı %81:** Qwen ilk istekte zamanında 28 (%18), hedge kazandı 2 (%1), 1,5 sn aşıldı 24 (%15), devre kesici açıkken Qwen beklenmedi 106 (%66). Bu koşuda Qwen embed yavaştı (kendi süresi p50 1,70 sn, p95 10,76 sn; 3 Kasım yoklamasında p50 0,76–0,90 sn); devre kesici bu yüzden çoğunlukla açıktı.
+- **Doğruluk bedeli:** −5 puan hit@1, −2 puan hit@5 (yedek yola düşen 130 soruda 0,79/0,95 → 0,73/0,93). Çeviri sınırı da 156 çeviriden 54'ünde aşıldı (çeviri p95 2,68 sn); o sorularda BM25 çevirisiz, kaybın bir kısmı oradan.
+- **Süre kazancı:** ilk kelime p95 11,4 → 2,4 sn, p50 2,8 → 1,6 sn. PRD hedefi (ilk kelime ≤ 1,5 sn, p95) yine tutmuyor: korumalı yolda bile grup 1 en fazla 1,5 sn + cevabın ilk tokeni (~0,4–1 sn).
+- **Cevap modelinde hız sınırı:** 11 soruda (%7) cevap gelmedi; tek ZDR sağlayıcısı (DeepInfra) 429 döndü, aynı sağlayıcıya giden hedge de. Hedge yalnız farklı sağlayıcıya ya da yedek modele giderse işe yarıyor; Adım 2'de sağlayıcı çeşitliliği bir seçim ölçütü olmalı.
+- Korumasız 0,82/0,96, dondurulan 0,86/0,98'den düşük: bu koşuda çeviriler canlı (önbellekteki çevirilerden farklı olabilir) ve BM25 kolu bge-m3 koleksiyonundan. Karşılaştırma yalnız aynı koşu içinde geçerli.
+- Okuma: Qwen'in bulut gecikmesi bu dönemde öyle değişken ki aday, korumalı yolda çoğu soruda fiilen ikili yol oluyor. Adayın değeri Qwen sağlayıcısının gecikmesine bağlı; sunucuda yerel embedding seçeneği (§9.3) ağırlık kazanıyor.
+
+Bugünkü bulut harcaması: süre sınırı ölçümü 0,023 USD (ilk deneme dahil ~0,024), bayrak ölçümü 0,0002 USD.
