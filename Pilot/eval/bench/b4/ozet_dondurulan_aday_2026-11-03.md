@@ -304,3 +304,36 @@ Akış okuma hatası (Adım 2'de bulundu: SSE yanıtı Latin-1 çözülüyordu) 
 - **İstisna, Q07** ("Dış görünür dikişlerde SPI kaç olmalı?"): Varsayılan yolda `BRAND_ALIASES` açıkken seçenekler S-7300A / S-7300B oluyor; beklenen ceket / pantolon.
 - Adayda Q07 bayrak kapalıyken de doğru seçeneklerle soruluyor.
 - Sonuç: Varsayılan yolda BRAND_ALIASES ile 10 netleştirmenin 9'u doğru, adayda 14'ün 14'ü.
+
+### 10.8 Çeviri: model ve sağlayıcı etkisi (Gemma 3 DeepInfra / Gemma 3 NextBit / Gemma 4 NextBit)
+
+Yalnız ölçüm aracında; uygulamaya bağlanmadı ([Adım 2 planı §14](../adim2/plan_cevap_modeli_2026-11-05.md), onay 2026-11-05).
+- Araç: `bench/translate_compare.py`, `bench/run_ceviri_karsilastirma.ps1`.
+- Üç kol her soruda iç içe ve sırası dönerek çağrıldı; her kol tek sağlayıcıya sabit, yeniden deneme yok.
+- Süre çağrının tamamı. 179 soru × 2 mod, 1050 çağrı, 0,012 USD.
+- Ham: [süre](asama4_ceviri_karsilastirma_2026-11-05.md), [isabet](asama4_ceviri_karsilastirma_isabet_10k_2026-11-05.md).
+
+**Süre, tur t1 (14:03–14:25), filtreli çağrılar (uygulamanın yolu):**
+
+| Kol | süre p50 | p95 | > 1,2 sn | çıktı tokeni p50 / p95 | hata |
+|---|---|---|---|---|---|
+| Gemma 3, DeepInfra (bugünkü) | 2,14 sn | 4,06 sn | 96% | 25 / 55 | 0 |
+| Gemma 3, NextBit | 838 ms | 2,05 sn | 35% | 24 / 37 | 0 |
+| **Gemma 4, NextBit** | **530 ms** | **1,04 sn** | **2%** | 23 / 59 | 0 |
+
+**BM25 isabeti (10k, rerank'sız, 160 cevaplı soru, onaysız set dahil), filtreli; hit@1 / hit@5:**
+
+| Kol | yalnız BM25 | üçlü füzyon |
+|---|---|---|
+| Gemma 3, DeepInfra | 0,60 / 0,82 | 0,87 / 0,97 |
+| Gemma 3, NextBit | 0,60 / 0,82 | 0,86 / 0,98 |
+| Gemma 4, NextBit | 0,63 / 0,85 | 0,84 / 0,98 |
+
+Okuma:
+- **Süre farkının iki kaynağı var.** Sağlayıcı: aynı Gemma 3, NextBit'te DeepInfra'nın ~2,5 katı hızlı. Model: Gemma 4, Gemma 3'e göre NextBit'te p95'i 2,05 → 1,04 sn indiriyor. 1,2 sn sınırını yalnız Gemma 4 NextBit tutuyor (%2).
+- Bu saatte DeepInfra Gemma 3 olağandan yavaştı: sabahki süre sınırı ölçümünde p50 818 ms'ti. Tur t2 (19:00) başka saatte tekrarlıyor.
+- **Kalite farkı küçük ve karışık:**
+  - Yalnız BM25'te Gemma 4 +3 puan (hit@1).
+  - Üçlü füzyonda hit@1 −3 puan (5 soru), hit@5 +1.
+  - Türlere bölünce sorular az (arıza 8, şekil 14); karar için onaylı set gerekiyor.
+- Çeviriler çoğunlukla farklı: 179 sorudan 16'sı Gemma 3 DeepInfra ile birebir aynı. Aynı Gemma 3 NextBit'te bile 44'ü aynı; sağlayıcılar arası nicemleme/çıktı farkı. Gemma 4 terimleri daha iyi koruyor (Q13: "chuck" yerine "jacket").

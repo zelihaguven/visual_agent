@@ -1,0 +1,793 @@
+{
+ "meta": {
+  "date": "2026-11-05T14:34:30",
+  "git_commit": "bea1e7a+degisiklik",
+  "hardware": {
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10",
+   "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+   "logical_cpus": 12,
+   "ram_gb": 31.6,
+   "physical_cpus": 10
+  },
+  "hardware_label": "geliştirme dizüstü (i5-1335U, GPU yok) — üretimi temsil etmez",
+  "network_label": "geliştirme makinesinin bağlantısı (ofis/ev)",
+  "env": {
+   "PILOT_QDRANT_URL": "http://127.0.0.1:6333"
+  },
+  "params": {
+   "runs": {
+    "Yalnız BM25": {
+     "g3 DeepInfra": "cc_bm25_g3di",
+     "g3 NextBit": "cc_bm25_g3nb",
+     "g4 NextBit": "cc_bm25_g4nb"
+    },
+    "Üçlü füzyon": {
+     "g3 DeepInfra": "cc_uclu_g3di",
+     "g3 NextBit": "cc_uclu_g3nb",
+     "g4 NextBit": "cc_uclu_g4nb"
+    }
+   },
+   "sets": [
+    "aday_sorular",
+    "questions",
+    "questions_ek",
+    "sekil_sorular"
+   ],
+   "unapproved": true
+  }
+ },
+ "questions": [
+  "aday_sorular:A001",
+  "aday_sorular:A002",
+  "aday_sorular:A003",
+  "aday_sorular:A004",
+  "aday_sorular:A005",
+  "aday_sorular:A006",
+  "aday_sorular:A007",
+  "aday_sorular:A008",
+  "aday_sorular:A009",
+  "aday_sorular:A010",
+  "aday_sorular:A011",
+  "aday_sorular:A012",
+  "aday_sorular:A013",
+  "aday_sorular:A014",
+  "aday_sorular:A015",
+  "aday_sorular:A016",
+  "aday_sorular:A017",
+  "aday_sorular:A018",
+  "aday_sorular:A019",
+  "aday_sorular:A020",
+  "aday_sorular:A021",
+  "aday_sorular:A022",
+  "aday_sorular:A023",
+  "aday_sorular:A024",
+  "aday_sorular:A025",
+  "aday_sorular:A026",
+  "aday_sorular:A027",
+  "aday_sorular:A028",
+  "aday_sorular:A029",
+  "aday_sorular:A030",
+  "aday_sorular:A031",
+  "aday_sorular:A032",
+  "aday_sorular:A033",
+  "aday_sorular:A034",
+  "aday_sorular:A035",
+  "aday_sorular:A036",
+  "aday_sorular:A037",
+  "aday_sorular:A038",
+  "aday_sorular:A039",
+  "aday_sorular:A040",
+  "aday_sorular:A041",
+  "aday_sorular:A042",
+  "aday_sorular:A043",
+  "aday_sorular:A044",
+  "aday_sorular:A045",
+  "aday_sorular:A046",
+  "aday_sorular:A047",
+  "aday_sorular:A048",
+  "aday_sorular:A049",
+  "aday_sorular:A050",
+  "aday_sorular:A051",
+  "aday_sorular:A052",
+  "aday_sorular:A053",
+  "aday_sorular:A054",
+  "aday_sorular:A055",
+  "aday_sorular:A056",
+  "aday_sorular:A057",
+  "aday_sorular:A058",
+  "aday_sorular:A059",
+  "aday_sorular:A060",
+  "aday_sorular:A061",
+  "aday_sorular:A062",
+  "aday_sorular:A063",
+  "aday_sorular:A064",
+  "aday_sorular:A065",
+  "aday_sorular:A066",
+  "aday_sorular:A067",
+  "aday_sorular:A068",
+  "aday_sorular:A069",
+  "aday_sorular:A070",
+  "aday_sorular:A071",
+  "aday_sorular:A072",
+  "aday_sorular:A073",
+  "aday_sorular:A074",
+  "aday_sorular:A075",
+  "aday_sorular:A076",
+  "aday_sorular:A077",
+  "aday_sorular:A078",
+  "aday_sorular:A079",
+  "aday_sorular:A080",
+  "aday_sorular:A081",
+  "aday_sorular:A082",
+  "aday_sorular:A083",
+  "aday_sorular:A084",
+  "aday_sorular:A085",
+  "aday_sorular:A086",
+  "aday_sorular:A087",
+  "aday_sorular:A088",
+  "aday_sorular:A089",
+  "aday_sorular:A090",
+  "aday_sorular:A091",
+  "aday_sorular:A092",
+  "aday_sorular:A093",
+  "aday_sorular:A094",
+  "aday_sorular:A095",
+  "aday_sorular:A096",
+  "aday_sorular:A097",
+  "aday_sorular:A098",
+  "aday_sorular:A099",
+  "aday_sorular:A100",
+  "aday_sorular:A101",
+  "aday_sorular:A102",
+  "aday_sorular:A103",
+  "aday_sorular:A104",
+  "aday_sorular:A105",
+  "aday_sorular:A106",
+  "aday_sorular:A107",
+  "aday_sorular:A108",
+  "aday_sorular:A109",
+  "aday_sorular:A110",
+  "aday_sorular:A111",
+  "aday_sorular:A112",
+  "aday_sorular:A113",
+  "aday_sorular:A146",
+  "aday_sorular:A147",
+  "aday_sorular:A148",
+  "aday_sorular:A149",
+  "aday_sorular:A150",
+  "aday_sorular:A151",
+  "aday_sorular:A152",
+  "aday_sorular:A153",
+  "aday_sorular:A154",
+  "aday_sorular:A155",
+  "questions:Q01",
+  "questions:Q02",
+  "questions:Q03",
+  "questions:Q04",
+  "questions:Q05",
+  "questions:Q06",
+  "questions:Q09",
+  "questions:Q11",
+  "questions:Q12",
+  "questions:Q13",
+  "questions:Q14",
+  "questions:Q15",
+  "questions:Q16",
+  "questions_ek:Q19",
+  "questions_ek:Q20",
+  "questions_ek:Q21",
+  "questions_ek:Q22",
+  "questions_ek:Q23",
+  "questions_ek:Q24",
+  "questions_ek:Q25",
+  "questions_ek:Q26",
+  "questions_ek:Q27",
+  "questions_ek:Q28",
+  "questions_ek:Q29",
+  "questions_ek:Q32",
+  "sekil_sorular:G1",
+  "sekil_sorular:G2",
+  "sekil_sorular:G3",
+  "sekil_sorular:G4",
+  "sekil_sorular:G5",
+  "sekil_sorular:G6",
+  "sekil_sorular:G7",
+  "sekil_sorular:G8",
+  "sekil_sorular:G9",
+  "sekil_sorular:N1",
+  "sekil_sorular:N2",
+  "sekil_sorular:N3"
+ ],
+ "subsets": {},
+ "rows": {
+  "filtered|Toplam|cc_bm25_g3di": {
+   "n": 160,
+   "hit@1": 0.6,
+   "hit@5": 0.825,
+   "hit@20": 0.95625,
+   "mrr": 0.7053964952208954
+  },
+  "filtered|Toplam|cc_bm25_g3nb": {
+   "n": 160,
+   "hit@1": 0.6,
+   "hit@5": 0.81875,
+   "hit@20": 0.9375,
+   "mrr": 0.7040909488795518
+  },
+  "filtered|Toplam|cc_bm25_g4nb": {
+   "n": 160,
+   "hit@1": 0.63125,
+   "hit@5": 0.85,
+   "hit@20": 0.95625,
+   "mrr": 0.7320585279067767
+  },
+  "filtered|Toplam|cc_uclu_g3di": {
+   "n": 160,
+   "hit@1": 0.86875,
+   "hit@5": 0.96875,
+   "hit@20": 1.0,
+   "mrr": 0.907674194677871
+  },
+  "filtered|Toplam|cc_uclu_g3nb": {
+   "n": 160,
+   "hit@1": 0.85625,
+   "hit@5": 0.98125,
+   "hit@20": 1.0,
+   "mrr": 0.9036309523809523
+  },
+  "filtered|Toplam|cc_uclu_g4nb": {
+   "n": 160,
+   "hit@1": 0.8375,
+   "hit@5": 0.98125,
+   "hit@20": 1.0,
+   "mrr": 0.8961950549450549
+  },
+  "filtered|Tür: değer|cc_bm25_g3di": {
+   "n": 90,
+   "hit@1": 0.5555555555555556,
+   "hit@5": 0.8444444444444444,
+   "hit@20": 0.9666666666666667,
+   "mrr": 0.6912213403880071
+  },
+  "filtered|Tür: değer|cc_bm25_g3nb": {
+   "n": 90,
+   "hit@1": 0.6111111111111112,
+   "hit@5": 0.8444444444444444,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.7215035273368607
+  },
+  "filtered|Tür: değer|cc_bm25_g4nb": {
+   "n": 90,
+   "hit@1": 0.6555555555555556,
+   "hit@5": 0.8777777777777778,
+   "hit@20": 0.9666666666666667,
+   "mrr": 0.76067738791423
+  },
+  "filtered|Tür: değer|cc_uclu_g3di": {
+   "n": 90,
+   "hit@1": 0.8444444444444444,
+   "hit@5": 0.9666666666666667,
+   "hit@20": 1.0,
+   "mrr": 0.887989417989418
+  },
+  "filtered|Tür: değer|cc_uclu_g3nb": {
+   "n": 90,
+   "hit@1": 0.8222222222222222,
+   "hit@5": 0.9666666666666667,
+   "hit@20": 1.0,
+   "mrr": 0.877010582010582
+  },
+  "filtered|Tür: değer|cc_uclu_g4nb": {
+   "n": 90,
+   "hit@1": 0.8222222222222222,
+   "hit@5": 0.9666666666666667,
+   "hit@20": 1.0,
+   "mrr": 0.8823097273097273
+  },
+  "filtered|Tür: prosedür|cc_bm25_g3di": {
+   "n": 20,
+   "hit@1": 0.5,
+   "hit@5": 0.8,
+   "hit@20": 1.0,
+   "mrr": 0.6358333333333334
+  },
+  "filtered|Tür: prosedür|cc_bm25_g3nb": {
+   "n": 20,
+   "hit@1": 0.4,
+   "hit@5": 0.7,
+   "hit@20": 0.85,
+   "mrr": 0.5475840336134453
+  },
+  "filtered|Tür: prosedür|cc_bm25_g4nb": {
+   "n": 20,
+   "hit@1": 0.55,
+   "hit@5": 0.85,
+   "hit@20": 0.95,
+   "mrr": 0.6731944444444444
+  },
+  "filtered|Tür: prosedür|cc_uclu_g3di": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9416666666666667
+  },
+  "filtered|Tür: prosedür|cc_uclu_g3nb": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.95
+  },
+  "filtered|Tür: prosedür|cc_uclu_g4nb": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.95
+  },
+  "filtered|Tür: kod|cc_bm25_g3di": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.9,
+   "hit@20": 0.9,
+   "mrr": 0.9
+  },
+  "filtered|Tür: kod|cc_bm25_g3nb": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.9,
+   "hit@20": 0.95,
+   "mrr": 0.9055555555555556
+  },
+  "filtered|Tür: kod|cc_bm25_g4nb": {
+   "n": 20,
+   "hit@1": 0.85,
+   "hit@5": 0.9,
+   "hit@20": 0.9,
+   "mrr": 0.875
+  },
+  "filtered|Tür: kod|cc_uclu_g3di": {
+   "n": 20,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: kod|cc_uclu_g3nb": {
+   "n": 20,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: kod|cc_uclu_g4nb": {
+   "n": 20,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "filtered|Tür: arıza|cc_bm25_g3di": {
+   "n": 8,
+   "hit@1": 0.5,
+   "hit@5": 0.75,
+   "hit@20": 0.875,
+   "mrr": 0.5698529411764706
+  },
+  "filtered|Tür: arıza|cc_bm25_g3nb": {
+   "n": 8,
+   "hit@1": 0.25,
+   "hit@5": 0.75,
+   "hit@20": 0.875,
+   "mrr": 0.42401960784313725
+  },
+  "filtered|Tür: arıza|cc_bm25_g4nb": {
+   "n": 8,
+   "hit@1": 0.25,
+   "hit@5": 0.625,
+   "hit@20": 1.0,
+   "mrr": 0.43580688854489164
+  },
+  "filtered|Tür: arıza|cc_uclu_g3di": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: arıza|cc_uclu_g3nb": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: arıza|cc_uclu_g4nb": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8541666666666666
+  },
+  "filtered|Tür: şekil|cc_bm25_g3di": {
+   "n": 14,
+   "hit@1": 0.6428571428571429,
+   "hit@5": 0.6428571428571429,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.669859171738871
+  },
+  "filtered|Tür: şekil|cc_bm25_g3nb": {
+   "n": 14,
+   "hit@1": 0.5714285714285714,
+   "hit@5": 0.7142857142857143,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.661734693877551
+  },
+  "filtered|Tür: şekil|cc_bm25_g4nb": {
+   "n": 14,
+   "hit@1": 0.5714285714285714,
+   "hit@5": 0.6428571428571429,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.6322420634920636
+  },
+  "filtered|Tür: şekil|cc_uclu_g3di": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.8571428571428571,
+   "hit@20": 1.0,
+   "mrr": 0.8196778711484594
+  },
+  "filtered|Tür: şekil|cc_uclu_g3nb": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.8321428571428572
+  },
+  "filtered|Tür: şekil|cc_uclu_g4nb": {
+   "n": 14,
+   "hit@1": 0.7142857142857143,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.7964285714285715
+  },
+  "filtered|Tür: diğer|cc_bm25_g3di": {
+   "n": 8,
+   "hit@1": 0.625,
+   "hit@5": 0.875,
+   "hit@20": 1.0,
+   "mrr": 0.75
+  },
+  "filtered|Tür: diğer|cc_bm25_g3nb": {
+   "n": 8,
+   "hit@1": 0.625,
+   "hit@5": 0.875,
+   "hit@20": 1.0,
+   "mrr": 0.75
+  },
+  "filtered|Tür: diğer|cc_bm25_g4nb": {
+   "n": 8,
+   "hit@1": 0.5,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.6708333333333333
+  },
+  "filtered|Tür: diğer|cc_uclu_g3di": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: diğer|cc_uclu_g3nb": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "filtered|Tür: diğer|cc_uclu_g4nb": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.875
+  },
+  "unfiltered|Toplam|cc_bm25_g3di": {
+   "n": 160,
+   "hit@1": 0.56875,
+   "hit@5": 0.775,
+   "hit@20": 0.875,
+   "mrr": 0.6568727453102453
+  },
+  "unfiltered|Toplam|cc_bm25_g3nb": {
+   "n": 160,
+   "hit@1": 0.525,
+   "hit@5": 0.76875,
+   "hit@20": 0.875,
+   "mrr": 0.6295436507936507
+  },
+  "unfiltered|Toplam|cc_bm25_g4nb": {
+   "n": 160,
+   "hit@1": 0.56875,
+   "hit@5": 0.8,
+   "hit@20": 0.8875,
+   "mrr": 0.6721207377181642
+  },
+  "unfiltered|Toplam|cc_uclu_g3di": {
+   "n": 160,
+   "hit@1": 0.83125,
+   "hit@5": 0.9375,
+   "hit@20": 0.975,
+   "mrr": 0.8837353210514974
+  },
+  "unfiltered|Toplam|cc_uclu_g3nb": {
+   "n": 160,
+   "hit@1": 0.8375,
+   "hit@5": 0.93125,
+   "hit@20": 0.98125,
+   "mrr": 0.8853478057889822
+  },
+  "unfiltered|Toplam|cc_uclu_g4nb": {
+   "n": 160,
+   "hit@1": 0.8375,
+   "hit@5": 0.95625,
+   "hit@20": 0.9875,
+   "mrr": 0.8910819327731092
+  },
+  "unfiltered|Tür: değer|cc_bm25_g3di": {
+   "n": 90,
+   "hit@1": 0.5111111111111111,
+   "hit@5": 0.7333333333333333,
+   "hit@20": 0.8666666666666667,
+   "mrr": 0.6117420234086901
+  },
+  "unfiltered|Tür: değer|cc_bm25_g3nb": {
+   "n": 90,
+   "hit@1": 0.5111111111111111,
+   "hit@5": 0.7444444444444445,
+   "hit@20": 0.8666666666666667,
+   "mrr": 0.6150705467372134
+  },
+  "unfiltered|Tür: değer|cc_bm25_g4nb": {
+   "n": 90,
+   "hit@1": 0.5444444444444444,
+   "hit@5": 0.7888888888888889,
+   "hit@20": 0.8777777777777778,
+   "mrr": 0.6587427079093745
+  },
+  "unfiltered|Tür: değer|cc_uclu_g3di": {
+   "n": 90,
+   "hit@1": 0.7777777777777778,
+   "hit@5": 0.9,
+   "hit@20": 0.9555555555555556,
+   "mrr": 0.8370980870980871
+  },
+  "unfiltered|Tür: değer|cc_uclu_g3nb": {
+   "n": 90,
+   "hit@1": 0.7777777777777778,
+   "hit@5": 0.8888888888888888,
+   "hit@20": 0.9666666666666667,
+   "mrr": 0.8332109139952277
+  },
+  "unfiltered|Tür: değer|cc_uclu_g4nb": {
+   "n": 90,
+   "hit@1": 0.7888888888888889,
+   "hit@5": 0.9222222222222223,
+   "hit@20": 0.9777777777777777,
+   "mrr": 0.8485901027077498
+  },
+  "unfiltered|Tür: prosedür|cc_bm25_g3di": {
+   "n": 20,
+   "hit@1": 0.55,
+   "hit@5": 0.8,
+   "hit@20": 0.9,
+   "mrr": 0.6558333333333334
+  },
+  "unfiltered|Tür: prosedür|cc_bm25_g3nb": {
+   "n": 20,
+   "hit@1": 0.35,
+   "hit@5": 0.7,
+   "hit@20": 0.85,
+   "mrr": 0.5171428571428571
+  },
+  "unfiltered|Tür: prosedür|cc_bm25_g4nb": {
+   "n": 20,
+   "hit@1": 0.6,
+   "hit@5": 0.85,
+   "hit@20": 0.85,
+   "mrr": 0.6741666666666666
+  },
+  "unfiltered|Tür: prosedür|cc_uclu_g3di": {
+   "n": 20,
+   "hit@1": 0.95,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.975
+  },
+  "unfiltered|Tür: prosedür|cc_uclu_g3nb": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.95
+  },
+  "unfiltered|Tür: prosedür|cc_uclu_g4nb": {
+   "n": 20,
+   "hit@1": 0.95,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.975
+  },
+  "unfiltered|Tür: kod|cc_bm25_g3di": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.9,
+   "hit@20": 0.9,
+   "mrr": 0.9
+  },
+  "unfiltered|Tür: kod|cc_bm25_g3nb": {
+   "n": 20,
+   "hit@1": 0.9,
+   "hit@5": 0.9,
+   "hit@20": 0.95,
+   "mrr": 0.9041666666666666
+  },
+  "unfiltered|Tür: kod|cc_bm25_g4nb": {
+   "n": 20,
+   "hit@1": 0.85,
+   "hit@5": 0.9,
+   "hit@20": 0.9,
+   "mrr": 0.875
+  },
+  "unfiltered|Tür: kod|cc_uclu_g3di": {
+   "n": 20,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: kod|cc_uclu_g3nb": {
+   "n": 20,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: kod|cc_uclu_g4nb": {
+   "n": 20,
+   "hit@1": 1.0,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 1.0
+  },
+  "unfiltered|Tür: arıza|cc_bm25_g3di": {
+   "n": 8,
+   "hit@1": 0.5,
+   "hit@5": 0.75,
+   "hit@20": 0.75,
+   "mrr": 0.55625
+  },
+  "unfiltered|Tür: arıza|cc_bm25_g3nb": {
+   "n": 8,
+   "hit@1": 0.125,
+   "hit@5": 0.625,
+   "hit@20": 0.75,
+   "mrr": 0.2451388888888889
+  },
+  "unfiltered|Tür: arıza|cc_bm25_g4nb": {
+   "n": 8,
+   "hit@1": 0.25,
+   "hit@5": 0.625,
+   "hit@20": 0.875,
+   "mrr": 0.4016981792717087
+  },
+  "unfiltered|Tür: arıza|cc_uclu_g3di": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: arıza|cc_uclu_g3nb": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: arıza|cc_uclu_g4nb": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.875
+  },
+  "unfiltered|Tür: şekil|cc_bm25_g3di": {
+   "n": 14,
+   "hit@1": 0.5714285714285714,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 0.8571428571428571,
+   "mrr": 0.6768707482993197
+  },
+  "unfiltered|Tür: şekil|cc_bm25_g3nb": {
+   "n": 14,
+   "hit@1": 0.5,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 0.8571428571428571,
+   "mrr": 0.6357142857142858
+  },
+  "unfiltered|Tür: şekil|cc_bm25_g4nb": {
+   "n": 14,
+   "hit@1": 0.5,
+   "hit@5": 0.7857142857142857,
+   "hit@20": 0.9285714285714286,
+   "mrr": 0.6428571428571429
+  },
+  "unfiltered|Tür: şekil|cc_uclu_g3di": {
+   "n": 14,
+   "hit@1": 0.7857142857142857,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.861344537815126
+  },
+  "unfiltered|Tür: şekil|cc_uclu_g3nb": {
+   "n": 14,
+   "hit@1": 0.8571428571428571,
+   "hit@5": 0.9285714285714286,
+   "hit@20": 1.0,
+   "mrr": 0.9047619047619048
+  },
+  "unfiltered|Tür: şekil|cc_uclu_g4nb": {
+   "n": 14,
+   "hit@1": 0.8571428571428571,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9071428571428571
+  },
+  "unfiltered|Tür: diğer|cc_bm25_g3di": {
+   "n": 8,
+   "hit@1": 0.5,
+   "hit@5": 0.875,
+   "hit@20": 1.0,
+   "mrr": 0.625
+  },
+  "unfiltered|Tür: diğer|cc_bm25_g3nb": {
+   "n": 8,
+   "hit@1": 0.625,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.7604166666666666
+  },
+  "unfiltered|Tür: diğer|cc_bm25_g4nb": {
+   "n": 8,
+   "hit@1": 0.5,
+   "hit@5": 0.75,
+   "hit@20": 1.0,
+   "mrr": 0.6319444444444444
+  },
+  "unfiltered|Tür: diğer|cc_uclu_g3di": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.875
+  },
+  "unfiltered|Tür: diğer|cc_uclu_g3nb": {
+   "n": 8,
+   "hit@1": 0.875,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.9375
+  },
+  "unfiltered|Tür: diğer|cc_uclu_g4nb": {
+   "n": 8,
+   "hit@1": 0.75,
+   "hit@5": 1.0,
+   "hit@20": 1.0,
+   "mrr": 0.875
+  }
+ }
+}

@@ -46,7 +46,7 @@ def main() -> None:
     ap.add_argument("--qwen-dense", default="short_rescore", choices=["full", "short_rescore"])
     ap.add_argument("--sets", nargs="+", default=list(KNOWN_SETS))
     ap.add_argument("--include-unapproved", action="store_true")
-    ap.add_argument("--arms", default="qwen,bge,bm25", help="kollar: qwen, bge, bm25 (A yolu: qwen,bm25)")
+    ap.add_argument("--arms", default="qwen,bge,bm25", help="kollar: qwen, bge, bm25 (A yolu: qwen,bm25; yalnız bm25)")
     ap.add_argument("--bm25-translations", help="bench.translate_bm25 çıktısı: BM25 kolu çevrilmiş sorguyla")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
@@ -64,7 +64,7 @@ def main() -> None:
     out: dict[str, Any] = {"questions": {}, "timing": {}, "skipped_offline": skipped}
     for n, (it, p) in enumerate(items, 1):
         qv = qwen(p["search_q"], True) if use_qwen else None
-        bv = bge(p["search_q"], True) if "bge" in arms_on else None
+        bv = bge(p["search_q"], True) if "bge" in arms_on or not use_qwen else None   # yalnız BM25: taban bge
         base = qv or bv                        # BM25 sorgusu (çevrilmemişse) ilk dense kolun encode'undan
         qd = out["questions"].setdefault(it["qid"], {
             "qid": it["qid"], "set": it["set"], "q": it["q"], "search_q": p["search_q"],
