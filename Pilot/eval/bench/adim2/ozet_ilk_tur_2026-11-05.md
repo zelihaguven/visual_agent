@@ -5,11 +5,9 @@
 
 Ham tablo: [adim2_cevap_modeli_2026-11-05.md](adim2_cevap_modeli_2026-11-05.md). Plan: [plan_cevap_modeli_2026-11-05.md](plan_cevap_modeli_2026-11-05.md).
 
-Bekleyenler:
-- İkinci süre turu: bugün 16:30, 30 soru × 4 model, başka saatte.
-- Yerel taban qwen2.5:7b: bu gece 23:00.
-
-Rapor, ikisi bitince aynı araçla yeniden üretilecek.
+Ek koşular:
+- **İkinci süre turu: 14:41'de koşuldu** (16:30 yerine; 30 soru × 4 model, sabahtan farklı saat, yeni `verify.py`). 429, hata ve cevapsız soru yok; 0,097 USD. Toplam harcama 1,17 USD (sınır 1,5).
+- Yerel taban qwen2.5:7b: ertelendi, nihai turda yeni şemayla (plan §17).
 
 ## Özet tablo (cevaplı: onaylı 37 soru; "bulunamadı": modelin karar verdiği 17 soru)
 
@@ -24,7 +22,9 @@ Rapor, ikisi bitince aynı araçla yeniden üretilecek.
 | Beklenen değer cevapta, onaylı | 17/18 | 17/21 | 18/20 | 18/19 |
 | JSON sorunu (177 çağrı) | 0 | 0 | 0 | 5 yarıda kesik |
 | İlk token p50 / p95 | 388 ms / 1,04 sn | 648 ms / 1,57 sn | 762 ms / 1,36 sn | 449 ms / 991 ms |
+| … ikinci tur (14:41, 30 soru) | 350 ms / 1,90 sn | 715 ms / **10,7 sn** | 776 ms / 1,06 sn | 468 ms / 840 ms |
 | Toplam süre p95 | 10,3 sn | 17,1 sn | 3,2 sn | 5,2 sn |
+| … ikinci tur | 5,5 sn | 24,5 sn (5 çağrı > 20 sn) | 2,7 sn | 5,6 sn |
 | ZDR sağlayıcı sayısı | 13 | 9 | 1 (Azure) | 1 (Mistral) |
 | 429 / cevapsız | 0 / 0 | 0 / 0 | 0 / 0 | 0 / 0 |
 | Soru başına maliyet | 0,00023 USD | 0,00047 USD | 0,00197 USD | 0,00034 USD |
@@ -38,6 +38,7 @@ Rapor, ikisi bitince aynı araçla yeniden üretilecek.
   - GPT-5.4 mini: onaylı sette 29/35 ✓, yalnız 2 ✖. Ama en pahalı (Gemma'nın ~8,5 katı) ve tek ZDR sağlayıcılı.
   - Gemma 4: 27/33 ✓. ✖'lerin ana nedeni cevapta alıntıda olmayan sayı (28), sonra eksik [n] atfı (15).
   - Mistral 2603: formata en az uyan model. 61 cevapta geçerli [n] atfı yok, 35'inde alıntıda olmayan sayı var, 5 çağrıda JSON yarıda kesildi. Bu yüzden ✓ sayısı düşük (6/33). Modele özel istem ayarı yapılmadı (karar).
+- **Süre, ikinci tur:** Mistral ve GPT-5.4 mini iki turda da kararlı (ilk token p95 ≤ 1,1 sn). Gemma 4'ün p95'i 1,04 → 1,90 sn (DeepInfra, 30 soruda 3 yavaş çağrı); Qwen3.6 öğleden sonra DeepInfra'da belirgin yavaş (p95 10,7 sn). Tek sağlayıcı ölçümü saatten saate değişiyor; Gemma 4'ün bf16 sağlayıcıları nihai turda (§12).
 - **Süre:** Dördünün de ilk token p50'si 0,4–0,8 sn. Gemma 4 ve Mistral'de p95 ~1 sn; Qwen3.6'da 1,6 sn. Toplam sürede Qwen3.6 (p95 17 sn, 6 çağrı > 20 sn) ve Gemma 4 (p95 10 sn) uzun; uzun cevap yazıyorlar.
 - **Dayanıklılık:** Bu koşuda 429 ya da hata yok. Gemma 4 (13) ve Qwen3.6 (9) çok sağlayıcılı; GPT-5.4 mini ve Mistral tek sağlayıcılı. 5 Kasım sabahki süre ölçümünde tek sağlayıcılı gösterge model (mistral-small 2501, DeepInfra) 160 sorunun 11'inde 429 vermişti.
 - **Ön eleme önerisi:** Gemma 4 önde. "Bulunamadı" hedefini tutuyor, en ucuz, en çok sağlayıcılı, ilk tokeni hızlı. Zayıf yanı cevaplardaki alıntıda olmayan sayılar ve yanlış ret. Mistral Small 2603 ikinci; format sorunları onaylı sette yeniden bakılmalı.

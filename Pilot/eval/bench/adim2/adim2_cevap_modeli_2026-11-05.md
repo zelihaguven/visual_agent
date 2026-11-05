@@ -66,9 +66,13 @@ Atıf doğruluğu: cevabın alıntı yaptığı kaynak numaralarının parçalar
 | Model | Tur | n | ilk token p50 | p95 | ≤ 1,2 sn | ≤ 1,5 sn | toplam p50 | p95 | > 20 sn | sağlayıcı |
 |---|---|---|---|---|---|---|---|---|---|---|
 | gemma4 | ana (11:16) | 177 | 388 ms | 1,04 sn | 169/177 (95%) | 170/177 (96%) | 2,97 sn | 10,26 sn | 1 | {'DeepInfra': 177} |
+| gemma4 | ikinci (14:41) | 30 | 350 ms | 1,90 sn | 27/30 (90%) | 27/30 (90%) | 2,85 sn | 5,51 sn | 0 | {'DeepInfra': 30} |
 | qwen36 | ana (11:28) | 177 | 648 ms | 1,57 sn | 164/177 (93%) | 166/177 (94%) | 7,41 sn | 17,14 sn | 6 | {'DeepInfra': 177} |
+| qwen36 | ikinci (14:43) | 30 | 715 ms | 10,70 sn | 23/30 (77%) | 23/30 (77%) | 10,49 sn | 24,52 sn | 5 | {'DeepInfra': 30} |
 | gpt54mini | ana (11:59) | 177 | 762 ms | 1,36 sn | 163/177 (92%) | 171/177 (97%) | 1,72 sn | 3,17 sn | 0 | {'Azure': 177} |
+| gpt54mini | ikinci (14:50) | 30 | 776 ms | 1,06 sn | 29/30 (97%) | 30/30 (100%) | 1,80 sn | 2,72 sn | 0 | {'Azure': 30} |
 | mistral2603 | ana (11:52) | 177 | 449 ms | 991 ms | 172/177 (97%) | 175/177 (99%) | 2,04 sn | 5,18 sn | 0 | {'Mistral': 177} |
+| mistral2603 | ikinci (14:49) | 30 | 468 ms | 840 ms | 29/30 (97%) | 29/30 (97%) | 2,30 sn | 5,56 sn | 0 | {'Mistral': 30} |
 
 qwen2.5:7b yerelde (dizüstü CPU): süreleri bulutla karşılaştırılamaz.
 
@@ -77,8 +81,12 @@ qwen2.5:7b yerelde (dizüstü CPU): süreleri bulutla karşılaştırılamaz.
 | Model | Tur | USD | soru başına |
 |---|---|---|---|
 | gemma4 | ana | 0.0415 | 0.00023 |
+| gemma4 | ikinci | 0.0073 | 0.00024 |
 | qwen36 | ana | 0.0847 | 0.00047 |
+| qwen36 | ikinci | 0.0148 | 0.00049 |
 | gpt54mini | ana | 0.3559 | 0.00197 |
+| gpt54mini | ikinci | 0.0621 | 0.00207 |
 | mistral2603 | ana | 0.0608 | 0.00034 |
+| mistral2603 | ikinci | 0.0123 | 0.00041 |
 
-Bu rapordaki koşular: 0.5428 USD. Adım 2 turunun toplam harcaması (geçersiz sayılan koşular dahil, `ham/` altındaki bütün dosyalar): 1.0755 USD (sınır 1,5 USD).
+Bu rapordaki koşular: 0.6393 USD. Adım 2 turunun toplam harcaması (geçersiz sayılan koşular dahil, `ham/` altındaki bütün dosyalar): 1.1720 USD (sınır 1,5 USD).

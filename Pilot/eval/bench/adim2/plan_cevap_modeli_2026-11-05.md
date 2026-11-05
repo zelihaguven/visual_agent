@@ -328,3 +328,15 @@ Cevap modelini değiştirmek yalnız yapılandırmadır (model kimliği, sağlay
 - Biçim sorunları JSON ve rozet metriklerinde görünür. Ortak bir hata birden çok modelde görülürse genel çözüm şemadır (§15), modele özel yama değildir.
 
 PRD açık kararlar listesine **A11** olarak önerildi ([docs/PRD.md](../../../../docs/PRD.md)).
+
+## 17. Ertelenen ölçümler (2026-11-05 akşamı; bilgisayar gece açık kalmıyor)
+
+Bütün `VisualAgent_*` zamanlanmış görevleri devre dışı. `StartWhenAvailable` ve `WakeToRun` kapalı: Hiçbir görev sonraki açılışta kendiliğinden başlamaz.
+
+| Ölçüm | Durum | Neden | Ne zaman |
+|---|---|---|---|
+| Yerel taban qwen2.5:7b (23:00) | **ertelendi**, görev devre dışı | Gece koşusu yapılamıyor. Taban, nihai turda yeni cevap şemasıyla (§15) koşulacak; bugünkü şemayla ayrı koşmak tekrar olur. | Adım 2 nihai turu |
+| İkinci süre turu (16:30, 30 soru × 4 model) | **koşuldu** 14:41–14:52 (16:30 yerine, elle) | Oturum akşam açık değil; sabahtan farklı saat sayıldı | yapıldı (0,097 USD; toplam 1,17 USD) |
+| Çeviri karşılaştırması tur t2 (19:00) | **onaya bağlı**, görev devre dışı | Süre için başka bir saat gerekiyor; oturum akşam açık değil | Süre turundan sonra onaylanırsa hemen, yoksa bir sonraki oturumda başka bir saatte |
+| Gemma 4 üretim sağlayıcıları (§12) | ertelendi | Kararla nihai tura taşındı | Adım 2 nihai turu (ayrı bütçe) |
+| Kuyruk ölçümü t3 (B4 §9.2) | ertelendi | Kullanıcı elle başlatacak | Kullanıcı kararı |
