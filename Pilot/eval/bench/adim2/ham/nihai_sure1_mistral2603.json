@@ -1,0 +1,2018 @@
+{
+ "model": "mistral2603",
+ "spec": {
+  "id": "mistralai/mistral-small-2603",
+  "provider": "mistral",
+  "reasoning": {
+   "effort": "none"
+  }
+ },
+ "tag": "nihai_sure1",
+ "zdr_providers": [
+  "mistral"
+ ],
+ "verify": "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı",
+ "deger": "değer olarak, 2026-11-05",
+ "sema": "c",
+ "netlestirme_sorulari": "dahil",
+ "start": "2026-11-05T16:41:58",
+ "rows": {
+  "sekil_sorular:G5": {
+   "cikis": "cevap",
+   "durum": "partial",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      44
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      18
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      22
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      10,
+      11
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Pantolonun arka görünüşünde arka cep, şekil 2'de gösterildiği gibi arka cep bölgesindedir. Arka cep, arka cep bölgesinde ve dikiş yönü okla gösterilmiştir.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.602,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-07-14a"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 1.0217570000022533,
+   "toplam": 2.3913876000005985,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.391385300001275
+    }
+   ],
+   "giris": 2753,
+   "cikis_token": 214,
+   "dusunce_token": 0,
+   "maliyet": 0.00054135,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Figure 2. Trouser Back, Anny Combat Unifonn\"}, \"metin\": \"Pantolonun arka görünüşünde arka cep, şekil 2'de gösterildiği gibi arka cep bölgesindedir.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"The figure shows a back view of a trouser, specifically the back of an Army combat uniform. An arrow points to the direction of the stitching on the back pocket.\"}, \"metin\": \"Arka cep, arka cep bölgesinde ve dikiş yönü okla gösterilmiştir.\"}], \"sesli_metin\": \"Pantolonun arka görünüşünde arka cep, şekil 2'de arka cep bölgesinde ve dikiş yönü okla gösterilmiştir.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A152": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      148,
+      149
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      191
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      191
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      167,
+      168
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      191
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.5592312000007951,
+   "toplam": 0.7554228000008152,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7554218000004767
+    }
+   ],
+   "giris": 2957,
+   "cikis_token": 29,
+   "dusunce_token": 0,
+   "maliyet": 0.00046095,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "sekil_sorular:N2": {
+   "cikis": "cevap",
+   "durum": "failed",
+   "sorunlar": [
+    "alıntı [2] kaynakta birebir değil",
+    "sesli metinde alıntılarda olmayan sayı: ['3']"
+   ],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      42
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      12
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      61
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      16
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cevap": "Makine parçalarının aşınması düzensizdir. İlk aşama (I), yeni parçaların alıştırılması sırasında daha güçlü aşınma görülür. İkinci aşama (II), aşınma hızının en düşük olduğu ve sürecin stabilize olduğu dönemdir. Üçüncü aşama (III), aşınmanın acil duruma yol açacak şekilde giderek arttığı dönemdir.",
+   "ogeler": [
+    false,
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 2.203,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "granovsky-1986"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.6876540000012028,
+   "toplam": 3.4344522999999754,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 3.4344507999994676
+    }
+   ],
+   "giris": 2807,
+   "cikis_token": 410,
+   "dusunce_token": 0,
+   "maliyet": 0.00066705,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 2, \"metin\": \"The process of part wear in time is irregular (Fig. 2). During the initial period I of machine operation, when new parts are run-in, there is a stronger wear; further, comes the period II when the speed of wearing is at its minimum, i.e. when the process stabilizes; and finally follows the period III, when wear is progressively increasing up to an emergency state so that the part may be brought completely out of use.\"}, \"metin\": \"Makine parçalarının aşınması düzensizdir. İlk aşama (I), yeni parçaların alıştırılması sırasında daha güçlü aşınma görülür.\"}, {\"alinti\": {\"kaynak_no\": 2, \"metin\": \"further, comes the period II when the speed of wearing is at its minimum, i.e. when the process stabilizes\"}, \"metin\": \"İkinci aşama (II), aşınma hızının en düşük olduğu ve sürecin stabilize olduğu dönemdir.\"}, {\"alinti\": {\"kaynak_no\": 2, \"metin\": \"and finally follows the period III, when wear is progressively increasing up to an emergency state so that the part may be brought completely out of use.\"}, \"metin\": \"Üçüncü aşama (III), aşınmanın acil duruma yol açacak şekilde giderek arttığı dönemdir.\"}], \"sesli_metin\": \"Granovsky kitabına göre makine parçalarının aşınması 3 aşamadan geçer. İlk aşamada alıştırma sırasında güçlü aşınma olur. İkinci aşamada aşınma hızı en düşük seviyededir. Üçüncü aşamada ise aşınma acil duruma kadar artar.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A132": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      74
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      58,
+      59
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      32
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      146
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.38051240000277176,
+   "toplam": 0.5971921000018483,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.5971892000015941
+    }
+   ],
+   "giris": 2885,
+   "cikis_token": 29,
+   "dusunce_token": 0,
+   "maliyet": 0.0002382,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "questions_ek:Q29": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Error E064 means the touch key was pressed while turning on the power.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.024,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.4895848999985901,
+   "toplam": 1.2754329000017606,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.2754314000012528
+    }
+   ],
+   "giris": 2151,
+   "cikis_token": 146,
+   "dusunce_token": 0,
+   "maliyet": 0.0001983,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Code: E064 | Cause: Touch key was being pressed when power was turned on. | Remedy: Turn the power off and then back on again. * Do not press the touch keys when turning on the power.\"}, \"metin\": \"Error E064 means the touch key was pressed while turning on the power.\"}], \"sesli_metin\": \"Error E064 occurs when a touch key is pressed during power-on. Turn the power off and on again without pressing any touch keys.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A066": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      53
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      113
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      75
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      37
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Dikiş adımının varsayılan değeri 2.00'dır. Ayar birimi 0.05 mm'dir.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.75,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 1.1056376000015007,
+   "toplam": 2.528083900000638,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.528082100001484
+    }
+   ],
+   "giris": 2334,
+   "cikis_token": 288,
+   "dusunce_token": 0,
+   "maliyet": 0.00031095,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00\"}, \"metin\": \"Dikiş adımının varsayılan değeri 2.00'dır.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00\"}, \"metin\": \"Ayar birimi 0.05 mm'dir.\"}], \"sesli_metin\": \"S-7300B'de dikiş adımının varsayılan değeri 2.00 ve ayar birimi 0.05 mm'dir.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A135": {
+   "cikis": "cevap",
+   "durum": "failed",
+   "sorunlar": [
+    "alıntı [2] kaynakta birebir değil",
+    "alıntı [2] kaynakta birebir değil"
+   ],
+   "kaynaklar": [
+    [
+     "juki-mo6800s",
+     [
+      30
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      33
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      33
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      32
+     ]
+    ]
+   ],
+   "sira": 3,
+   "cevap": "Aydınlatma LED'ini açmak ve kapatmak için ilgili tuşa basın. Tuşu basılı tutarsan ekran aydınlatma LED parlaklık ayarına geçer.",
+   "ogeler": [
+    false,
+    false
+   ],
+   "ilk_dogrulanmis_cumle": null,
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.4182651999981317,
+   "toplam": 2.15580879999834,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.1558071999970707
+    }
+   ],
+   "giris": 2307,
+   "cikis_token": 224,
+   "dusunce_token": 0,
+   "maliyet": 0.0002685,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 2, \"metin\": \"(2) | Illumination LED on key | Illumination LED off key | Press this key to switch the illumination LED between on and and off.\"}, \"metin\": \"Aydınlatma LED'ini açmak ve kapatmak için ilgili tuşa basın.\"}, {\"alinti\": {\"kaynak_no\": 2, \"metin\": \"(2) | Illumination LED on key | Illumination LED off key | If you keep pressing this key, the display switches to the illumination LED brightness setting screen.\"}, \"metin\": \"Tuşu basılı tutarsan ekran aydınlatma LED parlaklık ayarına geçer.\"}], \"sesli_metin\": \"Aydınlatma LED'ini açmak ve kapatmak için ilgili tuşa basın. Tuşu basılı tutarsan parlaklık ayarına geçilir.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A140": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      93,
+      94
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      94,
+      95,
+      96
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular:A004": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      25
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Alev almaz (Type II, III) ceketlerde FR tanıtım bandı sol kolun manşetinin dış kısmında bulunur. FR tanıtım bandı sol kol manşetinde giyildiğinde dışarıdan görülebilecek şekilde yerleştirilir.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.785,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": false,
+   "atif_dokumanlari": [
+    "gl-pd-14-04a"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.4279475999974238,
+   "toplam": 3.794741999998223,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 3.7947413999972923
+    }
+   ],
+   "giris": 2503,
+   "cikis_token": 233,
+   "dusunce_token": 0,
+   "maliyet": 0.00051525,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 2, \"metin\": \"The Type II and Type III coat has an FR indicator located on the outside of the left sleeve cuff.\"}, \"metin\": \"Alev almaz (Type II, III) ceketlerde FR tanıtım bandı sol kolun manşetinin dış kısmında bulunur.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"The Types II and III coat shall have a tape FR identification marker (see figure 1) on the left sleeve cuff as worn (see pattern for placement) and shall be visible from the outside when worn.\"}, \"metin\": \"FR tanıtım bandı sol kol manşetinde giyildiğinde dışarıdan görülebilecek şekilde yerleştirilir.\"}], \"sesli_metin\": \"Alev almaz ceketlerde FR tanıtım bandı sol kolun manşetinde bulunur ve dışarıdan görülebilir.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A069": {
+   "cikis": "cevap",
+   "durum": "failed",
+   "sorunlar": [
+    "alıntı [1] kaynakta birebir değil"
+   ],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      94
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      79
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      92
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      94
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      114
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Çağanoz ucu, iğne mili en düşük konumundan 1.8 mm yükselince iğnenin ortasına gelmelidir.",
+   "ogeler": [
+    false
+   ],
+   "ilk_dogrulanmis_cumle": null,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.5593507000012323,
+   "toplam": 1.7122367000010854,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.7122347000004083
+    }
+   ],
+   "giris": 2768,
+   "cikis_token": 197,
+   "dusunce_token": 0,
+   "maliyet": 0.00031497,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"The rotary hook tip (3) should be aligned with the center of the needle (4) when the needle bar (1) moves up 1.8 mm (for -[][]3 specifications) from its lowest position to the position where reference line (b) is aligned with the needle bar bush (2) as shown in the illustration.\"}, \"metin\": \"Çağanoz ucu, iğne mili en düşük konumundan 1.8 mm yükselince iğnenin ortasına gelmelidir.\"}], \"sesli_metin\": \"S-7300B -3 tipinde çağanoz ucu, iğne mili 1.8 mm yükselince iğnenin ortasına gelmelidir.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A037": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Makine başlığının dikim başlarken geriye doğru eğik algılanması. Önlem: Gücü kapat, ardından makine başlığını orijinal konumuna getir. Gücü kapat ve P2 konektörünün bağlantısını kontrol et.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 0.982,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "deger_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.3655145000011544,
+   "toplam": 2.200049200000649,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.2000483000010718
+    }
+   ],
+   "giris": 2291,
+   "cikis_token": 259,
+   "dusunce_token": 0,
+   "maliyet": 0.00049905,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Code: E050 | Cause: Machine head is detected as being tilted back when start sewing.\"}, \"metin\": \"Makine başlığının dikim başlarken geriye doğru eğik algılanması.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"}, \"metin\": \"Önlem: Gücü kapat, ardından makine başlığını orijinal konumuna getir. Gücü kapat ve P2 konektörünün bağlantısını kontrol et.\"}], \"sesli_metin\": \"S-7300A'da E-050 hatası makine başlığının dikim başlarken geriye doğru eğik algılanmasıdır. Gücü kapatıp makine başlığını orijinal konumuna getirin ve P2 konektörünün bağlantısını kontrol edin.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A147": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      3
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9,
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "Ceket iliklerinde, gimp (kordon) uçlarını yakalayan ve çapraz dikişi sayılmayan en az 4 adet sabitleme dikişi bulunmalıdır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 2.158,
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "atif_dokumanlari": [
+    "gl-pd-14-04a"
+   ],
+   "deger_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 1.2085355999988678,
+   "toplam": 2.3729587999987416,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.372956700000941
+    }
+   ],
+   "giris": 2534,
+   "cikis_token": 178,
+   "dusunce_token": 0,
+   "maliyet": 0.00027495,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"The buttonholes shall be eyelet-end tapered bar type (eyelet end toward the cuff edge-see figure 2) worked over gimp for the cuff with not less than four (4) tacking stitches at bar end catching the gimp ends (not counting the crossover stitch).\"}, \"metin\": \"Ceket iliklerinde, gimp (kordon) uçlarını yakalayan ve çapraz dikişi sayılmayan en az 4 adet sabitleme dikişi bulunmalıdır.\"}], \"sesli_metin\": \"Ceket iliklerinde en az 4 adet sabitleme dikişi bulunmalıdır.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A077": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      79
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      64
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      112
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      112
+     ]
+    ]
+   ],
+   "sira": 4,
+   "cevap": "Punteriz kenarı hizalı çıkmıyorsa, feed dog yüksekliğini artır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 0.989,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.4076201999996556,
+   "toplam": 1.2877630999973917,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.2877616000005219
+    }
+   ],
+   "giris": 2497,
+   "cikis_token": 135,
+   "dusunce_token": 0,
+   "maliyet": 0.0002436,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 4, \"metin\": \"Problem: 13 | Problem: sewing direction. Backtack edge is not aligned. Thread tightening around | Possible cause: Is the height of the feed dog correct? Increase the feed dog height.\"}, \"metin\": \"Punteriz kenarı hizalı çıkmıyorsa, feed dog yüksekliğini artır.\"}], \"sesli_metin\": \"Punteriz kenarı hizalı çıkmıyorsa feed dog yüksekliğini artır.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A154": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      10
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ]
+   ],
+   "sira": 4,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.4685896999981196,
+   "toplam": 0.6520796000004339,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.6520762999971339
+    }
+   ],
+   "giris": 2733,
+   "cikis_token": 29,
+   "dusunce_token": 0,
+   "maliyet": 0.0002154,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A041": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cevap": "Panel bağlantısı açılışta algılanmazsa hata kodu E400 çıkar. Panel bağlantısında iletişim hatası oluşursa hata kodu E410 çıkar.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 0.954,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.4455971999996109,
+   "toplam": 1.8021392000009655,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.8021372000002884
+    }
+   ],
+   "giris": 2318,
+   "cikis_token": 208,
+   "dusunce_token": 0,
+   "maliyet": 0.00026055,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 2, \"metin\": \"Code: E400 | Cause: Panel connection was not detected when power was turned on.\"}, \"metin\": \"Panel bağlantısı açılışta algılanmazsa hata kodu E400 çıkar.\"}, {\"alinti\": {\"kaynak_no\": 5, \"metin\": \"Code: E410 | Cause: Communication error with panel occurred when power was turned on.\"}, \"metin\": \"Panel bağlantısında iletişim hatası oluşursa hata kodu E410 çıkar.\"}], \"sesli_metin\": \"S-7300A'da açılışta panel bağlantısı algılanmazsa E400 hatası çıkar. Panel bağlantısında iletişim hatası oluşursa E410 hatası çıkar.\", \"celiski_var\": true}"
+  },
+  "aday_sorular:A008": {
+   "cikis": "cevap",
+   "durum": "failed",
+   "sorunlar": [
+    "alıntı [2] kaynakta birebir değil",
+    "alıntı [5] kaynakta birebir değil"
+   ],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      26,
+      27
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Üst kol cebindeki loop tape (pocket) için her bir punterizde 36 punteriz atılmalıdır. Kaynağa göre hook tape (flap) için de her bir punterizde 36 punteriz atılması gerektiği belirtilmektedir.",
+   "ogeler": [
+    false,
+    false
+   ],
+   "ilk_dogrulanmis_cumle": null,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-14-04a"
+   ],
+   "deger_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.5167805999990378,
+   "toplam": 2.0271661000006134,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.027162899998075
+    }
+   ],
+   "giris": 2659,
+   "cikis_token": 232,
+   "dusunce_token": 0,
+   "maliyet": 0.00053805,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 2, \"metin\": \"Chest pockets and flaps a. Loop tape (pocket) | ... | Stitches per tack 1/: 36 | ...\"}, \"metin\": \"Üst kol cebindeki loop tape (pocket) için her bir punterizde 36 punteriz atılmalıdır.\"}, {\"alinti\": {\"kaynak_no\": 5, \"metin\": \"Bar-tack or back-tack placement: b. Hook tape (flap) | ... | Stitches per tack 1/: 36 | ...\"}, \"metin\": \"Kaynağa göre hook tape (flap) için de her bir punterizde 36 punteriz atılması gerektiği belirtilmektedir.\"}], \"sesli_metin\": \"Ceketin üst kol cebindeki cırt banda her bir punterizde 36 punteriz atılması gerekmektedir.\", \"celiski_var\": true}"
+  },
+  "aday_sorular:A144": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      33
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      67
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      67
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35,
+      36
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Permetrin geri kazanımı her numune boyutu ve bileşimi için en az %95 olmalıdır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.134,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-07-14a"
+   ],
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.5468536999978824,
+   "toplam": 1.3081041000004916,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.3081025999999838
+    }
+   ],
+   "giris": 2724,
+   "cikis_token": 133,
+   "dusunce_token": 0,
+   "maliyet": 0.00027645,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Verify that the percent recovery of permethrin for any specimen size and composition, is 95% or greater by comparing the recovery level from the first extraction, to that of subsequent extractions.\"}, \"metin\": \"Permetrin geri kazanımı her numune boyutu ve bileşimi için en az %95 olmalıdır.\"}], \"sesli_metin\": \"Permetrin geri kazanımı en az 95 olmalıdır.\", \"celiski_var\": false}"
+  },
+  "questions:Q07": {
+   "cikis": "netlestirme",
+   "durum": "clarify",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      45
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      45
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      45
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "brother-s7300b",
+    "brother-s7300a"
+   ],
+   "secenek_degerlendirme": "eksik_yanlis",
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.3930967000014789,
+   "toplam": 0.9720891000033589,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9720872000034433
+    }
+   ],
+   "giris": 2280,
+   "cikis_token": 89,
+   "dusunce_token": 0,
+   "maliyet": 0.00017697,
+   "ham": "{\"tur\": \"netlestirme\", \"netlestirme\": {\"soru\": \"Hangi model Brother S-7300 düz dikiş makinesini kullanıyorsunuz?\", \"secenekler\": [{\"kaynak_no\": 1}, {\"kaynak_no\": 2}]}, \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A039": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Açılırken devre dışı bırakılmış bir donanım tuşuna basılıyor. Gücü kapatıp tekrar açın. Açarken devre dışı bırakılmış bir donanım tuşuna basmayın.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.181,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "deger_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.5288561999986996,
+   "toplam": 2.1830756999988807,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.183074199998373
+    }
+   ],
+   "giris": 2305,
+   "cikis_token": 218,
+   "dusunce_token": 0,
+   "maliyet": 0.00025812,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Code: E065 | Cause: A disabled hardware key was being pressed when the power was turned on.\"}, \"metin\": \"Açılırken devre dışı bırakılmış bir donanım tuşuna basılıyor.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Remedy: Turn the power off and then back on again. * Do not press a disabled hardware key while turning on the power.\"}, \"metin\": \"Gücü kapatıp tekrar açın. Açarken devre dışı bırakılmış bir donanım tuşuna basmayın.\"}], \"sesli_metin\": \"Açılırken devre dışı bırakılmış bir donanım tuşuna basılıyor. Gücü kapatıp tekrar açın ve açarken o tuşa basmayın.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A029": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      28
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      31
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35,
+      36
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm² olmalıdır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.699,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-07-14a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.5482771999995748,
+   "toplam": 2.205215499998303,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.2052130999982182
+    }
+   ],
+   "giris": 2724,
+   "cikis_token": 140,
+   "dusunce_token": 0,
+   "maliyet": 0.00027633,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"After 20 launderings | Min: mg/cm2: 0.025 | Max: mg/cm2: 0.130\"}, \"metin\": \"20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm² olmalıdır.\"}], \"sesli_metin\": \"20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm² olmalıdır.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A047": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      76
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      53
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      76
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      37
+     ]
+    ]
+   ],
+   "sira": 5,
+   "cevap": "-3 tipinin en yüksek dikiş hızı 5000 sti/dk'dır. Bu değer -3 tipinde 5000 sti/dk olarak belirtilmiştir.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 0.922,
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.41269570000076783,
+   "toplam": 1.4942702000007557,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.4942690999996557
+    }
+   ],
+   "giris": 2246,
+   "cikis_token": 200,
+   "dusunce_token": 0,
+   "maliyet": 0.00024495,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 2, \"metin\": \"Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min\"}, \"metin\": \"-3 tipinin en yüksek dikiş hızı 5000 sti/dk'dır.\"}, {\"alinti\": {\"kaynak_no\": 3, \"metin\": \"Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min\"}, \"metin\": \"Bu değer -3 tipinde 5000 sti/dk olarak belirtilmiştir.\"}], \"sesli_metin\": \"S-7300A -3 tipinin en yüksek dikiş hızı 5000 sti/dk'dır.\", \"celiski_var\": false}"
+  },
+  "questions:Q15": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      85
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.6154261999981827,
+   "toplam": 1.0055242999987968,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0055218999987119
+    }
+   ],
+   "giris": 2240,
+   "cikis_token": 29,
+   "dusunce_token": 0,
+   "maliyet": 0.0003534,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A085": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      91,
+      92
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      91
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      32
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      92
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "İliklerin üst ve alt konumlarını giyside işaretleyin, ardından istenen sayıda ilik için bu iki işaret arasında hassas bir şekilde bölerek işaretleyin. Merdiven dikişi (ladder) kullanarak iliklerin yerini işaretleyin: a) Ön ortadaki basting zaten giyside bulunur. b) Ön ortadan kesik kenara doğru, ilik ucunun yerini, ön ortadaki bastingden düğmenin kasnak genişliğinin yarısı kadar uzağa bastingleyin. c) Giysideki ilik uzunluğu kadar bir basting yerleştirin.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.252,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "strickland-1956"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.3739835000014864,
+   "toplam": 3.5324258000000555,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 3.5324232000020857
+    }
+   ],
+   "giris": 2878,
+   "cikis_token": 437,
+   "dusunce_token": 0,
+   "maliyet": 0.00048195,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 3, \"metin\": \"To be sure of accuracy, mark the top and bottom positions of buttonholes on the garment and then accurately divide and mark between these two marks for the desired number of buttonholes.\"}, \"metin\": \"İliklerin üst ve alt konumlarını giyside işaretleyin, ardından istenen sayıda ilik için bu iki işaret arasında hassas bir şekilde bölerek işaretleyin.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"make a ladder, using long and short bastings. a. The center front basting is already in the garment. b. Toward the cut edge from the center front place a basting for one end of the buttonhole one half the button shank width from the center front basting. c. On the garment side place a basting the exact length of the buttonhole.\"}, \"metin\": \"Merdiven dikişi (ladder) kullanarak iliklerin yerini işaretleyin: a) Ön ortadaki basting zaten giyside bulunur. b) Ön ortadan kesik kenara doğru, ilik ucunun yerini, ön ortadaki bastingden düğmenin kasnak genişliğinin yarısı kadar uzağa bastingleyin. c) Giysideki ilik uzunluğu kadar bir basting yerleştirin.\"}], \"sesli_metin\": \"İliklerin üst ve alt konumlarını giyside işaretleyin. Ardından istenen sayıda ilik için bu iki işaret arasında hassas bir şekilde bölerek işaretleyin. Merdiven dikişi kullanarak iliklerin yerini işaretleyin: ön ortadan kesik kenara doğru, ilik ucunun yerini, ön ortadaki bastingden düğmenin kasnak genişliğinin yarısı kadar uzağa bastingleyin.\", \"celiski_var\": false}"
+  },
+  "questions_ek:Q21": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      108
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Makine başlığının (makine kafasının) güç açıldığında geriye doğru eğik algılanması durumunda E055 hatası oluşur. Gücü kapatıp makine başlığını orijinal konumuna getirin. Gücü kapatıp P2 konektörünün bağlantısını kontrol edin.",
+   "ogeler": [
+    true,
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.393,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.47962099999858765,
+   "toplam": 3.011712899999111,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 3.0117103999982646
+    }
+   ],
+   "giris": 2120,
+   "cikis_token": 408,
+   "dusunce_token": 0,
+   "maliyet": 0.00034437,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Code: E055 | Cause: Machine head is detected as being tilted back when power was turned on. | Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"}, \"metin\": \"Makine başlığının (makine kafasının) güç açıldığında geriye doğru eğik algılanması durumunda E055 hatası oluşur.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Code: E055 | Cause: Machine head is detected as being tilted back when power was turned on. | Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"}, \"metin\": \"Gücü kapatıp makine başlığını orijinal konumuna getirin.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Code: E055 | Cause: Machine head is detected as being tilted back when power was turned on. | Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"}, \"metin\": \"Gücü kapatıp P2 konektörünün bağlantısını kontrol edin.\"}], \"sesli_metin\": \"S-7300B'de E055 hatası makine başlığının geriye doğru eğik algılanması durumunda oluşur. Gücü kapatıp başlığı orijinal konumuna getirin ve P2 konektörünü kontrol edin.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A083": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      110
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      146,
+      147
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      116
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      110
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      55
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Gömme cepler, dikiş hattı boyunca giysinin ters tarafında kanvas (tela) ile desteklenmelidir. Bu tela, kumaş üzerinde oluşabilecek fazla gerilimi önler. Gömme ceplerde gerilim, dikişin iki üst köşesinde yoğunlaşır ve bu bölgeler desteklenmelidir. Bu destek, ceplerin giysiye dikildiği üst kenarın hemen altında, gizli dikişlerle yapılmalıdır.",
+   "ogeler": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 2.041,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": false,
+   "atif_dokumanlari": [
+    "strickland-1956"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.6442608999968797,
+   "toplam": 6.479843799999799,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 6.479841299998952
+    }
+   ],
+   "giris": 2776,
+   "cikis_token": 374,
+   "dusunce_token": 0,
+   "maliyet": 0.00042885,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"All set-in pockets should be reinforced with canvas along the stitching line on the wrong side of the garment.\"}, \"metin\": \"Gömme cepler, dikiş hattı boyunca giysinin ters tarafında kanvas (tela) ile desteklenmelidir.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"This canvas prevents too great strain on the fabric.\"}, \"metin\": \"Bu tela, kumaş üzerinde oluşabilecek fazla gerilimi önler.\"}, {\"alinti\": {\"kaynak_no\": 3, \"metin\": \"The strain on the pocket is at the two top comers where stitching should be reinforced.\"}, \"metin\": \"Gömme ceplerde gerilim, dikişin iki üst köşesinde yoğunlaşır ve bu bölgeler desteklenmelidir.\"}, {\"alinti\": {\"kaynak_no\": 3, \"metin\": \"This is done by carefully hand stitching a few hidden stitches from comer across top just below the top edge, between pocket and garment.\"}, \"metin\": \"Bu destek, ceplerin giysiye dikildiği üst kenarın hemen altında, gizli dikişlerle yapılmalıdır.\"}], \"sesli_metin\": \"Gömme cepler dikiş hattı boyunca giysinin ters tarafında kanvas (tela) ile desteklenir. Bu tela kumaşta oluşabilecek fazla gerilimi önler. Destek özellikle ceplerin iki üst köşesinde yoğunlaşır.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A105": {
+   "cikis": "cevap",
+   "durum": "failed",
+   "sorunlar": [
+    "cümlede kendi alıntısında olmayan sayı: ['6333', '672']",
+    "cümlede kendi alıntısında olmayan sayı: ['667', '8623']",
+    "aynı cümle tekrar ediyor"
+   ],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      3
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      20
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      6
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      7
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      21
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Yedek su filtresi diskleri yerel perakende satış mağazalarından veya ABD'de 1-800-672-6333, Kanada'da 1-800-667-8623 numaralı telefondan satın alınabilir. Yedek su filtresi diskleri yerel perakende satış mağazalarından veya ABD'de 1-800-672-6333, Kanada'da 1-800-667-8623 numaralı telefondan satın alınabilir.",
+   "ogeler": [
+    false,
+    false
+   ],
+   "ilk_dogrulanmis_cumle": null,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "mrcoffee-2003"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.789352300002065,
+   "toplam": 3.0321402000008675,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 3.0321366999996826
+    }
+   ],
+   "giris": 2827,
+   "cikis_token": 425,
+   "dusunce_token": 0,
+   "maliyet": 0.0004671,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Los discos de filtración de agua de reemplazo pueden adquirirse a través de tiendas de ventas detallistas o llamando al 1-800-MR COFFEE (1-800-6726333) en los EE.UU. o al 1-800-667-8623 en el Canadá.\"}, \"metin\": \"Yedek su filtresi diskleri yerel perakende satış mağazalarından veya ABD'de 1-800-672-6333, Kanada'da 1-800-667-8623 numaralı telefondan satın alınabilir.\"}, {\"alinti\": {\"kaynak_no\": 5, \"metin\": \"Replacement water filtration disks can be purchased through your local retailer or by calling 1-800-MR-COFFEE (1-800-672-6333) in the U.S. or 1-800-6678623 in Canada.\"}, \"metin\": \"Yedek su filtresi diskleri yerel perakende satış mağazalarından veya ABD'de 1-800-672-6333, Kanada'da 1-800-667-8623 numaralı telefondan satın alınabilir.\"}], \"sesli_metin\": \"Yedek su filtresi diskleri yerel perakende satış mağazalarından veya ABD'de 1-800-672-6333, Kanada'da 1-800-667-8623 numaralı telefondan satın alınabilir.\", \"celiski_var\": true}"
+  },
+  "aday_sorular:A148": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      41,
+      42
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.6427134000005026,
+   "toplam": 0.8592912999993132,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8592889999999898
+    }
+   ],
+   "giris": 2243,
+   "cikis_token": 29,
+   "dusunce_token": 0,
+   "maliyet": 0.0001419,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A131": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      46
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      46
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "E050 kodu: Makine başlığının dikim başlarken geriye yatık algılanması durumudur. Çözüm: Gücü kapatın, ardından makine başlığını orijinal konumuna getirin. Gücü kapatın ve P2 konektörünün bağlantısını kontrol edin.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.798,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.4332684999972116,
+   "toplam": 2.3806779999977152,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.3806751999982225
+    }
+   ],
+   "giris": 2306,
+   "cikis_token": 263,
+   "dusunce_token": 0,
+   "maliyet": 0.00029175,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Code: E050 | Cause: Machine head is detected as being tilted back when start sewing.\"}, \"metin\": \"E050 kodu: Makine başlığının dikim başlarken geriye yatık algılanması durumudur.\"}, {\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"}, \"metin\": \"Çözüm: Gücü kapatın, ardından makine başlığını orijinal konumuna getirin. Gücü kapatın ve P2 konektörünün bağlantısını kontrol edin.\"}], \"sesli_metin\": \"E050 kodu Brother S-7300A makinesinde makine başlığının dikim başlarken geriye yatık algılanması durumudur. Gücü kapatıp başlığı yerine getirin ve P2 konektörünü kontrol edin.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A002": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      3
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Manşetin ana gövdesinde 3 (üç) adet ilik açılır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 0.95,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-14-04a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.4201214999993681,
+   "toplam": 1.1399439999986498,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.1399429999983113
+    }
+   ],
+   "giris": 2405,
+   "cikis_token": 112,
+   "dusunce_token": 0,
+   "maliyet": 0.0001512,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 4, \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"}, \"metin\": \"Manşetin ana gövdesinde 3 (üç) adet ilik açılır.\"}], \"sesli_metin\": \"Ceket manşetinde 3 adet ilik açılması gerekmektedir.\", \"celiski_var\": false}"
+  },
+  "aday_sorular:A104": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      7
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Temizleme döngüsü 45-60 dakika sürer. Kaynaklarda aynı süre verildiği için netleştirme gerekmez.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 0.83,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "mrcoffee-2003"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Mistral",
+   "ilk_token": 0.38611609999861685,
+   "toplam": 1.627036499998212,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.6270337999994808
+    }
+   ],
+   "giris": 2440,
+   "cikis_token": 165,
+   "dusunce_token": 0,
+   "maliyet": 0.00025305,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 2, \"metin\": \"The entire cycle will take 45-60 minutes to complete.\"}, \"metin\": \"Temizleme döngüsü 45-60 dakika sürer.\"}, {\"alinti\": {\"kaynak_no\": 4, \"metin\": \"El ciclo completo tomará de 45 a 60 minutos en completarse.\"}, \"metin\": \"Kaynaklarda aynı süre verildiği için netleştirme gerekmez.\"}], \"sesli_metin\": \"Temizleme döngüsü 45 ila 60 dakika arasında tamamlanır.\", \"celiski_var\": false}"
+  }
+ },
+ "cost_usd": 0.00974322,
+ "dusunme_kontrolu": {
+  "reasoning_tokens": 0,
+  "reasoning_text": 0,
+  "provider": "Mistral",
+  "ok": true,
+  "cost": 4.971e-05,
+  "err": null,
+  "json": "sema_disi"
+ },
+ "end": "2026-11-05T16:43:01",
+ "tamam": true
+}

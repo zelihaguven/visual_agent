@@ -53,3 +53,23 @@ Ham rapor: [nihai_c_rapor_2026-11-05.md](nihai_c_rapor_2026-11-05.md) (`python -
 - Şema C'de değer farklı en iyi 4/5; netleştirme modu modelin sorusunu kullanıcıya ulaştırıyor.
 
 Harcama (nihai_* toplamı, NextBit kısmi dahil): 0,95 USD; sınır 3,0 USD.
+
+## Süre turu 1 (şema C, 30 cevaplı soru, 16:37–17:00) ve şema ek süresi
+
+[nihai_sure1_rapor_2026-11-05.md](nihai_sure1_rapor_2026-11-05.md). İlk doğrulanmış cümle model tarafı (istekten); kapı p95 ≤ 2,0 sn.
+
+| Yapılandırma | ilk token p50 / p95 | ilk doğrulanmış cümle p50 / p95 | toplam p95 | > 20 sn |
+|---|---|---|---|---|
+| Mistral 2603 | 490 ms / 1,07 sn | 1,25 / **2,16** sn | 3,7 sn | 0 |
+| GPT-5.4 mini | 1,05 / 1,56 sn | 1,64 / **2,20** sn | 2,8 sn | 0 |
+| Gemma 4, Parasail | 634 / 908 ms | 1,56 / **2,44** sn | 5,7 sn | 0 |
+| Gemma 4, Venice | 571 / 923 ms | 1,99 / 3,03 sn | 5,7 sn | 0 |
+| Gemma 4 31B, Crusoe | 444 / 892 ms | 1,46 / 3,08 sn | 6,0 sn | 0 |
+| Gemma 4, NextBit | 401 / 600 ms | 2,30 / 3,15 sn | **135 sn** | **7** |
+| Gemma 4, DeepInfra | 380 / 700 ms | 1,71 / 3,55 sn | 5,5 sn | 0 |
+| Qwen3.6, DeepInfra | 685 ms / 1,38 sn | 3,82 / 8,89 sn | 10,3 sn | 0 |
+
+- 2,0 sn kapısını bu turda da kimse tutmuyor. En yakınlar Mistral (2,16) ve GPT-5.4 mini (2,20), sonra Parasail (2,44).
+- **NextBit:** ilk token en hızlısı ama 30 çağrının 7'si akış ortasında takılıp 20 sn'yi aşıyor (p95 135 sn). Ana koşuda da aynı. Üretim için uygun değil.
+- **Şemaya zorlamanın ilk token ek süresi** (eşli p50, [sema_ek_suresi_2026-11-05.md](sema_ek_suresi_2026-11-05.md)): DeepInfra 9 ms, Mistral ~0, Venice 60, NextBit 72, Qwen3.6 81, Crusoe 86 (5 hata), Parasail 146, Azure 395 ms (şemalı p95 4,8 sn).
+- Süre turu 2 (başka saatte), şema ek süresi s2 ve yerel taban sonraki oturumda.

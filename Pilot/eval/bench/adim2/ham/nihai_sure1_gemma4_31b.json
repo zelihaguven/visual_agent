@@ -1,0 +1,1965 @@
+{
+ "model": "gemma4_31b",
+ "spec": {
+  "id": "google/gemma-4-31b-it",
+  "provider": "crusoe",
+  "quant": "bf16",
+  "reasoning": {
+   "enabled": false
+  }
+ },
+ "tag": "nihai_sure1",
+ "zdr_providers": [
+  "coreweave",
+  "crusoe",
+  "deepinfra",
+  "io-net",
+  "modal",
+  "modelrun",
+  "nextbit",
+  "novita",
+  "parasail",
+  "primeintellect",
+  "sambanova",
+  "siliconflow",
+  "venice"
+ ],
+ "verify": "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı",
+ "deger": "değer olarak, 2026-11-05",
+ "sema": "c",
+ "netlestirme_sorulari": "dahil",
+ "start": "2026-11-05T16:58:14",
+ "rows": {
+  "sekil_sorular:G5": {
+   "cikis": "cevap",
+   "durum": "partial",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      44
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      18
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      22
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      10,
+      11
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Pantolonun arka görünüşünde, arka cep (back pocket) üzerinde dikiş yönünü gösteren bir ok bulunmaktadır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.952,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-07-14a"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.4938938999985112,
+   "toplam": 2.7737463000012212,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.7737453000008827
+    }
+   ],
+   "giris": 2545,
+   "cikis_token": 169,
+   "dusunce_token": 0,
+   "maliyet": 0.0004239,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      {\n        \"kaynak_no\": 1,\n        \"metin\": \"The figure shows a back view of a trouser, specifically the back of an Army combat uniform. An arrow points to the direction of the stitching on the back pocket.\"\n      },\n      \"metin\": \"Pantolonun arka görünüşünde, arka cep (back pocket) üzerinde dikiş yönünü gösteren bir ok bulunmaktadır.\"\n    }\n  ],\n  \"sesli_metin\": \"Pantolonun arka görünüşünde arka cep, üzerinde dikiş yönünü gösteren bir ok ile belirtilmiştir.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A152": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      148,
+      149
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      191
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      191
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      167,
+      168
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      191
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.4282390000007581,
+   "toplam": 0.9074743000019225,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.907472200000484
+    }
+   ],
+   "giris": 2776,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00040464,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "sekil_sorular:N2": {
+   "durum": "failed",
+   "sorunlar": [
+    "Model güvenilir bir cevap üretemedi: çıktı uzunluk sınırında yarıda kesildi (JSON tamamlanmadı). Kaynaklarda bu sorunun cevabı olmayabilir; aşağıdaki kaynak sayfaları kontrol edin, değer kullanmayın."
+   ],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      42
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      12
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      61
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      16
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cikis": "json_hata",
+   "atif_dogru_biri": null,
+   "atif_dogru_hepsi": null,
+   "json": "kesik",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 2.116226899997855,
+   "toplam": 10.23835759999929,
+   "finish": "length",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 10.238355599998613
+    }
+   ],
+   "giris": 2611,
+   "cikis_token": 700,
+   "dusunce_token": 0,
+   "maliyet": 0.00064554,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n"
+  },
+  "aday_sorular:A132": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      74
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      58,
+      59
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      32
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      146
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.4496379000011075,
+   "toplam": 0.7223758000000089,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7223736000014469
+    }
+   ],
+   "giris": 2704,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00039456,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "questions_ek:Q29": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Error E064 means that a touch key was being pressed when the power was turned on. To resolve this, turn the power off and then back on again, ensuring that touch keys are not pressed when turning on the power.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.464,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.44369560000268393,
+   "toplam": 2.8497267000020656,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.8497234000024037
+    }
+   ],
+   "giris": 2008,
+   "cikis_token": 235,
+   "dusunce_token": 0,
+   "maliyet": 0.00037512,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  {\"kaynak_no\": 1, \"metin\": \"Code: E064 | Cause: Touch key was being pressed when power was turned on.\"},\n      \"metin\": \"Error E064 means that a touch key was being pressed when the power was turned on.\"\n    },\n    {\n      \"alinti\": {\"kaynak_no\": 1, \"metin\": \"Remedy: Turn the power off and then back on again. * Do not press the touch keys when turning on the power.\"},\n      \"metin\": \"To resolve this, turn the power off and then back on again, ensuring that touch keys are not pressed when turning on the power.\"\n    }\n  ],\n  \"sesli_metin\": \"Error E064 means a touch key was pressed when the power was turned on. Turn the power off and then back on again without pressing any touch keys.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A066": {
+   "cikis": "cevap",
+   "durum": "failed",
+   "sorunlar": [
+    "alıntı [1] kaynakta birebir değil"
+   ],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      53
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      113
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      75
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      37
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Dikiş adımının (stitch pitch) ayar birimi 0.05 mm ve varsayılan değeri (initial value) 2.00'dır.",
+   "ogeler": [
+    false
+   ],
+   "ilk_dogrulanmis_cumle": null,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.626972800000658,
+   "toplam": 4.2829697000015585,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 4.282966300001135
+    }
+   ],
+   "giris": 2178,
+   "cikis_token": 183,
+   "dusunce_token": 0,
+   "maliyet": 0.00037812,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      {\n        \"kaynak_no\": 1,\n        \"metin\": \"Stitch pitch | Setting units: 0.05 mm | Initial value: 2.00\"\n      },\n      \"metin\": \"Dikiş adımının (stitch pitch) ayar birimi 0.05 mm ve varsayılan değeri (initial value) 2.00'dır.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300B modelinde dikiş adımının ayar birimi 0.05 mm, varsayılan değeri ise 2.00'dır.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A135": {
+   "cikis": "netlestirme",
+   "durum": "clarify",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "juki-mo6800s",
+     [
+      30
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      33
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      33
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      32
+     ]
+    ]
+   ],
+   "sira": 3,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [
+    "juki-mo6800s",
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_degerlendirme": "fazlasi_var",
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.45633230000021285,
+   "toplam": 1.4267077000004065,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.4267067999971914
+    }
+   ],
+   "giris": 2157,
+   "cikis_token": 142,
+   "dusunce_token": 0,
+   "maliyet": 0.00035878,
+   "ham": "{\n  \"tur\": \"netlestirme\",\n  \"netlestirme\": {\n    \"soru\": \"Hangi makine modeli için aydınlatma LED'inin açılıp kapatılmasını öğrenmek istiyorsunuz?\",\n    \"secenekler\": [\n      {\n        \"kaynak_no\": 1\n      },\n      {\n        \"kaynak_no\": 2\n      },\n      {\n        \"kaynak_no\": 4\n      }\n    ]\n  },\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A140": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      93,
+      94
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      94,
+      95,
+      96
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular:A004": {
+   "cikis": "cevap",
+   "durum": "failed",
+   "sorunlar": [
+    "sesli metinde alıntılarda olmayan sayı: ['2', '3']"
+   ],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      25
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Type II ve III ceketlerde, FR tanıtım bandı (FR identification marker) giyildiğinde sol kol manşetinde (left sleeve cuff) bulunur ve dışarıdan görünür olmalıdır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.619,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-14-04a"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.5004589999989548,
+   "toplam": 2.0179127999981574,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.0179121000001032
+    }
+   ],
+   "giris": 2355,
+   "cikis_token": 183,
+   "dusunce_token": 0,
+   "maliyet": 0.0004029,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  {\"kaynak_no\": 1, \"metin\": \"The Types II and III coat shall have a tape FR identification marker (see figure 1) on the left sleeve cuff as worn (see pattern for placement) and shall be visible from the outside when worn.\"},\n      \"metin\": \"Type II ve III ceketlerde, FR tanıtım bandı (FR identification marker) giyildiğinde sol kol manşetinde (left sleeve cuff) bulunur ve dışarıdan görünür olmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"Type 2 ve 3 ceketlerde FR tanıtım bandı sol kol manşetinde bulunur.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A069": {
+   "durum": "failed",
+   "sorunlar": [
+    "Model güvenilir bir cevap üretemedi: çıktı uzunluk sınırında yarıda kesildi (JSON tamamlanmadı). Kaynaklarda bu sorunun cevabı olmayabilir; aşağıdaki kaynak sayfaları kontrol edin, değer kullanmayın."
+   ],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      94
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      79
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      92
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      94
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      114
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "json_hata",
+   "atif_dogru_biri": null,
+   "atif_dogru_hepsi": null,
+   "deger_dogru": false,
+   "json": "kesik",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.47516320000067935,
+   "toplam": 5.747670800003107,
+   "finish": "length",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 5.747669399999722
+    }
+   ],
+   "giris": 2617,
+   "cikis_token": 700,
+   "dusunce_token": 0,
+   "maliyet": 0.00064638,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n"
+  },
+  "aday_sorular:A037": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "E050 hatası, dikişe başlarken makine kafasının arkaya eğik olarak algılandığı anlamına gelir.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.958,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.4212569000010262,
+   "toplam": 2.643937500000902,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.643936299999041
+    }
+   ],
+   "giris": 2145,
+   "cikis_token": 154,
+   "dusunce_token": 0,
+   "maliyet": 0.0003619,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  {\"kaynak_no\": 1, \"metin\": \"Code: E050 | Cause: Machine head is detected as being tilted back when start sewing.\"},\n      \"metin\": \"E050 hatası, dikişe başlarken makine kafasının arkaya eğik olarak algılandığı anlamına gelir.\"\n    }\n  ],\n  \"sesli_metin\": \"E050 hatası, dikişe başlarken makine kafasının arkaya eğik algılandığını belirtir.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A147": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      3
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9,
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "Manşet için gimp üzerine çalışılan iliklerin bar ucunda, gimp uçlarını yakalayan en az dört (4) adet sabitleme dikişi (tacking stitches) olmalıdır (çapraz dikiş hariç).",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 2.186,
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "atif_dokumanlari": [
+    "gl-pd-14-04a"
+   ],
+   "deger_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.6414174000019557,
+   "toplam": 2.5225140000002284,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.5225112000007357
+    }
+   ],
+   "giris": 2379,
+   "cikis_token": 229,
+   "dusunce_token": 0,
+   "maliyet": 0.00042466,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      {\n        \"kaynak_no\": 1,\n        \"metin\": \"The buttonholes shall be eyelet-end tapered bar type (eyelet end toward the cuff edge-see figure 2) worked over gimp for the cuff with not less than four (4) tacking stitches at bar end catching the gimp ends (not counting the crossover stitch).\"\n      },\n      \"metin\": \"Manşet için gimp üzerine çalışılan iliklerin bar ucunda, gimp uçlarını yakalayan en az dört (4) adet sabitleme dikişi (tacking stitches) olmalıdır (çapraz dikiş hariç).\"\n    }\n  ],\n  \"sesli_metin\": \"Manşet iliklerinin bar ucunda, çapraz dikiş hariç en az 4 adet sabitleme dikişi olmalıdır.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A077": {
+   "durum": "failed",
+   "sorunlar": [
+    "Model güvenilir bir cevap üretemedi: çıktı uzunluk sınırında yarıda kesildi (JSON tamamlanmadı). Kaynaklarda bu sorunun cevabı olmayabilir; aşağıdaki kaynak sayfaları kontrol edin, değer kullanmayın."
+   ],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      79
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      64
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      112
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      112
+     ]
+    ]
+   ],
+   "sira": 4,
+   "cikis": "json_hata",
+   "atif_dogru_biri": null,
+   "atif_dogru_hepsi": null,
+   "json": "kesik",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.37578750000102445,
+   "toplam": 4.372350599998754,
+   "finish": "length",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 4.372349199999007
+    }
+   ],
+   "giris": 2342,
+   "cikis_token": 700,
+   "dusunce_token": 0,
+   "maliyet": 0.00060788,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n"
+  },
+  "aday_sorular:A154": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      10
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      13
+     ]
+    ]
+   ],
+   "sira": 4,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.3491506999998819,
+   "toplam": 0.5316421000025002,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.531640500001231
+    }
+   ],
+   "giris": 2564,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00037496,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A041": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cevap": "S-7300A modelinde güç açıldığında panel bağlantısı algılanmazsa E400 hata kodu çıkar.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.038,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.37401840000165976,
+   "toplam": 1.1673768000000564,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.1673757000025944
+    }
+   ],
+   "giris": 2170,
+   "cikis_token": 152,
+   "dusunce_token": 0,
+   "maliyet": 0.0003646,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  {\"kaynak_no\": 2, \"metin\": \"Code: E400 | Cause: Panel connection was not detected when power was turned on.\"},\n      \"metin\": \"S-7300A modelinde güç açıldığında panel bağlantısı algılanmazsa E400 hata kodu çıkar.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300A modelinde açılışta panel bağlantısı algılanmazsa E400 hata kodu çıkar.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A008": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      26,
+      27
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      26
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.4135247000012896,
+   "toplam": 0.6387690999981714,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.6387671999982558
+    }
+   ],
+   "giris": 2532,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00037048,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A144": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      33
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      67
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      67
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35,
+      36
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Herhangi bir numune boyutu ve bileşimi için permetrin geri kazanım yüzdesi %95 veya daha fazla olmalıdır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.447,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-07-14a"
+   ],
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.5227852999996685,
+   "toplam": 1.7705226999969454,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.7705220999996527
+    }
+   ],
+   "giris": 2554,
+   "cikis_token": 168,
+   "dusunce_token": 0,
+   "maliyet": 0.00042476,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Verify that the percent recovery of permethrin for any specimen size and composition, is 95% or greater by comparing the recovery level from the first extraction, to that of subsequent extractions.\"\n      },\n      \"metin\": \"Herhangi bir numune boyutu ve bileşimi için permetrin geri kazanım yüzdesi %95 veya daha fazla olmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"Permetrin geri kazanım yüzdesi %95 veya daha fazla olmalıdır.\",\n  \"celiski_var\": false\n}"
+  },
+  "questions:Q07": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      45
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      45
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      45
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.3580274999985704,
+   "toplam": 0.5680190999992192,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.5680168999970192
+    }
+   ],
+   "giris": 2143,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00031602,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A039": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Güç açıldığında, devre dışı bırakılmış bir donanım tuşuna basıldığı için E065 kodu verilmektedir.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.468,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.4106290000017907,
+   "toplam": 1.8602430999999342,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.86024130000078
+    }
+   ],
+   "giris": 2158,
+   "cikis_token": 167,
+   "dusunce_token": 0,
+   "maliyet": 0.00036892,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E065 | Cause: A disabled hardware key was being pressed when the power was turned on.\"\n      },\n      \"metin\": \"Güç açıldığında, devre dışı bırakılmış bir donanım tuşuna basıldığı için E065 kodu verilmektedir.\"\n    }\n  ],\n  \"sesli_metin\": \"Güç açıldığında devre dışı bırakılmış bir donanım tuşuna basıldığı için E065 hatası alınmaktadır.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A029": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      28
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      31
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      8
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35,
+      36
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Pantolonda 20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm2 olmalıdır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.45,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-07-14a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.45329560000027413,
+   "toplam": 1.5279506000006222,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.5279487000007066
+    }
+   ],
+   "giris": 2566,
+   "cikis_token": 177,
+   "dusunce_token": 0,
+   "maliyet": 0.00043004,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"After 20 launderings | Min: mg/cm2: 0.025 | Max: mg/cm2: 0.130\"\n      },\n      \"metin\": \"Pantolonda 20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm2 olmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"Pantolonda 20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm2 olmalıdır.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A047": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      76
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      40
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      53
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      76
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      37
+     ]
+    ]
+   ],
+   "sira": 5,
+   "cevap": "S-7300A -3 spesifikasyonlarının en yüksek dikiş hızı 5000 sti/min'dir.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.651,
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.8708186000003479,
+   "toplam": 1.941631999998208,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.9416304999977
+    }
+   ],
+   "giris": 2101,
+   "cikis_token": 161,
+   "dusunce_token": 0,
+   "maliyet": 0.00035854,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  {\"kaynak_no\": 2, \"metin\": \"Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min\"},\n      \"metin\": \"S-7300A -3 spesifikasyonlarının en yüksek dikiş hızı 5000 sti/min'dir.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300A -3 tipinin en yüksek dikiş hızı 5000 sti/min'dir.\",\n  \"celiski_var\": false\n}"
+  },
+  "questions:Q15": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      85
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.9067924000009953,
+   "toplam": 1.2127150000014808,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.2127129000000423
+    }
+   ],
+   "giris": 2083,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00030762,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A085": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      91,
+      92
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      91
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      32
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      92
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "İlik aralıklarında doğru olmak için, uzun ve kısa teyellemeler (bastings) kullanarak bir merdiven yapın.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 5.159,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "strickland-1956"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.8592696999985492,
+   "toplam": 6.0800588999991305,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 6.080057200000738
+    }
+   ],
+   "giris": 2710,
+   "cikis_token": 158,
+   "dusunce_token": 0,
+   "maliyet": 0.0004426,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      {\n        \"kaynak_no\": 1,\n        \"metin\": \"To be accurate in spacing the buttonholes, make a ladder, using long and short bastings.\"\n      },\n      \"metin\": \"İlik aralıklarında doğru olmak için, uzun ve kısa teyellemeler (bastings) kullanarak bir merdiven yapın.\"\n    }\n  ],\n  \"sesli_metin\": \"İlik aralıklarını doğru işaretlemek için uzun ve kısa teyellemeler kullanarak bir merdiven yapın.\",\n  \"celiski_var\": false\n}"
+  },
+  "questions_ek:Q21": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      108
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "E055 hatası, güç açıldığında makine kafasının geriye eğik olduğunun tespit edildiği anlamına gelir. Çözüm için gücü kapatıp makine kafasını orijinal konumuna getirin veya gücü kapatıp P2 konnektörünün bağlantısını kontrol edin.",
+   "ogeler": [
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.291,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.38560920000236365,
+   "toplam": 2.6849317000014707,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.684928700000455
+    }
+   ],
+   "giris": 1973,
+   "cikis_token": 277,
+   "dusunce_token": 0,
+   "maliyet": 0.00038702,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  {\"kaynak_no\": 1, \"metin\": \"Code: E055 | Cause: Machine head is detected as being tilted back when power was turned on.\"},\n      \"metin\": \"E055 hatası, güç açıldığında makine kafasının geriye eğik olduğunun tespit edildiği anlamına gelir.\"\n    },\n    {\n      \"alinti\": {\"kaynak_no\": 1, \"metin\": \"Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"},\n      \"metin\": \"Çözüm için gücü kapatıp makine kafasını orijinal konumuna getirin veya gücü kapatıp P2 konnektörünün bağlantısını kontrol edin.\"\n    }\n  ],\n  \"sesli_metin\": \"E055 hatası, güç açıldığında makine kafasının geriye eğik tespit edildiğini gösterir. Gücü kapatıp makine kafasını orijinal konumuna getirin veya P2 konnektör bağlantısını kontrol edin.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A083": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      110
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      146,
+      147
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      116
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      110
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      55
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Tela, kumaş üzerindeki aşırı gerilmeyi önlemek için kullanılır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.118,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "strickland-1956"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.37804229999892414,
+   "toplam": 1.3050633999991987,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.3050608999983524
+    }
+   ],
+   "giris": 2608,
+   "cikis_token": 118,
+   "dusunce_token": 0,
+   "maliyet": 0.00041232,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  {\"kaynak_no\": 1, \"metin\": \"This canvas prevents too great strain on the fabric.\"},\n      \"metin\": \"Tela, kumaş üzerindeki aşırı gerilmeyi önlemek için kullanılır.\"\n    }\n  ],\n  \"sesli_metin\": \"Tela, kumaş üzerindeki aşırı gerilmeyi önlemek için kullanılır.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A105": {
+   "durum": "failed",
+   "sorunlar": [
+    "Model güvenilir bir cevap üretemedi: çıktı uzunluk sınırında yarıda kesildi (JSON tamamlanmadı). Kaynaklarda bu sorunun cevabı olmayabilir; aşağıdaki kaynak sayfaları kontrol edin, değer kullanmayın."
+   ],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      3
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      20
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      6
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      7
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      21
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "json_hata",
+   "atif_dogru_biri": null,
+   "atif_dogru_hepsi": null,
+   "json": "kesik",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.34678010000061477,
+   "toplam": 5.37917809999999,
+   "finish": "length",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 5.379174800000328
+    }
+   ],
+   "giris": 2611,
+   "cikis_token": 700,
+   "dusunce_token": 0,
+   "maliyet": 0.00064554,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n"
+  },
+  "aday_sorular:A148": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      41,
+      42
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      2
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.3980521999983466,
+   "toplam": 0.5791978000015661,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.579195800000889
+    }
+   ],
+   "giris": 2077,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00030678,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A131": {
+   "cikis": "netlestirme",
+   "durum": "clarify",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      98
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      105
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      46
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      46
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_ayni",
+   "secenek_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.3681689999975788,
+   "toplam": 0.9652117999976326,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.965208800000255
+    }
+   ],
+   "giris": 2159,
+   "cikis_token": 122,
+   "dusunce_token": 0,
+   "maliyet": 0.00035106,
+   "ham": "{\n  \"tur\": \"netlestirme\",\n  \"netlestirme\": {\n    \"soru\": \"Hangi makine modeli için E050 hata kodunun anlamını öğrenmek istiyorsunuz?\",\n    \"secenekler\": [\n      {\n        \"kaynak_no\": 1\n      },\n      {\n        \"kaynak_no\": 2\n      }\n    ]\n  },\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A002": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      3
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Sleeve cuff (kol manşeti) ana gövdesinde, kalıba göre aralıklı olarak üç (3) adet ilik bulunmalıdır.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.355,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "gl-pd-14-04a"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.39978550000159885,
+   "toplam": 1.615598600001249,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.615597500000149
+    }
+   ],
+   "giris": 2245,
+   "cikis_token": 146,
+   "dusunce_token": 0,
+   "maliyet": 0.0003727,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\":  {\"kaynak_no\": 4, \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"},\n      \"metin\": \"Sleeve cuff (kol manşeti) ana gövdesinde, kalıba göre aralıklı olarak üç (3) adet ilik bulunmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"Kol manşeti ana gövdesinde 3 adet ilik bulunmalıdır.\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular:A104": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      7
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "Tüm döngünün tamamlanması 45-60 dakika sürer.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.435,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "mrcoffee-2003"
+   ],
+   "deger_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Crusoe",
+   "ilk_token": 0.45003189999988535,
+   "toplam": 1.6254575999992085,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.6254570999990392
+    }
+   ],
+   "giris": 2242,
+   "cikis_token": 136,
+   "dusunce_token": 0,
+   "maliyet": 0.00036828,
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"The entire cycle will take 45-60 minutes to complete.\"\n      },\n      \"metin\": \"Tüm döngünün tamamlanması 45-60 dakika sürer.\"\n    }\n  ],\n  \"sesli_metin\": \"Temizleme döngüsünün tamamlanması 45-60 dakika sürer.\",\n  \"celiski_var\": false\n}"
+  }
+ },
+ "cost_usd": 0.0122515,
+ "dusunme_kontrolu": {
+  "reasoning_tokens": 0,
+  "reasoning_text": 0,
+  "provider": "Crusoe",
+  "ok": true,
+  "cost": 0.00022488,
+  "err": null,
+  "json": "sema_disi"
+ },
+ "end": "2026-11-05T16:59:28",
+ "tamam": true
+}
