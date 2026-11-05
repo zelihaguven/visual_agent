@@ -631,3 +631,9 @@ B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfr
   - Gemma 3 çevirisi ("stitches per inch (SPI) … exterior seams"): pantolon s.19 ve ceket s.22–23 ilk 5'te; netleştirme mümkün.
   - Gemma 4 çevirisi ("SPI … visible stitches"): pantolon s.19 ve ceket s.25 (başka tablo); ceket s.22–23 BM25'te 5. sırada, birleşik ilk 5'e girmiyor.
 - **Sonuç:** Q07 cevap modelinin değil, çevirisiz varsayılan aramanın sorunu. Dondurulan aday yolun (çevirili BM25) bağlanması gerekiyor. Gemma 4 çevirisinde terim seçimi ("visible stitches") bu soruda Gemma 3'ten zayıf; tek soruda karar verilmez, onaylı setteki BM25 isabeti §10.8'de.
+
+## 22. Kararlar (2026-11-05 gece, son)
+
+- **Cevap modeli:** Gemma 4 26B A4B. **Sağlayıcılar yalnız Venice (bf16, birincil) ve DeepInfra (fp8, ikincil)** (§21).
+- **Şema C'nin çalışma biçimi: c150b.** Alıntı en fazla 150 karakter, ilk öğe yalnız cevabın özü, öğe başına 1–2 alıntı.
+- **Açık fark:** c150b bugünkü şemaya göre hâlâ **+6 yanlış ret** (18 → 24) ve **+6 ✖** (12 → 18) getiriyor (Gemma 4 DeepInfra, 159 cevaplı soru). İkisi de güvenli yönde: yanlış değer göstermek yerine reddetmek ya da doğrulanmadı demek. c150b bundan sonra bugünkü şemayla da karşılaştırılacak. Ayrıntı ve sıradaki işler: [DEVIR_2026-11-06.md](DEVIR_2026-11-06.md).

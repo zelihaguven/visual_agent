@@ -172,3 +172,9 @@ Kabul ölçütü: süre kısalırken beklenen değer ve yanlış ret kötüleşm
   - arama öncesi süreyi kısaltıp (çeviri Gemma 4 NextBit, §14) uçtan uca 3 sn kapısını hedeflemek;
   - Venice/DeepInfra dışında hızlı bir ZDR sağlayıcısı. Parasail p95 2,4 sn'ydi ama şemaya zorlamada JSON kesiyor.
 - Maliyet: dört koşu toplam ~0,24 USD.
+
+## Kararlar (2026-11-05 gece)
+
+- Cevap modeli Gemma 4 26B A4B; sağlayıcılar yalnız Venice (birincil) ve DeepInfra (ikincil).
+- Şema C'nin çalışma biçimi **c150b**.
+- **Açık fark:** c150b, bugünkü şemaya göre yanlış ret 18 → 24 (+6) ve ✖ 12 → 18 (+6) (Gemma 4 DeepInfra, aynı 159 soru). İkisi de güvenli yönde. c150b bundan sonra bugünkü şemayla da karşılaştırılacak (devir notu, madde d).
