@@ -95,6 +95,31 @@ elif stt:
         st.warning("Tanıma güveni düşük. Metni dikkatle kontrol edin; model kodlarında harf ve rakam karışabilir.")
 
 
+def stream_view_handler(area):
+    """Akış olaylarını ekrana yazar (yalnız soru çalışırken; bitince sonuç ekranı bugünkü gibi).
+    oge_akis: gri, maskeli metin · oge_dogrulandi: normal metin + [n] · oge_dogrulanamadi: uyarı kartı."""
+    import html
+    slots: dict[int, object] = {}
+
+    def on_event(e: dict) -> None:
+        kind = e.get("olay")
+        if kind == "oge_sifirla":
+            for slot in slots.values():
+                slot.empty()
+            slots.clear()
+        elif kind in ("oge_akis", "oge_dogrulandi", "oge_dogrulanamadi"):
+            slot = slots.setdefault(e["i"], area.empty())
+            if kind == "oge_akis":
+                slot.markdown(f"<span style='color:#8a8a8a'>{html.escape(e['metin'])}</span>", unsafe_allow_html=True)
+            elif kind == "oge_dogrulandi":
+                slot.markdown(f"{e['metin']} " + "".join(f"[{n}]" for n in e.get("kaynaklar") or []))
+            else:
+                slot.warning(e["mesaj"])
+        elif kind == "cevap_tamamlanamadi":
+            area.warning(e["mesaj"])
+    return on_event
+
+
 def start(q: str, brands: list[str] | None, doc_ids: list[str] | None = None, each: list[str] | None = None,
           switched_from: str | None = None, voice: bool = False) -> None:
     """Yeni bir çalıştırma başlatır. Eski cevap, sayfa ve ses hemen ekrandan kalkar.
@@ -124,7 +149,10 @@ if "pending" in st.session_state:
                 box.write(f"⏳ {msg}... (önceki adım {time.time() - t_step['t']:.0f} sn)")
                 t_step["t"] = time.time()
 
-            r = soru_cevapla(p["q"], brands=p["brands"], doc_ids=ids, on_step=step, voice=p.get("voice", False))
+            # Gri akış C (c kipi; API planı §10): metin gri akar, sayılar doğrulanana kadar gizli; doğrulanan öğe açılır
+            stream_kw = {"on_event": stream_view_handler(st.container())} if _cfg.ANSWER_MODE == "c" else {}
+            r = soru_cevapla(p["q"], brands=p["brands"], doc_ids=ids, on_step=step, voice=p.get("voice", False),
+                             **stream_kw)
             box.update(label=f"Tamamlandı ({r.timings.get('total', 0):.0f} sn): \"{p['q']}\"{extra}",
                        state="complete", expanded=False)
         results.append((label, r))

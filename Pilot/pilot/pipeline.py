@@ -110,13 +110,28 @@ def _answer_client() -> Any:
     return _CLIENTS["answer"]
 
 
-def chat_c(user: str) -> tuple[dict[str, Any], dict[str, Any]]:
+class StreamInterrupted(Exception):
+    """Akış ortasında kesinti, doğrulanmış öğe gönderilmişken: yeniden deneme yok (API planı §4). rec: son kayıt."""
+
+    def __init__(self, rec: dict[str, Any]) -> None:
+        super().__init__("cevap tamamlanamadı")
+        self.rec = rec
+
+
+def chat_c(user: str, stream: Any = None) -> tuple[dict[str, Any], dict[str, Any]]:
     """Şema C cevabı ve çağrı kaydı (sağlayıcı, denemeler, ilk token, akış zaman çizelgesi, maliyet). JSON okunamazsa
-    ModelJSONError; servise ulaşılamazsa cloud.ServiceUnavailable. Testler bu fonksiyonu değiştirir."""
+    ModelJSONError; servise ulaşılamazsa cloud.ServiceUnavailable. Testler bu fonksiyonu değiştirir.
+    stream: stream_view.StreamAssembler (gri akış): parçalar ona beslenir; kesintide StreamInterrupted."""
     from .jsonparse import ModelJSONError, error_detail
     from .schema_c import parse_c
     client = _answer_client()
-    rec = client.stream([{"role": "system", "content": _CLIENTS["prompt"]}, {"role": "user", "content": user}])
+    messages = [{"role": "system", "content": _CLIENTS["prompt"]}, {"role": "user", "content": user}]
+    if stream is None:
+        rec = client.stream(messages)
+    else:
+        rec = client.stream(messages, on_delta=stream.feed, retry_allowed=stream.retry_allowed, on_reset=stream.reset)
+        if rec.get("tamamlanamadi"):
+            raise StreamInterrupted(rec)
     ans, status = parse_c(rec["content"], rec.get("finish"))
     if status in ("bos", "kesik", "gecersiz") or ans is None:
         raise ModelJSONError(status == "kesik", error_detail(rec["content"] or "") or status)
@@ -252,7 +267,7 @@ def post_search_ambiguity(hits: list[Hit], min_score: float = CLARIFY_MIN_SCORE,
 
 def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: list[str] | None = None,
                  mode: str = "hybrid", query_en: str | None = None, on_step=_noop, voice: bool = False,
-                 access: list[str] | None = None) -> Result:
+                 access: list[str] | None = None, on_event=None) -> Result:
     """on_step: arayüzde adım adım durum göstermek için çağrılır ("Kaynaklar aranıyor" ...).
     voice: soru sesle soruldu (STT). Sorudan kaynak çıkmıyorsa arama yapılmadan sorulur (karar).
     access: kullanıcının yetki grupları (None: kontrol yok, pilotun varsayılanı). Arama ve kod eşleşmesi yalnız
@@ -382,7 +397,7 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
     # Türkçe" diyordu, İngilizce soruya da Türkçe cevap geliyordu (kullanıcı denemesi, test sorusu 20).
     user = f"{format_sources(hits)}\n\n<cevap_dili>{lang.upper()}</cevap_dili>\n\n<soru>\n{asked}\n</soru>"
     if c_mode:
-        return _answer_c(question, ctx, hits, user, timings, t0, t, lang, context, added, doc_ids)
+        return _answer_c(question, ctx, hits, user, timings, t0, t, lang, context, added, doc_ids, on_event)
     try:
         answer, stats = chat_json(user)
         timings.update({k: float(v) for k, v in stats.items()})
@@ -455,7 +470,8 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
 
 
 def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timings: dict[str, float], t0: float,
-               t: float, lang: str, context: list[str], added: list[str], doc_ids: list[str] | None) -> Result:
+               t: float, lang: str, context: list[str], added: list[str], doc_ids: list[str] | None,
+               on_event=None) -> Result:
     """c kipi: model "tur" seçer (cevap | netlestirme | bulunamadi); öğe başına doğrulama (schema_c.verify_c, alan
     etiketi kuralı dahil). Pipeline'ın serbest metin kuralları (clarify_options, tablo varyant kuralı) bu yolda yok:
     ölçülen hat böyleydi (Adım 2 planı §26). Arayüz için bugünkü biçim (to_legacy) + "ogeler"."""
@@ -463,8 +479,16 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
     from .jsonparse import failure_message
     from .schema_c import QUOTE_LIMIT, first_verified_time, item_quotes, to_legacy, verify_c
     timings["istek_oncesi"] = t - t0          # sorudan cevap isteğine (arama ve kurallar dahil)
+    sources = {no: h.chunk["text"] for no, h in enumerate(hits, start=1)}
+    generated = {no: h.chunk.get("generated", "") for no, h in enumerate(hits, start=1)}
+    stream = None
+    if on_event is not None:            # gri akış C (API planı §10): olaylar akış sırasında
+        from .stream_view import StreamAssembler
+        stream = StreamAssembler(sources, generated, QUOTE_LIMIT[config.ANSWER_SCHEMA_VARIANT], lang, on_event)
     try:
-        ans, rec = chat_c(user)
+        ans, rec = chat_c(user, stream) if stream is not None else chat_c(user)
+    except StreamInterrupted as err:
+        return _interrupted(question, ctx, hits, stream, err.rec, timings, t0, t, lang, context, on_event)
     except ServiceUnavailable as err:
         timings["llm"] = time.time() - t
         timings["total"] = time.time() - t0
@@ -482,8 +506,8 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
     timings["llm"] = time.time() - t
     if rec.get("first_token") is not None:
         timings["llm_first_token"] = float(rec["first_token"])
-    sources = {no: h.chunk["text"] for no, h in enumerate(hits, start=1)}
-    generated = {no: h.chunk.get("generated", "") for no, h in enumerate(hits, start=1)}
+    if stream is not None and stream.ilk_gorunen_kelime is not None:
+        timings["uctan_uca_ilk_gorunen_kelime"] = timings["istek_oncesi"] + stream.ilk_gorunen_kelime
     v = verify_c(ans, sources, generated, QUOTE_LIMIT[config.ANSWER_SCHEMA_VARIANT])
     answer = to_legacy(ans)
     answer.update(sema="c", saglayici=rec.get("provider"), denemeler=rec.get("denemeler"),
@@ -521,5 +545,33 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
         speech = say(voice if voice and v.get("sesli_ok") and question_lang(voice) == lang
                      else " ".join(x.get("metin", "") for x in items))
     timings["total"] = time.time() - t0
+    if on_event is not None:
+        on_event({"olay": "rozet", "durum": verification.status, "sorunlar": verification.problems})
     return Result(question, ctx, hits, answer, verification, speech, timings, expanded_terms=added,
                   context_terms=context, lang=lang)
+
+
+def _interrupted(question: str, ctx: QueryContext, hits: list[Hit], stream: Any, rec: dict[str, Any],
+                 timings: dict[str, float], t0: float, t: float, lang: str, context: list[str], on_event) -> Result:
+    """Akış ortasında kesinti, doğrulanmış öğe gönderilmişken (API planı §4): gönderilenler kalır, kalan için
+    "Cevap tamamlanamadı, kaynağa bakın." ve kaynak kartları; rozet kısmen. Yeniden deneme yapılmadı."""
+    from .schema_c import item_quotes
+    from .stream_view import TAMAMLANAMADI
+    stream.interrupted()
+    timings["llm"] = time.time() - t
+    timings["total"] = time.time() - t0
+    done = [c for c in stream.checked[:stream.cursor] if c["ok"]]
+    items = [c["item"] for c in done]
+    answer = {"bulunamadi": False, "alintilar": [q for x in items for q in item_quotes(x)],
+              "cevap": " ".join(x.get("metin", "") for x in items), "sesli_metin": "", "celiski_var": False,
+              "netlestirme_sorusu": None, "sema": "c", "saglayici": rec.get("provider"), "denemeler": rec.get("denemeler"),
+              "maliyet": float((rec.get("usage") or {}).get("cost") or 0.0), "ham": rec.get("content", ""),
+              "akis_zaman": rec.get("zaman") or [], "tamamlanamadi": True,
+              "ogeler": [{"metin": x.get("metin", ""), "kaynaklar": [q.get("kaynak_no") for q in item_quotes(x)],
+                          "dogrulandi": True, "sekil": c.get("sekil", False), "sorunlar": []} for x, c in zip(items, done)]}
+    verification = Verification("partial", [TAMAMLANAMADI], {})
+    if on_event is not None:
+        on_event({"olay": "rozet", "durum": "partial", "sorunlar": [TAMAMLANAMADI]})
+    say = normalize_for_speech if lang == "tr" else normalize_for_speech_en
+    speech = say(" ".join(x.get("metin", "") for x in items))
+    return Result(question, ctx, hits, answer, verification, speech, timings, context_terms=context, lang=lang)

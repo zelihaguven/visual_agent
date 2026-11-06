@@ -127,3 +127,130 @@ def first_visible_word_time(content: str, timeline: list[list[float]], lang: str
     if off is None:
         return None
     return next((t for t, c in timeline if c >= off), None)
+
+
+# ---------- Olay üretici: akıştan olaylar (API planı §3–§4, §10; sıra kuralı B) ----------
+
+def item_bounds(content: str) -> list[tuple[int, int]]:
+    """"cevap" listesinde KAPANMIŞ her öğenin [başlangıç, bitiş) konumu (öğe nesnesi, süslü parantezler dahil)."""
+    i = content.find('"cevap"')
+    j = content.find("[", i) if i >= 0 else -1
+    if j < 0:
+        return []
+    out, depth, in_str, esc, start = [], 0, False, False, None
+    for k in range(j + 1, len(content)):
+        ch = content[k]
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        if ch == '"':
+            in_str = True
+        elif ch == "{":
+            if depth == 0:
+                start = k
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0 and start is not None:
+                out.append((start, k + 1))
+        elif ch == "]" and depth == 0:
+            break
+    return out
+
+
+def _unescape(raw: str) -> str:
+    """Akıştaki (yarım olabilen) JSON dizesi parçası → metin. Sonda yarım kaçış dizisi varsa atılır."""
+    import json
+    for cut in range(0, 7):
+        try:
+            return json.loads('"' + raw[:len(raw) - cut] + '"')
+        except ValueError:
+            continue
+    return ""
+
+
+TAMAMLANAMADI = "Cevap tamamlanamadı, kaynağa bakın."
+DOGRULANAMADI = "Değer doğrulanamadı, kaynağa bakın."
+
+
+class StreamAssembler:
+    """Model akışından arayüz/servis olayları. feed(birikmiş_içerik, sn) her parçada çağrılır.
+
+    Olaylar (emit(dict)): oge_akis {i, metin (maskeli)}, oge_dogrulandi {i, metin, kaynaklar, sekil},
+    oge_dogrulanamadi {i, mesaj, kaynaklar}, oge_sifirla {}, cevap_tamamlanamadi {mesaj}.
+    Sıra kuralı B: öğe metinleri gizli sayılarıyla hemen akar; açılış sıralıdır (imleç), ✖ sırayı tıkamaz.
+    Doğrulama: schema_c.check_item (alıntı birebir, alan etiketi, sayılar kendi alıntısında, tolerans)."""
+
+    def __init__(self, sources: dict, generated: dict | None, limit: int, lang: str, emit) -> None:
+        self.sources, self.generated, self.limit, self.lang, self.emit = sources, generated or {}, limit, lang, emit
+        self.reset_state()
+        self.ilk_gorunen_kelime: float | None = None
+        self.ilk_dogrulanmis: float | None = None
+
+    def reset_state(self) -> None:
+        self.shown: dict[int, str] = {}       # öğe → gönderilen maskeli metin
+        self.checked: list[dict] = []         # kapanan öğelerin doğrulama sonucu (sırayla)
+        self.cursor = 0                       # açılış imleci
+        self.verified_sent = 0
+
+    def feed(self, content: str, t: float) -> None:
+        from .schema_c import check_item
+        spans = item_text_spans(content)
+        bounds = item_bounds(content)
+        for i, (s, e) in enumerate(spans):
+            if i < self.cursor:                      # açılmış öğeye gri metin bir daha gitmez
+                continue
+            closed = i < len(bounds)
+            text = _unescape(content[s:e])
+            if not closed and e >= len(content) and " " in text:
+                text = text[:text.rfind(" ")]           # yarım kelime gönderilmez (rakam taşıyabilir)
+            elif not closed and e >= len(content):
+                text = ""
+            masked = mask(text, self.lang)
+            if masked and masked != self.shown.get(i):
+                self.shown[i] = masked
+                self.emit({"olay": "oge_akis", "i": i, "metin": masked})
+                if self.ilk_gorunen_kelime is None and re.search(r"[^\W\d_]{2,}", masked):
+                    self.ilk_gorunen_kelime = t
+        import json
+        while len(self.checked) < len(bounds):
+            s, e = bounds[len(self.checked)]
+            try:
+                item = json.loads(content[s:e], strict=False)
+            except ValueError:
+                item = {}
+            r = check_item(item, self.sources, self.generated, self.limit) if item else {"ok": False, "kaynaklar": [], "sekil": False}
+            self.checked.append({"item": item, **r})
+        self._reveal(t)
+
+    def _reveal(self, t: float) -> None:
+        while self.cursor < len(self.checked):
+            i, r = self.cursor, self.checked[self.cursor]
+            nos = [n for n in (r.get("kaynaklar") or []) if isinstance(n, int)]
+            if r["ok"]:
+                self.emit({"olay": "oge_dogrulandi", "i": i, "metin": r["item"].get("metin", ""), "kaynaklar": nos,
+                           "sekil": r.get("sekil", False)})
+                self.verified_sent += 1
+                if self.ilk_dogrulanmis is None:
+                    self.ilk_dogrulanmis = t
+            else:
+                self.emit({"olay": "oge_dogrulanamadi", "i": i, "mesaj": DOGRULANAMADI, "kaynaklar": nos})
+            self.cursor += 1
+
+    def retry_allowed(self) -> bool:
+        """Akış ortası kesintide yeniden deneme yalnız henüz doğrulanmış öğe gönderilmediyse (API planı §4)."""
+        return self.verified_sent == 0
+
+    def reset(self) -> None:
+        """Yedeğe geçiş: akan gri metin silinir (doğrulanmış öğe yokken)."""
+        self.reset_state()
+        self.emit({"olay": "oge_sifirla"})
+
+    def interrupted(self) -> None:
+        """Doğrulanmış öğe gönderildikten sonra kesinti: kalan için mesaj."""
+        self.emit({"olay": "cevap_tamamlanamadi", "mesaj": TAMAMLANAMADI})

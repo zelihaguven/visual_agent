@@ -593,3 +593,28 @@ def test_default_mode_is_c_and_bugun_is_manual_rollback(calls):
     assert 'os.environ.get("PILOT_ANSWER_MODE", "c")' in src     # varsayılan yeni hat; bugun yalnız elle
     r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
     assert r.verification.status == "verified" and "translate" not in calls["search"][0]
+
+
+def test_c_mode_stream_events_and_interruption(c_mode, monkeypatch):
+    """Gri akış C: olaylar akış sırasında; kesintide (doğrulanmış öğe gönderilmiş) sonuç kısmen, kalan için mesaj."""
+    events = []
+    full = C_REC["content"]
+
+    def fake_stream(user, stream=None):
+        assert stream is not None
+        stream.feed(full, 0.9)
+        return dict(C_ANSWER), dict(C_REC)
+    monkeypatch.setattr(pipeline, "chat_c", fake_stream)
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?", on_event=events.append)
+    kinds = [e["olay"] for e in events]
+    assert "oge_akis" in kinds and "oge_dogrulandi" in kinds and kinds[-1] == "rozet"
+    assert r.verification.status == "verified" and "uctan_uca_ilk_gorunen_kelime" in r.timings
+
+    def cut(user, stream=None):
+        stream.feed(full, 0.9)                        # bir öğe doğrulandı, sonra kesinti
+        raise pipeline.StreamInterrupted({"provider": "deepinfra", "content": full, "denemeler": []})
+    monkeypatch.setattr(pipeline, "chat_c", cut)
+    events.clear()
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?", on_event=events.append)
+    assert r.verification.status == "partial" and r.answer["tamamlanamadi"]
+    assert "cevap_tamamlanamadi" in [e["olay"] for e in events]

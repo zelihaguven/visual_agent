@@ -289,7 +289,7 @@ class AnswerClient:
                                                                        "schema": self.schema}},
             "provider": {"order": [provider], "allow_fallbacks": False}})
 
-    def _one(self, messages: list[dict[str, str]], provider: str) -> dict[str, Any]:
+    def _one(self, messages: list[dict[str, str]], provider: str, on_delta: Callable | None = None) -> dict[str, Any]:
         import json
         import time
         rec: dict[str, Any] = {"provider": provider, "content": "", "zaman": [], "err": "", "kacak": False}
@@ -318,6 +318,11 @@ class AnswerClient:
                             rec["first_token"] = now
                         rec["content"] += piece
                         rec["zaman"].append([round(now, 3), len(rec["content"])])
+                        if on_delta is not None:
+                            try:          # arayüz hatası akışı (ve sağlayıcıyı) düşürmez
+                                on_delta(rec["content"], now)
+                            except Exception as ui_err:  # noqa: BLE001
+                                rec["arayuz_hatasi"] = repr(ui_err)[:200]
                         for c in piece:
                             run = run + 1 if c.isspace() else 0
                         if run > self.guard_n:
@@ -330,15 +335,26 @@ class AnswerClient:
         rec["sn"] = time.perf_counter() - t0
         return rec
 
-    def stream(self, messages: list[dict[str, str]]) -> dict[str, Any]:
-        """Birincil, olmazsa sıradaki yedek. Dönen kayıt: başarılı (ya da son) denemenin kaydı + "denemeler"."""
+    def stream(self, messages: list[dict[str, str]], on_delta: Callable | None = None,
+               retry_allowed: Callable[[], bool] | None = None, on_reset: Callable[[], None] | None = None
+               ) -> dict[str, Any]:
+        """Birincil, olmazsa sıradaki yedek. Dönen kayıt: başarılı (ya da son) denemenin kaydı + "denemeler".
+        Gri akış (API planı §4): on_delta(birikmiş_içerik, sn) her parçada. Akış ortasında kesinti olursa ve
+        retry_allowed() False ise (doğrulanmış öğe gönderilmiş) yeniden deneme yapılmaz: kayıt "tamamlanamadi" ile
+        döner. Yeniden denemeden önce on_reset() (gri metin silinir)."""
         attempts = []
         for p in self.providers:
-            rec = self._one(messages, p)
+            rec = self._one(messages, p, on_delta)
             attempts.append({"provider": p, "err": rec["err"], "kacak": rec["kacak"], "sn": rec.get("sn")})
             if not rec["err"] and not rec["kacak"]:
                 rec["denemeler"] = attempts
                 return rec
+            if rec["content"] and on_delta is not None:
+                if retry_allowed is not None and not retry_allowed():
+                    rec.update(denemeler=attempts, tamamlanamadi=True, finish="length")
+                    return rec
+                if on_reset is not None:
+                    on_reset()
         if attempts and not attempts[-1]["err"]:
             rec["denemeler"] = attempts      # son deneme de kaçakla bitti: kesik JSON olarak çağırana
             rec["finish"] = "length"

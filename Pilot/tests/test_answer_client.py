@@ -96,3 +96,23 @@ def test_non_zdr_providers_are_dropped():
     assert c.providers == ["venice"]
     with pytest.raises(ServiceUnavailable):
         client(s, ("bilinmeyen",))
+
+
+def test_on_delta_receives_growing_content():
+    seen = []
+    s = FakeSession({"deepinfra": FakeResp(events=content('{"a":', '"b"}'))})
+    client(s).stream([], on_delta=lambda c, t: seen.append(c))
+    assert seen == ['{"a":', '{"a":"b"}']
+
+
+def test_midstream_failure_after_verified_item_does_not_retry():
+    s = FakeSession({"deepinfra": FakeResp(events=content('{"a":"b"', " " * 50)), "venice": FakeResp(events=content("{}"))})
+    rec = client(s).stream([], on_delta=lambda c, t: None, retry_allowed=lambda: False)
+    assert rec["tamamlanamadi"] and [c[0] for c in s.calls] == ["deepinfra"]
+
+
+def test_midstream_failure_without_verified_item_resets_and_retries():
+    resets = []
+    s = FakeSession({"deepinfra": FakeResp(events=content('{"a":"b"', " " * 50)), "venice": FakeResp(events=content("{}"))})
+    rec = client(s).stream([], on_delta=lambda c, t: None, retry_allowed=lambda: True, on_reset=lambda: resets.append(1))
+    assert rec["provider"] == "venice" and resets == [1]
