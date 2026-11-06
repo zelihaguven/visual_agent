@@ -43,7 +43,9 @@ def synthesize(question: str, speech_text: str, lang: str = "tr") -> Path:
 
 st.set_page_config(page_title="Visual Agent Pilot", layout="wide")
 st.title("Visual Agent: Pilot")
-st.caption("Lokal çalışır. Küçük model ile araştırma pilotu, üretim kalitesi değildir.")
+from pilot import config as _cfg
+st.caption("Araştırma pilotu. Cevap modeli: " + ("Gemma 4 (bulut, ZDR; şema c150b-J)" if _cfg.ANSWER_MODE == "c"
+           else f"yerel {_cfg.LLM_MODEL} (geri alma kipi)") + ". Arama ve kaynak sayfaları bu bilgisayarda.")
 
 with st.sidebar:
     st.subheader("Üretilen sesler")

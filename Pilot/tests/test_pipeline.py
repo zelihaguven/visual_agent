@@ -20,6 +20,9 @@ GOOD = {"bulunamadi": False,
 
 @pytest.fixture
 def calls(monkeypatch):
+    # bugun kipinin (yerel yol, elle açılan geri alma anahtarı) testleri; varsayılan c kipi ayrı fikstürde
+    from pilot import config
+    monkeypatch.setattr(config, "ANSWER_MODE", "bugun")
     seen = {"search": [], "llm": []}
 
     def fake_search(question, **kw):
@@ -573,8 +576,10 @@ def test_c_mode_truncated_json_is_reported_as_truncated(c_mode, monkeypatch):
     assert r.verification.status == "failed" and "uzunluk sınırında" in r.verification.problems[0]
 
 
-def test_bugun_mode_is_default_and_uses_local_path(calls):
+def test_default_mode_is_c_and_bugun_is_manual_rollback(calls):
+    from pathlib import Path
     from pilot import config
-    assert config.ANSWER_MODE == "bugun"
+    src = Path(config.__file__).read_text(encoding="utf-8")
+    assert 'os.environ.get("PILOT_ANSWER_MODE", "c")' in src     # varsayılan yeni hat; bugun yalnız elle
     r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
     assert r.verification.status == "verified" and "translate" not in calls["search"][0]

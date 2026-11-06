@@ -100,7 +100,7 @@ MIN_RERANK_SCORE: float | None = None   # None: eşik kapalı. Test setiyle kali
 #   c     bulut: ikili yol araması (çevirili BM25) + Gemma 4, şema c150b-J, öğe başına doğrulama
 #   bugun yerel Ollama (LLM_MODEL) + bugünkü şema ve doğrulama. YALNIZ ELLE açılan geri alma anahtarı; bir sürüm
 #         tutulup silinecek. Bulut erişilemezse yerel modele otomatik düşüş YOK: kullanıcıya "servis kullanılamıyor".
-ANSWER_MODE = os.environ.get("PILOT_ANSWER_MODE", "bugun")
+ANSWER_MODE = os.environ.get("PILOT_ANSWER_MODE", "c")       # varsayılan c: duman testi geçti (2026-11-06)
 ANSWER_MODEL = "google/gemma-4-26b-a4b-it"
 ANSWER_SCHEMA_VARIANT = "c150bJ"
 # Birincil sağlayıcı ve yedekler, sırayla (ZDR). Yedeğe yalnız kesintide geçilir: HTTP hatası/429, ilk token
