@@ -50,7 +50,7 @@ def qualifiers(q: str) -> list[tuple[str, str]]:
         if spat is None:
             v = m.group(1)
             if name == "Type/Tip":
-                spat = rf"\b(?:type|tip|tipi)\s*{v}\b"
+                spat = rf"\b(?:types?|tip|tipi)\s*{v}\b"   # çoğul da: "Types II and III"
             elif name == "Class/Sınıf":
                 spat = rf"\b(?:class|sınıf)\s*{v}\b"
             else:
@@ -79,17 +79,47 @@ def cited_chunks(row: dict, sema: str, results: list[dict]) -> list[dict]:
     return [results[n - 1]["chunk"] for n in sorted(nos) if 0 < n <= len(results)]
 
 
-def scan(files: list[str]) -> list[dict]:
+def _page_chunks() -> dict[tuple[str, int], list[dict]]:
+    """(doküman, sayfa) → parçalar: kaydında parça metni olmayan koşular için (hat ölçümü, duman testi)."""
+    from pilot.chunk import read_chunks
+    out: dict[tuple[str, int], list[dict]] = {}
+    for c in read_chunks():
+        for p in c.get("pages") or [c.get("page")]:
+            out.setdefault((c["doc_id"], p), []).append(c)
+    return out
+
+
+def _cited_page_chunks(row: dict, pages: dict) -> list[dict]:
+    """Atıf yapılan kaynak numaralarının (C: alıntıların kaynak_no'ları) kayıttaki doküman/sayfalarındaki parçalar
+    (sayfa düzeyinde yaklaşık: aynı sayfadaki öbür parçalar da dahil, niteleyici bulunma olasılığı artar)."""
+    try:
+        a = json.loads(row.get("ham") or "{}")
+    except json.JSONDecodeError:
+        return []
+    nos = {qt.get("kaynak_no") for it in a.get("cevap") or []
+           for qt in it.get("alintilar") or ([it["alinti"]] if isinstance(it.get("alinti"), dict) else [])}
+    src = row.get("kaynaklar") or []
+    out = []
+    for n in sorted(x for x in nos if isinstance(x, int) and 0 < x <= len(src)):
+        doc, pgs = src[n - 1]
+        for p in pgs:
+            out += pages.get((doc, p), [])
+    return out
+
+
+def scan(files: list[str], raw_dir: Path | None = None) -> list[dict]:
     from bench.common import load_questions
+    raw = raw_dir or RAW
+    pages: dict | None = None
     cache = json.loads(CACHE.read_text(encoding="utf-8"))
     by_q: dict[str, list[list]] = {}
     for k, v in cache.items():
         by_q.setdefault(json.loads(k)[0], []).append(v if isinstance(v, list) else v.get("results", []))
-    sets = ["questions", "questions_ek", "sekil_sorular", "aday_sorular", "aday_sorular_ek"]
+    sets = ["questions", "questions_ek", "sekil_sorular", "aday_sorular", "aday_sorular_ek", "gorulmemis_juki"]
     Q = {q["qid"]: q for q in load_questions(sets, include_unapproved=True)}
     hits = []
     for f in files:
-        d = json.loads((RAW / f).read_text(encoding="utf-8"))
+        d = json.loads((raw / f).read_text(encoding="utf-8"))
         sema = d.get("sema", "bugun")
         for qid, row in d["rows"].items():
             if row.get("cikis") != "cevap" or row.get("durum") not in ("verified", "partial") or qid not in Q:
@@ -101,7 +131,11 @@ def scan(files: list[str]) -> list[dict]:
             docs = {doc for doc, _ in row.get("kaynaklar") or []}
             cands = [r for k, rs in by_q.items() if k.startswith(q) for r in rs
                      if {x["chunk"]["chunk_id"].rsplit("-", 1)[0] for x in r} == docs or not docs]
-            chunks = cited_chunks(row, sema, cands[0]) if cands else []
+            own_search = bool(d.get("hat") or row.get("hat"))     # kendi aramasını yapan koşu: önbellek eşleşmez
+            chunks = cited_chunks(row, sema, cands[0]) if cands and not own_search else []
+            if not chunks and sema.startswith("c"):
+                pages = pages if pages is not None else _page_chunks()
+                chunks = _cited_page_chunks(row, pages)
             if not chunks:
                 hits.append({"dosya": f, "soru": qid, "q": q, "eksik": ["(atıf parçası çözülemedi)"]})
                 continue
@@ -119,6 +153,21 @@ def scan(files: list[str]) -> list[dict]:
                              "deger_dogru": row.get("deger_dogru"), "cevap": (row.get("cevap") or "")[:200],
                              "parcalar": [c["chunk_id"] for c in chunks]})
     return hits
+
+
+def report_section(files: list[str]) -> list[str]:
+    """Rapora otomatik bölüm (plan §23 adım 1): işaretlenen her cevap elle okunur; gerçekse doğrulanmış görünen yanlış."""
+    hits = scan(files)
+    L = ["## Niteleyici uyuşmazlığı taraması (otomatik; plan §23)", "",
+         "Soruda niteleyici (dijital, -5, Premier, Type II, model kodu …) var, cevabın dayandığı parçalarda yok. "
+         "İşaretlenen her cevap elle okunur; gerçekse doğrulanmış görünen yanlış sayılır. Tarayıcı sabit iki dilli "
+         "listeye bakar; ürün adı düzeyindeki anlam uyuşmazlıklarını yakalamaz.", ""]
+    if not hits:
+        return L + ["İşaretlenen cevap yok.", ""]
+    L += ["| Koşu | Soru | Eksik niteleyici | Durum | Soru metni |", "|---|---|---|---|---|"]
+    for h in hits:
+        L.append(f"| {h['dosya']} | {h['soru']} | {', '.join(h['eksik'])} | {h.get('durum', '–')} | {h['q'][:80]} |")
+    return L + [""]
 
 
 if __name__ == "__main__":

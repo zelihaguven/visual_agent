@@ -322,6 +322,8 @@ def report(tag: str) -> str:
     L += ["", f"Çeviri maliyeti: {runs[KS[0]].get('ceviri_maliyet', 0):.4f} USD · cevap: "
           + " · ".join(f"{k} kaynak {d.get('cost_usd', 0):.4f} USD" for k, d in runs.items()), ""]
     del first
+    from bench.niteleyici_tarama import report_section
+    L += [""] + report_section([f"{tag}_k{k}_{MODEL}.json" for k in KS])
     return "\n".join(L) + "\n"
 
 

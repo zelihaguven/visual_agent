@@ -683,6 +683,8 @@ def report_c(tag: str) -> str:
           "süre ayrıca, arama öncesi dahil). Değer aynı: netleştirme ya da iki ürünün kaynağını birlikte gösteren doğrulanmış "
           "cevap doğru sayılır.", ""]
     L += indent_table(tag)
+    from bench.niteleyici_tarama import report_section
+    L += report_section([f.name for f in sorted(RAW_DIR.glob(f"{tag}_*.json"))])
     return "\n".join(L)
 
 
