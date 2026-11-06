@@ -202,3 +202,28 @@ Rapor: [nihai_c150bJ_rapor_2026-11-06.md](nihai_c150bJ_rapor_2026-11-06.md). İl
 - Dün "girinti kesiği" sandığımız kesiklerin neredeyse hepsi bu kaçak; girinti eşlik eden bir belirti.
 - **İkincil sağlayıcı: ölçüte göre aday yok.** Ölçüt c150b DeepInfra kesik düzeyi (2); Venice 16, Parasail 12.
 - DeepInfra (c150b-J): ✖ 15 değişmedi. A074 ve A080 1200 sınırıyla ✓ oldu, A070 doğru netleştirmeye döndü. Koşudan koşuya oynama: Q32, A045, A081, A022 ✓ → ✖; A017, A047, A113, A144, A025 ✖ → ✓. Q05 ve G7'de gereksiz netleştirme.
+
+## Kararlar 2026-11-06 (öğleden sonra): çalışma biçimi c150b-J (max_tokens 1200 dahil); §26 onaylandı
+
+## 6. Akış bekçisi benzetimi (kayıtlardan; model çağrısı yok)
+
+Tam tablo (N = 20 / 40 / 80): [akis_bekcisi_2026-11-06.md](akis_bekcisi_2026-11-06.md), araç `bench/akis_bekcisi.py`.
+
+- **N'nin etkisi yok.** 20, 40 ve 80'de yakalanan sayısı aynı, yakalama anı 0,1 sn içinde. **Hiçbir koşuda yanlış alarm yok**: tamamlanmış hiçbir cevapta 20'den uzun boşluk dizisi bulunmuyor. Öneri N = 40.
+- Yakalama: kaçakların hepsi yakalanıyor. Kaçan kesikler "gerçekten uzun" cevaplar (c150bT Venice 6, c Parasail 5); onlar 1200 token sınırının işi.
+- **Kaçak soruya bağlı.** Aynı sağlayıcının iki koşusunda, birinde kaçan soru öbüründe de kaçıyor: Venice %38, Parasail %43, NextBit %60, 31B %75. Aynı sağlayıcıya yeniden deneme bu oranda yine boşa gider.
+
+N = 40, c150b-J koşuları (gerçek akış zaman çizelgesi):
+
+| | yakalanan kesik | yakalama anı p50 / p95 | yeniden deneme bedeli p50 / p95 (yakalama + ikinci deneme ilk doğr. cümle) | ikinci denemede yine kaçak | kullanıcıya ulaşmayan (tahmin) |
+|---|---|---|---|---|---|
+| Venice | 16 / 16 | 1,70 / 2,62 sn | 3,09 / 4,91 sn | %38 | **~%3,2** |
+| Parasail | 12 / 12 | 1,68 / 4,98 sn | 2,94 / 7,01 sn | %43 | **~%2,7** |
+| DeepInfra | 0 | – | – | – | %0 (c150b 700 sınırında %1,0) |
+
+**Sağlayıcı önerisi:**
+- Bekçiyle de **Venice ve Parasail ikincil olamaz** (ölçüt ≤ ~%1; tahmin %2,7–3,2).
+- Kaçağın yeniden deneme bedeli p50'de ~3 sn; PRD'nin 3 sn ilk doğrulanmış cümle hedefini tek başına aşıyor.
+- **Öneri: DeepInfra tek sağlayıcı.** Bekçi (N = 40) yine de ucuz bir sigorta olarak plana girsin: DeepInfra'da hiç tetiklenmedi, yanlış alarmı yok. Tetiklenirse aynı sağlayıcıya bir kez yeniden deneme.
+- Uygulamaya bağlanmadı (karar).
+- Not: 11-05 koşularında akış zaman çizelgesi yok; yakalama anları karakter konumundan yaklaşık (tabloda ≈).

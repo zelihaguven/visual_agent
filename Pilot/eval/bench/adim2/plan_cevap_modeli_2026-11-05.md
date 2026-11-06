@@ -743,3 +743,14 @@ Devir notunun e (gerçek akışla süre) ve g (onaylı set + JUKI doğrulaması)
   - Modele ya da sağlayıcıya özel değil; uygulamanın akış okuyucusunda genel bir kural. Kesik JSON'u "onarma" önerilmez.
   - Ölçüm: c150b-J Venice + Parasail kayıtları üzerinde benzetim (kaçak anı kayıtta var; model çağrısı yok), ardından istenirse gerçek koşu.
 - **c150b-J'yi çalışma biçimine almak:** DeepInfra'da kalite c150b ile aynı düzeyde, girintiyi sağlayıcıdan bağımsız kapatıyor. Önerim: alınsın (karar sizde).
+
+## 28. Kararlar ve akış bekçisi (2026-11-06 öğleden sonra)
+
+- **Çalışma biçimi c150b-J** (girintisiz tek satır JSON, max_tokens 1200).
+- Akış bekçisi benzetimi (okuma 2026-11-06 §6): N = 20/40/80 aynı sonucu veriyor, yanlış alarm yok. Bekçiyle de Venice ve Parasail'de kullanıcıya ulaşmayan cevap %2,7–3,2 (ölçüt ≤ ~%1).
+- **Öneri: DeepInfra tek sağlayıcı** (`only: ["deepinfra"]`, `allow_fallbacks: false`). Bekçi N = 40, tetiklenirse aynı sağlayıcıya bir kez yeniden deneme; bağlama planına girer, henüz bağlanmadı.
+- §26 onaylandı: c150b-J, DeepInfra'ya sabit. Ek koşullar:
+  - Rapor `manuals` korpusu sayılarının 10k ölçümleriyle doğrudan karşılaştırılamayacağını yazar.
+  - 5 ve 8 kaynağın sırası her soruda rastgele.
+  - Q05 ve G7'deki gereksiz netleştirmeler ayrıca izlenir.
+  - JUKI kullanıcının 5/8 kararından sonra, tek seferde iki ölçüm: (a) seçilen hattın uçtan uca sonucu, (b) yalnız arama: varsayılan, ikili yol, üçlü füzyon (Qwen embed dahil), hit@1 / hit@5. Ayar değişmez.
