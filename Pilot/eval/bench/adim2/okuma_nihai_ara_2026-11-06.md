@@ -270,3 +270,54 @@ Rapor ve soru soru tablo: [nihai_juki_hat_rapor_2026-11-06.md](nihai_juki_hat_ra
   - Yedek kipinde (DeepInfra kesintideyken) ulaşmayan cevap ≈ 7/192 = **%3,6** (Venice → Parasail).
 - **Toplamda:** ulaşmayan cevap ≈ P(DeepInfra kesintisi) × %3,6. Ölçülen kesinti 0 (üst sınır %0,11) ise toplam ≤ ~%0,004. Yalnız yedek rolünde ≤ %1 ölçütü sağlanıyor.
 - Öneri: yedek Venice (bf16; c150b'de kalite DeepInfra'yla eşit), kaçakta Parasail'e bir kez. Bekçi N = 40.
+
+## 10. Karakter normalleştirmesi (2026-11-06 akşam)
+
+`verify.canon_chars`: NFKC + küçük genel tablo (× ✕ → x, ⁄ → /, daireli rakam blokları → rakam). NFKC tek başına yetmiyor: ①'i 1 yapıyor ama ×, ❶, ➀, ➊, ⓵, ⓫'e dokunmuyor ve ½'yi "1⁄2" (kesir eğik çizgisi) yapıyor.
+- Bütün kayıtlar kayıttan yeniden puanlandı: dev set şema C ve bugünkü şema, yeni set, hat 5/8 kaynak, JUKI.
+- Sonuç: **yalnız JUKI J4 ve J10 ✖ → ✓; ✓ → ✖ yok.**
+- Kontrol: hat ve JUKI kayıtlarında arama kayıtlı BM25 metniyle yeniden kuruldu. Normalleştirme kapalıyken 0 değişiklik çıktı, yani kurulum birebir.
+- Duman testi kaydında ham çıktı yoktu; yeniden puanlanamadı. Artık c kipinde ham çıktı ve akış zaman çizelgesi cevap kaydında tutuluyor.
+- Not: geçersiz sayılmış ilk tur (`bozuk1_*`) yanlışlıkla `--force` ile yeniden puanlandı; tarihsel kayıt olduğu için git'ten geri alındı. Rozeti ya da değeri değişmeyen öteki kayıtlar da geri alındı (yalnız damga alanları değişmişti).
+
+## 11. Kural katmanı ve "jacket" (kayıtlardan; silme kararı kullanıcıda)
+
+**"Jacket" sorusunda ne oldu:** Netleştirme arama **öncesi** değil, arama **sonrası** kuraldan (K7, `post_search_ambiguity`) geldi.
+- "jacket" hiçbir dokümanın kayıtlı adlarında yok, bu yüzden soru kapsamsız arandı.
+- İlk 3 sonuç iki ayrı ürün şartnamesinden geldiği için kural "hangi ürün?" diye sordu.
+- Ürün adının nerede eşleşeceğini `pilot/registry.py`'deki **elle yazılmış `aliases`** belirliyor:
+  - Ceket: ("ceket", "acucoat", "gl-pd-14-04a");
+  - Pantolon: ("pantolon", "trouser", "gl-pd-07-14a").
+- Liste düzensiz: pantolonun İngilizcesi var, ceketin ("jacket", "coat") yok.
+
+**İlke ihlali olarak raporlanan elle yazılmış listeler** ("belgeye özel kural yok" ilkesi):
+
+| Liste | Yer | Ne yapıyor | Değerlendirme |
+|---|---|---|---|
+| `DocMeta.aliases` | registry.py | Sorudaki adı dokümana eşler; kapsam ve arama öncesi netleştirme | **İhlal (veri kodda):** ürün adı ve model kodu yükleme formundan gelebilir; elle seçilmiş çok dilli eşanlamlılar ("trouser", "acucoat", "kahve/coffee", "freze") belgeye özel ayar |
+| `CUSTOMER_BRANDS` | registry.py | "US Army" → ceket + pantolon (arama öncesi "hangi ürün?") | **İhlal (veri kodda):** gerçek sistemde müşteri kaydından gelmeli |
+| `FOREIGN_BRANDS` | query.py | 26 marka (Nike, Zara …) → model çağrılmadan "bu marka için doküman yok" | **İhlal (elle liste):** gerçek sistemde marka kaydı ve yetkiyle |
+| `MUST_MATCH`, `KIND_OF_DOC_TYPE` | query.py | doküman türüne göre varlık rolleri | genel (türe göre, belgeye göre değil) |
+| söylenmiş kod harfleri, dil ipuçları | query.py | konuşma ve dil işleme | genel |
+
+**Kayıtlarda kural çıkışları** (c150b-J varsayılan yol + yeni set; hat k8 ikili yol):
+
+| Kural çıkışı | sınıf | varsayılan yol | ikili yol |
+|---|---|---|---|
+| arama sonrası netleştirme (K7) | değer farklı | 7 (doğru) | 7 (doğru) |
+| | değer aynı | 1 | 3 |
+| | "bulunamadı" sorusu | 1 | 1 |
+| arama öncesi ürün netleştirmesi (aliases / CUSTOMER_BRANDS) | – | **0** | **0** |
+| kod yok / yabancı marka | "bulunamadı" | 3 / 2 | 3 / 2 |
+| **Modelin kendi netleştirmesi** (şema C) | değer farklı / değer aynı / cevaplı | 3 / 9 / 4 | 7 / 8 / 3 |
+
+- **Arama öncesi ürün netleştirmesi bu setlerde hiç tetiklenmiyor.** Gereklilik kayıtlardan ölçülemez; yalnız soru marka adı ("US Army") ya da birden çok dokümana uyan bir ad içerdiğinde çalışıyor.
+- **K7, değer farklı netleştirmelerin yarısını taşıyor** (iki yolda 7). Kural kapalıyken modelin bu sorularda ne yapacağına dair kayıt yalnız 2 soruda var (kuralın bir yolda çıkıp öbür yolda modelin karar verdiği sorular):
+  - A142: model doğru netleştirdi;
+  - C004: model "bulunamadı" dedi (yanlış).
+  - İki soruyla karar verilemez.
+- K7'nin olası zararı: 1 "bulunamadı" sorusunda netleştirme sorması (gereksiz) ve "jacket" türü, ürünü soruda söylenmiş ama kayıtlı adı eşleşmeyen sorular. Değer aynı netleştirmeleri sınıf tanımına göre kabul edilebilir.
+- **Kararınız için ölçüm önerisi (koşulmadı):** K7 kapalı, ikili yol, kuralın çıktığı ~11 soru + "bulunamadı" sorusu, Gemma 4 c150b-J DeepInfra: ~12 çağrı, **~0,003 USD**.
+  - Ölçülecekler: değer farklı / aynı netleştirme ve gereksiz netleştirme, kural açık/kapalı.
+  - Arama öncesi kural için ayrıca "US Army" ve aliases eşleşmeli sorulardan küçük bir set gerekir; bugünkü sette yok.
+- "Jacket" türü için genel çözüm önerisi (koşulmadı): kayıtlı adlar yükleme formundaki ürün adı ve model kodundan alınır, eşanlamlı çevirisi otomatik yapılır (çeviri modeli, yükleme anında bir kez). Elle yazılmış eşanlamlı listesi yerine.
