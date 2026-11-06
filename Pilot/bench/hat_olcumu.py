@@ -230,10 +230,9 @@ def report(tag: str) -> str:
     for k, d in runs.items():
         # kalite tablosu answer_models.report_c'den (aynı ölçütler)
         pass
-    L += [l for l in AM.report_c(f"{tag}_k5").splitlines()[4:7]]
-    L += [l for l in AM.report_c(f"{tag}_k8").splitlines()[6:7]]
-    L[-2] = L[-2].replace("| gemma4 |", "| 5 kaynak |", 1)
-    L[-1] = L[-1].replace("| gemma4 |", "| 8 kaynak |", 1)
+    for n, k in enumerate(KS):
+        rows = AM.report_c(f"{tag}_k{k}").splitlines()
+        L += (rows[4:6] if n == 0 else []) + [rows[6].replace("| gemma4 |", f"| {k} kaynak |", 1)]
     L += ["", "## Süre (gerçek akış; uçtan uca arama dahil)", "",
           "| Varyant | cevaplı | ilk doğrulanmış cümle (model) p50 / p95 | **uçtan uca ilk doğrulanmış cümle** p50 / p95 | "
           "≤ 3 sn (PRD) | uçtan uca ilk token p50 / p95 | istek öncesi (arama dahil) p50 / p95 |", "|---|---|---|---|---|---|---|"]
@@ -278,7 +277,14 @@ def main() -> None:
     ap.add_argument("--max-usd", type=float, default=3.0)
     ap.add_argument("--ids", nargs="+", default=[])
     ap.add_argument("--report", action="store_true")
+    ap.add_argument("--setler", nargs="+", help="soru setleri (varsayılan: onaylı + yeni 46)")
+    ap.add_argument("--ks", nargs="+", type=int, help="kaynak sayıları (varsayılan 5 8)")
     a = ap.parse_args()
+    global KS, SETS
+    if a.setler:
+        SETS = list(a.setler)
+    if a.ks:
+        KS = tuple(a.ks)
     if not a.report:
         for p in run(a.tag, a.max_usd, a.ids):
             print(p, flush=True)

@@ -249,3 +249,22 @@ Rapor: [hat_rapor_2026-11-06.md](hat_rapor_2026-11-06.md), araç `bench/hat_olcu
   - 8 kaynakta doğrulanmış görünen yanlış 0 (5 kaynakta B012 1), ✖ 3 daha az, değer farklı netleştirme 1 daha fazla.
   - Bedeli: u2u p50 +0,13 sn, ≤ 3 sn oranı −4 puan, maliyet +%17.
   - 24 soru varyantlar arasında iki yöne de değişiyor; fark gürültü düzeyine yakın. Belirleyici olan B012: 5 kaynakta niteleyici uyuşmazlığı tekrarlandı.
+
+## Karar 2026-11-06: 8 kaynak (doğrulanmış görünen yanlış kapısını geçen varyant)
+
+## 8. JUKI, tek seferlik (0,004 USD)
+
+Rapor ve soru soru tablo: [nihai_juki_hat_rapor_2026-11-06.md](nihai_juki_hat_rapor_2026-11-06.md). Set küçük (12 cevaplı + 2 "bulunamadı"; 1 soru ≈ 8 puan). Bu sonuca göre ayar değişmez.
+- (a) seçilen hat: ✓ 8 / ✖ 2 (J4, J10) / netleştirme 1 (J3; belge içi varyant, kapı tanımına göre doğru) / yanlış ret 1 (J12, arama). Değer 8/8, doğru "bulunamadı" 2/2, doğrulanmış görünen yanlış 0. Uçtan uca ilk doğrulanmış cümle p50 2,32 / p95 3,90 sn.
+- (b) yalnız arama, 10k, filtreli: hit@1 / hit@5 varsayılan 9/12 · 10/12, ikili 7/12 · 10/12, üçlü 9/12 · 11/12.
+
+## 9. İkincil yalnız yedek: benzetim (kayıtlardan)
+
+- **Rol:** ikincil sağlayıcı yalnız DeepInfra hata, 429 ya da zaman aşımı verdiğinde çağrılır.
+- **DeepInfra hata oranı** (bütün Adım 2 kayıtları, 2.704 çağrı): ilk denemede hata **0**. %95 üst sınır ~%0,11.
+- **Kaçakta yeniden denemeyi diğer yedeğe göndermek** (Venice ↔ Parasail, c150b-J, aynı tur, 192 soru):
+  - Venice'te kaçan 16 sorunun 7'sinde Parasail de kaçıyor (**%44**). Parasail'de kaçan 12 sorunun 7'sinde Venice de (%58). Ortak sorular: Q02, A087, A091, A093, A095, A137, A138.
+  - Kaçak soruya bağlı. Diğer yedeğe göndermek aynı sağlayıcıya yeniden denemeden (%38–43) belirgin biçimde iyi değil.
+  - Yedek kipinde (DeepInfra kesintideyken) ulaşmayan cevap ≈ 7/192 = **%3,6** (Venice → Parasail).
+- **Toplamda:** ulaşmayan cevap ≈ P(DeepInfra kesintisi) × %3,6. Ölçülen kesinti 0 (üst sınır %0,11) ise toplam ≤ ~%0,004. Yalnız yedek rolünde ≤ %1 ölçütü sağlanıyor.
+- Öneri: yedek Venice (bf16; c150b'de kalite DeepInfra'yla eşit), kaçakta Parasail'e bir kez. Bekçi N = 40.

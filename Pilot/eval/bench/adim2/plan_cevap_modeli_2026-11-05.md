@@ -754,3 +754,76 @@ Devir notunun e (gerçek akışla süre) ve g (onaylı set + JUKI doğrulaması)
   - 5 ve 8 kaynağın sırası her soruda rastgele.
   - Q05 ve G7'deki gereksiz netleştirmeler ayrıca izlenir.
   - JUKI kullanıcının 5/8 kararından sonra, tek seferde iki ölçüm: (a) seçilen hattın uçtan uca sonucu, (b) yalnız arama: varsayılan, ikili yol, üçlü füzyon (Qwen embed dahil), hit@1 / hit@5. Ayar değişmez.
+
+## 29. Bağlama planı: SON HAL (2026-11-06; kod yazılmadı, onay bekliyor)
+
+Bu bölüm §21, §25, §27 ve §28'in yerine geçer. Dayanaklar:
+- Uçtan uca ölçüm [hat_rapor_2026-11-06.md](hat_rapor_2026-11-06.md);
+- JUKI [nihai_juki_hat_rapor_2026-11-06.md](nihai_juki_hat_rapor_2026-11-06.md);
+- okuma 2026-11-06 §6–§9.
+
+### 29.1 Hat
+
+| Adım | Karar |
+|---|---|
+| Arama | **İkili yol**: bge-m3 dense (yerel) ‖ BM25. BM25'e çevrilmiş sorgu (`query_en`), RRF, rerank yok. Uygulamanın `manuals` koleksiyonu. |
+| Çeviri | Gemma 4 26B A4B, düşünme kapalı. `only: ["nextbit", "venice"]` (NextBit birincil, Venice ikincil). **1,2 sn sınırı:** gelmezse BM25 çevirisiz aranır, çağrı arka planda biter. Çeviri dense embed ile paralel. |
+| Cevap | Gemma 4 26B A4B, **şema c150b-J**: öğe başına 1–2 alıntı ≤ 150 karakter, ilk öğe öz, girintisiz tek satır JSON. **8 kaynak**, `max_tokens` 1200, temperature 0, düşünme kapalı, akışlı. |
+| Sağlayıcı | **DeepInfra birincil.** Yedek yalnız kesintide: hata, 429 ya da ilk token 2,5 sn'de yoksa → Venice; Venice'te kaçak olursa → Parasail'e bir kez. `allow_fallbacks: false` (yedeğe geçişi uygulama yönetir, sağlayıcıyı her cevapta kaydeder). ZDR (`require_zdr`, `openrouter_body`) ve Safety Retention dışlaması aynen. |
+| Akış bekçisi | Art arda **40**'tan fazla boşluk → akış kesilir → sıradaki yedeğe bir kez. |
+| Doğrulama | Öğe başına `verify_c`: alıntı birebir (150 karakter kesik alıntı toleransı), cümlenin sayıları yalnız kendi alıntılarında, tolerans, şekil açıklaması. **Alan etiketi kuralı** (`tables.field_quote_ok`). JSON `strict=False`, hata mesajı gerçek neden. |
+| Netleştirme | `tur=netlestirme` → seçenekler kaynak numarasından doküman ve ürün adı. Kural katmanının netleştirmeleri (arama sonrası, kod yok, yabancı marka) aynen. |
+
+**"≥ 2 ZDR" kapısı yeniden tanım (kesinti dayanıklılığı):**
+- Cevap modeli en az iki ZDR sağlayıcıdan alınabilmeli.
+- Kalite kapıları (§18) yalnız birincil için geçerli.
+- Yedek için kapılar:
+  - (1) doğrulanmış görünen yanlış 0;
+  - (2) yedek kipinde, bekçi ve diğer yedekle birlikte, ulaşmayan cevap ≤ ~%5;
+  - (3) toplamda, ölçülen birincil kesinti oranıyla, ulaşmayan cevap ≤ ~%1.
+- Bugünkü ölçüm: Venice → Parasail yedek kipinde %3,6. DeepInfra kesintisi 0/2.704. Toplam ≤ ~%0,004. Kapı geçiliyor.
+
+### 29.2 Uygulamada değişecek dosyalar (sırayla; her biri ayrı commit, testli)
+
+1. `pilot/config.py`: cevap sağlayıcısı ve modeli, sağlayıcı sırası ve yedekler, `ANSWER_MAX_TOKENS = 1200`, `TOP_K_SOURCES = 8`, çeviri modeli ve sağlayıcıları, `TRANSLATE_LIMIT_S = 1.2`, `STREAM_GUARD_N = 40`, ilk token zaman aşımı 2,5 sn. **Anahtar: `PILOT_ANSWER_MODE = c | bugun`** (geri alma için; varsayılan c).
+2. `pilot/prompts.py`: şema C c150b-J ve istemi (`bench/schema_c.py`'den taşınır; bench oradan içe aktarır).
+3. `pilot/verify.py`: `verify_c` (öğe başına doğrulama, `first_verified_time`); eski `verify` bir sürüm daha kalır (`bugun` kipi).
+4. `pilot/cloud.py`: akışlı cevap istemcisi. SSE bayt + UTF-8, düşünme kapalı, sağlayıcı sabitleme, yedeğe geçiş, akış bekçisi, akış zaman çizelgesi, sağlayıcı ve maliyet kaydı.
+5. `pilot/llm.py`: `chat_json` kipe göre bulut c150b-J ya da yerel Ollama (bugünkü). `jsonparse` ortak adım.
+6. `pilot/retrieve.py` / `pilot/pipeline.py`: ikili yol (çeviri ‖ embed, 1,2 sn sınırı, `query_en`). `tur` dalları (cevap / netleştirme / bulunamadı). Öğe tamamlandıkça doğrulama (ilk doğrulanmış cümle). `TOP_K_SOURCES` 8.
+7. `app.py`: öğe listesi gösterimi (tek öğe paragraf, çok öğe numaralı liste, kaynak etiketleri koddan), netleştirme seçenekleri, sesli metin (R15). Gri "doğrulanıyor" akışı (devir f) **bu bağlamaya girmez**.
+8. Testler: `tests/test_pipeline.py`, `test_verify.py`, `test_providers.py` (yedeğe geçiş, bekçi, 1,2 sn sınırı; ağsız sahte akışlarla).
+
+### 29.3 Silinen ya da devreden çıkan kurallar
+
+- Zaten silinenler: `BRAND_ALIASES`, S-7300 aile grubu ve kural bayrağı (2026-11-05).
+- `verify.py` serbest metin yamaları (§15.1: yarım atıf, liste numarası, çoklu atıf, `<br>`, Markdown, yazıyla sayı). C kipinde kullanılmaz; `bugun` kipi kaldırıldığında silinir (bir sürüm sonra).
+- `clarify_options` (serbest metin netleştirme seçenekleri) C yolunda kullanılmaz.
+- `LLM_NUM_PREDICT` (700) yalnız yerel Ollama yolunda kalır.
+- Rerank kapalı kalır (`RERANK_PROVIDER=none`, bugünkü gibi).
+
+### 29.4 Geri alma planı
+
+- **Anında:** `PILOT_ANSWER_MODE=bugun` → yerel Ollama + bugünkü şema + bugünkü doğrulama. Çeviri kapalı → varsayılan arama. Kod değişikliği gerekmez.
+- **Kod:** her adım ayrı commit; `git revert` ile adım adım geri alınır. Eski biçim (`bugun`) bir sürüm boyunca okunur ve testleri korunur.
+- **Sağlayıcı:** DeepInfra'da kalite ya da kaçak sorunu görülürse yedek sırası yapılandırmadan değişir (§16: model ya da sağlayıcı değişikliği yalnız yapılandırma).
+
+### 29.5 Bağlama sonrası duman testi
+
+1. Ağsız testler (`pytest`): hepsi geçmeli.
+2. Uygulama yolundan (`run_eval.py` ya da `app.py` ile aynı `soru_cevapla`) **30 soru**, onaylı setten tabakalı: değer, prosedür, kod, arıza, şekil, "bulunamadı", netleştirme. Kapılar:
+   - doğrulanmış görünen yanlış 0;
+   - ✓ oranı ve yanlış ret, hat ölçümünden (8 kaynak) belirgin sapmamalı;
+   - uçtan uca ilk doğrulanmış cümle p50 ≤ 3 sn;
+   - her cevapta sağlayıcı kaydı DeepInfra ve ZDR;
+   - kural çıkışlarında bulut çağrısı yok.
+3. Yedeğe geçiş denemesi: DeepInfra yapay olarak kapatılır (yapılandırmada geçersiz sağlayıcı) → Venice'e geçiş, sağlayıcı kaydı Venice; 3 soru.
+4. Arayüzde elle 5 soru: cevap, netleştirme, "bulunamadı", sesli soru, İngilizce soru.
+5. Maliyet: ~0,01 USD.
+
+### 29.6 Açık kalanlar (bağlamayı engellemez)
+
+- PRD p95 ≤ 3 sn karşılanmıyor (3,63 sn). Gri "doğrulanıyor" akışı (devir f) yalnız plan.
+- C009 çeviri hatası ("baskı" → "print"); J12 arama kaçağı.
+- Q05 ve G7 gereksiz netleştirme izlemesi.
+- c150b-O ertelendi.
