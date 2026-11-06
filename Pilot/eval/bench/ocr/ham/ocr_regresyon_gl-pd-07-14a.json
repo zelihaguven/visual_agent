@@ -1,0 +1,3291 @@
+{
+ "ozet": {
+  "belge": "gl-pd-07-14a",
+  "sayfa": 48,
+  "sure_sn": 0.0,
+  "secim": {
+   "yeni": 44,
+   "eski": 4
+  },
+  "eski_sayi": 2253,
+  "son_sayi": 2382,
+  "kaybolan_deger": 153,
+  "kayipli_sayfa": 39,
+  "eklenen_deger": 282,
+  "degisim_sinifi": {
+   "inceleme": 146,
+   "duzeltme": 127,
+   "tasindi": 25
+  },
+  "ocr_sure_sn": 77.6
+ },
+ "satirlar": [
+  {
+   "sayfa": 1,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.989,
+   "new_score": 0.989,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 22,
+   "yeni_sayi": 24,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "ses and sizes, as specified (see 6.2). 1.2.1 Type I - 50150 Nylon/Cotton Ripstop Type"
+     ]
+    },
+    {
+     "deger": "50150",
+     "adet": 1,
+     "eski_baglam": [
+      "s, as specified (see 6.2). 1.2.1 Type I - 50150 Nylon/Cotton Ripstop Type II - 65125/1"
+     ]
+    },
+    {
+     "deger": "65125",
+     "adet": 1,
+     "eski_baglam": [
+      "pe I - 50150 Nylon/Cotton Ripstop Type II - 65125/10 RayonlPara-AramidlNylon Ripstop Flam"
+     ]
+    }
+   ],
+   "eklenen": [
+    "2007",
+    "25",
+    "50",
+    "50",
+    "65"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Apri12007",
+     "yeni": "April 2007 PURCHASE DESCRIPTION"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1.",
+     "yeni": "I,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "50150",
+     "yeni": "50/50"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "65125/10 RayonlPara-AramidlNylon",
+     "yeni": "65/25/10 Rayon/Para-Aramid/Nylon"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Class 1",
+     "yeni": "Classl"
+    }
+   ]
+  },
+  {
+   "sayfa": 2,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.996,
+   "new_score": 0.996,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 18,
+   "yeni_sayi": 17,
+   "kaybolan": [
+    {
+     "deger": "2",
+     "adet": 1,
+     "eski_baglam": [
+      "Building 4D, Philadelphia, PA 19111-5094.) 2"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "2",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 3,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.991,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 37,
+   "yeni_sayi": 37,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "2-1-2519 2-1-2519-1 2-1-2519-2 2-1-2519-3 Universal Camouflage Pattern ARPAT Camouf"
+     ]
+    }
+   ],
+   "eklenen": [
+    "14"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "GLlPD 07-l4A",
+     "yeni": "GL/PD 07-14A"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "2-1-2519-1 2-1-2519-2 2-1-2519-3",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "2-1-2519-1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "2-1-2519-2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "2-1-2519-3"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "3",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 4,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.97,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.97 < eski 0.99)",
+   "eski_sayi": 23,
+   "yeni_sayi": 23,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 5,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 44,
+   "yeni_sayi": 44,
+   "kaybolan": [
+    {
+     "deger": "1060.2001",
+     "adet": 1,
+     "eski_baglam": [
+      "edition) A Wallace Hayes (editor), pp 1057- 1060,2001 (Copies are available online at ht"
+     ]
+    },
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "geous life cycle costs. 3.3 Materials. 3.3.1 Basic material (Type n. The basic material"
+     ]
+    },
+    {
+     "deger": "0",
+     "adet": 1,
+     "eski_baglam": [
+      "l for the Type II trouser shall be a 65/25/1 0 flame resistant rayonlpara-aramidlnylon bl"
+     ]
+    },
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "n Grey 501, or Foliage Green 502. (See 6.4) 5"
+     ]
+    }
+   ],
+   "eklenen": [
+    "10",
+    "1060",
+    "14",
+    "2001"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "GLIPD 07-l4A",
+     "yeni": "GL/PD 07-14A"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "1057- 1060,2001",
+     "yeni": "1057 - 1060, 2001"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "65/25/1 0",
+     "yeni": "65/25/10"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 6,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 70,
+   "yeni_sayi": 67,
+   "kaybolan": [
+    {
+     "deger": "0",
+     "adet": 2,
+     "eski_baglam": [
+      "resistance characteristics: After Flame of2.0 seconds (minimum); After Glow of25.0 secon",
+      "ame of2.0 seconds (minimum); After Glow of25.0 seconds (maximum) and Char Length of 4.5 i"
+     ]
+    },
+    {
+     "deger": "50",
+     "adet": 1,
+     "eski_baglam": [
+      "aterial shall be Desert Sand 500, Urban Grey 50 I, or Foliage Green 502. (See 6.4.) Testi"
+     ]
+    },
+    {
+     "deger": "1",
+     "adet": 3,
+     "eski_baglam": [
+      "ing shall be as specified in 4.4.2. (See 6.4.1) 3.4 Insect bite protection. The Class 2 t",
+      "ictly limited to the level specified in 3.4.1 and provide the minimum insect bite protect",
+      "ect bite protection specified in 3.4.2. 3.4.1 Pelmethrin treatment (Class 2 only). Permet"
+     ]
+    },
+    {
+     "deger": "6",
+     "adet": 1,
+     "eski_baglam": [
+      "After 20 launderings After 50 launderings 6 % Bite Protection >/=90% >/=90% >/=70 -"
+     ]
+    }
+   ],
+   "eklenen": [
+    "14",
+    "2",
+    "25",
+    "501"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "GLlPD 07-l4A",
+     "yeni": "GL/PD 07-14A"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "2xlleft",
+     "yeni": "2x1 left"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "of2.0",
+     "yeni": "of 2.0"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "of25.0",
+     "yeni": "of 25.0"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "50 I,",
+     "yeni": "501,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "MIL-DTL-444 1 1",
+     "yeni": "MIL-DTL-44411"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "MIL-DTL-444 1 1",
+     "yeni": "MIL-DTL-44411"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": ">/= 90%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": ">/= 90%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "6 % Bite Protection >/=90% >/=90% >/=70",
+     "yeni": ">/= 70"
+    }
+   ]
+  },
+  {
+   "sayfa": 7,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 79,
+   "yeni_sayi": 91,
+   "kaybolan": [
+    {
+     "deger": "118",
+     "adet": 2,
+     "eski_baglam": [
+      "ength so that when folded it finishes 3/4 (± 118) inch in length. The drawstring tape for",
+      "stic cord for the cargo pockets shall have a 118 (+ 1132, -0) inch diameter. The elastic"
+     ]
+    },
+    {
+     "deger": "1132",
+     "adet": 2,
+     "eski_baglam": [
+      "d for the cargo pockets shall have a 118 (+ 1132, -0) inch diameter. The elastic cord pro",
+      "imum, 44 caniers, I-end per/carrier, 3/8 (± 1132) inch in width, and a 400 pounds break s"
+     ]
+    },
+    {
+     "deger": "7",
+     "adet": 1,
+     "eski_baglam": [
+      "vent stitching runoffs or improper fit into 7"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "11",
+    "2",
+    "32",
+    "32",
+    "8",
+    "8"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "(± 118)",
+     "yeni": "(+ 1/8)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(± I)",
+     "yeni": "(+ 1)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I-inch",
+     "yeni": "1-inch"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "118 (+ 1132,",
+     "yeni": "1/8 (+1/32,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "II",
+     "yeni": "11"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "caniers, I-end",
+     "yeni": "carriers, 1-end"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(± 1132)",
+     "yeni": "(+ 1/32)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "of(± I",
+     "yeni": "of (+ 1"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I12-inch",
+     "yeni": "1/2-inch"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I",
+     "yeni": "1"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I",
+     "yeni": "1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "7",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 8,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 0.986,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 63,
+   "yeni_sayi": 58,
+   "kaybolan": [
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "turer/lot) within a garment. (See 6.8.) 3.5.5 Thread (Type I trouser). The thread for all"
+     ]
+    },
+    {
+     "deger": "50",
+     "adet": 1,
+     "eski_baglam": [
+      "A-50199, Type II 36-45 36-45 Buttons A-A-50l99, Type II 71-105 N/A (30/3) Seat Pat"
+     ]
+    },
+    {
+     "deger": "99",
+     "adet": 1,
+     "eski_baglam": [
+      "0199, Type II 36-45 36-45 Buttons A-A-50l99, Type II 71-105 N/A (30/3) Seat Patch"
+     ]
+    },
+    {
+     "deger": "195",
+     "adet": 1,
+     "eski_baglam": [
+      "r Bonded) A-A-55195, Type I 78 59 A-A-55 195, Type II 59 39 A-A-55217, Type I 70-8"
+     ]
+    },
+    {
+     "deger": "8",
+     "adet": 1,
+     "eski_baglam": [
+      "II 20 20 A-A-55217, Type I 50-60 50-60 8"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "A-A-50l99,",
+     "yeni": "A-A-50199,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "stitch(5",
+     "yeni": "stitch(S"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "A-A-55 195,",
+     "yeni": "A-A-55195,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "8",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 9,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.991,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 59,
+   "yeni_sayi": 56,
+   "kaybolan": [
+    {
+     "deger": "40",
+     "adet": 1,
+     "eski_baglam": [
+      "e/ for portions of safety stitch A-A-50195 40 40 operation for raw edge cover (Soft o"
+     ]
+    },
+    {
+     "deger": "195",
+     "adet": 1,
+     "eski_baglam": [
+      "r Bonded) A-A-55195, Type I 59 59 A-A-55 195, Type II 39 39 A-A-55217, Type I 50-6"
+     ]
+    },
+    {
+     "deger": "9",
+     "adet": 1,
+     "eski_baglam": [
+      "nder or serged unless otherwise indicated. 9"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "40",
+     "yeni": "AQ"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "A-A-55 195,",
+     "yeni": "A-A-55195,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "9",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 10,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.997,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 58,
+   "yeni_sayi": 66,
+   "kaybolan": [
+    {
+     "deger": "118",
+     "adet": 4,
+     "eski_baglam": [
+      "l widths of hook and loop tape shall be sewn 118- 3/16 inch from bound selvage (for fasten",
+      "e for all lengths offastener tape shall be ± 118 inch. 3.7.2 Waistband. The finished wais",
+      "he finished waistband shall measure 1-3/4 (± 118) inches wide with clean finished ends an",
+      "e. The top fly shall be edge stitched 1116 - 118 inch. See figure 6. 3.7.5 Seat patch. Th"
+     ]
+    },
+    {
+     "deger": "11",
+     "adet": 3,
+     "eski_baglam": [
+      "user as indicated on the figures (see pattel11s for placement). Tolerance for all lengths",
+      "izontal and placed as indicated on the pattel11. The fly shall have \"J\" stitching 2-inche",
+      "l have a double-needle seat patch (see pattel11 for placement). See figure 2. 3.7.6 Knee"
+     ]
+    },
+    {
+     "deger": "112",
+     "adet": 4,
+     "eski_baglam": [
+      "tubular braided drawstring inserted through 112 inch straight cut vertical buttonholes o",
+      "oles or sewn eyelets shall be centered 3 (± 112) inches from finished edge on each side o",
+      "ll have seven (7) belt loops measuring 3/8 - 112 inch in width and finish 2 - 2-1/4 inche",
+      "for the closure shall be 5/8 inch wide by 6-112 inches long. Openings on each side ofthe"
+     ]
+    },
+    {
+     "deger": "1116",
+     "adet": 1,
+     "eski_baglam": [
+      "fly edge. The top fly shall be edge stitched 1116 - 118 inch. See figure 6. 3.7.5 Seat pa"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "16",
+    "2",
+    "2",
+    "2",
+    "2",
+    "8",
+    "8",
+    "8",
+    "8"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "118-",
+     "yeni": "1/8 -"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "pattel11s",
+     "yeni": "patterns"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "± 118",
+     "yeni": "+ 1/8"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(± 118)",
+     "yeni": "(+ 1/8)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(± 112)",
+     "yeni": "(+ 1/2)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(I)",
+     "yeni": "(1)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(I)",
+     "yeni": "(1)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "pattel11.",
+     "yeni": "pattern."
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "1116",
+     "yeni": "1/16"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "118",
+     "yeni": "1/8"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "pattel11",
+     "yeni": "pattern"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "6-112",
+     "yeni": "6-1/2"
+    }
+   ]
+  },
+  {
+   "sayfa": 11,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 65,
+   "yeni_sayi": 77,
+   "kaybolan": [
+    {
+     "deger": "114",
+     "adet": 2,
+     "eski_baglam": [
+      "g not less than 6 inches and not more than 7-114 inches between bartacks. Pocket openings",
+      "ocket openings shall match each other within 114 inch. 3.7.7.2 Hip pockets. The trousers"
+     ]
+    },
+    {
+     "deger": "112",
+     "adet": 7,
+     "eski_baglam": [
+      "re per pocket. The welt shall measure 3/16 - 112 inch. The buttons shall be sewn onto the",
+      "ock when open. The pocket flaps shall be set 112 inch from the folded edge of pocket top",
+      "(see 3.7.10). The pocket flaps shall be set 112 inch fi'om the folded edge of pocket top",
+      "op fastener tape measuring I-inch wide by 3-112 inches long sewn to the underside of pock",
+      "d through two (2) sewn-in eyelets or two (2) 112 inch horizontal straight cut buttonholes",
+      "and leg bottom hem drawsmngs they shall be 112 inch vertical straight cut for the waistba",
+      "vertical straight cut for the waistband and 112 inch horizontal straight cut for the leg"
+     ]
+    },
+    {
+     "deger": "0.1",
+     "adet": 1,
+     "eski_baglam": [
+      "9 and 3.11.1). The drawstling tape see (3.5 .1.1) shall overlap (cross) between holes whe"
+     ]
+    },
+    {
+     "deger": "118",
+     "adet": 1,
+     "eski_baglam": [
+      "end. The finished hem shall measure 7/8 (± 118) inch wide. 3.7.9 Buttonholes. The butto"
+     ]
+    },
+    {
+     "deger": "11",
+     "adet": 1,
+     "eski_baglam": [
+      "ntal straight cut for the leg bottom hem. 11"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1.1",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "4",
+    "4",
+    "8"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "7-114",
+     "yeni": "7-1/4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "114 inch.",
+     "yeni": "1/4 inch,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "- 112",
+     "yeni": "— 1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(I)",
+     "yeni": "(1)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I-inch",
+     "yeni": "1-inch"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "3-112",
+     "yeni": "3-1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I-inch",
+     "yeni": "1-inch"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I-inch",
+     "yeni": "1-inch"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(3.5 .1.1)",
+     "yeni": "(3.5.1.1)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(± 118)",
+     "yeni": "(+ 1/8)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "11",
+     "yeni": "Il"
+    }
+   ]
+  },
+  {
+   "sayfa": 12,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.967,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 129,
+   "yeni_sayi": 137,
+   "kaybolan": [
+    {
+     "deger": "112",
+     "adet": 6,
+     "eski_baglam": [
+      "n. Inseam: 26-1/2 to 29-1/2 in. Inseam: 29-112 to 32-1/2 in. Waist: Up to 27 in. Waist",
+      "n. Inseam: 26-1/2 to 29-1/2 in. Inseam: 29-112 to 32-112 in. Waist: 27 to 31 in. Waist",
+      ": 26-1/2 to 29-1/2 in. Inseam: 29-112 to 32-112 in. Waist: 27 to 31 in. Waist: 27 to 31",
+      "g Small- X-Long Small- XX-Long Inseam: 32-112 to 35-112 in. Inseam: 35-1/2 to 38-112 i",
+      "X-Long Small- XX-Long Inseam: 32-112 to 35-112 in. Inseam: 35-1/2 to 38-112 in. Inseam",
+      ": 32-112 to 35-112 in. Inseam: 35-1/2 to 38-112 in. Inseam: Over 38-1/2 in. Waist: 27 t"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "14",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "GLlPD 07-l4A",
+     "yeni": "GL/PD 07-14A"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I-inch (±",
+     "yeni": "1-inch (+"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: Up to 27 in. NSN No. NATO Size: 6067/5869 X-Small — Short"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: Up to 27 in. NSN No. NATO Size: 6775/5869 X-Small — Regular"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "29-112",
+     "yeni": "29-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "NSN No. NATO Size: 7583/5869 X-Small — Long"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "in. Inseam: 32-1/2 to 35-1/2 in. X-Small — X-Long Inseam: 35-1/2 to 38-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "NSNNo. NSNNo. NSNNo. NATO Size: 6067/5869 NATO Size: 6775/5869 NATO Size: 7583/5869 X-Small- Long X-Small- X-Long X-Smal",
+     "yeni": "X-Small —"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Inseam: 32-1/2 to 35-1/2 in. Inseam: 35-1/2 to 38-1/2 in.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "27",
+     "yeni": "26-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Up",
+     "yeni": "27"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "31 in. Inseam: 26-1/2 to 29-1/2 in. Waist:"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "to 31"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Up",
+     "yeni": "29-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "26-1/2 in. Inseam: 26-1/2 to 29-1/2 in. Inseam: 29-112 to 32-112",
+     "yeni": "32-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 27",
+     "yeni": "Inseam: 32-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "31",
+     "yeni": "35-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "NSNNo. NSNNo. NSNNo.",
+     "yeni": "NSN No. NATO Size: 8390/6979 Inseam: 35-1/2 to 38-1/2 in. Waist: 27 to 31 in. NSN No. NATO Size: 9098/6979 NSN No. NSN N"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Inseam: 32-112 to 35-112 in. Inseam: 35-1/2 to 38-112 in.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 27 to 31 in. Waist: 27 to 31 in. NSNNo. NSNNo. NSNNo. NATO Size: 8390/6979 NATO Size: 9098/6979",
+     "yeni": "NSN No."
+    }
+   ]
+  },
+  {
+   "sayfa": 13,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.92,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 209,
+   "yeni_sayi": 219,
+   "kaybolan": [
+    {
+     "deger": "112",
+     "adet": 10,
+     "eski_baglam": [
+      "seam: Up to 26-1/2 in. Inseam: 26-1/2 to 29-112 in. Inseam: 29-1/2 to 32-1/2 in. Waist:",
+      "edium - X-Long Medium - XX-Long Inseam: 32-112 to 35-1/2 in. Inseam: 35-112 to 38-1/2 i",
+      "ng Inseam: 32-112 to 35-1/2 in. Inseam: 35-112 to 38-1/2 in. Inseam: Over 38-1/2 in. W",
+      "n. Inseam: 26-1/2 to 29-1/2 in. Inseam: 29-112 to 32-1/2 in. Waist: 39 to 43 in. Waist",
+      "ong X-Large - XX-Long Inseam: 32-1/2 to 35-112 in. Inseam: 35-1/2 to 38-1/2 in. Inseam",
+      "Short XX-Large - Regular Inseam: Up to 26-112 in. Inseam: 26-112 to 29-112 in. Inseam",
+      "egular Inseam: Up to 26-112 in. Inseam: 26-112 to 29-112 in. Inseam: 29-1/2 to 32-1/2 i",
+      "seam: Up to 26-112 in. Inseam: 26-112 to 29-112 in. Inseam: 29-1/2 to 32-1/2 in. Waist:",
+      "rge - X-Long XX-Large - XX-Long Inseam: 32-112 to 35-1/2 in. Inseam: 35-112 to 38-1/2 i",
+      "ng Inseam: 32-112 to 35-1/2 in. Inseam: 35-112 to 38-1/2 in. Inseam: Over 38-1/2 in. W"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 31 to 35 in. NSN No. NATO Size: 6067/7989 Medium — Short"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "29-112",
+     "yeni": "29-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 31 to 35 in. NSN No. NATO Size: 6775/7989 Medium — Regular"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 31",
+     "yeni": "NSN No. NATO Size: 7583/7989 Medium — Long Inseam: 32-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "35",
+     "yeni": "35-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Size: 6067/7989 NATO Size: 6775/7989 NATO Size: 7583/7989 Medium ~ Long",
+     "yeni": "Size:8390/7989"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Inseam: 35-1/2 to 38-1/2 in, Waist: 31 to 35 in. NSN No. NATO Size: 9098/7989"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Inseam: 32-112 to 35-1/2 in. Inseam: 35-112 to 38-1/2 in.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 31 to 35 in. Waist: 31 to 35 in. NSNNo. NSNNo. NSNNo. NATO Size:8390/7989 NATO Size: 9098/7989",
+     "yeni": "NSN No."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 35 to 39 in. Large — Short"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 35 to 39 in. Large - Regular"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 35 to 39 in. Waist: 35 to 39 in. NSNNo. NSNNo. NSNNo.",
+     "yeni": "NSN No. NSN No. NSN No."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 35 to 39 in. NSN No. NATO Size: 8390/8999"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 35 to 39 in. NSN No. NATO Size: 9098/8999"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 35 to 39 in. Waist: 35 to 39 in. NSNNo. NSNNo. NSNNo. NATO Size: 8390/8999 NATO Size: 9098/8999",
+     "yeni": "NSN No."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 39 to 43 in. NSN No. NATO Size: 6067/9909 X-Large - Short"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 39 to 43 in. NSN No, NATO Size: 6775/9909 X-Large - Regular"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "29-112",
+     "yeni": "29-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 39",
+     "yeni": "NSN No. NATO Size: 7583/9909 X-Large - Long Inseam: 32-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "43",
+     "yeni": "35-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "6067/9909 NATO Size: 6775/9909 NATO Size: 7583/9909 X-Large - Long",
+     "yeni": "8390/9909"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "X-Large - XX-Long Inseam: 32-1/2 to 35-112 in.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Waist: 39 to 43 in. NSN No. NATO Size: 9098/9909 X-Large - XX-Long"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 39 to 43 in. Waist: 39 to 43 in. NSNNo. NSNNo. NSNNo. NATO Size: 8390/9909 NATO Size: 9098/9909",
+     "yeni": "NSN No."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Inseam: Up to 26-1/2 in. Waist: 43 to 47 in. NSN No. NATO Size: 6067/0919"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Inseam: 26-1/2 to 29-1/2 in. Waist: 43 to 47 in. NSN No. NATO Size: 6775/0919"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Inseam: Up to 26-112 in. Inseam: 26-112 to 29-112 in.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 43",
+     "yeni": "NSN No. NATO Size: 7583/0919 XX-Large - Long Inseam: 32-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "47",
+     "yeni": "35-1/2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "6067/0919",
+     "yeni": "8390/0919 XX-Large - X- Long Inseam: 35-1/2 to 38-1/2 in. Waist: 43 to 47 in, NSN No."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "6775/0919 NATO Size: 7583/0919 XX-Large - Long XX-Large - X-Long",
+     "yeni": "9098/0919"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Inseam: 32-112 to 35-1/2 in. Inseam: 35-112 to 38-1/2 in.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Waist: 43 to 47 in. Waist: 43 to 47 in. NSNNo. NSNNo. NSNNo. NATO Size: 8390/0919 NATO Size: 9098/0919",
+     "yeni": "NSN No. 13"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "13",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 14,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.994,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 15,
+   "yeni_sayi": 12,
+   "kaybolan": [
+    {
+     "deger": "11",
+     "adet": 2,
+     "eski_baglam": [
+      "iber Content: Contractor Name: Lot Number: 11 Use and Care Label 1. Adjust waist size",
+      "ccumulated debris DO NOT REMOVE THIS LABEL 11 Lot number shall be stamped with indelible"
+     ]
+    },
+    {
+     "deger": "0",
+     "adet": 2,
+     "eski_baglam": [
+      "ble dry on low to medium setting between 140 0 -160 0 F. or Hand wash using a mild deterg",
+      "on low to medium setting between 140 0 -160 0 F. or Hand wash using a mild detergent onl"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "11",
+     "yeni": "I/"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "140 0 -160 0",
+     "yeni": "140° — 160°"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "11",
+     "yeni": "1/"
+    }
+   ]
+  },
+  {
+   "sayfa": 15,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.99,
+   "new_score": 0.982,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 13,
+   "yeni_sayi": 14,
+   "kaybolan": [],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "4 Tomy authorized by the"
+    }
+   ]
+  },
+  {
+   "sayfa": 16,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.985,
+   "new_score": 0.985,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 14,
+   "yeni_sayi": 14,
+   "kaybolan": [
+    {
+     "deger": "11",
+     "adet": 2,
+     "eski_baglam": [
+      "EL EPA REG. NO.: EPA EST. NO.: Lot Number 11 Dry Cleaning removes active ingredient -",
+      "of this garment DO NOT REMOVE THIS LABEL 11 Lot number shall be stamped with indelible"
+     ]
+    },
+    {
+     "deger": "00",
+     "adet": 1,
+     "eski_baglam": [
+      ". ...................................... I00.00% It is a violation of Federal Law to use"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "100"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "11",
+     "yeni": "1/ -Do Not Dry Clean"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "TOTAL. ...................................... I00.00%",
+     "yeni": "TOTAL, .....ccccccccesceccescveceeeeseeeesens 100.00%"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "11",
+     "yeni": "1/"
+    }
+   ]
+  },
+  {
+   "sayfa": 17,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.997,
+   "new_score": 0.994,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 14,
+   "yeni_sayi": 13,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "TOTAL. ..................................... 1 00.00% It is a violation of Federal Law to"
+     ]
+    },
+    {
+     "deger": "00",
+     "adet": 1,
+     "eski_baglam": [
+      "TAL. ..................................... 1 00.00% It is a violation of Federal Law to u"
+     ]
+    },
+    {
+     "deger": "170",
+     "adet": 1,
+     "eski_baglam": [
+      "arcode label conforming to Type VIII, Class 170fMIL-DTL-32075. The bar coding element sha"
+     ]
+    }
+   ],
+   "eklenen": [
+    "100",
+    "17"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "..................................... 1 00.00%",
+     "yeni": "...cccccccssececeesecveveeeceveuseess 100.00%"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "170fMIL-DTL-32075.",
+     "yeni": "17 of MIL-DTL-32075."
+    }
+   ]
+  },
+  {
+   "sayfa": 18,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 34,
+   "yeni_sayi": 39,
+   "kaybolan": [
+    {
+     "deger": "112",
+     "adet": 2,
+     "eski_baglam": [
+      "vemment pattems, provide a seam allowance of 112 inch for outseams, seat seams, and crotc",
+      "adjust pattems for 3/8-inch gauge in lieu of 112 inch double needle seams. The pattem list"
+     ]
+    },
+    {
+     "deger": "114",
+     "adet": 1,
+     "eski_baglam": [
+      "for outseams, seat seams, and crotch seams, 114 inch allowance for hip pocket flaps and 3"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "2",
+    "2",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I",
+     "yeni": "1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "I - - FRONTRT",
+     "yeni": "1 FRONT RT"
+    }
+   ]
+  },
+  {
+   "sayfa": 19,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.96,
+   "new_score": 0.98,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 46,
+   "yeni_sayi": 47,
+   "kaybolan": [
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "lternate, the inseam may be safety stitched (5-thread) with 9 stitches per inch (min.) an"
+     ]
+    },
+    {
+     "deger": "112",
+     "adet": 1,
+     "eski_baglam": [
+      "offront center crotch seam shall end 3/8 - 112 inch above J-stitch. There shall be a hor"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "2"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "I - - -",
+     "yeni": "1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(5-thread)",
+     "yeni": "(S-thread)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    }
+   ]
+  },
+  {
+   "sayfa": 20,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.995,
+   "new_score": 0.974,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.97 < eski 0.99)",
+   "eski_sayi": 57,
+   "yeni_sayi": 57,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 21,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.99,
+   "new_score": 0.983,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 60,
+   "yeni_sayi": 69,
+   "kaybolan": [
+    {
+     "deger": "118",
+     "adet": 5,
+     "eski_baglam": [
+      "e Gage Stitch type Hook and loop LSbj-l 118 to 3/16 inch fi'om the bound 301 selvag",
+      "Cargo and lower Leg Pocket OSf-l 1116 to 118 inch fi'om edge 301 bellows, inside ple",
+      "irst row of stitching 301 shall be 1/16 to 118 inch from folded edge Buttonhole fly -",
+      "e fly - join pieces along SSe-2 or 1/16 to 118 inch from turned in 301 front edge; tur",
+      "ront and right fly lining SSe-2 or 1/16 to 118 inch from turned in 301 along fi'ont ed"
+     ]
+    },
+    {
+     "deger": "1116",
+     "adet": 1,
+     "eski_baglam": [
+      "selvage Cargo and lower Leg Pocket OSf-l 1116 to 118 inch fi'om edge 301 bellows, in"
+     ]
+    },
+    {
+     "deger": "502.503",
+     "adet": 2,
+     "eski_baglam": [
+      "of left fly EFd-l 3/16 to 1/4 inch gauge 502,503 or lining and buttonhole fly 504 J",
+      "ly raw edges FFd-l 3/16 to 1/4 inch gauge 502,503 or 504 Crotch seam LSb-2 Two rows"
+     ]
+    },
+    {
+     "deger": "114",
+     "adet": 1,
+     "eski_baglam": [
+      "or 504 Crotch seam LSb-2 Two rows 3/16 - 114 inch apart. 301 Stitching shall penetra"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "16",
+    "4",
+    "502",
+    "502",
+    "503",
+    "503",
+    "8",
+    "8",
+    "8",
+    "8",
+    "8"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "LSbj-l 118",
+     "yeni": "LSbj-1 1/8"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "OSf-l 1116",
+     "yeni": "OSf-1 1/16"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "118",
+     "yeni": "1/8"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "118",
+     "yeni": "1/8"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "118",
+     "yeni": "1/8"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "502,503",
+     "yeni": "502, 503"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "118",
+     "yeni": "1/8"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "502,503",
+     "yeni": "502, 503"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "- 114",
+     "yeni": "— 1/4"
+    }
+   ]
+  },
+  {
+   "sayfa": 22,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.996,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 75,
+   "yeni_sayi": 76,
+   "kaybolan": [
+    {
+     "deger": "114",
+     "adet": 3,
+     "eski_baglam": [
+      "de; one 5/8 42 2 vertical with lower end 114 inch from base of right fly and 112 inch",
+      "g pockets @ right angles to front edge (top 114-3/8 5/8 36 2 inch from stitch line of",
+      "orner (all vertical) End of elastic cording 114 inch apart (vertical) 5/8 36 2 Cargo"
+     ]
+    },
+    {
+     "deger": "112",
+     "adet": 1,
+     "eski_baglam": [
+      "wer end 114 inch from base of right fly and 112 inch from front edge of right fly) Hori"
+     ]
+    },
+    {
+     "deger": "48",
+     "adet": 1,
+     "eski_baglam": [
+      "perimposed on top stitching (3/4 inch) 3/4 48 2 Center back of drawstring (on waistban"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "4",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "2",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114-3/8",
+     "yeni": "1/4-3/8"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "48",
+     "yeni": "AS"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "1",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 23,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.987,
+   "new_score": 0.968,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 336,
+   "yeni_sayi": 344,
+   "kaybolan": [
+    {
+     "deger": "112",
+     "adet": 5,
+     "eski_baglam": [
+      "ll Small Medium Large X-Large XX-Large 112 Waist, ± 112 l! 13-3/4 15-3/4 17-3/4",
+      "dium Large X-Large XX-Large 112 Waist, ± 112 l! 13-3/4 15-3/4 17-3/4 19-3/4 21-3/",
+      "8 50-7/8 51-3/8 51-7/8 52-3/8 Bottom, ± 112 :!I X-Short 17 17 17-3/4 17-3/4 18-",
+      "112 :!I X-Short 17 17 17-3/4 17-3/4 18-112 18-1/2 Short 17 17 17-3/4 17-3/4 1",
+      "18-1/2 Regular 17 17 17-3/4 17-3/4 18-112 18-1/2 Long 17 17 17-3/4 17-3/4 18"
+     ]
+    },
+    {
+     "deger": "11",
+     "adet": 1,
+     "eski_baglam": [
+      "-3/8 38-3/8 38-3/8 38-3/8 Outseam, ± 3/4 11 X-Shott 37-3/8 37-7/8 38-3/8 38-7/8"
+     ]
+    },
+    {
+     "deger": "43",
+     "adet": 1,
+     "eski_baglam": [
+      "/8 41-7/8 42-3/8 Regular 42-3/8 42-7/8 43-3/8 43-7/8 44-3/8 44-7/8 Long 44-7/8"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "3",
+    "4",
+    "43.3"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "112",
+     "yeni": "| 1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "± 112 l!",
+     "yeni": "+ 1/2 1/"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "11 X-Shott",
+     "yeni": "3/ X-Short"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "43-3/8",
+     "yeni": "43.3/8"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "± 112 :!I",
+     "yeni": "+ 1/2 4/"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "18-112",
+     "yeni": "18-1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "18-112",
+     "yeni": "18-1/2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "l!",
+     "yeni": "1/"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "oftrousers. 'J/",
+     "yeni": "of trousers. 3/"
+    }
+   ]
+  },
+  {
+   "sayfa": 24,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.982,
+   "new_score": 0.994,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 17,
+   "yeni_sayi": 18,
+   "kaybolan": [
+    {
+     "deger": "1.4",
+     "adet": 1,
+     "eski_baglam": [
+      "be performed in accordance with ANSI! ASQ Z 1.4, as defined by contract, except where oth"
+     ]
+    }
+   ],
+   "eklenen": [
+    "14",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "GLlPD 07-l4A",
+     "yeni": "GL/PD 07-14A"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "ANSI! ASQ Z 1.4,",
+     "yeni": "ANSI/ASQ Z1.4,"
+    }
+   ]
+  },
+  {
+   "sayfa": 25,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.994,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 44,
+   "yeni_sayi": 54,
+   "kaybolan": [
+    {
+     "deger": "112",
+     "adet": 4,
+     "eski_baglam": [
+      "04 more than 1/4 inch Run off of more than 112 inch for edge or raised stitching 205 E",
+      "uous line of stitching overlapped less than 112\", except label stitching 206 Thread col",
+      "eam and/or outseam lengths vary by more than 112 inch 106 Bottom openings vary by more t",
+      "inch 106 Bottom openings vary by more than 112 inch in half width 209 Seat patch not a"
+     ]
+    },
+    {
+     "deger": "114",
+     "adet": 5,
+     "eski_baglam": [
+      "ht in other stitching back-tacked less than 114\" or ends of a continuous line of stitchi",
+      "207 Evenness Waistband uneven by more than 114 inch when buttoned 208 Inseam and/or ou",
+      "209 Seat patch not aligned at top more than 114 inch. 210 Side pocket openings varying",
+      "pocket openings varying in length more than 114 inch 211 Hook & Loop Misplaced, damage",
+      "t of alignment with each other by more than 114 inch 108 Color or type not as specified"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "2",
+    "2",
+    "2",
+    "2",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "101",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "102",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "201",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "101 102 201"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "oftrouser 103",
+     "yeni": "of trouser"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "203",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "103 203"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "104",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I",
+     "yeni": "1"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "105",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "204",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "205",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "114\"",
+     "yeni": "1/4”"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "112\",",
+     "yeni": "1/2”,"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "206",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "104 105 204 205 206"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "208",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "106",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "209",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "210",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "208 106 209 210"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "107",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "108",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "109",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "110",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "107 108 109 110 lil"
+    }
+   ]
+  },
+  {
+   "sayfa": 26,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.99,
+   "new_score": 0.987,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 34,
+   "yeni_sayi": 37,
+   "kaybolan": [
+    {
+     "deger": "114",
+     "adet": 2,
+     "eski_baglam": [
+      "cut straight (at approximately 90 degrees) 114 Tape pieces spliced and not properly ali",
+      "specified Cleanness Spot stain, less than 114 inch, excessive thread (more than 3) ove"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "I -inch",
+     "yeni": "1-inch"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "114",
+     "yeni": "1/4"
+    }
+   ]
+  },
+  {
+   "sayfa": 27,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.982,
+   "new_score": 0.966,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 69,
+   "yeni_sayi": 73,
+   "kaybolan": [
+    {
+     "deger": "11",
+     "adet": 1,
+     "eski_baglam": [
+      "13 After 25 launderings 3.3.2.2 AATCC 135 11 andASTMD 6413 Permethrin content (Class 2"
+     ]
+    },
+    {
+     "deger": "22",
+     "adet": 1,
+     "eski_baglam": [
+      ".2 4.5.2Y After 50 launderings 3.4.2 4.5.22/ pH (Class 2 only) 3.4.3 AATCC 81 Cord"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "14",
+    "2",
+    "2",
+    "2",
+    "3776"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "GLlPD 07-l4A",
+     "yeni": "GL/PD 07-14A"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "11 andASTMD",
+     "yeni": "1/ and ASTM D"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "4.5.22/",
+     "yeni": "4.5.2 2/"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "ASTMD3776",
+     "yeni": "ASTM D 3776"
+    }
+   ]
+  },
+  {
+   "sayfa": 28,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.968,
+   "new_score": 0.966,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 60,
+   "yeni_sayi": 69,
+   "kaybolan": [
+    {
+     "deger": "11",
+     "adet": 1,
+     "eski_baglam": [
+      ".5.6 ASTMD5034 Toxicity 3.13 4.5.5 ... 11 Launder m accordance with AATCC 135, I, 3,"
+     ]
+    },
+    {
+     "deger": "135.3",
+     "adet": 1,
+     "eski_baglam": [
+      "specimens. After 50 launderings as per AATCC 135,3, Viii, except laundering cycles 5,10, 1"
+     ]
+    },
+    {
+     "deger": "5.1",
+     "adet": 1,
+     "eski_baglam": [
+      "AATCC 135,3, Viii, except laundering cycles 5,10, 15, 19,20,25,30,35,40,45,49 and 50 sha"
+     ]
+    },
+    {
+     "deger": "19.2",
+     "adet": 1,
+     "eski_baglam": [
+      "3, Viii, except laundering cycles 5,10, 15, 19,20,25,30,35,40,45,49 and 50 shall be perfo"
+     ]
+    },
+    {
+     "deger": "25.3",
+     "adet": 1,
+     "eski_baglam": [
+      "i, except laundering cycles 5,10, 15, 19,20,25,30,35,40,45,49 and 50 shall be performed w"
+     ]
+    },
+    {
+     "deger": "35.4",
+     "adet": 1,
+     "eski_baglam": [
+      "ept laundering cycles 5,10, 15, 19,20,25,30,35,40,45,49 and 50 shall be performed without"
+     ]
+    },
+    {
+     "deger": "45.49",
+     "adet": 1,
+     "eski_baglam": [
+      "undering cycles 5,10, 15, 19,20,25,30,35,40,45,49 and 50 shall be performed without any d"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "10",
+    "135",
+    "19",
+    "20",
+    "25",
+    "3",
+    "30",
+    "35",
+    "3773",
+    "40",
+    "4108",
+    "45",
+    "49",
+    "5",
+    "5034"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "TM4108",
+     "yeni": "TM 4108"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "ASTMD3773",
+     "yeni": "ASTM D 3773"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "ASTMD5034",
+     "yeni": "ASTM D 5034"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "... 11",
+     "yeni": "1/"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "135,3,",
+     "yeni": "135, 3,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "5,10,",
+     "yeni": "5, 10,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "19,20,25,30,35,40,45,49",
+     "yeni": "19, 20, 25, 30, 35, 40, 45, 49"
+    }
+   ]
+  },
+  {
+   "sayfa": 29,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.922,
+   "new_score": 0.943,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 31,
+   "yeni_sayi": 33,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "g sensitivity, Mettler Toledo, or equal A.3 Glassware. a. 10-1 OOmL volumetric flasks b"
+     ]
+    },
+    {
+     "deger": "4.1",
+     "adet": 1,
+     "eski_baglam": [
+      "ic Die Cutter. Freeman Atom, or equal A.4.1 Three Inch Cutting Die. 3 inch diameter circu"
+     ]
+    },
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "h diameter circular steel die cutter A.5 Extraction Apparatus. A.5.! Accelerated Solvent"
+     ]
+    },
+    {
+     "deger": "530",
+     "adet": 1,
+     "eski_baglam": [
+      "ion thimbles A.6 Agilent 6890N (G I 530N) Series Gas Chromatograph. Gas Chromatograph equ"
+     ]
+    }
+   ],
+   "eklenen": [
+    "0.000001",
+    "0.0001",
+    "1",
+    "1",
+    "100",
+    "5.1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "A.I",
+     "yeni": "A.1"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "O.OOOlg",
+     "yeni": "0.0001 g"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "O.OOOOOlg",
+     "yeni": "0.000001 g"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "A.3",
+     "yeni": "A3"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "10-1 OOmL",
+     "yeni": "b. C. 10-100mL"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "A.4.1",
+     "yeni": "AA4.]"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "A.5.!",
+     "yeni": "A.5.1 mo Rage: A.5.2 a. b. c d. e."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "A.5.2 Soxhlet. a.",
+     "yeni": "Soxhlet,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(G I 530N)",
+     "yeni": "(G1530N)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "80psi b.",
+     "yeni": "80ps1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "I/lL e.",
+     "yeni": "1pL"
+    }
+   ]
+  },
+  {
+   "sayfa": 30,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.978,
+   "new_score": 0.978,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 23,
+   "yeni_sayi": 29,
+   "kaybolan": [
+    {
+     "deger": "99.999",
+     "adet": 1,
+     "eski_baglam": [
+      "elium Can'ier Gas. Carrier gas shall be ~99.999% BA Cleaning Solutions. Cleaning solution"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1.1",
+    "10",
+    "299.999",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "A.IO",
+     "yeni": "A.10"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "B.I Pennethrin",
+     "yeni": "B.1 Permethrin"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "~99.999% BA",
+     "yeni": "299.999% B.4"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "C.I",
+     "yeni": "C.1"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "C.I.I",
+     "yeni": "C.1.1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "BA)",
+     "yeni": "B.4)"
+    }
+   ]
+  },
+  {
+   "sayfa": 31,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.968,
+   "new_score": 0.977,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 24,
+   "yeni_sayi": 36,
+   "kaybolan": [
+    {
+     "deger": "2",
+     "adet": 1,
+     "eski_baglam": [
+      "ns. D.I Sample size. The sample size (Class 2 trouser) to be tested shall be selected in"
+     ]
+    },
+    {
+     "deger": "135.3",
+     "adet": 1,
+     "eski_baglam": [
+      "ment has been laundered according to AATCC 135,3, V, III to the specified number of cycle"
+     ]
+    },
+    {
+     "deger": "75.1",
+     "adet": 1,
+     "eski_baglam": [
+      "ns ofpelmethrin standards which are 20, 50, 75,100, ISO, and 200ng/IlL, [lng/ilL is equal"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "10",
+    "100",
+    "135",
+    "150",
+    "200",
+    "3",
+    "5",
+    "75",
+    "8",
+    "9"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "A9)",
+     "yeni": "A.9)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "A8)",
+     "yeni": "A.8)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "D.I",
+     "yeni": "D.1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "45.6037cm2)",
+     "yeni": "45.6037cm”)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "135,3,",
+     "yeni": "135, 3,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "A.I).",
+     "yeni": "A.1)."
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "75,100, ISO,",
+     "yeni": "75, 100, 150,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "200ng/IlL, [lng/ilL",
+     "yeni": "200ng/uL, [1ng/pL"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I",
+     "yeni": "1"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "lOmg ±",
+     "yeni": "10mg +"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "of200ng/llL.",
+     "yeni": "of 200ng/nL."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "AS) F.l",
+     "yeni": "A.5) F.1"
+    }
+   ]
+  },
+  {
+   "sayfa": 32,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.988,
+   "new_score": 0.996,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 30,
+   "yeni_sayi": 38,
+   "kaybolan": [
+    {
+     "deger": "3.2",
+     "adet": 1,
+     "eski_baglam": [
+      "@ 1500 psi 90% 90 sec Cycles 2 F.l.3.2 Preparation for analyses. Dilute or concentra"
+     ]
+    },
+    {
+     "deger": "0.4",
+     "adet": 1,
+     "eski_baglam": [
+      "recovery must be 95% or greater (see F .4). F.2 Soxhlet. Place each specimen into cellu"
+     ]
+    }
+   ],
+   "eklenen": [
+    "0",
+    "1",
+    "1.3",
+    "10",
+    "10",
+    "100",
+    "14",
+    "2",
+    "4",
+    "95"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "GLIPD 07-l4A",
+     "yeni": "GL/PD 07-14A"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "F.1.3.l",
+     "yeni": "F.1.3.1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "22mL"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Solvent 22mL",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "lO",
+     "yeni": "10"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "0 min"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "o",
+     "yeni": "5"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5 min@ lOOoC",
+     "yeni": "@ 100°C"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "F.l.3.2",
+     "yeni": "F.1.3.2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "F .4). F.2",
+     "yeni": "F,4). F,2"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "of95%",
+     "yeni": "of 95%"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "A.lO).",
+     "yeni": "A.10)."
+    }
+   ]
+  },
+  {
+   "sayfa": 33,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.975,
+   "new_score": 0.981,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 18,
+   "yeni_sayi": 18,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "he initial calibration c. Specimen Series 1 (extracts 1-10, 1 st quantitation) d. Instru"
+     ]
+    }
+   ],
+   "eklenen": [
+    "95"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "of95%",
+     "yeni": "of 95%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "G.l Ouality",
+     "yeni": "G.1 Quality"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    }
+   ]
+  },
+  {
+   "sayfa": 34,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.948,
+   "new_score": 0.964,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 38,
+   "yeni_sayi": 38,
+   "kaybolan": [
+    {
+     "deger": "0",
+     "adet": 1,
+     "eski_baglam": [
+      "e evaluator may dilute that specimen by 1: I 0 and re-run; calculations ofthe permetlu'in"
+     ]
+    }
+   ],
+   "eklenen": [
+    "10"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "1: I 0",
+     "yeni": "1:10"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "250 °C"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "275°C"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "280°C"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "GCRunTime",
+     "yeni": "1.3 mL/min GC Run Time 10 min"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "3:1"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Real Time Plot Resolution Solvent Delay Start Time Ions Monitored G.4.3 Evaluation Procedures. 250°C 275°C 280°C IflL 1.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "G.4.3 Evaluation Procedures."
+    }
+   ]
+  },
+  {
+   "sayfa": 35,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.969,
+   "new_score": 0.97,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 25,
+   "yeni_sayi": 31,
+   "kaybolan": [
+    {
+     "deger": "2",
+     "adet": 1,
+     "eski_baglam": [
+      "0 J.LLllmL) x Img/I,OOO,OOOng) x (1I45.6037cm2) Where: 40mL = Final Volume a, b, c and"
+     ]
+    }
+   ],
+   "eklenen": [
+    "0.001",
+    "000",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1.1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "H.I Pennethrin",
+     "yeni": "H.1 Permethrin"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(W!W%): H.I.I Concentration.",
+     "yeni": "(W/W%): H.1.1 Concentration,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "Img/I,OOO,OOOng)",
+     "yeni": "1mg/1,000,000ng)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(1I45.6037cm2)",
+     "yeni": "(1/45.6037cm?)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1.",
+     "yeni": "I,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "O.OOlmg,",
+     "yeni": "0.001mg,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "I)",
+     "yeni": "1)"
+    }
+   ]
+  },
+  {
+   "sayfa": 36,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.979,
+   "new_score": 0.992,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 61,
+   "yeni_sayi": 67,
+   "kaybolan": [
+    {
+     "deger": "921",
+     "adet": 1,
+     "eski_baglam": [
+      "er gannent tY12e Mosquitos l! 3 x 3 x = 921 Control 21 I x I x I 21 l! One set o"
+     ]
+    },
+    {
+     "deger": "21",
+     "adet": 3,
+     "eski_baglam": [
+      "12e Mosquitos l! 3 x 3 x = 921 Control 21 I x I x I 21 l! One set of treated spe",
+      "! 3 x 3 x = 921 Control 21 I x I x I 21 l! One set of treated specimens will be u",
+      "be used twice to test each mosquito species 21 Total gannents estimated, required to cond"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "2",
+    "2",
+    "2",
+    "2",
+    "9"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "l! 3 x",
+     "yeni": "1/ 3.x"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "921",
+     "yeni": "9 2/"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "21 I x I x I 21 l!",
+     "yeni": "2/ Ix 1x = ‘1 2/ 1/"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "21",
+     "yeni": "2/"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "(d)(I)",
+     "yeni": "(d)(1)"
+    }
+   ]
+  },
+  {
+   "sayfa": 37,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 53,
+   "yeni_sayi": 56,
+   "kaybolan": [
+    {
+     "deger": "14",
+     "adet": 1,
+     "eski_baglam": [
+      "GLIPD 07-14A that closes the specimen on the voluntee"
+     ]
+    },
+    {
+     "deger": "112",
+     "adet": 1,
+     "eski_baglam": [
+      "the region from the wrist to approximately 112 inch before the elbow. Fabric material sh"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "144",
+    "2",
+    "200",
+    "3"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "GLIPD 07-14A",
+     "yeni": "GL/PD 07-144"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "of200 ±",
+     "yeni": "of 200 +"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "of3",
+     "yeni": "of 3"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "112",
+     "yeni": "1/2"
+    }
+   ]
+  },
+  {
+   "sayfa": 38,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 32,
+   "yeni_sayi": 34,
+   "kaybolan": [],
+   "eklenen": [
+    "15",
+    "15"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "IS",
+     "yeni": "15"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "IS-min",
+     "yeni": "15-min"
+    }
+   ]
+  },
+  {
+   "sayfa": 39,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.984,
+   "new_score": 0.984,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 23,
+   "yeni_sayi": 23,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 40,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.973,
+   "new_score": 0.973,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 36,
+   "yeni_sayi": 36,
+   "kaybolan": [
+    {
+     "deger": "14",
+     "adet": 1,
+     "eski_baglam": [
+      "GLIPD 07-14A Department's or Defense Agency's automat"
+     ]
+    }
+   ],
+   "eklenen": [
+    "144"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "GLIPD 07-14A Department's",
+     "yeni": "GL/PD 07-144 Department’s"
+    }
+   ]
+  },
+  {
+   "sayfa": 41,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 41,
+   "yeni_sayi": 41,
+   "kaybolan": [
+    {
+     "deger": "41",
+     "adet": 1,
+     "eski_baglam": [
+      "BSC 23-29), Sears Tower, Chicago, IL 60684. 41"
+     ]
+    }
+   ],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "41",
+     "yeni": "4]"
+    }
+   ]
+  },
+  {
+   "sayfa": 42,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.978,
+   "new_score": 0.979,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 13,
+   "yeni_sayi": 13,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 43,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.913,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 4,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "-----; .... ,,---...1 GUPD 07-14A II II I I I I --- \" I I"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "-----; .... ,,---...1 GUPD",
+     "yeni": "GL/PD"
+    }
+   ]
+  },
+  {
+   "sayfa": 44,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.9,
+   "new_score": 0.732,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.73 < eski 0.90)",
+   "eski_sayi": 4,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 45,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.967,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 5,
+   "kaybolan": [
+    {
+     "deger": "14",
+     "adet": 1,
+     "eski_baglam": [
+      "I I I I I I I Buttonholes GLlPD 07-14A ~Iastic cord with barrel lock side onl"
+     ]
+    }
+   ],
+   "eklenen": [
+    "144"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Buttons • I I I I I I I I",
+     "yeni": "GL/PD 07-144"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "GLlPD 07-14A ~Iastic",
+     "yeni": "Elastic"
+    }
+   ]
+  },
+  {
+   "sayfa": 46,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.82,
+   "new_score": 0.872,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 4,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 3,
+     "eski_baglam": [
+      "?·;.i\".·i\" ... t!:' !~ .. ...:. Il\\:l' .. '1f,' . '. ; \" •. \\., . .; ... ;.~ ~;r,,~f\"T",
+      ". \\., . .; ... ;.~ ~;r,,~f\"T'''' r\"l'\"11~';1 , I I I I I , I , I I l----- I I _",
+      "I I I I I , I , I I l----- I I ____ 1-______ l , I , , , , I , I I I I I"
+     ]
+    },
+    {
+     "deger": "11",
+     "adet": 1,
+     "eski_baglam": [
+      "; \" •. \\., . .; ... ;.~ ~;r,,~f\"T'''' r\"l'\"11~';1 , I I I I I , I , I I l----- I"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "I , I , I I , , I I I' I I ..... f. \"~J-;'\" '.;~:...~~~~ ',,: ~~ .*\" ... f .• ~ . ...~' • ~'.\".\",,, . ... ;'tot~ • it L,",
+     "yeni": "————oo——"
+    }
+   ]
+  },
+  {
+   "sayfa": 47,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.926,
+   "new_score": 0.973,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 5,
+   "kaybolan": [],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "~ __",
+     "yeni": "NN —— fe av aemre sewn mms amaoeand a roo » > 4"
+    }
+   ]
+  },
+  {
+   "sayfa": 48,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.963,
+   "new_score": 0.923,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.92 < eski 0.96)",
+   "eski_sayi": 15,
+   "yeni_sayi": 15,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  }
+ ]
+}

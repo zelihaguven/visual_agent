@@ -2,6 +2,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 
+from . import config
 from .config import MANUALS_DIR
 
 
@@ -23,8 +24,21 @@ class DocMeta:
     access: tuple[str, ...] = ("all",)
 
     @property
-    def path(self) -> Path:
+    def source_path(self) -> Path:
+        """Yüklenen özgün dosya (metin katmanı kontrolü ve OCR bunun üzerinde)."""
         return MANUALS_DIR / self.file
+
+    @property
+    def ocr_path(self) -> Path:
+        return config.OCR_DIR / f"{self.doc_id}.pdf"
+
+    @property
+    def path(self) -> Path:
+        """Ayrıştırma, şekil ve sayfa görüntüsünün okuduğu dosya: OCR uygulanmışsa OCR'lı PDF (pilot/ocr.py), değilse
+        özgün dosya. Sayfa sayısı ve sırası ikisinde aynı."""
+        if config.OCR_ENABLED and self.ocr_path.exists():
+            return self.ocr_path
+        return self.source_path
 
     def lang_of(self, page: int) -> str:
         for first, last, lang in self.lang_ranges:

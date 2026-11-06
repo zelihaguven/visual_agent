@@ -60,6 +60,49 @@ def quality(text: str) -> tuple[float, list[str]]:
     return round(score, 3), reasons
 
 
+# --- Anlamsız dizi skoru (OCR sonrası süzgeç ve eski/yeni katman seçimi; karar 2026-11-06, docs/PLAN-OCR.md §9) -----
+# quality()'den daha sıkı: OCR'ın çizim, levha ve ters dönmüş sayfada ürettiği dizileri de yakalar ("NNN", "RWQQN",
+# "ııuııuıı", "AWK}", "oy}"). Sayfa sınıflandırmasında kullanılmaz: dijital sayfadaki harf listeleri (JUKI s.31 "B C D
+# F G") onu düşürür; yalnız aynı sayfanın iki OCR katmanını karşılaştırmak ve OCR metnini kabul etmek için.
+# Eşik bütün belgeler için tek (OCR_MIN_SCORE); belgeye ya da sayfaya özel eşik yok.
+OCR_MIN_SCORE = 0.85
+_VOWELS_WIDE = _VOWELS | set("àâäéèêëîïôûùáíóúñÀÂÉÈÊÎÔÛÁÍÓÚ")
+_ROMAN = re.compile(r"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$")
+_JUNK_CHARS = set("|«»~\\{}®$¢£¥§¶^`")
+
+
+def _junk_word(word: str) -> bool:
+    core = word.strip(".,;:()[]\"'!?")
+    if not core:
+        return False
+    if set(core) & _JUNK_CHARS and not any(ch.isdigit() for ch in core):
+        return True                                             # "|", "AWK}", "«": OCR'ın çizgi ve gölge okuması
+    if not core.isalpha():
+        return False                                            # sayı, kod, kesir, birimli değer: değerlendirilmez
+    if len(core) == 1:
+        return core not in "aAIoOeEyY"
+    if _ROMAN.match(core):
+        return False                                            # "III" (Type III) gerçek
+    if re.search(r"(.)\1\1", core.casefold()):
+        return True                                             # aynı harf üç kez: "NNN", "ııı"
+    if not set(core) & _VOWELS_WIDE and len(core) >= 4:
+        return True                                             # sesli harfsiz uzun dizi: "RWQQN" ("lbs", "mm", "NSN" değil)
+    if len(core) >= 8 and core.isupper():
+        vr = sum(c in _VOWELS_WIDE for c in core) / len(core)
+        if vr < 0.25 or vr > 0.6:
+            return True                                         # uzun büyük harf dizisi, sesli oranı dil dışı
+    inner = core[1:]
+    return any(c.islower() for c in inner) and any(c.isupper() for c in inner)   # "aN", "JopurpAo": iç harf karışık
+
+
+def junk_score(text: str) -> float:
+    """1 − anlamsız dizi oranı (boşlukla ayrılmış dizilerde). Metin yoksa 0."""
+    words = text.split()
+    if not words:
+        return 0.0
+    return round(1.0 - sum(map(_junk_word, words)) / len(words), 3)
+
+
 def check_pdf(path: Path | str) -> list[PageCheck]:
     """Belgenin her sayfası için metin katmanı kontrolü (PyMuPDF; bugünkü ayrıştırmanın kullandığı kütüphane)."""
     import pymupdf

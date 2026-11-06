@@ -136,6 +136,17 @@ STT_COMPUTE = "int8"          # CPU'da hızlı, doğruluk kaybı küçük
 
 DOCLING_DEVICE =os.environ.get("PILOT_DOCLING_DEVICE", "cpu")   # "mps" Apple GPU belleğini zorlar
 
+# Yerel OCR (karar 2026-11-06; docs/PLAN-OCR.md §9): OCRmyPDF (Tesseract), Ghostscript'siz. Yüklemede metin katmanı
+# kontrolünün sayfa sınıfına göre çalışır; OCR'lı PDF kaynağın yanında (MANUALS_DIR/ocr/<doc_id>.pdf) saklanır ve
+# DocMeta.path onu gösterir (ayrıştırma, şekil, sayfa görüntüsü aynı dosyadan). Kapatmak için PILOT_OCR=0.
+OCR_ENABLED = os.environ.get("PILOT_OCR", "1") == "1"
+OCR_DIR = MANUALS_DIR / "ocr"
+TESSERACT_DIR = Path(os.environ.get("PILOT_TESSERACT_DIR",
+                                    Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Tesseract-OCR"))
+OCR_JOBS = int(os.environ.get("PILOT_OCR_JOBS", "4"))
+# Kayıttaki dil kodu (ISO 639-1) → Tesseract dil verisi. Sayfa başına tek dil (tur+eng birlikte Türkçe harfleri bozuyor).
+TESSERACT_LANGS = {"en": "eng", "tr": "tur", "fr": "fra", "es": "spa", "de": "deu", "it": "ita", "pt": "por"}
+
 # Şekil anlama (VLM): Her şekle doküman işleme sırasında bir kez metin açıklaması yazılır (figures.py).
 # Küçük model: GPU'suz dizüstünde şekil başına ~20-60 sn. Değiştirmek için PILOT_VLM_MODEL.
 FIGURES_DIR = DATA_DIR / "figures"

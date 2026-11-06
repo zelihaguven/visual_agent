@@ -86,7 +86,7 @@ Süreler yaklaşık (yayımlanmış ölçümler ve benzer donanım); karar §5't
 
 ### a) Pilot öncesi, CPU'da (gri akıştan sonra kodlanacak)
 
-**Seçim: Docling + Tesseract arka ucu** (Docling'in OCR seçeneği, `TesseractOcrOptions`, dil `tur+eng`).
+**Seçim: Docling + Tesseract arka ucu** (Docling'in OCR seçeneği, `TesseractOcrOptions`, dil `tur+eng` *(§9 ile değişti: tek dil, kayıttaki dile ya da dil aralığına göre, sayfa başına)*).
 - **Neden Docling:** OCR çıktısı bugünkü ayrıştırma hattına aynen girer: öğe kutuları (sayfa vurgusu), TableFormer ile tablo yapısı ve satır parçaları, başlık sınırlı parçalama. Ayrı bir Tesseract hattı tablo satırlarını ve kutu-öğe eşlemesini yeniden yazmayı gerektirirdi.
 - **Neden Tesseract arka ucu** (Docling'in varsayılanı EasyOCR yerine):
   - CPU'da 2–5 kat hızlı;
@@ -94,7 +94,7 @@ Süreler yaklaşık (yayımlanmış ölçümler ve benzer donanım); karar §5't
   - rakamda olgun; yaygın, Apache-2.0.
   - EasyOCR CPU'da sayfa başına 5–15 sn.
 - **Sayfa bazında:** `do_ocr` yalnız metin katmanı olmayan ya da zayıf sayfalarda. Metin katmanı iyi sayfalar bugünkü gibi; süre ve risk yalnız gereken sayfada.
-- **Kurulum gereği:** sunucuda Tesseract ikilisi ve `tur`, `eng` dil verileri (Windows: UB Mannheim kurulumu; Linux: paket). Kurulum listesine madde olarak girer.
+- **Kurulum gereği:** sunucuda Tesseract ikilisi ve `tur`, `eng` dil verileri *(§9 ile değişti: tek dil, kayıttaki dile ya da dil aralığına göre, sayfa başına)* (Windows: UB Mannheim kurulumu; Linux: paket). Kurulum listesine madde olarak girer.
 - **Yedek seçenek:** RapidOCR (ONNX, sistem ikilisi gerektirmez). Türkçe karakterlerde (ç ğ ı ö ş ü) Latin modeli ölçülür; Tesseract Set A'da kesir/± değerlerinde geride kalırsa denenir.
 
 **Test** (§5'in Set A, B, C'si):
@@ -126,7 +126,7 @@ Süreler yaklaşık (yayımlanmış ölçümler ve benzer donanım); karar §5't
 (b) aşaması (görsel model) yalnız planda kalıyor.
 
 **Adaylar (CPU):**
-1. **OCRmyPDF** (birincil aday): `ocrmypdf -l tur+eng --skip-text` (metin katmanı olan sayfaları atlar). Bozuk katmanlı belgelerde `--redo-ocr` (eski OCR katmanını atıp yeniden okur, dijital metne dokunmaz). Çıktı aranabilir PDF: bugünkü ayrıştırma hattı (Docling, OCR kapalı) olduğu gibi okur; kutular ve sayfa vurgusu aynı yoldan gelir. Tesseract + Ghostscript kullanır.
+1. **OCRmyPDF** (birincil aday): `ocrmypdf -l tur+eng --skip-text` *(§9 ile değişti: tek dil, kayıttaki dile ya da dil aralığına göre, sayfa başına)* (metin katmanı olan sayfaları atlar). Bozuk katmanlı belgelerde `--redo-ocr` (eski OCR katmanını atıp yeniden okur, dijital metne dokunmaz). Çıktı aranabilir PDF: bugünkü ayrıştırma hattı (Docling, OCR kapalı) olduğu gibi okur; kutular ve sayfa vurgusu aynı yoldan gelir. Tesseract + Ghostscript kullanır.
 2. **Docling + Tesseract arka ucu:** OCR ayrıştırma sırasında, sayfa bazında.
 
 **Ön koşul:** bu makinede Tesseract, Ghostscript ve OCRmyPDF kurulu değil (Docling ve RapidOCR var). Kurulum kullanıcı onayıyla (kurulum listesi §8).
@@ -148,7 +148,7 @@ Süreler yaklaşık (yayımlanmış ölçümler ve benzer donanım); karar §5't
 
 **Sonuç:** kazanan gerekçesiyle önerilir; entegrasyondan önce kullanıcıya sorulur.
 
-## 9. Karşılaştırma sonucu ve öneri (2026-11-06; entegrasyon kullanıcı onayı bekliyor)
+## 9. Karşılaştırma sonucu ve öneri (2026-11-06; entegrasyon onaylandı, ekler §10)
 
 Rapor: [ocr_karsilastirma_2026-11-06.md](../Pilot/eval/bench/ocr/ocr_karsilastirma_2026-11-06.md).
 
@@ -177,3 +177,97 @@ Gerekçe:
 - Sayfa başına süre karmaşık tablo sayfasında 14 sn'ye çıkabiliyor (JUKI).
 
 **Tahmini iş:** ~1,5–2 gün (yükleme akışına bağlama, sayfa sınıfına göre bayrak, dil seçimi, OCR sonrası kalite süzgeci, testler, pantolonun yeniden indekslenmesi ve 16 soruyla doğrulama).
+
+## 10. Entegrasyon onayı, ekler ve regresyon kontrolü (2026-11-06)
+
+**Karar:** OCRmyPDF entegrasyonu §9 tasarımıyla onaylandı, şu eklerle:
+- **(a) Regresyon kontrolü:** pantolonda eski ve yeni OCR katmanı değer değer karşılaştırılır. Eskide doğru olup yenide bozulan sayı varsa soru soru gösterilir; **entegrasyondan önce kullanıcıya sorulur**.
+- **(b) Dil sayfa başına:** kayıttaki dil aralıklarından (`DocMeta.lang_of`; ör. Bosch üç dilli). Belgeye tek dil verilmez.
+- **(c) OCR sonrası kalite süzgeci:** ölçütü genel (anlamsız dizi oranı). Belgeye ya da sayfaya özel eşik yok.
+- **Ek 1, sayfa sayfa seçim:** `--redo-ocr` / `--force-ocr` sonrası eski ve yeni katmanın skoru karşılaştırılır; yeni katman daha kötüyse eski katman kalır. Böylece tarayıcı yazılımının iyi OCR'ı (ör. FineReader) kaybolmaz. Pantolondaki değer değer regresyon kontrolü bu kuralın testidir.
+- **Ek 2:** §7 ve §8'deki `tur+eng` satırları işaretlendi (§9 ile değişti).
+- **Ek 3:** entegrasyondan sonra 16 OCR sorusu **modelle** koşulur (~0,01 USD). Ölçüler: doğrulanmış görünen yanlış 0, cevapsız kalma oranı, bugünkü katmanla karşılaştırma.
+
+### Yazılan kod (ayrıştırma ve indekslemeye henüz bağlanmadı; onay bekliyor)
+
+- **`pilot/ocr.py`:**
+  - sayfa sınıfı → bayrak: yok → `--skip-text`, taranmış → `--redo-ocr`, zayıf → `--force-ocr`;
+  - sayfa başına tek dil;
+  - aynı (bayrak, dil) sayfaları tek çağrıda (`--pages`);
+  - `--rotate-pages` (ters ya da yan dönmüş taranmış sayfa).
+- **Sayfa sayfa seçim (ek 1):** yeni katmanın skoru eskiden 0,02'den fazla düşükse eski katman kalır.
+- **Süzgeç (c):** metinsiz sayfanın OCR metni skoru < 0,85 ise alınmaz; sayfa görüntü sayfası kalır.
+- **Sonuç:** OCR'lı PDF `test-dokumanlari/ocr/<doc_id>.pdf` (sayfa sırası özgünle aynı, içindekiler korunur) ve sayfa kararları `<doc_id>.json`.
+- **`text_layer.junk_score`:** anlamsız dizi skoru, genel ölçüt. Sayılanlar:
+  - yalnız çizgi/gölge karakterli dizi ("|", "AWK}");
+  - tek harf;
+  - aynı harfin üç kez tekrarı ("NNN"; Roma rakamı hariç);
+  - 4+ harfli sesli harfsiz dizi;
+  - sesli harf oranı dil dışı uzun büyük harf dizisi;
+  - iç harfleri büyük/küçük karışık dizi ("JopurpAo": ters dönmüş sayfa).
+
+  Sınıflandırmadaki `quality` değişmedi: sıkı ölçüt dijital sayfadaki harf listesini (JUKI s.31) düşürüyor; yalnız OCR katmanlarını karşılaştırmak ve OCR metnini kabul etmek için kullanılıyor.
+- **Diğer:**
+  - `DocMeta.path` OCR'lı PDF varsa onu gösterir; `source_path` özgün dosya;
+  - `PILOT_OCR=0` ile kapanır;
+  - eksik Tesseract dil verisi açık hata verir;
+  - testler `tests/test_ocr.py`.
+
+### Regresyon kontrolü (`bench/ocr_regresyon.py`; model yok)
+
+| Belge | Sayfa | Seçim | OCR süresi |
+|---|---|---|---|
+| Pantolon (48 taranmış) | 48 | yeni 44, eski kaldı 4 (s.4, 20, 44, 48) | 78 sn |
+| Strickland (136 taranmış, 28 metinsiz) | 164 | yeni 134 (127 taranmış + 7 metinsiz), eski kaldı 9, **görüntü kaldı 21** (süzgeç: levha ve çizim) | 444 sn |
+| Granovsky (269 zayıf, 2 metinsiz) | 271 | yeni 269, görüntü kaldı 2 | 594 sn |
+
+**Pantolon, değer değer** (kelime hizalaması; `ocr_regresyon_gl-pd-07-14a.md`):
+- 127 değişim **düzeltme**: "112" → 1/2, "114" → 1/4, "118" → 1/8, "3116" → 3/16, "50150" → 50/50, "IS" → 15, "ISO" → 150, "lOOoC" → 100°C.
+- 25 değişim **tablo okuma sırası**: değer yeni sayfada başka yerde var.
+- **Eskide doğru, yenide bozulan** (sayfa görüntüsüyle doğrulandı):
+
+| Sayfa | Görüntüde | Eski katman | Yeni katman | Etki |
+|---|---|---|---|---|
+| 30 | ≥99.999% | ~99.999% | **299.999%** | **yanlış değer** (doğrulayıcı geçirir) |
+| 23 | 43-3/8 (beden tablosu) | 43-3/8 | **43.3/8** | **yanlış değer** (43.3) |
+| 37, 40, 45 | GL/PD 07-14A | GLIPD 07-14A | 07-**144** | belge kodu bozuk (üst bilgi) |
+| 9 | 40 lbs (düğme dayanımı) | 40 | AQ | değer kayıp (cevapsız) |
+| 19 | (5-thread) | 5-thread | S-thread | değer kayıp |
+| 22 | 48 (tablo hücresi) | 48 | AS | değer kayıp |
+| 1 | Class 1 | Class 1 | Classl | değer kayıp |
+| 41 | sayfa no 41 | 41 | 4] | sayfa etiketi |
+
+- **Seçim kuralının testi:** eski katmanın kaldığı 4 sayfada değer kaybı yok. Ama bozulan değerlerin hiçbirini kural yakalamadı: sayfa skoru (anlamsız dizi) tek bir sayının yanlış okunmasını görmez.
+
+**Strickland:**
+- Süzgeç 28 metinsiz sayfanın 21'ini (levha, çizim: anlamsız dizi) dışarıda bıraktı; 7 sayfa (başlık, şekil yazısı, s.61 tablo) alındı.
+- Taranmış sayfalarda iki katmanın da kesirleri bozuk: kitap ½ ¼ ¾ dizgi kesri kullanıyor.
+  - eski katman: "Vi" (75 yerde), "3A", "lA";
+  - yeni katman: "%" (159), "'4", "!2".
+- Hiçbiri doğrulanabilir değer vermiyor. İçindekiler sayfasında (s.9) yeni katman sayfa numaralarını kaybetti.
+
+**Granovsky:**
+- `--rotate-pages` ters taranmış tablo sayfalarını (s.147–191) düzeltti: skor 0,69–0,84'ten ortalama 0,98'e çıktı.
+- Değer değer karşılaştırma anlamlı değil: eski katman harf aralıklı, her rakam ayrı sayılıyor. Soru düzeyinde 5/5 (§9).
+
+### Öneri: iki okuma uyuşması (genel kural; onay bekliyor)
+
+Taranmış sayfada eski OCR katmanı varsa **iki bağımsız okuma** var (§7b'deki "iki okuma uyuşursa kabul" ilkesi, görsel modelsiz):
+- Yeni katmandaki sayı içeren bir dizi, **OCR-karışık karakter eşlemesiyle** aynı sayfanın eski katmanında geçiyorsa kabul edilir. Eşlenen karakterler: / l I i | ! ] → 1, S → 5, O o → 0; ayırıcılar ("-", ".") eşlenmez.
+- Geçmiyorsa dizi **"OCR değeri belirsiz"** işaretlenir. Doğrulayıcı o değeri doğrulanmış göstermez; öğe ✖ olur ve sayfa gösterilir.
+- Metinsiz sayfada tek okuma var; değer kabul edilir (§9).
+
+**Pantolonda ölçüm:**
+- Yeni katmandaki 1.577 sayısal dizinin **61'i** belirsiz oluyor.
+- Bulunan bütün yanlışlar bu 61'in içinde: 299.999, 43.3/8, 07-144, 4].
+- Doğru olup belirsiz kalanlar da var: 140°, 160°, 100°C, 200ng/uL. Bunlar cevapsız kalır, yanlış gösterilmez.
+- 11 pantolon sorusunun beklenen değerlerinin **hiçbiri** belirsize düşmüyor.
+- Kayıp değerler (40, 5, 48) yalnız cevapsızlık: yanlış değer üretmiyor.
+
+**İş:** belirsiz dizilerin sayfa kararlarına yazılması, parçaya taşınması, doğrulayıcıda kontrol ve testler (~0,5 gün).
+
+**Sıra (onaydan sonra):**
+1. Ayrıştırmaya bağlama (`run_parse.py` → `ocr_document`) ve parçalarda `ocr` işareti;
+2. iki okuma kuralı;
+3. pantolonun yeniden indekslenmesi ve 16 soruyla doğrulama (arama düzeyi);
+4. 16 soru modelle (~0,01 USD).

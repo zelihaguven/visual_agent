@@ -1,0 +1,6386 @@
+{
+ "ozet": {
+  "belge": "strickland-1956",
+  "sayfa": 164,
+  "sure_sn": 0.0,
+  "secim": {
+   "yeni": 134,
+   "goruntu": 21,
+   "eski": 9
+  },
+  "eski_sayi": 1110,
+  "son_sayi": 1247,
+  "kaybolan_deger": 139,
+  "kayipli_sayfa": 51,
+  "eklenen_deger": 276,
+  "degisim_sinifi": {
+   "inceleme": 412,
+   "tasindi": 106,
+   "duzeltme": 24
+  },
+  "ocr_sure_sn": 444.0
+ },
+ "satirlar": [
+  {
+   "sayfa": 1,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 2,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 3,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 4,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 5,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.955,
+   "new_score": 0.957,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 6,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 8,
+   "kaybolan": [
+    {
+     "deger": "515",
+     "adet": 1,
+     "eski_baglam": [
+      "nited States of America First Printing rr 515 57/ 1151, 199288 Earlier editions cop"
+     ]
+    },
+    {
+     "deger": "1151",
+     "adet": 1,
+     "eski_baglam": [
+      "es of America First Printing rr 515 57/ 1151, 199288 Earlier editions copyright 194"
+     ]
+    }
+   ],
+   "eklenen": [
+    "736"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "rr 515",
+     "yeni": "TT JP"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1151,",
+     "yeni": "/736"
+    }
+   ]
+  },
+  {
+   "sayfa": 7,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.994,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 8,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 9,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.991,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 40,
+   "yeni_sayi": 0,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "e of Contents Foreword v Glossary of Terms 1 Selection of Fabric and Findings for Garme"
+     ]
+    },
+    {
+     "deger": "3",
+     "adet": 2,
+     "eski_baglam": [
+      "Selection of Fabric and Findings for Garment 3 Fabrics of Wool or Worsted 3 Materials Us",
+      "gs for Garment 3 Fabrics of Wool or Worsted 3 Materials Used in the Making of Suit or Co"
+     ]
+    },
+    {
+     "deger": "4",
+     "adet": 1,
+     "eski_baglam": [
+      "Materials Used in the Making of Suit or Coat 4 Shrinking 5 Laboratory Equipment and Tool"
+     ]
+    },
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "d in the Making of Suit or Coat 4 Shrinking 5 Laboratory Equipment and Tools 6 Directio"
+     ]
+    },
+    {
+     "deger": "6",
+     "adet": 2,
+     "eski_baglam": [
+      "Shrinking 5 Laboratory Equipment and Tools 6 Directions for Making Laboratory Equipment",
+      "Directions for Making Laboratory Equipment 6 Adhesive Paper Dress Form 9 Measurements"
+     ]
+    },
+    {
+     "deger": "9",
+     "adet": 1,
+     "eski_baglam": [
+      "atory Equipment 6 Adhesive Paper Dress Form 9 Measurements 14 Preparation for Measureme"
+     ]
+    },
+    {
+     "deger": "14",
+     "adet": 2,
+     "eski_baglam": [
+      "6 Adhesive Paper Dress Form 9 Measurements 14 Preparation for Measurements 14 Measurem",
+      "easurements 14 Preparation for Measurements 14 Measurement Sheets 16 Measurement Sheet"
+     ]
+    },
+    {
+     "deger": "16",
+     "adet": 1,
+     "eski_baglam": [
+      "tion for Measurements 14 Measurement Sheets 16 Measurement Sheet for Raglan Sleeve 17 M"
+     ]
+    },
+    {
+     "deger": "17",
+     "adet": 1,
+     "eski_baglam": [
+      "eets 16 Measurement Sheet for Raglan Sleeve 17 Measuring the Commercial Pattern 18 Sugg"
+     ]
+    },
+    {
+     "deger": "18",
+     "adet": 1,
+     "eski_baglam": [
+      "Sleeve 17 Measuring the Commercial Pattern 18 Suggested Allowances for Ease 20 Varianc"
+     ]
+    },
+    {
+     "deger": "20",
+     "adet": 1,
+     "eski_baglam": [
+      "al Pattern 18 Suggested Allowances for Ease 20 Variances in Commercial Patterns 21 Grad"
+     ]
+    },
+    {
+     "deger": "21",
+     "adet": 2,
+     "eski_baglam": [
+      "or Ease 20 Variances in Commercial Patterns 21 Grading Patterns 21 Pattern Alteration 2",
+      "in Commercial Patterns 21 Grading Patterns 21 Pattern Alteration 25 Darts (Four Main P"
+     ]
+    },
+    {
+     "deger": "25",
+     "adet": 2,
+     "eski_baglam": [
+      "21 Grading Patterns 21 Pattern Alteration 25 Darts (Four Main Positions) 25 Other Dar",
+      "n Alteration 25 Darts (Four Main Positions) 25 Other Dart Positions Used in Garment Cons"
+     ]
+    },
+    {
+     "deger": "26",
+     "adet": 1,
+     "eski_baglam": [
+      "Dart Positions Used in Garment Construction 26 Enlarged Bust Alteration t 28 Round Shou"
+     ]
+    },
+    {
+     "deger": "28",
+     "adet": 1,
+     "eski_baglam": [
+      "Construction 26 Enlarged Bust Alteration t 28 Round Shoulder Alteration 30 Widen Shoul"
+     ]
+    },
+    {
+     "deger": "30",
+     "adet": 1,
+     "eski_baglam": [
+      "t Alteration t 28 Round Shoulder Alteration 30 Widen Shoulders 31 Narrow Shoulders 31"
+     ]
+    },
+    {
+     "deger": "31",
+     "adet": 2,
+     "eski_baglam": [
+      "ound Shoulder Alteration 30 Widen Shoulders 31 Narrow Shoulders 31 Types of Set-in Slee",
+      "ion 30 Widen Shoulders 31 Narrow Shoulders 31 Types of Set-in Sleeves Used in Tailored"
+     ]
+    },
+    {
+     "deger": "32",
+     "adet": 2,
+     "eski_baglam": [
+      "of Set-in Sleeves Used in Tailored Garments 32 Sleeve Cap Increase in Height 32 Sleeve",
+      "d Garments 32 Sleeve Cap Increase in Height 32 Sleeve Cap Increase of Sleeve with Seam a"
+     ]
+    },
+    {
+     "deger": "33",
+     "adet": 1,
+     "eski_baglam": [
+      "e Cap Increase of Sleeve with Seam at Center 33 Sleeve Cap Increase for a Two-piece Sleev"
+     ]
+    },
+    {
+     "deger": "35",
+     "adet": 1,
+     "eski_baglam": [
+      "Sleeve Cap Increase for a Two-piece Sleeve 35 Making the Muslin Garment 37 Cutting the"
+     ]
+    },
+    {
+     "deger": "37",
+     "adet": 2,
+     "eski_baglam": [
+      "o-piece Sleeve 35 Making the Muslin Garment 37 Cutting the Muslin Jacket 37 Suggested A",
+      "Muslin Garment 37 Cutting the Muslin Jacket 37 Suggested Allowances for Finished Seams a"
+     ]
+    },
+    {
+     "deger": "38",
+     "adet": 3,
+     "eski_baglam": [
+      "ested Allowances for Finished Seams and Hems 38 Marking the Garment 38 Basting the Jacke",
+      "ished Seams and Hems 38 Marking the Garment 38 Basting the Jacket 38 Fitting the Jacket",
+      "Marking the Garment 38 Basting the Jacket 38 Fitting the Jacket or Coat 39 Self Fitti"
+     ]
+    },
+    {
+     "deger": "39",
+     "adet": 2,
+     "eski_baglam": [
+      "ng the Jacket 38 Fitting the Jacket or Coat 39 Self Fitting 39 Shoulder Pads 40 Figure",
+      "Fitting the Jacket or Coat 39 Self Fitting 39 Shoulder Pads 40 Figure Problems 41 Gar"
+     ]
+    },
+    {
+     "deger": "40",
+     "adet": 1,
+     "eski_baglam": [
+      "t or Coat 39 Self Fitting 39 Shoulder Pads 40 Figure Problems 41 Garment Problems in F"
+     ]
+    },
+    {
+     "deger": "41",
+     "adet": 2,
+     "eski_baglam": [
+      "itting 39 Shoulder Pads 40 Figure Problems 41 Garment Problems in Fitting 41 Baste Col",
+      "ure Problems 41 Garment Problems in Fitting 41 Baste Collar to Muslin Jacket 50 Prepari"
+     ]
+    },
+    {
+     "deger": "50",
+     "adet": 3,
+     "eski_baglam": [
+      "in Fitting 41 Baste Collar to Muslin Jacket 50 Preparing the Sleeve for Fitting 50 Fitt",
+      "Jacket 50 Preparing the Sleeve for Fitting 50 Fitting the Sleeves into the Armscye 50",
+      "ing 50 Fitting the Sleeves into the Armscye 50 vii"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "4",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "6",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "6",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "9",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "14",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "14",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "16",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "17",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "18",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "20",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "21",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "21",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "25",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "25",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "26",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "t 28",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "30",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "31",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "31",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "32",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "32",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "33",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "35",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "37",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "37",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "38",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "38",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "38",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "39",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "39",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "40",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "41",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "41",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "50",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "50",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "50 vii",
+     "yeni": "ND OO & OO FO — <"
+    }
+   ]
+  },
+  {
+   "sayfa": 10,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.996,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 52,
+   "yeni_sayi": 52,
+   "kaybolan": [
+    {
+     "deger": "55",
+     "adet": 1,
+     "eski_baglam": [
+      "General Suggestions in Garment Construction 55 Cutting the Wool Garment 56 Planning the"
+     ]
+    },
+    {
+     "deger": "59",
+     "adet": 1,
+     "eski_baglam": [
+      "ings) 57 Stay Line Stitching Before Basting 59 Steaming Wool 60 Making the Skirt 62 Ba"
+     ]
+    }
+   ],
+   "eklenen": [
+    "95",
+    "99"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "51",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "54",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "55",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "56",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "56",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "56",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "57",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "57",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "59",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "60",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "62",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "62",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "63",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "63",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "64",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "65",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "66",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "66",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "67",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "69",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "69",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "70",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "70",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "70",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "72",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "74",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "74",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "77",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "78",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "78",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "80",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "82",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "82",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "83",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "84",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "85",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "85",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "86",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "86",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "86",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "86",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "86",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "87",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "87",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "88",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "89",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "91",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "91",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "92",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "92",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "92",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "51 54 95 56 56 56 57 57 99 60 62 62 63 63 64 65 66 66 67 69 69 70 70 70 72 74 74 77 78 78 80 82 82 83 84 85 85 86 86 86 "
+    }
+   ]
+  },
+  {
+   "sayfa": 11,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 52,
+   "yeni_sayi": 51,
+   "kaybolan": [
+    {
+     "deger": "12",
+     "adet": 1,
+     "eski_baglam": [
+      "g the Jacket or Coat 123 Hemming the Jacket 12 3 Hemming the Long Coat 124 Basting the"
+     ]
+    },
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "he Jacket or Coat 123 Hemming the Jacket 12 3 Hemming the Long Coat 124 Basting the Gar"
+     ]
+    }
+   ],
+   "eklenen": [
+    "123"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "12 3",
+     "yeni": "123"
+    }
+   ]
+  },
+  {
+   "sayfa": 12,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 13,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 14,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 15,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.989,
+   "new_score": 0.996,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 1,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "ease and strength. Haircloth: See canvas. 1"
+     ]
+    }
+   ],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "%4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 16,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 6,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "'4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "'4"
+    }
+   ]
+  },
+  {
+   "sayfa": 17,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 18,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.995,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6b."
+    }
+   ]
+  },
+  {
+   "sayfa": 19,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 0,
+   "kaybolan": [
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "a yardstick to prevent curves in the tape. 5"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "5",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 20,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.997,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 13,
+   "yeni_sayi": 15,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "2"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "7 Vi",
+     "yeni": "7!2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "L",
+     "yeni": "2."
+    }
+   ]
+  },
+  {
+   "sayfa": 21,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.825,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.82 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 22,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.98,
+   "new_score": 0.99,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 1,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "The mit is filled with layers of wool piled 3A inch thick, which are tacked together to"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "8",
+     "yeni": "A Tailoring Manual"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "f, 8. 1."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3A",
+     "yeni": "%"
+    }
+   ]
+  },
+  {
+   "sayfa": 23,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 7,
+   "yeni_sayi": 8,
+   "kaybolan": [],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "lA",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5.",
+     "yeni": "35."
+    }
+   ]
+  },
+  {
+   "sayfa": 24,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.992,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 29,
+   "yeni_sayi": 28,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "group of strips, around 9 to 5 inches, cut 3A inch in from outside edge of roll. These"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "3A",
+     "yeni": "%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 25,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 26,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [
+    "12"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "12"
+    }
+   ]
+  },
+  {
+   "sayfa": 27,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.98,
+   "new_score": 0.988,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 14,
+   "yeni_sayi": 15,
+   "kaybolan": [],
+   "eklenen": [
+    "14"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "13"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1 Vi-inch",
+     "yeni": "14-inch"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "13",
+     "yeni": "k,l."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "lVi",
+     "yeni": "1%"
+    }
+   ]
+  },
+  {
+   "sayfa": 28,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.996,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 19,
+   "yeni_sayi": 14,
+   "kaybolan": [
+    {
+     "deger": "2",
+     "adet": 1,
+     "eski_baglam": [
+      "ent. The suggested ease allowance in Column 2 on the measurement sheet is for minimum am"
+     ]
+    },
+    {
+     "deger": "3",
+     "adet": 2,
+     "eski_baglam": [
+      "fer a guide for marking the figure. Figure 3. a, b Fasten tape snugly around the normal",
+      "e the two bones at throat hollow at front. 3 Center back neck Place the chain or string"
+     ]
+    },
+    {
+     "deger": "5",
+     "adet": 2,
+     "eski_baglam": [
+      "r, and mark. 4 Highest point on shoulders 5, 5' Swing the chain or string outward xh to",
+      "and mark. 4 Highest point on shoulders 5, 5' Swing the chain or string outward xh to 3"
+     ]
+    },
+    {
+     "deger": "6",
+     "adet": 2,
+     "eski_baglam": [
+      "nches from 4 for the correct shoulder tip. 6, 6' Locate width of chest, 6, 6', halfway b",
+      "es from 4 for the correct shoulder tip. 6, 6' Locate width of chest, 6, 6', halfway be¬"
+     ]
+    },
+    {
+     "deger": "7",
+     "adet": 2,
+     "eski_baglam": [
+      "5, 5', and a point opposite the underarm. 7, 7' Locate width of back, halfway between",
+      "5', and a point opposite the underarm. 7, 7' Locate width of back, halfway between sho"
+     ]
+    }
+   ],
+   "eklenen": [
+    "2.2",
+    "6.6",
+    "7.7",
+    "9.5"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "14"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2, T",
+     "yeni": "2,2’"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5, 5'",
+     "yeni": "9,5’"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3A",
+     "yeni": "%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "6, 6'",
+     "yeni": "6,6’"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "7, 7'",
+     "yeni": "7,7'"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "14",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 29,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.979,
+   "new_score": 0.983,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 23,
+   "yeni_sayi": 20,
+   "kaybolan": [
+    {
+     "deger": "9",
+     "adet": 2,
+     "eski_baglam": [
+      "he chain V6 inch to¬ ward the back and mark 9. 2, 9 Average normal shoulder line of the",
+      "n V6 inch to¬ ward the back and mark 9. 2, 9 Average normal shoulder line of the figure"
+     ]
+    },
+    {
+     "deger": "11",
+     "adet": 1,
+     "eski_baglam": [
+      "arm relaxed) parallel to the floor and mark 11 on outer arm. 11 Indicates the base of th"
+     ]
+    },
+    {
+     "deger": "13",
+     "adet": 1,
+     "eski_baglam": [
+      "ith pins parallel to string: 12 Bust line 13 Waist line 14 Widest hip position Markin"
+     ]
+    },
+    {
+     "deger": "14",
+     "adet": 1,
+     "eski_baglam": [
+      "el to string: 12 Bust line 13 Waist line 14 Widest hip position Marking the figure wi"
+     ]
+    }
+   ],
+   "eklenen": [
+    "2.9",
+    "911"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "8 c,d 2,9"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "8",
+     "yeni": "a. Front"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "2, 9",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "9, 11",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V2",
+     "yeni": "2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "911"
+    }
+   ]
+  },
+  {
+   "sayfa": 30,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.955,
+   "new_score": 0.934,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.93 < eski 0.95)",
+   "eski_sayi": 35,
+   "yeni_sayi": 35,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 31,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.895,
+   "new_score": 0.94,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 27,
+   "yeni_sayi": 28,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 3,
+     "eski_baglam": [
+      "Measurements 17 1+2 = 3 4 5 The allowance for ease in | | |",
+      "J suit or coat and will need S| .§ | 8 | N 1 | J more ease at some positions. J; | i —",
+      "| J more ease at some positions. J; | i — £ 1 ^ 8. Sleeve a. Place point R 2\" be¬ low"
+     ]
+    },
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "Measurements 17 1+2 = 3 4 5 The allowance for ease in | | | column 2"
+     ]
+    },
+    {
+     "deger": "8",
+     "adet": 1,
+     "eski_baglam": [
+      "g § | J suit or coat and will need S| .§ | 8 | N 1 | J more ease at some positions. J;"
+     ]
+    },
+    {
+     "deger": "45",
+     "adet": 1,
+     "eski_baglam": [
+      "ET FOR RAGLAN SLEEVE Figure 4 b. __1+2 = 3 45 Hold chain around neck and mark a. cent"
+     ]
+    }
+   ],
+   "eklenen": [
+    "2",
+    "4",
+    "54",
+    "7",
+    "7",
+    "7",
+    "7"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "17 1+2 = 3 4 5",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "S| .§ | 8 | N 1 | J",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "J; | i — £ 1 ^",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Plus 4\" for"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5V*\"",
+     "yeni": "54%”"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "curve.) Plus W for arm ease Plus shoulder pad height if used b.",
+     "yeni": "curve. ) 6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "3\""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3\" or more",
+     "yeni": "—"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "0"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "T-T-T 0 /.",
+     "yeni": "7-7-7 f."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "b. Figure 4 (b)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "17"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "45",
+     "yeni": "5"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "g",
+     "yeni": "2 E 3 ~ 2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "J_",
+     "yeni": "7"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 4 (b)",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 32,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 0.934,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.93 < eski 1.00)",
+   "eski_sayi": 4,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 33,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.986,
+   "new_score": 0.988,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 11,
+   "yeni_sayi": 13,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "19",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "19"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "xh",
+     "yeni": "'4"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "5.",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "6.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": "."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "4.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "'2"
+    }
+   ]
+  },
+  {
+   "sayfa": 34,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.978,
+   "new_score": 0.792,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.79 < eski 0.98)",
+   "eski_sayi": 11,
+   "yeni_sayi": 11,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 35,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.978,
+   "new_score": 0.968,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 16,
+   "yeni_sayi": 16,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "tern 21 Hip: (for narrow skirt) Full hip, 3 to 4 inches. 3 inches down, 1 to 2 inches."
+     ]
+    },
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "t) Full hip, 3 to 4 inches. 3 inches down, 1 to 2 inches. 6 inches down, 2 to 4 inches."
+     ]
+    }
+   ],
+   "eklenen": [
+    "2",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(V2",
+     "yeni": "('2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3A",
+     "yeni": "%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6b."
+    }
+   ]
+  },
+  {
+   "sayfa": 36,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.697,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.70 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 37,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.776,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.78 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 38,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.667,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.67 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 39,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.991,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 11,
+   "yeni_sayi": 12,
+   "kaybolan": [],
+   "eklenen": [
+    "1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    }
+   ]
+  },
+  {
+   "sayfa": 40,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.975,
+   "new_score": 0.983,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [
+    "1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 41,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.979,
+   "new_score": 0.973,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [
+    "9"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "—_ oo b. = Figure 9"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "_— Figure 9 f."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "scye 6 inches down, then diagonally to"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 9 f. Flange or shoulder edge dart: This dart is used in dressmaker suits and is good for a full-busted person whe",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 42,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.982,
+   "new_score": 0.987,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 15,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "28",
+    "4",
+    "4",
+    "4",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "28 A Tatlonng Manual"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "pattern tissue and draw around pattern. Hold the marked center of back length to the tissue and swing the upper half of ",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "tern outward ‘4 inch to widen neck edge of"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "back. Draw new upper back along pattern edge. 6b. Measure 1 inch in on neck line from new center back and mark. Draw lin"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "'4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "4"
+    }
+   ]
+  },
+  {
+   "sayfa": 43,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 2,
+   "kaybolan": [],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "lA",
+     "yeni": "'4"
+    }
+   ]
+  },
+  {
+   "sayfa": 44,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.992,
+   "new_score": 0.985,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 6,
+   "kaybolan": [],
+   "eklenen": [
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Y tml OT HCHHTTTTHHTLALL, 4 ] ] ] SS NS"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "4"
+    }
+   ]
+  },
+  {
+   "sayfa": 45,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.991,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 10,
+   "yeni_sayi": 11,
+   "kaybolan": [
+    {
+     "deger": "12",
+     "adet": 1,
+     "eski_baglam": [
+      "Pattern Alteration 31 Figure 12 b. Pin lower back section to a ruled line"
+     ]
+    },
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "ure 13. a. Rule back jacket pattern and cut 1 inch within shoulder line on back parallel"
+     ]
+    }
+   ],
+   "eklenen": [
+    "4",
+    "4",
+    "7"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Figure 12",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V*",
+     "yeni": "‘4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Y Y Y y Z Z 4 7 / ; YY YEE veer"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "!"
+    }
+   ]
+  },
+  {
+   "sayfa": 46,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.932,
+   "new_score": 0.939,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 14,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "1",
+    "114",
+    "14",
+    "2",
+    "7"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "TYPES OF SET-IN SLEEVES USED IN TAILORED GARMENTS Figure 15. SS"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "a.",
+     "yeni": "i \" \" 1 \" 1 \" i | 1 i — a"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "TYPES OF SET-IN SLEEVES USED IN TAILORED GARMENTS Figure 15.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "F IV2",
+     "yeni": "114"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "G 1 lh",
+     "yeni": "14"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "J",
+     "yeni": "7"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "L Vi",
+     "yeni": "2"
+    }
+   ]
+  },
+  {
+   "sayfa": 47,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.897,
+   "new_score": 0.909,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 11,
+   "kaybolan": [],
+   "eklenen": [
+    "14",
+    "17",
+    "4",
+    "7",
+    "7"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Pattern Alteration 33 Figure 15",
+     "yeni": "f"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "'4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "E Intersection of AB and CD. F Top of back half of sleeve cap. G Top of front half of sleeve. H 1 xh",
+     "yeni": "14"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "I Vh",
+     "yeni": "1"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "IJ.",
+     "yeni": "[7. Nor AO Oy by . ——___ | | e. Figure 15"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "d. M N Intersection of AB and CD. Top of back half of sleeve cap. Top of front half of sleeve. 33 mm"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "IJ.",
+     "yeni": "17."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "J. d.",
+     "yeni": "7."
+    }
+   ]
+  },
+  {
+   "sayfa": 48,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 49,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.915,
+   "new_score": 0.939,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 9,
+   "kaybolan": [
+    {
+     "deger": "0",
+     "adet": 2,
+     "eski_baglam": [
+      "from A on sleeve cap. N 2 inches below /. 0 2 inches below H Connect MN. Connect LO.",
+      "lash along line from L to within Vs inch of 0. Raise wedge LAMP just above point P the"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "14",
+    "7"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "35",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "J",
+     "yeni": "7"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "K Figure 16 g. ~~ 35"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "IH. Figure 16 g. g. AB",
+     "yeni": "JH."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "L VA",
+     "yeni": "1%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "M V/z",
+     "yeni": "14"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "/. 0",
+     "yeni": "I."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "0.",
+     "yeni": "O."
+    }
+   ]
+  },
+  {
+   "sayfa": 50,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.949,
+   "new_score": 0.942,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 5,
+   "kaybolan": [],
+   "eklenen": [
+    "7"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "alo Figure 16 h. h. Figure 16 i. z. g."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 16 h. h.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Figure 16 /. 1.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "/",
+     "yeni": "7"
+    }
+   ]
+  },
+  {
+   "sayfa": 51,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [
+    "1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    }
+   ]
+  },
+  {
+   "sayfa": 52,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.984,
+   "new_score": 0.984,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 19,
+   "yeni_sayi": 17,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 4,
+     "eski_baglam": [
+      "WANCES FOR FINISHED SEAMS AND HEMS Inches 1 to \\Vi Fitting seams Shoulder Underarm S",
+      "ting seams Shoulder Underarm Sleeve % to 1 Design seams V* Neck xh Armscye xh Waist",
+      "eck xh Armscye xh Waistline Hem finishes 1 xh or more Jacket and coat sleeves 2 to 3",
+      "sleeves 2 to 3 Wide coat or jacket sleeve 1 xh or more Jacket hem 2 to 3 Coat hem. All"
+     ]
+    },
+    {
+     "deger": "18",
+     "adet": 1,
+     "eski_baglam": [
+      "t in until the garment is finished. Figure 18. The sleeve is marked with long and short"
+     ]
+    }
+   ],
+   "eklenen": [
+    "0",
+    "3",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "1 to \\Vi",
+     "yeni": "ltol%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1 xh or more",
+     "yeni": "l’ormore"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "lh",
+     "yeni": "“4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 17"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "is",
+     "yeni": "3s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "0."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 17 Figure 18",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 53,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.997,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 2,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "39"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "wad¬ 39",
+     "yeni": "wad-"
+    }
+   ]
+  },
+  {
+   "sayfa": 54,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.981,
+   "new_score": 0.981,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 3,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 55,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.983,
+   "new_score": 0.986,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 16,
+   "yeni_sayi": 18,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "i.",
+     "yeni": "1."
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6b."
+    }
+   ]
+  },
+  {
+   "sayfa": 56,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.967,
+   "new_score": 0.964,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 4,
+   "kaybolan": [
+    {
+     "deger": "42",
+     "adet": 1,
+     "eski_baglam": [
+      "42 A Tailoring Manual 3 4 5 6 Figure 20 (P"
+     ]
+    },
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "42 A Tailoring Manual 3 4 5 6 Figure 20 (Problems 1-6) Rip and ea"
+     ]
+    },
+    {
+     "deger": "4",
+     "adet": 1,
+     "eski_baglam": [
+      "42 A Tailoring Manual 3 4 5 6 Figure 20 (Problems 1-6) Rip and ease"
+     ]
+    },
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "42 A Tailoring Manual 3 4 5 6 Figure 20 (Problems 1-6) Rip and ease b"
+     ]
+    },
+    {
+     "deger": "6",
+     "adet": 1,
+     "eski_baglam": [
+      "42 A Tailoring Manual 3 4 5 6 Figure 20 (Problems 1-6) Rip and ease bac"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "42",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3 4 5 6",
+     "yeni": "J"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 57,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.982,
+   "new_score": 0.982,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 7,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "43",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "d.",
+     "yeni": "43 4 Problem: Full bust. a. Garment bunches may appear at front"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "4 Problem: Full bust. a. Garment bunches may appear at front",
+     "yeni": "b."
+    }
+   ]
+  },
+  {
+   "sayfa": 58,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.982,
+   "new_score": 0.989,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 8,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "21",
+    "21",
+    "3"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "d. Figure 21 (Problem 2, Continued)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "b. Figure 21 (Problem 3)"
+    }
+   ]
+  },
+  {
+   "sayfa": 59,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.979,
+   "new_score": 0.971,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 13,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "21",
+    "21",
+    "21",
+    "4",
+    "5",
+    "6",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "—~ —~ — —!O Jj. - L — Figure 21 (Problem 4) - SS Ww ——hL 1oeLeb i Figure 21 (Problem 5) Figure 21 (Problem 6)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "shoulders. Use the same alteration as 7 a, b, and c to remove excess back length. 9 Problem: Garment too wide both front",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "shoulders. 6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Use the same alteration as 7 a, 6, and c to remove excess back length. 9 Problem: Garment too wide both front and back."
+    }
+   ]
+  },
+  {
+   "sayfa": 60,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.978,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 10,
+   "yeni_sayi": 10,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 21 (Problum 8)",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "— — “|| _ ee — —_— “_ —\" Figure 21 (Problem 8)"
+    }
+   ]
+  },
+  {
+   "sayfa": 61,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.879,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 8,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "10",
+    "10",
+    "11",
+    "2",
+    "21",
+    "47",
+    "8"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "! \\ J iN l Q Nn 47 1] Figure 21 (Problems 10, 11) > ee aN => >>> = % KN XY _ mr he Mee tienes ‘ IN ee ee ——_—. \\ IN eZ \\"
+    }
+   ]
+  },
+  {
+   "sayfa": 62,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.992,
+   "new_score": 0.987,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 12,
+   "yeni_sayi": 16,
+   "kaybolan": [
+    {
+     "deger": "12.13",
+     "adet": 1,
+     "eski_baglam": [
+      "Tailoring Manual 14 15 Figure 21 (Problems 12,13,14,15) 14 Problem: Shoulders too narro"
+     ]
+    },
+    {
+     "deger": "14.15",
+     "adet": 1,
+     "eski_baglam": [
+      "ing Manual 14 15 Figure 21 (Problems 12,13,14,15) 14 Problem: Shoulders too narrow on a"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "12",
+    "13",
+    "2",
+    "2",
+    "39"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "14 15",
+     "yeni": "an a =-2 a —e ee Lt — ee tL a — LS] — GO a2 .W< -.—39@ - 2c —” Y-3 de ——— — Lob bk —_= —d & —_ 1S.)"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "12,13,14,15)",
+     "yeni": "12, 13, 14, 15)"
+    }
+   ]
+  },
+  {
+   "sayfa": 63,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.988,
+   "new_score": 0.984,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 9,
+   "kaybolan": [
+    {
+     "deger": "7",
+     "adet": 2,
+     "eski_baglam": [
+      "and cut away surplus at neck and shoulder. 7 7 Problem: Armscye of garment too tight and",
+      "d cut away surplus at neck and shoulder. 7 7 Problem: Armscye of garment too tight and"
+     ]
+    }
+   ],
+   "eklenen": [
+    "17",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "7 7",
+     "yeni": "17"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 64,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.995,
+   "new_score": 0.991,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 11,
+   "yeni_sayi": 13,
+   "kaybolan": [],
+   "eklenen": [
+    "111",
+    "22"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "50"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "50",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "Ill,",
+     "yeni": "111,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "a. b. c. d. Figure 22"
+    }
+   ]
+  },
+  {
+   "sayfa": 65,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.985,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "51"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "51",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "t.",
+     "yeni": "1."
+    }
+   ]
+  },
+  {
+   "sayfa": 66,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [
+    "52"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "52"
+    }
+   ]
+  },
+  {
+   "sayfa": 67,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 68,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 69,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 5,
+   "kaybolan": [
+    {
+     "deger": "55",
+     "adet": 1,
+     "eski_baglam": [
+      "nished garment will need a final steaming. 55"
+     ]
+    }
+   ],
+   "eklenen": [
+    "95"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "55",
+     "yeni": "95"
+    }
+   ]
+  },
+  {
+   "sayfa": 70,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 5,
+   "kaybolan": [
+    {
+     "deger": "56",
+     "adet": 1,
+     "eski_baglam": [
+      "attern. See sug¬ gested allowances, p. 38. 56 In some patterns the under collar is mark"
+     ]
+    }
+   ],
+   "eklenen": [
+    "36"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "56",
+     "yeni": "36"
+    }
+   ]
+  },
+  {
+   "sayfa": 71,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.991,
+   "new_score": 0.989,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 14,
+   "yeni_sayi": 14,
+   "kaybolan": [
+    {
+     "deger": "5",
+     "adet": 1,
+     "eski_baglam": [
+      "shrunk. (See shrink¬ ing instructions on p. 5.) Front: All hymo for fronts is cut ident"
+     ]
+    }
+   ],
+   "eklenen": [
+    "9"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "5.)",
+     "yeni": "9.)"
+    }
+   ]
+  },
+  {
+   "sayfa": 72,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.667,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.67 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 73,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 7,
+   "yeni_sayi": 9,
+   "kaybolan": [],
+   "eklenen": [
+    "111",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 26",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b,",
+     "yeni": "6,"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "Ill,",
+     "yeni": "111,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "b. Figure 26"
+    }
+   ]
+  },
+  {
+   "sayfa": 74,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 75,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "61",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "61"
+    }
+   ]
+  },
+  {
+   "sayfa": 76,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.973,
+   "new_score": 0.979,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 8,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "27",
+    "6",
+    "8"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b,",
+     "yeni": "8,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "xh",
+     "yeni": "2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 27"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b,",
+     "yeni": "6,"
+    }
+   ]
+  },
+  {
+   "sayfa": 77,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.996,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 7,
+   "yeni_sayi": 9,
+   "kaybolan": [],
+   "eklenen": [
+    "18",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "the Skirt 63"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "YY: SY —18Q ~EhD <OD 4g ~COD -h —VED ~tHd ~eng"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "the Skirt 63",
+     "yeni": "Cc."
+    }
+   ]
+  },
+  {
+   "sayfa": 78,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.972,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.97 < eski 0.99)",
+   "eski_sayi": 4,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 79,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 0.996,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 10,
+   "yeni_sayi": 15,
+   "kaybolan": [
+    {
+     "deger": "1.2",
+     "adet": 1,
+     "eski_baglam": [
+      "Making the Skirt 65 Figure 29 (Problems 1,2,3,4) 3 Problem: Entire skirt wrinkles ar"
+     ]
+    },
+    {
+     "deger": "3.4",
+     "adet": 1,
+     "eski_baglam": [
+      "aking the Skirt 65 Figure 29 (Problems 1,2,3,4) 3 Problem: Entire skirt wrinkles around"
+     ]
+    },
+    {
+     "deger": "5.6",
+     "adet": 1,
+     "eski_baglam": [
+      "just below back belt. Figure 29 (Problems 5,6) The skirt is cut too high at center bac"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "2",
+    "3",
+    "3",
+    "4",
+    "5",
+    "6",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "65",
+     "yeni": "Lo rf"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1,2,3,4)",
+     "yeni": "1, 2, 3, 4) 3"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "65 | Ee fe) 6"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "5,6)",
+     "yeni": "5, 6)"
+    }
+   ]
+  },
+  {
+   "sayfa": 80,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.97,
+   "new_score": 0.957,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 8,
+   "kaybolan": [],
+   "eklenen": [
+    "3",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "_S —— <— rte enn 3 _ S| a. b."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 30"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "pleat fold. in 2 en pleats start below the belt, the pleats"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "as in 2.",
+     "yeni": "asm é. must have width stitching across the top edge to"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "d. Figure 30 Pleats may be stitched from outside along",
+     "yeni": "on"
+    }
+   ]
+  },
+  {
+   "sayfa": 81,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.989,
+   "new_score": 0.986,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 13,
+   "yeni_sayi": 13,
+   "kaybolan": [
+    {
+     "deger": "67",
+     "adet": 1,
+     "eski_baglam": [
+      "Making the Skirt 67 d. By catching the top width of pleat by"
+     ]
+    },
+    {
+     "deger": "6",
+     "adet": 1,
+     "eski_baglam": [
+      "tension 4 which is made by fold¬ ing Vi or %6 inch out toward the seam edge and parallel"
+     ]
+    }
+   ],
+   "eklenen": [
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "67",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "%6",
+     "yeni": "%e"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "4"
+    }
+   ]
+  },
+  {
+   "sayfa": 82,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 0.957,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.96 < eski 1.00)",
+   "eski_sayi": 1,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 83,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 12,
+   "yeni_sayi": 13,
+   "kaybolan": [],
+   "eklenen": [
+    "33"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "69",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "69"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Q o— Figure 33"
+    }
+   ]
+  },
+  {
+   "sayfa": 84,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.996,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [
+    "34"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 34"
+    }
+   ]
+  },
+  {
+   "sayfa": 85,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 3,
+   "kaybolan": [],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "4"
+    }
+   ]
+  },
+  {
+   "sayfa": 86,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.989,
+   "new_score": 0.986,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 15,
+   "yeni_sayi": 26,
+   "kaybolan": [],
+   "eklenen": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "36",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "eeea + ) i) ) | ‘ 0 ] 0 0 Q Q 0 $ 0 t 0 ‘ 0 0 0 Figure 36"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b,",
+     "yeni": "6,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2V6",
+     "yeni": "2%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b,",
+     "yeni": "6,"
+    }
+   ]
+  },
+  {
+   "sayfa": 87,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b,",
+     "yeni": "6,"
+    }
+   ]
+  },
+  {
+   "sayfa": 88,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.985,
+   "new_score": 0.983,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "‘4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "tendency to fray. SEAM FINISHES ON RIGHT SIDE OF GARMENT",
+     "yeni": "a ~~ _ | rye Ry ee Figure 38"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "d. Figure 38",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 89,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.991,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 5,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "1",
+    "1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "75",
+     "yeni": ""
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "75"
+    }
+   ]
+  },
+  {
+   "sayfa": 90,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.991,
+   "new_score": 0.991,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 2,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 91,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.988,
+   "new_score": 0.926,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.93 < eski 0.99)",
+   "eski_sayi": 4,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 92,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.989,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 10,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "ength of buttonhole between cords to within 3/i6 inch from end, then diagonally out to s"
+     ]
+    }
+   ],
+   "eklenen": [
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "‘4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3/i6",
+     "yeni": "%e"
+    }
+   ]
+  },
+  {
+   "sayfa": 93,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.98,
+   "new_score": 0.992,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 5,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "he exact length of the buttonhole and about 3/i6 inch wide. Machine stitch should be sho"
+     ]
+    }
+   ],
+   "eklenen": [
+    "4",
+    "6",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "3/i6",
+     "yeni": "“6"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "$Ae",
+     "yeni": "%6"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "4"
+    }
+   ]
+  },
+  {
+   "sayfa": 94,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.997,
+   "new_score": 0.988,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 6,
+   "kaybolan": [
+    {
+     "deger": "46",
+     "adet": 1,
+     "eski_baglam": [
+      "Cut the facing through the buttonhole to s/46 inch to the end, then diagonally out to t"
+     ]
+    }
+   ],
+   "eklenen": [
+    "42",
+    "6",
+    "7"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "ene ae rn qd. L } ny TT S li b. Nn yN 7 a"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Tailoring",
+     "yeni": "A a a Figure 42 A Tailonng"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "comers. 2.",
+     "yeni": "corners."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "s/46",
+     "yeni": "“6"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 95,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 0.969,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.97 < eski 1.00)",
+   "eski_sayi": 1,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 96,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.99,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 5,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 44 Cut buttonhole:"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 44",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 97,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.988,
+   "new_score": 0.974,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 3,
+   "kaybolan": [],
+   "eklenen": [
+    "45"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 45"
+    }
+   ]
+  },
+  {
+   "sayfa": 98,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.991,
+   "new_score": 0.985,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 7,
+   "yeni_sayi": 7,
+   "kaybolan": [
+    {
+     "deger": "84",
+     "adet": 1,
+     "eski_baglam": [
+      "84 A Tailoring Manual ©@ © © To secure thi"
+     ]
+    }
+   ],
+   "eklenen": [
+    "8"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "84",
+     "yeni": "8"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "©@ © ©",
+     "yeni": "Qa. ot b. Sh <= Figure 46"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 46",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 99,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.957,
+   "new_score": 0.965,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 6,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "233",
+    "47",
+    "47",
+    "85"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "p",
+     "yeni": "Making the Jacket or Coat PREPARING INSIDE CUTS ON GARMENT SURFACE Figure 47. Reinforced corners or turns: Any seam cut "
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "c. x From the seam edge, stitch an arrowhead to the point of seam, pivot the fabric around the needle, take one short st"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "47 85"
+    }
+   ]
+  },
+  {
+   "sayfa": 100,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.992,
+   "new_score": 0.996,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 10,
+   "yeni_sayi": 11,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "det, or other trim is to be used. /. Place 1-inch square over cut end. g. Beginning % i"
+     ]
+    }
+   ],
+   "eklenen": [
+    "14",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "i.",
+     "yeni": "1."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1 %-inch",
+     "yeni": "14-inch"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 101,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.976,
+   "new_score": 0.977,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 6,
+   "kaybolan": [],
+   "eklenen": [
+    "4",
+    "48"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "jousyow yo ;yBinys Figure 48"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "4"
+    }
+   ]
+  },
+  {
+   "sayfa": 102,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.987,
+   "new_score": 0.988,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 10,
+   "yeni_sayi": 14,
+   "kaybolan": [
+    {
+     "deger": "50",
+     "adet": 1,
+     "eski_baglam": [
+      "88 A Tailoring Manual Figure 50 a. Locate the break line, and chalk it. T"
+     ]
+    }
+   ],
+   "eklenen": [
+    "2",
+    "4",
+    "4",
+    "4",
+    "49"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "50",
+     "yeni": "49 xf N \\ ‘ -— 2,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2 xh",
+     "yeni": "2'4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "'4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "'4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 103,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 2,
+   "kaybolan": [
+    {
+     "deger": "51",
+     "adet": 1,
+     "eski_baglam": [
+      "Figure 51 These rows of pad stitches are made to th"
+     ]
+    }
+   ],
+   "eklenen": [
+    "52",
+    "89"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Figure 51",
+     "yeni": "Making the Jacket or Coat 89"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "TAP Figu a",
+     "yeni": "TAPING THE GARMENT FRONTS Figure 52. a. Lay garment flat on table with canvas up. 1. Pin tape along back edge of break l"
+    }
+   ]
+  },
+  {
+   "sayfa": 104,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.8,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.80 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 105,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 5,
+   "kaybolan": [
+    {
+     "deger": "53",
+     "adet": 1,
+     "eski_baglam": [
+      ". 77-84. TAPING UNDERARM OF ARMSCYE Figure 53. The matching curved edges of the sleeve"
+     ]
+    }
+   ],
+   "eklenen": [
+    "33"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "53",
+     "yeni": "33"
+    }
+   ]
+  },
+  {
+   "sayfa": 106,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.995,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 5,
+   "kaybolan": [],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 107,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.8,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.80 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 108,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.988,
+   "new_score": 0.992,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 17,
+   "yeni_sayi": 19,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "ght in to stitching turn as shown at Points 1 and 2. b. The buttonholes are made only th"
+     ]
+    }
+   ],
+   "eklenen": [
+    "3",
+    "4",
+    "5"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Vi-",
+     "yeni": "4-"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b",
+     "yeni": "5"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Figure 57",
+     "yeni": "A"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b,",
+     "yeni": "3),"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 57"
+    }
+   ]
+  },
+  {
+   "sayfa": 109,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.985,
+   "new_score": 0.99,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 5,
+   "kaybolan": [],
+   "eklenen": [
+    "4",
+    "58",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6b."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Si b. Figure S8",
+     "yeni": "58"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi-inch",
+     "yeni": "'4-inch"
+    }
+   ]
+  },
+  {
+   "sayfa": 110,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 2,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 111,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 12,
+   "kaybolan": [],
+   "eklenen": [
+    "4",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "97",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1V4",
+     "yeni": "1%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi-inch",
+     "yeni": "%4-inch"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi-inch",
+     "yeni": "'4-inch"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi-inch",
+     "yeni": "'4-inch"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi-inch",
+     "yeni": "'4-inch"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "-= a. A Figure 59 97"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 59",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 112,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 3,
+   "kaybolan": [
+    {
+     "deger": "98",
+     "adet": 1,
+     "eski_baglam": [
+      "98 A Tailoring Manual 2. Stitch the upper s"
+     ]
+    },
+    {
+     "deger": "39",
+     "adet": 1,
+     "eski_baglam": [
+      ", pound flat with press paddle. h. Figure 39 (Continued)"
+     ]
+    }
+   ],
+   "eklenen": [
+    "59"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "98",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "39",
+     "yeni": "59"
+    }
+   ]
+  },
+  {
+   "sayfa": 113,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.99,
+   "new_score": 0.995,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 6,
+   "kaybolan": [
+    {
+     "deger": "14",
+     "adet": 1,
+     "eski_baglam": [
+      "l approx¬ imately 5 inches by 2 inches with 14-inch seam all around. The flap may be rec"
+     ]
+    }
+   ],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "FLAP POCKET",
+     "yeni": "99 d. Cut one section of pocket bag of wool and one of lining silk."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "14-inch",
+     "yeni": "'4-inch"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b. 99 d. Cut one section of pocket bag of wool and one of lining silk. 1. Match the stitching line of the wool sec¬ tion",
+     "yeni": "Figure 60"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 60",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 114,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.99,
+   "new_score": 0.979,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 9,
+   "kaybolan": [
+    {
+     "deger": "9",
+     "adet": 1,
+     "eski_baglam": [
+      "100 A Tailoring Manual e. f. 9- Figure 60 (Contlnumd) To stitch, place t"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "e. f. 9-",
+     "yeni": "i q 1 i t] & lp, a ean conicanomn, oem ~\"~ g."
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    }
+   ]
+  },
+  {
+   "sayfa": 115,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.75,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.75 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 116,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.989,
+   "new_score": 0.988,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 9,
+   "kaybolan": [
+    {
+     "deger": "2",
+     "adet": 1,
+     "eski_baglam": [
+      "anvas on the wrong side of the garment. 1, 2. The stitchings indicate two methods of ma"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1.2",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "102"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "102",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "lA",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1, 2.",
+     "yeni": "1,2."
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    }
+   ]
+  },
+  {
+   "sayfa": 117,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.987,
+   "new_score": 0.992,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 7,
+   "kaybolan": [
+    {
+     "deger": "134.135",
+     "adet": 1,
+     "eski_baglam": [
+      "he de¬ sired width from edge. (Fig. 88, pp. 134,135.) d. 1. Mark pocket positions on the"
+     ]
+    },
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "ing stitches end two or three shorter than 1 e f. 9- Figure 63"
+     ]
+    },
+    {
+     "deger": "9",
+     "adet": 1,
+     "eski_baglam": [
+      "hes end two or three shorter than 1 e f. 9- Figure 63"
+     ]
+    },
+    {
+     "deger": "63",
+     "adet": 1,
+     "eski_baglam": [
+      "or three shorter than 1 e f. 9- Figure 63"
+     ]
+    }
+   ],
+   "eklenen": [
+    "134",
+    "135",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "103",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "134,135.) d.",
+     "yeni": "134, 135.) ."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "lA",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1 e f. 9- Figure 63",
+     "yeni": "Ke) a Ee Sen EP aa es ab ab ae See 103"
+    }
+   ]
+  },
+  {
+   "sayfa": 118,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.984,
+   "new_score": 0.989,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 6,
+   "kaybolan": [],
+   "eklenen": [
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "lA",
+     "yeni": "4"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "i.",
+     "yeni": "1."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 119,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.972,
+   "new_score": 0.982,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 9,
+   "kaybolan": [
+    {
+     "deger": "8",
+     "adet": 1,
+     "eski_baglam": [
+      "sections, one wool and one of lining silk, 8 inches long by inches wide with open edge"
+     ]
+    }
+   ],
+   "eklenen": [
+    "22",
+    "4",
+    "6",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "r b. ] C.",
+     "yeni": "_ - => & = l= «= me PRO ene ee eee 22am = NN \\"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(b)",
+     "yeni": "(6)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(b)",
+     "yeni": "(6)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "4"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "*8,",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 120,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.982,
+   "new_score": 0.982,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 8,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 121,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.963,
+   "new_score": 0.964,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 14,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "1",
+    "1",
+    "2",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Pockets 107"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Pockets 107",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "c is",
+     "yeni": "¢ 1s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "po¬",
+     "yeni": "po- 2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "lA",
+     "yeni": "4"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b. Figure 66 e.",
+     "yeni": "emnem"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "lA",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 66"
+    }
+   ]
+  },
+  {
+   "sayfa": 122,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.978,
+   "new_score": 0.975,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 8,
+   "yeni_sayi": 9,
+   "kaybolan": [
+    {
+     "deger": "4",
+     "adet": 1,
+     "eski_baglam": [
+      "ons from lining silk 7 or 8 inches long and 4 inches wide, with seams allowed all around"
+     ]
+    }
+   ],
+   "eklenen": [
+    "0",
+    "414"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "h. Figure 66 (Continued)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b",
+     "yeni": "0"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "4xh",
+     "yeni": "414"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 66 (Continued)",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 123,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 0.983,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "21",
+    "67"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "a. = = — XX P< = 1] ‘ = ~ |x xx 21 b. d. Figure 67"
+    }
+   ]
+  },
+  {
+   "sayfa": 124,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.98,
+   "new_score": 0.988,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 2,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "4.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": "."
+    }
+   ]
+  },
+  {
+   "sayfa": 125,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.989,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [
+    "4",
+    "9"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "ANN 9 |<——— >"
+    }
+   ]
+  },
+  {
+   "sayfa": 126,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.97,
+   "new_score": 0.994,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 4,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "112 A Tailoring Manual r_3 l_-J J- Figure 69 (Continued) g. Revers"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "r_3 l_-J J-",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "g.",
+     "yeni": "( ) J: eS, Figure 69 (Continued)"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 69 (Continued)",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 127,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [
+    "70"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "1.",
+     "yeni": "113 ."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "4.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": "."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "113",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 70"
+    }
+   ]
+  },
+  {
+   "sayfa": 128,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.987,
+   "new_score": 0.982,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 11,
+   "yeni_sayi": 13,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "lVi",
+     "yeni": "1'4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1.",
+     "yeni": "t."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "2"
+    }
+   ]
+  },
+  {
+   "sayfa": 129,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.979,
+   "new_score": 0.987,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 4,
+   "yeni_sayi": 4,
+   "kaybolan": [
+    {
+     "deger": "71",
+     "adet": 1,
+     "eski_baglam": [
+      "Collar 115 Figure 71 draw a line to top button. Pad stitch the"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Collar 115 Figure 71",
+     "yeni": "k,l."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "line d, pad stitch a continuous line the en- tire length of the collar to the top buttonhole, k. Continue pad stitching "
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "making stitches at least 1 inch apart.",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 130,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 1,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "2."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "4.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "6.",
+     "yeni": "."
+    }
+   ]
+  },
+  {
+   "sayfa": 131,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.967,
+   "new_score": 0.972,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 1,
+   "yeni_sayi": 3,
+   "kaybolan": [],
+   "eklenen": [
+    "117",
+    "72"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Collarless Garments Figure 72. In all garments without collars an ease thread or stay stitching should be placed around "
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "117"
+    }
+   ]
+  },
+  {
+   "sayfa": 132,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.997,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 5,
+   "yeni_sayi": 6,
+   "kaybolan": [],
+   "eklenen": [
+    "2"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "V&-inch",
+     "yeni": "’2-inch"
+    }
+   ]
+  },
+  {
+   "sayfa": 133,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 0.976,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.98 < eski 1.00)",
+   "eski_sayi": 8,
+   "yeni_sayi": 8,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 134,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.956,
+   "new_score": 0.991,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 11,
+   "kaybolan": [],
+   "eklenen": [
+    "119",
+    "2",
+    "3",
+    "6",
+    "75"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "(b-3)",
+     "yeni": "(6-3)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "fin- > & A Tailoring Manual te LX ° 2%, ished hem and slightly longer than the cir- cumference of finished wrist edge. W"
+    }
+   ]
+  },
+  {
+   "sayfa": 135,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 6,
+   "kaybolan": [],
+   "eklenen": [
+    "4",
+    "42",
+    "77"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "121",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "121 ease the outer fabric section over the hymo, pin, baste, and stitch the three sec- tions together across each end an"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "two cuff edges together '4 inch, the width"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "| Figure 77."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "б.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "ease the outer fabric section over the hymo, pin, baste, and stitch the three sec¬ tions together across each end and al",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 77"
+    }
+   ]
+  },
+  {
+   "sayfa": 136,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "2"
+   ],
+   "degisimler": [
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "xh",
+     "yeni": "2"
+    }
+   ]
+  },
+  {
+   "sayfa": 137,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.991,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 13,
+   "yeni_sayi": 12,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 2,
+     "eski_baglam": [
+      "as in Fig. 35, pp. 70, 71. Figure 79. cl 1. On the jacket, the hem is finished to the",
+      "titch facing loosely to canvas, using Vi to 1 inch between stitches. 2. Catstitch over r"
+     ]
+    },
+    {
+     "deger": "6",
+     "adet": 1,
+     "eski_baglam": [
+      "er raw edge of facing to hem edge, using Vi 6- to Vi-inch stitch lengths. 3. Slip stitch"
+     ]
+    }
+   ],
+   "eklenen": [
+    "2",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi 6-",
+     "yeni": "“i6-"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1 Vi-inch",
+     "yeni": "1'4-inch"
+    }
+   ]
+  },
+  {
+   "sayfa": 138,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.995,
+   "new_score": 0.979,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 12,
+   "kaybolan": [
+    {
+     "deger": "6",
+     "adet": 1,
+     "eski_baglam": [
+      "to the garment, using stitches less than Vi 6 of an inch apart. If sunbak lining is used"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "2",
+    "7",
+    "79"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "c. HEMMING THE LONG COAT",
+     "yeni": "m. i o ve a ——_ —e awe ase a= = — qa. Hi ' ’ ° 1] € i|U ' f ( ae baaenieions pinbeiaie | ink te ee | __2 e@ @@ @ oo & ge"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "80. The hems of the long coat and lining are fin¬ ished separately. a. The long coat is hemmed entirely across the hem a",
+     "yeni": "79 Cc."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi 6",
+     "yeni": "Me"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "interlining.)",
+     "yeni": "interlining. ) HEMMING THE LONG COAT Figure 80. The hems of the long coat and lining are fin- ished separately. a. The l"
+    }
+   ]
+  },
+  {
+   "sayfa": 139,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.985,
+   "new_score": 0.971,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 7,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "3",
+    "505.05",
+    "525.254"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "125",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "125 Q. 2 Be L 3"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "4.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "y H _a~ aw em © am a em ao a ow ae a= ae on 505.05. oo =-_—e oe oe ee ee we we we oe em ow ow = eas = = OOK ate 525.254 "
+    }
+   ]
+  },
+  {
+   "sayfa": 140,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 6,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "ere should be ample shoulder seam, at least 3A inch, at both front and back of the linin"
+     ]
+    }
+   ],
+   "eklenen": [
+    "1"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "3A",
+     "yeni": "%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    }
+   ]
+  },
+  {
+   "sayfa": 141,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 12,
+   "kaybolan": [],
+   "eklenen": [
+    "4",
+    "4",
+    "9"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "127",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "127"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "c.",
+     "yeni": "4 an! 9 Cc."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 82"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 82",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 142,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 11,
+   "yeni_sayi": 10,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 1,
+     "eski_baglam": [
+      "width down center back which is basted in a 1 Vi-inch pleat) needs adjust¬ ment, it may"
+     ]
+    },
+    {
+     "deger": "6",
+     "adet": 1,
+     "eski_baglam": [
+      "d into position, using stitches less than H 6 of an inch apart. LINING THE SLEEVE Figur"
+     ]
+    }
+   ],
+   "eklenen": [
+    "12"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "1."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "4.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1 Vi-inch",
+     "yeni": "1'4-inch"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5.",
+     "yeni": "."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "d. 1.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": "."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "3.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1V4",
+     "yeni": "12"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "H 6",
+     "yeni": "Xe"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "2.",
+     "yeni": "."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "out b. 1.",
+     "yeni": "out. ."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "2.",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 143,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.992,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 6,
+   "yeni_sayi": 9,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "4",
+    "83"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 83"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(lVi-inch-pleat)",
+     "yeni": "(1'4-inch-pleat)"
+    }
+   ]
+  },
+  {
+   "sayfa": 144,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.961,
+   "chosen": "eski",
+   "reason": "yeni katman daha kötü (skor 0.96 < eski 0.99)",
+   "eski_sayi": 18,
+   "yeni_sayi": 18,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 145,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.983,
+   "new_score": 0.987,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 9,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "131",
+    "133",
+    "4",
+    "85",
+    "87"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Lining the Garment 131 Fasten the two hem edges together at the seams, and between seams if circumference of garment is "
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "hem to the lining so that the stitches do not show from the right side of the lining. In the short jacket the hem at jac"
+    }
+   ]
+  },
+  {
+   "sayfa": 146,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.995,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 10,
+   "kaybolan": [],
+   "eklenen": [
+    "86"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "132"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "132",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Figure 86"
+    }
+   ]
+  },
+  {
+   "sayfa": 147,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.993,
+   "new_score": 0.993,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 4,
+   "kaybolan": [],
+   "eklenen": [
+    "8"
+   ],
+   "degisimler": [
+    {
+     "sinif": "tasindi",
+     "eski": "133",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "133"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "A 8"
+    }
+   ]
+  },
+  {
+   "sayfa": 148,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.996,
+   "new_score": 0.988,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 3,
+   "yeni_sayi": 5,
+   "kaybolan": [
+    {
+     "deger": "4",
+     "adet": 1,
+     "eski_baglam": [
+      "tch¬ ing, one of three methods may be used (4 cy /). Matching buttonhole twist is used."
+     ]
+    }
+   ],
+   "eklenen": [
+    "1",
+    "1",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "134"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "by",
+     "yeni": "6,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "(4 cy /).",
+     "yeni": "(d ¢, {)."
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "duzeltme",
+     "eski": "is",
+     "yeni": "1s"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "134",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 149,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 150,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.996,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 10,
+   "yeni_sayi": 12,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "6"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "\\lh",
+     "yeni": "1%"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi6",
+     "yeni": "‘6"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "garment",
+     "yeni": "garment. 136"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "136",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 151,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.995,
+   "new_score": 0.995,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 11,
+   "yeni_sayi": 10,
+   "kaybolan": [
+    {
+     "deger": "90",
+     "adet": 1,
+     "eski_baglam": [
+      "Slacks Figure 90. Making a pair of slacks is not very diff"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "b. Measurement of the figure with minimum allowance for ease. 1. 2. 3. 4. 5. 6. Waistline: snug enough to stay in place."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "be raised above the normal waist line, but this added height must not be counted in the crotch measurement. Figure 90 b.",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 152,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.997,
+   "new_score": 0.983,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 12,
+   "yeni_sayi": 10,
+   "kaybolan": [
+    {
+     "deger": "1",
+     "adet": 2,
+     "eski_baglam": [
+      "ion opposite the crotch. Check measurements 1-6 against figure measurements, and plan bo",
+      "fold in a tuck at the same positions as in 1 and 2, removing from the pattern the exces"
+     ]
+    },
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "seam and hem allowance.) 1. Waistline. 2. 3-inch hip. 3. 6-inch hip. 4. Widest hip."
+     ]
+    }
+   ],
+   "eklenen": [
+    "3.4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "3, 4.",
+     "yeni": "3,4."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "1",
+     "yeni": "|"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "-1 ■",
+     "yeni": "-|l ! C Cc."
+    }
+   ]
+  },
+  {
+   "sayfa": 153,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.997,
+   "new_score": 0.983,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 9,
+   "yeni_sayi": 9,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "ening where the zipper will be placed, mark 3 inches out from stitching edge for facing"
+     ]
+    },
+    {
+     "deger": "2",
+     "adet": 1,
+     "eski_baglam": [
+      "gth indicated on pattern, or front pleats 3V2 inches down if pleats appear at side front"
+     ]
+    }
+   ],
+   "eklenen": [
+    "32",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "'4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "3V2",
+     "yeni": "32"
+    }
+   ]
+  },
+  {
+   "sayfa": 154,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.998,
+   "new_score": 0.998,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 14,
+   "yeni_sayi": 10,
+   "kaybolan": [
+    {
+     "deger": "3",
+     "adet": 1,
+     "eski_baglam": [
+      "ent ready to set in the pocket and zipper. 3 4 9- Figure 90 (Continued)"
+     ]
+    },
+    {
+     "deger": "4",
+     "adet": 1,
+     "eski_baglam": [
+      "t ready to set in the pocket and zipper. 3 4 9- Figure 90 (Continued)"
+     ]
+    },
+    {
+     "deger": "9",
+     "adet": 1,
+     "eski_baglam": [
+      "eady to set in the pocket and zipper. 3 4 9- Figure 90 (Continued)"
+     ]
+    },
+    {
+     "deger": "90",
+     "adet": 1,
+     "eski_baglam": [
+      "in the pocket and zipper. 3 4 9- Figure 90 (Continued)"
+     ]
+    }
+   ],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "3 4 9- Figure 90 (Continued)",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 155,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.994,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 10,
+   "yeni_sayi": 24,
+   "kaybolan": [],
+   "eklenen": [
+    "1",
+    "10",
+    "100",
+    "101",
+    "12",
+    "13",
+    "141",
+    "2",
+    "5",
+    "5",
+    "6",
+    "61",
+    "91",
+    "91"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "Slacks POCKETS Slacks may have pockets on both sides in seam and placket, or in the right side seam only, or pockets may"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "2.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "> a bed » A wn 141 \\ 1/ Ls Pocket enlarged Figure 91 (a) Match the pocket bag to the stitching line of side seams of the"
+    }
+   ]
+  },
+  {
+   "sayfa": 156,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.994,
+   "new_score": 0.997,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 17,
+   "yeni_sayi": 18,
+   "kaybolan": [
+    {
+     "deger": "684",
+     "adet": 1,
+     "eski_baglam": [
+      "h the pocket to prevent ripping. (See Fig. 684 p. HO.) Sew the upper width of the pocke"
+     ]
+    }
+   ],
+   "eklenen": [
+    "110",
+    "68"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "joe ee = = = = wm Figure 91 (a) (Continued)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "684",
+     "yeni": "68d,"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "HO.)",
+     "yeni": "110.)"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "Figure 91 (a) (Continued)",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 157,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 158,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 0.989,
+   "new_score": 0.99,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 13,
+   "yeni_sayi": 16,
+   "kaybolan": [],
+   "eklenen": [
+    "2",
+    "4",
+    "4"
+   ],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "1.",
+     "yeni": "l."
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "2.",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "3.",
+     "yeni": ""
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "4.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "5.",
+     "yeni": ""
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "b.",
+     "yeni": "6."
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "4"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "Vi",
+     "yeni": "2"
+    },
+    {
+     "sinif": "inceleme",
+     "eski": "V4",
+     "yeni": "4"
+    }
+   ]
+  },
+  {
+   "sayfa": 159,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.75,
+   "new_score": 0.75,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.75 < 0.85)",
+   "eski_sayi": 2,
+   "yeni_sayi": 2,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 160,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 161,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.75,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.75 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 162,
+   "kind": "taranmis",
+   "lang": "eng",
+   "old_score": 1.0,
+   "new_score": 1.0,
+   "chosen": "yeni",
+   "reason": "",
+   "eski_sayi": 2,
+   "yeni_sayi": 2,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": [
+    {
+     "sinif": "inceleme",
+     "eski": "",
+     "yeni": "148"
+    },
+    {
+     "sinif": "tasindi",
+     "eski": "148",
+     "yeni": ""
+    }
+   ]
+  },
+  {
+   "sayfa": 163,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  },
+  {
+   "sayfa": 164,
+   "kind": "yok",
+   "lang": "eng",
+   "old_score": 0.0,
+   "new_score": 0.0,
+   "chosen": "goruntu",
+   "reason": "OCR metni anlamsız dizi (skor 0.00 < 0.85)",
+   "eski_sayi": 0,
+   "yeni_sayi": 0,
+   "kaybolan": [],
+   "eklenen": [],
+   "degisimler": []
+  }
+ ]
+}

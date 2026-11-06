@@ -20,7 +20,7 @@ if __name__ == "__main__":
         log.info("== %s: %d öğe, %.0f sn, başarısız sayfa: %s", meta.doc_id, res["n_elements"],
                  res["seconds"], res["failed_pages"] or "yok")
         # Kapsam raporu: sayfa başına metin katmanı (docs/PLAN-OCR.md §2). OCR bugün yapılmıyor: "yok" sayfalar aranamaz.
-        tl = summary(check_pdf(meta.path))
+        tl = summary(check_pdf(meta.source_path))
         log.info("   metin katmanı: %d dijital, %d taranmış+OCR katmanı, %d zayıf, %d yok", tl["metin"], tl["taranmis"],
                  tl["zayif"], tl["yok"])
         if tl["yok"]:

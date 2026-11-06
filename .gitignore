@@ -28,3 +28,5 @@ Pilot/data/scale/
 
 # OCR karşılaştırması: ara PDF çıktıları (bench/ocr_karsilastir.py; yeniden üretilir)
 Pilot/data/ocr_test/
+# OCR çıktısı (pilot/ocr.py üretir; kaynaktan yeniden üretilebilir)
+test-dokumanlari/ocr/

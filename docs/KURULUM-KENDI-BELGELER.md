@@ -77,9 +77,11 @@ API planı: [plan_cevap_modeli_2026-11-06_api.md](../Pilot/eval/bench/adim2/plan
 - [ ] **Tesseract OCR** (5.x) ve **Türkçe dil verisi** (`tur.traineddata`, `eng` ile birlikte).
   - Windows: UB Mannheim kurulumu (`winget install UB-Mannheim.TesseractOCR`), kurulumda Turkish seçilir. Linux: `apt install tesseract-ocr tesseract-ocr-tur`.
   - Kontrol: `tesseract --list-langs` içinde `tur` ve `eng`.
+  - **`osd.traineddata`** (sayfa yönü tespiti; OCRmyPDF `--rotate-pages`: ters ya da yan taranmış sayfalar). UB Mannheim kurulumunda gelir.
+  - Kayıtta başka dil (ör. Bosch'ta `fr`, `es`) olan **taranmış** belge varsa o dilin verisi de (`fra`, `spa`, `deu` ...). Eksikse yükleme açık hatayla durur (`pilot/ocr.py`). Dil sayfa başına tektir; `tur+eng` birlikte verilmez (Türkçe harfleri bozuyor, PLAN-OCR §9).
 - [ ] **Ghostscript: isteğe bağlı** (2026-11-06). OCRmyPDF 17, `--rasterizer pypdfium --output-type pdf` ile Ghostscript'siz çalışır (sayfa görüntüsü pypdfium2 ile, PDF/A çıktısı yok, gerekmiyor). Bu makinede kurulmadı: yönetici izni gerekiyordu. Kurulursa yalnız PDF/A için.
   - Windows: `winget install ArtifexSoftware.GhostScript`. Linux: `apt install ghostscript`.
-- [ ] **OCRmyPDF** (Python paketi, uygulama ortamına): `pip install ocrmypdf` (17.x). Kontrol: `ocrmypdf --version`. Çağrı: `ocrmypdf -l tur+eng --skip-text --rasterizer pypdfium --output-type pdf giris.pdf cikis.pdf` (bozuk katmanlı belgede `--redo-ocr`).
+- [ ] **OCRmyPDF** (Python paketi, uygulama ortamına): `pip install ocrmypdf` (17.x). Kontrol: `ocrmypdf --version`. Çağrıyı uygulama yapar (`pilot/ocr.py`): sayfa sınıfına göre `--skip-text` / `--redo-ocr` / `--force-ocr`, sayfa başına tek dil (`-l tur` ya da `-l eng`), `--pages`, `--rotate-pages`, `--rasterizer pypdfium --output-type pdf`. OCR'lı PDF `test-dokumanlari/ocr/<doc_id>.pdf`, sayfa kararları `<doc_id>.json`. Kapatmak: `PILOT_OCR=0`; Tesseract başka yerdeyse `PILOT_TESSERACT_DIR`.
 - [ ] Tesseract yönetici izni olmadan kullanıcı klasörüne kurulabilir (`winget install UB-Mannheim.TesseractOCR`; `%LOCALAPPDATA%\Programs\Tesseract-OCR`). Türkçe dil verisi elle: `tur.traineddata` → `tessdata` klasörü (tesseract-ocr/tessdata deposu).
 - [ ] **Lisans notu:**
   - Ghostscript **AGPL-3.0**. Şirket içi kullanımda (ağ üzerinden dışarıya hizmet verilmeden, değiştirilmeden) AGPL'in kaynak kodu paylaşma yükümlülüğü doğmaz. Hizmet dışarıya açılırsa ya da Ghostscript değiştirilirse hukuk görüşü gerekir. Ticari lisans seçeneği Artifex'ten alınabilir.
