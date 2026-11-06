@@ -827,3 +827,15 @@ Bu bölüm §21, §25, §27 ve §28'in yerine geçer. Dayanaklar:
 - C009 çeviri hatası ("baskı" → "print"); J12 arama kaçağı.
 - Q05 ve G7 gereksiz netleştirme izlemesi.
 - c150b-O ertelendi.
+
+## 30. Bağlama yapıldı (2026-11-06)
+
+§29 değişikliklerle onaylandı ve bağlandı. Her adım ayrı commit, testli (455 test):
+- A `33d211f`: şema C `pilot/schema_c.py`'ye taşındı. Plandaki `prompts.py` / `verify.py` yerine tek modül; `bench/schema_c.py` aynı modülü gösterir.
+- B `5210909`: yapılandırma ve `cloud.AnswerClient`: yedek, 2,5 sn ilk token, bekçi 40, servis yok.
+- C `8de41ae`: pipeline c kipi (ikili yol, 8 kaynak, `tur` dalları, öğe başına doğrulama).
+- D `bf328a5`: arayüz (öğe listesi, [n] etiketleri, servis yok, sağlayıcı).
+- E `8aa8e6c`, `7360376`: duman testi aracı ve sonuçları. Kapıların hepsi geçti: p50 2,53 / p95 3,32 sn, doğrulanmış görünen yanlış 0, DeepInfra, yedeğe geçiş 3/3. Arayüzde 5 senaryo istisnasız.
+- F `7e55005`: varsayılan c kipi. `bugun` yalnız elle açılan geri alma anahtarı (bir sürüm). Bench araçları kendi model kancalarıyla `bugun` kipinde.
+- G `10310f5`: MIMARI.md ve PRD.
+- Harcama: duman testinden önce ~1,81, sonra ~1,82 USD (3,0 sınırı).
