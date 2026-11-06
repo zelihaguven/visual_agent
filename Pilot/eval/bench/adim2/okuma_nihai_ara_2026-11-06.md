@@ -440,3 +440,44 @@ Etkilenen sorular: 28 netleştirme sorusu, kayıtlarda kural çıkışı olanlar
 7. `bugun` kipinin silinmesi (Adım 3'ün ilk servis sürümüyle).
 8. c150b-O.
 9. **(Düşük öncelik)** Çok kelimeli ürün adlarında küçük yazım toleransı ("makinası" ~ "makinesi"). Yalnız adın bütün kelimeleri eşleşirse; tek kelimelik eşleşme yok (karar 2026-11-06). A150 türü.
+
+## 16. Ses ölçümü, gri akış ölçümü, metin katmanı kontrolü (2026-11-06 öğleden sonra)
+
+**Ses (c150b-JS, `sesli_metin` yok; tam set, yeni hat, 8 kaynak; 0,061 USD).**
+- Bu koşu, listelerin silinmesinden ve K7'nin kapatılmasından **sonra** yeni kodla yapıldı. Taban (c150b-J) eski kurallarla ölçülmüştü; tüm sette iki etki karışıyor.
+- Sesli metnin kendi etkisi, iki koşuda da kural çıkışı olmayan ve kaynak belgeleri aynı 151 cevaplı soruda:
+
+| | ✓ / ⚠ / ✖ | yanlış ret | beklenen değer |
+|---|---|---|---|
+| sesli_metin var | 120 / 1 / 18 | 9 | 93/100 |
+| **sesli_metin yok** | 124 / 2 / 16 | 6 | 96/103 |
+
+- **Kalite bozulmuyor.** Yalnız sesli metin yüzünden ✖ olan 2 soru (Q04, Q24) ✓ oldu. Çıktı tokeni p50 180 → 137 (%−24).
+- Süreler bu koşuda daha kötü (ilk doğrulanmış cümle p95 3,63 → 5,08 sn). Koşu öğleden sonra yapıldı; `sesli_metin` JSON'un son alanı olduğu için ilk doğrulanmış cümleyi etkileyemez. Ağ yüküne bağlanıyor; aynı saatte yan yana ölçülmedi.
+- **B012** bu koşuda yine doğrulanmış görünen yanlış oldu. Varyanttan bağımsız, koşudan koşuya çıkan risk; §23 adım 2 (istem kuralı) önem kazanıyor.
+- Öneri: `sesli_metin` şemadan çıkarılsın (c150b-JS çalışma biçimi olur). Karar kullanıcıda.
+
+**Gri akış C, uygulama yolu (25 soru, c150b-J; 0,007 USD).** Rapor: [gri_akis_2026-11-06.md](gri_akis_2026-11-06.md).
+
+| Ölçü | Değer |
+|---|---|
+| İlk görünen kelime p50 / p95 | **1,91 / 2,48 sn** |
+| İlk doğrulanmış cümle p50 / p95 | **2,18 / 3,37 sn** (14/17 ≤ 3 sn) |
+| ✖ kartı | 1 öğe (A086) |
+| Cevap tamamlanamadı / sıfırlama | 0 / 0 |
+| Akışta sızan rakam | **0** |
+| Sağlayıcı | DeepInfra 25/25 |
+
+**Metin katmanı kontrolü** (`pilot/text_layer.py`, ayrıştırma günlüğüne bağlı, testli). Test belgelerinde:
+
+| Belge | dijital | taranmış + OCR katmanı | zayıf (yeniden OCR) | metin yok |
+|---|---|---|---|---|
+| Ceket (GL-PD-14-04A) | 54 | 2 | 0 | 0 |
+| **Pantolon (GL-PD-07-14A)** | 0 | **48** | 0 | 0 |
+| S-7300A / B | 107 / 116 | 1 / 0 | 0 | 0 / 1 |
+| **Strickland** | 0 | **136** | 0 | **28** |
+| **Granovsky** | 0 | 0 | **269** (harf aralıklı) | 2 |
+| JUKI / Mr. Coffee / Bosch | 49 / 21 / 95 | 0 / 1 / 0 | 1 / 0 / 1 | 0 |
+
+- Kalibrasyonla çıkan sonuç: harf/rakam karışıklığı teknik belgede bozulma işareti değil ("LSd-1", "3/16-inch", "230psi"). Bu sinyal çıkarıldı.
+- Bilinen sayısal OCR hataları ("112", "IS", "3116") metinden anlaşılamaz. Bu yüzden "taranmış + OCR katmanı" ayrı sınıf ve yeniden OCR karşılaştırmasına aday.

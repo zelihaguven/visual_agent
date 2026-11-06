@@ -71,3 +71,16 @@ API planı: [plan_cevap_modeli_2026-11-06_api.md](../Pilot/eval/bench/adim2/plan
 - [ ] Kimlik: istemci akışı `fetch` + `ReadableStream` ile `Authorization` başlığıyla okuyor (`EventSource` başlık göndermez).
 - [ ] `OPENROUTER_API_KEY` yalnız sunucu ortamında. Anahtarda OpenRouter harcama sınırı tanımlı. Uygulamanın günlük maliyet bekçisi ve kullanıcı başına hız sınırı açık.
 - [ ] Denetim kaydı yerelde, şifreli diskte. Okuma yetkisi ve saklama süresi kararı uygulanmış (A8).
+
+## 8. OCR araçları (taranmış belgeler; docs/PLAN-OCR.md)
+
+- [ ] **Tesseract OCR** (5.x) ve **Türkçe dil verisi** (`tur.traineddata`, `eng` ile birlikte).
+  - Windows: UB Mannheim kurulumu (`winget install UB-Mannheim.TesseractOCR`), kurulumda Turkish seçilir. Linux: `apt install tesseract-ocr tesseract-ocr-tur`.
+  - Kontrol: `tesseract --list-langs` içinde `tur` ve `eng`.
+- [ ] **Ghostscript** (PDF işleme; OCRmyPDF gerektirir).
+  - Windows: `winget install ArtifexSoftware.GhostScript`. Linux: `apt install ghostscript`.
+- [ ] **OCRmyPDF** (Python paketi, uygulama ortamına): `pip install ocrmypdf`. Kontrol: `ocrmypdf --version`.
+- [ ] **Lisans notu:**
+  - Ghostscript **AGPL-3.0**. Şirket içi kullanımda (ağ üzerinden dışarıya hizmet verilmeden, değiştirilmeden) AGPL'in kaynak kodu paylaşma yükümlülüğü doğmaz. Hizmet dışarıya açılırsa ya da Ghostscript değiştirilirse hukuk görüşü gerekir. Ticari lisans seçeneği Artifex'ten alınabilir.
+  - Tesseract Apache-2.0, OCRmyPDF MPL-2.0.
+- [ ] Ayrıştırma günlüğünde metin katmanı raporu (`run_parse.py`): "yok" ve "zayıf" sayfalar uyarı olarak çıkar; "taranmış" sayfalar bilgi.

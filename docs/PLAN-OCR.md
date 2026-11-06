@@ -120,3 +120,30 @@ Süreler yaklaşık (yayımlanmış ölçümler ve benzer donanım); karar §5't
 - Görsel modelle (yerel, GPU) ikinci okuma: sayısal değer içeren tablo hücreleri ve satırlar.
 - **"İki okuma uyuşursa kabul."** Uyuşmazsa değer doğrulanmış gösterilmez (sıfır tolerans), parça "OCR değeri belirsiz" diye işaretlenir.
 - Ölçüm Set A, B ve D ile; GPU belleği ve süre §4'teki gibi.
+
+## 8. Karar (2026-11-06, ikinci): GPU gerektirmeyen yol; OCRmyPDF birincil aday
+
+(b) aşaması (görsel model) yalnız planda kalıyor.
+
+**Adaylar (CPU):**
+1. **OCRmyPDF** (birincil aday): `ocrmypdf -l tur+eng --skip-text` (metin katmanı olan sayfaları atlar). Bozuk katmanlı belgelerde `--redo-ocr` (eski OCR katmanını atıp yeniden okur, dijital metne dokunmaz). Çıktı aranabilir PDF: bugünkü ayrıştırma hattı (Docling, OCR kapalı) olduğu gibi okur; kutular ve sayfa vurgusu aynı yoldan gelir. Tesseract + Ghostscript kullanır.
+2. **Docling + Tesseract arka ucu:** OCR ayrıştırma sırasında, sayfa bazında.
+
+**Ön koşul:** bu makinede Tesseract, Ghostscript ve OCRmyPDF kurulu değil (Docling ve RapidOCR var). Kurulum kullanıcı onayıyla (kurulum listesi §8).
+
+**Karşılaştırma testleri:**
+
+| # | Test | Nasıl | Ölçü |
+|---|---|---|---|
+| i | Bilinen OCR hataları | Pantolon şartnamesinin (taranmış, 48/48 sayfa OCR katmanlı) hatalı sayfaları: "112 inch" = ½, "IS min" = 15, "7-114" = 7-1/4, "3116" = 3/16 (parçalarda 30 yerde) | Yeniden OCR'da değer doğru mu (değer düzeyinde, `verify.numbers_in` ile) |
+| ii | Metin katmanı silinmiş sentetik sayfalar | Ceket (dijital) ve pantolondan 8–10 tablo/ölçü sayfası 300 dpi görüntüye çevrilir; bozulma: eğiklik ±2°, bulanıklık, JPEG, gri ton | Doğru cevap orijinal katman: sayısal değer doğruluğu, karakter hata oranı |
+| iii | Tablo satırları ve Türkçe karakter | (ii)'nin tablo sayfalarında Docling tablo satırı sayısı (orijinal ile OCR'lı); Türkçe metin içeren sentetik sayfa (ç ğ ı ö ş ü İ) | Satır kurtarma oranı; Türkçe karakter doğruluğu |
+| iv | Sayfa başına süre (CPU) | (i)–(iii) sayfalarında | sn/sayfa; 1.000 sayfa tahmini |
+| v | Sayfa vurgusu kutuları | (ii)'de OCR'lı sayfanın Docling kutuları ile orijinal kutuların örtüşmesi (IoU) | Vurgunun yerinde kalması |
+
+**Ölçüt:**
+- değer düzeyinde doğruluk ((i), (ii));
+- **16 OCR etiketli soruda cevapsız kalma oranı** (pantolon 11, Granovsky 5, ceket 2). Yeniden OCR'lı belgeler geçici koleksiyona indekslenir. Kayıttaki ikili yol aramasıyla (kayıtlı BM25 metni) karşılaştırılır: beklenen sayfa ilk 8'de mi, beklenen değer parçada birebir mi.
+- Model çağrısı yalnız gerekirse: 16 soru × 2 aday ≈ 32 çağrı, **~0,01 USD** (sorulacak).
+
+**Sonuç:** kazanan gerekçesiyle önerilir; entegrasyondan önce kullanıcıya sorulur.

@@ -5,6 +5,7 @@ import warnings
 
 from pilot.parse import load_or_parse
 from pilot.registry import DOCS
+from pilot.text_layer import check_pdf, summary
 
 warnings.filterwarnings("ignore")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
@@ -18,3 +19,13 @@ if __name__ == "__main__":
         res = load_or_parse(meta)
         log.info("== %s: %d öğe, %.0f sn, başarısız sayfa: %s", meta.doc_id, res["n_elements"],
                  res["seconds"], res["failed_pages"] or "yok")
+        # Kapsam raporu: sayfa başına metin katmanı (docs/PLAN-OCR.md §2). OCR bugün yapılmıyor: "yok" sayfalar aranamaz.
+        tl = summary(check_pdf(meta.path))
+        log.info("   metin katmanı: %d dijital, %d taranmış+OCR katmanı, %d zayıf, %d yok", tl["metin"], tl["taranmis"],
+                 tl["zayif"], tl["yok"])
+        if tl["yok"]:
+            log.warning("   UYARI: %d sayfada metin katmanı yok, aranamaz (OCR gerekli): %s", tl["yok"], tl["ocr_gerekli"][:20])
+        if tl["zayif"]:
+            log.warning("   UYARI: %d sayfada metin katmanı bozuk (yeniden OCR): %s", tl["zayif"], tl["yeniden_ocr_adayi"][:20])
+        if tl["taranmis"]:
+            log.info("   bilgi: %d taranmış sayfanın OCR katmanı kullanılıyor; sayısal hatalar metinden anlaşılmaz", tl["taranmis"])
