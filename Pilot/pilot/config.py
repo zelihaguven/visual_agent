@@ -95,6 +95,25 @@ LLM_NUM_CTX = 4096
 LLM_NUM_PREDICT = 700
 TOP_K_SOURCES = 5             # LLM'e verilen kaynak sayısı
 MIN_RERANK_SCORE: float | None = None   # None: eşik kapalı. Test setiyle kalibre edilecek
+
+# Cevap hattı (Adım 2 planı §29, karar 2026-11-06). PILOT_ANSWER_MODE:
+#   c     bulut: ikili yol araması (çevirili BM25) + Gemma 4, şema c150b-J, öğe başına doğrulama
+#   bugun yerel Ollama (LLM_MODEL) + bugünkü şema ve doğrulama. YALNIZ ELLE açılan geri alma anahtarı; bir sürüm
+#         tutulup silinecek. Bulut erişilemezse yerel modele otomatik düşüş YOK: kullanıcıya "servis kullanılamıyor".
+ANSWER_MODE = os.environ.get("PILOT_ANSWER_MODE", "bugun")
+ANSWER_MODEL = "google/gemma-4-26b-a4b-it"
+ANSWER_SCHEMA_VARIANT = "c150bJ"
+# Birincil sağlayıcı ve yedekler, sırayla (ZDR). Yedeğe yalnız kesintide geçilir: HTTP hatası/429, ilk token
+# ANSWER_FIRST_TOKEN_S içinde gelmezse ya da akış bekçisi tetiklenirse (sıradakine bir kez). Sağlayıcı her cevapta kayıtlı.
+ANSWER_PROVIDERS: tuple[str, ...] = tuple(os.environ.get("PILOT_ANSWER_PROVIDERS", "deepinfra,venice,parasail").split(","))
+ANSWER_MAX_TOKENS = 1200
+ANSWER_TOP_K = 8               # c kipinde modele verilen kaynak sayısı (TOP_K_SOURCES bugun kipinde)
+ANSWER_FIRST_TOKEN_S = 2.5
+STREAM_GUARD_N = 40            # akışta art arda bu kadardan fazla boşluk: kaçak, akış kesilir
+# BM25 sorgu çevirisi (ikili yol): dense özgün soruyla, BM25 çevrilmiş sorguyla. Süre sınırını aşarsa BM25 çevirisiz.
+TRANSLATE_MODEL = "google/gemma-4-26b-a4b-it"
+TRANSLATE_PROVIDERS: tuple[str, ...] = ("nextbit", "venice")
+TRANSLATE_LIMIT_S = 1.2
 # Arama sonrası netleştirme yöntemi: top3 (varsayılan: ilk 3 sonucun dokümanları) | doc_score (ilk FUSED_K adayın RRF
 # skorları dokümana göre toplanır; birbirinin yerine geçebilen en iyi iki dokümanın oranı ≥ CLARIFY_DOC_RATIO ise sorulur).
 # Oran onaylı soru setiyle seçilecek (bench/clarify_guard.py); şimdilik yalnız seçenek.

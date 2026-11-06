@@ -198,12 +198,16 @@ class CloudEmbedder:
 
 class CloudChat:
     """OpenRouter sohbet istemcisi (ör. sorgu çevirisi). ZDR zorunlu (require_zdr + openrouter_body).
-    stats: istek, token, maliyet (API'nin usage alanı), ağ süresi; last_network_s: son çağrının süresi."""
+    stats: istek, token, maliyet (API'nin usage alanı), ağ süresi; last_network_s: son çağrının süresi.
+    providers: verilirse yalnız bunlar, bu sırayla (only + order; OpenRouter sıradakine kendisi geçer).
+    reasoning: modelin düşünme ayarı (Gemma 4: {"enabled": False})."""
 
-    def __init__(self, model: str, timeout: float = 60.0) -> None:
+    def __init__(self, model: str, timeout: float = 60.0, providers: tuple[str, ...] | None = None,
+                 reasoning: dict[str, Any] | None = None) -> None:
         import requests
         require_zdr(model)
         self.model, self.timeout = model, timeout
+        self.providers, self.reasoning = providers, reasoning
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bearer {api_key()}", "Content-Type": "application/json"})
         self.stats = {"requests": 0, "prompt_tokens": 0, "completion_tokens": 0, "cost_usd": 0.0, "network_s": 0.0,
@@ -217,6 +221,10 @@ class CloudChat:
                                 "temperature": temperature, "usage": {"include": True}}
         if json_mode:
             body["response_format"] = {"type": "json_object"}
+        if self.providers:
+            body["provider"] = {"order": list(self.providers), "only": list(self.providers), "allow_fallbacks": True}
+        if self.reasoning:
+            body["reasoning"] = self.reasoning
         t = time.perf_counter()
         r, attempts = post_with_retry(self.session, f"{OPENROUTER_URL}/chat/completions", openrouter_body(body),
                                       self.timeout)
@@ -232,3 +240,107 @@ class CloudChat:
         self.stats["completion_tokens"] += int(usage.get("completion_tokens") or 0)
         self.stats["cost_usd"] += float(usage.get("cost") or 0.0)
         return data["choices"][0]["message"]["content"] or ""
+
+
+# ---------- cevap modeli (akışlı, şema zorunlu; Adım 2 planı §29) ----------
+
+class ServiceUnavailable(RuntimeError):
+    """Cevap servisine (bütün sağlayıcılar) ulaşılamadı. Yerel modele otomatik düşüş yok (karar 2026-11-06)."""
+
+
+def sse_events(response: Any):
+    """OpenRouter akışının olayları. Satırlar bayt olarak okunup UTF-8 çözülür: yanıtta charset yok, requests'in
+    decode_unicode'u Latin-1 varsayıyor ("±" ve Türkçe harfler bozuluyordu; Adım 2, 2026-11-05)."""
+    import json
+    for raw in response.iter_lines():
+        line = raw.decode("utf-8") if raw else ""
+        if line.startswith("data: ") and line != "data: [DONE]":
+            yield json.loads(line[6:])
+
+
+class AnswerClient:
+    """Cevap modeli istemcisi. Her istek tek sağlayıcıya sabit (allow_fallbacks: false); yedeğe geçişi bu sınıf yapar:
+    HTTP hatası / 429 / bağlantı hatası, ilk token first_token_s içinde gelmezse ya da akış bekçisi (art arda guard_n'den
+    fazla boşluk: kaçak) tetiklenirse sıradaki sağlayıcı. Her sağlayıcı en fazla bir kez denenir. Hepsi başarısızsa
+    ServiceUnavailable (kaçakla biten son deneme hata değil, kesik JSON olarak döner). Kayıt: sağlayıcı, denemeler,
+    ilk token, akış zaman çizelgesi ([sn, karakter]), usage (maliyet)."""
+
+    def __init__(self, model: str, providers: tuple[str, ...], schema: dict[str, Any], max_tokens: int,
+                 first_token_s: float, guard_n: int, session: Any = None,
+                 index: Callable[[], dict[str, dict[str, frozenset[str]]]] = zdr_index) -> None:
+        require_zdr(model, index)
+        strict = index()[model]["strict"]
+        self.providers = [p for p in providers if p in strict]
+        if not self.providers:
+            raise ServiceUnavailable(f"{model}: yapılandırılan sağlayıcıların hiçbiri ZDR değil ({list(providers)})")
+        self.model, self.schema, self.max_tokens = model, schema, max_tokens
+        self.first_token_s, self.guard_n = first_token_s, guard_n
+        if session is None:
+            import requests
+            session = requests.Session()
+            session.headers.update({"Authorization": f"Bearer {api_key()}", "Content-Type": "application/json"})
+        self.session = session
+
+    def body(self, messages: list[dict[str, str]], provider: str) -> dict[str, Any]:
+        return openrouter_body({
+            "model": self.model, "messages": messages, "temperature": 0, "max_tokens": self.max_tokens, "stream": True,
+            "usage": {"include": True}, "reasoning": {"enabled": False},
+            "response_format": {"type": "json_schema", "json_schema": {"name": "cevap", "strict": False,
+                                                                       "schema": self.schema}},
+            "provider": {"order": [provider], "allow_fallbacks": False}})
+
+    def _one(self, messages: list[dict[str, str]], provider: str) -> dict[str, Any]:
+        import json
+        import time
+        rec: dict[str, Any] = {"provider": provider, "content": "", "zaman": [], "err": "", "kacak": False}
+        t0 = time.perf_counter()
+        run = 0
+        try:
+            with self.session.post(f"{OPENROUTER_URL}/chat/completions", json=self.body(messages, provider),
+                                   stream=True, timeout=(10, self.first_token_s)) as r:
+                if r.status_code != 200:
+                    rec["err"] = f"{r.status_code}: {r.text[:200]}"
+                    return rec
+                for d in sse_events(r):
+                    if d.get("error"):
+                        rec["err"] = f"akış hatası: {json.dumps(d['error'])[:200]}"
+                        break
+                    if d.get("usage"):
+                        rec["usage"] = d["usage"]
+                    ch = (d.get("choices") or [{}])[0]
+                    piece = (ch.get("delta") or {}).get("content") or ""
+                    now = time.perf_counter() - t0
+                    if not rec["content"] and not piece and now > self.first_token_s:
+                        rec["err"] = f"ilk token {self.first_token_s} sn içinde gelmedi"
+                        break
+                    if piece:
+                        if not rec["content"]:
+                            rec["first_token"] = now
+                        rec["content"] += piece
+                        rec["zaman"].append([round(now, 3), len(rec["content"])])
+                        for c in piece:
+                            run = run + 1 if c.isspace() else 0
+                        if run > self.guard_n:
+                            rec["kacak"] = True
+                            break
+                    if ch.get("finish_reason"):
+                        rec["finish"] = ch["finish_reason"]
+        except Exception as e:  # noqa: BLE001 — bağlantı, zaman aşımı (ilk token ya da akış durdu)
+            rec["err"] = repr(e)[:200]
+        rec["sn"] = time.perf_counter() - t0
+        return rec
+
+    def stream(self, messages: list[dict[str, str]]) -> dict[str, Any]:
+        """Birincil, olmazsa sıradaki yedek. Dönen kayıt: başarılı (ya da son) denemenin kaydı + "denemeler"."""
+        attempts = []
+        for p in self.providers:
+            rec = self._one(messages, p)
+            attempts.append({"provider": p, "err": rec["err"], "kacak": rec["kacak"], "sn": rec.get("sn")})
+            if not rec["err"] and not rec["kacak"]:
+                rec["denemeler"] = attempts
+                return rec
+        if attempts and not attempts[-1]["err"]:
+            rec["denemeler"] = attempts      # son deneme de kaçakla bitti: kesik JSON olarak çağırana
+            rec["finish"] = "length"
+            return rec
+        raise ServiceUnavailable("; ".join(f"{a['provider']}: {a['err'] or 'kaçak'}" for a in attempts))
