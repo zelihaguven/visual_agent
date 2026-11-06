@@ -639,3 +639,42 @@ B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfr
 - **Açık fark:** c150b bugünkü şemaya göre hâlâ **+6 yanlış ret** (18 → 24) ve **+6 ✖** (12 → 18) getiriyor (Gemma 4 DeepInfra, 159 cevaplı soru). İkisi de güvenli yönde: yanlış değer göstermek yerine reddetmek ya da doğrulanmadı demek. c150b bundan sonra bugünkü şemayla da karşılaştırılacak. Ayrıntı ve sıradaki işler: [DEVIR_2026-11-06.md](DEVIR_2026-11-06.md).
 
 **Çeviri ikinci sağlayıcı (ölçüldü 2026-11-06):** Gemma 4 Venice p95 1,21 sn (%7 > 1,2 sn), DeepInfra 1,82 sn (%20), NextBit 917 ms (%0). Öneri: `only: [nextbit, venice]`. [asama4_ceviri_saglayici_2026-11-06.md](../b4/asama4_ceviri_saglayici_2026-11-06.md).
+
+## 23. Yeni hata türü: niteleyici uyuşmazlığı (2026-11-06; plan, koşulmadı)
+
+**Tanım:** Alıntı kaynakta birebir ve sayı alıntıda, yani cevap doğrulanmış görünüyor. Ama soru başka bir şeyi soruyor: sorudaki niteleyici (dijital, elektronik, -5, Premier, Type II, Class 2, model kodu…) cevabın dayandığı parçada yok.
+- Sayım: **doğrulanmış görünen yanlış**.
+- İlk örnek B012 (Gemma 4 DeepInfra, c150b). "Dijital ayak kaldırıcı" sorusuna mekanik kaldırma kolunun 6 mm ayarıyla cevap verdi. Etiket doğru kalıyor (karar 2026-11-06): S-7300A'da dijital kaldırıcı yok.
+
+**Tarama** (`python -m bench.niteleyici_tarama`; model çağrısı yok):
+- Kapsam: bugünkü şema (DeepInfra), c150b (DeepInfra, Venice), yeni set (DeepInfra, Venice).
+- Niteleyici içeren 133 doğrulanmış ya da kısmi cevap tarandı; uyuşmazlık **yalnız B012**.
+- Bugünkü şemanın Venice kaydı yok; bugünkü şema nihai turda yalnız DeepInfra'da koşuldu.
+- Sınır: tarama sabit iki dilli niteleyici listesine ve model kodlarına bakıyor. Ürün adı düzeyindeki anlam uyuşmazlıklarını (ceket ↔ pantolon) yakalamaz; onlar netleştirme kapısının işi.
+
+**Çözüm önerisi** (sırayla; hiçbiri koşulmadı):
+1. **Ölçüme ekle (kod, model çağrısı yok):** Şema C raporuna "niteleyici uyuşmazlığı" satırı eklenir; bu tarama her turda çalışır. İşaretlenen her cevap elle okunur ve gerçekse doğrulanmış görünen yanlış sayılır. Bu türden yeni sorular (soruda olmayan bir varyantı soran "bulunamadı" soruları) kanıt sayfasıyla onaylanarak eklenir; model çıktısı onay ölçütü olmaz.
+2. **İstem kuralı (ayrı varyant, ör. c150b-N):** "Sorudaki model, varyant ya da tip niteleyicisi (dijital, -5, Premier…) alıntıda ya da kaynağın başlığında yoksa o kaynakla cevap verme; bulunamadi ya da 'kaynaklarda <niteleyici> için bilgi yok' de."
+   - Tam set, iki sağlayıcı, ~0,12 USD.
+   - Risk: haklı cevaplarda da ret artabilir (niteleyicinin sayfada olup parçada olmadığı A045/A069 türü). Regresyon kontrolü bugünkü şema ve c150b'ye göre yapılır.
+3. **Doğrulamada uyarı (yalnız 2 yetmezse; karar sizde):** Tarama kuralı uygulamaya taşınır. Niteleyicisi kaynakta olmayan cevap "kısmi" olur, rozet verilmez ve "Kaynak sorudaki 'dijital' için olmayabilir" uyarısı gösterilir.
+   - Güvenli yönde ve geneldir, ama §16'daki "verify A+B son düzeltme" ilkesine aykırıdır.
+   - Yanlış alarm örneği: "-[][]3" gibi model kodu yazımları. Taramada bu kalıp genelleştirildi.
+
+## 24. Girintili JSON: ölçüm ve "girintisiz yaz" varyantı (2026-11-06; plan, koşulmadı)
+
+**Bulgu:** Aynı istek ve şemayla bazı sağlayıcılar JSON'u girintili (satır sonu + boşluk) yazıyor. Metrik her şema C raporunda "Girintili JSON" tablosunda (`bench/answer_models.indent_table`).
+- 2026-11-05: NextBit %93, Parasail %96 girintili. Venice ve DeepInfra %0.
+- 2026-11-06 sabah: Venice %74–97 girintili; DeepInfra hâlâ %0.
+- Girinti çıktı tokeni harcar ve 700 sınırında kesik üretir. NextBit/Parasail'in şema C'deki kesikleri (29 / 34) büyük olasılıkla bu yüzden.
+
+**Varyant c150b-J (koşulmadı):** istemin "Cevap biçimi" kısmına "JSON'u tek satırda, girintisiz ve satır sonu olmadan yaz" kuralı eklenir.
+- Genel bir istem kuralı; modele ya da sağlayıcıya özel değil.
+- Ölçüm: tam set, Venice + DeepInfra, ~0,12 USD. Bakılacaklar: girintili oran, kesik, ilk doğrulanmış cümle, ✓ / ✖ (c150b ile regresyon).
+- Not: Girinti sağlayıcı tarafında açılıp kapanıyor (dün %0, bugün %97). İstem kuralı tutmazsa tek çare sağlayıcı sırası.
+- İstek gövdesinde girintiyi kapatan bir parametre (`response_format`'ta) OpenRouter'da yok; bu yüzden istem kuralı.
+
+**§21 için öneri (2026-11-06, karar bekliyor): birincil/ikincil sırası değişsin.** `order: ["deepinfra", "venice"]` (DeepInfra fp8 birincil, Venice bf16 ikincil).
+- Gerekçe: Venice 2026-11-06'da JSON'u girintili yazmaya başladı (c150bT %94). Kesik 2'den 37'ye çıktı (192 soru).
+- DeepInfra bütün koşularda girintisiz ve kesik 0–2. Kalite c150b'de iki sağlayıcıda eşitti (✓ 112 / 113, değer %94 / %96).
+- Ayrıntı: [okuma_nihai_ara_2026-11-06.md](okuma_nihai_ara_2026-11-06.md) bölüm a ve 4, plan §24.

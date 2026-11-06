@@ -319,15 +319,14 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
     try:
         answer, stats = chat_json(user)
         timings.update({k: float(v) for k, v in stats.items()})
-    except json.JSONDecodeError:
-        # model JSON'u yarıda bıraktı (token sınırı): cevap güvenilmez, hat çökmez
+    except json.JSONDecodeError as err:
+        # model JSON'u okunamadı: kesik (finish=length) ya da geçersiz; cevap güvenilmez, hat çökmez
         timings["llm"] = time.time() - t
         timings["total"] = time.time() - t0
         broken = {"bulunamadi": False, "alintilar": [], "cevap": "", "sesli_metin": "",
                   "netlestirme_sorusu": None, "celiski_var": False}
-        bad = Verification("failed", ["Model güvenilir bir cevap üretemedi: çıktı uzunluk sınırında yarıda kesildi "
-                                      "(JSON tamamlanmadı). Kaynaklarda bu sorunun cevabı olmayabilir; aşağıdaki "
-                                      "kaynak sayfaları kontrol edin, değer kullanmayın."], {})
+        from .jsonparse import failure_message
+        bad = Verification("failed", [failure_message(err)], {})
         return Result(question, ctx, hits, broken, bad, "", timings, context_terms=context)
     timings["llm"] = time.time() - t
 

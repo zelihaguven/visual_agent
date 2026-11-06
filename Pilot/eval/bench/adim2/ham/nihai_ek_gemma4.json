@@ -653,7 +653,7 @@
     true,
     true
    ],
-   "ilk_dogrulanmis_cumle": 1.398,
+   "ilk_dogrulanmis_cumle": 1.4251793693718944,
    "atif_dogru_biri": false,
    "atif_dogru_hepsi": false,
    "atif_dokumanlari": [
@@ -675,7 +675,8 @@
    "cikis_token": 603,
    "dusunce_token": 0,
    "maliyet": 0.00037176,
-   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The standard height of the presser foot (1) is 6 mm when the presser foot (1) is raised by means of the lifting lever (2).\"}], \"metin\": \"Kaldırma kolu (lifting lever) (2) ile baskı ayağı (1) kaldırıldığında standart yükseklik 6 mm olmalıdır.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Loosen the nut (3), and then turn the adjustment screw (4) so that there is no pressure applied to the presser foot.\"}], \"metin\": \"Somunu (3) gevşetin ve baskı ayağına basınç uygulanmayacak şekilde ayar vidasını (adjustment screw) (4) çevirin.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Raise the presser foot (1) by using the lifting lever (2).\"}], \"metin\": \"Kaldırma kolunu (2) kullanarak baskı ayağını (1) kaldırın.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Remove the rubber cap (5) from the face plate. Loosen the bolt (6) and then move the presser bar (7) up or down until the presser foot (1) is at the 6\"}], \"metin\": \"Ön plakadan kauçuk kapağı (5) çıkarın, cıvatayı (6) gevşetin ve baskı ayağı (1) 6 mm standart yüksekliğe gelene kadar baskı çubuğunu (presser bar) (7) yukarı veya aşağı hareket ettirin.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Tighten the bolt (6). Install the rubber cap (5).\"}], \"metin\": \"Cıvatayı (6) sıkın ve kauçuk kapağı (5) takın.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Adjust the presser foot pressure using the presser adjusting screw (4), and then tighten the nut (3).\"}], \"metin\": \"Baskı ayar vidasını (4) kullanarak baskı ayağı basıncını ayarlayın ve ardından somunu (3) sıkın.\"}], \"sesli_metin\": \"Baskı ayağı standart yüksekliği 6 mm olmalıdır. Kaldırma kolu ile ayağı kaldırın, cıvatayı gevşeterek baskı çubuğunu 6 mm yüksekliğe ayarlayın ve ardından somunu sıkın.\", \"celiski_var\": false}"
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The standard height of the presser foot (1) is 6 mm when the presser foot (1) is raised by means of the lifting lever (2).\"}], \"metin\": \"Kaldırma kolu (lifting lever) (2) ile baskı ayağı (1) kaldırıldığında standart yükseklik 6 mm olmalıdır.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Loosen the nut (3), and then turn the adjustment screw (4) so that there is no pressure applied to the presser foot.\"}], \"metin\": \"Somunu (3) gevşetin ve baskı ayağına basınç uygulanmayacak şekilde ayar vidasını (adjustment screw) (4) çevirin.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Raise the presser foot (1) by using the lifting lever (2).\"}], \"metin\": \"Kaldırma kolunu (2) kullanarak baskı ayağını (1) kaldırın.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Remove the rubber cap (5) from the face plate. Loosen the bolt (6) and then move the presser bar (7) up or down until the presser foot (1) is at the 6\"}], \"metin\": \"Ön plakadan kauçuk kapağı (5) çıkarın, cıvatayı (6) gevşetin ve baskı ayağı (1) 6 mm standart yüksekliğe gelene kadar baskı çubuğunu (presser bar) (7) yukarı veya aşağı hareket ettirin.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Tighten the bolt (6). Install the rubber cap (5).\"}], \"metin\": \"Cıvatayı (6) sıkın ve kauçuk kapağı (5) takın.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Adjust the presser foot pressure using the presser adjusting screw (4), and then tighten the nut (3).\"}], \"metin\": \"Baskı ayar vidasını (4) kullanarak baskı ayağı basıncını ayarlayın ve ardından somunu (3) sıkın.\"}], \"sesli_metin\": \"Baskı ayağı standart yüksekliği 6 mm olmalıdır. Kaldırma kolu ile ayağı kaldırın, cıvatayı gevşeterek baskı çubuğunu 6 mm yüksekliğe ayarlayın ve ardından somunu sıkın.\", \"celiski_var\": false}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular_ek:B013": {
    "cikis": "bulunamadi",
@@ -2276,7 +2277,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 2.065,
+   "ilk_dogrulanmis_cumle": 2.061484365009942,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -2302,7 +2303,8 @@
    "cikis_token": 198,
    "dusunce_token": 0,
    "maliyet": 0.0002356,
-   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 2, \"metin\": \"The sewing speed will be subjected to the following limits (sewing speed/sewing pitch). ・4000sti/min / 3.0 ・3500sti/min / 4.0 ・2000sti/min / 5.0\"}], \"metin\": \"Besleme dişlisi yörüngesi (feed dog locus) kullanıldığında 5.0 dikiş adımında (sewing pitch) dikiş hızı en fazla 2000 sti/min olur.\"}], \"sesli_metin\": \"Besleme dişlisi yörüngesi kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\", \"celiski_var\": false}"
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 2, \"metin\": \"The sewing speed will be subjected to the following limits (sewing speed/sewing pitch). ・4000sti/min / 3.0 ・3500sti/min / 4.0 ・2000sti/min / 5.0\"}], \"metin\": \"Besleme dişlisi yörüngesi (feed dog locus) kullanıldığında 5.0 dikiş adımında (sewing pitch) dikiş hızı en fazla 2000 sti/min olur.\"}], \"sesli_metin\": \"Besleme dişlisi yörüngesi kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\", \"celiski_var\": false}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular_ek:C004": {
    "cikis": "bulunamadi",
@@ -2737,5 +2739,9 @@
   "json": "sema_disi"
  },
  "end": "2026-11-06T09:13:32",
- "tamam": true
+ "tamam": true,
+ "yeniden_puanlama_c": {
+  "tarih": "2026-11-06T09:34:33",
+  "rozeti_degisen": 0
+ }
 }

@@ -48,6 +48,7 @@ def main() -> None:
     ap.add_argument("--include-unapproved", action="store_true")
     ap.add_argument("--arms", default="qwen,bge,bm25", help="kollar: qwen, bge, bm25 (A yolu: qwen,bm25; yalnız bm25)")
     ap.add_argument("--bm25-translations", help="bench.translate_bm25 çıktısı: BM25 kolu çevrilmiş sorguyla")
+    ap.add_argument("--ids", nargs="+", help="yalnız bu sorular, netleştirme soruları dahil (teşhis)")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
 
@@ -56,7 +57,10 @@ def main() -> None:
     trans = json.loads(open(a.bm25_translations, encoding="utf-8").read())["questions"] if a.bm25_translations else {}
     qwen, bge = QueryEncoder(specs()["qwen3-8b"], 256), QueryEncoder(specs()["bge-m3-local-bm25"], 256)
     items = [(it, prepare(it["q"])) for it in load_questions(a.sets, include_unapproved=a.include_unapproved)]
-    items = [(it, p) for it, p in items if not p["skip"] and not it.get("expect_clarify")]
+    if a.ids:
+        items = [(it, p) for it, p in items if not p["skip"] and (it["id"] in a.ids or it["qid"] in a.ids)]
+    else:
+        items = [(it, p) for it, p in items if not p["skip"] and not it.get("expect_clarify")]
     use_qwen = "qwen" in arms_on
     skipped = [it["qid"] for it, p in items if use_qwen and not qwen.cached(p["search_q"])]
     items = [(it, p) for it, p in items if it["qid"] not in skipped]

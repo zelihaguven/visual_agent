@@ -1,0 +1,260 @@
+{
+ "model": "gemma4_venice",
+ "spec": {
+  "id": "google/gemma-4-26b-a4b-it",
+  "provider": "venice",
+  "quant": "bf16",
+  "reasoning": {
+   "enabled": false
+  }
+ },
+ "tag": "nihai_mt1200",
+ "zdr_providers": [
+  "akashml",
+  "cloudflare",
+  "coreweave",
+  "deepinfra",
+  "dekallm",
+  "io-net",
+  "makora",
+  "nextbit",
+  "novita",
+  "parasail",
+  "primeintellect",
+  "siliconflow",
+  "venice"
+ ],
+ "verify": "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı",
+ "deger": "değer olarak, 2026-11-05",
+ "sema": "c150b",
+ "netlestirme_sorulari": "dahil",
+ "max_tokens": 1200,
+ "start": "2026-11-06T09:24:56",
+ "rows": {
+  "questions:Q05": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      109
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      113
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      110
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      85
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      40
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "İğne ucu eğri mi veya kör mü kontrol edin; eğer eğri veya kör ise iğneyi değiştirin. İğnenin doğru takılıp takılmadığını kontrol edin; yanlış takılmışsa iğneyi doğru şekilde takın. Makinenin doğru şekilde ipliklenip ipliklenmediğini kontrol edin; yanlışsa ipliği doğru şekilde geçirin. Baskı ayağı (presser foot) basıncı çok düşük mü kontrol edin ve basıncı ayarlayın. İğne çok ince mi kontrol edin; eğer inceyse bir derece daha kalın bir iğne ile değiştirin. Baskı ayağı (presser foot) çok mu yüksek kontrol edin ve yüksekliğini ayarlayın. İplik alıcı yay (thread take-up spring) çok mu zayıf kontro",
+   "ogeler": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.508059792641549,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.8520627000000331,
+   "toplam": 6.370768400000088,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 6.370767399999977
+    }
+   ],
+   "giris": 2825,
+   "cikis_token": 889,
+   "dusunce_token": 0,
+   "maliyet": 0.00062045,
+   "ham": "{\n \"tur\": \"cevap\",\n \"cevap\": [\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Is the needle tip bent? Is the needle tip blunt? If the needle tip is bent or blunt, replace the needle.\"\n    }\n   ],\n   \"metin\": \"İğne ucu eğri mi veya kör mü kontrol edin; eğer eğri veya kör ise iğneyi değiştirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Is the needle properly installed? If it is incorrect, install the needle correctly.\"\n    }\n   ],\n   \"metin\": \"İğnenin doğru takılıp takılmadığını kontrol edin; yanlış takılmışsa iğneyi doğru şekilde takın.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Is the machine properly threaded? If it is incorrect, thread the thread correctly.\"\n    }\n   ],\n   \"metin\": \"Makinenin doğru şekilde ipliklenip ipliklenmediğini kontrol edin; yanlışsa ipliği doğru şekilde geçirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Is the presser foot pressure too weak? Adjust the presser foot pressure.\"\n    }\n   ],\n   \"metin\": \"Baskı ayağı (presser foot) basıncı çok düşük mü kontrol edin ve basıncı ayarlayın.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Is the needle too thin? Replace the needle with a needle that is one rank thicker.\"\n    }\n   ],\n   \"metin\": \"İğne çok ince mi kontrol edin; eğer inceyse bir derece daha kalın bir iğne ile değiştirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Is the presser foot too high? Adjust the height of the presser foot.\"\n    }\n   ],\n   \"metin\": \"Baskı ayağı (presser foot) çok mu yüksek kontrol edin ve yüksekliğini ayarlayın.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Is the thread take-up spring too weak? Adjust the tension of the thread take-up spring.\"\n    }\n   ],\n   \"metin\": \"İplik alıcı yay (thread take-up spring) çok mu zayıf kontrol edin ve yayın gerginliğini ayarlayın.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Is the needle and rotary hook timing correct? Adjust the height of the needle bar. Adjust the clearance between the needle and the tip of the rotary='\"}\n   ],\n   \"metin\": \"İğne ve rotary hook (döner kanca) zamanlamasının doğru olup olmadığını kontrol edin; iğne çubuğu (needle bar) yüksekliğini ve iğne ile rotary hook ucu arasındaki boşluğu ayarlayın.\"\n  }\n ],\n \"sesli_metin\": \"S-7300B'de dikiş atlaması için iğneyi kontrol edin, iğne ucu eğri veya körse değiştirin. İğnenin doğru takıldığından ve ipliklemenin doğru yapıldığından emin olun. Baskı ayağı basıncını, yüksekliğini ve iplik alıcı yay gerginliğini ayarlayın. Ayrıca,\"\n  ,\n \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
+  },
+  "aday_sorular:A074": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      110
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      85
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      11
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      109
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cevap": "Dikiş başlangıcında dikiş atlama ve iplik çözülmesi sorunu için aşağıdaki çözüm yolları uygulanabilir: İplik alıcı yay (thread take-up spring) tansiyonu çok güçlü ise iplik alıcı yayın tansiyonunu azaltın. İplik alıcı yayın (thread take-up spring) çalışma aralığı çok geniş ise iplik alıcı yayın konumunu aşağı indirin. İplik kesme sonrası üst iplik payı çok kısa ise ön tansiyonu (pretension) ayarlayın. İplikler temiz kesilmiyorsa sabit bıçakları bileyin veya gerekirse sabit ve hareketli bıçakları değiştirin; hareketli bıçağı değiştirin. İğne çok kalın ise iğneyi bir derece daha ince bir iğne il",
+   "ogeler": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.464649767264849,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6423950999999306,
+   "toplam": 8.153219700000136,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 8.153218599999946
+    }
+   ],
+   "giris": 2707,
+   "cikis_token": 910,
+   "dusunce_token": 0,
+   "maliyet": 0.00071591,
+   "ham": "{\n \"tur\": \"cevap\",\n \"cevap\": [\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"Problem: Skipped stitches at sewing start Thread unraveling at sewing start.\"\n    }\n   ],\n   \"metin\": \"Dikiş başlangıcında dikiş atlama ve iplik çözülmesi sorunu için aşağıdaki çözüm yolları uygulanabilir:\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"Is the thread take-up spring tension too strong? Reduce the tension of the thread take-up spring.\"\n    }\n   ],\n   \"metin\": \"İplik alıcı yay (thread take-up spring) tansiyonu çok güçlü ise iplik alıcı yayın tansiyonunu azaltın.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"Is the thread take-up spring operating range too large? Lower the position of the thread take-up spring.\"\n    }\n   ],\n   \"metin\": \"İplik alıcı yayın (thread take-up spring) çalışma aralığı çok geniş ise iplik alıcı yayın konumunu aşağı indirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"Is the trailing length of the upper thread too short after thread trimming? Adjust the pretension.\"\n    }\n   ],\n   \"metin\": \"İplik kesme sonrası üst iplik payı çok kısa ise ön tansiyonu (pretension) ayarlayın.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"Are the threads not being trimmed cleanly? Sharpen the fixed knives, or replace the fixed and movable knives if necessary. Replace the movable knife.\"\n    }\n   ],\n   \"metin\": \"İplikler temiz kesilmiyorsa sabit bıçakları bileyin veya gerekirse sabit ve hareketli bıçakları değiştirin; hareketli bıçağı değiştirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"Is the needle too thick? Replace the needle with a needle that is one rank thinner.\"\n    }\n   ],\n   \"metin\": \"İğne çok kalın ise iğneyi bir derece daha ince bir iğne ile değiştirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"Is the length of thread trailing out from the bobbin case after thread trimming too short If the bobbin is spinning loosely, replace the anti-spin way\"\n    }\n   ],\n   \"metin\": \"İplik kesme sonrası masura kutusundan çıkan iplik uzunluğu çok kısa ise ve masura gevşek dönüyorsa, masura kutusundaki anti-spin yayını değiştirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"Is the sewing speed too fast at the sewing start? Use the slow start key.\"\n    }\n   ],\n   \"metin\": \"Dikiş başlangıcında dikiş hızı çok hızlı ise yavaş başlatma (slow start) tuşunu kullanın.\"\n  }\n ],\n \"sesli_metin\": \"Dikiş başlangıcındaki atlama ve iplik çözülmesi için iplik alıcı yay tansiyonunu azaltın, iplik alıcı yayın konumunu düşürün, ön tansiyonu ayarlayın, bıçakları bileyin veya değiştirin, daha ince iğne kullanın veya anti-spin yayını değiştirin ve yavaş\"\n,\n \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
+  },
+  "aday_sorular:A080": {
+   "durum": "failed",
+   "sorunlar": [
+    "Model güvenilir bir cevap üretemedi: çıktı uzunluk sınırında yarıda kesildi (JSON tamamlanmadı). Kaynaklarda bu sorunun cevabı olmayabilir; aşağıdaki kaynak sayfaları kontrol edin, değer kullanmayın."
+   ],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      84,
+      85
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      137
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      85
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      146,
+      147
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      84
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "json_hata",
+   "atif_dogru_biri": null,
+   "atif_dogru_hepsi": null,
+   "json": "kesik",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7588211999998293,
+   "toplam": 13.184517499999856,
+   "finish": "length",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 13.184515699999793
+    }
+   ],
+   "giris": 2648,
+   "cikis_token": 1200,
+   "dusunce_token": 0,
+   "maliyet": 0.00082424,
+   "ham": "{\n \"tur\": \"cevap\",\n \"cevap\": [\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"After hem is marked, fold it to wrong side along marked edge and place pins along fold at right angles to edge, about 2 or 3 inches apart.\"\n    }\n   ],\n   \"metin\": \"Etek ucu işaretlendikten sonra, işaretli kenar boyunca ters tarafa katlanır ve kat yerine yaklaşık 2 veya 3 inç aralıklarla dik açıyla iğneler yerleştirilir.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Pin cut edge up on garment, then try garment on to check accuracy or hang.\"\n    }\n   ],\n   \"metin\": \"Kesik kenar giysi üzerinde yukarı bakacak şekilde iğnelenir, ardından doğruluğu kontrol etmek için giysi denenir veya asılır.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"If the material is firmly woven and does not fray, the hem edge may be pinked, the seams of the hem matched to the garment seams, and the hem basted (\"}\n    ]\n   ,\n   \"metin\": \"Eğer malzeme sık dokunmuşsa ve saçaklanmıyorsa, etek kenarı zikzak makasıyla (pinked) kesilebilir, etek dikişleri giysi dikişleriyle eşleştirilebilir ve etek tela ile dikilebilir (baste).\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Baste the garment hem along the folded edge. Mark hem width parallel to the folded edge and trim the surplus.\"\n    }\n   ],\n   \"metin\": \"Giysi etek ucunu katlanmış kenar boyunca tela ile dikin. Etek genişliğini katlanmış kenara paralel olarak işaretleyin ve fazlalığı kesin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"If the hem has a tendency to fray place two rows of machine stitching Vs inch apart along cut edge, the raw edge may be closely overcast, or machine_v\"\n    }\n   ],\n   \"metin\": \"Eğer etek ucunun saçaklanma eğilimi varsa, kesik kenar boyunca Vs inç arayla iki sıra makine dikişi yerleştirilebilir, ham kenar sıkıca overloklanabilir veya makine zikzak dikişi kullanılabilir.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"If the hem tum-up is wider than garment along which it lies, place an ease thread lA inch from the cut edge and pull up until the edge fits smoothly\"\n    }\n   ],\n   \"metin\": \"Eğer yukarı katlanan etek ucu, üzerinde bulunduğu giysiden daha genişse, kesik kenardan lA inç uzağa bir bolluk ipi (ease thread) yerleştirin ve kenar giysi boyunca düzgünce oturana kadar yukarı çekin.\"\n  }\n ],\n \"sesli_metin\": \"Etek ucu işaretlendikten sonra ters tarafa katlanır ve iğnelenir. Malzeme uygunsa kenarlar zikzakla kesilebilir ve tela ile dikilebilir. Saçaklanma riski varsa makine dikişi veya overlok kullanılabilir; genişlik fazlaysa lA inç mesafeden bolluk ipi (\" \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t "
+  }
+ },
+ "cost_usd": 0.0023758900000000003,
+ "dusunme_kontrolu": {
+  "reasoning_tokens": 0,
+  "reasoning_text": 0,
+  "provider": "Venice",
+  "ok": true,
+  "cost": 0.00021529,
+  "err": null,
+  "json": "sema_disi"
+ },
+ "tamam": true,
+ "end": "2026-11-06T09:25:25",
+ "yeniden_puanlama_c": {
+  "tarih": "2026-11-06T09:34:30",
+  "rozeti_degisen": 0
+ }
+}

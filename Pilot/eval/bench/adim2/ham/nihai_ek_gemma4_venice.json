@@ -2268,7 +2268,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 2.335,
+   "ilk_dogrulanmis_cumle": 2.317301658988768,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -2294,7 +2294,8 @@
    "cikis_token": 223,
    "dusunce_token": 0,
    "maliyet": 0.00028908,
-   "ham": "{\n \"tur\": \"cevap\",\n \"cevap\": [\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"The sewing speed will be subjected to the following limits (sewing speed/sewing pitch). ・4000sti/min / 3.0 ・3500sti/min / 4.0 ・2000sti/min / 5.0\"\n    }\n   ],\n   \"metin\": \"Besleme dişlisi yörüngesi (feed dog locus) kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\"\n  }\n ],\n \"sesli_metin\": \"Besleme dişlisi yörüngesi kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\",\n \"celiski_var\": false\n}"
+   "ham": "{\n \"tur\": \"cevap\",\n \"cevap\": [\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"The sewing speed will be subjected to the following limits (sewing speed/sewing pitch). ・4000sti/min / 3.0 ・3500sti/min / 4.0 ・2000sti/min / 5.0\"\n    }\n   ],\n   \"metin\": \"Besleme dişlisi yörüngesi (feed dog locus) kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\"\n  }\n ],\n \"sesli_metin\": \"Besleme dişlisi yörüngesi kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\",\n \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular_ek:C004": {
    "cikis": "bulunamadi",
@@ -2729,5 +2730,9 @@
   "json": "sema_disi"
  },
  "end": "2026-11-06T09:13:33",
- "tamam": true
+ "tamam": true,
+ "yeniden_puanlama_c": {
+  "tarih": "2026-11-06T09:34:33",
+  "rozeti_degisen": 0
+ }
 }

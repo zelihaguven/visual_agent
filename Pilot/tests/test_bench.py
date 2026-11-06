@@ -408,6 +408,11 @@ def test_answer_parser_tolerates_thought_blocks_and_classifies_json_problems():
     assert parse_answer(full[:40], "length")[1] == "kesik"
     assert parse_answer("Üzgünüm, cevap veremem.", "stop")[1] == "gecersiz"
     assert parse_answer('{"cevap": "x"}', "stop")[1] == "sema_disi"
+    # kontrol karakteri toleransı ve gerçek neden (2026-11-06): kesik yalnız finish=length
+    tab = full.replace('"sesli_metin": ""', '"sesli_metin": "a\tb"')    # dizgede kaçışsız sekme (A066)
+    assert "\t" in tab and parse_answer(tab, "stop")[1] == "ok"
+    assert parse_answer(full[:40], "stop")[1] == "gecersiz"
+
 
 
 def test_answer_stream_is_decoded_as_utf8(monkeypatch):
@@ -515,6 +520,9 @@ def test_schema_c_parse_verify_and_first_verified_sentence():
            "sesli_metin": "11 artı eksi 1 dikiş", "celiski_var": False}
     raw = json.dumps(ans, ensure_ascii=False)
     assert parse_c(raw, "stop")[1] == "ok" and parse_c(raw[:-30], "length")[1] == "kesik"
+    tab = raw.replace('"metin": "', '"metin": "	', 1)          # A066: alıntıda kaçışsız sekme
+    assert "	" in tab and parse_c(tab, "stop")[1] == "ok"
+    assert parse_c(raw[:-30], "stop")[1] == "gecersiz"
     v = verify_c(ans, src)
     assert [i["ok"] for i in v["items"]] == [True, False] and v["status"] == "failed"   # 10, kendi alıntısında yok
     timeline = [[0.1 * i, n] for i, n in enumerate(range(0, len(raw) + 20, 20))]

@@ -83,7 +83,8 @@ def system_prompt_c() -> str:
 # Süre ölçümü varyantları (karar 2026-11-05 gece; bütün modellerde aynı genel değişiklik):
 #   c150   alıntı en fazla 150 karakter, ilk öğe yalnız cevabın özü
 #   c150b  c150 + öğe başına 1–2 alıntı ("alintilar", en fazla 2); öğenin sayıları alıntılarının birleşiminde aranır
-VARIANTS = ("c", "c150", "c150b")
+#   c150bT c150b + tablo hücresi kuralı (karar 2026-11-06, devir d/4): hücreden alıntıda sütun başlığı eklenmez
+VARIANTS = ("c", "c150", "c150b", "c150bT")
 _C150_RULES = [
     ("(1-2 cümle; çevirme, kısaltma, düzeltme)",
      "(en fazla 150 karakter: cümlenin dayandığı en kısa kaynak parçası; çevirme, kısaltma, düzeltme)"),
@@ -99,6 +100,14 @@ _C150B_RULES = [
 ]
 
 
+_TABLE_RULE = [
+    ("   - Adımları ayrı öğeler olarak sırala; adım numarası yazma, sıra öğe sırasıdır.",
+     "   - Adımları ayrı öğeler olarak sırala; adım numarası yazma, sıra öğe sırasıdır.\n"
+     "   - Tablo hücresinden alıntıda sütun başlığını ya da başka hücreleri ekleme; hücre metnini olduğu gibi kopyala. "
+     "Başlık gerekiyorsa onu ikinci alıntı olarak ver."),
+]
+
+
 def schema_variant(name: str) -> tuple[dict[str, Any], str]:
     """(şema, sistem talimatı) varyanta göre; uygulama istemi değişmişse hata verir."""
     import copy
@@ -108,12 +117,12 @@ def schema_variant(name: str) -> tuple[dict[str, Any], str]:
     item = schema["properties"]["cevap"]["items"]
     item["properties"]["alinti"]["properties"]["metin"]["maxLength"] = 150
     rules = list(_C150_RULES)
-    if name == "c150b":
+    if name in ("c150b", "c150bT"):
         quote = item["properties"].pop("alinti")
         item["properties"] = {"alintilar": {"type": "array", "minItems": 1, "maxItems": 2, "items": quote},
                               "metin": item["properties"]["metin"]}
         item["required"] = ["alintilar", "metin"]
-        rules += _C150B_RULES
+        rules += _C150B_RULES + (_TABLE_RULE if name == "c150bT" else [])
     for old, new in rules:
         if old not in prompt:
             raise ValueError(f"istem parçası bulunamadı: {old[:60]!r}")
@@ -137,11 +146,13 @@ def parse_c(content: str, finish: str | None) -> tuple[dict[str, Any] | None, st
     text = THOUGHT.sub("", content or "", count=1).strip()
     if not text:
         return None, "bos"
+    from pilot import jsonparse
     m = re.search(r"\{.*\}", text, re.S)
     try:
-        ans = json.loads(m.group(0) if m else text)
+        ans = jsonparse.loads(m.group(0) if m else text, finish)   # strict=False: kaçışsız sekme vb. (2026-11-06)
     except json.JSONDecodeError:
-        return None, "kesik" if finish == "length" or text.count("{") > text.count("}") else "gecersiz"
+        # gerçek neden (2026-11-06): finish=length ise kesik, değilse okunamadı
+        return None, "kesik" if finish == "length" else "gecersiz"
     ok = (isinstance(ans, dict) and ans.get("tur") in ("cevap", "netlestirme", "bulunamadi")
           and isinstance(ans.get("cevap", []), list)
           and all(isinstance(x, dict) and item_quotes(x) and isinstance(x.get("metin"), str)
@@ -154,7 +165,7 @@ def parse_c(content: str, finish: str | None) -> tuple[dict[str, Any] | None, st
 
 # Varyantın alıntı uzunluk sınırı: sınıra dayanıp kesilen alıntıya verify._cut_quote_prefix ile aynı tolerans
 # (16 Ekim kuralı; sınır şemadan gelir). 2026-11-05: c150'de sınır 300 sanıldığı için kesik alıntılar ✖ oluyordu.
-QUOTE_LIMIT = {"c": 300, "c150": 150, "c150b": 150}
+QUOTE_LIMIT = {"c": 300, "c150": 150, "c150b": 150, "c150bT": 150}
 
 
 def _quote_ok(text: str, no: Any, sources: dict[int, str], limit: int = 300) -> bool:

@@ -59,6 +59,10 @@ MODELS: dict[str, dict[str, Any]] = {
 SCHEMA = "bugun"
 
 
+MAX_TOKENS = 0          # 0: uygulamanın LLM_NUM_PREDICT değeri; --max-tokens ile deneme (devir d/3)
+ONLY_IDS: list[str] = []   # --ids: yalnız bu soru kimlikleri (deneme)
+
+
 def schema_and_prompt() -> tuple[dict[str, Any], str]:
     from pilot.prompts import ANSWER_SCHEMA, SYSTEM_PROMPT
     if SCHEMA.startswith("c"):
@@ -90,9 +94,10 @@ def parse_answer(content: str, finish: str | None) -> tuple[dict[str, Any] | Non
     if start < 0:
         return None, ("kesik" if finish == "length" else "gecersiz"), thought
     try:
-        obj, _ = json.JSONDecoder().raw_decode(stripped[start:])
+        from pilot.jsonparse import raw_decode
+        obj, _ = raw_decode(stripped[start:])            # strict=False: ortak ayrıştırma adımı (2026-11-06)
     except json.JSONDecodeError:
-        return None, ("kesik" if finish == "length" or stripped.rstrip()[-1:] != "}" else "gecersiz"), thought
+        return None, ("kesik" if finish == "length" else "gecersiz"), thought
     if start > 0 and stripped[:start].strip():
         thought = True                                   # JSON'dan önce başka metin (ör. kod çiti) atıldı
     if not isinstance(obj, dict) or any(k not in obj for k in ANSWER_SCHEMA["required"]):
@@ -125,7 +130,7 @@ class CloudModel:
         if self.spec.get("quant"):
             provider["quantizations"] = [self.spec["quant"]]
         return openrouter_body({
-            "model": self.spec["id"], "messages": messages, "temperature": 0, "max_tokens": LLM_NUM_PREDICT,
+            "model": self.spec["id"], "messages": messages, "temperature": 0, "max_tokens": MAX_TOKENS or LLM_NUM_PREDICT,
             "stream": True, "usage": {"include": True}, "reasoning": self.spec["reasoning"],
             "response_format": {"type": "json_schema",
                                 "json_schema": {"name": "cevap", "strict": False, "schema": schema}},
@@ -318,10 +323,13 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int, clarify: st
     qs = questions(include_clarify=clarify != "haric")
     if clarify == "yalniz":
         qs = [q for q in qs if q.get("expect_clarify")]
+    if ONLY_IDS:
+        qs = [q for q in qs if q["id"] in ONLY_IDS or q["qid"] in ONLY_IDS]
     if n:
         qs = random.Random(seed).sample([q for q in qs if not q.get("expect_not_found")], n)
     out: dict[str, Any] = {"model": key, "spec": MODELS[key], "tag": tag, "zdr_providers": m.zdr_providers,
                            "verify": VERIFY_TAG, "deger": VALUE_TAG, "sema": SCHEMA, "netlestirme_sorulari": clarify,
+                           "max_tokens": MAX_TOKENS or None,
                            "start": datetime.now().isoformat(timespec="seconds"), "rows": {}, "cost_usd": 0.0}
     path = RAW_DIR / f"{tag}_{key}.json"
     RAW_DIR.mkdir(parents=True, exist_ok=True)
@@ -355,12 +363,14 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int, clarify: st
             ans_c, status = parse_c(rec["content"], rec.get("finish"))
             current.update(json=status, thought=False, c=ans_c)
             if status in ("bos", "kesik", "gecersiz") or ans_c is None:
-                raise json.JSONDecodeError(status, rec["content"][:50], 0)
+                from pilot.jsonparse import ModelJSONError, error_detail
+                raise ModelJSONError(status == "kesik", error_detail(rec["content"] or "") or status)
             return to_legacy(ans_c), {"llm_seconds": rec["total"]}   # pipeline akışı için; puan C'den (judge_c)
         ans, status, thought = parse_answer(rec["content"], rec.get("finish"))
         current.update(json=status, thought=thought)
         if status in ("bos", "kesik", "gecersiz"):
-            raise json.JSONDecodeError(status, rec["content"][:50], 0)
+            from pilot.jsonparse import ModelJSONError, error_detail
+            raise ModelJSONError(status == "kesik", error_detail(rec["content"] or "") or status)
         return ans, {"llm_seconds": rec["total"]}
 
     pipeline.chat_json = chat
@@ -456,7 +466,8 @@ def rescore_c(tag: str) -> list[str]:
             if qid not in qs or not row.get("ham") or str(row.get("cikis", "")).startswith("kural:"):
                 continue
             ans, status = parse_c(row["ham"], row.get("finish"))
-            if ans is None or status != "ok" or ans.get("tur") != "cevap":
+            was_error = row.get("cikis") == "json_hata"
+            if ans is None or status != "ok" or (ans.get("tur") != "cevap" and not was_error):
                 continue
             pipeline.chat_json = lambda _u, a=ans: (to_legacy(a), {"llm_seconds": 0.0})
             res = pipeline.soru_cevapla(qs[qid]["q"])
@@ -465,6 +476,12 @@ def rescore_c(tag: str) -> list[str]:
             generated = {no: c.get("generated", "") for no, c in enumerate(chunks, start=1)}
             v = verify_c(ans, sources, generated, QUOTE_LIMIT.get(sch, 300))
             old = row.get("durum")
+            if was_error:     # ayrıştırma değişti (strict=False, 2026-11-06): satır judge_c ile baştan
+                SCHEMA = sch
+                row.update(judge_c(qs[qid], res, {"c": ans}), json="ok", json_yeniden="strict=False")
+                if ans.get("tur") != "cevap":
+                    n_changed += 1
+                    continue
             first = None
             ends = item_end_offsets(row["ham"])
             if row.get("ilk_token") and row.get("toplam") and row["ham"]:
@@ -660,7 +677,37 @@ def report_c(tag: str) -> str:
     L += ["", "İlk doğrulanmış cümle: model isteğinden, akışta ilk geçen öğenin tamamlandığı ana (model tarafı; uçtan uca "
           "süre ayrıca, arama öncesi dahil). Değer aynı: netleştirme ya da iki ürünün kaynağını birlikte gösteren doğrulanmış "
           "cevap doğru sayılır.", ""]
+    L += indent_table(tag)
     return "\n".join(L)
+
+
+def is_indented(raw: str) -> bool:
+    """Model JSON'u girintili (satır sonu + boşluklu) mı yazmış (2026-11-06: Venice davranış değişikliği)."""
+    return bool(re.match(r"\s*\{\s*\n", raw or ""))
+
+
+def indent_table(tag: str | None = None) -> list[str]:
+    """Girintili JSON oranı, sağlayıcı ve koşu bazında (bütün nihai_* Gemma 4 koşuları; tag'in koşuları kalın).
+    Girinti token, toplam süre ve kesik demek; ilk doğrulanmış cümle ve kesik sayısı aynı satırda."""
+    L = ["## Girintili JSON (sağlayıcı ve koşu bazında)", "",
+         "Aynı istek ve şemada sağlayıcının JSON'u girintili yazıp yazmadığı. Girinti çıktı tokeni ve kesik demek.", "",
+         "| Koşu | başlangıç | sağlayıcı | şema | girintili / çıktılı | çıktı tokeni p50 (cevap) | kesik (finish=length) | "
+         "ilk doğrulanmış cümle p50 / p95 |", "|---|---|---|---|---|---|---|---|"]
+    s_ = lambda x: "–" if x is None or x != x else (f"{x * 1000:.0f} ms" if x < 1 else f"{x:.2f} sn".replace(".", ","))
+    for f in sorted(RAW_DIR.glob("nihai_*.json"), key=lambda p: json.loads(p.read_text(encoding="utf-8")).get("start", "")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        if "gemma-4-26b" not in (d.get("spec") or {}).get("id", ""):
+            continue
+        R = d["rows"]
+        out = [x for x in R.values() if x.get("ham")]
+        ind = sum(is_indented(x["ham"]) for x in out)
+        tok = [x["cikis_token"] for x in out if x.get("cikis") == "cevap" and x.get("cikis_token")]
+        fv = [x["ilk_dogrulanmis_cumle"] for x in R.values() if x.get("ilk_dogrulanmis_cumle")]
+        name = f.stem if not tag or not f.stem.startswith(tag + "_") else f"**{f.stem}**"
+        L.append(f"| {name} | {d.get('start', '')[:16].replace('T', ' ')} | {d['spec'].get('provider')} | {d.get('sema')} | "
+                 f"{ind}/{len(out)} ({ind / max(len(out), 1):.0%}) | {percentile(tok, .5):.0f} | "
+                 f"{sum(x.get('finish') == 'length' for x in out)} | {s_(percentile(fv, .5))} / {s_(percentile(fv, .95))} |")
+    return L + [""]
 
 
 def report(tag: str, latency_tag: str | None) -> str:
@@ -835,10 +882,13 @@ def main() -> None:
                     "örn. --setler aday_sorular_ek (yeni onaylanan sorular; arama önbelleği --prepare ile)")
     ap.add_argument("--netlestirme", choices=["haric", "dahil", "yalniz"],
                     help="netleştirme beklenen 18 soru (varsayılan: C'de dahil, bugünkü şemada hariç)")
-    ap.add_argument("--schema", choices=["bugun", "c", "c150", "c150b"], default="bugun", help="cevap şeması (c: plan §15.0, yalnız ölçüm aracı)")
+    ap.add_argument("--schema", choices=["bugun", "c", "c150", "c150b", "c150bT"], default="bugun", help="cevap şeması (c: plan §15.0, yalnız ölçüm aracı)")
+    ap.add_argument("--max-tokens", type=int, default=0, help="deneme: max_tokens (0: uygulamanın değeri)")
+    ap.add_argument("--ids", nargs="+", default=[], help="deneme: yalnız bu soru kimlikleri")
     a = ap.parse_args()
-    global SCHEMA, SETS
+    global SCHEMA, SETS, MAX_TOKENS, ONLY_IDS
     SCHEMA = a.schema
+    MAX_TOKENS, ONLY_IDS = a.max_tokens, a.ids
     if a.setler:
         SETS = list(a.setler)
     if a.prepare:

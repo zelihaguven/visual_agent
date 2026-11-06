@@ -7166,10 +7166,11 @@
   "aday_sorular:A066": {
    "durum": "failed",
    "sorunlar": [
-    "Model güvenilir bir cevap üretemedi: çıktı uzunluk sınırında yarıda kesildi (JSON tamamlanmadı). Kaynaklarda bu sorunun cevabı olmayabilir; aşağıdaki kaynak sayfaları kontrol edin, değer kullanmayın."
+    "cümlede kendi alıntısında olmayan sayı: ['2']",
+    "sesli metinde alıntılarda olmayan sayı: ['2']"
    ],
    "kontroller": {},
-   "cevap": "",
+   "cevap": "Dikiş adımı (stitch pitch) için ayar birimi 0.05 mm'dir. Dikiş adımı (stitch pitch) için başlangıç değeri 2.00'dir.",
    "kaynaklar": [
     [
      "brother-s7300b",
@@ -7203,11 +7204,11 @@
     ]
    ],
    "sira": 1,
-   "cikis": "json_hata",
-   "atif_dogru_biri": null,
-   "atif_dogru_hepsi": null,
-   "deger_dogru": false,
-   "json": "gecersiz",
+   "cikis": "cevap",
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "deger_dogru": true,
+   "json": "ok",
    "dusunce_blogu": false,
    "provider": "Venice",
    "ilk_token": 0.541928899998311,
@@ -7223,7 +7224,17 @@
    "cikis_token": 285,
    "dusunce_token": 0,
    "maliyet": 0.00040247,
-   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm |  |\t\"}], \"metin\": \"Dikiş adımı (stitch pitch) için ayar birimi 0.05 mm'dir.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm |  |\t\"}], \"metin\": \"Dikiş adımı (stitch pitch) için başlangıç değeri 2.00'dir.\"}], \"sesli_metin\": \"Dikiş adımı ayar birimi 0.05 mm ve başlangıç değeri 2.00'dir.\", \"celiski_var\": false}"
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm |  |\t\"}], \"metin\": \"Dikiş adımı (stitch pitch) için ayar birimi 0.05 mm'dir.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm |  |\t\"}], \"metin\": \"Dikiş adımı (stitch pitch) için başlangıç değeri 2.00'dir.\"}], \"sesli_metin\": \"Dikiş adımı ayar birimi 0.05 mm ve başlangıç değeri 2.00'dir.\", \"celiski_var\": false}",
+   "ogeler": [
+    true,
+    false
+   ],
+   "ilk_dogrulanmis_cumle": 4.185283682554877,
+   "atif_dokumanlari": [
+    "brother-s7300b"
+   ],
+   "json_yeniden": "strict=False",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A067": {
    "cikis": "cevap",
@@ -12965,7 +12976,7 @@
  "end": "2026-11-05T18:11:25",
  "tamam": true,
  "yeniden_puanlama_c": {
-  "tarih": "2026-11-05T18:13:56",
-  "rozeti_degisen": 19
+  "tarih": "2026-11-06T09:34:30",
+  "rozeti_degisen": 0
  }
 }

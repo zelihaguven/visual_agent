@@ -134,7 +134,34 @@ def test_truncated_json_does_not_crash_and_is_marked_failed(monkeypatch, calls):
     assert r.speech_text == ""
 
 
-PANTOLON = dict(CHUNK, chunk_id="gl-pd-07-14a-00001", doc_id="gl-pd-07-14a", product="Pantolon", page=19,
+def test_json_failure_message_names_the_real_cause(monkeypatch, calls):
+    """Kesik (finish=length) ile okunamayan JSON ayrı mesaj alır (2026-11-06, A066: sekme, kesik değildi)."""
+    from pilot import jsonparse
+    for finish, expect, absent in [("length", "uzunluk sınırında", "JSON okunamadı"),
+                                   ("stop", "JSON okunamadı", "uzunluk sınırında")]:
+        def broken(user, f=finish):
+            return jsonparse.loads('{"cevap": "a" "b"}', f), {}
+        monkeypatch.setattr(pipeline, "chat_json", broken)
+        r = pipeline.soru_cevapla("soru")
+        assert r.verification.status == "failed"
+        assert any(expect in p for p in r.verification.problems)
+        assert not any(absent in p for p in r.verification.problems)
+
+
+def test_model_json_accepts_unescaped_control_characters():
+    """Alıntıdaki kaçışsız sekme (A066) okunur; ortak adım bütün modeller için strict=False."""
+    from pilot import jsonparse
+    assert jsonparse.loads('{"metin": "Setting units: 0.05 mm |\t"}', "stop") == {"metin": "Setting units: 0.05 mm |\t"}
+    assert jsonparse.raw_decode('{"a": "x\ty"} sonrası')[0] == {"a": "x\ty"}
+    try:
+        jsonparse.loads('{"a": "kes', "length")
+    except jsonparse.ModelJSONError as e:
+        assert e.truncated and isinstance(e, json.JSONDecodeError)
+    else:
+        raise AssertionError("kesik JSON hata vermedi")
+
+
+PANTOLON =dict(CHUNK, chunk_id="gl-pd-07-14a-00001", doc_id="gl-pd-07-14a", product="Pantolon", page=19,
                 text="The seams for all outside visible stitching shall be sewn with 10-14 stitches per inch.")
 
 

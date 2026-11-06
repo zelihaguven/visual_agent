@@ -92,14 +92,18 @@ class PinnedChat:
             self.calls.append(rec)
 
 
-def run_pass(tag: str, max_usd: float, arms: list[str] | None = None, n: int = 0) -> None:
+def run_pass(tag: str, max_usd: float, arms: list[str] | None = None, n: int = 0, ids: list[str] | None = None,
+             sets: list[str] | None = None) -> None:
     from bench.providers import CACHE_DIR
     from pilot.query import question_lang
     from pilot.translate import bm25_text, target_languages, translate_query
     arms = arms or DEFAULT_ARMS
     chats = {a: PinnedChat(a) for a in arms}
-    items = [(it, prepare(it["q"])) for it in load_questions(SETS, include_unapproved=True)]
-    items = [(it, p) for it, p in items if not p["skip"] and not it.get("expect_clarify")]
+    items = [(it, prepare(it["q"])) for it in load_questions(sets or SETS, include_unapproved=True)]
+    if ids:       # teşhis (2026-11-06): seçilen sorular, netleştirme soruları dahil
+        items = [(it, p) for it, p in items if not p["skip"] and (it["id"] in ids or it["qid"] in ids)]
+    else:
+        items = [(it, p) for it, p in items if not p["skip"] and not it.get("expect_clarify")]
     if n:
         import random
         items = random.Random(20261106).sample(items, n)
@@ -132,7 +136,7 @@ def run_pass(tag: str, max_usd: float, arms: list[str] | None = None, n: int = 0
         if n % 20 == 0:
             log.info("%d/%d · %.4f USD", n, len(items), spent)
     for arm, o in outs.items():
-        o["params"] = {"model": ARMS[arm]["model"], "provider": ARMS[arm]["provider"], "sets": SETS,
+        o["params"] = {"model": ARMS[arm]["model"], "provider": ARMS[arm]["provider"], "sets": sets or SETS,
                        "include_unapproved": True, "tur": tag, "stats": {"cost_usd": chats[arm].cost}}
         (CACHE_DIR / f"ceviri_cmp_{arm}_{tag}.json").write_text(json.dumps(o, ensure_ascii=False, indent=1),
                                                                encoding="utf-8")
@@ -219,11 +223,13 @@ def main() -> None:
     ap.add_argument("--max-usd", type=float, default=0.1)
     ap.add_argument("--kollar", nargs="+", help=f"kollar (varsayılan {DEFAULT_ARMS}); seçenekler {list(ARMS)}")
     ap.add_argument("--n", type=int, default=0, help="soru örneklemi (0: hepsi)")
+    ap.add_argument("--ids", nargs="+", help="yalnız bu sorular (netleştirme soruları dahil)")
+    ap.add_argument("--setler", nargs="+", help=f"soru setleri (varsayılan {SETS})")
     ap.add_argument("--sure-raporu", nargs="*", metavar="TUR", help="yalnız süre tablosu, turun kendi kollarıyla")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
     if a.tag:
-        run_pass(a.tag, a.max_usd, a.kollar, a.n)
+        run_pass(a.tag, a.max_usd, a.kollar, a.n, a.ids, a.setler)
     if a.sure_raporu:
         from datetime import date
         p = OUT_DIR / "b4" / f"asama4_ceviri_saglayici_{date.today().isoformat()}.md"
