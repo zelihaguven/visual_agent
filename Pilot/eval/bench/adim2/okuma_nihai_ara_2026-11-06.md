@@ -412,3 +412,30 @@ Etkilenen sorular: 28 netleştirme sorusu, kayıtlarda kural çıkışı olanlar
 - **Silme kararı kullanıcıda.**
   - Veriye göre üç liste kalite kaybı olmadan kaldırılabilir. Yan etkileri kayıt alanlarıyla kapatılabilir: N2 ve A150 gibi adlar ürün/marka alanından gelmeli.
   - K7'nin kaldırılması değer farklı ve "bulunamadı" sorularında iyileştiriyor, değer aynı sorularda 2 soru kaybettiriyor ve süreyi uzatıyor.
+
+## 15. Kararlar 2026-11-06 (akşam): listeler silindi, K7 kapalı, gri akış c150b-J, OCR zorunlu
+
+- **c150b-JM reddedildi.** Gri akış C c150b-J ile; arayüz bağlama planı API planı §10'da.
+- **Üç liste silindi.** Kayıt alanları `title` ve `author` eklendi (test belgeleri ilk sayfadan dolduruldu; metadata). Adlar: ürün adı, model kodu, tam başlık, yazar soyadı, doküman kimliği. Karşılaştırma anahtarında ı/i farkı yok sayılıyor (İngilizce büyük harfli başlık).
+- **K7 kapalı** (`PILOT_K7=0` varsayılan). Açılırsa ürün adını çevrilmiş soruda da arar.
+- **Kayıtlardan yeniden puanlama** (62 soru; çağrı yok): yeni kayıtla her sorunun kapsamı ölçülmüş bir durumla aynı. 55 soru (c)'nin kapsamında, 7 soru (a)'nın kapsamında (kaynak belgeleri doğrulandı). Sonuç o kayıtlardan:
+
+| | değer farklı | değer aynı | gereksiz netl. | doğru "bulunamadı" | doğrulanmış görünen yanlış | cevaplı ✓ / ✖ / ret (16) |
+|---|---|---|---|---|---|---|
+| (c) ölçülen | 13/15 | 8/13 | 1 (A150) | 18/18 | 0 | 10 / 2 / 3 |
+| **yeni kayıt (türetilmiş)** | 13/15 | 8/13 | 1 (A150) | 18/18 | 0 | **11 / 2 / 2** |
+
+- **N2 düzeldi:** yazar soyadı "Granovsky" kapsamı geri getiriyor, (a)'daki gibi ✓. Aynı yolla Granovsky ve Strickland adını anan N1, A095, A115, A126, A152 ve B023 de (a)'daki kapsama döndü.
+- **A150 düzelmedi:** "kahve makinası kireç nasil temizlenir" sorusu kayıttaki ürün adıyla ("Kahve makinesi") yazım farkı yüzünden eşleşmiyor. İngilizce başlık ("Mr. Coffee Coffeemaker Instructions") Türkçe soruyla eşleşemez. Çeviri üzerinden ad eşleşmesi yalnız K7 içinde ve K7 kapalı.
+  - Genel çözüm adayları (koşulmadı): kapsam tespitinde ürün adını çevrilmiş soruda da aramak (başlık İngilizce); ad eşleşmesinde Türkçe ek/yazım toleransı.
+- **Yan etki:** tek kelimelik İngilizce ad ("trousers", "jacket") artık kapsam belirlemiyor; eskiden "trouser" takma adı vardı. Başlık tam eşleşiyor, kelime düzeyi eşleşme riskli ("repair", "safety" gibi kelimeler yanlış belgeye kilitlerdi). Kaynağı arama bulur, belirsizliği model sorar.
+
+**Öncelik listesi (güncel):**
+1. Gri akış C (c150b-J): arayüze bağlama, API planı §10.
+2. **OCR, pilot öncesi zorunlu:** [docs/PLAN-OCR.md](../../../../docs/PLAN-OCR.md).
+3. §23 niteleyici, adım 2 (istem varyantı), gerekirse.
+4. Sunucu: Qwen embed, B3a / B3c.
+5. J12 türü liste / şekil sayfaları.
+6. C009 türü çeviri hataları.
+7. `bugun` kipinin silinmesi (Adım 3'ün ilk servis sürümüyle).
+8. c150b-O.

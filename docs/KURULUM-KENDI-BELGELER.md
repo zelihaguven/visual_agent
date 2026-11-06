@@ -13,16 +13,12 @@
   - belge türü: `product_standard` | `machine_manual` | `tailoring_guide` | `repair_guide`;
   - dil;
   - erişim grubu.
-- [ ] **Taranmış belge kontrolü:** her PDF'te metin seçilebiliyor mu? Sistem OCR'ı kendisi yapmıyor, PDF'in içindeki metin katmanını kullanıyor. Metin katmanı olmayan tarama aranamaz (PRD "Taranmış belgeler"). Böyle belgeler ya tarayıcı yazılımıyla OCR'lanır ya da Adım 6 OCR planı beklenir.
+- [ ] **Taranmış belge kontrolü** (pilot öncesi zorunlu iş: [PLAN-OCR.md](PLAN-OCR.md)): her PDF'te metin seçilebiliyor mu? Sistem OCR'ı kendisi yapmıyor, PDF'in içindeki metin katmanını kullanıyor. Metin katmanı olmayan tarama aranamaz (PRD "Taranmış belgeler"). Böyle belgeler ya tarayıcı yazılımıyla OCR'lanır ya da Adım 6 OCR planı beklenir.
 
 ## 1. Test belgelerini ve indeksi temizleme
 
 - [ ] `pilot/registry.py` → `DOCS` tablosundaki test belgeleri kaldırıldı.
-- [ ] Elle yazılmış listeler boş:
-  - `aliases=()`;
-  - `CUSTOMER_BRANDS = {}`;
-  - `query.FOREIGN_BRANDS = {}`.
-  - Kesin karar liste/K7 ölçümünden sonra; o zamana kadar boş tutulur ya da `$env:PILOT_HAND_LISTS = "0"`.
+- [ ] Elle yazılmış takma ad ve marka listeleri yok (2026-11-06'da silindi). Adlar yalnız kayıt alanlarından gelir.
 - [ ] Silindi:
   - `data/parsed/*`, `data/figures/*`, `data/chunks.jsonl`;
   - `data/qdrant/` (gömülü indeks);
@@ -33,6 +29,7 @@
 
 - [ ] Her belge için `DocMeta(...)` satırı: `doc_id` (kısa, tekil), dosya adı, marka, **ürün**, tür, dil (`lang_ranges` gerekirse), `access`.
 - [ ] Ürün alanı soruda geçecek adı içeriyor (ürün adı + model kodu). Takma ad listesi yazılmaz.
+- [ ] **`title`**: belgenin kendi başlığı, ilk sayfadan (genelde İngilizce, ör. "TROUSERS, ARMY COMBAT UNIFORM"). **`author`**: varsa yazar. Yükleme formu ilk sayfadan önerir, yetkili onaylar (bugün kayıtta elle).
 
 ## 3. İşleme ve indeksleme
 

@@ -117,3 +117,28 @@ Karar 2026-11-06: gri akış **seçenek C**. Metin gri akar; sayılar doğrulana
 - Hız ve maliyet eşiklerinin kesin değerleri (§5).
 - Kimlik yöntemi (A5): `fetch` + `ReadableStream` önerisi her iki seçenekle uyumlu.
 - Çoklu öğeli cevapta "ilk öğe öz" kuralı korunur. İlk öğe ✖ ise kullanıcı önce yer tutucuyu görür, sonraki öğeler sırayla açılır.
+
+## 10. Arayüze bağlama planı (gri akış C, c150b-J; kod yok)
+
+**Karar 2026-11-06:** c150b-JM reddedildi; gri akış C **c150b-J** ile. Bugünkü değer (8 kaynak, uçtan uca): ilk görünen kelime p50 2,02 sn, **p95 2,99 sn**; ilk doğrulanmış cümle p50 2,40, p95 3,63 sn.
+
+Adımlar (her biri ayrı commit, testli; bugünkü uygulama yolu bozulmadan, `PILOT_STREAM_UI` anahtarının arkasında):
+1. **Akış geri çağrısı:** `cloud.AnswerClient.stream(messages, on_delta=None)`. Her içerik parçası `on_delta(birikmiş_içerik, zaman)` ile bildirilir. Yedeğe geçiş, bekçi ve kesinti olayları da bildirilir (`on_event("sifirla" | "tamamlanamadi")`).
+2. **Olay üretici (sunucu ile arayüzün ortak çekirdeği):** `stream_view.StreamAssembler`. Birikmiş JSON'dan öğe metinlerini (`item_text_spans`) ve öğe sonlarını (`item_end_offsets`) izler; kapanan öğeyi `check_item` ile doğrular.
+   - §3'teki olayları üretir: `oge_akis` (maskeli), `oge_dogrulandi`, `oge_dogrulanamadi`, `oge_sifirla`, `cevap_tamamlanamadi`, `rozet`.
+   - Sıra kuralı B burada: açılış imleci, ✖ tıkamaz.
+   - Aynı sınıf Adım 3'te SSE sunucusunda kullanılır.
+3. **Pipeline:** `soru_cevapla(..., on_event=None)` olayları arayüze iletir. Son `Result` bugünkü gibi döner; ölçüm ve testler değişmez.
+4. **app.py:** her öğe için `st.empty()` yer tutucu.
+   - akan metin **gri** (maskeli, ▒▒▒);
+   - `oge_dogrulandi` → normal metin + [n] etiketleri;
+   - `oge_dogrulanamadi` → "Değer doğrulanamadı, kaynağa bakın." + kaynak kartı;
+   - rozet en sonda.
+   - Ses düğmesi yalnız doğrulanmış öğelerle (sesli_metin şemadan çıkarılınca öğelerden; §8 ölçümü).
+5. **Testler (ağsız):** sahte akışla olay sırası:
+   - öğe *i+1* önce doğrulanır, *i* ✖;
+   - gizleme: değer, kesir, kod, yazıyla sayı;
+   - kesinti: doğrulanmış öğe var / yok;
+   - yedeğe geçişte sıfırlama.
+   - Streamlit AppTest ile ekranda maskeli → açık geçişi.
+6. **Ölçüm:** arayüz yolundan 20–30 soru. İlk görünen kelime ve ilk doğrulanmış cümle `bitti` olayının sürelerinden (p50 / p95). Kalite kapıları duman testiyle aynı.

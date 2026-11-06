@@ -443,6 +443,8 @@ flowchart LR
 - Uçtan uca ilk doğrulanmış cümle p50 2,40 sn / p95 3,63 sn.
 - Duman testi (30 soru, uygulama yolu): kapıların hepsi geçti; p50 2,53 / p95 3,32 sn. Yedeğe geçiş 3/3 Venice.
 
+**Kural katmanı (2026-11-06):** elle yazılmış takma ad, müşteri markası ve yabancı marka listeleri silindi. Belge adları kayıt alanlarından (ürün, model kodu, başlık, yazar). K7 (arama sonrası ürün netleştirmesi) varsayılan kapalı; netleştirmeyi model yapar (`PILOT_K7=1` ile açılır).
+
 **Geri alma:** `PILOT_ANSWER_MODE=bugun` yalnız elle açılır (yerel Ollama + bugünkü şema ve doğrulama). Bir sürüm tutulup silinecek. Her bağlama adımı ayrı commit; `git revert` ile adım adım geri alınır.
 
 ## A5. Arayüz

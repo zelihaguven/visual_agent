@@ -67,7 +67,7 @@ Kullanım ortamı fabrika zeminidir: tablet ya da bilgisayar, gürültülü orta
 | G13 | Doküman eklerken kapsam raporu | Zorunlu | Kısmen (komut satırı) |
 | G14 | Denetim kaydı: kim, ne zaman, hangi dokümana ne sordu; yetki değişiklikleri | Zorunlu | Yok |
 | G15 | Tablet ve bilgisayar tarayıcısından erişim, giriş | Zorunlu | Yok (Streamlit prototip) |
-| G16 | Departmana özel terim sözlüğü ve doküman kuralları (isteğe bağlı veri) | Sonra | Altyapı var |
+| G16 | Departmana özel terim sözlüğü ve doküman kuralları (isteğe bağlı veri) | Sonra | Altyapı var; elle yazılmış takma ad ve marka listeleri silindi, adlar kayıt alanlarından (ürün, başlık, yazar) |
 | G17 | Kullanıcı geri bildirimi (cevap doğru / yanlış) | Sonra | Yok |
 | G18 | Aynı konuda iki dokümanın çelişen değerlerinin ikisinin de kaynaklı gösterilmesi | Sonra | Yok |
 
@@ -119,6 +119,8 @@ En büyük risk, yanlış bir değerin (dikiş sıklığı, tolerans, ayar) güv
 
 - Kararlar onaylı soru setiyle verilir: 199 onaylı + 46 yeni soru (2026-11-06). Onay ölçütü kanıt cümlesidir; model çıktısı onay ölçütü olmaz.
 - **Netleştirme kapısı:** farklı ürün (değer farklı) → netleştirme zorunlu; belge içi varyant → netleştirme ya da bütün varyant değerleri doğru etiketleriyle; değer aynıysa ya da ürün soruda söylenmişse netleştirme gereksiz sayılır.
+- **K7 (arama sonrası "hangi ürün?" kuralı) KAPALI (karar 2026-11-06).** Gerekçe (62 etkilenen soru, yeni hat): kapalıyken değer farklı netleştirme 12/15 → 13/15 ve doğru "bulunamadı" 17/18 → 18/18; kaybedilenler değer aynı sorular (A143, A144: 10/13 → 8/13). Netleştirmeyi model (şema C) yapıyor. Gerçek sette değer farklı netleştirme izlenir; kayıp görülürse K7 genel haliyle (`PILOT_K7=1`) geri açılır.
+- **Elle yazılmış listeler silindi (karar 2026-11-06):** registry takma adları, `CUSTOMER_BRANDS` (US Army → ceket/pantolon), `FOREIGN_BRANDS` (Nike …). Belgenin sorudaki adları yalnız **kayıt alanlarından**: ürün adı, ürün adındaki model kodu, **belgenin kendi başlığı** (genelde İngilizce), varsa **yazar** soyadı, doküman kimliği. Başlık ve yazar yüklemede ilk sayfadan önerilir, yetkili onaylar. Yabancı marka soruları liste olmadan da doğru "bulunamadı" alıyor (karar model).
 - **Ek kapı ve izlemeler (2026-11-06):** yanlış ret ayrıca raporlanır; "niteleyici uyuşmazlığı" (alıntı gerçek, soru başka şey soruyor) doğrulanmış görünen yanlış sayılır.
 - JUKI dokümanı (`gorulmemis_juki.json`) ayar yapmakta kullanılmaz, yalnız görülmemiş doküman testi içindir.
 - İyileştirmeler genel kurallarla yapılır, test dokümanlarına özgü kural yazılmaz.
@@ -177,6 +179,7 @@ Kullanıcı kimliği, yetki bilgisi, ses ve belgenin tamamı hiçbir çağrıda 
   - harf/rakam karışması: "IS min" = 15, "GLlPD" = GL-PD;
   - satır kaybı (tablo satırları eksik).
 - **Sonuç:** Doğrulayıcı yanlış değeri engeller. Model "112"yi ½ diye yorumlarsa alıntıda ½ olmadığı için ✖ olur. Ama soru **cevapsız kalır**. Sıfır tolerans kararıyla uyumlu, bedeli cevapsız kalma.
+- **Pilot öncesi zorunlu iş (karar 2026-11-06):** yüklemede metin katmanı kontrolü; yoksa **yerel OCR** (sayfa görüntüsü buluta gitmez, A9). Plan: [PLAN-OCR.md](PLAN-OCR.md).
 - **Adım 6 işi:**
   - (1) gerçek bir taranmış belgeyle cevapsız kalma oranının ölçümü (`ocr` etiketli sorular);
   - (2) OCR iyileştirme seçenekleri için plan:
