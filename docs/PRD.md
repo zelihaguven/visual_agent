@@ -1,6 +1,6 @@
 # Visual Agent: Ürün Gereksinimleri (PRD)
 
-Nov 3, 2026 · @Ilgın
+Nov 3, 2026 · @Ilgın · Güncelleme: 6 Kasım 2026 (Adım 2 kararları: cevap modeli, şema, sağlayıcılar, kapılar)
 
 ## Amaç ve kapsam
 
@@ -56,8 +56,8 @@ Kullanım ortamı fabrika zeminidir: tablet ya da bilgisayar, gürültülü orta
 | G4 | Kaynak sayfanın vurgulu gösterimi | Zorunlu | Pilotta var |
 | G5 | Akışlı sesli cevap; kodlar, toleranslar ve binlik ayırıcılar doğru okunur | Zorunlu | Pilotta var, akışlı değil |
 | G6 | Doğrulama rozeti; "doğrulandı" yalnız kod kontrolünden geçen cevapta | Zorunlu | Pilotta var |
-| G7 | Belirsiz soruda netleştirme | Zorunlu | Var, eşik seçilmedi |
-| G8 | Cevap yoksa "bulunamadı" | Zorunlu | Var, hedefin altında (bkz. Doğruluk) |
+| G7 | Belirsiz soruda netleştirme | Zorunlu | Var; kapı tanımı 6 Kasım (farklı ürün zorunlu, belge içi varyant, gereksiz). Değer farklı 13/15 |
+| G8 | Cevap yoksa "bulunamadı" | Zorunlu | Var; bağlanan hatta 51/51 |
 | G9 | Hata kodlarında tam eşleşme; benzer kodların karışmaması | Zorunlu | Pilotta var |
 | G10 | Şekil ve tabloların cevaba katılması (VLM açıklaması, tablo varyant kontrolü) | Zorunlu | Pilotta var |
 | G11 | İki katmanlı yetki (departman + doküman) aramanın içinde uygulanır | Zorunlu | Departman filtresi Qdrant'ta var; doküman katmanı yok |
@@ -91,20 +91,22 @@ Açık karar: karşı departmanın yetkilisinin onayı gerekecek mi? (bkz. Açı
 
 ## Doğruluk ve güvenilirlik
 
-En büyük risk, yanlış bir değerin (dikiş sıklığı, tolerans, ayar) güvenilir görünmesidir. Bu yüzden ilk sürüm, aşağıdaki K1 ölçütlerinin hepsini geçmeden gerçek veriye geçmez. Bugün en uzak olan ölçüt doğru "bulunamadı" oranıdır: %48, hedef ≥ %90.
+En büyük risk, yanlış bir değerin (dikiş sıklığı, tolerans, ayar) güvenilir görünmesidir. Bu yüzden ilk sürüm, aşağıdaki K1 ölçütlerinin hepsini geçmeden gerçek veriye geçmez. Adım 2'den sonra (6 Kasım) doğru "bulunamadı" %100 (51/51) ve doğrulanmış görünen yanlış 0. En uzak ölçüt süre: ilk doğrulanmış cümlenin p95'i 3,63 sn (hedef ≤ 3 sn).
 
 | Ölçüt | Hedef | Bugün | Not |
 | --- | --- | --- | --- |
 | Arama: doğru sayfa ilk 5'te (hit@5) | ≥ %90 | %89 | bge-m3 + BM25, rerank kapalı; 1M'de ölçülüyor (B3b) |
 | Arama: doğru sayfa ilk sırada (hit@1) | izlenir | %72 | MRR 0,79 |
-| Değer doğruluğu | ≥ %98 | ölçülmedi | Yeni LLM ile ölçülecek; pilotta 7B modelle 9/18 |
-| "Doğrulandı" rozetli yanlış değer | 0 | 0 | Pilotta hiç görülmedi; 3 yanlış cevap "kısmen" rozeti aldı |
-| Doğru "bulunamadı" | ≥ %90 | %48 | 21 soru; 7 soruda alakasız kaynaktan cevap yazıldı |
+| Değer doğruluğu | ≥ %98 | kısmen | Beklenen değer cevapta (kapsama) %93 (bağlanan hat, 8 kaynak); kesinlik ölçümü ayrıca yapılacak |
+| "Doğrulandı" rozetli yanlış değer | 0 | 0 | Bağlanan hatta (8 kaynak) 0. 5 kaynakta 1 vaka (B012, niteleyici uyuşmazlığı); 8 kaynak bu yüzden seçildi |
+| Doğru "bulunamadı" | ≥ %90 | %100 | Bağlanan hat: 51/51 (onaylı + yeni set). Pilotta 7B modelle %48'di |
 | Tuzak sorular | %100 | ölçülmedi |  |
 
 **Ölçüm kuralları**
 
-- Kararlar onaylı soru setiyle verilir. 155 soruluk aday set onay bekliyor; onaylanana kadar 36 soruluk sette 5–8 puanın altındaki farklar gürültü sayılır.
+- Kararlar onaylı soru setiyle verilir: 199 onaylı + 46 yeni soru (2026-11-06). Onay ölçütü kanıt cümlesidir; model çıktısı onay ölçütü olmaz.
+- **Netleştirme kapısı:** farklı ürün (değer farklı) → netleştirme zorunlu; belge içi varyant → netleştirme ya da bütün varyant değerleri doğru etiketleriyle; değer aynıysa ya da ürün soruda söylenmişse netleştirme gereksiz sayılır.
+- **Ek kapı ve izlemeler (2026-11-06):** yanlış ret ayrıca raporlanır; "niteleyici uyuşmazlığı" (alıntı gerçek, soru başka şey soruyor) doğrulanmış görünen yanlış sayılır.
 - JUKI dokümanı (`gorulmemis_juki.json`) ayar yapmakta kullanılmaz, yalnız görülmemiş doküman testi içindir.
 - İyileştirmeler genel kurallarla yapılır, test dokümanlarına özgü kural yazılmaz.
 - Soru setini şimdilik geliştirme ekibi hazırlar ve onaylar. Gerçek veriye geçerken departmandan bir uzmanın kontrol etmesi gerekir (Açık kararlar, A2).
@@ -119,8 +121,8 @@ Sistem gerçek zamanlı çalışmalıdır: usta soruyu sorduktan sonra cevabın 
 | --- | --- | --- |
 | Sesli soru tanıma (STT) | ≤ 1 sn | ölçülecek |
 | Arama (embed + vektör DB) | ≤ 1 sn | p50 0,45 sn (36 soru, dizüstü) |
-| LLM ilk kelime | ≤ 1,5 sn | ölçülecek |
-| İlk cümle ekranda | ≤ 3 sn | ölçülecek |
+| LLM ilk kelime | ≤ 1,5 sn | p95 ~0,9 sn (Gemma 4, DeepInfra) |
+| İlk cümle ekranda | ≤ 3 sn | İlk **doğrulanmış** cümle, arama dahil: p50 2,40 sn, p95 3,63 sn (245 soru, dizüstü); duman testinde p95 3,32 sn. p95 hedefin üstünde |
 | Sesli okumanın başlaması (TTS) | ≤ 4 sn | ölçülecek |
 
 Dizüstü süreleri "üretimi temsil etmez" diye işaretlenir ve karar için kullanılmaz. Karar sunucudaki ölçümle (B3a) verilir.
@@ -138,7 +140,8 @@ Bulut kullanılabilir, ama yalnız veri saklamayan (ZDR) sağlayıcılarla ve ya
 | Ayrıştırma, OCR, parçalama, sayfa konumları | Sunucu | Hiçbir şey |
 | Embedding (indeksleme ve soru) | Sunucu ya da ZDR'li bulut | Parça metni, soru metni |
 | Vektör veritabanı, yetki filtresi | Sunucu | Hiçbir şey |
-| Cevap üretimi (LLM) | ZDR'li bulut | Soru + bulunan 3–5 parça |
+| Cevap üretimi (LLM) | ZDR'li bulut (Gemma 4; DeepInfra, yedek Venice/Parasail) | Soru + bulunan 8 parça |
+| BM25 sorgu çevirisi | ZDR'li bulut (Gemma 4; NextBit, yedek Venice) | Yalnız soru metni |
 | Şekil açıklaması (VLM) | Açık karar | Şekil görüntüsü (A3) |
 | STT, TTS | Açık karar | Ses ya da cevap metni (A3) |
 
@@ -162,19 +165,22 @@ Kesik çizgili kutunun yeri henüz kararlaştırılmadı. Streamlit yalnız geli
 
 | Bileşen | Karar | Dayanak |
 | --- | --- | --- |
-| Arama | bge-m3 dense + BM25, RRF ile birleşim, rerank kapalı | B4 ölçümü |
+| Arama | İkili yol: bge-m3 dense + BM25 (çevrilmiş sorgu, 1,2 sn sınırı), RRF ile birleşim, rerank kapalı | B4 ölçümü; Adım 2 uçtan uca ölçüm (yanlış ret 25 → 11) |
 | Vektör veritabanı | Qdrant, sunucu modu, yetki filtresi içinde | B2 ölçümü |
 | Embedding (1M kademesi) | bge-m3 ve Qwen3-8B (bulut) karşılaştırılıyor | B3b sürüyor |
-| Cevap modeli (LLM) | Açık: OpenRouter'daki ZDR'li modeller denenecek | Adım 2 |
+| Cevap modeli (LLM) | **Gemma 4 26B A4B**, şema **c150b-J** (öğe başına alıntı, girintisiz JSON), 8 kaynak, max_tokens 1200. DeepInfra birincil; Venice ve Parasail **yalnız yedek** (hata, 429, 2,5 sn'de ilk token yok, akış bekçisi). Ağ yoksa "servis kullanılamıyor"; yerel modele otomatik düşüş yok | Adım 2 nihai tur, uçtan uca ölçüm ve duman testi ([plan §29](../Pilot/eval/bench/adim2/plan_cevap_modeli_2026-11-05.md)) |
+| Sağlayıcı kapısı | "≥ 2 ZDR" = kesinti dayanıklılığı: kalite kapıları birincilde; yedekte doğrulanmış görünen yanlış 0, yedek kipinde ulaşmayan cevap ≤ ~%5, toplamda ≤ ~%1 | Akış bekçisi ve yedek benzetimi (2026-11-06) |
+| Doğrulama | Kod: öğe başına alıntı birebir, cümlenin sayıları kendi alıntısında, tolerans; tablo alan etiketi kuralı; JSON `strict=False` ve gerçek hata nedeni | Adım 2 |
 | Reranker | Kapalı; Adım 2'de "bulunamadı" ile birlikte yeniden değerlendirilir | B4 düzeltme ölçümü |
 | İstemci | Tarayıcıdan erişilen web arayüzü | Tablet + bilgisayar hedefi |
 
 ## Bugünkü durum
 
-Uçtan uca hat pilotta çalışıyor ve arama katmanı ölçülüp iyileştirildi: arama p50 56,7 sn'den 0,45 sn'ye indi. Cevap üreten model ve gerçek zamanlı akış henüz ele alınmadı. Kod GitHub'da, 375 test geçiyor.
+Uçtan uca hat pilotta çalışıyor. Arama katmanı ölçülüp iyileştirildi (arama p50 56,7 sn'den 0,45 sn'ye). Adım 2'de cevap modeli seçildi ve uygulamaya bağlandı (6 Kasım): Gemma 4 + şema c150b-J + ikili yol varsayılan hat. Cevap akışlı alınıyor ve öğe başına doğrulanıyor; ekranda akarak gösterim (gri "doğrulanıyor") henüz yok. Kod GitHub'da, 455 test geçiyor.
 
 | Tarih | Ne yapıldı | Sonuç |
 | --- | --- | --- |
+| 6 Kasım | Adım 2 kararı ve bağlama | Gemma 4 + şema c150b-J + ikili yol uygulamada varsayılan; duman testinin kapıları geçti; JUKI tek seferlik doğrulama yapıldı. Adım 2 harcaması ~1,82 $ (3,0 $ sınırı) |
 | 3 Kasım | B3b kesinti kontrolü, push | Veri kaybı yok; 1M indeksin %93'ü hazır (932.112 parça) |
 | 27 Ekim | B3 hazırlığı | 1M parçalık kalabalık korpusu, yük testi betikleri, internetsiz sunucu paketi |
 | 27 Ekim | B4: lokal ve bulut karşılaştırması | Yeni varsayılan bge-m3 + BM25, rerank kapalı; hit@5 0,89; bulut harcaması \~0,9 $ |
@@ -199,17 +205,17 @@ Bu kararlar ilerlemeyi bugün durdurmuyor. Her biri, engellediği adıma gelmede
 
 | No | Karar | Muhatap | Engellediği adım |
 | --- | --- | --- | --- |
-| A1 | Hangi LLM? (OpenRouter'daki ZDR'li modellerden) | Geliştirme ekibi | Adım 2 sonu |
+| A1 | ~~Hangi LLM?~~ **Kapandı (2026-11-06):** Gemma 4 26B A4B, şema c150b-J, DeepInfra birincil | Geliştirme ekibi | Adım 2 sonu |
 | A2 | Yanlış değer toleransı kesinleşiyor mu; soru setini gerçek veride kim kontrol edecek? | Kalite yönetimi | Adım 6 |
 | A3 | VLM, STT ve TTS sunucuda mı, ZDR'li bulutta mı? | Geliştirme ekibi | Adım 5 |
 | A4 | Departmanlar arası paylaşımda karşı departman yetkilisinin onayı gerekli mi? | Departmanlar, BT | Adım 4 |
 | A5 | Giriş nasıl yapılacak: şirket hesabı (tek oturum açma) mı, ayrı hesap mı? | BT | Adım 3 |
 | A6 | Üretim sunucusu: B3a/B3c'de ölçülen sunucu mu, ayrı bir sunucu mu? | BT | Adım 3 |
-| A7 | Ağ kesilirse ne olacak: lokal yedek model mi, "şu an çalışmıyor" uyarısı mı? | BT, kullanıcılar | Adım 3 |
+| A7 | ~~Ağ kesilirse ne olacak?~~ **Kapandı (2026-11-06):** "servis şu an kullanılamıyor" uyarısı ve bulunan kaynaklar; yerel modele otomatik düşüş yok (yerel model yalnız elle açılan geri alma anahtarı, bir sürüm) | BT, kullanıcılar | Adım 3 |
 | A8 | Denetim kayıtları ne kadar saklanacak, kim görecek? | BT, hukuk | Adım 6 |
 | A9 | Müşteri sözleşmeleri, parçaların ZDR'li buluta gönderilmesine izin veriyor mu? | Hukuk | Adım 6 |
 | A10 | Kodlar atölyede nasıl okunuyor; sesli cevap ne uzunlukta olmalı? | Kullanıcılar | Adım 5 |
-| A11 | (Öneri, 2026-11-05) Model değişikliği yalnız yapılandırma değişikliği mi olacak? Önerilen ilke: Bir model ölçüm setinden kod değişmeden geçmiyorsa elenir, ona özel yama yazılmaz; ortak biçim sorunları yapılandırılmış cevap şemasıyla çözülür ([Adım 2 planı §15–16](../Pilot/eval/bench/adim2/plan_cevap_modeli_2026-11-05.md)) | Geliştirme ekibi | Adım 2 sonu |
+| A11 | (Uygulandı, 2026-11-06: bağlanan hatta model ve sağlayıcı yapılandırmadan) Model değişikliği yalnız yapılandırma değişikliği mi olacak? Önerilen ilke: Bir model ölçüm setinden kod değişmeden geçmiyorsa elenir, ona özel yama yazılmaz; ortak biçim sorunları yapılandırılmış cevap şemasıyla çözülür ([Adım 2 planı §15–16](../Pilot/eval/bench/adim2/plan_cevap_modeli_2026-11-05.md)) | Geliştirme ekibi | Adım 2 sonu |
 
 ## Kapsam dışı ve terimler
 

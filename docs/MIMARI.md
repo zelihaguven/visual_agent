@@ -3,7 +3,7 @@
 > **A. Pilotun mimarisi:** Bugün çalışan sistem. Her aşamada ne yapılıyor, ne kullanılıyor, neden.
 > **B. Önerilen hedef mimari:** Pilottan öğrenilenlerle gerçek sistemin nasıl olması gerektiği.
 >
-> **Son güncelleme:** 2026-10-16 · **İlgili:** [PILOT-RAPORU.md](PILOT-RAPORU.md) (ölçümler, sorunlar) · [UYGULAMA-PLANI.md](arsiv/UYGULAMA-PLANI.md) (aşamalar) · [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md) (araç seçimlerinin araştırma gerekçesi) · Kod: [pilot/](../Pilot/)
+> **Son güncelleme:** 2026-11-06 (cevap hattı: [A4.13](#a413-cevap-hattı-c-kipi-varsayılan-adım-2-kararı-2026-11-06)) · **İlgili:** [PILOT-RAPORU.md](PILOT-RAPORU.md) (ölçümler, sorunlar) · [UYGULAMA-PLANI.md](arsiv/UYGULAMA-PLANI.md) (aşamalar) · [ARASTIRMA-SENTEZI.md](ARASTIRMA-SENTEZI.md) (araç seçimlerinin araştırma gerekçesi) · Kod: [pilot/](../Pilot/)
 
 ---
 
@@ -41,11 +41,11 @@ flowchart TB
         T["⌨ Yazılı soru"] --> Q
         Q --> K["Sorgu analizi ve kararlar<br/>query.py + pipeline.py<br/>K0–K6 (kural, model yok)"]
         K -- "belirsiz / uyumsuz" --> N["Netleştir veya<br/>'bulunamadı'"]
-        K -- "net" --> S["Arama<br/>retrieve.py<br/>hibrit + reranker"]
+        K -- "net" --> S["Arama<br/>retrieve.py<br/>ikili yol: bge-m3 + çevirili BM25"]
         S --> K7{"K7: sonuçlar<br/>belirsiz mi?"}
         K7 -- "evet" --> N
-        K7 -- "hayır" --> L["LLM<br/>llm.py, qwen2.5:7b<br/>JSON: alıntı + cevap"]
-        L --> D["Doğrulama<br/>verify.py (kod)<br/>+ tablo varyantı (tables.py)"]
+        K7 -- "hayır" --> L["Cevap modeli<br/>Gemma 4 (bulut, ZDR)<br/>şema c150b-J, akışlı"]
+        L --> D["Doğrulama (kod)<br/>öğe başına, schema_c.py"]
         D --> U["Ekran<br/>app.py<br/>rozet, alıntı, vurgulu sayfa"]
         U --> SP["Sesli okuma<br/>speech.py → Chatterbox"]
     end
@@ -79,10 +79,10 @@ flowchart TB
 | **Sorgu analizi** | Sorudaki makine, ürün, marka, dil; söylenmiş kodlar | Kural (eşanlamlı tablosu) | Hızlı, test edilebilir, nedeni görülebilir. Küçük model bu kararı güvenilir veremiyor | [query.py](../Pilot/pilot/query.py) |
 | **Karar noktaları** | Netleştirme, kaynak uyumu, bulunamadı | Kural + kullanıcı seçimi | Yanlış kaynaktan cevap (R4, R14) modelden önce önlenir | [pipeline.py](../Pilot/pilot/pipeline.py) |
 | **Terim sözlüğü** | Atölye terimi → kılavuz terimi (aramaya eklenir) | Elle yazılmış taslak sözlük (29 terim) | bge-m3 ve qwen jargonu bilmiyor (1/5, 0/5) | [terms.py](../Pilot/pilot/terms.py) |
-| **Arama** | Soruya en uygun 5 parça | Hibrit (yoğun + seyrek, **RRF**) + **bge-reranker-v2-m3** | Kodlar (E050, S-7300A) kelime aramasıyla, anlam yoğun aramayla bulunur. Reranker isabeti artırıyor | [retrieve.py](../Pilot/pilot/retrieve.py) |
-| **Cevap üretimi** | Alıntı + cevap + sesli metin | **qwen2.5:7b** (Ollama), JSON şeması | Bu makinelere sığan en iyi lokal model. Kalitesi yetersiz (B2) | [llm.py](../Pilot/pilot/llm.py), [prompts.py](../Pilot/pilot/prompts.py) |
+| **Arama** | Soruya en uygun 8 parça | **İkili yol** (2026-11-06): bge-m3 dense + BM25 (Gemma 4 ile çevrilmiş sorgu, 1,2 sn sınırı), **RRF**, rerank kapalı | Kodlar kelime aramasıyla, anlam yoğun aramayla bulunur. Çeviri İngilizce kılavuzlarda BM25'i çalıştırıyor (yanlış ret 25 → 11) | [retrieve.py](../Pilot/pilot/retrieve.py) |
+| **Cevap üretimi** | Öğe listesi (her cümle kendi alıntısıyla) + sesli metin | **Gemma 4 26B A4B** (bulut, ZDR; DeepInfra birincil, Venice/Parasail yalnız yedek), şema **c150b-J**, akışlı (2026-11-06). Geri alma kipi: qwen2.5:7b (Ollama) | Adım 2 nihai turunda kalite kapılarını geçen model; A4.13 | [cloud.py](../Pilot/pilot/cloud.py), [schema_c.py](../Pilot/pilot/schema_c.py) |
 | **Kod tam eşleşmesi** | Sorudaki kodu (E050) kapsamda birebir arar | Kural | Kelime araması benzer kodu (E05) getirebiliyor | [pipeline.py](../Pilot/pilot/pipeline.py) |
-| **Doğrulama** | Cevabı kaynağa karşı denetler | Kod (kural) | Model yanılsa da yanlış değer "doğrulandı" diye gitmesin | [verify.py](../Pilot/pilot/verify.py) |
+| **Doğrulama** | Cevabı kaynağa karşı denetler | Kod (kural); c kipinde öğe başına + alan etiketi kuralı | Model yanılsa da yanlış değer "doğrulandı" diye gitmesin | [schema_c.py](../Pilot/pilot/schema_c.py), [verify.py](../Pilot/pilot/verify.py) |
 | **Tablo varyant kontrolü** | Değer tablodaki bir varyanta (model, tip, beden) özgüyse ve söylenmemişse seçenek sunar | Kural, seçenekler tablodan | Doğrulama "sayı kaynakta var mı"ya bakıyor, "doğru sütun mu"ya bakmıyor | [tables.py](../Pilot/pilot/tables.py) |
 | **Sesli metin** | Sayı, tolerans, birim → okunacak kelime | Kural tablosu | Türkçe için hazır araç yok. Alan dar, test edilebilir | [speech.py](../Pilot/pilot/speech.py) |
 | **Seslendirme** | Metin → ses | **Chatterbox Multilingual**, CPU, ayrı ortam | Yerel, Türkçe kalitesi iyi | [tools/tts_say.py](../Pilot/tools/tts_say.py) |
@@ -111,7 +111,7 @@ flowchart LR
 ### A3.1 Doküman kaydı: [registry.py](../Pilot/pilot/registry.py)
 
 Her PDF için: `doc_id`, dosya, **marka**, **ürün**, **tür** (`machine_manual`, `product_standard`, `tailoring_guide`), dil aralıkları (Bosch üç dilli) ve sorguda aranan **eşanlamlılar** ("ceket", "coat", "jacket"). Ayrıca:
-- `BRAND_ALIASES`: makine markası → modelleri ("brother" → S-7300A, S-7300B).
+- `BRAND_ALIASES`: makine markası → modelleri ("brother" → S-7300A, S-7300B). **2026-11-05'te silindi** (dokümana özgü elle yazılmış kural; S-7300 aile grubu ve kural bayrağıyla birlikte).
 - `CUSTOMER_BRANDS`: müşteri markası → şartnameleri ("us army" → ceket, pantolon).
 
 **Neden:** Soru hattındaki bütün kararlar (filtre, netleştirme, kaynak uyumu) bu kayda dayanır. Gerçek sistemde bu tablo elle değil, doküman yükleme sırasında ve müşteri/yetki kaydından üretilir (B4).
@@ -296,6 +296,8 @@ Soruda kaynak yoksa ve ilk 3 sonuç **farklı ürün şartnamelerinden** ("Dış
 
 ### A4.9 Cevap üretimi ([prompts.py](../Pilot/pilot/prompts.py), [llm.py](../Pilot/pilot/llm.py))
 
+> **Geri alma kipi (`PILOT_ANSWER_MODE=bugun`).** Varsayılan cevap hattı [A4.13](#a413-cevap-hattı-c-kipi-varsayılan-adım-2-kararı-2026-11-06).
+
 | Ne | Nasıl | Neden |
 |----|-------|-------|
 | Girdi | Numaralı kaynaklar (doküman, marka, ürün, dil, **bölüm**) + `<cevap_dili>` + soru. Sayfa numarası verilmez | Bölüm adı aynı satırın hangi bağlamda olduğunu söylüyor. Sayfayı kod bilir |
@@ -307,6 +309,8 @@ Soruda kaynak yoksa ve ilk 3 sonuç **farklı ürün şartnamelerinden** ("Dış
 **K8:** Model cevap yazmadan netleştirme sorusu yazarsa sonuç "doğrulanamadı" değil **netleştirme** olarak gösterilir; bulunan kaynaklar ve kaynakta geçen seçenekler düğme olur. Model cevapla birlikte soru da yazarsa: seçenekleri kaynakta geçiyorsa soru düğmelerle gösterilir, geçmiyorsa gösterilmez (`atlanan_netlestirme` olarak saklanır). Neden: SPI cevabının yanında "Hangi boy ceket için?" soruldu; SPI bedene göre değişmiyor, kullanıcı cevaplayamıyordu.
 
 ### A4.10 Doğrulama ([verify.py](../Pilot/pilot/verify.py))
+
+> **Geri alma kipi.** c kipinin öğe başına doğrulaması ve alan etiketi kuralı [A4.13](#a413-cevap-hattı-c-kipi-varsayılan-adım-2-kararı-2026-11-06)'te.
 
 Kod ile yapılır, LLM'e sorulmaz.
 
@@ -376,6 +380,71 @@ flowchart LR
 
 ---
 
+### A4.13 Cevap hattı: c kipi (varsayılan, Adım 2 kararı 2026-11-06)
+
+A4.7'deki arama, A4.9 ve A4.10'daki cevap üretimi ve doğrulama **geri alma kipini** (`PILOT_ANSWER_MODE=bugun`) anlatır. Varsayılan hat aşağıdadır. Ayrıntı ve ölçümler: [Adım 2 planı §29](../Pilot/eval/bench/adim2/plan_cevap_modeli_2026-11-05.md), [uçtan uca ölçüm](../Pilot/eval/bench/adim2/hat_rapor_2026-11-06.md), [duman testi](../Pilot/eval/bench/adim2/duman_testi_2026-11-06.md).
+
+```mermaid
+flowchart LR
+    Q["Soru"] --> K["Kural katmanı<br/>K0–K7 (değişmedi)"]
+    K --> TR["Sorgu çevirisi<br/>Gemma 4, NextBit → Venice<br/>1,2 sn sınırı"]
+    K --> E["bge-m3 dense<br/>(yerel)"]
+    TR --> B["BM25<br/>çevrilmiş sorgu"]
+    E --> RRF["RRF<br/>ilk 8 parça"]
+    B --> RRF
+    RRF --> M["Gemma 4 26B A4B<br/>şema c150b-J, akışlı<br/>DeepInfra → yedek"]
+    M --> V["Öğe başına doğrulama<br/>schema_c.verify_c"]
+    V --> U["Ekran: öğe listesi,<br/>[n] etiketleri, rozet"]
+```
+
+| Bileşen | Karar | Dosya |
+|---|---|---|
+| Arama | **İkili yol:** bge-m3 dense ‖ BM25 (çevrilmiş sorgu), RRF, rerank yok. Çeviri dense embed ile paralel; 1,2 sn'de gelmezse BM25 özgün soruyla | [retrieve.py](../Pilot/pilot/retrieve.py) `search(translate=...)`, [translate.py](../Pilot/pilot/translate.py) |
+| Çeviri | Gemma 4 26B A4B, düşünme kapalı, `only: [nextbit, venice]` | [pipeline.py](../Pilot/pilot/pipeline.py) `_translator` |
+| Cevap modeli | **Gemma 4 26B A4B** (`google/gemma-4-26b-a4b-it`), temperature 0, düşünme kapalı, `max_tokens` 1200, **8 kaynak** | [config.py](../Pilot/pilot/config.py), [cloud.py](../Pilot/pilot/cloud.py) `AnswerClient` |
+| Şema | **c150b-J**: `tur` = cevap / netlestirme / bulunamadi. `cevap` en fazla 8 öğe; her öğe önce 1–2 alıntı (≤ 150 karakter, kaynak numarasıyla), sonra cümle; ilk öğe cevabın özü. Netleştirme seçenekleri kaynak numarası. JSON girintisiz, tek satır | [schema_c.py](../Pilot/pilot/schema_c.py) |
+| Sağlayıcı | **DeepInfra birincil.** Her istek tek sağlayıcıya sabit (`allow_fallbacks: false`); yedeğe geçişi istemci yapar | `ANSWER_PROVIDERS` |
+| Yedek | Yalnız kesintide: HTTP hatası / 429, **ilk token 2,5 sn'de yok** ya da akış bekçisi → Venice; Venice'te kaçak → Parasail'e bir kez. Sağlayıcı ve denemeler her cevapta kayıtlı | `AnswerClient.stream` |
+| Akış bekçisi | Akışta art arda **40**'tan fazla boşluk karakteri: kaçak, akış kesilir, sıradaki sağlayıcı | `STREAM_GUARD_N` |
+| Servis yok | Bütün sağlayıcılar başarısızsa **"Cevap servisi şu an kullanılamıyor"** ve aramanın bulduğu kaynaklar. **Yerel modele otomatik düşüş yok** | `pipeline.SERVICE_DOWN` |
+| JSON | Ortak ayrıştırma `json.loads(strict=False)` (kaçışsız sekme gibi kontrol karakterleri). Hata mesajı gerçek neden: `finish=length` ise "uzunluk sınırında kesildi", değilse "JSON okunamadı (hata türü)" | [jsonparse.py](../Pilot/pilot/jsonparse.py) |
+
+**Doğrulama (öğe başına, kod):**
+- Her öğenin alıntısı kaynakta birebir. 150 karakter sınırına dayanan alıntıda kaynakla örtüşen baş kabul.
+- **Alan etiketi kuralı:** Alıntı "<Sütun>: <aynı hücrenin bitişik parçası>" ise ve parçada aynı hücre o sütun etiketiyle varsa kabul (`tables.field_quote_ok`). Etiket bizim tablo satırı serileştirmemize ait ("Code: E050 | Cause: … | Remedy: ・…"). Farklı hücreleri " \| " ile birleştiren alıntı kabul edilmez.
+- Cümledeki her sayı yalnız **kendi alıntılarında**; sesli metnin sayıları alıntıların birleşiminde; tolerans tam; tekrar yok; başka alfabe yok.
+- Şekil açıklamasından gelen alıntı ⚠. Rozet: bütün öğeler geçerse ✓, şekil varsa ⚠, aksi ✖.
+- Tablo varyant kuralı (K9) ve serbest metin netleştirme süzgeci (`clarify_options`) bu yolda kullanılmaz; ölçülen hat böyleydi.
+- İlk doğrulanmış cümle akış zaman çizelgesinden; uçtan uca süre (`uctan_uca_ilk_dogrulanmis`) arama dahil.
+
+**Kapılar (Adım 2 planı §18, §28–§29):**
+- Kalite (birincil sağlayıcıda):
+  - doğru "bulunamadı" ≥ %90;
+  - doğrulanmış görünen yanlış 0;
+  - uydurma 0;
+  - beklenen değer cevapta ≥ %85.
+- Netleştirme:
+  - değer farklı (farklı ürün) → netleştirme zorunlu;
+  - belge içi varyant → netleştirme ya da bütün varyant değerleri doğru etiketleriyle;
+  - değer aynıysa ya da ürün/varyant soruda söylenmişse netleştirme **gereksiz**.
+- **Süre:** uçtan uca ilk doğrulanmış cümle ≤ 3 sn (arama dahil); model tarafı ≤ 2,0 sn.
+- **"≥ 2 ZDR" = kesinti dayanıklılığı:** Cevap modeli en az iki ZDR sağlayıcıdan alınabilmeli; kalite kapıları yalnız birincile. Yedek için:
+  - doğrulanmış görünen yanlış 0;
+  - yedek kipinde (bekçi ve diğer yedekle) ulaşmayan cevap ≤ ~%5;
+  - toplamda (ölçülen birincil kesinti oranıyla) ≤ ~%1.
+- Yeni hata türleri izlenir:
+  - **niteleyici uyuşmazlığı**: alıntı gerçek ama soru başka bir şeyi soruyor ("dijital", "-5", "Premier"; `bench/niteleyici_tarama.py`);
+  - **boşluk kaçağı**: JSON ortasında durmayan boşluk; bazı sağlayıcılarda soruya bağlı.
+
+**Ölçüm özeti (pilot korpusu, 245 soru, 8 kaynak; 10k ölçümleriyle doğrudan karşılaştırılamaz):**
+- ✓ 125 / ⚠ 1 / ✖ 20 (cevaplı 160 soruda).
+- Yanlış ret 11; aynı sorularda varsayılan yolla 25'ti.
+- Doğrulanmış görünen yanlış 0. Değer farklı netleştirme 13/15.
+- Uçtan uca ilk doğrulanmış cümle p50 2,40 sn / p95 3,63 sn.
+- Duman testi (30 soru, uygulama yolu): kapıların hepsi geçti; p50 2,53 / p95 3,32 sn. Yedeğe geçiş 3/3 Venice.
+
+**Geri alma:** `PILOT_ANSWER_MODE=bugun` yalnız elle açılır (yerel Ollama + bugünkü şema ve doğrulama). Bir sürüm tutulup silinecek. Her bağlama adımı ayrı commit; `git revert` ile adım adım geri alınır.
+
 ## A5. Arayüz
 
 [app.py](../Pilot/app.py), Streamlit.
@@ -431,7 +500,7 @@ Küçük model belirsizlikte "sor" demek yerine uydurmaya kayıyor. Kuralların 
 | Eşanlamlı listeleri | Elle yazılıyor; listede olmayan ürün/marka tanınmaz | Doküman kaydından ve müşteri/yetki kaydından otomatik |
 | `MUST_MATCH` tablosu | Varlığın sorudaki **rolünü** (makine ayarı mı, ürün gereksinimi mi) bilmiyor; son karar düğmeyle kullanıcıda | **Soru niyeti** adımı (B3) |
 | "Soru neyi soruyor" | Türkçe kelime başı eşleşmesi, elle yazılmış genel kelime listesi | Aynı kural + test setinde yanlış alarm oranı; gerekirse model |
-| Konu listesi (`ASPECTS`) | Doküman türüne göre sabit | Şartnamelerin bölüm yapısından üretilir |
+| Konu listesi (`ASPECTS`) | **2026-11-05'te silindi** (`DETAIL_HINT` ile birlikte) | Şartnamelerin bölüm yapısından üretilir |
 | Söylenmiş kod dönüştürücü | Harf okunuşları sınırlı ("Es", "Be"...) | Atölyedeki okunuşlarla genişletilir (açık soru Q10-a) |
 | Dil tespiti | Kelime listesi | Hafif bir dil tanıma modeli |
 | Doğrulama | İlgililik ve sayı seçimi denetlenmiyor | Cevap-alıntı hizalaması (B1) |
@@ -794,15 +863,14 @@ flowchart TB
 flowchart TD
     Q["Soru"] --> N{"Bulut LLM'e<br/>erişim var mı?"}
     N -- "evet" --> C["Bulut LLM<br/>3-5 parça gider,<br/>kullanıcı kimliği gitmez"]
-    N -- "hayır" --> LO["Lokal yedek model"]
-    LO --> W["Uyarı: yedek mod,<br/>kalite düşük olabilir"]
-    C --> V["Aynı doğrulama"]
-    W --> V
+    N -- "hayır" --> W["\"Cevap servisi şu an kullanılamıyor\"<br/>+ aramanın bulduğu kaynaklar"]
+    C --> V["Doğrulama"]
     V --> R["Cevap + rozet"]
 ```
 
 - **Kurum içinde kalan:** Doküman işleme, embedding, arama, karar katmanı, STT. Sesi ve dokümanın tamamını işleyen bileşenler bunlar.
-- **Buluta gidebilen (sözleşmeye bağlı):** Yalnız cevap üretimi, soru başına 3–5 parça.
+- **Buluta gidebilen (sözleşmeye bağlı):** Cevap üretimi (soru + 8 parça) ve BM25 sorgu çevirisi (yalnız soru metni). ZDR zorunlu; kullanıcı kimliği, ses ve dokümanın tamamı gitmez.
+- **Ağ kesilirse (karar 2026-11-06):** yerel modele otomatik düşüş yok; kullanıcıya "servis şu an kullanılamıyor" mesajı ve bulunan kaynak sayfaları. Yerel model yalnız elle açılan geri alma anahtarı (`PILOT_ANSWER_MODE=bugun`), bir sürüm tutulacak.
 - **Pilotta doğrulanan:** Modeller önbellekteyse sistem internetsiz çalışıyor (`HF_HUB_OFFLINE`). Ses diske yazılmıyor.
 
 ## B7. Açık kararlar
