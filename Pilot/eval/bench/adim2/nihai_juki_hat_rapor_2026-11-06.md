@@ -56,8 +56,30 @@ Hat: ikili yol (Gemma 4 NextBit çevirisi, 1,2 sn sınırı + bge-m3 + BM25, uyg
 
 - (a) uçtan uca: 12 cevaplı sorunun 8'i ✓ (değer 8/8 doğru), 2'si ✖, 1'i netleştirme, 1'i "bulunamadı". 2 "bulunamadı" sorusunun ikisi de doğru (J9 kural, J11 model). Doğrulanmış görünen yanlış 0.
 - **J3** (overlok genişliği): netleştirme. Değer modele göre değişiyor (MO-6804 / 6814S / 6816S; 2026-10-16'daki sütun varyantı vakası). Clarify kapısının "belge içi varyant" tanımına göre doğru davranış. Rapor tablosu bunu "gereksiz netleştirme 1" sayıyor, çünkü JUKI'nin netleştirme sınıfı tanımlı değil (JUKI'ye dokunulmadı).
-- **J4** ✖: "DC X 27" değeri doğru, ama alıntı [6] kaynakta birebir değil. Pilot korpusta s.3 ilk 8'de yok.
-- **J10** ✖: sesli metinde alıntıda olmayan "1". Güvenli yönde.
+- **J4** ✖, **karakter değişimi**. Model "Please use the needle DC X 27 or the equivalents." yazdı. Kaynak [6] (s.20, parça 00048) "Please use the needle DC **×** 27 or the equivalents." diyor: çarpı işareti (×) X harfine dönmüş. Değer kaynakta var, model kendi bilgisinden yazmamış (ilk varsayım kayıtla düzeltildi). Doğrulayıcı "×" ile "X"i eşit saymadığı için ✖. Güvenli yönde. Genel bir normalleştirme (× ↔ x) doğrulayıcı değişikliğidir, §16 kapsamında karar sizde; yapılmadı. Pilot korpusta s.3 tablo satırı (00014 "Needle | …: DC × 27 (Standard)") ilk 8'de yok; cevap s.20'den.
+- **J10** ✖: Alıntıda düğme "❶" (daireli rakam) yazıyor. Model sesli metinde onu "Düğme 1" yaptı ve sayı denetimi "❶"i 1 saymadığı için "sesli metinde alıntılarda olmayan sayı: 1" verdi. Metin öğeleri doğrulandı; ✖ yalnız sesli metinden. Güvenli yönde.
 - **J12** "bulunamadı": yanlış ret. Ana parçalar listesi (s.4) üç yolda da ilk 5'te yok (10k'da en iyisi üçlü füzyonda 18. sıra). Arama sorunu.
 - Süre: uçtan uca ilk doğrulanmış cümle p50 2,32 sn, p95 3,90 sn; 9 sorunun 5'i ≤ 3 sn. İlk iki sorunun 3,6–4,1 sn'si ısınma sonrası ilk çağrılar.
-- (b) 10k, filtreli: hit@5 varsayılan 10/12, ikili 10/12, üçlü 11/12. hit@1'de ikili yol 7/12 ile en düşük (J1, J5 2. sırada; J4 ilk 20'de yok). 12 soruda 1 soru 8 puan.
+- (b) 10k, filtreli: hit@5 varsayılan 10/12, ikili 10/12, üçlü 11/12. hit@1 varsayılan 9/12, ikili 7/12, üçlü 9/12.
+- **İkili yolun dev setteki kazancı JUKI'de hit@1 düzeyinde görünmedi; hit@5 eşit. Set küçük (1 soru ≈ 8 puan). Gerçek belgelerle kurulacak yeni sette yeniden bakılacak.** Ayar değişmez.
+- Çevirinin etkisi soru soru (10k, filtreli; çeviri Gemma 4 NextBit):
+  - **J1** 1 → 2 (ilk 5 içinde): çeviri "What is the maximum sewing speed of the JUKI MO-6800S?". İngilizce BM25 "maximum sewing speed" ifadesini birebir taşıyan işlev ayarı parçasını (s.33, 00093 "P01 | Item: Maximum sewing speed") öne aldı. Tablo satırı (s.3, 00009 "Sewing speed | …: Max. 7,000 sti/min") 2. sırada.
+  - **J5** 1 → 2 (ilk 5 içinde): çeviri "How often should the oil be changed …". BM25 s.42'deki bakım çizelgesini (00178 "Maintenance Cycle: Once every four months | … Change the oil") öne aldı. Bu parça sorunun cevabını içeriyor, etikette yalnız s.13 var. JUKI'ye dokunulmadı; yalnız not.
+  - **J4** 4 → ilk 20'nin dışı: çeviri "Which needle type does the MO-6800S use?". Varsayılan yolda Türkçe BM25 İngilizce belgede eşleşmiyor, sıra dense'ten (4). Çevirili BM25'te "needle" kelimesi işlev ayarı ve model seçim tablosu parçalarını (s.33 "needle stop position", s.36) öne taşıdı. s.3 parçaları dışarıda kaldı. Üçlüdeki 2. sıra s.3'ün "Needle gauge" satırı (00011): sayfa düzeyinde isabet, ama iğne tipini taşıyan satır (00014) değil.
+  - **J10** 7 → 3 (kazanç): çeviri "How to adjust the stitch length on an overlock machine?". İngilizce BM25 s.21'in dikiş boyu ayarı parçasını (00049) yukarı çekti; üçlüde 1.
+
+## Yeni kayıt türleri (kayıtlardan tarama; yeni çağrı yok)
+
+Kapsam: dev setin hat_k5, hat_k8 ve c150b-J DeepInfra kayıtları ile JUKI kaydındaki "alıntı birebir değil" öğeleri. Her alıntı bütün korpusla (parça metni ve şekil açıklaması) karşılaştırıldı.
+
+| Tür | Sayı | Örnek | Not |
+|---|---|---|---|
+| Karakter değişimi (× → X vb.) | 1 | J4 "DC X 27" | yalnız JUKI'de; dev sette yok |
+| Model bilgisinden / uydurma alıntı (korpusta karşılığı yok, kelime 4'lüsü örtüşmesi ≤ %20) | 3 (2 soru) | G3 "Figure 5b - Sleeve Pocket 'X' Stitch with Bar-tack Stitch" (k5, k8), A016 "The diagram includes a 'Box 'X' stitch' and a 'Rank Patch Loop.'" (k8) | ikisi de şekil sorusu; doğrulayıcı yakaladı (✖) |
+| Yakın yeniden yazım / kısaltma (örtüşme %53–96) | 9 (5 soru) | A014, A074, G7, Q32 (İspanyolca alıntıda Fransızca "les bords") | doğrulayıcı yakaladı |
+| Başı korpusta, sonu değişmiş (birleştirme, kısaltma) | 31 | A073, A074, A110, A150 | doğrulayıcı yakaladı |
+| Korpusta birebir var (başka kaynak numarası ya da kesik) | 21 | A074, A150, A110 | doğrulayıcı yakaladı |
+| Hücre birleştirme (" \| ") | 4 | A066 | doğrulayıcı yakaladı |
+
+- "Model bilgisinden cevap, doğrulayıcı yakaladı" türü dev sette yalnız şekil sorularında görüldü (G3, A016). Sözlü değeri kendi bilgisinden yazan vaka bulunmadı. J4 bu türden değil, karakter değişimi.
+- Hepsi ✖ (güvenli yön). Doğrulanmış görünen yanlışa dönüşen yok.

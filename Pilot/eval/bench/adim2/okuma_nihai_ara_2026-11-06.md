@@ -257,6 +257,8 @@ Rapor: [hat_rapor_2026-11-06.md](hat_rapor_2026-11-06.md), araç `bench/hat_olcu
 Rapor ve soru soru tablo: [nihai_juki_hat_rapor_2026-11-06.md](nihai_juki_hat_rapor_2026-11-06.md). Set küçük (12 cevaplı + 2 "bulunamadı"; 1 soru ≈ 8 puan). Bu sonuca göre ayar değişmez.
 - (a) seçilen hat: ✓ 8 / ✖ 2 (J4, J10) / netleştirme 1 (J3; belge içi varyant, kapı tanımına göre doğru) / yanlış ret 1 (J12, arama). Değer 8/8, doğru "bulunamadı" 2/2, doğrulanmış görünen yanlış 0. Uçtan uca ilk doğrulanmış cümle p50 2,32 / p95 3,90 sn.
 - (b) yalnız arama, 10k, filtreli: hit@1 / hit@5 varsayılan 9/12 · 10/12, ikili 7/12 · 10/12, üçlü 9/12 · 11/12.
+- **Düzeltme (kayıtlardan):** İkili yolun JUKI'deki hit@1 kaybı J1 ve J5'te 1 → 2 sıra (ilk 5 içinde), J4'te 4 → ilk 20'nin dışı. J10'da kazanç 7 → 3. İkili yolun dev setteki kazancı JUKI'de hit@1 düzeyinde görünmedi; hit@5 eşit. Set küçük; gerçek belgelerle kurulacak yeni sette yeniden bakılacak.
+- J4 ✖: karakter değişimi (kaynak "DC × 27", model "DC X 27"); model bilgisinden değil. J10 ✖: "❶" → sesli metinde "1". Yeni kayıt türleri ve dev set taraması JUKI raporunda.
 
 ## 9. İkincil yalnız yedek: benzetim (kayıtlardan)
 
