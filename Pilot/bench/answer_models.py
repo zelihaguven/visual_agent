@@ -393,6 +393,8 @@ def run_model(key: str, tag: str, n: int, max_usd: float, seed: int, clarify: st
                    denemeler=rec.get("attempts"), giris=usage.get("prompt_tokens"), cikis_token=usage.get("completion_tokens"),
                    dusunce_token=((usage.get("completion_tokens_details") or {}).get("reasoning_tokens")),
                    maliyet=m.cost(rec) if rec else 0.0, ham=rec.get("content", "") if rec else "")
+        if SCHEMA.startswith("c") and rec.get("zaman"):
+            row["akis_zaman"] = rec["zaman"]     # [[sn, karakter], ...] (2026-11-06)
         out["rows"][q["qid"]] = row
         print(f"{time.strftime('%H:%M:%S')} {key} {i}/{len(qs)} {q['qid']} {row.get('cikis')} "
               f"json={row.get('json')} ilk_token={row.get('ilk_token') or float('nan'):.2f} "
@@ -484,13 +486,16 @@ def rescore_c(tag: str) -> list[str]:
                     continue
             first = None
             ends = item_end_offsets(row["ham"])
-            if row.get("ilk_token") and row.get("toplam") and row["ham"]:
+            if row.get("akis_zaman"):     # gerçek akış zaman çizelgesi kayıtlıysa (2026-11-06 sonrası koşular)
+                from bench.schema_c import first_verified_time
+                first = first_verified_time(row["ham"], row["akis_zaman"], v["items"])
+            elif row.get("ilk_token") and row.get("toplam") and row["ham"]:
                 for end, it in zip(ends, v["items"]):
                     if it["ok"]:
                         first = row["ilk_token"] + (end / len(row["ham"])) * (row["toplam"] - row["ilk_token"])
                         break
             row.update(durum=v["status"], sorunlar=v["problems"][:4], ogeler=[i["ok"] for i in v["items"]],
-                       ilk_dogrulanmis_cumle=first, ilk_cumle_yaklasik=True)
+                       ilk_dogrulanmis_cumle=first, ilk_cumle_yaklasik=not row.get("akis_zaman"))
             n_changed += old != v["status"]
         d["yeniden_puanlama_c"] = {"tarih": datetime.now().isoformat(timespec="seconds"), "rozeti_degisen": n_changed}
         f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -882,7 +887,7 @@ def main() -> None:
                     "örn. --setler aday_sorular_ek (yeni onaylanan sorular; arama önbelleği --prepare ile)")
     ap.add_argument("--netlestirme", choices=["haric", "dahil", "yalniz"],
                     help="netleştirme beklenen 18 soru (varsayılan: C'de dahil, bugünkü şemada hariç)")
-    ap.add_argument("--schema", choices=["bugun", "c", "c150", "c150b", "c150bT"], default="bugun", help="cevap şeması (c: plan §15.0, yalnız ölçüm aracı)")
+    ap.add_argument("--schema", choices=["bugun", "c", "c150", "c150b", "c150bT", "c150bJ"], default="bugun", help="cevap şeması (c: plan §15.0, yalnız ölçüm aracı)")
     ap.add_argument("--max-tokens", type=int, default=0, help="deneme: max_tokens (0: uygulamanın değeri)")
     ap.add_argument("--ids", nargs="+", default=[], help="deneme: yalnız bu soru kimlikleri")
     a = ap.parse_args()

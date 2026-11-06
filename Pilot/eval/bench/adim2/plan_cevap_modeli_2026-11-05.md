@@ -687,3 +687,59 @@ B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfr
 - **Sağlayıcı sırası: DeepInfra birincil.** İkincil, c150b-J sonucuna göre belirlenecek (aday: Venice ya da Parasail; ölçüt: kesik c150b DeepInfra düzeyine inerse).
   - §21'deki `order: ["venice", "deepinfra"]` bunun yerine `order: ["deepinfra", <ikincil>]`, `only: ["deepinfra", <ikincil>]` olur.
 - c150b-O ertelendi.
+
+## 26. Bağlanacak hattın uçtan uca ölçümü (PLAN; koşulmadı, onay bekliyor)
+
+Devir notunun e (gerçek akışla süre) ve g (onaylı set + JUKI doğrulaması) maddelerini birleştirir. f (gri "doğrulanıyor" akışı) yalnız plan olarak kalıyor.
+
+**Hat (soru başına, tek saat ölçüsü):**
+1. Paralel: sorgu çevirisi (Gemma 4 NextBit, düşünme kapalı, **1,2 sn sınırı**; aşarsa BM25 çevirisiz) ‖ bge-m3 sorgu embed'i (CPU).
+2. Paralel Qdrant: bge-m3 dense ‖ BM25 sparse (çevrilmiş sorgu). RRF.
+3. Uygulamanın kural katmanı (yabancı marka, kod yok, arama sonrası netleştirme) olduğu gibi: `pipeline.soru_cevapla`, `search` yerine ikili yol.
+4. Cevap: Gemma 4, şema **c150b**, `max_tokens` 1200, **DeepInfra'ya sabit** (`allow_fallbacks: false`; ikincil ayrı ölçülüyor, §25), akışlı.
+5. Doğrulama: `verify_c` (alan etiketi kuralı dahil). İlk doğrulanmış cümle **gerçek akış zaman çizelgesinden**.
+
+**Varyant:** cevap modeline 5 kaynak / 8 kaynak. Çeviri ve arama soru başına bir kez yapılır, iki varyant aynı adayları kullanır. İki cevap çağrısı her soruda arka arkaya ve sırası dönerek yapılır (aynı dakika, aynı ağ).
+
+**Korpus:** uygulamanın pilot korpusu (`manuals`, Qdrant sunucusu; bge-m3 + BM25 vektörleri hazır). 10k koleksiyonunda yalnız arama sonuçları zaten var (§b4 ikili yol raporu).
+
+**Set:** onaylı 199 + yeni 46 = 245 soru (netleştirme soruları dahil).
+
+**Metrikler** (varyant başına):
+- §18 kalite kapıları: doğru "bulunamadı", doğrulanmış görünen yanlış (ve niteleyici taraması), ✓ / ⚠ / ✖, beklenen değer, JSON / kesik.
+- Netleştirme: değer farklı, değer aynı, gereksiz, belge içi varyant.
+- Yanlış ret.
+- İlk doğrulanmış cümle (model tarafı, gerçek akış).
+- **Uçtan uca ilk doğrulanmış cümle** (sorudan, arama dahil); p50 / p95; PRD kapısı ≤ 3 sn.
+- Adım dökümü: çeviri, embed, Qdrant, ilk token.
+- Çevirinin 1,2 sn sınırını aşma oranı, girintili JSON oranı.
+
+**Ardından JUKI (14 soru), tek seferlik:** ayar değiştirmeden. Önerim: önce 5 / 8 kararınızı alayım, JUKI'yi seçilen varyantla bir kez koşayım. İkisini birden koşmak "tek seferlik" ilkesine daha az uyar.
+
+**Araç:** yeni `bench/hat_olcumu.py`. `latency_e2e` / `latency_guard`'ın paralel adımları ve `answer_models`'in akış, şema C, puanlama kodu yeniden kullanılır.
+- Model çağıran kısım yalnız çeviri ve cevap; embed yerel.
+- Kayıt: `eval/bench/adim2/ham/hat_<varyant>.json`, rapor `hat_rapor_<tarih>.md`.
+
+**Maliyet tahmini** (c150b DeepInfra kayıtlarından):
+
+| Kalem | USD |
+|---|---|
+| Cevap, 5 kaynak, 245 soru | ~0,052 |
+| Cevap, 8 kaynak, 245 soru (girdi ~+60 %) | ~0,08 |
+| Çeviri, 245 soru | ~0,005 |
+| JUKI, 14 soru, tek varyant | ~0,004 |
+| **Toplam** | **~0,14** |
+
+- Süre: ~40 dk (245 soru × 2 cevap) + JUKI ~2 dk.
+- Başka saatte koşulması önerilir (devir e: süre ölçümü farklı saatte).
+- Bütçe: harcanan ~1,53 + c150b-J ~0,18; kalan ~1,29 / 3,0.
+
+## 27. c150b-J sonucu ve boşluk kaçağı (2026-11-06; öneri, koşulmadı)
+
+- c150b-J girintiyi kaldırdı. Kesiklerin asıl nedeni ise **JSON ortasında boşluk kaçağı** (Venice 16, Parasail 12; DeepInfra 0). Ayrıntı okuma 2026-11-06 §5.
+- **İkincil sağlayıcı: §25 ölçütüne göre şu an aday yok.** Bağlamada önerim: DeepInfra tek sağlayıcı (`only: ["deepinfra"]`). DeepInfra çağrısı hata verirse cevap "kaynakları gösterir, cevap yok" yoluna düşer.
+- **Kaçağa karşı genel önlem (öneri, koşulmadı):** akış bekçisi.
+  - Akışta art arda 40+ boşluk karakteri gelirse akış kesilir ve istek ikincil sağlayıcıya bir kez yeniden gönderilir.
+  - Modele ya da sağlayıcıya özel değil; uygulamanın akış okuyucusunda genel bir kural. Kesik JSON'u "onarma" önerilmez.
+  - Ölçüm: c150b-J Venice + Parasail kayıtları üzerinde benzetim (kaçak anı kayıtta var; model çağrısı yok), ardından istenirse gerçek koşu.
+- **c150b-J'yi çalışma biçimine almak:** DeepInfra'da kalite c150b ile aynı düzeyde, girintiyi sağlayıcıdan bağımsız kapatıyor. Önerim: alınsın (karar sizde).

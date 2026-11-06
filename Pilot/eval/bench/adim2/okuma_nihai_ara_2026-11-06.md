@@ -176,3 +176,29 @@ Her şema C raporunda artık "Girintili JSON" tablosu var. Gemma 4 koşularını
   - Aynı cümle tekrar: A047, A113.
   - Kesik (700): A074, A080. max_tokens 1200 ile A080 ✓ oldu, A074 ✖.
 - Bugünkü şemanın 11 ⚠'sinin çoğu c150b'de ✓'ye ya da ✖'ye ayrışıyor; c150b'de ⚠ yok denecek kadar az.
+
+## 5. c150b-J ("JSON'u girintisiz, tek satırda yaz"), tam set, max_tokens 1200, üç sağlayıcı paralel (0,149 USD)
+
+Rapor: [nihai_c150bJ_rapor_2026-11-06.md](nihai_c150bJ_rapor_2026-11-06.md). İlk doğrulanmış cümle **gerçek akış zaman çizelgesinden** (192 satırın hepsinde kayıtlı). c150b satırları yaklaşık değer ve 2026-11-05 akşamı.
+
+| Koşu | girintili | kesik | ✓ / ⚠ / ✖ | beklenen değer | netl. değer farklı / aynı | gereksiz netl. | ilk doğrulanmış cümle p50 / p95 |
+|---|---|---|---|---|---|---|---|
+| c150b DeepInfra (11-05, 700) | 0 % | 2 | 116 / 1 / 15 | 94 % | 4/5 · 8/13 | 0 | 2,37 / 4,70 sn (yaklaşık) |
+| **c150b-J DeepInfra** | 0 % | **0** | 114 / 2 / 15 | 96 % | 4/5 · 8/13 | 2 (Q05, G7) | **1,56 / 2,56 sn** |
+| **c150b-J Venice** | 0 % | **16** | 104 / 2 / 15 | 85 % | 3/5 · 5/13 | 0 | 1,39 / 2,30 sn |
+| **c150b-J Parasail** | 0 % | **12** | 106 / 3 / 15 | 89 % | 3/5 · 6/13 | 0 | 1,26 / 2,05 sn |
+
+- **Kural girintiyi kaldırdı** (üç sağlayıcıda da %0), ama Venice ve Parasail'in kesikleri sürüyor.
+- **Asıl neden: boşluk kaçağı.** Model JSON'un ortasında, bir değerden sonra durmadan boşluk ya da satır sonu üretiyor ve 1200 token'a kadar devam ediyor. Örnek Q02 Venice: `"sesli_metin":"…olmalıdır."` ve ardından yalnız boşluk; JSON'un kapanmasına yalnız `,"celiski_var":false}` kalmıştı.
+- Kayıtlarda kesik (finish=length) satırların dökümü:
+
+| Koşu | JSON ortasında boşluk kaçağı | kaçak yok (gerçekten uzun) |
+|---|---|---|
+| c150b-J Venice / Parasail | 16 / 12 | 0 / 0 |
+| c150bT Venice | 31 | 6 |
+| c NextBit / Parasail / 31B (11-05) | 29 / 29 / 31 | 0 / 5 / 1 |
+| DeepInfra, bütün koşular | **0** | 0–2 |
+
+- Dün "girinti kesiği" sandığımız kesiklerin neredeyse hepsi bu kaçak; girinti eşlik eden bir belirti.
+- **İkincil sağlayıcı: ölçüte göre aday yok.** Ölçüt c150b DeepInfra kesik düzeyi (2); Venice 16, Parasail 12.
+- DeepInfra (c150b-J): ✖ 15 değişmedi. A074 ve A080 1200 sınırıyla ✓ oldu, A070 doğru netleştirmeye döndü. Koşudan koşuya oynama: Q32, A045, A081, A022 ✓ → ✖; A017, A047, A113, A144, A025 ✖ → ✓. Q05 ve G7'de gereksiz netleştirme.
