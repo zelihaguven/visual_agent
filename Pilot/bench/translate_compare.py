@@ -32,7 +32,11 @@ ARMS: dict[str, dict[str, Any]] = {
     "g3_deepinfra": {"model": "google/gemma-3-12b-it", "provider": "deepinfra"},
     "g3_nextbit": {"model": "google/gemma-3-12b-it", "provider": "nextbit"},
     "g4_nextbit": {"model": "google/gemma-4-26b-a4b-it", "provider": "nextbit", "reasoning": {"enabled": False}},
+    # İkinci çeviri sağlayıcısı adayları (Adım 2 planı §21; devir notu c, 2026-11-06)
+    "g4_venice": {"model": "google/gemma-4-26b-a4b-it", "provider": "venice", "reasoning": {"enabled": False}},
+    "g4_deepinfra": {"model": "google/gemma-4-26b-a4b-it", "provider": "deepinfra", "reasoning": {"enabled": False}},
 }
+DEFAULT_ARMS = ["g3_deepinfra", "g3_nextbit", "g4_nextbit"]       # t1/t2 turlarının kolları
 SETS = [*KNOWN_SETS, "aday_sorular"]
 LIMIT = 1.2               # §9.3: çeviri sınırı (aşınca BM25 çevirisiz)
 
@@ -88,16 +92,20 @@ class PinnedChat:
             self.calls.append(rec)
 
 
-def run_pass(tag: str, max_usd: float) -> None:
+def run_pass(tag: str, max_usd: float, arms: list[str] | None = None, n: int = 0) -> None:
     from bench.providers import CACHE_DIR
     from pilot.query import question_lang
     from pilot.translate import bm25_text, target_languages, translate_query
-    chats = {a: PinnedChat(a) for a in ARMS}
+    arms = arms or DEFAULT_ARMS
+    chats = {a: PinnedChat(a) for a in arms}
     items = [(it, prepare(it["q"])) for it in load_questions(SETS, include_unapproved=True)]
     items = [(it, p) for it, p in items if not p["skip"] and not it.get("expect_clarify")]
-    outs = {a: {"questions": {}} for a in ARMS}
+    if n:
+        import random
+        items = random.Random(20261106).sample(items, n)
+    outs = {a: {"questions": {}} for a in arms}
     calls: list[dict[str, Any]] = []
-    order = list(ARMS)
+    order = list(arms)
     for n, (it, p) in enumerate(items, 1):
         src = question_lang(it["q"])
         targets = {"filtered": target_languages(p["doc_ids"]), "unfiltered": target_languages(None)}
@@ -183,15 +191,44 @@ def report(tags: list[str]) -> str:
     return "\n".join(L) + "\n"
 
 
+def timing_report(tags: list[str]) -> str:
+    """Kısa süre ölçümü: turdaki kolların (dosyadaki çağrılardan) tam çağrı süresi ve 1,2 sn sınırı."""
+    from bench.providers import CACHE_DIR
+    f = lambda x: "–" if x != x else (f"{x * 1000:.0f} ms" if x < 1 else f"{x:.2f} sn".replace(".", ","))
+    L = ["# Çeviri: ikinci sağlayıcı süre ölçümü (Gemma 4; NextBit ile iç içe)", "",
+         "Adım 2 planı §21, devir notu c (2026-11-06). Tek sağlayıcıya sabit, yeniden denemesiz; süre çağrının tamamı. "
+         "Filtreli (uygulamanın yolu) ve filtresiz çağrılar birlikte.", "",
+         "| Tur | Kol | çağrı | p50 | p95 | en uzun | > 1,2 sn | hata | sağlayıcı | maliyet |", "|---|---|---|---|---|---|---|---|---|---|"]
+    for t in tags:
+        d = json.loads((CACHE_DIR / f"ceviri_cmp_cagrilar_{t}.json").read_text(encoding="utf-8"))
+        for arm in dict.fromkeys(c["kol"] for c in d["cagrilar"]):
+            cs = [c for c in d["cagrilar"] if c["kol"] == arm]
+            s = [c["sn"] for c in cs if not c["err"]]
+            over = sum(c["sn"] > LIMIT or bool(c["err"]) for c in cs)
+            L.append(f"| {t} ({d['bitis'][11:16]}) | {arm} | {len(cs)} | {f(percentile(s, .5))} | {f(percentile(s, .95))} | "
+                     f"{f(max(s) if s else float('nan'))} | {over}/{len(cs)} ({over / max(len(cs), 1):.0%}) | "
+                     f"{sum(bool(c['err']) for c in cs)} | {dict(Counter(c.get('provider') for c in cs if not c['err']))} | "
+                     f"{sum(c.get('maliyet') or 0 for c in cs):.5f} |")
+    return "\n".join(L) + "\n"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--pass", dest="tag")
     ap.add_argument("--report", nargs="*")
     ap.add_argument("--max-usd", type=float, default=0.1)
+    ap.add_argument("--kollar", nargs="+", help=f"kollar (varsayılan {DEFAULT_ARMS}); seçenekler {list(ARMS)}")
+    ap.add_argument("--n", type=int, default=0, help="soru örneklemi (0: hepsi)")
+    ap.add_argument("--sure-raporu", nargs="*", metavar="TUR", help="yalnız süre tablosu, turun kendi kollarıyla")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
     if a.tag:
-        run_pass(a.tag, a.max_usd)
+        run_pass(a.tag, a.max_usd, a.kollar, a.n)
+    if a.sure_raporu:
+        from datetime import date
+        p = OUT_DIR / "b4" / f"asama4_ceviri_saglayici_{date.today().isoformat()}.md"
+        p.write_text(timing_report(a.sure_raporu), encoding="utf-8")
+        print(p)
     if a.report:
         from datetime import date
         p = OUT_DIR / "b4" / f"asama4_ceviri_karsilastirma_{date.today().isoformat()}.md"

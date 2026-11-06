@@ -1,0 +1,2733 @@
+{
+ "model": "gemma4_venice",
+ "spec": {
+  "id": "google/gemma-4-26b-a4b-it",
+  "provider": "venice",
+  "quant": "bf16",
+  "reasoning": {
+   "enabled": false
+  }
+ },
+ "tag": "nihai_ek",
+ "zdr_providers": [
+  "akashml",
+  "cloudflare",
+  "coreweave",
+  "deepinfra",
+  "dekallm",
+  "io-net",
+  "makora",
+  "nextbit",
+  "novita",
+  "parasail",
+  "primeintellect",
+  "siliconflow",
+  "venice"
+ ],
+ "verify": "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı",
+ "deger": "değer olarak, 2026-11-05",
+ "sema": "c150b",
+ "netlestirme_sorulari": "dahil",
+ "start": "2026-11-06T09:12:45",
+ "rows": {
+  "aday_sorular_ek:B002": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      9,
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      43
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 1.9583597999999824,
+   "toplam": 2.4116439000000014,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.4116425999999933
+    }
+   ],
+   "giris": 2550,
+   "cikis_token": 37,
+   "dusunce_token": 0,
+   "maliyet": 0.0003463,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\"\n, \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B003": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      7
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      38,
+      39
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      1
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.8176224999999704,
+   "toplam": 0.9576951999999892,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9576943999999799
+    }
+   ],
+   "giris": 2650,
+   "cikis_token": 30,
+   "dusunce_token": 0,
+   "maliyet": 0.0003565,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B004": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      9
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      11
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.5389172000000144,
+   "toplam": 0.8666527999999971,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8666521000000103
+    }
+   ],
+   "giris": 2000,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.0001736,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B005": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "bosch-ra1171",
+     [
+      77
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      77
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      77
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      77
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      80
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7434154000000035,
+   "toplam": 0.8749402999999916,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8749396999999703
+    }
+   ],
+   "giris": 2360,
+   "cikis_token": 37,
+   "dusunce_token": 0,
+   "maliyet": 0.0002192,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\"\n, \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B006": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      62
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      62
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.621013199999993,
+   "toplam": 0.8794565000000034,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.879455299999961
+    }
+   ],
+   "giris": 2185,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00019765,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B007": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      69
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      44
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      49
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6283200000000306,
+   "toplam": 0.8663570000000504,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8663564000000292
+    }
+   ],
+   "giris": 2515,
+   "cikis_token": 37,
+   "dusunce_token": 0,
+   "maliyet": 0.00023935,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\"\n, \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B008": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      49
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      49
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      50
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      49
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.5424571000000356,
+   "toplam": 0.7723738000000253,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7723733000000266
+    }
+   ],
+   "giris": 2272,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00018848,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B009": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11,
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      50
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7081221999999912,
+   "toplam": 1.1498237999999787,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.1498230999999919
+    }
+   ],
+   "giris": 2376,
+   "cikis_token": 30,
+   "dusunce_token": 0,
+   "maliyet": 0.00021848,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B010": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      10,
+      11
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      22
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      23
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6151540000000182,
+   "toplam": 0.7425628999999958,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7425615999999877
+    }
+   ],
+   "giris": 2437,
+   "cikis_token": 36,
+   "dusunce_token": 0,
+   "maliyet": 0.00022881,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B011": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7304083000000219,
+   "toplam": 1.0012854000000289,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0012841999999864
+    }
+   ],
+   "giris": 2586,
+   "cikis_token": 41,
+   "dusunce_token": 0,
+   "maliyet": 0.00025018,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B012": {
+   "durum": "failed",
+   "sorunlar": [
+    "Model güvenilir bir cevap üretemedi: çıktı uzunluk sınırında yarıda kesildi (JSON tamamlanmadı). Kaynaklarda bu sorunun cevabı olmayabilir; aşağıdaki kaynak sayfaları kontrol edin, değer kullanmayın."
+   ],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      86
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      61
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      30
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      79
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      64
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "json_hata",
+   "atif_dogru_biri": null,
+   "atif_dogru_hepsi": null,
+   "json": "kesik",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7818646000000058,
+   "toplam": 4.782881900000007,
+   "finish": "length",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 4.782879999999977
+    }
+   ],
+   "giris": 2382,
+   "cikis_token": 700,
+   "dusunce_token": 0,
+   "maliyet": 0.00048726,
+   "ham": "{\n \"tur\": \"cevap\",\n \"cevap\": [\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"The standard height of the presser foot (1) is 6 mm when the presser foot (1) is raised by means of the lifting lever (2).\"\n    }\n   ],\n   \"metin\": \"Kaldırma kolu (lifting lever) (2) ile baskı ayağı (presser foot) (1) kaldırıldığında standart yükseklik 6 mm'dir.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Loosen the nut (3), and then turn the adjustment screw (4) so that there is no pressure applied to the presser foot.\"\n    }\n   ],\n   \"metin\": \"Somunu (nut) (3) gevşetin ve ardından baskı ayağına basınç uygulanmayacak şekilde ayar vidasını (adjustment screw) (4) çevirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Raise the presser foot (1) by using the lifting lever (2).\"\n    }\n   ],\n   \"metin\": \"Kaldırma kolunu (lifting lever) (2) kullanarak baskı ayağını (presser foot) (1) kaldırın.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Remove the rubber cap (5) from the face plate. Loosen the bolt (6) and then move the presser bar (7) up or down until the presser foot (1) is at the 6\"\n    }\n   ],\n   \"metin\": \"Plaka üzerindeki kauçuk kapağı (rubber cap) (5) çıkarın, cıvatayı (bolt) (6) gevşetin ve baskı ayağı (presser foot) (1) 6 mm standart yüksekliğe gelene kadar baskı çubuğunu (presser bar) (7) yukarı veya aşağı hareket ettirin.\"\n  },\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 1,\n     \"metin\": \"Tighten the bolt (6). Install the rubber cap (5). Adjust the presser foot pressure using the presser adjusting screw (4), and then tighten the nut (3)\"\n    }\n   ],\n   \"metin\": \"Cıvatayı (bolt) (6) sıkın, kauçuk kapağı (rubber cap) (5) takın, baskı ayağı ayar vidasını (presser adjusting screw) (4) kullanarak baskı ayağı basıncını ayarlayın ve ardından somunu (nut) (3) sıkın.\"\n  }\n ],\n \"sesli_metin\": \"Baskı ayağı standart yüksekliği kaldırma kolu ile kaldırıldığında 6 mm olmalıdır."
+  },
+  "aday_sorular_ek:B013": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      77
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      106
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      17
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      13
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7591694999999845,
+   "toplam": 0.9840103999999883,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9840095000000133
+    }
+   ],
+   "giris": 2257,
+   "cikis_token": 36,
+   "dusunce_token": 0,
+   "maliyet": 0.00020541,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B014": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.5983827000000019,
+   "toplam": 0.7952616000000035,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7952610000000391
+    }
+   ],
+   "giris": 2220,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.0002022,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B015": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.5749029999999493,
+   "toplam": 0.7478543999999943,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7478535999999849
+    }
+   ],
+   "giris": 2390,
+   "cikis_token": 30,
+   "dusunce_token": 0,
+   "maliyet": 0.0002203,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B016": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      34
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      37
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      41
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7481937000000016,
+   "toplam": 0.8953096999999843,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8953089999999975
+    }
+   ],
+   "giris": 2465,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00023085,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B017": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      4
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.5457923999999821,
+   "toplam": 0.7902923999999985,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7902915999999891
+    }
+   ],
+   "giris": 2108,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00018764,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B018": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9,
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      7
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      34
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.9963587999999959,
+   "toplam": 1.1445223000000055,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.1445216000000187
+    }
+   ],
+   "giris": 2658,
+   "cikis_token": 36,
+   "dusunce_token": 0,
+   "maliyet": 0.00025754,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B019": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      103
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      28
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      28
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7630794000000378,
+   "toplam": 0.932603400000005,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9326024000000075
+    }
+   ],
+   "giris": 2303,
+   "cikis_token": 36,
+   "dusunce_token": 0,
+   "maliyet": 0.00021139,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B020": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "bosch-ra1171",
+     [
+      20
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      5
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      67
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      19
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      35
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 1.3909601000000293,
+   "toplam": 1.758562500000039,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.7585619000000179
+    }
+   ],
+   "giris": 2118,
+   "cikis_token": 36,
+   "dusunce_token": 0,
+   "maliyet": 0.00018734,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B021": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      20
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      18
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      5
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.562791500000003,
+   "toplam": 0.765515100000016,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7655138999999735
+    }
+   ],
+   "giris": 2090,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.0001853,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B022": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      212
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      182
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      32
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      105
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7169761000000108,
+   "toplam": 1.0181301000000076,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0181294000000207
+    }
+   ],
+   "giris": 2722,
+   "cikis_token": 37,
+   "dusunce_token": 0,
+   "maliyet": 0.00026626,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\"\n, \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B023": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      94
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      105
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      211,
+      212
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      170
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      141,
+      142
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.657498099999998,
+   "toplam": 0.9030806999999754,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.903079699999978
+    }
+   ],
+   "giris": 2628,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.0002414,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B024": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      74
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      36
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      19,
+      20
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      68
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      82,
+      83
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6063932999999793,
+   "toplam": 0.9592453999999861,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9592447999999649
+    }
+   ],
+   "giris": 2416,
+   "cikis_token": 37,
+   "dusunce_token": 0,
+   "maliyet": 0.00022648,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\"\n, \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B025": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      81,
+      82
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      163
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      185
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      171
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      213
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6726166999999919,
+   "toplam": 0.9368468999999777,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9368456000000265
+    }
+   ],
+   "giris": 2828,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.0002674,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B026": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      213
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      122
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      252
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      219
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      69,
+      70
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7990745000000175,
+   "toplam": 0.9371050999999966,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9371045999999978
+    }
+   ],
+   "giris": 2746,
+   "cikis_token": 30,
+   "dusunce_token": 0,
+   "maliyet": 0.00026658,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B027": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      145
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      135
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      198
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      144,
+      145
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      96
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6740862000000334,
+   "toplam": 0.8724973999999861,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8724966999999992
+    }
+   ],
+   "giris": 2748,
+   "cikis_token": 30,
+   "dusunce_token": 0,
+   "maliyet": 0.0002566,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B028": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      215,
+      216
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      103
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      144,
+      145
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      97
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      208,
+      209
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6356334999999831,
+   "toplam": 0.8287664000000063,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8287650999999983
+    }
+   ],
+   "giris": 2694,
+   "cikis_token": 30,
+   "dusunce_token": 0,
+   "maliyet": 0.00024958,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B029": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      7
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      7,
+      8
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.8141860999999722,
+   "toplam": 1.3917495999999687,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.3917485999999712
+    }
+   ],
+   "giris": 2714,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00026642,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B030": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      18
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      21
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      10
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      6
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      16
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6451407000000131,
+   "toplam": 0.8947835000000168,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.894782599999985
+    }
+   ],
+   "giris": 2359,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00022027,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B031": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.5100532000000157,
+   "toplam": 0.7479344000000197,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7479334000000222
+    }
+   ],
+   "giris": 2235,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00020415,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B032": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "bosch-ra1171",
+     [
+      18
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      23
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      3
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      3
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      16
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7647372000000132,
+   "toplam": 0.9128575000000296,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9128567999999859
+    }
+   ],
+   "giris": 2691,
+   "cikis_token": 36,
+   "dusunce_token": 0,
+   "maliyet": 0.00026183,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B033": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      16
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      17
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "kural:netlestirme_sonra",
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:B034": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "bosch-ra1171",
+     [
+      16
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      16
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      16
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      17
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      15
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6540305999999987,
+   "toplam": 0.8582106000000067,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8582099000000198
+    }
+   ],
+   "giris": 2577,
+   "cikis_token": 36,
+   "dusunce_token": 0,
+   "maliyet": 0.00024701,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B038": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6225380999999857,
+   "toplam": 0.7487648000000036,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7487639999999942
+    }
+   ],
+   "giris": 2181,
+   "cikis_token": 40,
+   "dusunce_token": 0,
+   "maliyet": 0.00019713,
+   "ham": "{\n  \"tur\": \"bulunamadi\",\n  \"cevap\": [],\n  \"sesli_metin\": \"\",\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:B039": {
+   "durum": "not_found",
+   "sorunlar": [],
+   "kontroller": {
+    "bos_cevap": true
+   },
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      108
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      11
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      106
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "kural:kod_yok",
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:B040": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      100
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      100
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.5438788000000159,
+   "toplam": 0.773132300000043,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7731314000000111
+    }
+   ],
+   "giris": 2164,
+   "cikis_token": 36,
+   "dusunce_token": 0,
+   "maliyet": 0.00019332,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:C001": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      86
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      89
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      25
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      25
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      30
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7735008000000221,
+   "toplam": 1.0876537999999982,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0876524000000245
+    }
+   ],
+   "giris": 2524,
+   "cikis_token": 37,
+   "dusunce_token": 0,
+   "maliyet": 0.00023028,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\"\n, \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:C002": {
+   "cikis": "netlestirme",
+   "durum": "clarify",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      14
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      5
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      4
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      37
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      4
+     ]
+    ]
+   ],
+   "sira": 3,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.7961000999999897,
+   "toplam": 1.7387224999999944,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.7387213000000088
+    }
+   ],
+   "giris": 2234,
+   "cikis_token": 123,
+   "dusunce_token": 0,
+   "maliyet": 0.00023722,
+   "ham": "{\n  \"tur\": \"netlestirme\",\n  \"netlestirme\": {\n    \"soru\": \"Hangi dikiş makinesinin ağırlığını öğrenmek istiyorsunuz?\",\n    \"secenekler\": [\n      {\n        \"kaynak_no\": 1\n      },\n      {\n        \"kaynak_no\": 5\n      }\n    ]\n  }\n  ,\n  \"cevap\": [],\n  \"sesli_metin\": \"\"\n  ,\n  \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:C003": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      37
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      76
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      58
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cevap": "Besleme dişlisi yörüngesi (feed dog locus) kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 2.335,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.8019941000000017,
+   "toplam": 2.8928836000000047,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.8928822999999966
+    }
+   ],
+   "giris": 2404,
+   "cikis_token": 223,
+   "dusunce_token": 0,
+   "maliyet": 0.00028908,
+   "ham": "{\n \"tur\": \"cevap\",\n \"cevap\": [\n  {\n   \"alintilar\": [\n    {\n     \"kaynak_no\": 2,\n     \"metin\": \"The sewing speed will be subjected to the following limits (sewing speed/sewing pitch). ・4000sti/min / 3.0 ・3500sti/min / 4.0 ・2000sti/min / 5.0\"\n    }\n   ],\n   \"metin\": \"Besleme dişlisi yörüngesi (feed dog locus) kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\"\n  }\n ],\n \"sesli_metin\": \"Besleme dişlisi yörüngesi kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\",\n \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:C004": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      23
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      18
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      3
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      71
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6471008999999981,
+   "toplam": 1.4063212000000362,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.4063194000000294
+    }
+   ],
+   "giris": 2496,
+   "cikis_token": 37,
+   "dusunce_token": 0,
+   "maliyet": 0.00022664,
+   "ham": "{\n \"tur\": \"bulunamadi\",\n \"cevap\": [],\n \"sesli_metin\": \"\"\n, \"celiski_var\": false\n}"
+  },
+  "aday_sorular_ek:C005": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      41
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      75
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35,
+      36
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      86
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": 5,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:C006": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      41
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:C007": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      96
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      94
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:C008": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      23
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      20
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      24
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      23
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:C009": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      34,
+      35
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      19
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      140
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      81
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "Venice",
+   "ilk_token": 0.6618996999999922,
+   "toplam": 0.8273910999999998,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8273906000000011
+    }
+   ],
+   "giris": 2713,
+   "cikis_token": 30,
+   "dusunce_token": 0,
+   "maliyet": 0.00026229,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:C010": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      16
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      7
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      8
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-07-14a",
+    "gl-pd-14-04a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  }
+ },
+ "cost_usd": 0.00961901,
+ "dusunme_kontrolu": {
+  "reasoning_tokens": 0,
+  "reasoning_text": 0,
+  "provider": "Venice",
+  "ok": true,
+  "cost": 0.00021529,
+  "err": null,
+  "json": "sema_disi"
+ },
+ "end": "2026-11-06T09:13:33",
+ "tamam": true
+}

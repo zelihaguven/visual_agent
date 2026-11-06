@@ -637,3 +637,5 @@ B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfr
 - **Cevap modeli:** Gemma 4 26B A4B. **Sağlayıcılar yalnız Venice (bf16, birincil) ve DeepInfra (fp8, ikincil)** (§21).
 - **Şema C'nin çalışma biçimi: c150b.** Alıntı en fazla 150 karakter, ilk öğe yalnız cevabın özü, öğe başına 1–2 alıntı.
 - **Açık fark:** c150b bugünkü şemaya göre hâlâ **+6 yanlış ret** (18 → 24) ve **+6 ✖** (12 → 18) getiriyor (Gemma 4 DeepInfra, 159 cevaplı soru). İkisi de güvenli yönde: yanlış değer göstermek yerine reddetmek ya da doğrulanmadı demek. c150b bundan sonra bugünkü şemayla da karşılaştırılacak. Ayrıntı ve sıradaki işler: [DEVIR_2026-11-06.md](DEVIR_2026-11-06.md).
+
+**Çeviri ikinci sağlayıcı (ölçüldü 2026-11-06):** Gemma 4 Venice p95 1,21 sn (%7 > 1,2 sn), DeepInfra 1,82 sn (%20), NextBit 917 ms (%0). Öneri: `only: [nextbit, venice]`. [asama4_ceviri_saglayici_2026-11-06.md](../b4/asama4_ceviri_saglayici_2026-11-06.md).

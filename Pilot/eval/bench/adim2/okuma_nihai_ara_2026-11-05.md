@@ -202,3 +202,39 @@ Kabul ölçütü: süre kısalırken beklenen değer ve yanlış ret kötüleşm
   - GPT-5.4 mini, Mistral ve Qwen3.6 tek varyantı verdi.
 - Raporlar yeniden üretildi; beklenen değer sayıları bu iki soru kadar (≤ 2) değişebilir.
 - Gemma 4 DeepInfra/Venice şema C: belge içi varyant 2/2, gereksiz netleştirme 0.
+
+## 2026-11-06 (b): 46 yeni soru, Gemma 4 DeepInfra + Venice, c150b (0,017 USD)
+
+`python -m bench.answer_models --schema c150b --setler aday_sorular_ek --tag nihai_ek --models gemma4 gemma4_venice`. Set: 36 "bulunamadı", 10 "değer farklı" netleştirme.
+
+| | DeepInfra | Venice |
+|---|---|---|
+| "Bulunamadı": model kararıyla doğru | 33/34 | 33/34 (1 JSON yarıda kesik) |
+| "Bulunamadı": kural çıkışı | 2 (kod yok 1, netleştirme 1) | 2 |
+| "Bulunamadı" sorusunda **doğrulanmış cevap** | **1: B012** | 0 |
+| Değer farklı netleştirme doğru | 6/10 (kural 5, model 1) | 6/10 |
+| Maliyet | 0,0075 USD | 0,0096 USD |
+
+**Kaynaktan birebir alıntıyla cevaplanan "bulunamadı" sorusu: B012 (DeepInfra), kullanıcıya:**
+- Soru: "S-7300A'da dijital baskı ayağı kaldırıcısının kaldırma yüksekliği nasıl ayarlanır?"
+- Cevap (✓, 6 öğenin hepsi doğrulandı): "Kaldırma kolu (lifting lever) (2) ile baskı ayağı (1) kaldırıldığında standart yükseklik 6 mm olmalıdır. Somunu (3) gevşetin…"
+- Alıntı: "The standard height of the presser foot (1) is 6 mm when the presser foot (1) is raised by means of the lifting lever (2)…"
+- Okuma: Cevap **mekanik kaldırma kolunun** ayarı; soru **dijital ayak kaldırıcıyı** soruyor. Aday ajan bu riski önceden işaretlemişti.
+- **Karar sizde:** etiket doğruysa bu, kaynakta olmayan şeyi yakın bir konuyla cevaplayan doğrulanmış yanlıştır. Kaynakta dijital ayak kaldırıcı için bu ayar varsa etiket düzeltilir.
+
+**Kaçan değer farklı netleştirmeler (iki sağlayıcıda aynı):**
+- **C001** (S-7300A/B diz kaldırıcı yüksekliği 16 / 13 mm), **C004** (overlok SPI ceket/pantolon), **C009** (alt kenar baskı genişliği): model "bulunamadı".
+- **C003** (besleme yörüngesi 1, 5,0 mm adımda hız): tek değer.
+- S-7300 aile kuralı silindiği için bu sorular yalnız modele kalıyor; model bu üçünde netleştirme seçmiyor. Ürün şartnamesi soruları (ceket/pantolon) kural katmanının arama sonrası netleştirmesiyle doğru.
+
+## 2026-11-06 (c): ikinci çeviri sağlayıcısı (Gemma 4, 15 soru × 2 mod, iç içe; 0,0016 USD)
+
+[asama4_ceviri_saglayici_2026-11-06.md](../b4/asama4_ceviri_saglayici_2026-11-06.md):
+
+| Sağlayıcı | çağrı | p50 | p95 | en uzun | > 1,2 sn |
+|---|---|---|---|---|---|
+| NextBit | 30 | 512 ms | 917 ms | 1,19 sn | 0 % |
+| **Venice** | 30 | 783 ms | 1,21 sn | 1,23 sn | 7 % |
+| DeepInfra | 30 | 899 ms | 1,82 sn | 3,15 sn | 20 % |
+
+**Öneri: ikinci çeviri sağlayıcısı Venice** (`only: [nextbit, venice]`). DeepInfra 1,2 sn sınırını beşte bir aşıyor.

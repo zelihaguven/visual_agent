@@ -1,0 +1,2741 @@
+{
+ "model": "gemma4",
+ "spec": {
+  "id": "google/gemma-4-26b-a4b-it",
+  "provider": "deepinfra",
+  "reasoning": {
+   "enabled": false
+  }
+ },
+ "tag": "nihai_ek",
+ "zdr_providers": [
+  "akashml",
+  "cloudflare",
+  "coreweave",
+  "deepinfra",
+  "dekallm",
+  "io-net",
+  "makora",
+  "nextbit",
+  "novita",
+  "parasail",
+  "primeintellect",
+  "siliconflow",
+  "venice"
+ ],
+ "verify": "A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı",
+ "deger": "değer olarak, 2026-11-05",
+ "sema": "c150b",
+ "netlestirme_sorulari": "dahil",
+ "start": "2026-11-06T09:12:45",
+ "rows": {
+  "aday_sorular_ek:B002": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      9,
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      43
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3602175999999986,
+   "toplam": 0.889555200000018,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8895532999999887
+    }
+   ],
+   "giris": 2550,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00018938,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B003": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      7
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      38,
+      39
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      1
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.8413653999999724,
+   "toplam": 1.3206376999999634,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.3206362999999897
+    }
+   ],
+   "giris": 2650,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00019638,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B004": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      9
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      19
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      11
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      11
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3010974000000033,
+   "toplam": 0.685283199999958,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.6852817999999843
+    }
+   ],
+   "giris": 2000,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00015054,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B005": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "bosch-ra1171",
+     [
+      77
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      77
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      77
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      77
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      80
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.6598671000000422,
+   "toplam": 1.242467500000032,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.2424669000000108
+    }
+   ],
+   "giris": 2360,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00017574,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B006": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      62
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      62
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.33940109999997503,
+   "toplam": 0.8400134999999977,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8400128999999765
+    }
+   ],
+   "giris": 2185,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00016349,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B007": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      69
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      44
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      49
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.6462761000000228,
+   "toplam": 1.0232627999999977,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0232616999999777
+    }
+   ],
+   "giris": 2515,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00018693,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B008": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      49
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      49
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      50
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      49
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3059109999999805,
+   "toplam": 0.559722000000022,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.5597212000000127
+    }
+   ],
+   "giris": 2272,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00016992,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B009": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      11,
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      50
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 1.6168597000000204,
+   "toplam": 1.9623062000000004,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.962304500000016
+    }
+   ],
+   "giris": 2376,
+   "cikis_token": 33,
+   "dusunce_token": 0,
+   "maliyet": 0.00017754,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B010": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      10,
+      11
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      22
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      23
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.42810080000003836,
+   "toplam": 1.0949693000000025,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0949671000000194
+    }
+   ],
+   "giris": 2437,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00018147,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B011": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3159114000000045,
+   "toplam": 0.5608057000000031,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.560804399999995
+    }
+   ],
+   "giris": 2586,
+   "cikis_token": 33,
+   "dusunce_token": 0,
+   "maliyet": 0.00019224,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B012": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      86
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      61
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      30
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      79
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      64
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "Kaldırma kolu (lifting lever) (2) ile baskı ayağı (1) kaldırıldığında standart yükseklik 6 mm olmalıdır. Somunu (3) gevşetin ve baskı ayağına basınç uygulanmayacak şekilde ayar vidasını (adjustment screw) (4) çevirin. Kaldırma kolunu (2) kullanarak baskı ayağını (1) kaldırın. Ön plakadan kauçuk kapağı (5) çıkarın, cıvatayı (6) gevşetin ve baskı ayağı (1) 6 mm standart yüksekliğe gelene kadar baskı çubuğunu (presser bar) (7) yukarı veya aşağı hareket ettirin. Cıvatayı (6) sıkın ve kauçuk kapağı (5) takın. Baskı ayar vidasını (4) kullanarak baskı ayağı basıncını ayarlayın ve ardından somunu (3) ",
+   "ogeler": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 1.398,
+   "atif_dogru_biri": false,
+   "atif_dogru_hepsi": false,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.46006970000001957,
+   "toplam": 6.024916800000028,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 6.024916000000019
+    }
+   ],
+   "giris": 2382,
+   "cikis_token": 603,
+   "dusunce_token": 0,
+   "maliyet": 0.00037176,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"The standard height of the presser foot (1) is 6 mm when the presser foot (1) is raised by means of the lifting lever (2).\"}], \"metin\": \"Kaldırma kolu (lifting lever) (2) ile baskı ayağı (1) kaldırıldığında standart yükseklik 6 mm olmalıdır.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Loosen the nut (3), and then turn the adjustment screw (4) so that there is no pressure applied to the presser foot.\"}], \"metin\": \"Somunu (3) gevşetin ve baskı ayağına basınç uygulanmayacak şekilde ayar vidasını (adjustment screw) (4) çevirin.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Raise the presser foot (1) by using the lifting lever (2).\"}], \"metin\": \"Kaldırma kolunu (2) kullanarak baskı ayağını (1) kaldırın.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Remove the rubber cap (5) from the face plate. Loosen the bolt (6) and then move the presser bar (7) up or down until the presser foot (1) is at the 6\"}], \"metin\": \"Ön plakadan kauçuk kapağı (5) çıkarın, cıvatayı (6) gevşetin ve baskı ayağı (1) 6 mm standart yüksekliğe gelene kadar baskı çubuğunu (presser bar) (7) yukarı veya aşağı hareket ettirin.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Tighten the bolt (6). Install the rubber cap (5).\"}], \"metin\": \"Cıvatayı (6) sıkın ve kauçuk kapağı (5) takın.\"}, {\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Adjust the presser foot pressure using the presser adjusting screw (4), and then tighten the nut (3).\"}], \"metin\": \"Baskı ayar vidasını (4) kullanarak baskı ayağı basıncını ayarlayın ve ardından somunu (3) sıkın.\"}], \"sesli_metin\": \"Baskı ayağı standart yüksekliği 6 mm olmalıdır. Kaldırma kolu ile ayağı kaldırın, cıvatayı gevşeterek baskı çubuğunu 6 mm yüksekliğe ayarlayın ve ardından somunu sıkın.\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B013": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      77
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      106
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      17
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      13
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3473263000000202,
+   "toplam": 0.6449853000000303,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.6449845000000209
+    }
+   ],
+   "giris": 2257,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00016887,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B014": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      32
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.33992760000001,
+   "toplam": 0.5757626000000187,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.5757614999999987
+    }
+   ],
+   "giris": 2220,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00016594,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B015": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.7416393000000312,
+   "toplam": 0.9378475999999978,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9378464999999778
+    }
+   ],
+   "giris": 2390,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00017784,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B016": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      34
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      37
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      41
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.6439195000000382,
+   "toplam": 0.9430616000000214,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9430600000000027
+    }
+   ],
+   "giris": 2465,
+   "cikis_token": 33,
+   "dusunce_token": 0,
+   "maliyet": 0.00018377,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B017": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      4
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.30607559999998557,
+   "toplam": 0.5367706000000112,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.5367695999999569
+    }
+   ],
+   "giris": 2108,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.0001581,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B018": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      4
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      9,
+      10
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      7
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      34
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3575524000000314,
+   "toplam": 0.7801263000000063,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7801254000000313
+    }
+   ],
+   "giris": 2658,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.0001966,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B019": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      103
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      28
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      28
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 1.7385907000000316,
+   "toplam": 2.103625500000021,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.103624800000034
+    }
+   ],
+   "giris": 2303,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00017209,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B020": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "bosch-ra1171",
+     [
+      20
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      5
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      67
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      19
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      35
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 1.3955076000000304,
+   "toplam": 1.710501700000009,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.710500599999989
+    }
+   ],
+   "giris": 2118,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.0001588,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B021": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      20
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      18
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      5
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.34600280000000794,
+   "toplam": 0.6131063999999924,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.6131060000000161
+    }
+   ],
+   "giris": 2090,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00015684,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B022": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      212
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      182
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      32
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      105
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.4815017000000239,
+   "toplam": 0.7284049000000437,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.7284041000000343
+    }
+   ],
+   "giris": 2722,
+   "cikis_token": 33,
+   "dusunce_token": 0,
+   "maliyet": 0.00020176,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B023": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      94
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      105
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      211,
+      212
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      170
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      141,
+      142
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.34284549999995306,
+   "toplam": 0.5335527999999954,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.5335510999999542
+    }
+   ],
+   "giris": 2628,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.0001945,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B024": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      74
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      36
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      19,
+      20
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      68
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      82,
+      83
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.2822208000000046,
+   "toplam": 1.0592946999999526,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0592939000000001
+    }
+   ],
+   "giris": 2416,
+   "cikis_token": 33,
+   "dusunce_token": 0,
+   "maliyet": 0.00018034,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B025": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      81,
+      82
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      163
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      185
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      171
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      213
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.8552943999999911,
+   "toplam": 1.0046408000000042,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0046396000000186
+    }
+   ],
+   "giris": 2828,
+   "cikis_token": 33,
+   "dusunce_token": 0,
+   "maliyet": 0.00020918,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B026": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      213
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      122
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      252
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      219
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      69,
+      70
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3499431000000186,
+   "toplam": 0.6692373999999859,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.6692352999999684
+    }
+   ],
+   "giris": 2746,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.0002031,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B027": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      145
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      135
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      198
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      144,
+      145
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      96
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3350700999999958,
+   "toplam": 0.5269331999999736,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.5269321999999761
+    }
+   ],
+   "giris": 2748,
+   "cikis_token": 30,
+   "dusunce_token": 0,
+   "maliyet": 0.00020256,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B028": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "granovsky-1986",
+     [
+      215,
+      216
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      103
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      144,
+      145
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      97
+     ]
+    ],
+    [
+     "granovsky-1986",
+     [
+      208,
+      209
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.6708055000000286,
+   "toplam": 0.8527624000000174,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.852761600000008
+    }
+   ],
+   "giris": 2694,
+   "cikis_token": 33,
+   "dusunce_token": 0,
+   "maliyet": 0.0001998,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B029": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      7
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      7,
+      8
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      17
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.7811446000000046,
+   "toplam": 1.1153340000000185,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.1153327000000104
+    }
+   ],
+   "giris": 2714,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00020086,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B030": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "mrcoffee-2003",
+     [
+      18
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      21
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      10
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      6
+     ]
+    ],
+    [
+     "mrcoffee-2003",
+     [
+      16
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.6754053000000226,
+   "toplam": 1.1902949999999919,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.190294300000005
+    }
+   ],
+   "giris": 2359,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00017567,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B031": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      107
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      63
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.45289589999998725,
+   "toplam": 0.8225300000000288,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.8225288000000432
+    }
+   ],
+   "giris": 2235,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00016733,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B032": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "bosch-ra1171",
+     [
+      18
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      23
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      3
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      3
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      16
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3495838999999705,
+   "toplam": 0.650340099999994,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.6503386999999634
+    }
+   ],
+   "giris": 2691,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00019925,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B033": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      16
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      17
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      19
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "kural:netlestirme_sonra",
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:B034": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "bosch-ra1171",
+     [
+      16
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      16
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      16
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      17
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      15
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.7043082999999797,
+   "toplam": 1.0566691999999875,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.05666819999999
+    }
+   ],
+   "giris": 2577,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00019127,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B038": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.4038744000000065,
+   "toplam": 0.6432770000000119,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.6432762000000025
+    }
+   ],
+   "giris": 2181,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00016321,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:B039": {
+   "durum": "not_found",
+   "sorunlar": [],
+   "kontroller": {
+    "bos_cevap": true
+   },
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "brother-s7300b",
+     [
+      108
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      15
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      11
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      106
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      107
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "kural:kod_yok",
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:B040": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      100
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      55
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      100
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      50
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      99
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.7827020000000289,
+   "toplam": 0.9854829999999879,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.9854813000000036
+    }
+   ],
+   "giris": 2164,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00016202,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:C001": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      86
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      89
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      25
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      25
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      30
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.3162623000000053,
+   "toplam": 0.5887456000000384,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 0.588744399999996
+    }
+   ],
+   "giris": 2524,
+   "cikis_token": 31,
+   "dusunce_token": 0,
+   "maliyet": 0.00018722,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:C002": {
+   "cikis": "netlestirme",
+   "durum": "clarify",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      14
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      5
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      4
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      37
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      4
+     ]
+    ]
+   ],
+   "sira": 3,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "brother-s7300a",
+    "brother-s7300b"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.33359160000003385,
+   "toplam": 1.3428612000000157,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.3428605000000289
+    }
+   ],
+   "giris": 2234,
+   "cikis_token": 82,
+   "dusunce_token": 0,
+   "maliyet": 0.00018426,
+   "ham": "{\"tur\": \"netlestirme\", \"netlestirme\": {\"soru\": \"Hangi dikiş makinesinin ağırlığını öğrenmek istiyorsunuz?\", \"secenekler\": [{\"kaynak_no\": 1}, {\"kaynak_no\": 5}]}, \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:C003": {
+   "cikis": "cevap",
+   "durum": "verified",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "brother-s7300a",
+     [
+      37
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      76
+     ]
+    ],
+    [
+     "brother-s7300b",
+     [
+      12
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      58
+     ]
+    ],
+    [
+     "brother-s7300a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cevap": "Besleme dişlisi yörüngesi (feed dog locus) kullanıldığında 5.0 dikiş adımında (sewing pitch) dikiş hızı en fazla 2000 sti/min olur.",
+   "ogeler": [
+    true
+   ],
+   "ilk_dogrulanmis_cumle": 2.065,
+   "atif_dogru_biri": true,
+   "atif_dogru_hepsi": true,
+   "atif_dokumanlari": [
+    "brother-s7300a"
+   ],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.46300780000001396,
+   "toplam": 2.690247999999997,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 2.6902468000000113
+    }
+   ],
+   "giris": 2404,
+   "cikis_token": 198,
+   "dusunce_token": 0,
+   "maliyet": 0.0002356,
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 2, \"metin\": \"The sewing speed will be subjected to the following limits (sewing speed/sewing pitch). ・4000sti/min / 3.0 ・3500sti/min / 4.0 ・2000sti/min / 5.0\"}], \"metin\": \"Besleme dişlisi yörüngesi (feed dog locus) kullanıldığında 5.0 dikiş adımında (sewing pitch) dikiş hızı en fazla 2000 sti/min olur.\"}], \"sesli_metin\": \"Besleme dişlisi yörüngesi kullanıldığında 5.0 dikiş adımında dikiş hızı en fazla 2000 sti/min olur.\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:C004": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      22,
+      23
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      23
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      18
+     ]
+    ],
+    [
+     "juki-mo6800s",
+     [
+      3
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      71
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.8566297000000418,
+   "toplam": 1.0504921000000422,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.0504912000000104
+    }
+   ],
+   "giris": 2496,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.0001856,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:C005": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      41
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      75
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      35,
+      36
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      86
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": 5,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:C006": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      41
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      6
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      6
+     ]
+    ]
+   ],
+   "sira": 2,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:C007": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      11
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      32
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      11
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      96
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      94
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:C008": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-14-04a",
+     [
+      23
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      20
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      24
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      33
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      23
+     ]
+    ]
+   ],
+   "sira": 1,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-14-04a",
+    "gl-pd-07-14a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  },
+  "aday_sorular_ek:C009": {
+   "cikis": "bulunamadi",
+   "durum": "not_found",
+   "sorunlar": [],
+   "kaynaklar": [
+    [
+     "strickland-1956",
+     [
+      34,
+      35
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      19
+     ]
+    ],
+    [
+     "strickland-1956",
+     [
+      140
+     ]
+    ],
+    [
+     "bosch-ra1171",
+     [
+      81
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12
+     ]
+    ]
+   ],
+   "sira": null,
+   "cevap": "",
+   "ogeler": [],
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [],
+   "secenek_degerlendirme": null,
+   "netlestirme_dogru": false,
+   "json": "ok",
+   "dusunce_blogu": false,
+   "provider": "DeepInfra",
+   "ilk_token": 0.8102818000000411,
+   "toplam": 1.1538643000000093,
+   "finish": "stop",
+   "denemeler": [
+    {
+     "err": "",
+     "sn": 1.1538636000000224
+    }
+   ],
+   "giris": 2713,
+   "cikis_token": 32,
+   "dusunce_token": 0,
+   "maliyet": 0.00020079,
+   "ham": "{\"tur\": \"bulunamadi\", \"cevap\": [], \"sesli_metin\": \"\", \"celiski_var\": false}"
+  },
+  "aday_sorular_ek:C010": {
+   "durum": "clarify",
+   "sorunlar": [],
+   "kontroller": {},
+   "cevap": "",
+   "kaynaklar": [
+    [
+     "gl-pd-07-14a",
+     [
+      12
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      12,
+      13
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      16
+     ]
+    ],
+    [
+     "gl-pd-07-14a",
+     [
+      7
+     ]
+    ],
+    [
+     "gl-pd-14-04a",
+     [
+      8
+     ]
+    ]
+   ],
+   "sira": null,
+   "cikis": "kural:netlestirme_sonra",
+   "netlestirme_sinifi": "deger_farkli",
+   "secenek_dokumanlari": [
+    "gl-pd-07-14a",
+    "gl-pd-14-04a"
+   ],
+   "secenek_degerlendirme": "dogru",
+   "netlestirme_dogru": true,
+   "json": null,
+   "dusunce_blogu": null,
+   "provider": null,
+   "ilk_token": null,
+   "toplam": null,
+   "finish": null,
+   "denemeler": null,
+   "giris": null,
+   "cikis_token": null,
+   "dusunce_token": null,
+   "maliyet": 0.0,
+   "ham": ""
+  }
+ },
+ "cost_usd": 0.007456410000000002,
+ "dusunme_kontrolu": {
+  "reasoning_tokens": 0,
+  "reasoning_text": 0,
+  "provider": "DeepInfra",
+  "ok": true,
+  "cost": 0.00011785,
+  "err": null,
+  "json": "sema_disi"
+ },
+ "end": "2026-11-06T09:13:32",
+ "tamam": true
+}
