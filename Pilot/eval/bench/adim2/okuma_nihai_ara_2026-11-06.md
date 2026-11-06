@@ -227,3 +227,25 @@ N = 40, c150b-J koşuları (gerçek akış zaman çizelgesi):
 - **Öneri: DeepInfra tek sağlayıcı.** Bekçi (N = 40) yine de ucuz bir sigorta olarak plana girsin: DeepInfra'da hiç tetiklenmedi, yanlış alarmı yok. Tetiklenirse aynı sağlayıcıya bir kez yeniden deneme.
 - Uygulamaya bağlanmadı (karar).
 - Not: 11-05 koşularında akış zaman çizelgesi yok; yakalama anları karakter konumundan yaklaşık (tabloda ≈).
+
+## 7. Bağlanacak hattın uçtan uca ölçümü (§26; 0,121 USD)
+
+Rapor: [hat_rapor_2026-11-06.md](hat_rapor_2026-11-06.md), araç `bench/hat_olcumu.py`.
+- Hat: ikili yol (`manuals`, gömülü Qdrant) → c150b-J DeepInfra → verify_c.
+- 245 soru, 5 ve 8 kaynak her soruda rastgele sırayla. Ölçüme girmeyen bir ısınma adımı var.
+- Bu sayılar 10k ölçümleriyle doğrudan karşılaştırılamaz (korpus farklı).
+
+| | ✓ / ⚠ / ✖ (cevaplı) | yanlış ret | beklenen değer | doğru "bulunamadı" | doğrulanmış görünen yanlış | netl. değer farklı / aynı | gereksiz netl. | u2u ilk doğr. cümle p50 / p95 | ≤ 3 sn |
+|---|---|---|---|---|---|---|---|---|---|
+| 5 kaynak | 123 / 0 / 23 | 11 | 93 % | 50/51 | **1 (B012)** | 12/15 · 11/13 | 2 | 2,27 / 3,63 sn | 88 % |
+| 8 kaynak | 125 / 1 / 20 | 11 | 93 % | 51/51 | **0** | 13/15 · 10/13 | 2 | 2,40 / 3,63 sn | 84 % |
+
+- **İkili yol yanlış reti 25'ten 11'e indirdi** (aynı 160 soru, varsayılan yol + c150b-J'ye göre). ✓ 114 → 123 / 125. ✖ 15 → 23 / 20: daha çok soru cevaplanıyor ve bir kısmı doğrulamada güvenli yönde kalıyor.
+- Netleştirme teşhis soruları: Q07, C001, C003 ve C004 artık doğru netleştiriyor. C009 çeviri hatası yüzünden hâlâ "bulunamadı".
+- Arama adımı p50 / p95: 627 ms / 1,06 sn. Çeviri p50 469 ms, 1,2 sn sınırını aşan %1 (3/245).
+- **PRD (≤ 3 sn):** p50'de karşılanıyor (2,3–2,4 sn), p95'te karşılanmıyor (3,63 sn). Soruların %84–88'i 3 sn içinde.
+- İzlenen sorular: Q05 iki varyantta da ✓ cevap. G7: 5 kaynakta ✖, 8 kaynakta gereksiz netleştirme.
+- **5 / 8 önerisi: 8 kaynak**, kıl payı.
+  - 8 kaynakta doğrulanmış görünen yanlış 0 (5 kaynakta B012 1), ✖ 3 daha az, değer farklı netleştirme 1 daha fazla.
+  - Bedeli: u2u p50 +0,13 sn, ≤ 3 sn oranı −4 puan, maliyet +%17.
+  - 24 soru varyantlar arasında iki yöne de değişiyor; fark gürültü düzeyine yakın. Belirleyici olan B012: 5 kaynakta niteleyici uyuşmazlığı tekrarlandı.
