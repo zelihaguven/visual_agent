@@ -10,6 +10,8 @@ Bu belge ürünün tek güncel tanımıdır. `UYGULAMA-PLANI.md` (13 Ekim) ve `c
 
 Aşama adları: bu belgede ürün adımları **Adım 1–6** diye geçer. Arama benchmark'ının kendi aşamaları **B0–B5** diye yazılır (eski adıyla Aşama 0–5). Eski uygulama planının Aşama 0–7 numaralandırması artık kullanılmaz.
 
+**Pilot kapsamı (karar 2026-11-06):** İlk kullanım kendi birimimizde, dikiş ölçüleri ve şartname türü belgelerle. Sistem konudan bağımsız: test belgeleri kaldırılır, kendi belgelerimiz indekslenir; model, şema, arama ve doğrulama değişmez. Kurulum adımları: [KURULUM-KENDI-BELGELER.md](KURULUM-KENDI-BELGELER.md).
+
 ## Kullanıcılar ve roller
 
 Sistemde dört rol bulunur. Bir kişi aynı anda birden fazla departmanda rol alabilir.
@@ -97,10 +99,21 @@ En büyük risk, yanlış bir değerin (dikiş sıklığı, tolerans, ayar) güv
 | --- | --- | --- | --- |
 | Arama: doğru sayfa ilk 5'te (hit@5) | ≥ %90 | %89 | bge-m3 + BM25, rerank kapalı; 1M'de ölçülüyor (B3b) |
 | Arama: doğru sayfa ilk sırada (hit@1) | izlenir | %72 | MRR 0,79 |
-| Değer doğruluğu | ≥ %98 | kısmen | Beklenen değer cevapta (kapsama) %93 (bağlanan hat, 8 kaynak); kesinlik ölçümü ayrıca yapılacak |
+| Değer doğruluğu | **yanlış değer toleransı 0** (karar 2026-11-06; kesinlik ölçütü ≥ %98'in yerine) | kısmen | Beklenen değer cevapta (kapsama) %93 (bağlanan hat, 8 kaynak); kesinlik ölçümü ayrıca yapılacak |
 | "Doğrulandı" rozetli yanlış değer | 0 | 0 | Bağlanan hatta (8 kaynak) 0. 5 kaynakta 1 vaka (B012, niteleyici uyuşmazlığı); 8 kaynak bu yüzden seçildi |
 | Doğru "bulunamadı" | ≥ %90 | %100 | Bağlanan hat: 51/51 (onaylı + yeni set). Pilotta 7B modelle %48'di |
 | Tuzak sorular | %100 | ölçülmedi |  |
+
+**Karar: değer içeren cevaplarda yanlış değer toleransı SIFIR (2026-11-06).**
+
+- Değer içeren cevaplar (ölçü, tork, vida, ayar, kod) için kabul edilebilir yanlış değer oranı **0**.
+- Emin olunamayan durumda sistem **"bulunamadı" ya da "doğrulanamadı"** der. Bedeli cevapsız kalan sorulardır. Bu bilinçli bir tercihtir: cevapsız soru kullanıcıyı kaynağa yönlendirir, yanlış değer üretime gider.
+- Uygulamadaki karşılığı:
+  - doğrulanmış görünen yanlış kapısı 0;
+  - değer, cümlenin kendi alıntısında birebir yoksa ✖ ve seslendirilmez;
+  - gri akışta değerler doğrulanana kadar gizli;
+  - OCR'ı bozuk değer "yorumlanarak" doğrulanmaz.
+- Cevapsız kalma oranı ayrıca izlenir (yanlış ret, "doğrulanamadı"); hedef kapı değil, iyileştirme ölçütü.
 
 **Ölçüm kuralları**
 
@@ -109,7 +122,7 @@ En büyük risk, yanlış bir değerin (dikiş sıklığı, tolerans, ayar) güv
 - **Ek kapı ve izlemeler (2026-11-06):** yanlış ret ayrıca raporlanır; "niteleyici uyuşmazlığı" (alıntı gerçek, soru başka şey soruyor) doğrulanmış görünen yanlış sayılır.
 - JUKI dokümanı (`gorulmemis_juki.json`) ayar yapmakta kullanılmaz, yalnız görülmemiş doküman testi içindir.
 - İyileştirmeler genel kurallarla yapılır, test dokümanlarına özgü kural yazılmaz.
-- Soru setini şimdilik geliştirme ekibi hazırlar ve onaylar. Gerçek veriye geçerken departmandan bir uzmanın kontrol etmesi gerekir (Açık kararlar, A2).
+- Soru setini şimdilik geliştirme ekibi hazırlar ve onaylar. **Gerçek soru seti (karar 2026-11-06):** kullanım sırasında not edilen 30–50 soru, her biri soru ve cevabın olduğu sayfayla. Onay geliştirme ekibinde; ölçüt kanıt cümlesi.
 
 ## Performans ve ölçek
 
@@ -135,15 +148,41 @@ Dizüstü süreleri "üretimi temsil etmez" diye işaretlenir ve karar için kul
 
 Bulut kullanılabilir, ama yalnız veri saklamayan (ZDR) sağlayıcılarla ve yalnız parça düzeyinde. Belgenin tamamı hiçbir zaman buluta gönderilmez.
 
+**Bir soruda buluta ne gider (bağlanan hat, 2026-11-06; A9 kapandı):**
+
+1. Belgeler **yerelde** ayrıştırılır, parçalanır ve indekslenir (bge-m3 + BM25). Buluta belge gitmez.
+2. **Çeviri çağrısı:** yalnız **soru metni** (BM25 için çeviri; Gemma 4, NextBit, yedek Venice; ZDR).
+3. Arama **yerelde**: yetki filtresi aramanın içinde, en ilgili 8 parça seçilir.
+4. **Cevap çağrısı:** **soru + en ilgili 8 parça** (parça metni, doküman adı, ürün, bölüm başlığı; sayfa numarası gönderilmez). Gemma 4, DeepInfra; yalnız kesintide Venice/Parasail; ZDR.
+5. Doğrulama, sayfa vurgusu ve ses **yerelde**.
+
+Kullanıcı kimliği, yetki bilgisi, ses ve belgenin tamamı hiçbir çağrıda gönderilmez. Bulut çağrısı yapılamazsa yerel modele geçilmez; "servis şu an kullanılamıyor" denir.
+
 | Adım | Nerede çalışır | Buluta giden |
 | --- | --- | --- |
-| Ayrıştırma, OCR, parçalama, sayfa konumları | Sunucu | Hiçbir şey |
+| Ayrıştırma, OCR, parçalama, sayfa konumları | Sunucu | Hiçbir şey (OCR bugün yapılmıyor; aşağıda) |
 | Embedding (indeksleme ve soru) | Sunucu ya da ZDR'li bulut | Parça metni, soru metni |
 | Vektör veritabanı, yetki filtresi | Sunucu | Hiçbir şey |
 | Cevap üretimi (LLM) | ZDR'li bulut (Gemma 4; DeepInfra, yedek Venice/Parasail) | Soru + bulunan 8 parça |
 | BM25 sorgu çevirisi | ZDR'li bulut (Gemma 4; NextBit, yedek Venice) | Yalnız soru metni |
 | Şekil açıklaması (VLM) | Açık karar | Şekil görüntüsü (A3) |
 | STT, TTS | Açık karar | Ses ya da cevap metni (A3) |
+
+**Taranmış belgeler ve OCR (2026-11-06).**
+
+- **Bugünkü yol:** Sistem OCR'ı kendisi yapmıyor (Docling, OCR kapalı). Taranmış PDF'in içindeki **OCR metin katmanı** kullanılır (tarayıcı ya da FineReader gibi yazılımın eklediği). Docling bir sayfanın metnini büyük oranda kaçırırsa PyMuPDF metin katmanı yedeği devreye girer. Harf aralıklı OCR katmanı ("C a r d") birleştirilir.
+- **Metin katmanı olmayan tarama (yalnız görüntü) bugün aranamaz:** o sayfalardan parça çıkmaz. Yükleme sırasındaki kapsam raporu bu sayfaları uyarı olarak göstermeli (G13).
+- **Bilinen OCR hata türleri** (test belgelerinde görüldü):
+  - kesir ve rakam karışması: "112 inch" = ½, "7-114" = 7-1/4, "3/8 - 112";
+  - harf/rakam karışması: "IS min" = 15, "GLlPD" = GL-PD;
+  - satır kaybı (tablo satırları eksik).
+- **Sonuç:** Doğrulayıcı yanlış değeri engeller. Model "112"yi ½ diye yorumlarsa alıntıda ½ olmadığı için ✖ olur. Ama soru **cevapsız kalır**. Sıfır tolerans kararıyla uyumlu, bedeli cevapsız kalma.
+- **Adım 6 işi:**
+  - (1) gerçek bir taranmış belgeyle cevapsız kalma oranının ölçümü (`ocr` etiketli sorular);
+  - (2) OCR iyileştirme seçenekleri için plan:
+    - görüntüden OCR (Docling OCR / Tesseract);
+    - sayfayı görsel modelle okuma (VLM; yerel ya da ZDR'li bulutta, A3);
+    - iki okumanın uyuştuğu değerlerin kabulü.
 
 **Kurallar**
 
@@ -197,6 +236,13 @@ Benchmark kapandıktan sonraki ilk iş cevap modelinin seçilmesidir, çünkü K
 
 &#91;embedded content: yol haritası · 6 adım, 1 kapı, paralel sunucu ölçümleri\]
 
+**Adım 6 (gerçek veri) işleri (2026-11-06):**
+- kendi birimimizde kurulum (kontrol listesi);
+- 20–30 soruluk ilk duman testi;
+- kullanımdan 30–50 soruluk gerçek set ve onayı;
+- taranmış belgede cevapsız kalma ölçümü ve OCR iyileştirme planı;
+- elle yazılmış listelerin (takma ad, marka) kaldırılması kararı.
+
 B5'in parametre ayarı (Optuna) onaylı soru seti hazır olunca yapılır; "bulunamadı" ile ilgili rerank ve eşik denemeleri Adım 2'ye alınmıştır. Her adım bir özetle biter ve onaydan sonra sonrakine geçilir.
 
 ## Açık kararlar
@@ -206,14 +252,14 @@ Bu kararlar ilerlemeyi bugün durdurmuyor. Her biri, engellediği adıma gelmede
 | No | Karar | Muhatap | Engellediği adım |
 | --- | --- | --- | --- |
 | A1 | ~~Hangi LLM?~~ **Kapandı (2026-11-06):** Gemma 4 26B A4B, şema c150b-J, DeepInfra birincil | Geliştirme ekibi | Adım 2 sonu |
-| A2 | Yanlış değer toleransı kesinleşiyor mu; soru setini gerçek veride kim kontrol edecek? | Kalite yönetimi | Adım 6 |
+| A2 | ~~Yanlış değer toleransı; soru setini kim kontrol edecek?~~ **Kapandı (2026-11-06):** değer içeren cevaplarda tolerans 0, emin değilse "bulunamadı/doğrulanamadı"; soru seti kullanımda not edilen 30–50 soru, onay geliştirme ekibinde | Kalite yönetimi | Adım 6 |
 | A3 | VLM, STT ve TTS sunucuda mı, ZDR'li bulutta mı? | Geliştirme ekibi | Adım 5 |
 | A4 | Departmanlar arası paylaşımda karşı departman yetkilisinin onayı gerekli mi? | Departmanlar, BT | Adım 4 |
 | A5 | Giriş nasıl yapılacak: şirket hesabı (tek oturum açma) mı, ayrı hesap mı? | BT | Adım 3 |
 | A6 | Üretim sunucusu: B3a/B3c'de ölçülen sunucu mu, ayrı bir sunucu mu? | BT | Adım 3 |
 | A7 | ~~Ağ kesilirse ne olacak?~~ **Kapandı (2026-11-06):** "servis şu an kullanılamıyor" uyarısı ve bulunan kaynaklar; yerel modele otomatik düşüş yok (yerel model yalnız elle açılan geri alma anahtarı, bir sürüm) | BT, kullanıcılar | Adım 3 |
 | A8 | Denetim kayıtları ne kadar saklanacak, kim görecek? | BT, hukuk | Adım 6 |
-| A9 | Müşteri sözleşmeleri, parçaların ZDR'li buluta gönderilmesine izin veriyor mu? | Hukuk | Adım 6 |
+| A9 | ~~Parçaların ZDR'li buluta gönderilmesine izin var mı?~~ **Kapandı (2026-11-06):** buluta yalnız parçalar ve yalnız ZDR ile; belgeler yerelde indekslenir ("Bir soruda buluta ne gider") | Hukuk | Adım 6 |
 | A10 | Kodlar atölyede nasıl okunuyor; sesli cevap ne uzunlukta olmalı? | Kullanıcılar | Adım 5 |
 | A11 | (Uygulandı, 2026-11-06: bağlanan hatta model ve sağlayıcı yapılandırmadan) Model değişikliği yalnız yapılandırma değişikliği mi olacak? Önerilen ilke: Bir model ölçüm setinden kod değişmeden geçmiyorsa elenir, ona özel yama yazılmaz; ortak biçim sorunları yapılandırılmış cevap şemasıyla çözülür ([Adım 2 planı §15–16](../Pilot/eval/bench/adim2/plan_cevap_modeli_2026-11-05.md)) | Geliştirme ekibi | Adım 2 sonu |
 
