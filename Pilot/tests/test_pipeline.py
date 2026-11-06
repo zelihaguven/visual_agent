@@ -522,6 +522,7 @@ def test_c_mode_verified_answer_items_provider_and_eight_sources(c_mode):
     assert c_mode["search"][0]["translate_limit_s"] == 1.2
     assert r.answer["saglayici"] == "deepinfra" and r.answer["ogeler"][0]["dogrulandi"] is True
     assert r.timings["ilk_dogrulanmis_cumle"] == 0.9 and "on bir, artı eksi bir" in r.speech_text
+    assert r.timings["uctan_uca_ilk_dogrulanmis"] >= 0.9 and "istek_oncesi" in r.timings
 
 
 def test_c_mode_model_clarification_lists_no_answer(c_mode):

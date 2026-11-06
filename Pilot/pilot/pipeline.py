@@ -455,6 +455,7 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
     from .cloud import ServiceUnavailable
     from .jsonparse import failure_message
     from .schema_c import QUOTE_LIMIT, first_verified_time, item_quotes, to_legacy, verify_c
+    timings["istek_oncesi"] = t - t0          # sorudan cevap isteğine (arama ve kurallar dahil)
     try:
         ans, rec = chat_c(user)
     except ServiceUnavailable as err:
@@ -499,6 +500,8 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
     first = first_verified_time(rec.get("content", ""), rec.get("zaman") or [], v["items"]) if v["items"] else None
     if first is not None:
         timings["ilk_dogrulanmis_cumle"] = first
+        failed = sum(a.get("sn") or 0.0 for a in (rec.get("denemeler") or [])[:-1])   # yedeğe geçişten önceki denemeler
+        timings["uctan_uca_ilk_dogrulanmis"] = timings["istek_oncesi"] + failed + first
     verification = Verification(v["status"] if v["status"] in ("verified", "partial", "failed") else "failed",
                                 v["problems"][:6], {"sesli_metin_sayilari": bool(v.get("sesli_ok"))})
     speech = ""
