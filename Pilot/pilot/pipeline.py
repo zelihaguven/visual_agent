@@ -80,6 +80,18 @@ def _noop(_: str) -> None:
     pass
 
 
+def _product_in_translation() -> bool:
+    """K7 ölçüm seçeneği (PILOT_K7_TRANSLATED): çevrilmiş soruda (ikili yol) belge kaydının ürün adı geçiyor mu.
+    Geçiyorsa soru ürünü söylüyor demektir; K7 sormaz."""
+    if not config.K7_TRANSLATED:
+        return False
+    from .query import _squash
+    from .registry import product_names
+    from .retrieve import last_translation
+    text = _squash(last_translation.get("metin") or "")
+    return bool(text) and any(_squash(n) in text for d in DOCS for n in product_names(d))
+
+
 # ---------- c kipi: bulut cevap modeli, şema c150b-J (Adım 2 planı §29) ----------
 
 _CLIENTS: dict[str, Any] = {}
@@ -172,7 +184,9 @@ def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None
     """Sorudaki kodlar için kapsamda birebir geçen parçalar, kapsamda hiç geçmeyen kodlar ve bu kodların geçtiği
     kapsam dışı dokümanlar. Arama benzer kodu (E05 ~ E050) getirebiliyor; kod birebir aranır.
     access: kullanıcının yetki grupları; yetkisiz dokümanların parçaları ve adları hiç dönmez (arama gibi)."""
-    aliases = {a for d in DOCS for a in d.aliases}   # tiresiz model adı ("s7300a") kod değil, doküman kaydı
+    from .registry import product_names
+    aliases = ({a for d in DOCS for a in d.aliases} if config.HAND_LISTS       # tiresiz model adı ("s7300a") kod değil
+               else {re.sub(r"[-\s]", "", a) for d in DOCS for a in product_names(d)})
     codes = list(dict.fromkeys(m.group(1).upper() for m in CODE_TOKEN_RE.finditer(question)
                                if m.group(1).lower() not in aliases))
     found: list[dict[str, Any]] = []
@@ -353,7 +367,7 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
         timings["total"] = time.time() - t0
         return _not_found(question, ctx, hits, timings)
 
-    if not doc_ids and not ctx.doc_ids:
+    if not doc_ids and not ctx.doc_ids and config.K7_RULE and not _product_in_translation():
         # Arama sonrası belirsizlik (R14): soru kaynak belirtmiyor ve ilk sonuçlar birbirinin yerine geçebilecek
         # dokümanlardan geliyor. Model çağrılmadan sorulur:
         #   - farklı ürün şartnameleri ("Dış görünür dikişlerde SPI?" → ceket 11 (± 1), pantolon 10-14)

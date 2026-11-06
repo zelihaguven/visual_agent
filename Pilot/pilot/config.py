@@ -114,6 +114,14 @@ STREAM_GUARD_N = 40            # akışta art arda bu kadardan fazla boşluk: ka
 TRANSLATE_MODEL = "google/gemma-4-26b-a4b-it"
 TRANSLATE_PROVIDERS: tuple[str, ...] = ("nextbit", "venice")
 TRANSLATE_LIMIT_S = 1.2
+# Elle yazılmış listeler (registry takma adları, CUSTOMER_BRANDS, query.FOREIGN_BRANDS) ilke ihlali olarak
+# raporlandı (2026-11-06). Ölçüm anahtarları (karar sonuca göre; varsayılan bugünkü hal):
+#   PILOT_HAND_LISTS=0  üç liste kapalı; ürün adları yalnız belge kaydının ürün alanından (registry.product_names)
+#   PILOT_K7=0          arama sonrası netleştirme (K7) kapalı
+#   PILOT_K7_TRANSLATED=1 K7, ürün adını çevrilmiş soruda da arar (bulursa sormaz)
+HAND_LISTS = os.environ.get("PILOT_HAND_LISTS", "1") == "1"
+K7_RULE = os.environ.get("PILOT_K7", "1") == "1"
+K7_TRANSLATED = os.environ.get("PILOT_K7_TRANSLATED", "0") == "1"
 # Arama sonrası netleştirme yöntemi: top3 (varsayılan: ilk 3 sonucun dokümanları) | doc_score (ilk FUSED_K adayın RRF
 # skorları dokümana göre toplanır; birbirinin yerine geçebilen en iyi iki dokümanın oranı ≥ CLARIFY_DOC_RATIO ise sorulur).
 # Oran onaylı soru setiyle seçilecek (bench/clarify_guard.py); şimdilik yalnız seçenek.

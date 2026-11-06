@@ -206,15 +206,17 @@ def analyze_query(question: str) -> QueryContext:
     entities: list[tuple[str, str, tuple[str, ...]]] = []
     variants: list[str] = []
 
+    from . import config
+    from .registry import product_names
     for doc in DOCS:
-        for alias in doc.aliases:
+        for alias in (doc.aliases if config.HAND_LISTS else product_names(doc)):
             if _squash(alias) in q:
                 doc_ids.append(doc.doc_id)
                 matched.append(alias)
                 entities.append((alias, KIND_OF_DOC_TYPE.get(doc.doc_type, "rehber"), (doc.doc_id,)))
                 break
     # Müşteri markası ("US Army"), ürün belirtilmemişse: o markanın şartnamelerinin hepsi, belirsiz.
-    groups = [(b, "marka", ids) for b, ids in CUSTOMER_BRANDS.items()]
+    groups = [(b, "marka", ids) for b, ids in CUSTOMER_BRANDS.items()] if config.HAND_LISTS else []
     for alias, kind, ids in groups:
         # "s7300", "S-7300A" eşleşmesinin bir parçasıysa ayrı varlık değildir
         if alias not in q or any(e[2] == ids or alias in _squash(e[0]) for e in entities):
@@ -226,7 +228,8 @@ def analyze_query(question: str) -> QueryContext:
             doc_ids += list(ids)
             variants += list(ids)
             matched.append(alias)
-    return QueryContext(tuple(dict.fromkeys(doc_ids)), tuple(matched), _foreign_brands(question),
+    return QueryContext(tuple(dict.fromkeys(doc_ids)), tuple(matched),
+                        _foreign_brands(question) if config.HAND_LISTS else (),
                         tuple(dict.fromkeys(variants)), tuple(entities))
 
 

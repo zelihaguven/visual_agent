@@ -58,6 +58,15 @@ DOCS: tuple[DocMeta, ...] = (
 
 BY_ID = {d.doc_id: d for d in DOCS}
 
+
+def product_names(doc: DocMeta) -> tuple[str, ...]:
+    """Elle yazılmış takma ad olmadan, yalnız belge kaydının alanlarından eşleşme adları (yükleme formunun girdiği
+    bilgi): ürün adının tamamı, ürün adındaki model kodları (rakam içeren kelimeler: "S-7300A", "RA1171") ve doküman
+    kimliği. Küçük harf; '-' ve boşluk eşleştirmede yok sayılır (query._squash)."""
+    words = doc.product.split()
+    codes = [w for w in words if any(ch.isdigit() for ch in w)]
+    return tuple(dict.fromkeys([doc.product.casefold(), *(c.casefold() for c in codes), doc.doc_id]))
+
 # Müşteri (ürün sahibi) markaları ve şartnameleri. Soruda yalnız marka geçerse o markanın tüm şartnameleri kapsanır
 # ("US Army SPI?" → ceket mi pantolon mu sorulur). Gerçek sistemde bu tablo müşteri kaydından ve yetkiden gelir.
 # Dokümanı olmayan markalar (Nike ...) query.FOREIGN_BRANDS'te: aynı türden varlık, şartnamesi yok.
