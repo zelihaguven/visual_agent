@@ -839,3 +839,29 @@ Bu bölüm §21, §25, §27 ve §28'in yerine geçer. Dayanaklar:
 - F `7e55005`: varsayılan c kipi. `bugun` yalnız elle açılan geri alma anahtarı (bir sürüm). Bench araçları kendi model kancalarıyla `bugun` kipinde.
 - G `10310f5`: MIMARI.md ve PRD.
 - Harcama: duman testinden önce ~1,81, sonra ~1,82 USD (3,0 sınırı).
+
+## 31. Gri akış C ve c150b-JM sonucu (2026-11-06)
+
+**Karar:** seçenek C. Metin gri akar, sayılar doğrulanana kadar gizlenir (`pilot/stream_view.py`), ses ve rozet yalnız doğrulanmış cümleyle. API planı: [plan_cevap_modeli_2026-11-06_api.md](plan_cevap_modeli_2026-11-06_api.md).
+
+**c150b-JM** (öğede önce metin, sonra alıntı), tam set, yeni hat, 8 kaynak, DeepInfra, 0,062 USD; c150b-J ile aynı hatta karşılaştırma:
+
+| | ✓ / ⚠ / ✖ (cevaplı 160) | yanlış ret | beklenen değer | doğrulanmış görünen yanlış | ilk görünen kelime u2u p50 / p95 | ilk doğrulanmış cümle u2u p50 / p95 |
+|---|---|---|---|---|---|---|
+| c150b-J (hat k8) | 125 / 1 / 20 | 11 | 97/104 | 0 | 2,02 / 2,99 sn | 2,40 / 3,63 sn |
+| **c150b-JM** | 121 / 0 / **27** | 10 | 99/106 | **1 (B012)** | **1,39 / 2,62 sn** | 2,47 / 4,33 sn |
+
+- İlk görünen kelime belirgin kısaldı: p50 −0,63, p95 −0,37 sn.
+- **Kalite kötüleşti:** ✖ +7. J'de ✓ olup JM'de ✖ olan 12 sorunun 9'unda neden "cümlede kendi alıntısında olmayan sayı".
+  - Cümle önce yazılınca model, sonra seçtiği alıntıda olmayan sayıları kullanıyor. Alıntı önce gelince cümleyi kanıt sınırlıyordu.
+  - B012'de niteleyici uyuşmazlığı yine doğrulanmış görünen yanlış oldu.
+  - İlk doğrulanmış cümle p95 3,63 → 4,33 sn kötüleşti.
+- **Kabul ölçütüne göre (kalite kötüleşmeyecek) c150b-JM kabul edilmez.** Gri akış C, c150b-J'de de çalışır: ilk görünen kelime u2u p50 2,02 sn (cümle alıntıdan sonra akar). Kazanç küçük, kalite korunur.
+
+## 32. Adım 6 kararları (2026-11-06)
+
+- **Pilot kapsamı:** önce kendi birimimiz, dikiş ölçüleri ve şartname türü belgeler. Sistem konudan bağımsız. Kontrol listesi: [docs/KURULUM-KENDI-BELGELER.md](../../../../docs/KURULUM-KENDI-BELGELER.md).
+- **Gerçek soru seti:** kullanım sırasında not edilen 30–50 soru (soru + cevabın olduğu sayfa). Onay geliştirme ekibinde.
+- **A9 kapandı:** buluta yalnız parçalar ve yalnız ZDR. Belgeler yerelde indekslenir. Çeviri çağrısına yalnız soru, cevap çağrısına soru + en ilgili 8 parça gider.
+- **Taranmış belgeler:** sistem bugün OCR yapmıyor, PDF'in OCR metin katmanını kullanıyor. Metin katmanı olmayan tarama aranamaz. Bilinen OCR hataları ("112" = ½, "IS" = 15) doğrulayıcıda yanlış değer olarak geçmez, soru cevapsız kalır. Adım 6 işi: gerçek taranmış belgede cevapsız kalma ölçümü ve OCR iyileştirme planı (görüntüden OCR, sayfayı görsel modelle okuma).
+- **Yanlış değer toleransı SIFIR:** değer (ölçü, tork, vida, ayar, kod) içeren cevaplarda. Emin değilse "bulunamadı / doğrulanamadı"; bedeli cevapsız kalan sorular.

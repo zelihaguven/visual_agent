@@ -342,3 +342,73 @@ Rapor ve soru soru tablo: [nihai_juki_hat_rapor_2026-11-06.md](nihai_juki_hat_ra
 | 6 | **C009 türü çeviri hataları** | Teknik terimin yanlış çevirisi BM25'i boşa düşürüyor ("baskı" → "print"). Genel çözüm adayı: çeviriye korpus terim listesinden ipucu ya da çevirisiz BM25'i ek kol olarak tutmak. Yeni sette sıklığı ölçülmeli | yeni set |
 | 7 | **"bugun" kipinin silinmesi** | Bir sürüm tutulacak (karar). Öneri: Adım 3'ün ilk servis sürümüyle birlikte silinsin; `verify.py`'nin serbest metin yamaları (§15.1) da onunla gider | kod |
 | 8 | **c150b-O** (`ilgili_kaynaklar`, erken ret) | İkili yolla yanlış ret 25'ten 11'e indi; kalan erken retler (A102, A106) azaldı. Getirisi düştü | ~0,12 USD |
+
+## 13. Adım 6 (gerçek veri) için şirketten istenecek bilgiler
+
+1. **Departman(lar)** ve her biri için doküman yetkilisi ve konu uzmanı (soru setini kontrol edecek kişi, A2).
+2. **Belge sayısı ve toplam sayfa**, departman başına.
+3. **Belge türleri:** makine kılavuzu, ürün şartnamesi / teknik föy, iş talimatı, kalite prosedürü, dikim kaynağı vb. ve her türün payı.
+4. **Biçim ve kalite:** PDF metin mi, taranmış mı (oran); Word / Excel / görsel var mı; diller; şekil ve tablo yoğunluğu.
+5. **Sürümler:** aynı belgenin birden çok sürümü var mı, güncelleme sıklığı; eskisi silinecek mi, tutulacak mı.
+6. **Ürün / model / müşteri markası listesi:** yükleme formundaki "ürün" alanına girecek adlar, aynı ailenin modelleri, müşteri markaları. Elle yazılmış listelerin yerine geçecek veri.
+7. **Yetki yapısı:** kim hangi belgeyi görür (gruplar), departmanlar arası paylaşım örnekleri (A4).
+8. **Gizlilik ve sözleşme:** hangi belgelerin parçaları ZDR'li buluta gidebilir, hangileri kesinlikle yerelde kalmalı (A9).
+9. **Soru seti:**
+   - kimden (uzman ve ustalar), kaç soru (öneri: departman başına 50–100);
+   - içerik: yaklaşık %20 cevabı belgede olmayan, %10 netleştirme gerektiren soru; gerçek usta soruları ve sesli soru örnekleri;
+   - her soru için beklenen değer ve kanıt sayfası;
+   - onaylayan kişi.
+10. **Kabul ölçütü:** yanlış değer toleransı (PRD: doğrulanmış görünen yanlış 0, değer doğruluğu ≥ %98) şirketçe kabul ediliyor mu (A2).
+11. **Kullanım ortamı:** cihaz (tablet modeli), ağ / Wi-Fi kapsamı, gürültü; kodların atölyede nasıl söylendiği (A10).
+12. **Terim sözlüğü** (isteğe bağlı departman verisi): atölye terimi → belge terimi.
+13. **Denetim kaydı:** ne kadar saklanacak, kim görecek (A8).
+
+## 14. Elle yazılmış listeler ve K7 ölçümü (2026-11-06; 62 soru × 3 durum, yeni hat, 8 kaynak, DeepInfra; 0,040 USD)
+
+Etkilenen sorular: 28 netleştirme sorusu, kayıtlarda kural çıkışı olanlar ve listeler kapanınca kapsamı değişenler. Dağılım: 28 netleştirme, 18 "bulunamadı", 16 cevaplı. Raporlar: `nihai_kural_{a,b,c}_rapor_2026-11-06.md`.
+
+| Durum | değer farklı netl. | değer aynı netl. | belge içi varyant | gereksiz netl. | doğru "bulunamadı" | doğrulanmış görünen yanlış | cevaplı ✓ / ✖ / ret | model çağrısı | maliyet |
+|---|---|---|---|---|---|---|---|---|---|
+| (a) bugünkü hal | 12/15 | 10/13 | 0/0 | 1 (B033) | 17/18 | 0 [] | 10 / 3 / 3 (n=16) | 46 | 0.0123 |
+| (b) listeler kapalı, K7 çeviriyle | 12/15 | 10/13 | 0/0 | 2 (A150, B033) | 17/18 | 0 [] | 10 / 2 / 3 (n=16) | 48 | 0.0124 |
+| (c) listeler ve K7 kapalı | 13/15 | 8/13 | 0/0 | 1 (A150) | 18/18 | 0 [] | 10 / 2 / 3 (n=16) | 59 | 0.0152 |
+
+| Soru | sınıf | (a) bugünkü hal | (b) listeler kapalı, K7 çeviriyle | (c) listeler ve K7 kapalı |
+|---|---|---|---|---|
+| aday_sorular:A110 | cevap | cevap/failed | cevap/verified | cevap/verified |
+| aday_sorular:A134 | deger_ayni | cevap/failed ✗ | cevap/failed ✗ | cevap/verified ✗ |
+| aday_sorular:A140 | deger_farkli | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | netlestirme/clarify ✓ |
+| aday_sorular:A143 | deger_ayni | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | cevap/failed ✗ |
+| aday_sorular:A144 | deger_ayni | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | cevap/failed ✗ |
+| aday_sorular:A145 | deger_ayni | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | netlestirme/clarify ✓ |
+| aday_sorular:A150 | cevap | cevap/verified | netlestirme/clarify | netlestirme/clarify |
+| aday_sorular:A151 | cevap | bulunamadi/not_found | cevap/verified | cevap/verified |
+| aday_sorular_ek:B033 | bulunamadı | kural:netlestirme_sonra/clarify | kural:netlestirme_sonra/clarify | bulunamadi/not_found |
+| aday_sorular_ek:C004 | deger_farkli | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | netlestirme/clarify ✓ |
+| aday_sorular_ek:C005 | deger_farkli | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | netlestirme/clarify ✓ |
+| aday_sorular_ek:C006 | deger_farkli | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | netlestirme/clarify ✓ |
+| aday_sorular_ek:C007 | deger_farkli | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | netlestirme/clarify ✓ |
+| aday_sorular_ek:C008 | deger_farkli | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | netlestirme/clarify ✓ |
+| aday_sorular_ek:C010 | deger_farkli | kural:netlestirme_sonra/clarify ✓ | kural:netlestirme_sonra/clarify ✓ | netlestirme/clarify ✓ |
+| questions:Q07 | deger_farkli | cevap/verified ✗ | cevap/verified ✗ | netlestirme/clarify ✓ |
+| questions:Q08 | bulunamadı | kural:yabanci_marka/not_found | bulunamadi/not_found | bulunamadi/not_found |
+| questions:Q18 | bulunamadı | kural:yabanci_marka/not_found | bulunamadi/not_found | bulunamadi/not_found |
+| sekil_sorular:N2 | cevap | cevap/verified | bulunamadi/not_found | bulunamadi/not_found |
+
+**Okuma** (set küçük; 1–2 soru farkı gürültü düzeyinde, Q07 aynı durumda bile koşudan koşuya değişiyor):
+- **Listeleri kapatmak, (a) → (b):** netleştirme metrikleri aynı (değer farklı 12/15, değer aynı 10/13).
+  - Yabancı marka soruları (Q08, Q18) liste olmadan da doğru "bulunamadı" alıyor; artık model veriyor (kural yerine).
+  - Yan etkiler, takma ad kaybıyla:
+    - N2 ✓ → yanlış ret ("Granovsky" adı ürün alanında yok);
+    - A150 gereksiz netleştirme ("kahve" adı kayıp, kapsam açıldı);
+    - A110 ✖ → ✓ ve A151 yanlış ret → ✓ (kazanç).
+  - K7'nin çevrilmiş soruda ürün araması bu sette hiçbir şeyi değiştirmedi: ürün alanları Türkçe, çeviri İngilizce.
+- **K7'yi de kapatmak, (c):**
+  - değer farklı 13/15: model C004–C010 netleştirmelerini kuralsız da yapıyor, Q07'yi de;
+  - "bulunamadı" 18/18: B033'teki gereksiz kural netleştirmesi kalkıyor;
+  - değer aynı 10/13 → 8/13: A143 ve A144'te kural soruyordu, model iki ürünün kaynağını göstermeden cevapladı ve ✖ oldu;
+  - model çağrısı 46 → 59: kural çıkışları anlık, model çağrısı ~2–3 sn ve maliyet.
+- Doğrulanmış görünen yanlış üç durumda da **0**.
+- **Silme kararı kullanıcıda.**
+  - Veriye göre üç liste kalite kaybı olmadan kaldırılabilir. Yan etkileri kayıt alanlarıyla kapatılabilir: N2 ve A150 gibi adlar ürün/marka alanından gelmeli.
+  - K7'nin kaldırılması değer farklı ve "bulunamadı" sorularında iyileştiriyor, değer aynı sorularda 2 soru kaybettiriyor ve süreyi uzatıyor.
