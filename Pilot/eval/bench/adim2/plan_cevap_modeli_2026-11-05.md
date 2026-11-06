@@ -912,3 +912,34 @@ Kullanıcının tahmin ettiği yazım farkı vakası ("Type II" / "Types II and 
 - tam set regresyonu (~0,06 USD; JSN koşusuyla aynı düzenek).
 
 Kabul ölçütü: doğrulanmış görünen yanlış 0 kalır; yanlış ret 10'dan aşağı iner.
+
+### §34 ölçüm sonucu: c150b-JSNE (eşleştirme kuralı), 2026-11-06
+
+Kural metni `schema_c` varyantı `c150bJSNE`. Örnekler değerlendirme sorularından alınmadı: kullanıcının verdiği "Type II", "-3" ile genel örnekler ("iğne plakası ↔ needle plate"; "üst, sol taraf, iç yüz").
+
+**B012, 10 tekrar:** 10/10 "bulunamadı". "Dijital" açılmadı. Maliyet 0,0022 USD.
+
+**Tam set** (245 soru, aynı düzenek; `nihai_hatjsne_k8_gemma4`):
+
+| Şema | ✓ / ⚠ / ✖ (cevaplı) | yanlış ret | beklenen değer | doğru "bulunamadı" | doğrulanmış görünen yanlış | netl. değer farklı / aynı | ilk doğr. cümle u2u p50 / p95 | maliyet |
+|---|---|---|---|---|---|---|---|---|
+| c150b-JSN | 126 / 1 / 19 | 10 | 99/105 | 57/57 | 0 | 12/15 · 8/13 | 2,75 / 4,40 sn | 0,0612 |
+| c150b-JSNE | 121 / 1 / 24 | **10** | 96/106 | 57/57 | 0 | 13/15 · 8/13 | 2,15 / 3,27 sn | 0,0635 |
+
+**Yeni 4 ret, soru soru:**
+
+| Soru | JS | JSN | JSNE |
+|---|---|---|---|
+| G9 (ceketin ID marker yeri) | ⚠ | bulunamadı | bulunamadı |
+| A072 (S-7300B bellek anahtarı) | ✓ | bulunamadı | **✓ (202)** |
+| A086 (Strickland cep; yanlış parça) | ✖ | bulunamadı | bulunamadı (doğru davranış) |
+| A106 (freze tablası koruyucu ekipman) | ✓ | bulunamadı | bulunamadı |
+
+- **JSN'e göre değişen 17 soru:**
+  - 8'i ✓ → ✖. Hiçbiri niteleyiciyle ilgili değil: alıntı birebir değil, cümlede alıntıda olmayan sayı, tekrar, başka alfabe. Tek koşuda model değişkenliği görünümünde.
+  - 5'i ✖/ret → ✓.
+- **Sonuç:** eşleştirme kuralı yanlış reti azaltmadı (10 → 10); yalnız A072'yi kurtardı. ✓ sayısı 5 düştü.
+- **Öneri:** c150b-JSN çalışma biçimi kalsın; JSNE benimsenmesin. G9 ve A106 retleri prompt kuralıyla çözülmüyor.
+- Süre farkı (p50 2,75 → 2,15 sn) şemadan değil, saatten. Bkz. §33 gün içi profil.
+
+Maliyet bu adım: 0,0657 USD.

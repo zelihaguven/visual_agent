@@ -91,7 +91,9 @@ def system_prompt_c() -> str:
 #   c150bJM c150bJ + öğede ÖNCE "metin", SONRA "alintilar" (karar 2026-11-06, gri akış C: metin hemen akar)
 #   c150bJS c150bJ, "sesli_metin" alanı yok: ses doğrulanmış öğelerden (karar 2026-11-06, API planı §1; JUKI J10)
 #   c150bJSN c150bJS + niteleyici kuralı (plan §23 adım 2; B012): sorudaki ayırt edici niteleyici kaynakta yoksa bulunamadı
-VARIANTS = ("c", "c150", "c150b", "c150bT", "c150bJ", "c150bJM", "c150bJS", "c150bJSN")
+#   c150bJSNE c150bJSN + niteleyici eşleştirmesi (plan §34): etiket kaynaktır, eşdeğer yazım eşleşir, yer/görünüm
+#            sözcüğü niteleyici değil
+VARIANTS = ("c", "c150", "c150b", "c150bT", "c150bJ", "c150bJM", "c150bJS", "c150bJSN", "c150bJSNE")
 _C150_RULES = [
     ("(1-2 cümle; çevirme, kısaltma, düzeltme)",
      "(en fazla 150 karakter: cümlenin dayandığı en kısa kaynak parçası; çevirme, kısaltma, düzeltme)"),
@@ -141,12 +143,12 @@ def schema_variant(name: str) -> tuple[dict[str, Any], str]:
     item = schema["properties"]["cevap"]["items"]
     item["properties"]["alinti"]["properties"]["metin"]["maxLength"] = 150
     rules = list(_C150_RULES)
-    if name in ("c150b", "c150bT", "c150bJ", "c150bJM", "c150bJS", "c150bJSN"):
+    if name in ("c150b", "c150bT", "c150bJ", "c150bJM", "c150bJS", "c150bJSN", "c150bJSNE"):
         quote = item["properties"].pop("alinti")
         item["properties"] = {"alintilar": {"type": "array", "minItems": 1, "maxItems": 2, "items": quote},
                               "metin": item["properties"]["metin"]}
         item["required"] = ["alintilar", "metin"]
-        rules += _C150B_RULES + (_TABLE_RULE if name == "c150bT" else []) + (_ONE_LINE_RULE if name in ("c150bJ", "c150bJM", "c150bJS", "c150bJSN") else [])
+        rules += _C150B_RULES + (_TABLE_RULE if name == "c150bT" else []) + (_ONE_LINE_RULE if name in ("c150bJ", "c150bJM", "c150bJS", "c150bJSN", "c150bJSNE") else [])
         if name == "c150bJM":                 # özellik sırası: önce cümle, sonra alıntılar (akışta metin önce gelir)
             item["properties"] = {"metin": item["properties"]["metin"], "alintilar": item["properties"]["alintilar"]}
             item["required"] = ["metin", "alintilar"]
@@ -154,20 +156,26 @@ def schema_variant(name: str) -> tuple[dict[str, Any], str]:
         if old not in prompt:
             raise ValueError(f"istem parçası bulunamadı: {old[:60]!r}")
         prompt = prompt.replace(old, new)
-    if name in ("c150bJS", "c150bJSN"):
+    if name in ("c150bJS", "c150bJSN", "c150bJSNE"):
         schema["properties"].pop("sesli_metin")
         schema["required"] = [r for r in schema["required"] if r != "sesli_metin"]
         for old, new in _NO_VOICE_RULES:
             if old not in prompt:
                 raise ValueError(f"istem parçası bulunamadı: {old[:60]!r}")
             prompt = prompt.replace(old, new)
-    if name == "c150bJSN":
+    if name in ("c150bJSN", "c150bJSNE"):
         old = '   - Kaynaklarda soruya cevap yoksa "tur" alanını "bulunamadi" yap; "cevap" listesini boş bırak.'
         if old not in prompt:
             raise ValueError("istem parçası bulunamadı: niteleyici kuralı")
-        prompt = prompt.replace(old, old + "\n   - Sorudaki ayırt edici niteleyici (ör. dijital, elektronik, -5, Premier, Type II, "
-                                "model kodu) kaynakta yoksa o konuyu başka bir parçanın bilgisiyle cevaplama; \"tur\" "
-                                "alanını \"bulunamadi\" yap.")
+        rule = ("\n   - Sorudaki ayırt edici niteleyici (ör. dijital, elektronik, -5, Premier, Type II, model kodu) kaynakta "
+                "yoksa o konuyu başka bir parçanın bilgisiyle cevaplama; \"tur\" alanını \"bulunamadi\" yap.")
+        if name == "c150bJSNE":
+            rule += ("\n   - Niteleyici eşleştirmesi: kaynak etiketindeki doküman, marka, ürün ve bölüm adı da kaynaktır. "
+                     "Niteleyicinin kaynakta açıkça yazan eşdeğeri de eşleşir: tekil/çoğul ya da birleşik yazım (Type II ↔ "
+                     "Types II and III), ayırıcı ya da OCR farkı (-3 ↔ -[][]3), başka dildeki karşılığı (iğne plakası ↔ "
+                     "needle plate). Benzer ama farklı bir özellik eşdeğer değildir (dijital ↔ elle/mekanik ayar). Yer, "
+                     "görünüm ya da konu sözcükleri (üst, sol taraf, iç yüz) niteleyici değildir.")
+        prompt = prompt.replace(old, old + rule)
     if name == "c150bJM":
         m = re.search(r'Her öğede ÖNCE "alintilar": (.*?) ?; SONRA "metin": cümlenin kendisi\.', prompt)
         if not m or "2. Önce alıntı" not in prompt:
@@ -212,7 +220,7 @@ def parse_c(content: str, finish: str | None) -> tuple[dict[str, Any] | None, st
 
 # Varyantın alıntı uzunluk sınırı: sınıra dayanıp kesilen alıntıya verify._cut_quote_prefix ile aynı tolerans
 # (16 Ekim kuralı; sınır şemadan gelir). 2026-11-05: c150'de sınır 300 sanıldığı için kesik alıntılar ✖ oluyordu.
-QUOTE_LIMIT = {"c": 300, "c150": 150, "c150b": 150, "c150bT": 150, "c150bJ": 150, "c150bJM": 150, "c150bJS": 150, "c150bJSN": 150}
+QUOTE_LIMIT = {"c": 300, "c150": 150, "c150b": 150, "c150bT": 150, "c150bJ": 150, "c150bJM": 150, "c150bJS": 150, "c150bJSN": 150, "c150bJSNE": 150}
 
 
 def _quote_ok(text: str, no: Any, sources: dict[int, str], limit: int = 300) -> bool:
@@ -232,9 +240,18 @@ def _quote_ok(text: str, no: Any, sources: dict[int, str], limit: int = 300) -> 
         V.QUOTE_MAX = old
 
 
+def ocr_uncertain_in(quote: str, tokens: list[str] | None) -> list[str]:
+    """Alıntıda geçen "OCR değeri belirsiz" diziler (iki okuma uyuşmadı; PLAN-OCR §10–§11)."""
+    if not tokens:
+        return []
+    q = V.normalize(quote)
+    return [t for t in tokens if V.normalize(t) and V.normalize(t) in q]
+
+
 def check_item(item: dict, sources: dict[int, str], generated: dict[int, str] | None = None,
-               limit: int = 300) -> dict[str, Any]:
-    """Bir öğe: alıntı birebir, sayılar yalnız kendi alıntısında, tolerans, şekil açıklamasından mı."""
+               limit: int = 300, uncertain: dict[int, list[str]] | None = None) -> dict[str, Any]:
+    """Bir öğe: alıntı birebir, sayılar yalnız kendi alıntısında, tolerans, şekil açıklamasından mı, alıntıda OCR
+    değeri belirsiz dizi var mı (uncertain: kaynak no → belirsiz diziler)."""
     qs = item_quotes(item)
     nos = [q.get("kaynak_no") for q in qs]
     no, text = (nos[0] if nos else None), item.get("metin") or ""
@@ -244,6 +261,9 @@ def check_item(item: dict, sources: dict[int, str], generated: dict[int, str] | 
     exact = bool(qs) and not bad
     for b in bad:
         problems.append(f"alıntı [{b}] kaynakta birebir değil")
+    ocr_bad = [t for q in qs for t in ocr_uncertain_in(q.get("metin") or "", (uncertain or {}).get(q.get("kaynak_no")))]
+    if ocr_bad:
+        problems.append(f"OCR değeri belirsiz: {ocr_bad}")
     stray = sorted(V.numbers_in(text) - V.numbers_in(quote) - V.word_numbers(quote))
     if stray:
         problems.append(f"cümlede kendi alıntısında olmayan sayı: {stray}")
@@ -259,12 +279,13 @@ def check_item(item: dict, sources: dict[int, str], generated: dict[int, str] | 
     foreign = bool(V.FOREIGN_SCRIPT_RE.search(text))
     if foreign:
         problems.append("cümlede başka alfabeden karakter")
-    ok = exact and not stray and tol and bool(text.strip()) and not foreign
-    return {"ok": ok, "sekil": figure, "sorunlar": problems, "kaynak_no": no, "kaynaklar": nos}
+    ok = exact and not stray and tol and bool(text.strip()) and not foreign and not ocr_bad
+    return {"ok": ok, "sekil": figure, "sorunlar": problems, "kaynak_no": no, "kaynaklar": nos,
+            "ocr_belirsiz": ocr_bad}
 
 
 def verify_c(ans: dict, sources: dict[int, str], generated: dict[int, str] | None = None,
-             limit: int = 300) -> dict[str, Any]:
+             limit: int = 300, uncertain: dict[int, list[str]] | None = None) -> dict[str, Any]:
     """Durum: verified | partial | failed | not_found | clarify; öğe sonuçları ve sesli metin kontrolü."""
     tur = ans.get("tur")
     if tur == "bulunamadi":
@@ -276,7 +297,7 @@ def verify_c(ans: dict, sources: dict[int, str], generated: dict[int, str] | Non
         ok = len(valid) >= 2 and not ans.get("cevap")
         return {"status": "clarify" if ok else "failed", "items": [], "secenekler": valid,
                 "problems": [] if ok else ["netleştirme seçenekleri geçersiz ya da cevapla birlikte"]}
-    items = [check_item(x, sources, generated, limit) for x in ans.get("cevap") or []]
+    items = [check_item(x, sources, generated, limit, uncertain) for x in ans.get("cevap") or []]
     problems = [p for it in items for p in it["sorunlar"]]
     quotes = " ".join(q.get("metin") or "" for x in ans.get("cevap") or [] for q in item_quotes(x))
     voice = ans.get("sesli_metin") or ""

@@ -1,0 +1,65 @@
+{
+ "soru": "S-7300A'da dijital baskı ayağı kaldırıcısının kaldırma yüksekliği nasıl ayarlanır?",
+ "tekrar": 10,
+ "sonuc": {
+  "c150bJSNE": {
+   "dagilim": {
+    "not_found": 10
+   },
+   "dogrulanmis_gorunen_yanlis": 0,
+   "satirlar": [
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.00022461
+    }
+   ],
+   "maliyet": 0.0022461
+  }
+ }
+}
