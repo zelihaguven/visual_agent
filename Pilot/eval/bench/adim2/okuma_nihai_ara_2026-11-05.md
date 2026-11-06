@@ -238,3 +238,42 @@ Kabul ölçütü: süre kısalırken beklenen değer ve yanlış ret kötüleşm
 | DeepInfra | 30 | 899 ms | 1,82 sn | 3,15 sn | 20 % |
 
 **Öneri: ikinci çeviri sağlayıcısı Venice** (`only: [nextbit, venice]`). DeepInfra 1,2 sn sınırını beşte bir aşıyor.
+
+## 2026-11-06 (d): c150b'nin bugünkü şemaya kalan farkı, kayıtlardan (model çağrısı yok)
+
+**Tablo başlığı + madde birleştirme** (c → c150b, DeepInfra / Venice):
+
+| Soru | c | c150b DeepInfra | c150b Venice |
+|---|---|---|---|
+| Q01 | ✖ (11 alıntıda yok) | ✓ | ✓ |
+| A039 | ✖ birebir değil | ✓ | ✓ |
+| A075 | ✖ birebir değil | ✓ | ✓ |
+| A089 | ✖ birebir değil | ✓ | ✓ |
+| Q14 | ✖ | ✖ | ✖ |
+| A146 | ✖ | ✖ | ✓ |
+
+- Q14/A146 (ve aynı aileden A038, A062) hâlâ ✖. Model tablo hücresinin sütun başlığını ("Remedy: ") kaynakta ona bitişik olmayan **ikinci maddenin** önüne ekliyor: "Remedy: ・Turn off the power and check the connection of connector P2". Kaynakta başlıktan sonra birinci madde geliyor.
+- Aynı öğedeki iki maddenin birlikte alıntısı birebir ve doğrulanıyor; hata yalnız ikinci maddeyi tek başına alıntılarken çıkıyor.
+- Diğer "birebir değil" hatalarında tablo sütunları " | " ile birleştiriliyor: A017 ("Length: Long | Size 36: 17"), A073 ("(8) | Shortcut 1 key | …").
+- c150b'de 22 / 21 ✖ var. Bunların 9'u alıntı birebir değil, 7'si cümle sayısı alıntıda yok, 3'ü JSON. ✖'ler güvenli yönde: rozet yok, kaynak gösteriliyor.
+
+**Uzun liste retleri: token sınırı mı, maxItems mi? İkisi de değil.**
+
+| Soru | bugün | c150b (iki sağlayıcı) |
+|---|---|---|
+| G7 (7 düğme) | ✓ | **✓ 7 öğe** (c'de ret idi; c150b düzeltti) |
+| A102 (3 adım) | ⚠ atıfsız | ret, `finish=stop`, 33 token |
+| A106 (4 KKD) | ✓ | ret, `finish=stop`, 31 token |
+| Q09 | ✓ ama **değer yanlış** (gramaj yok dedi) | ret, 32 token |
+| A033 | ✖ (başka etiketleri anlattı) | ret, 32 token |
+
+- Retlerin hepsi ilk token'larda verilmiş "bulunamadi" kararı: liste yazılmaya başlanmamış, 8 öğe sınırına da gelinmemiş.
+- **max_tokens 700 → 1200 bu retleri düzeltmez.** Q09 ve A033'te bugünkü şemanın cevabı da yanlıştı; ret orada daha iyi. Gerçek kayıp A102 ve A106.
+
+**Kesik JSON'lar (max_tokens'ın gerçekten etkilediği yer):**
+- A074 (iki sağlayıcı), A080 (DeepInfra), Q05 (Venice): `finish=length`, 700 token.
+- Hepsi 8 öğe × 2 alıntılık arıza giderme listeleri.
+- **A066 kesik değil:** `finish=stop`, 291 token; alıntının içinde kaçışsız sekme karakteri var, katı JSON okuyucu reddediyor. JSON okunsa da ikinci öğedeki "2.00" alıntıda olmadığı için ✖ olurdu.
+- Uygulamanın JSON hata mesajı (pilot/pipeline.py:328) her durumda "uzunluk sınırında kesildi" diyor; A066'da bu yanlış.
+
+**Tekrar eden alıntı:** cevap karakterlerinin %5'i aynı cevapta daha önce geçen alıntının tekrarı (199 sorunun 10'unda). Numarayla geri dönmenin hız kazancı küçük; asıl getirisi Q14 ailesi (ikinci maddeyi yeniden yazmak yerine önceki tam alıntıya dönmek).
