@@ -553,3 +553,11 @@ def test_schema_c_accepts_field_label_quote():
     src = {1: "Code: E050 | Cause: Tilted. | Remedy: ・Turn off the power. ・Check connector P2."}
     assert _quote_ok("Remedy: ・Check connector P2.", 1, src, 150)
     assert not _quote_ok("Cause: Tilted. | Remedy: ・Check connector P2.", 1, src, 150)
+
+
+def test_items_markdown_single_paragraph_and_numbered_list():
+    from pilot.schema_c import items_markdown
+    one = [{"metin": "SPI 11 (± 1).", "kaynaklar": [2], "dogrulandi": True}]
+    assert items_markdown(one) == "SPI 11 (± 1). [2]"
+    two = one + [{"metin": "Overlok 10.", "kaynaklar": [1, 1, 3], "dogrulandi": False}]
+    assert items_markdown(two) == "1. SPI 11 (± 1). [2]\n2. Overlok 10. [1][3] ⚠ *(doğrulanamadı)*"

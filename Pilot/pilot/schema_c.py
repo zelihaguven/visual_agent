@@ -308,3 +308,15 @@ def to_legacy(ans: dict) -> dict[str, Any]:
             "sesli_metin": ans.get("sesli_metin") or "", "celiski_var": bool(ans.get("celiski_var")),
             "netlestirme_sorusu": (ans.get("netlestirme") or {}).get("soru") if tur == "netlestirme" else None,
             "netlestirme_secenekleri": [], "bulunamadi": tur == "bulunamadi"}
+
+
+def items_markdown(items: list[dict]) -> str:
+    """Arayüz için öğe listesi (§15.1 gösterim): tek öğe paragraf, birden çok öğe numaralı liste (numara koddan),
+    her öğenin sonunda kaynak etiketleri [n] koddan; doğrulanamayan öğe işaretli."""
+    lines = []
+    for i, it in enumerate(items, 1):
+        tags = "".join(f"[{n}]" for n in dict.fromkeys(it.get("kaynaklar") or []) if isinstance(n, int))
+        mark = "" if it.get("dogrulandi") else " ⚠ *(doğrulanamadı)*"
+        text = f"{(it.get('metin') or '').strip()} {tags}{mark}".strip()
+        lines.append(text if len(items) == 1 else f"{i}. {text}")
+    return "\n".join(lines)

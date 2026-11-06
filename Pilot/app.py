@@ -212,8 +212,14 @@ def render_result(res: Result, key: str) -> None:
                 if st.button(f"🔎 Ürün adı olmadan bu kaynakta ara: \"{ans['yalin_soru']}\"", key=f"bare-{key}"):
                     start(ans["yalin_soru"], state_.get("brands"), doc_ids=state_["doc_ids"])
         else:
-            if ans.get("cevap"):
+            if ans.get("ogeler"):
+                # c kipi (şema c150b-J): öğe listesi, kaynak etiketleri koddan (Adım 2 planı §29)
+                from pilot.schema_c import items_markdown
+                st.markdown(items_markdown(ans["ogeler"]))
+            elif ans.get("cevap"):
                 st.markdown(ans["cevap"])
+            elif ans.get("servis_yok"):
+                pass                                   # mesaj sorunlar listesinde
             elif res.verification.status == "failed":
                 st.warning("Güvenilir bir cevap üretilemedi. Bu bilgi kaynaklarda bulunmuyor olabilir.")
             if ans.get("netlestirme_sorusu"):
@@ -237,7 +243,9 @@ def render_result(res: Result, key: str) -> None:
             # Seste düşen tolerans hata değil, bilgi: sesli metin doğrulanmış cevaptan yeniden üretildi (R15)
             (st.info if p.startswith("Sesli metinde tolerans") else st.error)(p)
         t = res.timings
-        st.caption(f"Süre: arama {t.get('search', 0):.1f} sn · model {t.get('llm', 0):.1f} sn · toplam {t.get('total', 0):.1f} sn")
+        st.caption(f"Süre: arama {t.get('search', 0):.1f} sn · model {t.get('llm', 0):.1f} sn · toplam {t.get('total', 0):.1f} sn"
+                   + (f" · ilk doğrulanmış cümle {t['ilk_dogrulanmis_cumle']:.1f} sn" if t.get("ilk_dogrulanmis_cumle") else "")
+                   + (f" · sağlayıcı {ans['saglayici']}" if ans.get("saglayici") else ""))
         if res.speech_text:
             st.markdown(f"**Sesli metin:** {res.speech_text}")
             if TTS_PY is None:
@@ -258,17 +266,20 @@ def render_result(res: Result, key: str) -> None:
         # Pilotta kullanıcı yetkisi yok. Gerçek sistemde arama yetki filtresiyle yapıldığı için bu liste zaten
         # yalnızca kullanıcının yetkili olduğu dokümanlardan oluşur (Aşama 4).
         nos = cited_sources(res) if not res.answer.get("bulunamadi") else []
+        if res.answer.get("servis_yok"):
+            nos = list(range(1, len(res.hits) + 1))      # cevap servisi yok: aramanın bulduğu kaynaklar
         if not nos:
             st.caption("Gösterilecek kaynak sayfa yok: cevap bir kaynağa dayandırılamadı.")
             return
         # Doğrulanamayan cevapta bu sayfalar "cevabın kaynağı" değil, modelin dayandığını söylediği yerdir
         failed = res.verification.status == "failed"
-        title = "Modelin gösterdiği kaynak (cevap doğrulanamadı)" if failed else "Cevabın kaynağı"
+        title = ("Aramanın bulduğu kaynaklar (cevap üretilemedi)" if res.answer.get("servis_yok")
+                 else "Modelin gösterdiği kaynak (cevap doğrulanamadı)" if failed else "Cevabın kaynağı")
         n = nos[0] if len(nos) == 1 else st.radio(title, nos, key=f"src-{key}",
                                                   format_func=lambda i: source_label(res, i))
         chunk = res.hits[n - 1].chunk
         st.markdown(f"**{title}:** {source_label(res, n)}")
-        if failed:
+        if failed and not res.answer.get("servis_yok"):
             st.caption("Cevap bu sayfayla doğrulanamadı. Değeri kullanmadan önce sayfayı kendiniz okuyun.")
         for page in chunk["pages"]:    # parça iki sayfaya yayılıyorsa ikisi de gösterilir
             st.image(page_image(BY_ID[chunk["doc_id"]].path, page, chunk["boxes"]), width="stretch")
