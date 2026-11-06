@@ -37,6 +37,7 @@ TR_LIMIT = 1.2
 SEED = 20261106
 SETS = [*AM.SETS, "aday_sorular_ek"]
 MODEL = "gemma4"            # DeepInfra'ya sabit (answer_models.MODELS)
+SCHEMA = "c150bJ"           # --schema (c150bJM: gri akış C, 2026-11-06)
 WATCH = ["questions:Q05", "sekil_sorular:G7"]     # c150b-J'de yeni gereksiz netleştirme (izlenecek)
 
 
@@ -60,6 +61,10 @@ class IkiliYol:
             self.memo[key] = self._search(query, brands, doc_ids, access)
         info = self.memo[key]
         self.last = {"bu_cagri_sn": time.perf_counter() - t0, **{k: v for k, v in info.items() if k != "hits"}}
+        retrieve.last_translation.clear()
+        retrieve.last_translation.update(metin=None if info.get("ceviri_bos") or info.get("ceviri_sinir_asildi")
+                                         else info.get("bm25_metni"), sn=info.get("ceviri_sn"),
+                                         sinir_asildi=info.get("ceviri_sinir_asildi"))
         return [retrieve.Hit(**h) for h in info["hits"][:top_k]]
 
     def _search(self, query: str, brands: Any, doc_ids: Any, access: Any) -> dict[str, Any]:
@@ -109,7 +114,7 @@ class IkiliYol:
 
 def run(tag: str, max_usd: float, ids: list[str]) -> list[str]:
     from pilot import pipeline
-    AM.SCHEMA, AM.MAX_TOKENS, AM.SETS = "c150bJ", 1200, SETS
+    AM.SCHEMA, AM.MAX_TOKENS, AM.SETS = SCHEMA, 1200, SETS
     search = IkiliYol()
     pipeline.search = search
     m = AM.CloudModel(MODEL)
@@ -120,7 +125,7 @@ def run(tag: str, max_usd: float, ids: list[str]) -> list[str]:
     rng = random.Random(SEED)
     outs = {k: {"model": MODEL, "spec": AM.MODELS[MODEL], "tag": f"{tag}_k{k}", "zdr_providers": m.zdr_providers,
                 "verify": AM.VERIFY_TAG, "deger": AM.VALUE_TAG, "sema": AM.SCHEMA, "netlestirme_sorulari": "dahil",
-                "max_tokens": AM.MAX_TOKENS, "kaynak_sayisi": k, "hat": "ikili yol (manuals, gömülü) + c150b-J DeepInfra",
+                "max_tokens": AM.MAX_TOKENS, "kaynak_sayisi": k, "hat": f"ikili yol (manuals, gömülü) + {SCHEMA} DeepInfra",
                 "start": datetime.now().isoformat(timespec="seconds"), "rows": {}, "cost_usd": 0.0} for k in KS}
     paths = {k: AM.RAW_DIR / f"{tag}_k{k}_{MODEL}.json" for k in KS}
 
@@ -287,6 +292,27 @@ def report(tag: str) -> str:
     for n, k in enumerate(KS):
         rows = AM.report_c(f"{tag}_k{k}").splitlines()
         L += (rows[4:6] if n == 0 else []) + [rows[6].replace("| gemma4 |", f"| {k} kaynak |", 1)]
+    from pilot.query import question_lang
+    from pilot.stream_view import first_visible_word_time
+    qtext = {q["qid"]: q["q"] for q in AM.questions(include_clarify=True)}
+
+    def fvw(r: dict, qid: str) -> tuple[float | None, float | None]:
+        """(model tarafı, uçtan uca) ilk görünen kelime: gri akışta gizlenmeyen ilk tam kelime."""
+        if not r.get("akis_zaman") or not r.get("ham") or r.get("cikis") != "cevap":
+            return None, None
+        t = first_visible_word_time(r["ham"], r["akis_zaman"], question_lang(qtext.get(qid, "")))
+        if t is None or r.get("istek_oncesi_sn") is None:
+            return t, None
+        return t, r["istek_oncesi_sn"] + sum(a.get("sn") or 0.0 for a in (r.get("denemeler") or [])[:-1]) + t
+
+    L += ["", "## İlk görünen kelime (gri akış C; gizlenen değerler hariç ilk tam kelime)", "",
+          "| Varyant | cevaplı | model tarafı p50 / p95 | uçtan uca p50 / p95 |", "|---|---|---|---|"]
+    for k, d in runs.items():
+        pairs_ = [fvw(r, q) for q, r in d["rows"].items()]
+        m_ = [a for a, _ in pairs_ if a is not None]
+        u_ = [b for _, b in pairs_ if b is not None]
+        L.append(f"| {k} kaynak | {len(m_)} | {s_(percentile(m_, .5))} / {s_(percentile(m_, .95))} | "
+                 f"{s_(percentile(u_, .5))} / {s_(percentile(u_, .95))} |")
     L += ["", "## Süre (gerçek akış; uçtan uca arama dahil)", "",
           "| Varyant | cevaplı | ilk doğrulanmış cümle (model) p50 / p95 | **uçtan uca ilk doğrulanmış cümle** p50 / p95 | "
           "≤ 3 sn (PRD) | uçtan uca ilk token p50 / p95 | istek öncesi (arama dahil) p50 / p95 |", "|---|---|---|---|---|---|---|"]
@@ -338,8 +364,10 @@ def main() -> None:
     ap.add_argument("--rescore", action="store_true", help="kayıttan yeniden puanla (çağrı yok)")
     ap.add_argument("--setler", nargs="+", help="soru setleri (varsayılan: onaylı + yeni 46)")
     ap.add_argument("--ks", nargs="+", type=int, help="kaynak sayıları (varsayılan 5 8)")
+    ap.add_argument("--schema", default="c150bJ", help="cevap şeması (c150bJ | c150bJM)")
     a = ap.parse_args()
-    global KS, SETS
+    global KS, SETS, SCHEMA
+    SCHEMA = a.schema
     if a.setler:
         SETS = list(a.setler)
     if a.ks:
