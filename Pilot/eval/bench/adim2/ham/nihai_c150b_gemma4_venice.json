@@ -848,10 +848,8 @@
   },
   "questions:Q14": {
    "cikis": "cevap",
-   "durum": "failed",
-   "sorunlar": [
-    "alıntı [1] kaynakta birebir değil"
-   ],
+   "durum": "verified",
+   "sorunlar": [],
    "kaynaklar": [
     [
      "brother-s7300a",
@@ -890,7 +888,7 @@
     true,
     true,
     true,
-    false
+    true
    ],
    "ilk_dogrulanmis_cumle": 1.49885710245617,
    "atif_dogru_biri": true,
@@ -5295,10 +5293,8 @@
   },
   "aday_sorular:A038": {
    "cikis": "cevap",
-   "durum": "failed",
-   "sorunlar": [
-    "alıntı [1] kaynakta birebir değil"
-   ],
+   "durum": "verified",
+   "sorunlar": [],
    "kaynaklar": [
     [
      "brother-s7300a",
@@ -5336,7 +5332,7 @@
    "ogeler": [
     true,
     true,
-    false
+    true
    ],
    "ilk_dogrulanmis_cumle": 2.009686788955712,
    "atif_dogru_biri": true,
@@ -6821,10 +6817,8 @@
   },
   "aday_sorular:A061": {
    "cikis": "cevap",
-   "durum": "failed",
-   "sorunlar": [
-    "alıntı [1] kaynakta birebir değil"
-   ],
+   "durum": "verified",
+   "sorunlar": [],
    "kaynaklar": [
     [
      "brother-s7300b",
@@ -6863,7 +6857,7 @@
     true,
     true,
     true,
-    false
+    true
    ],
    "ilk_dogrulanmis_cumle": 2.9890921724934034,
    "atif_dogru_biri": true,
@@ -6893,10 +6887,8 @@
   },
   "aday_sorular:A062": {
    "cikis": "cevap",
-   "durum": "failed",
-   "sorunlar": [
-    "alıntı [1] kaynakta birebir değil"
-   ],
+   "durum": "verified",
+   "sorunlar": [],
    "kaynaklar": [
     [
      "brother-s7300b",
@@ -6934,7 +6926,7 @@
    "ogeler": [
     true,
     true,
-    false
+    true
    ],
    "ilk_dogrulanmis_cumle": 2.85058512338026,
    "atif_dogru_biri": true,
@@ -12976,7 +12968,7 @@
  "end": "2026-11-05T18:11:25",
  "tamam": true,
  "yeniden_puanlama_c": {
-  "tarih": "2026-11-06T09:34:30",
-  "rozeti_degisen": 0
+  "tarih": "2026-11-06T09:50:33",
+  "rozeti_degisen": 4
  }
 }

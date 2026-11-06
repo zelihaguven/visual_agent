@@ -605,7 +605,7 @@ B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfr
 **Karar:** Cevap modeli **Gemma 4 26B A4B, şema C**.
 
 **Sağlayıcı listesi:**
-- YALNIZ **Venice (bf16, birincil)** ve **DeepInfra (fp8, ikincil)**.
+- YALNIZ **Venice (bf16, birincil)** ve **DeepInfra (fp8, ikincil)**. **(2026-11-06: değişti, DeepInfra birincil; ikincil c150b-J sonucuyla. §25)**
 - OpenRouter isteğinde `provider: {"order": ["venice", "deepinfra"], "only": ["venice", "deepinfra"], "allow_fallbacks": true}`. Yedeğe düşme bu ikisiyle sınırlı; ZDR kısıtı ve Safety Retention dışlaması (`cloud.openrouter_body`) aynen kalır.
 - Nicemleme farkı (bf16/fp8) bu sette kaliteyi değiştirmedi (bulunamadı, değer, netleştirme aynı). Yine de yanıtı veren sağlayıcı her cevapta denetim kaydına yazılır.
 
@@ -678,3 +678,12 @@ B4 özet §10.9: Süre sınırı ölçümünde Qwen embed çağrıları DeepInfr
 - Gerekçe: Venice 2026-11-06'da JSON'u girintili yazmaya başladı (c150bT %94). Kesik 2'den 37'ye çıktı (192 soru).
 - DeepInfra bütün koşularda girintisiz ve kesik 0–2. Kalite c150b'de iki sağlayıcıda eşitti (✓ 112 / 113, değer %94 / %96).
 - Ayrıntı: [okuma_nihai_ara_2026-11-06.md](okuma_nihai_ara_2026-11-06.md) bölüm a ve 4, plan §24.
+
+## 25. Kararlar (2026-11-06 öğle): §21'e işlenenler
+
+- **Çalışma biçimi c150b.** c150bT bırakıldı.
+- **Doğrulayıcı alan etiketini tanır** (`pilot/tables.field_quote_ok`): "<Sütun>: <aynı hücrenin bitişik parçası>" kabul edilir; hücreleri " | " ile birleştiren alıntı kabul edilmez. Bu kural bizim veri biçimimize ait, §16'ya takılmaz. Bağlamada uygulamanın şema C doğrulamasına girer.
+- **max_tokens 1200 kalıcı.** Bağlamada cevap çağrısının `max_tokens` değeri 1200; `LLM_NUM_PREDICT` (yerel Ollama yolu) ayrı. Ölçümlerde `--max-tokens 1200`.
+- **Sağlayıcı sırası: DeepInfra birincil.** İkincil, c150b-J sonucuna göre belirlenecek (aday: Venice ya da Parasail; ölçüt: kesik c150b DeepInfra düzeyine inerse).
+  - §21'deki `order: ["venice", "deepinfra"]` bunun yerine `order: ["deepinfra", <ikincil>]`, `only: ["deepinfra", <ikincil>]` olur.
+- c150b-O ertelendi.

@@ -135,3 +135,44 @@ Her şema C raporunda artık "Girintili JSON" tablosu var. Gemma 4 koşularını
 - Karar ölçütü (ilk doğrulanmış cümle ya da kesik kötüleşirse) kesik sayısında karşılandı. **Öneri: birincil/ikincil sırası değişsin, DeepInfra birincil, Venice ikincil** (plan §21).
 - DeepInfra bütün koşularda girintisiz ve kesik 0–2.
 - "Girintisiz yaz" istem kuralı ayrı varyant olarak plan §24'te (c150b-J); koşulmadı.
+
+## Kararlar 2026-11-06 (öğle): c150bT bırakıldı; çalışma biçimi c150b
+
+## 2'. Doğrulayıcı alan etiketini tanıyor
+
+- Kural (`pilot/tables.field_quote_ok`, `bench/schema_c._quote_ok`): Alıntı "<Sütun>: <hücrenin bitişik bir parçası>" ise ve parçada aynı hücre o sütun etiketiyle varsa kabul edilir.
+  - Hücre içeriği yine birebir olmalı.
+  - " | " ile birden çok hücreyi birleştiren alıntı kabul edilmez (A017, A073 türü).
+  - Gerekçe: etiket bizim satır serileştirmemize ait, bütün belgeler ve modeller için geçerli.
+- Testler: `tests/test_tables.py` ve `tests/test_bench.py`. 438 test geçti.
+- Kayıtlardan yeniden puanlama: bütün şema C koşuları (c, c150, c150b, c150bT, sure1, mt1200, ek). **54 değişiklik, hepsi ✖ → ✓.** Hepsi E050/E055/E210 ailesi "Remedy: ・…" alıntıları; hedef dışında A037 ve A061 de aynı kalıp.
+
+**Soru soru** (önce → sonra):
+
+| Soru | bugün | c150b DeepInfra | c150b Venice |
+|---|---|---|---|
+| Q14 | ✓ | ✖ → **✓** | ✖ → **✓** |
+| A146 | ✓ | ✖ → **✓** | ✓ (değişmedi) |
+| A038 | ✓ | ✖ → **✓** | ✖ → **✓** |
+| A062 | ✓ | ✖ → **✓** | ✖ → **✓** |
+| Q20 | ✓ | ✓ (değişmedi) | ✓ (değişmedi) |
+| A155 | ✓ | ✓ (değişmedi) | ✓ (değişmedi) |
+
+- Q20 ve A155 c150b'de zaten ✓ idi; c150bT ve c150'de ✖ → ✓ oldular.
+
+**Bugünkü şemaya göre kalan fark** (cevaplı 160 soru, kural çıkışları hariç):
+
+| | ✓ | ⚠ | ✖ | yanlış ret | JSON | beklenen değer |
+|---|---|---|---|---|---|---|
+| bugün DeepInfra | 118 | 11 | 12 | 19 | 0 | 90/113 |
+| c150b DeepInfra | 116 | 1 | **15** | **25** | 2 | 88/94 |
+| c150b Venice | 117 | 0 | 14 | 25 | 2 | 89/93 |
+
+- ✖ farkı +6'dan **+3**'e indi. Yanlış ret farkı +6 ve değişmedi.
+- Bugün ✓/⚠ olup c150b'de ✖ ya da ret olanlar (DeepInfra):
+  - Ret: Q09, A024, A086, A102, A106.
+  - Cümle sayısı alıntıda yok: A007, A025, A066, A109, A111, Q24 (sesli metin).
+  - Alıntı birebir değil: Q04, A017, A077.
+  - Aynı cümle tekrar: A047, A113.
+  - Kesik (700): A074, A080. max_tokens 1200 ile A080 ✓ oldu, A074 ✖.
+- Bugünkü şemanın 11 ⚠'sinin çoğu c150b'de ✓'ye ya da ✖'ye ayrışıyor; c150b'de ⚠ yok denecek kadar az.

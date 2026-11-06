@@ -34,6 +34,23 @@ def segments(text: str) -> tuple[str, list[tuple[list[str], str]]]:
     return label, segs
 
 
+def field_quote_ok(quote: str, source: str) -> bool:
+    """Alıntı "<Sütun>: <hücrenin bitişik bir parçası>" ve parçada aynı hücre o sütun etiketiyle varsa doğru (karar
+    2026-11-06). Etiket bizim satır serileştirmemizin parçası ("Code: E050 | Cause: … | Remedy: ・A ・B"); model
+    "Remedy: ・B" gibi hücrenin ikinci maddesini etiketiyle alıntılıyor (Q14 ailesi). Hücre içeriği yine birebir olmalı;
+    farklı hücreleri " | " ile birleştiren alıntı (A017, A073 türü) kabul edilmez."""
+    head, sep, value = quote.strip().partition(": ")
+    value = value.strip()
+    if not sep or not value or " | " in value or "|" in head:
+        return False
+    nh, nv = normalize(head), normalize(value)
+    for line in source.splitlines():
+        for heads, cell in segments(line)[1]:
+            if normalize(SPAN_SEP.join(heads)) == nh and nv in normalize(cell):
+                return True
+    return False
+
+
 def _core(name: str) -> str:
     """Başlığın karşılaştırma çekirdeği: 'MO-6804(D)/DD' -> 'mo6804', 'Style A' -> 'stylea'."""
     head = re.split(r"[(/]", name, maxsplit=1)[0]

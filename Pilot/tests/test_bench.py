@@ -545,3 +545,11 @@ def test_document_variant_values_need_their_labels():
     assert variants_in(v, ["Standart modelde 5 mm.", "Premier modelde 6 mm."])
     assert not variants_in(v, "İğne mili 5 / 6 mm kaldırılır.")
     assert not variants_in(v, "Premier modelde 5 mm, standart modelde 6 mm.")
+
+
+def test_schema_c_accepts_field_label_quote():
+    """Şema C doğrulaması: "Remedy: ・<ikinci madde>" alıntısı birebir sayılır (alan etiketi, 2026-11-06)."""
+    from bench.schema_c import _quote_ok
+    src = {1: "Code: E050 | Cause: Tilted. | Remedy: ・Turn off the power. ・Check connector P2."}
+    assert _quote_ok("Remedy: ・Check connector P2.", 1, src, 150)
+    assert not _quote_ok("Cause: Tilted. | Remedy: ・Check connector P2.", 1, src, 150)

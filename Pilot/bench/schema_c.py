@@ -174,6 +174,9 @@ def _quote_ok(text: str, no: Any, sources: dict[int, str], limit: int = 300) -> 
     t, s = V.normalize(V.CUT_CITE_RE.sub("", text)), V.normalize(sources[no])
     if t in s:
         return True
+    from pilot.tables import field_quote_ok
+    if field_quote_ok(V.CUT_CITE_RE.sub("", text), sources[no]):    # "<Sütun>: <hücre parçası>" (2026-11-06)
+        return True
     old = V.QUOTE_MAX
     V.QUOTE_MAX = limit
     try:

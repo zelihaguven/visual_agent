@@ -108,3 +108,21 @@ class TestRowVariant:
         # Brother s.40: aynı satırın farklı özellikleri, paralel varyantlar değil
         assert column_variant("No. of stitches F | Setting value: 1 - 19 stitches | Setting units: 1 stitch | "
                               "Initial value: 1") is None
+
+
+def test_field_label_quote_is_accepted_only_within_one_cell():
+    """Satır serileştirmesinin alan etiketi + aynı hücrenin bitişik parçası kabul (Q14 ailesi, 2026-11-06); farklı
+    hücreleri birleştiren, başka hücrenin etiketini kullanan ya da hücre içinde boşluk atlayan alıntı kabul edilmez."""
+    from pilot.tables import field_quote_ok
+    src = ("Code: E050 | Cause: Machine head is detected as being tilted back when start sewing. | Remedy: ・Turn off the "
+           "power, and then return the machine head to its original position. ・Turn off the power and check the "
+           "connection of connector P2.")
+    assert field_quote_ok("Remedy: ・Turn off the power and check the connection of connector P2.", src)
+    assert field_quote_ok("Remedy: ・Turn off the power, and then return the machine head", src)
+    assert not field_quote_ok("Cause: ・Turn off the power and check the connection of connector P2.", src)
+    assert not field_quote_ok("Remedy: ・Turn off the power and check connector P2.", src)          # birebir değil
+    assert not field_quote_ok("Code: E050 | Cause: Machine head is detected", src)                 # iki hücre
+    assert not field_quote_ok("Turn off the power and check the connection", src)                  # etiket yok
+    table = "Collar width | Length: Long | Size 34: 16 | Size 36: 17"
+    assert not field_quote_ok("Length: Long | Size 36: 17", table)                                  # A017 türü
+    assert field_quote_ok("Size 36: 17", table)

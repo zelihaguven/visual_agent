@@ -184,7 +184,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 6.198,
+   "ilk_dogrulanmis_cumle": 6.1718526284853334,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -206,7 +206,8 @@
    "cikis_token": 286,
    "dusunce_token": 0,
    "maliyet": 0.0005441,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"During the initial period I of machtine operaion, when new parts are run-in, there is a stronger wear; further, comes the period II when the speed of wearing is at its minimum, i.e. when the process stabilizes; and finally follows the period III, when wear is progressively increasing up to an emergn\"\n      },\n      \"metin\": \"Makine parçalarının aşınması üç aşamadan geçer: I. dönem (yeni parçaların çalıştırılması sırasında daha güçlü aşınma), II. dönem (aşınma hızının minimum olduğu ve sürecin stabilize olduğu dönem) ve III. dönem (acil duruma kadar artan aşınma).\"\n    }\n  ],\n  \"sesli_metin\": \"Makine parçalarının aşınması üç aşamadan geçer: I. dönem (yeni parçaların çalıştırılması sırasında daha güçlü aşınma), II. dönem (aşınma hızının minimum olduğu ve sürecin stabilize olduğu dönem) ve III. dönem (acil duruma kadar artan aşınma).\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"During the initial period I of machtine operaion, when new parts are run-in, there is a stronger wear; further, comes the period II when the speed of wearing is at its minimum, i.e. when the process stabilizes; and finally follows the period III, when wear is progressively increasing up to an emergn\"\n      },\n      \"metin\": \"Makine parçalarının aşınması üç aşamadan geçer: I. dönem (yeni parçaların çalıştırılması sırasında daha güçlü aşınma), II. dönem (aşınma hızının minimum olduğu ve sürecin stabilize olduğu dönem) ve III. dönem (acil duruma kadar artan aşınma).\"\n    }\n  ],\n  \"sesli_metin\": \"Makine parçalarının aşınması üç aşamadan geçer: I. dönem (yeni parçaların çalıştırılması sırasında daha güçlü aşınma), II. dönem (aşınma hızının minimum olduğu ve sürecin stabilize olduğu dönem) ve III. dönem (acil duruma kadar artan aşınma).\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A132": {
    "cikis": "bulunamadi",
@@ -311,7 +312,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 2.437,
+   "ilk_dogrulanmis_cumle": 2.637403236601518,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -334,7 +335,8 @@
    "cikis_token": 142,
    "dusunce_token": 0,
    "maliyet": 0.0003438,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E064 | Cause: Touch key was being pressed when power was turned on.\"\n      },\n      \"metin\": \"Error E064 means that a touch key was being pressed when the power was turned on.\"\n    }\n  ],\n  \"sesli_metin\": \"Error E064 indicates that a touch key was pressed when the power was turned on.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E064 | Cause: Touch key was being pressed when power was turned on.\"\n      },\n      \"metin\": \"Error E064 means that a touch key was being pressed when the power was turned on.\"\n    }\n  ],\n  \"sesli_metin\": \"Error E064 indicates that a touch key was pressed when the power was turned on.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A066": {
    "cikis": "cevap",
@@ -378,7 +380,7 @@
     true,
     true
    ],
-   "ilk_dogrulanmis_cumle": 4.502,
+   "ilk_dogrulanmis_cumle": 4.534888029648001,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -401,7 +403,8 @@
    "cikis_token": 343,
    "dusunce_token": 0,
    "maliyet": 0.00055185,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00\"\n      },\n      \"metin\": \"Dikiş adımının varsayılan değeri (Initial value) 2.00'dür.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00\"\n      },\n      \"metin\": \"Ayar birimi (Setting units) 0.05 mm'dir.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300B'de dikiş adımının varsayılan değeri 2.00 mm, ayar birimi ise 0.05 mm'dir.\"\n, \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00\"\n      },\n      \"metin\": \"Dikiş adımının varsayılan değeri (Initial value) 2.00'dür.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Stitch pitch | Setting value: -3 specifications: 0.05 - 5.00 mm, DS1 - DS5 -5 specifications: 0.05 - 5.00 mm, DS1 - DS5 | Setting units: 0.05 mm | Initial value: 2.00\"\n      },\n      \"metin\": \"Ayar birimi (Setting units) 0.05 mm'dir.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300B'de dikiş adımının varsayılan değeri 2.00 mm, ayar birimi ise 0.05 mm'dir.\"\n, \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A135": {
    "cikis": "netlestirme",
@@ -572,7 +575,7 @@
     true,
     true
    ],
-   "ilk_dogrulanmis_cumle": 9.222,
+   "ilk_dogrulanmis_cumle": 7.463483846434557,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": false,
    "atif_dokumanlari": [
@@ -594,7 +597,8 @@
    "cikis_token": 262,
    "dusunce_token": 0,
    "maliyet": 0.0004924,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"The Types II and III coat shall have a tape FR identification marker (see figure 1) on the left sleeve cuff as worn (see pattern for placement) and shall be visible from the outside when worn.\"\n      },\n      \"metin\": \"Type II ve Type III ceketlerde FR tanıtım bandı, giyildiğinde sol kol manşetinde bulunur.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"The Type II and Type III coat has an FR indicator located on the outside of the left sleeve cuff.\"\n      },\n      \"metin\": \"Type II ve Type III ceketlerde FR göstergesi sol kol manşetinin dış tarafında yer alır.\"\n    }\n  ],\n  \"sesli_metin\": \"Type II ve Type III ceketlerde FR tanıtım bandı sol kol manşetinde bulunur.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"The Types II and III coat shall have a tape FR identification marker (see figure 1) on the left sleeve cuff as worn (see pattern for placement) and shall be visible from the outside when worn.\"\n      },\n      \"metin\": \"Type II ve Type III ceketlerde FR tanıtım bandı, giyildiğinde sol kol manşetinde bulunur.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"The Type II and Type III coat has an FR indicator located on the outside of the left sleeve cuff.\"\n      },\n      \"metin\": \"Type II ve Type III ceketlerde FR göstergesi sol kol manşetinin dış tarafında yer alır.\"\n    }\n  ],\n  \"sesli_metin\": \"Type II ve Type III ceketlerde FR tanıtım bandı sol kol manşetinde bulunur.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A069": {
    "cikis": "cevap",
@@ -637,7 +641,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 6.975,
+   "ilk_dogrulanmis_cumle": 7.062456658579624,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -660,7 +664,8 @@
    "cikis_token": 243,
    "dusunce_token": 0,
    "maliyet": 0.00050065,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"The rotary hook tip (3) should be aligned with the center of the needle (4) when the needle bar (1) moves up 1.8 mm (for -[][]3 specifications) or 2.2 mm (for -[][]5 specifications) from its lowest position to the position where reference line (b) is aligned with the needle bar bush (2) as shown in.\"\n      },\n      \"metin\": \"S-7300B -3 tipinde, çağanoz ucu iğnenin ortasına gelmeli iğ mili en düşük konumundan 1.8 mm yükselince.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300B -3 tipinde çağanoz ucu, iğne mili 1.8 mm yükselince iğnenin ortasına gelmelidir.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"The rotary hook tip (3) should be aligned with the center of the needle (4) when the needle bar (1) moves up 1.8 mm (for -[][]3 specifications) or 2.2 mm (for -[][]5 specifications) from its lowest position to the position where reference line (b) is aligned with the needle bar bush (2) as shown in.\"\n      },\n      \"metin\": \"S-7300B -3 tipinde, çağanoz ucu iğnenin ortasına gelmeli iğ mili en düşük konumundan 1.8 mm yükselince.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300B -3 tipinde çağanoz ucu, iğne mili 1.8 mm yükselince iğnenin ortasına gelmelidir.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A037": {
    "cikis": "cevap",
@@ -703,7 +708,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 3.016,
+   "ilk_dogrulanmis_cumle": 3.4279477146014345,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -726,7 +731,8 @@
    "cikis_token": 164,
    "dusunce_token": 0,
    "maliyet": 0.0003785,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E050 | Cause: Machine head is detected as being tilted back when start sewing.\"\n      },\n      \"metin\": \"E050 hatası, dikişe başlanırken makine başının geriye doğru eğildiği algılandığını gösterir.\"\n    }\n  ],\n  \"sesli_metin\": \"E050 hatası, dikişe başlanırken makine başının geriye doğru eğildiği algılandığında oluşur.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E050 | Cause: Machine head is detected as being tilted back when start sewing.\"\n      },\n      \"metin\": \"E050 hatası, dikişe başlanırken makine başının geriye doğru eğildiği algılandığını gösterir.\"\n    }\n  ],\n  \"sesli_metin\": \"E050 hatası, dikişe başlanırken makine başının geriye doğru eğildiği algılandığında oluşur.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A147": {
    "cikis": "cevap",
@@ -771,7 +777,7 @@
     true,
     true
    ],
-   "ilk_dogrulanmis_cumle": 4.408,
+   "ilk_dogrulanmis_cumle": 4.7264184270452585,
    "atif_dogru_biri": false,
    "atif_dogru_hepsi": false,
    "atif_dokumanlari": [
@@ -794,7 +800,8 @@
    "cikis_token": 297,
    "dusunce_token": 0,
    "maliyet": 0.00052715,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"The buttonholes shall be eyelet-end tapered bar type (eyelet end toward the cuff edge-see figure 2) worked over gimp for the cuff with not less than four (4) tacking stitches at bar end catching the gimp ends (not counting the crossover stitch).\"\n      },\n      \"metin\": \"Kolluk (cuff) iliklerinde, çapraz dikiş sayılmaksızın, en az dört (4) tutturma dikişi bulunmalıdır.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 5,\n        \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"\n      },\n      \"metin\": \"Kol manşetinin ana gövdesinde, kalıba göre aralıklı olarak üç (3) ilik bulunmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"Kolluk iliklerinde en az 4 tutturma dikişi, kol manşetinde ise 3 ilik bulunur.\",\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"The buttonholes shall be eyelet-end tapered bar type (eyelet end toward the cuff edge-see figure 2) worked over gimp for the cuff with not less than four (4) tacking stitches at bar end catching the gimp ends (not counting the crossover stitch).\"\n      },\n      \"metin\": \"Kolluk (cuff) iliklerinde, çapraz dikiş sayılmaksızın, en az dört (4) tutturma dikişi bulunmalıdır.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 5,\n        \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"\n      },\n      \"metin\": \"Kol manşetinin ana gövdesinde, kalıba göre aralıklı olarak üç (3) ilik bulunmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"Kolluk iliklerinde en az 4 tutturma dikişi, kol manşetinde ise 3 ilik bulunur.\",\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A077": {
    "cikis": "cevap",
@@ -837,7 +844,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 5.606,
+   "ilk_dogrulanmis_cumle": 5.652132575986181,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -859,7 +866,8 @@
    "cikis_token": 165,
    "dusunce_token": 0,
    "maliyet": 0.00039895,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 4,\n        \"metin\": \"Problem: 13 | Problem: sewing direction. Backtack edge is not aligned. Thread tightening around | Possible cause: Is the height of the feed dog correct? Increase the feed dog height. | Page: 79*\"\n      },\n      \"metin\": \"Besleme dişinin yüksekliğinin doğru olup olmadığını kontrol edin; doğru değilse besleme dişinin yüksekliğini artırın.\"\n    }\n  ],\n  \"sesli_metin\": \"Besleme dişinin yüksekliğini artırın.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 4,\n        \"metin\": \"Problem: 13 | Problem: sewing direction. Backtack edge is not aligned. Thread tightening around | Possible cause: Is the height of the feed dog correct? Increase the feed dog height. | Page: 79*\"\n      },\n      \"metin\": \"Besleme dişinin yüksekliğinin doğru olup olmadığını kontrol edin; doğru değilse besleme dişinin yüksekliğini artırın.\"\n    }\n  ],\n  \"sesli_metin\": \"Besleme dişinin yüksekliğini artırın.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A154": {
    "cikis": "bulunamadi",
@@ -959,7 +967,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 2.399,
+   "ilk_dogrulanmis_cumle": 2.4721565250007798,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -982,7 +990,8 @@
    "cikis_token": 147,
    "dusunce_token": 0,
    "maliyet": 0.00036495,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"Code: E400 | Cause: Panel connection was not detected when power was turned on.\"\n      },\n      \"metin\": \"Açılışta panel bağlantısı algılanmazsa E400 hata kodu çıkar.\"\n    }\n  ],\n  \"sesli_metin\": \"Açılışta panel bağlantısı algılanmazsa E400 hata kodu çıkar.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"Code: E400 | Cause: Panel connection was not detected when power was turned on.\"\n      },\n      \"metin\": \"Açılışta panel bağlantısı algılanmazsa E400 hata kodu çıkar.\"\n    }\n  ],\n  \"sesli_metin\": \"Açılışta panel bağlantısı algılanmazsa E400 hata kodu çıkar.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A008": {
    "cikis": "bulunamadi",
@@ -1084,7 +1093,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 8.831,
+   "ilk_dogrulanmis_cumle": 8.997761275045479,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -1110,7 +1119,8 @@
    "cikis_token": 165,
    "dusunce_token": 0,
    "maliyet": 0.00041975,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Verify that the percent recovery of permethrin for any specimen size and composition, is 95% or greater by comparing the recovery level from the first extraction, to that of subsequent extractions.\"\n      },\n      \"metin\": \"Permetrin geri kazanımı, herhangi bir numune boyutu ve kompozisyonu için %95 veya daha fazla olmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"Permetrin geri kazanımı en az %95 olmalıdır.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Verify that the percent recovery of permethrin for any specimen size and composition, is 95% or greater by comparing the recovery level from the first extraction, to that of subsequent extractions.\"\n      },\n      \"metin\": \"Permetrin geri kazanımı, herhangi bir numune boyutu ve kompozisyonu için %95 veya daha fazla olmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"Permetrin geri kazanımı en az %95 olmalıdır.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "questions:Q07": {
    "cikis": "bulunamadi",
@@ -1214,7 +1224,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 3.69,
+   "ilk_dogrulanmis_cumle": 3.305428906832609,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -1237,7 +1247,8 @@
    "cikis_token": 171,
    "dusunce_token": 0,
    "maliyet": 0.00038645,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E065 | Cause: A disabled hardware key was being pressed when the power was turned on.\"\n      },\n      \"metin\": \"E065 hatası, makine açılırken devre dışı bırakılmış bir donanım tuşuna basılmış olmasından kaynaklanır.\"\n    }\n  ],\n  \"sesli_metin\": \"E065 hatası, makine açılırken devre dışı bırakılmış bir donanım tuşuna basılmış olması nedeniyle oluşur.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E065 | Cause: A disabled hardware key was being pressed when the power was turned on.\"\n      },\n      \"metin\": \"E065 hatası, makine açılırken devre dışı bırakılmış bir donanım tuşuna basılmış olmasından kaynaklanır.\"\n    }\n  ],\n  \"sesli_metin\": \"E065 hatası, makine açılırken devre dışı bırakılmış bir donanım tuşuna basılmış olması nedeniyle oluşur.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A029": {
    "cikis": "cevap",
@@ -1281,7 +1292,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 2.868,
+   "ilk_dogrulanmis_cumle": 3.053251829289692,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -1304,7 +1315,8 @@
    "cikis_token": 164,
    "dusunce_token": 0,
    "maliyet": 0.0004196,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"After 20 launderings | Min: mg/cm2: 0.025 | Max: mg/cm2: 0.130\"\n      },\n      \"metin\": \"20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm² olmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm² olmalıdır.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"After 20 launderings | Min: mg/cm2: 0.025 | Max: mg/cm2: 0.130\"\n      },\n      \"metin\": \"20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm² olmalıdır.\"\n    }\n  ],\n  \"sesli_metin\": \"20 yıkamadan sonra permetrin miktarı en az 0.025 mg/cm² olmalıdır.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A047": {
    "cikis": "cevap",
@@ -1347,7 +1359,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 4.753,
+   "ilk_dogrulanmis_cumle": 4.250242405406351,
    "atif_dogru_biri": false,
    "atif_dogru_hepsi": false,
    "atif_dokumanlari": [
@@ -1370,7 +1382,8 @@
    "cikis_token": 177,
    "dusunce_token": 0,
    "maliyet": 0.00038495,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min -5 specifications: 220 - 4500 sti/min\"\n      },\n      \"metin\": \"S-7300A -3 tipi için en yüksek dikiş hızı 5000 sti/min'dir.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300A -3 tipi için en yüksek dikiş hızı 5000 sti/min'dir.\",\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"Sewing speed | Setting value: -3 specifications: 220 - 5000 sti/min -5 specifications: 220 - 4500 sti/min\"\n      },\n      \"metin\": \"S-7300A -3 tipi için en yüksek dikiş hızı 5000 sti/min'dir.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300A -3 tipi için en yüksek dikiş hızı 5000 sti/min'dir.\",\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "questions:Q15": {
    "cikis": "bulunamadi",
@@ -1472,7 +1485,7 @@
     true,
     true
    ],
-   "ilk_dogrulanmis_cumle": 2.809,
+   "ilk_dogrulanmis_cumle": 3.1528052031977354,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -1494,7 +1507,8 @@
    "cikis_token": 319,
    "dusunce_token": 0,
    "maliyet": 0.00058395,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"To be accurate in spacing the buttonholes, make a ladder, using long and short bastings.\"\n      },\n      \"metin\": \"İlik aralıklarını doğru yapmak için uzun ve kısa geçici dikmeler (bastings) kullanarak bir merdiven (ladder) oluşturun.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 3,\n        \"metin\": \"To be sure of accuracy, mark the top and bottom positions of buttonholes on the garment and then accurately divide and mark between these two marks for the desired number of buttonholes.\"\n      },\n      \"metin\": \"Kesinlik için, giysideki iliklerin üst ve alt pozisyonlarını işaretleyin ve ardından istenen sayıda ilik için bu iki işaret arasında doğru bir şekilde bölümlendirip işaretleyin.\"\n    }\n  ],\n  \"sesli_metin\": \"İlik aralıklarını doğru işaretlemek için giyside iliklerin üst ve alt pozisyonlarını işaretleyin ve istenen sayıda ilik için bu işaretler arasında bölümlendirme yapın. Ayrıca uzun ve kısa geçici dikmeler kullanarak bir merdiven oluşturun.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"To be accurate in spacing the buttonholes, make a ladder, using long and short bastings.\"\n      },\n      \"metin\": \"İlik aralıklarını doğru yapmak için uzun ve kısa geçici dikmeler (bastings) kullanarak bir merdiven (ladder) oluşturun.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 3,\n        \"metin\": \"To be sure of accuracy, mark the top and bottom positions of buttonholes on the garment and then accurately divide and mark between these two marks for the desired number of buttonholes.\"\n      },\n      \"metin\": \"Kesinlik için, giysideki iliklerin üst ve alt pozisyonlarını işaretleyin ve ardından istenen sayıda ilik için bu iki işaret arasında doğru bir şekilde bölümlendirip işaretleyin.\"\n    }\n  ],\n  \"sesli_metin\": \"İlik aralıklarını doğru işaretlemek için giyside iliklerin üst ve alt pozisyonlarını işaretleyin ve istenen sayıda ilik için bu işaretler arasında bölümlendirme yapın. Ayrıca uzun ve kısa geçici dikmeler kullanarak bir merdiven oluşturun.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "questions_ek:Q21": {
    "cikis": "cevap",
@@ -1538,7 +1552,7 @@
     true,
     true
    ],
-   "ilk_dogrulanmis_cumle": 3.944,
+   "ilk_dogrulanmis_cumle": 3.533978936761474,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -1561,7 +1575,8 @@
    "cikis_token": 293,
    "dusunce_token": 0,
    "maliyet": 0.00048375,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E055 | Cause: Machine head is detected as being tilted back when power was turned on.\"\n      },\n      \"metin\": \"E055 hatası, makine başının güç açıldığında geriye doğru eğik olduğu algılandığını gösterir.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"\n      },\n      \"metin\": \"Çözüm olarak gücü kapatın ve makine başını orijinal konumuna getirin; ayrıca gücü kapatıp P2 konnektör bağlantısını kontrol edin.\"\n    }\n  ],\n  \"sesli_metin\": \"E055 hatası, makine başının güç açıldığında geriye doğru eğik algılanmasıdır. Gücü kapatıp başı düzeltin ve P2 konnektör bağlantısını kontrol edin.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Code: E055 | Cause: Machine head is detected as being tilted back when power was turned on.\"\n      },\n      \"metin\": \"E055 hatası, makine başının güç açıldığında geriye doğru eğik olduğu algılandığını gösterir.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Remedy: ・Turn off the power, and then return the machine head to its original position. ・Turn off the power and check the connection of connector P2.\"\n      },\n      \"metin\": \"Çözüm olarak gücü kapatın ve makine başını orijinal konumuna getirin; ayrıca gücü kapatıp P2 konnektör bağlantısını kontrol edin.\"\n    }\n  ],\n  \"sesli_metin\": \"E055 hatası, makine başının güç açıldığında geriye doğru eğik algılanmasıdır. Gücü kapatıp başı düzeltin ve P2 konnektör bağlantısını kontrol edin.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A083": {
    "cikis": "cevap",
@@ -1605,7 +1620,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 3.105,
+   "ilk_dogrulanmis_cumle": 3.8402846043497805,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -1627,7 +1642,8 @@
    "cikis_token": 176,
    "dusunce_token": 0,
    "maliyet": 0.0004371,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"All set-in pockets should be reinforced with canvas along the stitching line on the wrong side of the garment. This canvas prevents too great strain on the fabric.\"\n      },\n      \"metin\": \"Gömme cepler, kumaş üzerindeki aşırı gerilimi önlemek için dikiş hattı boyunca ters tarafında tela (canvas) ile desteklenir.\"\n    }\n  ],\n  \"sesli_metin\": \"Gömme cepler, kumaş üzerindeki aşırı gerilimi önlemek için tela ile desteklenir.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"All set-in pockets should be reinforced with canvas along the stitching line on the wrong side of the garment. This canvas prevents too great strain on the fabric.\"\n      },\n      \"metin\": \"Gömme cepler, kumaş üzerindeki aşırı gerilimi önlemek için dikiş hattı boyunca ters tarafında tela (canvas) ile desteklenir.\"\n    }\n  ],\n  \"sesli_metin\": \"Gömme cepler, kumaş üzerindeki aşırı gerilimi önlemek için tela ile desteklenir.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A105": {
    "cikis": "bulunamadi",
@@ -1849,7 +1865,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 3.366,
+   "ilk_dogrulanmis_cumle": 3.4339894999993703,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -1872,7 +1888,8 @@
    "cikis_token": 144,
    "dusunce_token": 0,
    "maliyet": 0.000369,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 4,\n        \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"\n      },\n      \"metin\": \"Ceket manşetinin ana gövdesinde kalıba göre aralıklı olarak üç (3) ilik açılır.\"\n    }\n  ],\n  \"sesli_metin\": \"Ceket manşetinde üç ilik açılır.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 4,\n        \"metin\": \"The main body of the sleeve cuff shall have three (3) buttonholes spaced as per pattern.\"\n      },\n      \"metin\": \"Ceket manşetinin ana gövdesinde kalıba göre aralıklı olarak üç (3) ilik açılır.\"\n    }\n  ],\n  \"sesli_metin\": \"Ceket manşetinde üç ilik açılır.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   },
   "aday_sorular:A104": {
    "cikis": "cevap",
@@ -1915,7 +1932,7 @@
    "ogeler": [
     true
    ],
-   "ilk_dogrulanmis_cumle": 2.486,
+   "ilk_dogrulanmis_cumle": 2.6383584990372606,
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
    "atif_dokumanlari": [
@@ -1938,7 +1955,8 @@
    "cikis_token": 130,
    "dusunce_token": 0,
    "maliyet": 0.0003567,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"The entire cycle will take 45-60 minutes to complete.\"\n      },\n      \"metin\": \"Temizleme döngüsü 45-60 dakika sürer.\"\n    }\n  ],\n  \"sesli_metin\": \"Temizleme döngüsü 45-60 dakika sürer.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 2,\n        \"metin\": \"The entire cycle will take 45-60 minutes to complete.\"\n      },\n      \"metin\": \"Temizleme döngüsü 45-60 dakika sürer.\"\n    }\n  ],\n  \"sesli_metin\": \"Temizleme döngüsü 45-60 dakika sürer.\"\n,\n  \"celiski_var\": false\n}",
+   "ilk_cumle_yaklasik": true
   }
  },
  "cost_usd": 0.011272899999999999,
@@ -1952,5 +1970,9 @@
   "json": "sema_disi"
  },
  "end": "2026-11-05T16:41:01",
- "tamam": true
+ "tamam": true,
+ "yeniden_puanlama_c": {
+  "tarih": "2026-11-06T09:50:38",
+  "rozeti_degisen": 0
+ }
 }
