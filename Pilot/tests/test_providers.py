@@ -153,3 +153,19 @@ def test_hits_carry_fused_score_when_rerank_off(monkeypatch):
     scores = [h.fused_score for h in hits]
     assert all(s is not None for s in scores) and scores == sorted(scores, reverse=True)
     assert scores[0] <= 1 / 2 + 1 / 2                      # RRF üst sınırı (iki kolda da 1.)
+
+
+def test_translation_within_limit_feeds_bm25_and_late_one_is_dropped(monkeypatch):
+    """İkili yol (Adım 2 planı §29): çeviri dense embed ile paralel; sınır içinde gelirse BM25 onunla, gelmezse özgün soruyla."""
+    import time as _t
+
+    from pilot import sparse
+    monkeypatch.setattr(retrieve, "encode_query", lambda text, sparse_text=None: {"dense": [1.0], "sparse": {"orig": 1.0}})
+    monkeypatch.setattr(retrieve, "SPARSE_KIND", "bm25")
+    monkeypatch.setattr(sparse, "bm25_query", lambda text: {text: 1.0})
+    q = retrieve._encode_with_translation("dikiş sıklığı", lambda: "stitches per inch", 1.2)
+    assert q["sparse"] == {"stitches per inch": 1.0} and retrieve.last_translation["sinir_asildi"] is False
+    q = retrieve._encode_with_translation("dikiş sıklığı", lambda: (_t.sleep(0.3), "geç")[1], 0.05)
+    assert q["sparse"] == {"orig": 1.0} and retrieve.last_translation["sinir_asildi"] is True
+    q = retrieve._encode_with_translation("dikiş sıklığı", lambda: 1 / 0, 1.2)      # çeviri hatası aramayı durdurmaz
+    assert q["sparse"] == {"orig": 1.0}

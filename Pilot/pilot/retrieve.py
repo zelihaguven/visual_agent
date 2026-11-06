@@ -154,15 +154,59 @@ def candidates(qc: Any, q: dict[str, Any], flt: models.Filter | None, mode: str 
     return [p for p in ranked if not is_toc(p.payload["text"])]
 
 
+_POOL: Any = None
+last_translation: dict[str, Any] = {}     # son aramanın çevirisi (kayıt ve arayüz için): metin, süre, sınır aşıldı mı
+
+
+def _encode_with_translation(query: str, translate: Callable[[], str | None], limit_s: float) -> dict[str, Any]:
+    """Çeviri ‖ dense embed; çeviri limit_s içinde gelirse BM25 onunla, gelmezse özgün soruyla."""
+    from concurrent.futures import ThreadPoolExecutor
+    from concurrent.futures import TimeoutError as FutTimeout
+    global _POOL
+    if _POOL is None:
+        _POOL = ThreadPoolExecutor(4, thread_name_prefix="ceviri")
+    t0 = time.perf_counter()
+
+    def run() -> tuple[str | None, float]:
+        t = time.perf_counter()
+        try:
+            return translate(), time.perf_counter() - t
+        except Exception:  # noqa: BLE001 — çeviri hatası aramayı durdurmaz: BM25 çevirisiz
+            return None, time.perf_counter() - t
+
+    fut = _POOL.submit(run)
+    q = encode_query(query)
+    try:
+        text, secs = fut.result(timeout=max(0.0, limit_s - (time.perf_counter() - t0)))
+        late = False
+    except FutTimeout:
+        text, secs, late = None, None, True
+    last_translation.clear()
+    last_translation.update(metin=text, sn=secs, sinir_asildi=late)
+    if text:
+        from .sparse import bm25_query
+        if SPARSE_KIND == "bm25":
+            q["sparse"] = bm25_query(text)
+        else:
+            q = encode_query(query, text)
+    return q
+
+
 def search(query: str, *, brands: list[str] | None = None, doc_ids: list[str] | None = None,
            mode: str = "hybrid", top_k: int = 5, do_rerank: bool = True,
-           query_en: str | None = None, access: list[str] | None = None) -> list[Hit]:
+           query_en: str | None = None, access: list[str] | None = None,
+           translate: Callable[[], str | None] | None = None, translate_limit_s: float = 1.2) -> list[Hit]:
     """mode: 'dense' | 'sparse' | 'hybrid'. query_en verilirse sparse kol ona göre çalışır
     (TR soru + EN doküman: kelime araması için çeviri). access: kullanıcının yetki grupları (None: kontrol yok).
-    Sorgu vektörleri sağlayıcıya göre (embed.encode_query): local bge-m3 ya da bulut dense + BM25."""
+    Sorgu vektörleri sağlayıcıya göre (embed.encode_query): local bge-m3 ya da bulut dense + BM25.
+    translate (ikili yol, Adım 2 planı §29): BM25 sorgu metnini veren çağrı; dense embed ile paralel çalışır,
+    translate_limit_s içinde gelmezse BM25 özgün soruyla aranır (çağrı arka planda biter)."""
     flt = _filter(brands, doc_ids, access)
     t = time.perf_counter()
-    q = encode_query(query, query_en)
+    if translate is not None and query_en is None:
+        q = _encode_with_translation(query, translate, translate_limit_s)
+    else:
+        q = encode_query(query, query_en)
     t = _lap("embed", t)
     qc = search_client()
     t = _lap("qdrant_open", t)

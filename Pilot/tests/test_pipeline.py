@@ -482,3 +482,97 @@ def test_post_search_ambiguity_default_is_top3():
     hits = [_h("brother-s7300a", 0.5), _h("brother-s7300b", 0.1), _h("brother-s7300a", 0.1)]
     assert post_search_ambiguity(hits) is None                    # iki makine modeli: kural katmanı sormaz
     assert post_search_ambiguity(hits, method="doc_score", ratio=0.5) is None                     # 0.1 / 0.6 düşük
+
+
+# ---------- c kipi (Adım 2 planı §29): bulut cevap modeli, şema c150b-J ----------
+
+C_ANSWER = {"tur": "cevap", "cevap": [{"alintilar": [{"kaynak_no": 1, "metin": "shall be sewn with 11 (± 1) stitches per inch"}],
+                                       "metin": "Dış görünür dikişler inç başına 11 (± 1) dikiş olmalıdır."}],
+            "sesli_metin": "Dış görünür dikişler inç başına 11 (± 1) dikiş olmalı.", "celiski_var": False}
+C_REC = {"provider": "deepinfra", "content": json.dumps(C_ANSWER, ensure_ascii=False), "first_token": 0.3,
+         "zaman": [[0.3, 10], [0.9, 10_000]], "usage": {"cost": 0.0002}, "denemeler": [{"provider": "deepinfra", "err": ""}]}
+
+
+@pytest.fixture
+def c_mode(monkeypatch):
+    from pilot import config
+    seen = {"search": [], "c": [], "local": []}
+
+    def fake_search(question, **kw):
+        seen["search"].append(kw)
+        return [Hit(CHUNK, 0, 3.0)] + [Hit(dict(CHUNK, chunk_id=f"x-{i}", text="filler"), i, 1.0) for i in range(1, 12)]
+
+    def fake_c(user):
+        seen["c"].append(user)
+        return dict(seen.get("answer", C_ANSWER)), dict(C_REC)
+
+    monkeypatch.setattr(config, "ANSWER_MODE", "c")
+    monkeypatch.setattr(pipeline, "search", fake_search)
+    monkeypatch.setattr(pipeline, "chat_c", fake_c)
+    monkeypatch.setattr(pipeline, "chat_json", lambda u: seen["local"].append(u))
+    monkeypatch.setattr(pipeline, "_translator", lambda q, scope: (lambda: "outside visible stitching SPI"))
+    return seen
+
+
+def test_c_mode_verified_answer_items_provider_and_eight_sources(c_mode):
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
+    assert r.verification.status == "verified" and not c_mode["local"]
+    assert len(r.hits) == 8 and c_mode["c"][0].count("<kaynak no=") == 8
+    assert c_mode["search"][0]["translate"]() == "outside visible stitching SPI"
+    assert c_mode["search"][0]["translate_limit_s"] == 1.2
+    assert r.answer["saglayici"] == "deepinfra" and r.answer["ogeler"][0]["dogrulandi"] is True
+    assert r.timings["ilk_dogrulanmis_cumle"] == 0.9 and "on bir, artı eksi bir" in r.speech_text
+
+
+def test_c_mode_model_clarification_lists_no_answer(c_mode):
+    c_mode["answer"] = {"tur": "netlestirme", "netlestirme": {"soru": "Ceket mi pantolon mu?",
+                                                             "secenekler": [{"kaynak_no": 1}, {"kaynak_no": 2}]},
+                        "cevap": [], "sesli_metin": "", "celiski_var": False}
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
+    assert r.verification.status == "clarify" and r.answer["netlestirme_sorusu"] == "Ceket mi pantolon mu?"
+    assert r.llm_called and not r.speech_text
+
+
+def test_c_mode_not_found(c_mode):
+    c_mode["answer"] = {"tur": "bulunamadi", "cevap": [], "sesli_metin": "", "celiski_var": False}
+    r = pipeline.soru_cevapla("Ceketin garanti süresi nedir?")
+    assert r.verification.status == "not_found" and r.answer["bulunamadi"] is True
+
+
+def test_c_mode_unverified_quote_fails_and_is_not_spoken(c_mode):
+    bad = json.loads(json.dumps(C_ANSWER))
+    bad["cevap"][0]["alintilar"][0]["metin"] = "shall be sewn with 12 stitches per inch"
+    bad["cevap"][0]["metin"] = "Dış görünür dikişler inç başına 12 dikiş olmalıdır."
+    c_mode["answer"] = bad
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
+    assert r.verification.status == "failed" and r.speech_text == ""
+    assert r.answer["ogeler"][0]["dogrulandi"] is False
+
+
+def test_c_mode_service_down_shows_message_without_local_fallback(c_mode, monkeypatch):
+    from pilot.cloud import ServiceUnavailable
+
+    def down(user):
+        raise ServiceUnavailable("deepinfra: 502; venice: 502; parasail: 502")
+    monkeypatch.setattr(pipeline, "chat_c", down)
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
+    assert r.verification.status == "failed" and r.answer["servis_yok"] is True
+    assert "kullanılamıyor" in r.verification.problems[0] and not c_mode["local"]
+    assert len(r.hits) == 8          # kaynaklar yine gösterilir
+
+
+def test_c_mode_truncated_json_is_reported_as_truncated(c_mode, monkeypatch):
+    from pilot.jsonparse import ModelJSONError
+
+    def cut(user):
+        raise ModelJSONError(True, "kesik")
+    monkeypatch.setattr(pipeline, "chat_c", cut)
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
+    assert r.verification.status == "failed" and "uzunluk sınırında" in r.verification.problems[0]
+
+
+def test_bugun_mode_is_default_and_uses_local_path(calls):
+    from pilot import config
+    assert config.ANSWER_MODE == "bugun"
+    r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
+    assert r.verification.status == "verified" and "translate" not in calls["search"][0]

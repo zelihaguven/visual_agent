@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from .chunk import read_chunks
+from . import config
 from .config import (CHUNKS_PATH, CLARIFY_DOC_RATIO, CLARIFY_METHOD, CLARIFY_MIN_SCORE, MIN_RERANK_SCORE,
                      TOP_K_SOURCES)
 from .llm import chat_json
@@ -77,6 +78,56 @@ def _clarify(question: str, ctx: QueryContext, timings: dict[str, float], docs: 
 
 def _noop(_: str) -> None:
     pass
+
+
+# ---------- c kipi: bulut cevap modeli, şema c150b-J (Adım 2 planı §29) ----------
+
+_CLIENTS: dict[str, Any] = {}
+SERVICE_DOWN = ("Cevap servisi şu an kullanılamıyor. Biraz sonra yeniden deneyin. Bulunan kaynak sayfaları aşağıda; "
+                "değerleri kaynaktan kontrol edin.")
+
+
+def _answer_client() -> Any:
+    if "answer" not in _CLIENTS:
+        from .cloud import AnswerClient
+        from .schema_c import schema_variant
+        schema, prompt = schema_variant(config.ANSWER_SCHEMA_VARIANT)
+        _CLIENTS["answer"] = AnswerClient(config.ANSWER_MODEL, config.ANSWER_PROVIDERS, schema, config.ANSWER_MAX_TOKENS,
+                                         config.ANSWER_FIRST_TOKEN_S, config.STREAM_GUARD_N)
+        _CLIENTS["prompt"] = prompt
+    return _CLIENTS["answer"]
+
+
+def chat_c(user: str) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Şema C cevabı ve çağrı kaydı (sağlayıcı, denemeler, ilk token, akış zaman çizelgesi, maliyet). JSON okunamazsa
+    ModelJSONError; servise ulaşılamazsa cloud.ServiceUnavailable. Testler bu fonksiyonu değiştirir."""
+    from .jsonparse import ModelJSONError, error_detail
+    from .schema_c import parse_c
+    client = _answer_client()
+    rec = client.stream([{"role": "system", "content": _CLIENTS["prompt"]}, {"role": "user", "content": user}])
+    ans, status = parse_c(rec["content"], rec.get("finish"))
+    if status in ("bos", "kesik", "gecersiz") or ans is None:
+        raise ModelJSONError(status == "kesik", error_detail(rec["content"] or "") or status)
+    return ans, rec
+
+
+def _translator(query: str, scope: list[str] | None) -> Any:
+    """BM25 sorgu metnini veren çağrı (ikili yol). İstemci kurulamazsa (anahtar yok, ZDR) None: BM25 çevirisiz."""
+    from .translate import bm25_text, target_languages, translate_query
+    if "translate" not in _CLIENTS:
+        try:
+            from .cloud import CloudChat
+            _CLIENTS["translate"] = CloudChat(config.TRANSLATE_MODEL, timeout=15, providers=config.TRANSLATE_PROVIDERS,
+                                              reasoning={"enabled": False})
+        except Exception:  # noqa: BLE001
+            _CLIENTS["translate"] = None
+    chat = _CLIENTS["translate"]
+    if chat is None:
+        return None
+    src, targets = question_lang(query), target_languages(scope)
+    if all(t == src for t in targets):
+        return None
+    return lambda: bm25_text(translate_query(query, src, targets, chat), query)
 
 
 _CHUNKS: dict[str, Any] = {"mtime": None, "all": [], "rows": {}}
@@ -270,9 +321,16 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
     t = time.time()
     # doc_score netleştirmesi bütün adaylara bakar (ilk FUSED_K); modele yine ilk TOP_K_SOURCES gider
     wide = CLARIFY_METHOD == "doc_score" and not scope
+    c_mode = config.ANSWER_MODE == "c"
+    top_k = config.ANSWER_TOP_K if c_mode else TOP_K_SOURCES
+    extra_kw: dict[str, Any] = {}
+    if c_mode and query_en is None:
+        tr = _translator(search_q, scope)
+        if tr is not None:
+            extra_kw = {"translate": tr, "translate_limit_s": config.TRANSLATE_LIMIT_S}
     candidates = search(search_q, brands=brands, doc_ids=scope, mode=mode,
-                        top_k=max(TOP_K_SOURCES, FUSED_K) if wide else TOP_K_SOURCES, query_en=query_en, access=access)
-    hits = candidates[:TOP_K_SOURCES]
+                        top_k=max(top_k, FUSED_K) if wide else top_k, query_en=query_en, access=access, **extra_kw)
+    hits = candidates[:top_k]
     timings["search"] = time.time() - t
 
     found, missing, elsewhere = code_lookup(asked, scope, brands, access)
@@ -288,7 +346,7 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
         # Kodun birebir geçtiği parçalar kaynaklarda yoksa başa eklenir (sınır korunur)
         have = {h.chunk["chunk_id"] for h in hits}
         extra = [Hit(c, -1, None) for c in found if c["chunk_id"] not in have]
-        hits = (extra + hits)[:TOP_K_SOURCES]
+        hits = (extra + hits)[:top_k]
 
     if not hits or (MIN_RERANK_SCORE is not None and hits[0].rerank_score is not None
                     and hits[0].rerank_score < MIN_RERANK_SCORE):
@@ -316,6 +374,8 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
     # Cevap sorunun dilinde (karar). Dil koddan belirlenir ve açıkça verilir: Talimat yalnızca "soru Türkçe ise
     # Türkçe" diyordu, İngilizce soruya da Türkçe cevap geliyordu (kullanıcı denemesi, test sorusu 20).
     user = f"{format_sources(hits)}\n\n<cevap_dili>{lang.upper()}</cevap_dili>\n\n<soru>\n{asked}\n</soru>"
+    if c_mode:
+        return _answer_c(question, ctx, hits, user, timings, t0, t, lang, context, added, doc_ids)
     try:
         answer, stats = chat_json(user)
         timings.update({k: float(v) for k, v in stats.items()})
@@ -382,6 +442,71 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
             speech = say(answer.get("cevap") or "")
         else:
             speech = say(answer["sesli_metin"])
+    timings["total"] = time.time() - t0
+    return Result(question, ctx, hits, answer, verification, speech, timings, expanded_terms=added,
+                  context_terms=context, lang=lang)
+
+
+def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timings: dict[str, float], t0: float,
+               t: float, lang: str, context: list[str], added: list[str], doc_ids: list[str] | None) -> Result:
+    """c kipi: model "tur" seçer (cevap | netlestirme | bulunamadi); öğe başına doğrulama (schema_c.verify_c, alan
+    etiketi kuralı dahil). Pipeline'ın serbest metin kuralları (clarify_options, tablo varyant kuralı) bu yolda yok:
+    ölçülen hat böyleydi (Adım 2 planı §26). Arayüz için bugünkü biçim (to_legacy) + "ogeler"."""
+    from .cloud import ServiceUnavailable
+    from .jsonparse import failure_message
+    from .schema_c import QUOTE_LIMIT, first_verified_time, item_quotes, to_legacy, verify_c
+    try:
+        ans, rec = chat_c(user)
+    except ServiceUnavailable as err:
+        timings["llm"] = time.time() - t
+        timings["total"] = time.time() - t0
+        down = {"bulunamadi": False, "alintilar": [], "cevap": "", "sesli_metin": "", "netlestirme_sorusu": None,
+                "celiski_var": False, "servis_yok": True, "servis_hatasi": str(err)[:300]}
+        return Result(question, ctx, hits, down, Verification("failed", [SERVICE_DOWN], {}), "", timings,
+                      context_terms=context, lang=lang)
+    except json.JSONDecodeError as err:
+        timings["llm"] = time.time() - t
+        timings["total"] = time.time() - t0
+        broken = {"bulunamadi": False, "alintilar": [], "cevap": "", "sesli_metin": "",
+                  "netlestirme_sorusu": None, "celiski_var": False}
+        return Result(question, ctx, hits, broken, Verification("failed", [failure_message(err)], {}), "", timings,
+                      context_terms=context, lang=lang)
+    timings["llm"] = time.time() - t
+    if rec.get("first_token") is not None:
+        timings["llm_first_token"] = float(rec["first_token"])
+    sources = {no: h.chunk["text"] for no, h in enumerate(hits, start=1)}
+    generated = {no: h.chunk.get("generated", "") for no, h in enumerate(hits, start=1)}
+    v = verify_c(ans, sources, generated, QUOTE_LIMIT[config.ANSWER_SCHEMA_VARIANT])
+    answer = to_legacy(ans)
+    answer.update(sema="c", saglayici=rec.get("provider"), denemeler=rec.get("denemeler"),
+                  maliyet=float((rec.get("usage") or {}).get("cost") or 0.0))
+    tur = ans.get("tur")
+    if tur == "netlestirme" and v["status"] == "clarify":
+        docs = list(dict.fromkeys(hits[n - 1].chunk["doc_id"] for n in v.get("secenekler") or []))
+        timings["total"] = time.time() - t0
+        msg = ((ans.get("netlestirme") or {}).get("soru") or "Değer ürüne göre değişiyor. Hangisi için?").strip()
+        return _clarify(question, ctx, timings, docs if len(docs) >= 2 and not doc_ids else [], msg, hits,
+                        hint="Sorunuza ayrıntı ekleyin.", llm_called=True)
+    if tur == "bulunamadi" and v["status"] == "not_found":
+        timings["total"] = time.time() - t0
+        answer["bulunamadi"] = True
+        return Result(question, ctx, hits, answer, Verification("not_found", [], {}), "", timings,
+                      context_terms=context, lang=lang)
+    items = ans.get("cevap") or []
+    answer["ogeler"] = [{"metin": x.get("metin", ""), "kaynaklar": [q.get("kaynak_no") for q in item_quotes(x)],
+                         "dogrulandi": it["ok"], "sekil": it["sekil"], "sorunlar": it["sorunlar"]}
+                        for x, it in zip(items, v["items"])]
+    first = first_verified_time(rec.get("content", ""), rec.get("zaman") or [], v["items"]) if v["items"] else None
+    if first is not None:
+        timings["ilk_dogrulanmis_cumle"] = first
+    verification = Verification(v["status"] if v["status"] in ("verified", "partial", "failed") else "failed",
+                                v["problems"][:6], {"sesli_metin_sayilari": bool(v.get("sesli_ok"))})
+    speech = ""
+    say = normalize_for_speech if lang == "tr" else normalize_for_speech_en
+    if verification.status in ("verified", "partial"):
+        voice = ans.get("sesli_metin") or ""
+        speech = say(voice if voice and v.get("sesli_ok") and question_lang(voice) == lang
+                     else " ".join(x.get("metin", "") for x in items))
     timings["total"] = time.time() - t0
     return Result(question, ctx, hits, answer, verification, speech, timings, expanded_terms=added,
                   context_terms=context, lang=lang)
