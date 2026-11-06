@@ -1,0 +1,897 @@
+{
+ "tarih": "2026-11-06T11:05:59",
+ "ayarlar": {
+  "mod": "c",
+  "model": "google/gemma-4-26b-a4b-it",
+  "sema": "c150bJ",
+  "saglayicilar": [
+   "deepinfra",
+   "venice",
+   "parasail"
+  ],
+  "max_tokens": 1200,
+  "kaynak": 8,
+  "ilk_token_s": 2.5,
+  "bekci": 40,
+  "ceviri": [
+   "google/gemma-4-26b-a4b-it",
+   [
+    "nextbit",
+    "venice"
+   ],
+   1.2
+  ]
+ },
+ "satirlar": [
+  {
+   "qid": "aday_sorular:A130",
+   "q": "Mr. Coffee makinesiyle espresso nasıl yapılır?",
+   "beklenen": "bulunamadı",
+   "durum": "not_found",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 1.1336420999996335
+    }
+   ],
+   "maliyet": 0.00023146,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": 0.8336081504821777,
+   "toplam": 1.967346429824829,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "",
+   "dogru": true,
+   "dogrulanmis_gorunen_yanlis": false
+  },
+  {
+   "qid": "questions:Q10",
+   "q": "Uçak motoru yağı kaç derecede değiştirilir?",
+   "beklenen": "bulunamadı",
+   "durum": "not_found",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 0.9696229999999559
+    }
+   ],
+   "maliyet": 0.0002549,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": 0.8493735790252686,
+   "toplam": 1.8237206935882568,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "",
+   "dogru": true,
+   "dogrulanmis_gorunen_yanlis": false
+  },
+  {
+   "qid": "questions:Q18",
+   "q": "Nike tişörtlerinde yaka ribanası kaç cm olmalı?",
+   "beklenen": "bulunamadı",
+   "durum": "not_found",
+   "model": false,
+   "saglayici": null,
+   "denemeler": null,
+   "maliyet": 0.0,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": null,
+   "toplam": 0.0,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "",
+   "dogru": true,
+   "dogrulanmis_gorunen_yanlis": false
+  },
+  {
+   "qid": "aday_sorular:A133",
+   "q": "İplik kesildikten sonra üst iplik kuyruğu kaç mm olmalı?",
+   "beklenen": "netleştirme",
+   "durum": "clarify",
+   "model": true,
+   "saglayici": null,
+   "denemeler": null,
+   "maliyet": 0.0,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": 0.7549309730529785,
+   "toplam": 2.853867530822754,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "",
+   "dogru": true
+  },
+  {
+   "qid": "aday_sorular:A142",
+   "q": "Beden etiketi nereye dikilir?",
+   "beklenen": "netleştirme",
+   "durum": "clarify",
+   "model": true,
+   "saglayici": null,
+   "denemeler": null,
+   "maliyet": 0.0,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": 0.7301795482635498,
+   "toplam": 2.70314621925354,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "",
+   "dogru": true
+  },
+  {
+   "qid": "questions:Q07",
+   "q": "Dış görünür dikişlerde SPI kaç olmalı?",
+   "beklenen": "netleştirme",
+   "durum": "clarify",
+   "model": true,
+   "saglayici": null,
+   "denemeler": null,
+   "maliyet": 0.0,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": 0.530139684677124,
+   "toplam": 2.2995176315307617,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "",
+   "dogru": true
+  },
+  {
+   "qid": "questions:Q13",
+   "q": "Ceketteki kuşgözü (eyelet) dikişinde en az kaç üst üste dikiş olmalı?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 2.4992968999995355
+    }
+   ],
+   "maliyet": 0.00027562,
+   "u2u": 2.5342736492156983,
+   "ilk_dogr": 1.826,
+   "istek_oncesi": 0.7082736492156982,
+   "toplam": 3.2187864780426025,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Kuşgözü (eyelet) dikişinde, dış taraftaki purling (purl) ile birlikte en az dört (4) üst üste binen dikiş olmalıdır.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "questions:Q06",
+   "q": "Kahve makinesi nasıl temizlenir?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 8.881581699999515
+    }
+   ],
+   "maliyet": 0.00044135,
+   "u2u": 2.199380027770996,
+   "ilk_dogr": 1.462,
+   "istek_oncesi": 0.7373800277709961,
+   "toplam": 9.620803117752075,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Temizlemeden önce kahve makinesinin fişini her zaman çekin ve soğumasını bekleyin. Filtre sepetini, kalıcı filtreyi (tüm modellerde dahil değildir), duş başlığı kapağını (saat yönünün tersine çevirerek), sürahiyi ve sürahi kapağını çıkarın. Bunları sıcak su ve hafif sıvı sabun çözeltisiyle yıkayın. ",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "questions_ek:Q25",
+   "q": "Pantolonda düğme dikişi için iğne ipliği Tex numarası kaç olmalı?",
+   "beklenen": "cevap",
+   "durum": "clarify",
+   "model": true,
+   "saglayici": null,
+   "denemeler": null,
+   "maliyet": 0.0,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": 0.7278769016265869,
+   "toplam": 2.1972882747650146,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "questions_ek:Q23",
+   "q": "S-7300B'de E740 hatası çıktı, sebebi ne?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 1.6963208999995913
+    }
+   ],
+   "maliyet": 0.00019901,
+   "u2u": 2.064453104019165,
+   "ilk_dogr": 1.128,
+   "istek_oncesi": 0.936453104019165,
+   "toplam": 2.6276679039001465,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "E740 hatasının sebebi fan motorunun çalışmamasıdır.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "sekil_sorular:N2",
+   "q": "Granovsky kitabına göre makine parçalarının aşınması hangi aşamalardan geçer?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 4.699455599999965
+    }
+   ],
+   "maliyet": 0.00033539,
+   "u2u": 2.5023525238037108,
+   "ilk_dogr": 1.8,
+   "istek_oncesi": 0.7023525238037109,
+   "toplam": 5.402074575424194,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Makine operasyonunun ilk döneminde (I), yeni parçalar alışma sürecindeyken daha güçlü bir aşınma meydana gelir. Ardından, aşınma hızının minimumda olduğu, yani sürecin stabilize olduğu II. dönem gelir. Son olarak, aşınmanın kademeli olarak acil durum seviyesine kadar arttığı III. dönem takip eder.",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "sekil_sorular:G1",
+   "q": "Ceketin kol cebinde körük nereden açık bırakılıyor?",
+   "beklenen": "cevap",
+   "durum": "partial",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 1.787774399999762
+    }
+   ],
+   "maliyet": 0.00027977,
+   "u2u": 2.002160966873169,
+   "ilk_dogr": 1.338,
+   "istek_oncesi": 0.664160966873169,
+   "toplam": 2.456437349319458,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Şekle göre yan körük sadece dikilmiş kuşgözünü (eyelet) göstermek için alttan açık bırakılmıştır.",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "aday_sorular:A084",
+   "q": "Ok başı punteriz (arrowhead) nasıl yapılır?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 6.730440700000145
+    }
+   ],
+   "maliyet": 0.00040502,
+   "u2u": 2.5398601360321047,
+   "ilk_dogr": 1.732,
+   "istek_oncesi": 0.8078601360321045,
+   "toplam": 7.543425798416138,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "İstenen konuma bir üçgen dikerek ok başını (arrowhead) işaretleyin. Daha ince bir punteriz oluşturmak için üçgenin iki kenarı, 2'deki gibi içe doğru kavisli olabilir. Uyumlu ilik ipi kullanarak, ipi punteriz içinde sabitleyerek ok başına başlayın ve iğneyi tabandaki sol açıda dışarı çıkarın. İğneyi ",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "aday_sorular:A004",
+   "q": "Alev almaz (Type II, III) ceketlerde FR tanıtım bandı hangi kolda bulunur?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 2.3603034999996453
+    }
+   ],
+   "maliyet": 0.00027726,
+   "u2u": 3.4630808010101317,
+   "ilk_dogr": 1.364,
+   "istek_oncesi": 2.099080801010132,
+   "toplam": 4.454516887664795,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Type II ve Type III ceketlerde FR tanıtım bandı (identification marker), giyildiğinde sol kol manşetinde (left sleeve cuff) bulunur. Type II ve Type III ceketlerde FR göstergesi sol kol manşetinin dışında yer alır.",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "aday_sorular:A148",
+   "q": "pantolon cep agzi kac inc",
+   "beklenen": "cevap",
+   "durum": "failed",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 4.371635700000297
+    }
+   ],
+   "maliyet": 0.00028048,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": 0.69162917137146,
+   "toplam": 5.064087390899658,
+   "servis_yok": false,
+   "sorunlar": [
+    "cümlede kendi alıntısında olmayan sayı: ['1', '14']",
+    "cümlede kendi alıntısında olmayan sayı: ['1', '14']",
+    "sesli metinde alıntılarda olmayan sayı: ['1', '14']"
+   ],
+   "cevap": "Ön yan asılı ceplerin (front side hanging pockets) cep açıklıkları, bartaçlar (bartacks) arasında 6 inçten az olmamalı ve 7-1/14 inçten fazla olmamalıdır. Yan cep açıklıklarının uzunluklarındaki fark 1/14 inçten fazla olmamalıdır.",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "aday_sorular:A015",
+   "q": "Ceketin yaka tipi ve ön kapanışı nasıl?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 3.6661411999994016
+    }
+   ],
+   "maliyet": 0.00030945,
+   "u2u": 1.5103245906829834,
+   "ilk_dogr": 0.893,
+   "istek_oncesi": 0.6173245906829834,
+   "toplam": 4.2847089767456055,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Ceketin yaka tipi bir band yaka (band collar) şeklindedir. Ön kapanış, çift sürgülü (double slider) bir fermuar (slide fastener) ve ikincil bir kanca cırt cırt (hook and loop fastener) bant kapanışına sahip tek sıra düğmeli (single-breasted) bir tasarıma sahiptir. İkincil kapanış, üç (3) çift kanca ",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "aday_sorular:A028",
+   "q": "Pantolon iç bacağında 5 iplik emniyet dikişi kullanılırsa kalıp nasıl ayarlanır?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 3.1498410000003787
+    }
+   ],
+   "maliyet": 0.00027435,
+   "u2u": 3.3184588890075686,
+   "ilk_dogr": 2.623,
+   "istek_oncesi": 0.6954588890075684,
+   "toplam": 3.846623659133911,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "İç bacak (inseam) için 5 iplik emniyet dikişi (5-thread safety stitch) kullanıldığında, yüklenici kalıpları 112 inç çift iğne dikişleri yerine 3/8 inçlik ayar (gauge) için ayarlamalıdır.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A035",
+   "q": "Pantolonda cırt bant genişliklerinin toleransı ne kadar?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 1.9455604000004314
+    }
+   ],
+   "maliyet": 0.00027268,
+   "u2u": 2.12324680519104,
+   "ilk_dogr": 1.492,
+   "istek_oncesi": 0.63124680519104,
+   "toplam": 2.578216314315796,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Belirtilen tüm genişlikler için tolerans (± 1/32) inç olmalıdır.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A154",
+   "q": "pantolonda cırt bant ne kadar içerde",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 2.7826116999995065
+    }
+   ],
+   "maliyet": 0.00030519,
+   "u2u": 2.7221895751953125,
+   "ilk_dogr": 2.206,
+   "istek_oncesi": 0.5161895751953125,
+   "toplam": 3.297877073287964,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Cırt bant (hook and loop) tüm genişlikleri, kenar boyunca iğne kesilmesini, dikiş taşmalarını veya otomatik dikiş ekipmanına uygunsuz yerleşimi önlemek için kenar (selvage) kenarlı bantlarda kenar dikişinden (bound selvage) veya kenarlı olmayan bantl",
+   "yanlis_ret": false,
+   "deger": false
+  },
+  {
+   "qid": "aday_sorular:A018",
+   "q": "Type II ceket kumaşının elyaf karışımı nedir?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 2.263122199999998
+    }
+   ],
+   "maliyet": 0.00025354,
+   "u2u": 2.356081747055054,
+   "ilk_dogr": 1.724,
+   "istek_oncesi": 0.6320817470550537,
+   "toplam": 2.898386001586914,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Type II ceket için temel malzeme %65/25/10 oranında Alev Dirençli (FR) rayon/para-aramid/naylon karışımlı ripstop kumaş olmalıdır.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A022",
+   "q": "Pantolonun ön yan cep ağzı kaç inç olmalı?",
+   "beklenen": "cevap",
+   "durum": "failed",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 3.294795800000429
+    }
+   ],
+   "maliyet": 0.00030572,
+   "u2u": null,
+   "ilk_dogr": null,
+   "istek_oncesi": 0.7345681190490723,
+   "toplam": 4.029303789138794,
+   "servis_yok": false,
+   "sorunlar": [
+    "cümlede kendi alıntısında olmayan sayı: ['1', '4']",
+    "cümlede kendi alıntısında olmayan sayı: ['1', '4']",
+    "sesli metinde alıntılarda olmayan sayı: ['1', '4']"
+   ],
+   "cevap": "Pantolonun iki (2) adet ön yan asma cebi olmalıdır ve cep ağızları bartack'lar arasında 6 inçten az olmamalı ve 7-1/4 inçten fazla olmamalıdır. Cep ağızları birbirleriyle 1/4 inç içinde eşleşmelidir.",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "aday_sorular:A040",
+   "q": "S-7300A'da E111 hata kodu ne demek?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 4.231311399999868
+    }
+   ],
+   "maliyet": 0.00025378,
+   "u2u": 3.2408289432525637,
+   "ilk_dogr": 2.575,
+   "istek_oncesi": 0.6658289432525635,
+   "toplam": 4.906881332397461,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "E111 hata kodu, dikiş makinesi motoru durduğunda iğne yukarı durma pozisyonunun belirtilen değeri aştığı anlamına gelir. Çözüm için gücü kapatın ve dikiş makinesi motorunun veya iplik kesme mekanizmasının sertleşip sertleşmediğini kontrol edin.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A075",
+   "q": "S-7300B -3 tipinde 4000 dev/dk hızda dikiş adımı en fazla kaç mm olabilir?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 2.3153314000001046
+    }
+   ],
+   "maliyet": 0.00026489,
+   "u2u": 2.693312219619751,
+   "ilk_dogr": 1.754,
+   "istek_oncesi": 0.939312219619751,
+   "toplam": 3.252283811569214,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "S-7300B -3 tipinde 4000 sti/min hızda dikiş adımı (stitch pitch) 3.0 mm olabilir.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A044",
+   "q": "S-7300A'da iplik kesildikten sonra üst ipliğin standart kuyruk uzunluğu kaç mm?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 3.0180007999997542
+    }
+   ],
+   "maliyet": 0.00028644,
+   "u2u": 1.8897457427978515,
+   "ilk_dogr": 1.007,
+   "istek_oncesi": 0.8827457427978516,
+   "toplam": 3.900791883468628,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Standart üst iplik kuyruk uzunluğu 25 ila 30 mm'dir. İplik türüne göre üst iplik kuyruk uzunluğu; spun iplik için 25 ila 30 mm, polyester iplik için ise 28 ila 33 mm olmalıdır.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A146",
+   "q": "s7300a e50 ne demek",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 4.675737900000058
+    }
+   ],
+   "maliyet": 0.00027887,
+   "u2u": 2.7600250072479247,
+   "ilk_dogr": 2.082,
+   "istek_oncesi": 0.6780250072479248,
+   "toplam": 5.347159385681152,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "E050 kodu, dikişe başlarken makine kafasının arkaya doğru eğik olduğunun algılandığı anlamına gelir. Çözüm için gücü kapatın ve makine kafasını orijinal konumuna döndürün. Gücü kapatın ve P2 konnektörünün bağlantısını kontrol edin.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A088",
+   "q": "Parçaları yıkamak için sabun çözeltisinde litre başına kaç gram sabun kullanılır?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 2.4287372999997388
+    }
+   ],
+   "maliyet": 0.00026364,
+   "u2u": 2.3814376735687253,
+   "ilk_dogr": 1.765,
+   "istek_oncesi": 0.6164376735687256,
+   "toplam": 3.045912265777588,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Parçalar, sabun çözeltisine (litre başına 25 g sabun) daldırılarak yıkanabilir.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A001",
+   "q": "Ceketin kol manşetindeki ayar tırnağı hangi genişlik ve uzunlukta olmalı?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 3.0706638999999996
+    }
+   ],
+   "maliyet": 0.00028643,
+   "u2u": 2.851263151168823,
+   "ilk_dogr": 2.235,
+   "istek_oncesi": 0.6162631511688232,
+   "toplam": 3.6938352584838867,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Kol tırnakları (sleeve tabs) tüm bedenler için 2-1/8 (± 1/8) inç genişliğinde ve 3-1/8 (± 1/8) inç uzunluğunda olmalıdır.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A031",
+   "q": "Pantolon permetrin testinde numuneler kaç inç çapında kesilir?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 3.6536243999998987
+    }
+   ],
+   "maliyet": 0.0003181,
+   "u2u": 2.9700012168884276,
+   "ilk_dogr": 2.296,
+   "istek_oncesi": 0.6740012168884277,
+   "toplam": 4.3283984661102295,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Her test koşulu için 3 inç çapında üç numune seçilir (45.6037cm 2 yüzey alanına sahip 3 inçlik dairesel kesme kalıbı kullanın). 3 inç çapında dairesel çelik kesme kalıbı kullanılır.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "aday_sorular:A092",
+   "q": "Dokuma tezgâhında orta onarım ne sıklıkla yapılır ve kaç kişi yapar?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 3.73311190000004
+    }
+   ],
+   "maliyet": 0.00032337,
+   "u2u": 3.3054262294769288,
+   "ilk_dogr": 2.564,
+   "istek_oncesi": 0.7414262294769287,
+   "toplam": 4.4753148555755615,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Orta onarımlar, dokuma tezgahının ağır aşınması durumunda daha sık olmak üzere, programa göre yılda en az iki kez yapılır; iki vardiyalı çalışmada en az her altı ayda bir, üç vardiyalı çalışmada ise en az her dört ayda bir gerçekleştirilir. Onarımlar iki işçiden oluşan bir ekip tarafından gerçekleşt",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "aday_sorular:A100",
+   "q": "Kahve makinesinde bir fincan kaç ons su sayılıyor?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "deepinfra",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "",
+     "kacak": false,
+     "sn": 3.081224500000644
+    }
+   ],
+   "maliyet": 0.0003028,
+   "u2u": 2.11102779006958,
+   "ilk_dogr": 1.251,
+   "istek_oncesi": 0.8600277900695801,
+   "toplam": 3.9429221153259277,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Bir fincan 5 onza eşittir. 1 fincan 5 fl. oz. demlenmiş kahveye eşittir. 1 fincan 5 sıvı onza demlenmiş kahveye eşittir. 1 fincan 5 onzaya eşittir.",
+   "yanlis_ret": false,
+   "deger": true
+  }
+ ],
+ "yedek": [
+  {
+   "qid": "questions:Q13",
+   "q": "Ceketteki kuşgözü (eyelet) dikişinde en az kaç üst üste dikiş olmalı?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "venice",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "yapay kesinti (duman testi)",
+     "kacak": false,
+     "sn": 0.0
+    },
+    {
+     "provider": "venice",
+     "err": "",
+     "kacak": false,
+     "sn": 2.0388152000004993
+    }
+   ],
+   "maliyet": 0.00047694,
+   "u2u": 2.3813133354187013,
+   "ilk_dogr": 1.737,
+   "istek_oncesi": 0.6443133354187012,
+   "toplam": 2.684258222579956,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Kuşgözü (eyelet) dikişinin, dış taraftaki purling (süsleme dikişi) ile birlikte en az dört (4) üst üste binen dikişe sahip olması gerekir.",
+   "yanlis_ret": false,
+   "deger": true
+  },
+  {
+   "qid": "questions:Q06",
+   "q": "Kahve makinesi nasıl temizlenir?",
+   "beklenen": "cevap",
+   "durum": "verified",
+   "model": true,
+   "saglayici": "venice",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "yapay kesinti (duman testi)",
+     "kacak": false,
+     "sn": 0.0
+    },
+    {
+     "provider": "venice",
+     "err": "",
+     "kacak": false,
+     "sn": 8.201246999999967
+    }
+   ],
+   "maliyet": 0.00072225,
+   "u2u": 2.10795085144043,
+   "ilk_dogr": 1.522,
+   "istek_oncesi": 0.5859508514404297,
+   "toplam": 8.790834665298462,
+   "servis_yok": false,
+   "sorunlar": [],
+   "cevap": "Temizlemeden önce kahve makinesinin fişini çekin ve soğumasını bekleyin. Filtre sepetini, kalıcı filtreyi (tüm modellerde dahil değildir), duş başlığı kapağını (saat yönünün tersine çevirerek), sürahiyi ve sürahi kapağını çıkarın. Bunları sıcak su ve hafif sıvı deterjan çözeltisiyle yıkayın. Asla aş",
+   "yanlis_ret": false
+  },
+  {
+   "qid": "questions_ek:Q25",
+   "q": "Pantolonda düğme dikişi için iğne ipliği Tex numarası kaç olmalı?",
+   "beklenen": "cevap",
+   "durum": "failed",
+   "model": true,
+   "saglayici": "venice",
+   "denemeler": [
+    {
+     "provider": "deepinfra",
+     "err": "yapay kesinti (duman testi)",
+     "kacak": false,
+     "sn": 0.0
+    },
+    {
+     "provider": "venice",
+     "err": "",
+     "kacak": false,
+     "sn": 2.5812416000007943
+    }
+   ],
+   "maliyet": 0.00046287,
+   "u2u": 2.1470895767211915,
+   "ilk_dogr": 1.475,
+   "istek_oncesi": 0.6720895767211914,
+   "toplam": 3.2540969848632812,
+   "servis_yok": false,
+   "sorunlar": [
+    "cümlede kendi alıntısında olmayan sayı: ['39', '50', '59', '60']",
+    "sesli metinde alıntılarda olmayan sayı: ['39', '59', '60']"
+   ],
+   "cevap": "Düğme (Buttons) alanı için iğne ipliği (Needle thread) Tex boyutu 71-105 (30/3) olmalıdır. Düğme iliği (Button attachment) alanı için iğne ipliği (Needle thread) Tex boyutu 60 59 39 50-60 olarak belirtilmiştir.",
+   "yanlis_ret": false
+  }
+ ],
+ "ceviri_maliyet": 0.00049439,
+ "saglayici_yeniden": [
+  {
+   "qid": "aday_sorular:A133",
+   "durum": "clarify",
+   "model": true,
+   "saglayici": "deepinfra",
+   "maliyet": 0.00025435
+  },
+  {
+   "qid": "aday_sorular:A142",
+   "durum": "clarify",
+   "model": true,
+   "saglayici": "deepinfra",
+   "maliyet": 0.000256
+  },
+  {
+   "qid": "questions:Q07",
+   "durum": "clarify",
+   "model": true,
+   "saglayici": "deepinfra",
+   "maliyet": 0.00024056
+  },
+  {
+   "qid": "questions_ek:Q25",
+   "durum": "clarify",
+   "model": true,
+   "saglayici": "deepinfra",
+   "maliyet": 0.00021121
+  }
+ ]
+}

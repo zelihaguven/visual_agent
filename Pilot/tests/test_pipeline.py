@@ -532,6 +532,7 @@ def test_c_mode_model_clarification_lists_no_answer(c_mode):
     r = pipeline.soru_cevapla("Ceketin dış dikişlerinde SPI kaç?")
     assert r.verification.status == "clarify" and r.answer["netlestirme_sorusu"] == "Ceket mi pantolon mu?"
     assert r.llm_called and not r.speech_text
+    assert r.answer["saglayici"] == "deepinfra"
 
 
 def test_c_mode_not_found(c_mode):

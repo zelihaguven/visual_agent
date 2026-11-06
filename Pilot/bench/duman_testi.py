@@ -132,13 +132,15 @@ def report(out: dict[str, Any]) -> str:
     cl = [r for r in rows if r["beklenen"] == "netleştirme"]
     u2u = [r["u2u"] for r in rows if r["u2u"] is not None]
     dv = [r["deger"] for r in an if r.get("deger") is not None]
-    model_rows = [r for r in rows if r["saglayici"]]
-    provs = Counter(r["saglayici"] for r in model_rows)
-    rule_cloud = [r for r in rows if not r["model"] and r["saglayici"]]
+    model_rows = [r for r in rows if r["model"]]
+    again = {r["qid"]: r["saglayici"] for r in out.get("saglayici_yeniden") or []}
+    # modelin netleştirmesinde sağlayıcı kaydı yoktu (kayıt hatası, düzeltildi): o sorular bir kez yeniden koşuldu
+    provs = Counter(r["saglayici"] or (f"{again[r['qid']]} (yeniden)" if r["qid"] in again else None) for r in model_rows)
+    rule_cloud = [r for r in rows if not r["model"] and r["saglayici"]]   # cevap modeli; çeviri aramanın parçası
     bad = sum(bool(r.get("dogrulanmis_gorunen_yanlis")) for r in rows)
     hst = Counter((hat.get(r["qid"]) or {}).get("durum") for r in an)
     p50, p95 = percentile(u2u, .5), percentile(u2u, .95)
-    cost = sum(r["maliyet"] or 0 for r in rows + fb) + (out.get("ceviri_maliyet") or 0)
+    cost = sum(r["maliyet"] or 0 for r in rows + fb + (out.get("saglayici_yeniden") or [])) + (out.get("ceviri_maliyet") or 0)
     gate = lambda ok: "✅" if ok else "❌"
     L = ["# Bağlama sonrası duman testi (c kipi)", "",
          f"{out['tarih']}. Uygulamanın yolu (`pipeline.soru_cevapla`, PILOT_ANSWER_MODE=c), gerçek arama ve bulut. "
@@ -146,8 +148,10 @@ def report(out: dict[str, Any]) -> str:
          "## Kapılar", "", "| Kapı | Sonuç | |", "|---|---|---|",
          f"| Doğrulanmış görünen yanlış = 0 | {bad} | {gate(bad == 0)} |",
          f"| Uçtan uca ilk doğrulanmış cümle p50 ≤ 3 sn | p50 {s_(p50)} · p95 {s_(p95)} (n={len(u2u)}) | {gate(p50 == p50 and p50 <= 3)} |",
-         f"| Cevap veren çağrılarda sağlayıcı DeepInfra | {dict(provs)} | {gate(set(provs) <= {'deepinfra'})} |",
-         f"| Kural çıkışlarında bulut çağrısı yok | {len(rule_cloud)} | {gate(not rule_cloud)} |",
+         f"| Cevap veren çağrılarda sağlayıcı DeepInfra | {dict(provs)} | {gate(all(str(p).startswith('deepinfra') for p in provs))} |",
+         f"| Kural çıkışlarında cevap modeli çağrısı yok | {len(rule_cloud)} | {gate(not rule_cloud)} |",
+         "| (not) Arama sonrası kural çıkışlarında çeviri çağrısı yapılır (aramanın parçası, yalnız sorgu metni); arama öncesi "
+         "çıkışlarda (yabancı marka, sesli kaynak) hiç bulut çağrısı yok | | |",
          f"| Yedeğe geçiş (birincil yapay kesik → Venice) | {[r['saglayici'] for r in fb]} | {gate(fb and all(r['saglayici'] == 'venice' for r in fb))} |",
          f"| ✓ / yanlış ret, hat ölçümüne göre (aynı {len(an)} soru) | duman ✓ {st['verified']} ⚠ {st['partial']} ✖ {st['failed']} "
          f"ret {st['not_found']} · hat k8 ✓ {hst['verified']} ⚠ {hst['partial']} ✖ {hst['failed']} ret {hst['not_found']} | bilgi |",
@@ -158,7 +162,7 @@ def report(out: dict[str, Any]) -> str:
     for r in rows:
         h = (hat.get(r["qid"]) or {})
         L.append(f"| {r['qid']} | {r['beklenen']} | {r['durum']} | {h.get('durum', '–')} | "
-                 f"{'' if r.get('deger') is None else ('✓' if r['deger'] else '✗')} | {r['saglayici'] or 'kural'} | {s_(r['u2u'])} | "
+                 f"{'' if r.get('deger') is None else ('✓' if r['deger'] else '✗')} | {(r['saglayici'] or 'model') if r['model'] else 'kural'} | {s_(r['u2u'])} | "
                  f"{'; '.join(r['sorunlar'])[:120]} |")
     L += ["", "## Yedeğe geçiş", "", "| Soru | Durum | Sağlayıcı | Denemeler |", "|---|---|---|---|"]
     for r in fb:
@@ -167,4 +171,11 @@ def report(out: dict[str, Any]) -> str:
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--rapor" in sys.argv:          # kayıttan yeniden rapor (çağrı yok)
+        d = json.loads((OUT / "ham" / "duman_testi.json").read_text(encoding="utf-8"))
+        p = OUT / f"duman_testi_{d['tarih'][:10]}.md"
+        p.write_text(report(d), encoding="utf-8")
+        print(p)
+    else:
+        main()

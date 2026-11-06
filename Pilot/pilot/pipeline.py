@@ -486,8 +486,10 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
         docs = list(dict.fromkeys(hits[n - 1].chunk["doc_id"] for n in v.get("secenekler") or []))
         timings["total"] = time.time() - t0
         msg = ((ans.get("netlestirme") or {}).get("soru") or "Değer ürüne göre değişiyor. Hangisi için?").strip()
-        return _clarify(question, ctx, timings, docs if len(docs) >= 2 and not doc_ids else [], msg, hits,
-                        hint="Sorunuza ayrıntı ekleyin.", llm_called=True)
+        res = _clarify(question, ctx, timings, docs if len(docs) >= 2 and not doc_ids else [], msg, hits,
+                       hint="Sorunuza ayrıntı ekleyin.", llm_called=True)
+        res.answer.update(sema="c", saglayici=answer["saglayici"], denemeler=answer["denemeler"], maliyet=answer["maliyet"])
+        return res
     if tur == "bulunamadi" and v["status"] == "not_found":
         timings["total"] = time.time() - t0
         answer["bulunamadi"] = True
