@@ -541,9 +541,8 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
     speech = ""
     say = normalize_for_speech if lang == "tr" else normalize_for_speech_en
     if verification.status in ("verified", "partial"):
-        voice = ans.get("sesli_metin") or ""
-        speech = say(voice if voice and v.get("sesli_ok") and question_lang(voice) == lang
-                     else " ".join(x.get("metin", "") for x in items))
+        # Ses yalnız doğrulanmış öğe metinlerinden (karar 2026-11-06, c150b-JS: modelin sesli_metin alanı yok)
+        speech = say(" ".join(x.get("metin", "") for x, it in zip(items, v["items"]) if it["ok"]))
     timings["total"] = time.time() - t0
     if on_event is not None:
         on_event({"olay": "rozet", "durum": verification.status, "sorunlar": verification.problems})
