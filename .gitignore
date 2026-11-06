@@ -25,3 +25,6 @@ Pilot/data/scale/
 # Gizli anahtarlar (OPENROUTER_API_KEY yalnız ortam değişkeninden okunur)
 .env
 *.env
+
+# OCR karşılaştırması: ara PDF çıktıları (bench/ocr_karsilastir.py; yeniden üretilir)
+Pilot/data/ocr_test/

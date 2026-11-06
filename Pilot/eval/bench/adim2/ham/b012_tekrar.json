@@ -1,0 +1,124 @@
+{
+ "soru": "S-7300A'da dijital baskı ayağı kaldırıcısının kaldırma yüksekliği nasıl ayarlanır?",
+ "tekrar": 10,
+ "sonuc": {
+  "c150bJS": {
+   "dagilim": {
+    "verified": 10
+   },
+   "dogrulanmis_gorunen_yanlis": 10,
+   "satirlar": [
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) (1) kaldırma kolu (lifting lever) (2) ile kaldırıldığında standart yükseklik 6 mm'dir. [1] Somunu (nut) (3) gevşetin ve ardından bask",
+     "maliyet": 0.00040207
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) (1) kaldırma kolu (lifting lever) (2) ile kaldırıldığında standart yükseklik 6 mm'dir. [1] Somunu (nut) (3) gevşetin ve ardından bask",
+     "maliyet": 0.00039221
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) kaldırma kolu (lifting lever) ile kaldırıldığında standart yükseklik 6 mm'dir. [1] Somunu (nut) gevşetin ve ardından baskı ayağına ba",
+     "maliyet": 0.00037793
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) (1) kaldırma kolu (lifting lever) (2) ile kaldırıldığında standart yükseklik 6 mm'dir. [1] Somunu (3) gevşetin ve ardından baskı ayağ",
+     "maliyet": 0.00038847
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) (1) kaldırma kolu (lifting lever) (2) ile kaldırıldığında standart yükseklik 6 mm'dir. [1] Somunu (nut) (3) gevşetin ve ardından bask",
+     "maliyet": 0.00039323
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) (1) kaldırma kolu (lifting lever) (2) ile kaldırıldığında standart yükseklik 6 mm'dir. [1] Somunu (nut) (3) gevşetin ve ardından bask",
+     "maliyet": 0.00039357
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) (1) kaldırma kolu (lifting lever) (2) ile kaldırıldığında standart yükseklik 6 mm'dir. [1] Somunu (3) gevşetin ve ardından baskı ayağ",
+     "maliyet": 0.00038167
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) (1) kaldırma kolu (lifting lever) (2) ile kaldırıldığında standart yükseklik 6 mm'dir. [1] Somunu (nut) (3) gevşetin ve ardından bask",
+     "maliyet": 0.00039289
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (presser foot) kaldırma kolu (lifting lever) ile kaldırıldığında standart baskı ayağı yüksekliği 6 mm'dir. [1] Somunu (nut) gevşetin ve ardından bas",
+     "maliyet": 0.00037895
+    },
+    {
+     "durum": "verified",
+     "cevap": "Baskı ayağı (1) kaldırma kolu (2) ile kaldırıldığında standart baskı ayağı yüksekliği 6 mm'dir. [1] Somunu (3) gevşetin ve ardından baskı ayağına basınç uygulan",
+     "maliyet": 0.00037317
+    }
+   ],
+   "maliyet": 0.00387416
+  },
+  "c150bJSN": {
+   "dagilim": {
+    "not_found": 10
+   },
+   "dogrulanmis_gorunen_yanlis": 0,
+   "satirlar": [
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    },
+    {
+     "durum": "not_found",
+     "cevap": "",
+     "maliyet": 0.0002139
+    }
+   ],
+   "maliyet": 0.002139
+  }
+ }
+}

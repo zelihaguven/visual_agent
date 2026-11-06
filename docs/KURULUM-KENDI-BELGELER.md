@@ -77,9 +77,10 @@ API planı: [plan_cevap_modeli_2026-11-06_api.md](../Pilot/eval/bench/adim2/plan
 - [ ] **Tesseract OCR** (5.x) ve **Türkçe dil verisi** (`tur.traineddata`, `eng` ile birlikte).
   - Windows: UB Mannheim kurulumu (`winget install UB-Mannheim.TesseractOCR`), kurulumda Turkish seçilir. Linux: `apt install tesseract-ocr tesseract-ocr-tur`.
   - Kontrol: `tesseract --list-langs` içinde `tur` ve `eng`.
-- [ ] **Ghostscript** (PDF işleme; OCRmyPDF gerektirir).
+- [ ] **Ghostscript: isteğe bağlı** (2026-11-06). OCRmyPDF 17, `--rasterizer pypdfium --output-type pdf` ile Ghostscript'siz çalışır (sayfa görüntüsü pypdfium2 ile, PDF/A çıktısı yok, gerekmiyor). Bu makinede kurulmadı: yönetici izni gerekiyordu. Kurulursa yalnız PDF/A için.
   - Windows: `winget install ArtifexSoftware.GhostScript`. Linux: `apt install ghostscript`.
-- [ ] **OCRmyPDF** (Python paketi, uygulama ortamına): `pip install ocrmypdf`. Kontrol: `ocrmypdf --version`.
+- [ ] **OCRmyPDF** (Python paketi, uygulama ortamına): `pip install ocrmypdf` (17.x). Kontrol: `ocrmypdf --version`. Çağrı: `ocrmypdf -l tur+eng --skip-text --rasterizer pypdfium --output-type pdf giris.pdf cikis.pdf` (bozuk katmanlı belgede `--redo-ocr`).
+- [ ] Tesseract yönetici izni olmadan kullanıcı klasörüne kurulabilir (`winget install UB-Mannheim.TesseractOCR`; `%LOCALAPPDATA%\Programs\Tesseract-OCR`). Türkçe dil verisi elle: `tur.traineddata` → `tessdata` klasörü (tesseract-ocr/tessdata deposu).
 - [ ] **Lisans notu:**
   - Ghostscript **AGPL-3.0**. Şirket içi kullanımda (ağ üzerinden dışarıya hizmet verilmeden, değiştirilmeden) AGPL'in kaynak kodu paylaşma yükümlülüğü doğmaz. Hizmet dışarıya açılırsa ya da Ghostscript değiştirilirse hukuk görüşü gerekir. Ticari lisans seçeneği Artifex'ten alınabilir.
   - Tesseract Apache-2.0, OCRmyPDF MPL-2.0.

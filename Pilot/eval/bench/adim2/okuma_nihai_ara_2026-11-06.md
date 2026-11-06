@@ -481,3 +481,22 @@ Etkilenen sorular: 28 netleştirme sorusu, kayıtlarda kural çıkışı olanlar
 
 - Kalibrasyonla çıkan sonuç: harf/rakam karışıklığı teknik belgede bozulma işareti değil ("LSd-1", "3/16-inch", "230psi"). Bu sinyal çıkarıldı.
 - Bilinen sayısal OCR hataları ("112", "IS", "3116") metinden anlaşılamaz. Bu yüzden "taranmış + OCR katmanı" ayrı sınıf ve yeniden OCR karşılaştırmasına aday.
+
+## 17. Kararlar (2026-11-06 akşam) ve B012 tekrar ölçümü
+
+- **Çalışma biçimi c150b-JS** (sesli_metin yok; ses yalnız doğrulanmış öğe metinlerinden). Gri akış sonucu kabul.
+- **B012, 10 tekrar** (uygulama c yolu, yeni hat, 8 kaynak; 0,006 USD; `bench/b012_tekrar.py`):
+
+| Şema | sonuç | doğrulanmış görünen yanlış |
+|---|---|---|
+| c150b-JS | 10/10 ✓ ("kaldırma kolu … standart yükseklik 6 mm") | **10/10** |
+| c150b-JSN (niteleyici kuralı) | 10/10 "bulunamadı" | **0/10** |
+
+- c150b-JS'de B012 bu hatta her seferinde yanlış cevap veriyor (önceki koşulardaki "bazen" görüntüsü arama ve kural farklarındandı).
+- İstem kuralı ("sorudaki ayırt edici niteleyici kaynakta yoksa o konuyu başka parçanın bilgisiyle cevaplama; bulunamadı") oranı 10/10'dan 0/10'a indirdi.
+- Tam set regresyon kontrolü (c150b-JSN, ~0,06 USD) sürüyor.
+- **OCR araçları kuruldu:**
+  - Tesseract 5.4 (kullanıcı klasörüne, Türkçe dil verisiyle);
+  - OCRmyPDF 17.13 (uygulama ortamına).
+  - **Ghostscript kurulamadı:** yönetici izni gerekti, onay penceresi iptal edildi.
+  - OCRmyPDF Ghostscript'siz çalışabiliyor (`--rasterizer pypdfium`, `--output-type pdf`). Bu durumda AGPL'li Ghostscript gerekmiyor; yalnız PDF/A çıktısı yok (ihtiyaç da yok).

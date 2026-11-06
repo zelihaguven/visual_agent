@@ -865,3 +865,23 @@ Bu bölüm §21, §25, §27 ve §28'in yerine geçer. Dayanaklar:
 - **A9 kapandı:** buluta yalnız parçalar ve yalnız ZDR. Belgeler yerelde indekslenir. Çeviri çağrısına yalnız soru, cevap çağrısına soru + en ilgili 8 parça gider.
 - **Taranmış belgeler:** sistem bugün OCR yapmıyor, PDF'in OCR metin katmanını kullanıyor. Metin katmanı olmayan tarama aranamaz. Bilinen OCR hataları ("112" = ½, "IS" = 15) doğrulayıcıda yanlış değer olarak geçmez, soru cevapsız kalır. Adım 6 işi: gerçek taranmış belgede cevapsız kalma ölçümü ve OCR iyileştirme planı (görüntüden OCR, sayfayı görsel modelle okuma).
 - **Yanlış değer toleransı SIFIR:** değer (ölçü, tork, vida, ayar, kod) içeren cevaplarda. Emin değilse "bulunamadı / doğrulanamadı"; bedeli cevapsız kalan sorular.
+
+## 33. Gün içi süre profili (PLAN; koşulmadı, onay bekliyor)
+
+**Soru:** Süre ölçümleri saate göre değişiyor (sabah c150b-J ilk doğrulanmış cümle p95 3,63 sn, öğleden sonra c150b-JS 5,08 sn; aynı saatte yan yana ölçülmedi). Öğleden sonra p95 hedefi (≤ 3 sn) aşıyor mu?
+
+**Yöntem:**
+- İş saatlerinde, bilgisayar açıkken **birkaç saatte bir 10 soruluk kısa ölçüm**: 09:30, 11:30, 14:00, 16:30.
+- Soru seti sabit: duman testinin tabakalı seçiminden yalnız model çağıran cevaplı 10 soru.
+- Uygulamanın c yolu (`pipeline.soru_cevapla(on_event=...)`, c150b-JS, DeepInfra).
+- Her soruda kaydedilenler:
+  - ölçüm saati (gün ve saat);
+  - ilk görünen kelime ve ilk doğrulanmış cümle (uçtan uca);
+  - arama süresi ve çeviri süresi;
+  - modelin ilk token süresi ve sağlayıcı.
+- **Zamanlanmış görev yok** (karar): kullanıcı oturum başında elle başlatan bir PowerShell döngüsü (`bench/sure_profili.ps1`). Belirtilen saatlerde koşar, 18:00'de kendini kapatır; açılışta başlamaz.
+- Süre: 5 iş günü.
+
+**Rapor:** saat dilimine göre p50 / p95 (09–11, 11–13, 13–15, 15–17) ve adım dökümü (arama, çeviri, model ilk token, ilk doğrulanmış cümle). Öğleden sonra p95 > 3 sn ise hangi adımda arttığı görülür (model sağlayıcısı mı, çeviri mi).
+
+**Maliyet:** ölçüm başına 10 cevap + 10 çeviri ≈ 0,003 USD. Günde 4 ölçüm × 5 gün = 20 ölçüm ≈ **0,06–0,07 USD**.
