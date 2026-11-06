@@ -4,6 +4,7 @@
 param([string]$Model = "google/gemma-3-12b-it", [string]$Tag = "ceviri_gemma3_12b")
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $env:PYTHONUNBUFFERED = "1"
 $env:PILOT_QDRANT_URL = "http://127.0.0.1:6333"
 $env:OPENROUTER_API_KEY = [Environment]::GetEnvironmentVariable("OPENROUTER_API_KEY", "User")

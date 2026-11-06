@@ -94,6 +94,8 @@ def report() -> str:
 
 
 def main() -> None:
+    from bench import require_mode
+    require_mode("bugun")
     from bench import answer_models as am
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--tag", required=True)

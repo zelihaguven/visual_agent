@@ -869,6 +869,8 @@ def report(tag: str, latency_tag: str | None) -> str:
 
 
 def main() -> None:
+    from bench import require_mode
+    require_mode("bugun")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--prepare", action="store_true")
     ap.add_argument("--models", nargs="*", default=[])

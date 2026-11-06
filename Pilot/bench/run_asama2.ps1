@@ -3,6 +3,7 @@
 # Kullanım (Pilot klasöründe): powershell -ExecutionPolicy Bypass -File bench\run_asama2.ps1
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $py = "C:\Users\egitim.YESIM\Desktop\visual_agent_repo\.venv\Scripts\python.exe"
 $log = "data\logs\bench_asama2.log"
 function Run($name, [string[]]$extra, [hashtable]$envs) {

@@ -4,6 +4,7 @@ param([string[]]$Keys = @("bge-m3-local", "bge-m3-or", "qwen3-8b", "qwen3-4b", "
       [string[]]$MrlKeys = @("qwen3-8b", "te3-large"))
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $env:OPENROUTER_API_KEY = [Environment]::GetEnvironmentVariable("OPENROUTER_API_KEY", "User")
 $py = "C:\Users\egitim.YESIM\Desktop\visual_agent_repo\.venv\Scripts\python.exe"
 $log = "data\logs\bench_asama4_collect.log"

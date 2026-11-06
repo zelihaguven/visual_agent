@@ -293,6 +293,8 @@ def report(tag: str) -> tuple[str, dict[str, Any]]:
 
 
 def main() -> None:
+    from bench import require_mode
+    require_mode("bugun")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--tag", default="ana")
     a = ap.parse_args()

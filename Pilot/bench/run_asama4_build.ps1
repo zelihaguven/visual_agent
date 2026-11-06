@@ -2,6 +2,7 @@
 # Kullanım (Pilot klasöründe): powershell -ExecutionPolicy Bypass -File bench\run_asama4_build.ps1
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $env:OPENROUTER_API_KEY = [Environment]::GetEnvironmentVariable("OPENROUTER_API_KEY", "User")
 $py = "C:\Users\egitim.YESIM\Desktop\visual_agent_repo\.venv\Scripts\python.exe"
 $log = "data\logs\bench_asama4_build.log"

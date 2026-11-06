@@ -6,6 +6,7 @@
 param([Parameter(Mandatory = $true)][string]$SubsetDir)
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $env:PYTHONUNBUFFERED = "1"
 $env:PILOT_QDRANT_URL = "http://127.0.0.1:6333"
 $py = "C:\Users\egitim.YESIM\Desktop\visual_agent_repo\.venv\Scripts\python.exe"

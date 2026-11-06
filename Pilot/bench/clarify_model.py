@@ -48,6 +48,8 @@ def option_docs(res: Any, hits: list[Any]) -> list[str]:
 
 
 def main() -> None:
+    from bench import require_mode
+    require_mode("bugun")
     from bench.answer_models import CloudModel, parse_answer, questions
     from bench.doc_rules_diff import VERDICTS, options_verdict
     from pilot import config, pipeline

@@ -4,6 +4,7 @@
 param([switch]$SkipBefore)
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $py = "C:\Users\egitim.YESIM\Desktop\visual_agent_repo\.venv\Scripts\python.exe"
 $log = "data\logs\bench_asama25.log"
 function Step($title, [string[]]$cmd) {

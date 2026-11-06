@@ -2,6 +2,7 @@
 # Kullanım (Pilot klasöründe): powershell -ExecutionPolicy Bypass -File bench\run_bulunamadi.ps1
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $py = "C:\Users\egitim.YESIM\Desktop\visual_agent_repo\.venv\Scripts\python.exe"
 $log = "data\logs\bench_bulunamadi.log"
 "$(Get-Date -Format HH:mm:ss) == yeni_varsayilan" | Out-File $log -Append -Encoding utf8

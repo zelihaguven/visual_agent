@@ -2,12 +2,11 @@
 gerçek uygulama yolu. Beş senaryo: cevap, netleştirme, bulunamadı, sesli soru (STT sonucu oturuma yazılarak; mikrofon
 yok), İngilizce soru. Ekrandaki rozet, öğe listesi, kaynak etiketi, sağlayıcı ve hata/uyarı metinleri okunur.
 
-Kullanım (Pilot klasöründe):  python -m bench.arayuz_duman
+Kullanım (Pilot klasöründe):  $env:PILOT_ANSWER_MODE = "c"; python -m bench.arayuz_duman
 """
 import os
 import sys
 
-os.environ["PILOT_ANSWER_MODE"] = "c"          # pilot.config içe aktarılmadan önce
 
 from pathlib import Path
 
@@ -22,6 +21,8 @@ SCENARIOS = [
 
 
 def main() -> int:
+    from bench import require_mode
+    require_mode("c")
     from streamlit.testing.v1 import AppTest
     rows = []
     for name, q, voice in SCENARIOS:

@@ -5,6 +5,7 @@
 param([Parameter(Mandatory = $true)][string]$BackupDir, [string]$Doc = "mrcoffee-2003")
 $ErrorActionPreference = "Continue"
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $env:PYTHONUNBUFFERED = "1"
 $env:PILOT_QDRANT_URL = "http://127.0.0.1:6333"
 $env:OPENROUTER_API_KEY = [Environment]::GetEnvironmentVariable("OPENROUTER_API_KEY", "User")

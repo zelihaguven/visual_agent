@@ -326,6 +326,8 @@ def report(tag: str) -> str:
 
 
 def main() -> None:
+    from bench import require_mode
+    require_mode("bugun")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--tag", default="nihai_hat")
     ap.add_argument("--max-usd", type=float, default=3.0)

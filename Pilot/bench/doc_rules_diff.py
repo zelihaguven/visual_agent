@@ -80,6 +80,8 @@ VERDICTS = {"dogru": "doğru (tam beklenen ürünler)", "fazlasi_var": "beklenen
 
 
 def main() -> None:
+    from bench import require_mode
+    require_mode("bugun")
     from bench.providers import QueryEncoder, specs
     from bench.server import server_client
     from bench.triple_fusion import K_OUT, fuse

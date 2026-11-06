@@ -9,7 +9,7 @@ Kapılar: doğrulanmış görünen yanlış 0; ✓ / yanlış ret hat ölçümü
 yan yana); uçtan uca ilk doğrulanmış cümle p50 ≤ 3 sn (p95 de raporlanır); cevap veren her çağrıda sağlayıcı DeepInfra;
 kural çıkışlarında bulut çağrısı yok.
 
-Kullanım (Pilot klasöründe; arayüz kapalı):  python -m bench.duman_testi
+Kullanım (Pilot klasöründe; arayüz kapalı):  $env:PILOT_ANSWER_MODE = "c"; python -m bench.duman_testi
 Çıktı: eval/bench/adim2/duman_testi_<tarih>.md ve ham/duman_testi.json
 """
 from __future__ import annotations
@@ -75,6 +75,8 @@ def judge(q: dict[str, Any], r: Any) -> dict[str, Any]:
 
 
 def main() -> None:
+    from bench import require_mode
+    require_mode("c")
     from pilot import config, pipeline
     config.ANSWER_MODE = "c"
     qs = pick()

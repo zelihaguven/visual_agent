@@ -5,6 +5,7 @@
 param([string]$Models = "qwen25_7b", [string]$Tag = "ana", [int]$N = 0)
 Set-Location (Split-Path -Parent $PSScriptRoot)
 $env:PYTHONUTF8 = "1"
+$env:PILOT_ANSWER_MODE = "bugun"   # ölçüm araçlarında kip açıkça (bench/__init__.py)
 $env:PYTHONUNBUFFERED = "1"
 $env:OPENROUTER_API_KEY = [Environment]::GetEnvironmentVariable("OPENROUTER_API_KEY", "User")
 $py = "C:\Users\egitim.YESIM\Desktop\visual_agent_repo\.venv\Scripts\python.exe"
