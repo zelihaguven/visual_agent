@@ -83,3 +83,11 @@ Kapsam: dev setin hat_k5, hat_k8 ve c150b-J DeepInfra kayıtları ile JUKI kayd�
 
 - "Model bilgisinden cevap, doğrulayıcı yakaladı" türü dev sette yalnız şekil sorularında görüldü (G3, A016). Sözlü değeri kendi bilgisinden yazan vaka bulunmadı. J4 bu türden değil, karakter değişimi.
 - Hepsi ✖ (güvenli yön). Doğrulanmış görünen yanlışa dönüşen yok.
+
+## Karakter normalleştirmesinden sonra (2026-11-06, kayıttan yeniden puanlama; çağrı yok)
+
+Doğrulayıcıya genel karakter normalleştirmesi eklendi (`verify.canon_chars`: NFKC + küçük tablo). Kapsam: × ✕ → x, ⁄ → /, daireli rakam blokları (❶ ➀ ➊ ⓵ ⓫ …) → rakam. Alıntı eşleştirmede ve sayı ayıklamada (cevap, alıntı, sesli metin) uygulanıyor.
+- **J4** ✖ → **✓** ("DC X 27" = kaynakta "DC × 27"). Değer ✓.
+- **J10** ✖ → **✓** ("❶" = sesli metinde "Düğme 1").
+- (a) seçilen hat bu durumda: ✓ 10 / ✖ 0 / netleştirme 1 / yanlış ret 1 (12 cevaplı soru).
+- Bütün kayıtlarda başka değişiklik yok, ✓ → ✖ yok: dev set şema C ve bugünkü şema koşuları, yeni set, hat ölçümü (5/8 kaynak). Duman testi kaydında ham model çıktısı saklanmıyordu; yeniden puanlanamadı (araç düzeltildi).

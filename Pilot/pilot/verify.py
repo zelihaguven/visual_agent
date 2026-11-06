@@ -26,9 +26,30 @@ FOREIGN_SCRIPT_RE = re.compile(r"[぀-ヺー-ヿ㐀-鿿가-힯＀-､ｦ-￯"
 CODE_RE = re.compile(r"\b[A-Za-z]{1,5}-?\d+[A-Za-z]*\b")
 
 
+def _char_table() -> dict[int, str]:
+    """NFKC'nin dokunmadığı ya da sayıyı bozduğu karakterler (genel; ondalık normalleştirmesiyle aynı türden, 2026-11-06).
+    NFKC: ① → 1, ² → 2, Ｘ → X yapar; ama × ✕ (çarpı), ❶ ➀ ➊ ⓵ ⓫ (daireli rakam blokları) aynı kalır ve ½'yi
+    kesir eğik çizgisiyle (⁄) "1⁄2" yapar. JUKI J4: kaynak "DC × 27", model "DC X 27"; J10: "❶" → "Düğme 1"."""
+    table = {ord("×"): "x", ord("✕"): "x", ord("⁄"): "/", ord("⓿"): "0"}
+    for start, first in ((0x2776, 1), (0x2780, 1), (0x278A, 1), (0x24F5, 1), (0x24EB, 11)):
+        for i in range(10):
+            table[start + i] = str(first + i)
+    return table
+
+
+CHAR_TABLE = _char_table()
+
+
+def canon_chars(text: str) -> str:
+    """Karşılaştırma ve sayı ayıklama için karakter biçimi: NFKC + CHAR_TABLE. Alıntı, kaynak, cevap ve sesli metne
+    aynı uygulanır (iki taraf aynı biçime gelir)."""
+    import unicodedata
+    return unicodedata.normalize("NFKC", text.translate(CHAR_TABLE)).translate(CHAR_TABLE)
+
+
 def normalize(text: str) -> str:
-    """Boşluk, tırnak ve tire farklarını yok say (karşılaştırma için)."""
-    t = text.casefold().replace(" ", " ")
+    """Boşluk, tırnak ve tire farklarını yok say (karşılaştırma için). Karakter biçimi canon_chars ile."""
+    t = canon_chars(text).casefold().replace(" ", " ")
     t = t.replace("’", "'").replace("“", '"').replace("”", '"').replace("–", "-").replace("—", "-")
     t = re.sub(r"\s*-\s*", "-", t)
     return re.sub(r"\s+", " ", t).strip()
@@ -77,7 +98,7 @@ BR_RE = re.compile(r"<br\s*/?>", re.I)
 def numbers_in(text: str) -> set[str]:
     """Metindeki değer sayıları (kanonik): atıf, liste numarası ve harf önekli kod içindeki rakamlar hariç.
     ".5" → "0.5"."""
-    t = strip_cites(BR_RE.sub("\n", text))
+    t = strip_cites(BR_RE.sub("\n", canon_chars(text)))
     t = re.sub(r"(?<![\d.,])[.,](\d)", r"0.\1", t)
     cleaned = CODE_RE.sub(" ", LIST_MARK_RE.sub("", t))
     return {_canon_num(m.group(0)) for m in NUM_RE.finditer(cleaned)}

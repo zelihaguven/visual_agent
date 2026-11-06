@@ -480,7 +480,8 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
     v = verify_c(ans, sources, generated, QUOTE_LIMIT[config.ANSWER_SCHEMA_VARIANT])
     answer = to_legacy(ans)
     answer.update(sema="c", saglayici=rec.get("provider"), denemeler=rec.get("denemeler"),
-                  maliyet=float((rec.get("usage") or {}).get("cost") or 0.0))
+                  maliyet=float((rec.get("usage") or {}).get("cost") or 0.0),
+                  ham=rec.get("content", ""), akis_zaman=rec.get("zaman") or [])      # denetim ve kayıttan yeniden puanlama
     tur = ans.get("tur")
     if tur == "netlestirme" and v["status"] == "clarify":
         docs = list(dict.fromkeys(hits[n - 1].chunk["doc_id"] for n in v.get("secenekler") or []))
@@ -488,7 +489,7 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
         msg = ((ans.get("netlestirme") or {}).get("soru") or "Değer ürüne göre değişiyor. Hangisi için?").strip()
         res = _clarify(question, ctx, timings, docs if len(docs) >= 2 and not doc_ids else [], msg, hits,
                        hint="Sorunuza ayrıntı ekleyin.", llm_called=True)
-        res.answer.update(sema="c", saglayici=answer["saglayici"], denemeler=answer["denemeler"], maliyet=answer["maliyet"])
+        res.answer.update({k: answer[k] for k in ("sema", "saglayici", "denemeler", "maliyet", "ham", "akis_zaman")})
         return res
     if tur == "bulunamadi" and v["status"] == "not_found":
         timings["total"] = time.time() - t0

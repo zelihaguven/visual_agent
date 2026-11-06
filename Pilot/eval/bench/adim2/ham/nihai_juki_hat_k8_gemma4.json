@@ -2808,10 +2808,8 @@
   },
   "gorulmemis_juki:J4": {
    "cikis": "cevap",
-   "durum": "failed",
-   "sorunlar": [
-    "alıntı [6] kaynakta birebir değil"
-   ],
+   "durum": "verified",
+   "sorunlar": [],
    "kaynaklar": [
     [
      "juki-mo6800s",
@@ -2865,9 +2863,9 @@
    "sira": null,
    "cevap": "Lütfen DC X 27 iğnesini veya eşdeğerlerini kullanın.",
    "ogeler": [
-    false
+    true
    ],
-   "ilk_dogrulanmis_cumle": null,
+   "ilk_dogrulanmis_cumle": 1.534,
    "atif_dogru_biri": false,
    "atif_dogru_hepsi": false,
    "atif_dokumanlari": [
@@ -3318,7 +3316,8 @@
     ]
    ],
    "istek_oncesi_sn": 0.5806124000000636,
-   "uctan_uca_ilk_token": 1.1226116000007096
+   "uctan_uca_ilk_token": 1.1226116000007096,
+   "uctan_uca_ilk_dogrulanmis": 2.1146124000000635
   },
   "gorulmemis_juki:J5": {
    "cikis": "cevap",
@@ -6143,10 +6142,8 @@
   },
   "gorulmemis_juki:J10": {
    "cikis": "cevap",
-   "durum": "failed",
-   "sorunlar": [
-    "sesli metinde alıntılarda olmayan sayı: ['1']"
-   ],
+   "durum": "verified",
+   "sorunlar": [],
    "kaynaklar": [
     [
      "juki-mo6800s",
@@ -9217,5 +9214,9 @@
  },
  "end": "2026-11-06T10:41:30",
  "ceviri_maliyet": 0.00018921999999999998,
- "tamam": true
+ "tamam": true,
+ "yeniden_puanlama": {
+  "tarih": "2026-11-06T11:26:52",
+  "degisen": 2
+ }
 }

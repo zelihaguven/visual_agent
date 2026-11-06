@@ -306,3 +306,26 @@ class TestCutQuote:
         bad = CUT[:200] + " and it shall be sewn on the collar with a box X stitch of twelve stitches per inch xx"
         r = verify(self.answer(bad[:300]), RANK)
         assert r.status == "failed"
+
+
+def test_canon_chars_multiplication_sign_and_circled_digits():
+    """Genel karakter normalleştirmesi (2026-11-06): × ↔ x/X, daireli rakamlar ↔ rakam; NFKC + küçük tablo."""
+    from pilot.verify import canon_chars, normalize, numbers_in
+    assert normalize("Please use the needle DC × 27") == normalize("Please use the needle DC X 27")
+    assert canon_chars("❶ ➋ ⓷ ⓬ ① ⑳") == "1 2 3 12 1 20"
+    assert numbers_in("Keep pressing the button ❶") == {"1"}
+    assert numbers_in("½ inch") == {"1/2"} or numbers_in("½ inch") == numbers_in("1/2 inch")
+    assert normalize("Ｘ²") == "x2"
+
+
+def test_schema_c_accepts_cross_and_circled_digit_variants():
+    from pilot.schema_c import verify_c
+    src = {1: "Please use the needle DC × 27 or the equivalents. Keep pressing the button ❶ and turn the pulley."}
+    ans = {"tur": "cevap", "cevap": [
+        {"alintilar": [{"kaynak_no": 1, "metin": "Please use the needle DC X 27 or the equivalents."}],
+         "metin": "DC X 27 iğnesini kullanın."},
+        {"alintilar": [{"kaynak_no": 1, "metin": "Keep pressing the button ❶ and turn the pulley."}],
+         "metin": "Düğme ❶'e basılı tutun ve kasnağı çevirin."}],
+        "sesli_metin": "Düğme 1'e basılı tutun.", "celiski_var": False}
+    v = verify_c(ans, src, {}, 150)
+    assert v["status"] == "verified", v["problems"]

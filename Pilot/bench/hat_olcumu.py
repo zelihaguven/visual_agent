@@ -217,6 +217,60 @@ def run(tag: str, max_usd: float, ids: list[str]) -> list[str]:
     return [str(p) for p in paths.values()]
 
 
+def rescore(tag: str) -> list[str]:
+    """Kayıttan yeniden puanlama (model ve çeviri çağrısı yok): arama kayıtlı BM25 metniyle (row["hat"]["bm25_metni"])
+    aynen yeniden kurulur, kayıtlı model çıktısı (ham) aynı pipeline'dan geçer, judge_c bugünkü doğrulamayla puanlar.
+    İlk doğrulanmış cümle kayıtlı akış zaman çizelgesinden; uçtan uca süre kayıtlı istek öncesi süreyle."""
+    from pilot import pipeline, retrieve
+    from pilot.embed import embed
+    from pilot.schema_c import parse_c, to_legacy
+    from pilot.sparse import bm25_query
+    AM.SCHEMA, AM.MAX_TOKENS, AM.SETS = "c150bJ", 1200, SETS
+    qs = {q["qid"]: q for q in AM.questions(include_clarify=True)}
+    dense: dict[str, Any] = {}
+    out = []
+    for f in sorted(AM.RAW_DIR.glob(f"{tag}_k*_{MODEL}.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        pipeline.TOP_K_SOURCES = d.get("kaynak_sayisi", 5)
+        changed = 0
+        for qid, row in d["rows"].items():
+            if qid not in qs or not row.get("ham") or str(row.get("cikis", "")).startswith("kural:"):
+                continue
+            ans, status = parse_c(row["ham"], row.get("finish"))
+            if ans is None or status != "ok":
+                continue
+            bm25 = (row.get("hat") or {}).get("bm25_metni")
+
+            def search(query: str, *, brands=None, doc_ids=None, access=None, top_k: int = 5, bm25=bm25, **_: Any):
+                if query not in dense:
+                    dense[query] = embed([query])[0]["dense"]
+                q = {"dense": dense[query], "sparse": bm25_query(bm25 or query)}
+                qc = retrieve.search_client()
+                try:
+                    pts = retrieve.candidates(qc, q, retrieve._filter(brands, doc_ids, access), "hybrid",
+                                              dparams=retrieve.dense_params())
+                finally:
+                    retrieve.release(qc)
+                return [retrieve.Hit(p.payload, i, None, p.score) for i, p in enumerate(pts)][:top_k]
+
+            pipeline.search = search
+            pipeline.chat_json = lambda _u, a=ans: (to_legacy(a), {"llm_seconds": 0.0})
+            res = pipeline.soru_cevapla(qs[qid]["q"])
+            old = (row.get("durum"), row.get("deger_dogru"))
+            row.update(AM.judge_c(qs[qid], res, {"c": ans, "rec": {"content": row["ham"],
+                                                                   "zaman": row.get("akis_zaman") or []}}))
+            if row.get("istek_oncesi_sn") is not None and row.get("ilk_dogrulanmis_cumle") is not None:
+                failed = sum(a.get("sn") or 0.0 for a in (row.get("denemeler") or [])[:-1])
+                row["uctan_uca_ilk_dogrulanmis"] = row["istek_oncesi_sn"] + failed + row["ilk_dogrulanmis_cumle"]
+            else:
+                row.pop("uctan_uca_ilk_dogrulanmis", None)
+            changed += old != (row.get("durum"), row.get("deger_dogru"))
+        d["yeniden_puanlama"] = {"tarih": datetime.now().isoformat(timespec="seconds"), "degisen": changed}
+        f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+        out.append(f"{f.name}: değişen {changed}")
+    return out
+
+
 def report(tag: str) -> str:
     AM.SETS = SETS
     s_ = lambda x: "–" if x is None or x != x else (f"{x * 1000:.0f} ms" if x < 1 else f"{x:.2f} sn".replace(".", ","))
@@ -277,6 +331,7 @@ def main() -> None:
     ap.add_argument("--max-usd", type=float, default=3.0)
     ap.add_argument("--ids", nargs="+", default=[])
     ap.add_argument("--report", action="store_true")
+    ap.add_argument("--rescore", action="store_true", help="kayıttan yeniden puanla (çağrı yok)")
     ap.add_argument("--setler", nargs="+", help="soru setleri (varsayılan: onaylı + yeni 46)")
     ap.add_argument("--ks", nargs="+", type=int, help="kaynak sayıları (varsayılan 5 8)")
     a = ap.parse_args()
@@ -285,6 +340,10 @@ def main() -> None:
         SETS = list(a.setler)
     if a.ks:
         KS = tuple(a.ks)
+    if a.rescore:                  # yalnız kayıtlar; rapor elle eklenmiş bölümler içerebilir, yeniden yazılmaz
+        for line in rescore(a.tag):
+            print(line, flush=True)
+        return
     if not a.report:
         for p in run(a.tag, a.max_usd, a.ids):
             print(p, flush=True)

@@ -58,7 +58,8 @@ def judge(q: dict[str, Any], r: Any) -> dict[str, Any]:
            "saglayici": a.get("saglayici"), "denemeler": a.get("denemeler"), "maliyet": a.get("maliyet", 0.0),
            "u2u": r.timings.get("uctan_uca_ilk_dogrulanmis"), "ilk_dogr": r.timings.get("ilk_dogrulanmis_cumle"),
            "istek_oncesi": r.timings.get("istek_oncesi"), "toplam": r.timings.get("total"),
-           "servis_yok": bool(a.get("servis_yok")), "sorunlar": r.verification.problems[:3], "cevap": text[:300]}
+           "servis_yok": bool(a.get("servis_yok")), "sorunlar": r.verification.problems[:3], "cevap": text[:300],
+           "ham": a.get("ham"), "akis_zaman": a.get("akis_zaman")}
     if q.get("expect_not_found"):
         row["dogru"] = st == "not_found"
         row["dogrulanmis_gorunen_yanlis"] = st in ("verified", "partial")
