@@ -439,3 +439,4 @@ Etkilenen sorular: 28 netleştirme sorusu, kayıtlarda kural çıkışı olanlar
 6. C009 türü çeviri hataları.
 7. `bugun` kipinin silinmesi (Adım 3'ün ilk servis sürümüyle).
 8. c150b-O.
+9. **(Düşük öncelik)** Çok kelimeli ürün adlarında küçük yazım toleransı ("makinası" ~ "makinesi"). Yalnız adın bütün kelimeleri eşleşirse; tek kelimelik eşleşme yok (karar 2026-11-06). A150 türü.

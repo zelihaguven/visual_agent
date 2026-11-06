@@ -81,3 +81,42 @@ Süreler yaklaşık (yayımlanmış ölçümler ve benzer donanım); karar §5't
 2. Set A ve B ölçümü: Docling + Tesseract / PaddleOCR / RapidOCR. Görsel model GPU'lu sunucuda ayrıca.
 3. Seçilen OCR'ın ayrıştırma hattına bağlanması (`do_ocr` sayfa bazında: yalnız metin katmanı olmayan ya da zayıf sayfalar).
 4. Set C ve D.
+
+## 7. Karar: iki aşama (2026-11-06)
+
+### a) Pilot öncesi, CPU'da (gri akıştan sonra kodlanacak)
+
+**Seçim: Docling + Tesseract arka ucu** (Docling'in OCR seçeneği, `TesseractOcrOptions`, dil `tur+eng`).
+- **Neden Docling:** OCR çıktısı bugünkü ayrıştırma hattına aynen girer: öğe kutuları (sayfa vurgusu), TableFormer ile tablo yapısı ve satır parçaları, başlık sınırlı parçalama. Ayrı bir Tesseract hattı tablo satırlarını ve kutu-öğe eşlemesini yeniden yazmayı gerektirirdi.
+- **Neden Tesseract arka ucu** (Docling'in varsayılanı EasyOCR yerine):
+  - CPU'da 2–5 kat hızlı;
+  - Türkçe dil verisi resmi;
+  - rakamda olgun; yaygın, Apache-2.0.
+  - EasyOCR CPU'da sayfa başına 5–15 sn.
+- **Sayfa bazında:** `do_ocr` yalnız metin katmanı olmayan ya da zayıf sayfalarda. Metin katmanı iyi sayfalar bugünkü gibi; süre ve risk yalnız gereken sayfada.
+- **Kurulum gereği:** sunucuda Tesseract ikilisi ve `tur`, `eng` dil verileri (Windows: UB Mannheim kurulumu; Linux: paket). Kurulum listesine madde olarak girer.
+- **Yedek seçenek:** RapidOCR (ONNX, sistem ikilisi gerektirmez). Türkçe karakterlerde (ç ğ ı ö ş ü) Latin modeli ölçülür; Tesseract Set A'da kesir/± değerlerinde geride kalırsa denenir.
+
+**Test** (§5'in Set A, B, C'si):
+- sentetik bozulmuş sayfalar;
+- bilinen hata türleri: "112" = ½, "IS" = 15, "7-114" = 7-1/4;
+- 14 OCR etiketli soruda cevapsız kalma oranı (bugünkü katman ile yeni OCR);
+- doğrulanmış görünen yanlış 0.
+
+**Süre tahmini (iş):**
+
+| İş | Tahmin |
+|---|---|
+| Yüklemede sayfa başına metin katmanı ve kalite kontrolü + kapsam raporu uyarısı | 0,5 gün |
+| Docling OCR'ın sayfa bazında açılması (Tesseract arka ucu), parça işaretleri (`ocr`, güven) | 1 gün |
+| Set A üreticisi (sayfa → görüntü, bozulma) ve değer düzeyi karşılaştırma aracı | 1 gün |
+| Ölçüm: Set A (~100 sayfa × 2 arka uç, CPU ~3–10 sn/sayfa ≈ 15–35 dk), Set B, Set C (~0,01 USD) ve rapor | 0,5–1 gün |
+| **Toplam** | **~3–3,5 iş günü** |
+
+İşleme süresi (CPU, 8 çekirdek): taranmış 1.000 sayfa ~0,5–1,5 saat, yüklemede bir kez.
+
+### b) Sunucu gelince (yalnız plan)
+
+- Görsel modelle (yerel, GPU) ikinci okuma: sayısal değer içeren tablo hücreleri ve satırlar.
+- **"İki okuma uyuşursa kabul."** Uyuşmazsa değer doğrulanmış gösterilmez (sıfır tolerans), parça "OCR değeri belirsiz" diye işaretlenir.
+- Ölçüm Set A, B ve D ile; GPU belleği ve süre §4'teki gibi.
