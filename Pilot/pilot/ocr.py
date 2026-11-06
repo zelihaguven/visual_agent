@@ -24,7 +24,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -47,6 +47,8 @@ class PageDecision:
     new_score: float | None
     chosen: str               # ozgun | yeni | eski (OCR'lı sayfa, eski katman kaldı) | goruntu (OCR metni süzgeçten geçmedi)
     reason: str = ""
+    second: str = ""          # iki okumada ikinci okuma: eski_katman | rapidocr ("" = yeni katman seçilmedi)
+    belirsiz: list[str] = field(default_factory=list)   # ikinci okumada eşi olmayan sayı içeren diziler
 
 
 def ocrmypdf_exe() -> str:
@@ -155,6 +157,12 @@ def ocr_document(meta: DocMeta, force: bool = False) -> dict[str, Any]:
                 decisions[p] = PageDecision(p, kinds[p], lang, o, n, chosen, why)
                 if chosen == "yeni":
                     outputs[p] = doc
+                    # İki okuma: eski OCR katmanı varsa o, yoksa RapidOCR (özgün sayfa görüntüsü)
+                    if kinds[p] == "yok":
+                        second, which = rapid_page_text(src, p), "rapidocr"
+                    else:
+                        second, which = old, "eski_katman"
+                    decisions[p].second, decisions[p].belirsiz = which, unconfirmed(new, second)
         final = pymupdf.open()
         for c in checks:
             p = c.page
@@ -193,6 +201,59 @@ def summary(record: dict[str, Any]) -> dict[str, Any]:
     from collections import Counter
     c = Counter(d["chosen"] for d in record.get("sayfalar", []))
     return {"yeni_ocr": c["yeni"], "eski_katman_kaldi": c["eski"], "goruntu_kaldi": c["goruntu"], "ozgun": c["ozgun"],
+            "belirsiz_dizi": sum(len(d.get("belirsiz") or []) for d in record.get("sayfalar", [])),
             "eski_kaldi_sayfalar": [d["page"] for d in record["sayfalar"] if d["chosen"] == "eski"],
             "goruntu_sayfalar": [d["page"] for d in record["sayfalar"] if d["chosen"] == "goruntu"],
             "sure_sn": record.get("sure_sn")}
+
+
+# --- İki okuma uyuşması (karar 2026-11-06; PLAN-OCR §10–§11) --------------------------------------------------------
+# OCR'lı sayfadaki her sayı içeren dizi ikinci bir okumayla karşılaştırılır: eski OCR katmanı varsa o, yoksa RapidOCR.
+# İkinci okumada OCR-karışık karakter eşlemesiyle geçmeyen dizi "OCR değeri belirsiz": doğrulanmış gösterilmez.
+# Eşlenen karakterler: / l I i | ! ] → 1, S s → 5, O o → 0, B → 8, Z → 2; ≥ ± + ~ birbirine. Ayırıcılar ("-", ".", ",")
+# eşlenmez: "43-3/8" ile "43.3/8" farklı değerdir.
+_CONF = str.maketrans({"/": "1", "l": "1", "I": "1", "i": "1", "|": "1", "!": "1", "]": "1", "S": "5", "s": "5",
+                       "O": "0", "o": "0", "B": "8", "Z": "2", "≥": "~", "±": "~", "+": "~"})
+_STRIP = ".,;:()[]{}\"'”“’‘«»"
+
+
+def num_key(token: str) -> str:
+    return token.strip(_STRIP).translate(_CONF)
+
+
+def numeric_tokens(text: str) -> list[str]:
+    """Rakam içeren boşlukla ayrılmış diziler (dış noktalama atılmış)."""
+    import re
+    return [t.strip(_STRIP) for t in text.split() if re.search(r"\d", t)]
+
+
+def unconfirmed(primary: str, second: str) -> list[str]:
+    """primary'deki sayı içeren dizilerden second'da eşi olmayanlar. Eş: aynı anahtarlı dizi ya da (2+ karakterli
+    anahtar için) second'ın boşluksuz metninde anahtarın geçmesi (okuyucular kelime sınırını farklı koyabiliyor:
+    "40lbs" / "40 lbs")."""
+    keys = {num_key(t) for t in second.split()}
+    joined = "".join(second.split()).translate(_CONF)
+    out = []
+    for tok in numeric_tokens(primary):
+        k = num_key(tok)
+        if k in keys or (len(k) >= 2 and k in joined):
+            continue
+        out.append(tok)
+    return out
+
+
+_RAPID: list[Any] = []
+
+
+def rapid_page_text(pdf: Path | str, page: int, dpi: int = 300) -> str:
+    """Sayfanın RapidOCR okuması (yerel, ONNX, GPU'suz). Satırlar boşlukla birleştirilir."""
+    import numpy as np
+    import pymupdf
+    if not _RAPID:
+        from rapidocr import RapidOCR
+        _RAPID.append(RapidOCR())
+    with pymupdf.open(str(pdf)) as doc:
+        pix = doc[page - 1].get_pixmap(dpi=dpi)
+    img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.h, pix.w, pix.n)[:, :, :3].copy()
+    res = _RAPID[0](img)
+    return " ".join(res.txts or ())

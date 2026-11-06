@@ -467,14 +467,20 @@ def parsed_path(meta: DocMeta) -> Path:
 
 def load_or_parse(meta: DocMeta, force: bool = False) -> dict[str, Any]:
     """Parse sonucunu diskten oku, yoksa üret ve yaz."""
+    from . import config
     path = parsed_path(meta)
-    if path.exists() and not force:
-        result = json.loads(path.read_text(encoding="utf-8"))   # Windows varsayılanı cp1254: açık UTF-8
-    else:
+    result = json.loads(path.read_text(encoding="utf-8")) if path.exists() and not force else None   # açık UTF-8
+    if config.OCR_ENABLED and (result is None or force):
+        from .ocr import ocr_document          # yüklemede OCR (PLAN-OCR §9–§11); gerekmiyorsa OCR'lı PDF üretilmez
+        ocr_document(meta, force=force)
+    # Önbellek başka dosyadan (OCR'lı / özgün) üretilmişse yeniden ayrıştır
+    if result is not None and result.get("kaynak_dosya", meta.file) != meta.path.name:
+        result = None
+    if result is None:
         started = time.time()
         elements, failed = parse_pdf(meta)
-        result = {"doc_id": meta.doc_id, "n_elements": len(elements), "failed_pages": failed,
-                  "seconds": round(time.time() - started, 1), "elements": elements}
+        result = {"doc_id": meta.doc_id, "kaynak_dosya": meta.path.name, "n_elements": len(elements),
+                  "failed_pages": failed, "seconds": round(time.time() - started, 1), "elements": elements}
     changed = False
     if "fallback_pages" not in result:
         result["elements"], result["fallback_pages"] = apply_text_fallback(meta, result["elements"])

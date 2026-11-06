@@ -186,8 +186,10 @@ class StreamAssembler:
     Sıra kuralı B: öğe metinleri gizli sayılarıyla hemen akar; açılış sıralıdır (imleç), ✖ sırayı tıkamaz.
     Doğrulama: schema_c.check_item (alıntı birebir, alan etiketi, sayılar kendi alıntısında, tolerans)."""
 
-    def __init__(self, sources: dict, generated: dict | None, limit: int, lang: str, emit) -> None:
+    def __init__(self, sources: dict, generated: dict | None, limit: int, lang: str, emit,
+                 uncertain: dict | None = None) -> None:
         self.sources, self.generated, self.limit, self.lang, self.emit = sources, generated or {}, limit, lang, emit
+        self.uncertain = uncertain or {}          # kaynak no → OCR değeri belirsiz diziler
         self.reset_state()
         self.ilk_gorunen_kelime: float | None = None
         self.ilk_dogrulanmis: float | None = None
@@ -224,7 +226,7 @@ class StreamAssembler:
                 item = json.loads(content[s:e], strict=False)
             except ValueError:
                 item = {}
-            r = check_item(item, self.sources, self.generated, self.limit) if item else {"ok": False, "kaynaklar": [], "sekil": False}
+            r = check_item(item, self.sources, self.generated, self.limit, self.uncertain) if item else {"ok": False, "kaynaklar": [], "sekil": False}
             self.checked.append({"item": item, **r})
         self._reveal(t)
 

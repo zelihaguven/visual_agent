@@ -27,5 +27,13 @@ if __name__ == "__main__":
             log.warning("   UYARI: %d sayfada metin katmanı yok, aranamaz (OCR gerekli): %s", tl["yok"], tl["ocr_gerekli"][:20])
         if tl["zayif"]:
             log.warning("   UYARI: %d sayfada metin katmanı bozuk (yeniden OCR): %s", tl["zayif"], tl["yeniden_ocr_adayi"][:20])
+        from pilot import config
+        from pilot.ocr import load_record
+        from pilot.ocr import summary as ocr_summary
+        rec = load_record(meta) if config.OCR_ENABLED else None
+        if rec:
+            o = ocr_summary(rec)
+            log.info("   OCR: %d sayfa yeni OCR, %d eski katman kaldı, %d görüntü kaldı (süzgeç), %d belirsiz sayı dizisi, %.0f sn",
+                     o["yeni_ocr"], o["eski_katman_kaldi"], o["goruntu_kaldi"], o["belirsiz_dizi"], o["sure_sn"] or 0)
         if tl["taranmis"]:
             log.info("   bilgi: %d taranmış sayfanın OCR katmanı kullanılıyor; sayısal hatalar metinden anlaşılmaz", tl["taranmis"])

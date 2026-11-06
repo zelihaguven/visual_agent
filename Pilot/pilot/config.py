@@ -138,8 +138,10 @@ DOCLING_DEVICE =os.environ.get("PILOT_DOCLING_DEVICE", "cpu")   # "mps" Apple GP
 
 # Yerel OCR (karar 2026-11-06; docs/PLAN-OCR.md §9): OCRmyPDF (Tesseract), Ghostscript'siz. Yüklemede metin katmanı
 # kontrolünün sayfa sınıfına göre çalışır; OCR'lı PDF kaynağın yanında (MANUALS_DIR/ocr/<doc_id>.pdf) saklanır ve
-# DocMeta.path onu gösterir (ayrıştırma, şekil, sayfa görüntüsü aynı dosyadan). Kapatmak için PILOT_OCR=0.
-OCR_ENABLED = os.environ.get("PILOT_OCR", "1") == "1"
+# DocMeta.path onu gösterir (ayrıştırma, şekil, sayfa görüntüsü aynı dosyadan). İki okuma kuralı (§10–§11): uyuşmayan
+# sayı "OCR değeri belirsiz". Varsayılan KAPALI: kullanıcı ölçüm sonuçlarını görüp onaylayana kadar (karar 2026-11-06);
+# açmak için PILOT_OCR=1.
+OCR_ENABLED = os.environ.get("PILOT_OCR", "0") == "1"
 OCR_DIR = MANUALS_DIR / "ocr"
 TESSERACT_DIR = Path(os.environ.get("PILOT_TESSERACT_DIR",
                                     Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Tesseract-OCR"))

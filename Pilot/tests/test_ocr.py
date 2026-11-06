@@ -61,9 +61,17 @@ def test_junk_score_ocr_garbage_low():
     assert junk_score("") == 0.0
 
 
+def test_ocr_off_by_default_until_approved():
+    import importlib
+    import os
+    if "PILOT_OCR" not in os.environ:
+        assert importlib.reload(config).OCR_ENABLED is False
+
+
 def test_meta_path_prefers_ocr_pdf(tmp_path, monkeypatch):
     meta = BY_ID["gl-pd-07-14a"]
     monkeypatch.setattr(config, "OCR_DIR", tmp_path)
+    monkeypatch.setattr(config, "OCR_ENABLED", True)
     assert meta.path == meta.source_path
     (tmp_path / "gl-pd-07-14a.pdf").write_bytes(b"%PDF-1.4")
     assert meta.path == tmp_path / "gl-pd-07-14a.pdf"
@@ -77,3 +85,55 @@ def test_summary_counts():
     s = O.summary(rec)
     assert (s["yeni_ocr"], s["eski_katman_kaldi"], s["goruntu_kaldi"], s["ozgun"]) == (1, 1, 1, 1)
     assert s["eski_kaldi_sayfalar"] == [2] and s["goruntu_sayfalar"] == [3]
+
+
+# --- İki okuma uyuşması (PLAN-OCR §10–§11) ---------------------------------------------------------------------------
+
+def test_unconfirmed_accepts_confusable_equivalents():
+    old = "seam allowance 112 inch, 7-114, 3116 and IS min; Class 1 carriers ISO"
+    new = "seam allowance 1/2 inch, 7-1/4, 3/16 and 15 min; Class 1 carriers 150"
+    assert O.unconfirmed(new, old) == []
+
+
+def test_unconfirmed_flags_changed_values_and_separators():
+    old = "Carrier gas shall be ~99.999% and size 43-3/8 GLIPD 07-14A"
+    new = "Carrier gas shall be 299.999% and size 43.3/8 GL/PD 07-144"
+    assert O.unconfirmed(new, old) == ["299.999%", "43.3/8", "07-144"]
+
+
+def test_unconfirmed_tolerates_different_word_boundaries():
+    assert O.unconfirmed("withstand 40 lbs", "withstand 40lbs") == []
+    assert O.unconfirmed("withstand 40 lbs", "withstand AQ lbs") == ["40"]
+
+
+def test_check_item_blocks_quote_with_uncertain_ocr_value():
+    from pilot.schema_c import check_item
+    src = {1: "Carrier gas shall be 299.999% pure."}
+    item = {"alintilar": [{"kaynak_no": 1, "metin": "Carrier gas shall be 299.999% pure."}],
+            "metin": "Taşıyıcı gaz 299.999% saflıkta olmalı."}
+    assert check_item(item, src)["ok"]
+    r = check_item(item, src, uncertain={1: ["299.999%"]})
+    assert not r["ok"] and r["ocr_belirsiz"] == ["299.999%"]
+    assert any("OCR değeri belirsiz" in p for p in r["sorunlar"])
+    assert check_item(item, src, uncertain={2: ["299.999%"]})["ok"]       # başka kaynağın belirsizi etkilemez
+
+
+def test_mark_ocr_sets_flag_and_tokens(tmp_path, monkeypatch):
+    import json
+
+    from pilot.chunk import Chunk, mark_ocr
+    meta = BY_ID["gl-pd-07-14a"]
+    monkeypatch.setattr(config, "OCR_DIR", tmp_path)
+    monkeypatch.setattr(config, "OCR_ENABLED", True)
+    (tmp_path / "gl-pd-07-14a.json").write_text(json.dumps({"sayfalar": [
+        {"page": 30, "chosen": "yeni", "belirsiz": ["299.999%", "B.4"]},
+        {"page": 31, "chosen": "eski", "belirsiz": []}]}), encoding="utf-8")
+    mk = lambda p, t: Chunk("x", meta.doc_id, "", "", "", "en", "text", "", p, [p], {}, [], t)
+    a, b, c = mk(30, "Carrier gas shall be 299.999% pure"), mk(31, "other 299.999%"), mk(29, "none")
+    mark_ocr(meta, [a, b, c])
+    assert (a.ocr, a.ocr_belirsiz) == (True, ["299.999%"])
+    assert (b.ocr, b.ocr_belirsiz) == (False, []) and (c.ocr, c.ocr_belirsiz) == (False, [])
+    monkeypatch.setattr(config, "OCR_ENABLED", False)
+    d = mk(30, "299.999%")
+    mark_ocr(meta, [d])
+    assert not d.ocr

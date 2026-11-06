@@ -279,6 +279,9 @@ class Chunk:
     embed_text: str = field(default="")
     generated: str = field(default="")   # metnin model üretimi kısmı (şekil açıklaması): doğrulamada kaynak sayılmaz
     nav: str = field(default="")         # gezinme parçası: toc | index | front_matter (aramada dışarıda tutulur)
+    ocr: bool = field(default=False)     # metni yüklemede yapılan OCR'dan (pilot/ocr.py)
+    # İki okumada uyuşmayan sayı içeren diziler (PLAN-OCR §10–§11): bunları içeren alıntı doğrulanmış gösterilmez
+    ocr_belirsiz: list[str] = field(default_factory=list)
 
 
 def _embed_text(meta: DocMeta, section: str, text: str) -> str:
@@ -399,7 +402,25 @@ def build_chunks(meta: DocMeta, elements: list[dict[str, Any]],
     for sec, e, lang in figure_els:
         fig = figures[e["id"]]
         make("figure", figure_text(fig), [e], lang, sec=sec, generated=fig["desc"])
+    mark_ocr(meta, chunks)
     return chunks
+
+
+def mark_ocr(meta: DocMeta, chunks: list[Chunk]) -> None:
+    """OCR'lı sayfalardan gelen parçalara `ocr` işareti ve metinlerinde geçen belirsiz dizileri (pilot/ocr.py kaydı)."""
+    from .ocr import load_record
+    from .config import OCR_ENABLED
+    rec = load_record(meta) if OCR_ENABLED else None
+    if not rec:
+        return
+    pages = {d["page"]: d for d in rec.get("sayfalar", []) if d.get("chosen") == "yeni"}
+    for c in chunks:
+        on = [pages[p] for p in c.pages if p in pages]
+        if not on:
+            continue
+        c.ocr = True
+        toks = dict.fromkeys(t for d in on for t in d.get("belirsiz") or [])
+        c.ocr_belirsiz = [t for t in toks if t in c.text]
 
 
 def write_chunks(chunks: list[Chunk], path: Path = CHUNKS_PATH) -> None:

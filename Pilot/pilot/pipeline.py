@@ -481,10 +481,11 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
     timings["istek_oncesi"] = t - t0          # sorudan cevap isteğine (arama ve kurallar dahil)
     sources = {no: h.chunk["text"] for no, h in enumerate(hits, start=1)}
     generated = {no: h.chunk.get("generated", "") for no, h in enumerate(hits, start=1)}
+    uncertain = {no: h.chunk["ocr_belirsiz"] for no, h in enumerate(hits, start=1) if h.chunk.get("ocr_belirsiz")}
     stream = None
     if on_event is not None:            # gri akış C (API planı §10): olaylar akış sırasında
         from .stream_view import StreamAssembler
-        stream = StreamAssembler(sources, generated, QUOTE_LIMIT[config.ANSWER_SCHEMA_VARIANT], lang, on_event)
+        stream = StreamAssembler(sources, generated, QUOTE_LIMIT[config.ANSWER_SCHEMA_VARIANT], lang, on_event, uncertain)
     try:
         ans, rec = chat_c(user, stream) if stream is not None else chat_c(user)
     except StreamInterrupted as err:
@@ -508,7 +509,7 @@ def _answer_c(question: str, ctx: QueryContext, hits: list[Hit], user: str, timi
         timings["llm_first_token"] = float(rec["first_token"])
     if stream is not None and stream.ilk_gorunen_kelime is not None:
         timings["uctan_uca_ilk_gorunen_kelime"] = timings["istek_oncesi"] + stream.ilk_gorunen_kelime
-    v = verify_c(ans, sources, generated, QUOTE_LIMIT[config.ANSWER_SCHEMA_VARIANT])
+    v = verify_c(ans, sources, generated, QUOTE_LIMIT[config.ANSWER_SCHEMA_VARIANT], uncertain)
     answer = to_legacy(ans)
     answer.update(sema="c", saglayici=rec.get("provider"), denemeler=rec.get("denemeler"),
                   maliyet=float((rec.get("usage") or {}).get("cost") or 0.0),

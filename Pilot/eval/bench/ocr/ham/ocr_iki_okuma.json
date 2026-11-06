@@ -1,0 +1,318 @@
+{
+ "tarih": "2026-11-06 17:34",
+ "ozet": {
+  "iki_okuma_sentetik": {
+   "dizi": 303,
+   "belirsiz": 9,
+   "kabul_yanlis": 0,
+   "belirsiz_dogru": 3,
+   "belirsiz_yanlis": 6
+  },
+  "sn_sayfa": {
+   "tesseract": 3.6,
+   "rapidocr": 5.2
+  },
+  "strickland": {
+   "sayfa": 7,
+   "dizi": 11,
+   "belirsiz": 3
+  }
+ },
+ "sentetik": [
+  {
+   "belge": "gl-pd-14-04a",
+   "sayfa": 21,
+   "tesseract": {
+    "deger_duyarlilik": 0.75,
+    "deger_kesinlik": 1.0,
+    "kesir": "2/2",
+    "artı_eksi": "0/0"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 1.0,
+    "kesir": "2/2",
+    "artı_eksi": "0/0"
+   },
+   "iki_okuma": {
+    "dizi": 18,
+    "belirsiz": 0,
+    "belirsiz_diziler": [],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 0,
+    "belirsiz_yanlis": 0
+   }
+  },
+  {
+   "belge": "gl-pd-14-04a",
+   "sayfa": 22,
+   "tesseract": {
+    "deger_duyarlilik": 0.809,
+    "deger_kesinlik": 0.95,
+    "kesir": "1/1",
+    "artı_eksi": "0/5"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 1.0,
+    "kesir": "1/1",
+    "artı_eksi": "5/5"
+   },
+   "iki_okuma": {
+    "dizi": 34,
+    "belirsiz": 2,
+    "belirsiz_diziler": [
+     "4",
+     "4"
+    ],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 0,
+    "belirsiz_yanlis": 2
+   }
+  },
+  {
+   "belge": "gl-pd-14-04a",
+   "sayfa": 23,
+   "tesseract": {
+    "deger_duyarlilik": 0.983,
+    "deger_kesinlik": 0.983,
+    "kesir": "16/16",
+    "artı_eksi": "0/0"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 1.0,
+    "kesir": "16/16",
+    "artı_eksi": "0/0"
+   },
+   "iki_okuma": {
+    "dizi": 37,
+    "belirsiz": 1,
+    "belirsiz_diziler": [
+     "3.11.12"
+    ],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 0,
+    "belirsiz_yanlis": 1
+   }
+  },
+  {
+   "belge": "gl-pd-14-04a",
+   "sayfa": 24,
+   "tesseract": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 0.987,
+    "kesir": "29/29",
+    "artı_eksi": "0/0"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 1.0,
+    "kesir": "29/29",
+    "artı_eksi": "0/0"
+   },
+   "iki_okuma": {
+    "dizi": 49,
+    "belirsiz": 1,
+    "belirsiz_diziler": [
+     "7—"
+    ],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 0,
+    "belirsiz_yanlis": 1
+   }
+  },
+  {
+   "belge": "gl-pd-14-04a",
+   "sayfa": 25,
+   "tesseract": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 1.0,
+    "kesir": "21/21",
+    "artı_eksi": "0/0"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 1.0,
+    "kesir": "21/21",
+    "artı_eksi": "0/0"
+   },
+   "iki_okuma": {
+    "dizi": 38,
+    "belirsiz": 0,
+    "belirsiz_diziler": [],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 0,
+    "belirsiz_yanlis": 0
+   }
+  },
+  {
+   "belge": "brother-s7300a",
+   "sayfa": 12,
+   "tesseract": {
+    "deger_duyarlilik": 0.952,
+    "deger_kesinlik": 1.0,
+    "kesir": "2/2",
+    "artı_eksi": "0/0"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 0.977,
+    "kesir": "2/2",
+    "artı_eksi": "0/0"
+   },
+   "iki_okuma": {
+    "dizi": 39,
+    "belirsiz": 1,
+    "belirsiz_diziler": [
+     "_7mm(*"
+    ],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 1,
+    "belirsiz_yanlis": 0
+   }
+  },
+  {
+   "belge": "brother-s7300a",
+   "sayfa": 13,
+   "tesseract": {
+    "deger_duyarlilik": 0.952,
+    "deger_kesinlik": 1.0,
+    "kesir": "0/0",
+    "artı_eksi": "0/0"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 0.5,
+    "kesir": "0/0",
+    "artı_eksi": "0/0"
+   },
+   "iki_okuma": {
+    "dizi": 22,
+    "belirsiz": 0,
+    "belirsiz_diziler": [],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 0,
+    "belirsiz_yanlis": 0
+   }
+  },
+  {
+   "belge": "juki-mo6800s",
+   "sayfa": 3,
+   "tesseract": {
+    "deger_duyarlilik": 0.941,
+    "deger_kesinlik": 0.985,
+    "kesir": "0/0",
+    "artı_eksi": "0/0"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 0.956,
+    "deger_kesinlik": 1.0,
+    "kesir": "0/0",
+    "artı_eksi": "0/0"
+   },
+   "iki_okuma": {
+    "dizi": 61,
+    "belirsiz": 3,
+    "belirsiz_diziler": [
+     "*14.5,4.0mm",
+     "5.0,°'6.0",
+     "50Hz/60HzZ"
+    ],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 2,
+    "belirsiz_yanlis": 1
+   }
+  },
+  {
+   "belge": "turkce",
+   "sayfa": 1,
+   "tesseract": {
+    "deger_duyarlilik": 0.833,
+    "deger_kesinlik": 0.833,
+    "kesir": "0/0",
+    "artı_eksi": "0/2",
+    "turkce_harf": "64/70"
+   },
+   "rapidocr": {
+    "deger_duyarlilik": 1.0,
+    "deger_kesinlik": 1.0,
+    "kesir": "0/0",
+    "artı_eksi": "2/2",
+    "turkce_harf": "48/70"
+   },
+   "iki_okuma": {
+    "dizi": 5,
+    "belirsiz": 1,
+    "belirsiz_diziler": [
+     "11(41"
+    ],
+    "kabul_yanlis": [],
+    "belirsiz_dogru": 0,
+    "belirsiz_yanlis": 1
+   }
+  }
+ ],
+ "strickland": [
+  {
+   "sayfa": 1,
+   "tesseract": "A Tailoring \nManual",
+   "rapidocr": "華 Tailoring A Manual",
+   "dizi": 0,
+   "belirsiz": 0,
+   "belirsiz_diziler": []
+  },
+  {
+   "sayfa": 3,
+   "tesseract": "A Tailoring Manual",
+   "rapidocr": "A Tailoring Manual",
+   "dizi": 0,
+   "belirsiz": 0,
+   "belirsiz_diziler": []
+  },
+  {
+   "sayfa": 13,
+   "tesseract": "A Tailoring Manual",
+   "rapidocr": "A Tailoring Manual",
+   "dizi": 0,
+   "belirsiz": 0,
+   "belirsiz_diziler": []
+  },
+  {
+   "sayfa": 26,
+   "tesseract": "12",
+   "rapidocr": "1 g. h. k. 一 Figure 2 (Continued) 12",
+   "dizi": 1,
+   "belirsiz": 0,
+   "belirsiz_diziler": []
+  },
+  {
+   "sayfa": 61,
+   "tesseract": "! \n\\ \nJ \niN \nl \nQ \nNn \n47 \n1] \nFigure 21 (Problems 10, 11) \n> ee \naN => >>> = \n% \nKN \nXY \n_ mr he Mee tienes \n‘ \nIN \nee ee ——_—. \n\\ \nIN \neZ \n\\ \ngy \n\\ \\ \n\\ \n% \n. \\ \nANN \n‘Q \\N \nPANU \n= \n& . Tuy \n— \ny \n",
+   "rapidocr": "a. b. Figure 21 (Problem 9) 10 11 Figure 21 (Problems 10, 11) 47",
+   "dizi": 8,
+   "belirsiz": 3,
+   "belirsiz_diziler": [
+    "1",
+    "2S",
+    "8"
+   ]
+  },
+  {
+   "sayfa": 66,
+   "tesseract": "52",
+   "rapidocr": "b. a. C. g. h. FiFurr23 52",
+   "dizi": 1,
+   "belirsiz": 0,
+   "belirsiz_diziler": []
+  },
+  {
+   "sayfa": 157,
+   "tesseract": "1. Right side",
+   "rapidocr": "Slacks 143 b. At top front edge stitch pocket and slacks the width of 2 inches across the top to finish for buttonhole overlap. 6. a. Stitch the side leg seam below the placket end, matching stitching",
+   "dizi": 1,
+   "belirsiz": 0,
+   "belirsiz_diziler": []
+  }
+ ]
+}
