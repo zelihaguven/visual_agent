@@ -1,0 +1,357 @@
+{
+ "tarih": "2026-11-06 15:03",
+ "ozet": {
+  "bugunku_katman": {
+   "sayfa_ilk8": 16,
+   "deger_parcada": 5,
+   "deger_sorusu": 12,
+   "cevaplanabilir": 9,
+   "soru": 16
+  },
+  "yeni_ocr": {
+   "sayfa_ilk8": 16,
+   "deger_parcada": 12,
+   "deger_sorusu": 12,
+   "cevaplanabilir": 16,
+   "soru": 16
+  }
+ },
+ "satirlar": [
+  {
+   "qid": "aday_sorular:A022",
+   "q": "Pantolonun ön yan cep ağzı kaç inç olmalı?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    10,
+    11
+   ],
+   "beklenen": [
+    "6–7-1/4"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": false,
+    "cevaplanabilir": false
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A025",
+   "q": "Pantolon cep kapaklarının üst dikişi kenardan ne kadar içeride olmalı?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    20
+   ],
+   "beklenen": [
+    "3/16–1/4"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 7,
+    "deger_parcada": false,
+    "cevaplanabilir": false
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 7,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A026",
+   "q": "Pantolonda cırt bant kenar şeridinden ne kadar içeriden dikilir?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    10,
+    21
+   ],
+   "beklenen": [
+    "1/8–3/16"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 2,
+    "deger_parcada": false,
+    "cevaplanabilir": false
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 2,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A027",
+   "q": "Pantolonun fermuar (fly) dikişi J-dikişinin ne kadar üstünde bitmeli?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    19
+   ],
+   "beklenen": [
+    "3/8–1/2"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": false,
+    "cevaplanabilir": false
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A028",
+   "q": "Pantolon iç bacağında 5 iplik emniyet dikişi kullanılırsa kalıp nasıl ayarlanır?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    18
+   ],
+   "beklenen": [
+    "3/8"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A030",
+   "q": "Pantolon ısırma testinde kollar böcek kafesinde kaç dakika tutulur?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    38
+   ],
+   "beklenen": [
+    "15"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": false,
+    "cevaplanabilir": false
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A034",
+   "q": "Pantolon temizlik muayenesinde kaç iplikten fazlası kusur sayılır?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    26
+   ],
+   "beklenen": [
+    "3"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A143",
+   "q": "Isırma testinde kollar böcek kafesinde kaç dakika tutulur?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    38,
+    44
+   ],
+   "beklenen": [],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": null,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": null,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A148",
+   "q": "pantolon cep agzi kac inc",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    10,
+    11
+   ],
+   "beklenen": [
+    "6–7-1/4"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 2,
+    "deger_parcada": false,
+    "cevaplanabilir": false
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 2,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A154",
+   "q": "pantolonda cırt bant ne kadar içerde",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    10,
+    21
+   ],
+   "beklenen": [
+    "1/8–3/16"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 7,
+    "deger_parcada": false,
+    "cevaplanabilir": false
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular_ek:C008",
+   "q": "Yan dikişlerde LSc-2 çift bindirme dikişinin aralığı (gauge) ne olmalı?",
+   "belge": "gl-pd-07-14a",
+   "beklenen_sayfa": [
+    20,
+    23
+   ],
+   "beklenen": [],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": null,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": null,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A089",
+   "q": "Kalın cidarlı dökme demir parçaları kaynatırken çelik pim çapı nasıl seçilir?",
+   "belge": "granovsky-1986",
+   "beklenen_sayfa": [
+    31,
+    32
+   ],
+   "beklenen": [
+    "0.3–0.4"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A092",
+   "q": "Dokuma tezgâhında orta onarım ne sıklıkla yapılır ve kaç kişi yapar?",
+   "belge": "granovsky-1986",
+   "beklenen_sayfa": [
+    201,
+    202
+   ],
+   "beklenen": [],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": null,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": null,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A093",
+   "q": "Mekik kutusunda mekik yokken çözgü koruyucu uçları pedlerin kaç mm üstünde olmalı?",
+   "belge": "granovsky-1986",
+   "beklenen_sayfa": [
+    231
+   ],
+   "beklenen": [
+    "1–1.5"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A094",
+   "q": "Topuk konisinin elektrik kıvılcımıyla doldurulmasında katman kalınlığı kaç mm?",
+   "belge": "granovsky-1986",
+   "beklenen_sayfa": [
+    256
+   ],
+   "beklenen": [
+    "0.2"
+   ],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": true,
+    "cevaplanabilir": true
+   }
+  },
+  {
+   "qid": "aday_sorular:A096",
+   "q": "Tekstil makinesi parçalarında bakır kaplama ne için kullanılır?",
+   "belge": "granovsky-1986",
+   "beklenen_sayfa": [
+    41
+   ],
+   "beklenen": [],
+   "bugunku_katman": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": null,
+    "cevaplanabilir": true
+   },
+   "yeni_ocr": {
+    "sayfa_sirasi": 1,
+    "deger_parcada": null,
+    "cevaplanabilir": true
+   }
+  }
+ ]
+}

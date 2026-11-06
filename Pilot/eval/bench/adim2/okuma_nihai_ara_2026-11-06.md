@@ -500,3 +500,23 @@ Etkilenen sorular: 28 netleştirme sorusu, kayıtlarda kural çıkışı olanlar
   - OCRmyPDF 17.13 (uygulama ortamına).
   - **Ghostscript kurulamadı:** yönetici izni gerekti, onay penceresi iptal edildi.
   - OCRmyPDF Ghostscript'siz çalışabiliyor (`--rasterizer pypdfium`, `--output-type pdf`). Bu durumda AGPL'li Ghostscript gerekmiyor; yalnız PDF/A çıktısı yok (ihtiyaç da yok).
+
+**c150b-JSN tam set regresyonu** (yeni hat, 8 kaynak; 0,061 USD; taban c150b-JS aynı kodla: listeler silinmiş, K7 kapalı):
+
+| | ✓ / ⚠ / ✖ (cevaplı) | yanlış ret | beklenen değer | doğru "bulunamadı" | doğrulanmış görünen yanlış | netl. değer farklı / aynı | gereksiz netl. | ilk doğr. cümle u2u p50 / p95 |
+|---|---|---|---|---|---|---|---|---|
+| c150b-JS | 131 / 2 / 18 | 6 | 100/108 | 56/57 | **1 (B012)** | 12/15 · 8/13 | 3 | 2,84 / 5,08 sn |
+| c150b-JSN | 126 / 1 / 19 | **10** | 99/105 | 57/57 | **0** | 12/15 · 8/13 | 4 | 2,75 / 4,40 sn |
+
+- Kural doğrulanmış görünen yanlışı 1 → 0'a indirdi (B012). Bedeli: yanlış ret +4 (6 → 10; cevaplı 160 sorunun %2,5'i).
+- Yeni retlerin 5'inin 4'ünde soruda belirgin niteleyici yok (G9, A086, A106, A132). Kural modeli genel olarak biraz daha temkinli yapıyor; bir kısmı koşudan koşuya gürültü olabilir (A106 önceki koşularda da ret almıştı).
+- **Değerlendirme:** sıfır tolerans kararıyla (PRD: emin değilse "bulunamadı", bedeli cevapsız soru) uyumlu yön. Karar kullanıcıda: c150b-JSN çalışma biçimi olsun mu?
+
+## 18. OCR karşılaştırması sonucu (2026-11-06)
+
+[Rapor](../ocr/ocr_karsilastirma_2026-11-06.md), öneri [PLAN-OCR §9](../../../../docs/PLAN-OCR.md):
+- **OCRmyPDF kazanıyor.** Bilinen hataların hepsi düzeldi.
+- 16 OCR sorusunda cevaplanabilir 9 → 16: pantolon 4/11 → 11/11, Granovsky 5/5 değişmedi.
+- 1,1 sn/sayfa; Ghostscript'siz.
+- Türkçe için OCR dili tek dil (`tur`) olmalı. OCR sonrası kalite süzgeci gerekli (Strickland levha sayfaları).
+- Entegrasyon onay bekliyor.

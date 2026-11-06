@@ -147,3 +147,33 @@ Süreler yaklaşık (yayımlanmış ölçümler ve benzer donanım); karar §5't
 - Model çağrısı yalnız gerekirse: 16 soru × 2 aday ≈ 32 çağrı, **~0,01 USD** (sorulacak).
 
 **Sonuç:** kazanan gerekçesiyle önerilir; entegrasyondan önce kullanıcıya sorulur.
+
+## 9. Karşılaştırma sonucu ve öneri (2026-11-06; entegrasyon kullanıcı onayı bekliyor)
+
+Rapor: [ocr_karsilastirma_2026-11-06.md](../Pilot/eval/bench/ocr/ocr_karsilastirma_2026-11-06.md).
+
+**Kazanan: OCRmyPDF** (CPU, Ghostscript'siz).
+
+Gerekçe:
+1. **Bilinen sayısal hataların hepsini düzeltti** ("112" = ½, "114" = ¼, "3116" = 3/16, "7-114", "IS" = 15). Docling + Tesseract kesirlerin yarısını düzeltemedi.
+2. **16 OCR sorusunda cevaplanabilir 9 → 16.** Pantolonun 7 sorusu bugün bozuk değer yüzünden cevapsız kalıyor.
+3. **4–5 kat hızlı:** 1,1 sn/sayfa (yeniden OCR) / ~1,4 sn (görüntü sayfası); Docling + Tesseract 5–7 sn.
+4. **Bugünkü ayrıştırma hattı değişmez:** OCRmyPDF aranabilir PDF üretir, Docling (OCR kapalı) okur. Tablo hücreleri sentetik sayfalarda korunuyor.
+5. Ghostscript gerekmiyor (`--rasterizer pypdfium`), AGPL konusu yok.
+
+**Önerilen entegrasyon** (kod yazılmadı):
+- Yükleme sırasında `text_layer.check_pdf`'in sayfa sınıfına göre OCRmyPDF çağrısı:
+  - **yok** → `--skip-text` (yalnız metinsiz sayfalar OCR'lanır);
+  - **taranmış** → `--redo-ocr` (eski OCR katmanı yenilenir; dijital metne dokunulmaz);
+  - **zayıf** (harf aralıklı vb.) → `--force-ocr`;
+  - **dijital** → OCR yok.
+- **Dil:** belgenin kayıttaki diline göre tek dil (`tur` ya da `eng`; `lang_ranges` varsa sayfa aralığına göre). `tur+eng` birlikte Türkçe harfleri bozuyor (70 harfte 40).
+- **OCR sonrası kalite kontrolü:** OCR'lanan sayfanın metni `text_layer.quality` ile ölçülür. Düşükse (Strickland'ın çizim ve levha sayfaları gibi anlamsız dizi) o sayfanın OCR metni indekse alınmaz, sayfa şekil sayfası kalır.
+- OCR'lı PDF kaynağın yanında saklanır (sayfa görüntüsü ve vurgu aynı sayfadan). Parçalar `ocr: true` işareti taşır; kapsam raporunda OCR'lanan sayfa sayısı.
+
+**Bilinen sınırlar:**
+- Kutu örtüşmesi orta (IoU 0,5–0,7): vurgu doğru bölgede ama dijital kadar sıkı değil.
+- Küçük dipnot ve şekil üzerindeki sayıların bir kısmı kaçıyor (sayı duyarlılığı %88–98).
+- Sayfa başına süre karmaşık tablo sayfasında 14 sn'ye çıkabiliyor (JUKI).
+
+**Tahmini iş:** ~1,5–2 gün (yükleme akışına bağlama, sayfa sınıfına göre bayrak, dil seçimi, OCR sonrası kalite süzgeci, testler, pantolonun yeniden indekslenmesi ve 16 soruyla doğrulama).

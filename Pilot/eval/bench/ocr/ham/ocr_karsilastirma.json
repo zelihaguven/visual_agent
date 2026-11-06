@@ -1,0 +1,257 @@
+{
+ "tarih": "2026-11-06 14:08",
+ "tesseract": "C:\\Users\\egitim.YESIM\\AppData\\Local\\Programs\\Tesseract-OCR",
+ "i_bilinen_hatalar": {
+  "sayfa": 9,
+  "bugunku_katman": {
+   "112 inch": [
+    19,
+    0
+   ],
+   "114 inch": [
+    11,
+    4
+   ],
+   "7-114": [
+    1,
+    0
+   ],
+   "3116": [
+    3,
+    4
+   ],
+   "IS min": [
+    1,
+    0
+   ]
+  },
+  "ocrmypdf_redo": {
+   "112 inch": [
+    0,
+    19
+   ],
+   "114 inch": [
+    0,
+    15
+   ],
+   "7-114": [
+    0,
+    1
+   ],
+   "3116": [
+    0,
+    7
+   ],
+   "IS min": [
+    0,
+    1
+   ]
+  },
+  "docling_tesseract": {
+   "112 inch": [
+    5,
+    14
+   ],
+   "114 inch": [
+    8,
+    7
+   ],
+   "7-114": [
+    0,
+    1
+   ],
+   "3116": [
+    3,
+    4
+   ],
+   "IS min": [
+    0,
+    1
+   ]
+  },
+  "sure_sn_sayfa": {
+   "ocrmypdf": 1.1228030444443802,
+   "docling_tesseract": 5.276727844444799
+  }
+ },
+ "ii_sentetik": [
+  {
+   "belge": "gl-pd-14-04a",
+   "sayfa": 5,
+   "ocrmypdf": {
+    "sayi_duyarlilik": 0.9682539682539683,
+    "sayi_kesinlik": 0.991869918699187,
+    "metin_benzerlik": 0.8507518228488091,
+    "tablo_hucre": "257/257",
+    "kutu_iou": 0.6878471710615185,
+    "kutu_eslesen": 23,
+    "sn_sayfa": 6.21858773999993,
+    "sn_sayfa_yalniz_ocr": 1.3954164800001307
+   },
+   "docling_tesseract": {
+    "sayi_duyarlilik": 0.9801587301587301,
+    "sayi_kesinlik": 0.9959677419354839,
+    "metin_benzerlik": 0.7435117039842079,
+    "tablo_hucre": "257/257",
+    "kutu_iou": 0.7304236466841829,
+    "kutu_eslesen": 21,
+    "sn_sayfa": 6.764571339999383
+   }
+  },
+  {
+   "belge": "brother-s7300a",
+   "sayfa": 2,
+   "ocrmypdf": {
+    "sayi_duyarlilik": 0.8837209302325582,
+    "sayi_kesinlik": 0.95,
+    "metin_benzerlik": 0.5670136514449257,
+    "tablo_hucre": "40/49",
+    "kutu_iou": 0.5238011056432442,
+    "kutu_eslesen": 23,
+    "sn_sayfa": 6.581756200001109,
+    "sn_sayfa_yalniz_ocr": 2.025112250001257
+   },
+   "docling_tesseract": {
+    "sayi_duyarlilik": 0.9534883720930233,
+    "sayi_kesinlik": 0.9761904761904762,
+    "metin_benzerlik": 0.5733441320095587,
+    "tablo_hucre": "43/49",
+    "kutu_iou": 0.558032517188848,
+    "kutu_eslesen": 23,
+    "sn_sayfa": 5.5499448999999
+   }
+  },
+  {
+   "belge": "juki-mo6800s",
+   "sayfa": 1,
+   "ocrmypdf": {
+    "sayi_duyarlilik": 0.9342105263157895,
+    "sayi_kesinlik": 0.9861111111111112,
+    "metin_benzerlik": 0.908879410624273,
+    "tablo_hucre": "44/43",
+    "kutu_iou": 0.523919463138728,
+    "kutu_eslesen": 5,
+    "sn_sayfa": 19.754844400002185,
+    "sn_sayfa_yalniz_ocr": 14.09508679999999
+   },
+   "docling_tesseract": {
+    "sayi_duyarlilik": 0.9210526315789473,
+    "sayi_kesinlik": 0.9722222222222222,
+    "metin_benzerlik": 0.8869969040247678,
+    "tablo_hucre": "43/43",
+    "kutu_iou": 0.5793152401651815,
+    "kutu_eslesen": 5,
+    "sn_sayfa": 8.296544100001483
+   }
+  }
+ ],
+ "iii_turkce": {
+  "ocrmypdf": {
+   "benzerlik": 0.628,
+   "turkce_harf": "39/70",
+   "sayilar": "6/6",
+   "sn": 3.3906849999984843
+  },
+  "docling_tesseract": {
+   "benzerlik": 0.566,
+   "turkce_harf": "43/70",
+   "sayilar": "6/6",
+   "sn": 3.120520399999805
+  }
+ },
+ "strickland_metinsiz": {
+  "sayfa": 28,
+  "sayfalar": [
+   1,
+   2,
+   3,
+   8,
+   12,
+   13,
+   14,
+   21,
+   25,
+   26,
+   36,
+   37,
+   38,
+   48,
+   61,
+   66,
+   67,
+   72,
+   104,
+   107,
+   115,
+   149,
+   157,
+   159,
+   160,
+   161,
+   163,
+   164
+  ],
+  "ocrmypdf": {
+   "metinli_sayfa(>=50 krk)": 7,
+   "toplam_krk": 2477,
+   "sn_sayfa": 1.3238760428570717,
+   "ornek": [
+    "ııuııuııııuuıwıımıı ıuıııııııuıuıuuuıııımııııııııııııı \nU \nu ııı ıııı ımu i \nedad ish mr) \nHt \nery \n“(i Hua i i nit Huuk",
+    "VPCAOLLEAELDAP0 *- \nSIFSIDISATLEDTS \n— A RRs \nN \n; \n| \nN \nRWQQN \nISI III \n— |e \nSS ll —8 \n——— \now. \nOIOOIMETAAIETS \nAG \n",
+    "co|— \nNV ANNAAN \nT44i * \nBW NAAN AR NAA NN ANAS \n44 \nSAA \nEIS ASS \nRAN ASR SRS AN RRR SRN RN RRA \n©0| \n— \n’/İII//,'///,I"
+   ]
+  },
+  "docling_tesseract": {
+   "metinli_sayfa(>=50 krk)": 0,
+   "toplam_krk": 90,
+   "sn_sayfa": 2.101614246428523
+  }
+ },
+ "granovsky_bozuk_katman": {
+  "sayfalar": [
+   10,
+   30,
+   60,
+   120,
+   180,
+   240
+  ],
+  "kalite_once": [
+   0.317,
+   0.321,
+   0.276,
+   0.295,
+   0.316,
+   0.356
+  ],
+  "ocrmypdf_redo": [
+   0.317,
+   0.338,
+   0.281,
+   0.295,
+   0.316,
+   0.801
+  ],
+  "ocrmypdf_force": [
+   0.987,
+   0.955,
+   1.0,
+   1.0,
+   0.995,
+   0.915
+  ],
+  "docling_tesseract": [
+   0.989,
+   1.0,
+   1.0,
+   1.0,
+   0.99,
+   1.0
+  ],
+  "sn_sayfa": {
+   "ocrmypdf_redo": 3.126779150000099,
+   "ocrmypdf_force": 3.183567000000039,
+   "docling_tesseract": 4.27453928333307
+  }
+ }
+}
