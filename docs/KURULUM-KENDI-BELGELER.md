@@ -65,3 +65,12 @@
 - [ ] Kullanım sırasında not edilen **30–50 soru**, her biri soru metni ve cevabın olduğu sayfa ile (değer varsa değer de) bir dosyada toplanır (`eval/kendi_sorular.json` biçimi: `id`, `q`, `expect_docs`, `expect_pages`, `expect_in_answer`, `expect_not_found`, `expect_clarify`).
 - [ ] **Onay geliştirme ekibinde:** kanıt cümlesi beklenen sayfada ve beklenen değer kanıtta. Model çıktısı onay ölçütü olmaz.
 - [ ] Taranmış belgeden gelen sorular `ocr` etiketiyle ayrıca izlenir (cevapsız kalma oranı, PRD).
+
+## 7. Sunucu kurulumu (Adım 3; servis API'siyle)
+
+API planı: [plan_cevap_modeli_2026-11-06_api.md](../Pilot/eval/bench/adim2/plan_cevap_modeli_2026-11-06_api.md).
+
+- [ ] **Ters vekilde akış arabelleği kapalı:** yanıtta `X-Accel-Buffering: no` ve `Cache-Control: no-cache`; nginx'te `proxy_buffering off;`, uzun `proxy_read_timeout`, akış yanıtında gzip kapalı. Kontrol: bir soru sorulduğunda gri metin parça parça geliyor, toplu gelmiyor.
+- [ ] Kimlik: istemci akışı `fetch` + `ReadableStream` ile `Authorization` başlığıyla okuyor (`EventSource` başlık göndermez).
+- [ ] `OPENROUTER_API_KEY` yalnız sunucu ortamında. Anahtarda OpenRouter harcama sınırı tanımlı. Uygulamanın günlük maliyet bekçisi ve kullanıcı başına hız sınırı açık.
+- [ ] Denetim kaydı yerelde, şifreli diskte. Okuma yetkisi ve saklama süresi kararı uygulanmış (A8).
