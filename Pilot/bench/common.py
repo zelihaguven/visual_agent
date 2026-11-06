@@ -42,7 +42,7 @@ def load_questions(sets: Iterable[str], eval_dir: Path | None = None,
 
 def prepare(question: str, strip_source: bool = True) -> dict[str, Any]:
     """pipeline.soru_cevapla()'nın aramadan önceki adımlarının aynısı: söylenmiş kodlar, varlıklar, kapsam, bağlam
-    terimlerinin çıkarılması, terim sözlüğü. Arama yapılmayacaksa (netleştirme, yabancı marka) 'skip' nedenini taşır.
+    terimlerinin çıkarılması, terim sözlüğü. Arama yapılmayacaksa (netleştirme, konu belirsiz) 'skip' nedenini taşır (yabancı marka listesi 2026-11-06'da silindi).
     pipeline.py değişirse burası da güncellenmeli (tests/test_bench.py yaygın durumları kontrol eder)."""
     from pilot.query import (MUST_MATCH, analyze_query, asks_nothing_specific, context_entities, normalize_codes,
                              source_aliases, spoken_codes, strip_source_phrases, strip_terms)
@@ -51,8 +51,6 @@ def prepare(question: str, strip_source: bool = True) -> dict[str, Any]:
 
     question = spoken_codes(question)
     ctx = analyze_query(question)
-    if ctx.foreign_brands:
-        return {"skip": "yabanci_marka"}
     mixed = len({BY_ID[d].doc_type for d in ctx.doc_ids if BY_ID[d].doc_type in MUST_MATCH}) >= 2
     if ctx.variants or mixed:
         return {"skip": "netlestirme"}

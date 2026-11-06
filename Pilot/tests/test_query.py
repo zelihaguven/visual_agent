@@ -14,8 +14,8 @@ from pilot.query import (analyze_query, asks_nothing_specific, missing_entities,
     ("Pantolonun cep astarı", {"gl-pd-07-14a"}),
     ("Nike ceketlerinde yaka dikişi", {"gl-pd-14-04a"}),
     ("Kahve makinesi nasıl temizlenir?", {"mrcoffee-2003"}),
-    ("Mr. Coffee temizleme", {"mrcoffee-2003"}),
-    ("Bosch freze bıçağı", {"bosch-ra1171"}),
+    ("Granovsky kitabına göre aşınma", {"granovsky-1986"}),          # yazar soyadı (kayıt alanı)
+    ("A Tailoring Manual'a göre yaka", {"strickland-1956"}),         # belgenin kendi başlığı (kayıt alanı)
 ])
 def test_known_product_or_model_sets_filter(question, expected):
     assert set(analyze_query(question).doc_ids) == expected
@@ -41,11 +41,16 @@ def test_two_products_in_one_question():
     assert set(ctx.doc_ids) == {"gl-pd-14-04a", "gl-pd-07-14a"}
 
 
-def test_english_product_names_set_filter():
-    # Dokümanın kendi ürün adı ("trouser", başlıkta) kapsam belirler. Q16 için elle eklenen "coat/jacket/pants"
-    # eşanlamlıları ilke gereği kaldırıldı (2026-11-03): "coat" sorusu filtresiz aranır, kaynağı arama bulur.
-    assert set(analyze_query("Outside seams of the trousers").doc_ids) == {"gl-pd-07-14a"}
-    assert analyze_query("How many stitches per inch are required for buttonholes on the coat?").doc_ids == ()
+def test_names_come_only_from_record_fields():
+    """Elle yazılmış takma adlar, CUSTOMER_BRANDS ve FOREIGN_BRANDS silindi (karar 2026-11-06). Adlar yalnız kayıt
+    alanlarından: ürün, ürün adındaki model kodu, başlık (tam), yazar soyadı, doküman kimliği. Tek kelimelik İngilizce
+    ad ("trousers", "jacket") ve marka adı kapsam belirlemez; kaynağı arama bulur, belirsizliği model sorar."""
+    assert analyze_query("Outside seams of the trousers").doc_ids == ()
+    assert analyze_query("TROUSERS, ARMY COMBAT UNIFORM outside seams").doc_ids == ("gl-pd-07-14a",)
+    for q in ("Mr. Coffee temizleme", "Bosch freze bıçağı", "US Army SPI değerleri", "Nike ceketlerinde dikiş"):
+        ctx = analyze_query(q)
+        assert ctx.variants == () and not hasattr(ctx, "foreign_brands")
+    assert analyze_query("Nike ceketlerinde dikiş").doc_ids == ("gl-pd-14-04a",)
 
 
 def test_explicit_model_is_not_ambiguous():
@@ -57,7 +62,7 @@ def test_a_does_not_leak_to_b():
 
 
 def test_matched_terms_are_reported_for_the_ui():
-    assert analyze_query("S-7300A ayarı").matched == ("s7300a",)
+    assert analyze_query("S-7300A ayarı").matched == ("s-7300a",)
 
 
 def test_brand_next_to_specific_model_does_not_widen_filter():
@@ -65,18 +70,12 @@ def test_brand_next_to_specific_model_does_not_widen_filter():
     assert ctx.doc_ids == ("brother-s7300a",) and ctx.variants == ()
 
 
-def test_customer_brand_alone_covers_its_products():
-    ctx = analyze_query("US Army SPI değerleri")
-    assert set(ctx.variants) == {"gl-pd-14-04a", "gl-pd-07-14a"}
-    assert analyze_query("US Army ceket SPI").variants == ()
-
-
 # Seçilen kaynağa göre varlığın rolü (MUST_MATCH): eşleşmeli mi, bağlam mı
 @pytest.mark.parametrize("question,scope,missing", [
     ("brother A makinesi ceket ölçüsü", ["brother-s7300a"], {"ceket"}),       # kılavuzda ürün bilgisi olmaz
     ("brother A makinesi ceket ölçüsü", ["gl-pd-14-04a"], set()),             # şartname makineden bağımsız
-    ("S-7300A'da dikiş atlıyor", ["brother-s7300b"], {"s7300a"}),            # başka model (aile kuralı yok)
-    ("S-7300A'da dikiş atlıyor", ["bosch-ra1171"], {"s7300a"}),               # başka makine
+    ("S-7300A'da dikiş atlıyor", ["brother-s7300b"], {"s-7300a"}),           # başka model (aile kuralı yok)
+    ("S-7300A'da dikiş atlıyor", ["bosch-ra1171"], {"s-7300a"}),              # başka makine
     ("Pantolon SPI", ["gl-pd-14-04a"], {"pantolon"}),                         # başka ürün
     ("US Army ceket SPI", ["gl-pd-14-04a"], set()),                           # müşteri markası şartnamede var
     ("Ceket yaka dikişi", ["strickland-1956"], set()),                        # genel rehber: engellemez
@@ -132,26 +131,6 @@ def test_spoken_model_code_sets_filter():
 
 def test_strip_terms_removes_suffixed_words():
     assert strip_terms("Brother'da ceketin SPI değeri", ["brother", "ceket"]) == "SPI değeri"
-
-
-@pytest.mark.parametrize("question,brand", [
-    ("Nike tişörtlerinde yaka ribanası kaç cm olmalı?", "Nike"),
-    ("Nike'ın ceket şartnamesinde SPI nedir?", "Nike"),
-    ("Adidas eşofmanlarında dikiş tipi", "Adidas"),
-    ("H&M pantolonlarında overlok", "H&M"),
-])
-def test_foreign_brand_is_detected(question, brand):
-    assert brand in analyze_query(question).foreign_brands
-
-
-@pytest.mark.parametrize("question", [
-    "Ceketin dış görünür dikişlerinde SPI kaç olmalı?",
-    "Mavi iplik kullanılabilir mi?",              # 'Mavi' marka adı da olabilir, renk anlamında yanlış alarm vermemeli
-    "Kahve makinesi nasıl temizlenir?",
-    "Brother S-7300A iğne değişimi",
-])
-def test_no_false_foreign_brand(question):
-    assert analyze_query(question).foreign_brands == ()
 
 
 def test_code_key_and_normalization(monkeypatch):

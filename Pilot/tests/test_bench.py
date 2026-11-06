@@ -183,7 +183,7 @@ def test_prepare_scopes_like_pipeline():
     p = prepare("S-7300A'da E050 hatası ne demek?")
     assert p["skip"] is None and p["doc_ids"] == ["brother-s7300a"]
     assert prepare("S-7300'de iplik nasıl takılır?")["skip"] is None             # aile kuralı silindi (2026-11-05)
-    assert prepare("Nike tişörtte dikiş sıklığı kaç olmalı?")["skip"] == "yabanci_marka"
+    assert prepare("Nike tişörtte dikiş sıklığı kaç olmalı?")["skip"] is None     # yabancı marka listesi silindi (2026-11-06)
     free = prepare("İğne nasıl değiştirilir?")
     assert free["skip"] is None and free["doc_ids"] is None
 

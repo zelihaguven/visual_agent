@@ -78,11 +78,11 @@ def test_page_number_is_not_given_to_the_model(calls):
     assert "22" not in calls["llm"][0].split("<kaynaklar>")[1].split("<soru>")[0].replace("11 (± 1)", "")
 
 
-def test_foreign_brand_returns_not_found_without_search_or_llm(calls):
-    r = pipeline.soru_cevapla("Nike tişörtlerinde yaka ribanası kaç cm olmalı?")
-    assert r.verification.status == "not_found"
-    assert calls["search"] == [] and calls["llm"] == []
-    assert "Nike" in r.answer["neden"]
+def test_foreign_brand_list_is_gone_question_goes_to_search_and_model(calls):
+    """FOREIGN_BRANDS silindi (karar 2026-11-06): dokümanı olmayan marka sorusu aranır, "bulunamadı"yı model verir
+    (ölçüm: Q08, Q18 liste olmadan da doğru "bulunamadı")."""
+    pipeline.soru_cevapla("Nike tişörtlerinde yaka ribanası kaç cm olmalı?")
+    assert calls["search"] and calls["llm"]
 
 
 def test_model_family_question_goes_to_search_and_model(calls):
@@ -208,11 +208,10 @@ def test_choosing_the_product_source_with_vague_question_asks_what_is_wanted(cal
     assert r.answer["secenekler"] == [] and r.answer["ipucu"]
 
 
-def test_customer_brand_without_product_asks_which_product(calls):
-    r = pipeline.soru_cevapla("US Army şartnamesinde dış dikişlerde SPI kaç?")
-    assert r.verification.status == "clarify"
-    assert {o["doc_id"] for o in r.answer["secenekler"]} == {"gl-pd-14-04a", "gl-pd-07-14a"}
-    assert "ürün" in r.answer["netlestirme_sorusu"]
+def test_customer_brand_list_is_gone_no_rule_clarification(calls):
+    """CUSTOMER_BRANDS silindi (karar 2026-11-06): marka sorusunda arama öncesi kural netleştirmesi yok."""
+    pipeline.soru_cevapla("US Army şartnamesinde dış dikişlerde SPI kaç?")
+    assert calls["search"] and calls["llm"]
 
 
 def test_voice_question_without_source_asks_which_source(calls):
@@ -293,8 +292,18 @@ def test_model_clarification_without_answer_becomes_clarify(monkeypatch, calls):
     assert r.answer["netlestirme_sorusu"] == "Hangi beden için?" and r.llm_called
 
 
+def test_k7_is_off_by_default_model_decides(monkeypatch, calls):
+    """K7 kapalı (karar 2026-11-06): ceket ve pantolon birlikte gelse de kural sormaz, model çağrılır."""
+    monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(CHUNK, 0, 3.0), Hit(PANTOLON, 1, 2.9)])
+    pipeline.soru_cevapla("Dış görünür dikişlerde SPI kaç olmalı?")
+    assert calls["llm"]
+
+
 def test_product_ambiguity_asks_after_search_without_llm(monkeypatch, calls):
-    # R14: "Dış görünür dikişlerde SPI?" → ceket ve pantolon şartnamesi birlikte geliyor
+    # R14 (K7): "Dış görünür dikişlerde SPI?" → ceket ve pantolon şartnamesi birlikte geliyor. K7 varsayılan KAPALI
+    # (karar 2026-11-06); genel haliyle geri açılabilir (PILOT_K7=1), bu test açık halini sınar.
+    from pilot import config
+    monkeypatch.setattr(config, "K7_RULE", True)
     monkeypatch.setattr(pipeline, "search", lambda q, **kw: [Hit(CHUNK, 0, 3.0), Hit(PANTOLON, 1, 2.9)])
     r = pipeline.soru_cevapla("Dış görünür dikişlerde SPI kaç olmalı?")
     assert r.verification.status == "clarify"

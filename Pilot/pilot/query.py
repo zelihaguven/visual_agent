@@ -6,15 +6,16 @@ from dataclasses import dataclass
 from functools import lru_cache
 
 from .config import CHUNKS_PATH
-from .registry import BY_ID, CUSTOMER_BRANDS, DOCS
+from .registry import BY_ID, DOCS, product_names
 
 
 _TR_LOWER = str.maketrans({"I": "ı", "İ": "i"})
 
 
 def _squash(text: str) -> str:
-    """Karşılaştırma için: küçük harf (Türkçe I/İ), '-', boşluk, '.' ve '_' atılmış."""
-    return re.sub(r"[\s\-_.]+", "", text.translate(_TR_LOWER).lower())
+    """Karşılaştırma için: küçük harf (Türkçe I/İ), '-', boşluk, '.' ve '_' atılmış. ı/i farkı yok sayılır: İngilizce
+    başlık ("UNIFORM") Türkçe küçük harfle "unıform" olur, kayıttaki ad "uniform" (2026-11-06)."""
+    return re.sub(r"[\s\-_.]+", "", text.translate(_TR_LOWER).lower()).replace("ı", "i")
 
 
 # Varlık türü: Sorudaki ifade hangi tür dokümana işaret ediyor.
@@ -37,32 +38,11 @@ MUST_MATCH: dict[str, dict[str, bool]] = {
 class QueryContext:
     doc_ids: tuple[str, ...]      # boşsa filtre yok
     matched: tuple[str, ...]      # hangi ifadeler eşleşti (arayüzde gösterilir)
-    foreign_brands: tuple[str, ...] = ()   # soruda geçen ama dokümanı olmayan marka (ör. "Nike")
     variants: tuple[str, ...] = ()         # belirsiz: soru aynı türden birden çok dokümana uyuyor (S-7300 → A, B)
     # Sorudaki her varlık: (eşleşen ifade, tür, doküman kimlikleri).
     # Kullanıcı bir kaynak seçtiğinde, varlığın seçilen kaynakta karşılığı var mı diye bakılır (MUST_MATCH).
     entities: tuple[tuple[str, str, tuple[str, ...]], ...] = ()
 
-
-# Dokümanı olmayan bilinen markalar. Soruda geçerse model çağrılmadan "bu marka için doküman yok" denir:
-# Başka bir markanın şartnamesinden değer vermek yanlış marka hatasıdır (R4). Gerçek sistemde bu liste
-# müşteri/marka kaydından gelir ve yetki kontrolüyle birleşir (kullanıcının yetkisi olmayan marka da aynı cevabı alır).
-# "Mavi", "Koton", "Gap" gibi aynı zamanda sıradan kelime olan adlar bilinçli olarak dışarıda.
-FOREIGN_BRANDS: dict[str, str] = {
-    "Nike": r"nike", "Adidas": r"adidas", "Puma": r"puma", "Reebok": r"reebok", "Asics": r"asics",
-    "New Balance": r"new\s*balance", "Under Armour": r"under\s*armou?r", "Zara": r"zara", "Mango": r"mango",
-    "H&M": r"h\s*&\s*m\b", "LC Waikiki": r"lc\s*waikiki", "DeFacto": r"defacto", "Levi's": r"levi'?s",
-    "Tommy Hilfiger": r"tommy\s*hilfiger", "Hugo Boss": r"hugo\s*boss", "Uniqlo": r"uniqlo",
-    "Decathlon": r"decathlon", "Columbia": r"columbia", "The North Face": r"north\s*face", "Lacoste": r"lacoste",
-    "Ralph Lauren": r"ralph\s*lauren", "Calvin Klein": r"calvin\s*klein", "Primark": r"primark",
-    "Bershka": r"bershka", "Pull&Bear": r"pull\s*&\s*bear", "Massimo Dutti": r"massimo\s*dutti",
-}
-
-
-def _foreign_brands(question: str) -> tuple[str, ...]:
-    q = question.casefold()
-    # Başta kelime sınırı; sonda Türkçe ek gelebilir ("Nike'ın", "Nikelarda")
-    return tuple(name for name, pat in FOREIGN_BRANDS.items() if re.search(rf"(?<![\w]){pat}", q))
 
 
 # --- Söylenmiş kodlar: "Es yetmiş üç yüz A" → "S-7300A", "E sıfır elli" → "E050" ---------------------------
@@ -171,12 +151,12 @@ def normalize_codes(question: str, scope: list[str] | None) -> str:
     anahtarla eşler; hiç yoksa "kapsamda yok"). Doküman takma adları ("s7300a") kod sayılmaz."""
     tables = _code_forms()
     docs = scope or list(tables)
-    aliases = {a for d in DOCS for a in d.aliases}
+    aliases = {_squash(a) for d in DOCS for a in product_names(d)}
 
     def repl(m: re.Match) -> str:
         code = m.group(1)
         key = code_key(code)
-        if key is None or code.lower() in aliases:
+        if key is None or _squash(code) in aliases:
             return code
         forms = set().union(*(tables.get(d, {}).get(key, frozenset()) for d in docs))
         return next(iter(forms)) if len(forms) == 1 and code.upper() not in forms else code
@@ -206,30 +186,14 @@ def analyze_query(question: str) -> QueryContext:
     entities: list[tuple[str, str, tuple[str, ...]]] = []
     variants: list[str] = []
 
-    from . import config
-    from .registry import product_names
     for doc in DOCS:
-        for alias in (doc.aliases if config.HAND_LISTS else product_names(doc)):
+        for alias in product_names(doc):
             if _squash(alias) in q:
                 doc_ids.append(doc.doc_id)
                 matched.append(alias)
                 entities.append((alias, KIND_OF_DOC_TYPE.get(doc.doc_type, "rehber"), (doc.doc_id,)))
                 break
-    # Müşteri markası ("US Army"), ürün belirtilmemişse: o markanın şartnamelerinin hepsi, belirsiz.
-    groups = [(b, "marka", ids) for b, ids in CUSTOMER_BRANDS.items()] if config.HAND_LISTS else []
-    for alias, kind, ids in groups:
-        # "s7300", "S-7300A" eşleşmesinin bir parçasıysa ayrı varlık değildir
-        if alias not in q or any(e[2] == ids or alias in _squash(e[0]) for e in entities):
-            continue
-        entities.append((alias, kind, ids))
-        # Daha belirgin bir eşleşme varsa ("Brother S-7300A", "US Army ceket") filtre ona göre kalır,
-        # grup yalnızca varlık olarak kaydedilir (kaynak uyumu ve "soru ne soruyor" kontrolü için).
-        if not any(i in doc_ids for i in ids):
-            doc_ids += list(ids)
-            variants += list(ids)
-            matched.append(alias)
     return QueryContext(tuple(dict.fromkeys(doc_ids)), tuple(matched),
-                        _foreign_brands(question) if config.HAND_LISTS else (),
                         tuple(dict.fromkeys(variants)), tuple(entities))
 
 
@@ -321,7 +285,7 @@ STOPWORDS = {"ne", "nedir", "neler", "nelerdir", "kaç", "kadar", "nasıl", "mı
 
 def asks_nothing_specific(question: str, ctx: QueryContext) -> bool:
     """Soruda varlık adları, genel kelimeler ve bağlaçlar dışında kelime yoksa True ("Brother A ceket ölçüsü")."""
-    keys = [_squash(e[0]) for e in ctx.entities] + [_squash(b) for b in ctx.foreign_brands]
+    keys = [_squash(e[0]) for e in ctx.entities]
     for word in re.findall(r"[\w'’\-]+", question.translate(_TR_LOWER).lower()):
         w = _squash(re.split(r"['’]", word)[0])       # "S-7300A'da" → "s7300a"
         if len(w) <= 1 or w in STOPWORDS or w.startswith(GENERIC_PREFIXES) or any(w.startswith(k) for k in keys):

@@ -14,7 +14,10 @@ class DocMeta:
     doc_type: str                              # product_standard | machine_manual | tailoring_guide | repair_guide
     default_lang: str = "en"
     lang_ranges: tuple[tuple[int, int, str], ...] = ()   # (ilk_sayfa, son_sayfa, dil)
-    aliases: tuple[str, ...] = ()              # sorguda geçerse filtre: küçük harf, '-' ve boşluksuz
+    # Belgenin kendi başlığı (genelde İngilizce) ve varsa yazarı: metadata, kural değil (karar 2026-11-06). Yüklemede ilk
+    # sayfadan önerilir, yetkili onaylar. Elle yazılmış takma ad listesi (aliases) silindi.
+    title: str = ""
+    author: str = ""
     # Bu dokümanı görebilecek departman/yetki grupları. "all": herkes. Parçaların payload'ına yazılır; arama
     # access verilirse Qdrant filtresinin içinde uygulanır (retrieve.search), yetkisiz parça sonuçlara hiç girmez.
     access: tuple[str, ...] = ("all",)
@@ -31,49 +34,34 @@ class DocMeta:
 
 
 DOCS: tuple[DocMeta, ...] = (
-    DocMeta("gl-pd-14-04a", "GL-PD-14-04A_ACU-Coat.pdf", "US Army (GL-PD)", "Ceket", "product_standard",
-            aliases=("ceket", "acucoat", "gl-pd-14-04a"),),
-    DocMeta("gl-pd-07-14a", "GL-PD-07-14A_Combat-Trousers.pdf", "US Army (GL-PD)", "Pantolon", "product_standard",
-            aliases=("pantolon", "trouser", "gl-pd-07-14a"),),
-    DocMeta("brother-s7300a", "Brother_S-7300A_Instruction.pdf", "Brother", "S-7300A düz dikiş makinesi", "machine_manual",
-            aliases=("s7300a",)),
-    DocMeta("brother-s7300b", "Brother_S-7300B_Instruction_2025-04.pdf", "Brother", "S-7300B düz dikiş makinesi", "machine_manual",
-            aliases=("s7300b",)),
-    DocMeta("strickland-1956", "Strickland_A-Tailoring-Manual_1956.pdf", "G. Strickland", "Terzilik kitabı", "tailoring_guide",
-            aliases=("strickland", "terzilik")),
+    DocMeta("gl-pd-14-04a", "GL-PD-14-04A_ACU-Coat.pdf", "US Army (GL-PD)", "Ceket", "product_standard", title="COAT, ARMY COMBAT UNIFORM"),
+    DocMeta("gl-pd-07-14a", "GL-PD-07-14A_Combat-Trousers.pdf", "US Army (GL-PD)", "Pantolon", "product_standard", title="TROUSERS, ARMY COMBAT UNIFORM"),
+    DocMeta("brother-s7300a", "Brother_S-7300A_Instruction.pdf", "Brother", "S-7300A düz dikiş makinesi", "machine_manual", title="Single Needle Direct Drive Lock Stitcher with Electronic Feeding System and Thread Trimmer, Instruction Manual"),
+    DocMeta("brother-s7300b", "Brother_S-7300B_Instruction_2025-04.pdf", "Brother", "S-7300B düz dikiş makinesi", "machine_manual", title="Single Needle Direct Drive Lock Stitcher with Electronic Feeding System and Thread Trimmer, Instruction Manual"),
+    DocMeta("strickland-1956", "Strickland_A-Tailoring-Manual_1956.pdf", "G. Strickland", "Terzilik kitabı", "tailoring_guide", title="A Tailoring Manual", author="Gertrude Strickland"),
     # Genel başvuru kitabı (eğirme, dokuma, örme makineleri): tür query.MUST_MATCH'te yok, hiçbir varlık engellemez.
     DocMeta("granovsky-1986", "Granovsky_Repair-Adjustment-Textile-Machines_1986.pdf", "T. Granovsky (Mir)",
-            "Tekstil makineleri onarım ve ayar kitabı", "repair_guide",
-            aliases=("granovsky", "onarım kitabı", "onarim kitabi")),
+            "Tekstil makineleri onarım ve ayar kitabı", "repair_guide", title="Repair and Adjustment of Textile Machines (Spinning and Weaving Equipment)", author="T. Granovsky"),
     # Görülmemiş doküman testi (2026-10-16): yalnız yükleyicinin gireceği kayıt; sözlük ve kural eklenmedi.
     # Kaynak: juki.co.jp, MO-6800S(D)/DD10 English instruction manual (instruction_eg.pdf)
-    DocMeta("juki-mo6800s", "JUKI_MO-6800S_Instruction_EN.pdf", "JUKI", "MO-6800S overlok makinesi", "machine_manual",
-            aliases=("mo6800s", "juki")),
-    DocMeta("mrcoffee-2003", "MrCoffee_Coffeemaker_2003.pdf", "Mr. Coffee", "Kahve makinesi", "machine_manual",
-            aliases=("kahve", "mrcoffee", "coffee")),
+    DocMeta("juki-mo6800s", "JUKI_MO-6800S_Instruction_EN.pdf", "JUKI", "MO-6800S overlok makinesi", "machine_manual", title="MO-6800S(D)/DD10 Series Instruction Manual"),
+    DocMeta("mrcoffee-2003", "MrCoffee_Coffeemaker_2003.pdf", "Mr. Coffee", "Kahve makinesi", "machine_manual", title="Mr. Coffee Coffeemaker Instructions"),
     DocMeta("bosch-ra1171", "Bosch_RA1171_Operating-Safety_2005.pdf", "Bosch", "RA1171 freze tezgâhı", "machine_manual",
-            lang_ranges=((2, 31, "en"), (32, 61, "fr"), (62, 96, "es")),
-            aliases=("bosch", "freze", "ra1171")),
+            lang_ranges=((2, 31, "en"), (32, 61, "fr"), (62, 96, "es")), title="RA1171 Operating/Safety Instructions"),
 )
 
 BY_ID = {d.doc_id: d for d in DOCS}
 
 
 def product_names(doc: DocMeta) -> tuple[str, ...]:
-    """Elle yazılmış takma ad olmadan, yalnız belge kaydının alanlarından eşleşme adları (yükleme formunun girdiği
-    bilgi): ürün adının tamamı, ürün adındaki model kodları (rakam içeren kelimeler: "S-7300A", "RA1171") ve doküman
-    kimliği. Küçük harf; '-' ve boşluk eşleştirmede yok sayılır (query._squash)."""
-    words = doc.product.split()
-    codes = [w for w in words if any(ch.isdigit() for ch in w)]
-    return tuple(dict.fromkeys([doc.product.casefold(), *(c.casefold() for c in codes), doc.doc_id]))
+    """Belgenin sorudaki adları, yalnız belge kaydının alanlarından (elle yazılmış takma ad yok; karar 2026-11-06):
+    ürün adının tamamı, ürün adındaki model kodları (rakam içeren kelimeler: "S-7300A", "RA1171"), belgenin
+    başlığı, yazarın soyadı ve doküman kimliği. Küçük harf; '-', '.', boşluk eşleştirmede yok sayılır (query._squash)."""
+    codes = [w for w in doc.product.split() if any(ch.isdigit() for ch in w)]
+    surname = doc.author.split()[-1] if doc.author.split() else ""
+    names = [doc.product, *codes, doc.title, surname if len(surname) >= 4 else "", doc.doc_id]
+    return tuple(dict.fromkeys(n.casefold() for n in names if n))
 
-# Müşteri (ürün sahibi) markaları ve şartnameleri. Soruda yalnız marka geçerse o markanın tüm şartnameleri kapsanır
-# ("US Army SPI?" → ceket mi pantolon mu sorulur). Gerçek sistemde bu tablo müşteri kaydından ve yetkiden gelir.
-# Dokümanı olmayan markalar (Nike ...) query.FOREIGN_BRANDS'te: aynı türden varlık, şartnamesi yok.
-CUSTOMER_BRANDS: dict[str, tuple[str, ...]] = {
-    "usarmy": ("gl-pd-14-04a", "gl-pd-07-14a"),
-    "glpd": ("gl-pd-14-04a", "gl-pd-07-14a"),
-}
 
 
 def visible(doc_id: str, groups: list[str] | None) -> bool:

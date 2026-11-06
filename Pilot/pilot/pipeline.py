@@ -185,8 +185,7 @@ def code_lookup(question: str, scope: list[str] | None, brands: list[str] | None
     kapsam dışı dokümanlar. Arama benzer kodu (E05 ~ E050) getirebiliyor; kod birebir aranır.
     access: kullanıcının yetki grupları; yetkisiz dokümanların parçaları ve adları hiç dönmez (arama gibi)."""
     from .registry import product_names
-    aliases = ({a for d in DOCS for a in d.aliases} if config.HAND_LISTS       # tiresiz model adı ("s7300a") kod değil
-               else {re.sub(r"[-\s]", "", a) for d in DOCS for a in product_names(d)})
+    aliases = {re.sub(r"[-\s]", "", a) for d in DOCS for a in product_names(d)}   # model adı ("s7300a") kod değil
     codes = list(dict.fromkeys(m.group(1).upper() for m in CODE_TOKEN_RE.finditer(question)
                                if m.group(1).lower() not in aliases))
     found: list[dict[str, Any]] = []
@@ -263,12 +262,6 @@ def soru_cevapla(question: str, *, brands: list[str] | None = None, doc_ids: lis
     question = spoken_codes(question)     # "Es yetmiş üç yüz A" → "S-7300A": arama ve model yazılı kodu görür
     lang = question_lang(question)
     ctx = analyze_query(question)
-    if ctx.foreign_brands:
-        # Soruda dokümanı olmayan bir marka geçiyor: başka markanın şartnamesinden değer verilmez (R4).
-        # Arama ve model çağrılmaz; cevap saniyeler içinde döner.
-        timings["total"] = time.time() - t0
-        return _not_found(question, ctx, [], timings,
-                          reason=f"Soruda geçen marka için ({', '.join(ctx.foreign_brands)}) sistemde doküman yok.")
     if voice and not doc_ids and not ctx.doc_ids and not brands:
         # Sesli soruda makine, ürün ya da marka geçmiyor: yazılı soruda tüm dokümanlarda aranır, sesli soruda sorulur
         # (karar, cevaplar.md). Usta kısa konuşur ("masura kovanı nasıl takılır?"), yanlış makinenin cevabı riskli.
