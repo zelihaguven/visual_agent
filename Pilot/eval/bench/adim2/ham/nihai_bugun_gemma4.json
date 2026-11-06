@@ -1768,7 +1768,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "DeepInfra",
@@ -1785,7 +1785,8 @@
    "cikis_token": 261,
    "dusunce_token": 0,
    "maliyet": 0.00024526,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"}], \"cevap\": \"Pantolonun Type I modelinde overlok (ham kenar) dikişleri için iplik gereksinimleri şöyledir: A-A-50199, Type II spesifikasyonuna sahip, iğne (needle thread) ve bobin/looper (bobbin/looper thread) ipliklerinin Tex boyutu 31-35 olmalıdır [1].\", \"sesli_metin\": \"Type I pantolonun overlok dikişlerinde 31-35 Tex boyutunda A-A-50199 Type II iplik kullanılmalıdır.\", \"celiski_var\": false, \"netlestirme_sorusu\": \"Hangi pantolon tipi için bilgi istiyorsunuz?\", \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 1, \"metin\": \"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"}], \"cevap\": \"Pantolonun Type I modelinde overlok (ham kenar) dikişleri için iplik gereksinimleri şöyledir: A-A-50199, Type II spesifikasyonuna sahip, iğne (needle thread) ve bobin/looper (bobbin/looper thread) ipliklerinin Tex boyutu 31-35 olmalıdır [1].\", \"sesli_metin\": \"Type I pantolonun overlok dikişlerinde 31-35 Tex boyutunda A-A-50199 Type II iplik kullanılmalıdır.\", \"celiski_var\": false, \"netlestirme_sorusu\": \"Hangi pantolon tipi için bilgi istiyorsunuz?\", \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_deger_varyantsiz": true
   },
   "questions_ek:Q27": {
    "durum": "failed",
@@ -7971,7 +7972,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": false,
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "DeepInfra",
@@ -7988,7 +7989,8 @@
    "cikis_token": 296,
    "dusunce_token": 0,
    "maliyet": 0.00029699,
-   "ham": "{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"}, {\"kaynak_no\": 4, \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush, and then push the plunger (1) of the thread trimmer solenoid in the direction of the arrow with your finger.\"}], \"cevap\": \"S-7300B modelinde iplik kesme kamı (thread trimmer cam) ayarlanırken iğne milinin en alt konumdan ne kadar kaldırılacağı konusunda kaynaklarda çelişki bulunmaktadır: [3] Kaynağına göre iğne mili en alt konumdan 6 mm kaldırılmalıdır, [4] Kaynağına göre ise 5 mm kaldırılmalıdır.\", \"sesli_metin\": \"Kaynaklarda çelişki var. Bir kaynağa göre iğne mili 6 mm, diğerine göre ise 5 mm kaldırılmalıdır.\", \"celiski_var\": true, \"netlestirme_sorusu\": \"\", \"netlestirme_secenekleri\": [], \"bulunamadi\": false}"
+   "ham": "{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"}, {\"kaynak_no\": 4, \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush, and then push the plunger (1) of the thread trimmer solenoid in the direction of the arrow with your finger.\"}], \"cevap\": \"S-7300B modelinde iplik kesme kamı (thread trimmer cam) ayarlanırken iğne milinin en alt konumdan ne kadar kaldırılacağı konusunda kaynaklarda çelişki bulunmaktadır: [3] Kaynağına göre iğne mili en alt konumdan 6 mm kaldırılmalıdır, [4] Kaynağına göre ise 5 mm kaldırılmalıdır.\", \"sesli_metin\": \"Kaynaklarda çelişki var. Bir kaynağa göre iğne mili 6 mm, diğerine göre ise 5 mm kaldırılmalıdır.\", \"celiski_var\": true, \"netlestirme_sorusu\": \"\", \"netlestirme_secenekleri\": [], \"bulunamadi\": false}",
+   "onceki_deger_varyantsiz": true
   },
   "aday_sorular:A071": {
    "durum": "partial",

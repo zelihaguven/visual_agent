@@ -1628,7 +1628,7 @@
    "atif_dokumanlari": [
     "gl-pd-07-14a"
    ],
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Azure",
@@ -1645,7 +1645,8 @@
    "cikis_token": 177,
    "dusunce_token": 0,
    "maliyet": 0.00167775,
-   "ham": "{\"tur\":\"cevap\",\"cevap\":[{\"alinti\":{\"kaynak_no\":1,\"metin\":\"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"},\"metin\":\"Pantolonun overlok (ham kenar) dikişlerinde iğne ipliği Tex 31-35 ve bobin/looper ipliği Tex 31-35 kullanılır.\"}],\"sesli_metin\":\"Pantolonun overlok ham kenar dikişlerinde Tex 31-35 kullanılır. Iğne ipliği ve bobin looper ipliği de Tex 31-35'tir.\",\"celiski_var\":false}"
+   "ham": "{\"tur\":\"cevap\",\"cevap\":[{\"alinti\":{\"kaynak_no\":1,\"metin\":\"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"},\"metin\":\"Pantolonun overlok (ham kenar) dikişlerinde iğne ipliği Tex 31-35 ve bobin/looper ipliği Tex 31-35 kullanılır.\"}],\"sesli_metin\":\"Pantolonun overlok ham kenar dikişlerinde Tex 31-35 kullanılır. Iğne ipliği ve bobin looper ipliği de Tex 31-35'tir.\",\"celiski_var\":false}",
+   "onceki_deger_varyantsiz": true
   },
   "questions_ek:Q27": {
    "cikis": "bulunamadi",

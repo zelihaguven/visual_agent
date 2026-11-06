@@ -29,7 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from bench.common import (KNOWN_SETS, PILOT_DIR, first_rank, is_match, load_questions, percentile, sse_events,
-                          value_in,
+                          value_in, variants_in,
                           write_result)
 
 CACHE = PILOT_DIR / "data" / "bench_cache" / "adim2_arama.json"
@@ -423,7 +423,8 @@ def judge_c(q: dict[str, Any], res: Any, current: dict[str, Any]) -> dict[str, A
         row["atif_dokumanlari"] = sorted({chunks[n - 1]["doc_id"] for n in cited if isinstance(n, int) and 1 <= n <= len(chunks)})
         if q.get("expect_in_answer"):
             text = " ".join(x.get("metin", "") for x in ans.get("cevap") or []) + " " + (ans.get("sesli_metin") or "")
-            row["deger_dogru"] = all(value_in(s_, text) for s_ in q["expect_in_answer"])
+            row["deger_dogru"] = (variants_in(q["varyantlar"], [x.get("metin", "") for x in ans.get("cevap") or []])
+                                  if q.get("varyantlar") else all(value_in(s_, text) for s_ in q["expect_in_answer"]))
     if q.get("expect_clarify"):
         cls = json.loads(CLARIFY_CLASSES.read_text(encoding="utf-8")).get(q["qid"], {}).get("sinif")
         docs = [chunks[n - 1]["doc_id"] for n in v.get("secenekler") or [] if 1 <= n <= len(chunks)]
@@ -524,7 +525,9 @@ def judge(q: dict[str, Any], res: Any) -> dict[str, Any]:
                                                                and st in ("verified", "partial")))
     if q.get("expect_in_answer"):
         text = ((a.get("cevap") or "") + " " + res.speech_text).casefold()
-        row["deger_dogru"] = all(value_in(s, text) for s in q["expect_in_answer"])
+        # belge içi varyant (2026-11-06): değerler kendi varyant etiketiyle aynı yan cümlede
+        row["deger_dogru"] = (variants_in(q["varyantlar"], a.get("cevap") or "") if q.get("varyantlar")
+                              else all(value_in(s, text) for s in q["expect_in_answer"]))
     return row
 
 
@@ -645,8 +648,8 @@ def report_c(tag: str) -> str:
         js = sum(R[q].get("json") not in (None, "ok") for q in R)
         classes = json.loads(CLARIFY_CLASSES.read_text(encoding="utf-8"))
         var = [q for q in model if classes.get(q, {}).get("sinif") == "belge_ici_varyant"]
-        var_ok = sum(R[q].get("cikis") == "netlestirme" or all(value_in(v, R[q].get("cevap", ""))
-                                                              for v in classes[q]["varyant_degerleri"]) for q in var)
+        var_ok = sum(R[q].get("cikis") == "netlestirme"
+                     or variants_in(qs[q].get("varyantlar") or [], R[q].get("cevap", "")) for q in var)
         unnec = sum(R[q].get("cikis") == "netlestirme" for q in an + nf if q not in var)
         L.append(f"| {k} | {len(model)} | {js} | {pct_(sum(R[q]['cikis'] == 'bulunamadi' for q in nf), len(nf))} | **{bad}** | "
                  f"{st['verified']} / {st['partial']} / {st['failed']} | {pct_(sum(dv), len(dv))} | "

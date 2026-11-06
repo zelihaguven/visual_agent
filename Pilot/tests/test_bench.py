@@ -526,3 +526,14 @@ def test_schema_c_parse_verify_and_first_verified_sentence():
     both = dict(clar, cevap=ans["cevap"])
     assert parse_c(json.dumps(both, ensure_ascii=False), "stop")[1] == "sema_disi"     # aynı anda hem sorup hem cevap
     assert verify_c({"tur": "bulunamadi", "cevap": []}, src)["status"] == "not_found"
+
+
+def test_document_variant_values_need_their_labels():
+    """Belge içi varyant (2026-11-06): her değer kendi etiketiyle aynı yan cümlede; etiketsiz "5 / 6 mm" doğru değil."""
+    from bench.common import variants_in
+    v = [{"etiket": "standart", "etiket_re": "standart|standard", "degerler": ["5"]},
+         {"etiket": "Premier", "etiket_re": "premier", "degerler": ["6"]}]
+    assert variants_in(v, "Standart modelde iğne mili 5 mm, Premier spesifikasyonunda 6 mm kaldırılır.")
+    assert variants_in(v, ["Standart modelde 5 mm.", "Premier modelde 6 mm."])
+    assert not variants_in(v, "İğne mili 5 / 6 mm kaldırılır.")
+    assert not variants_in(v, "Premier modelde 5 mm, standart modelde 6 mm.")

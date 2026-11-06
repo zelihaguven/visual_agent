@@ -7480,7 +7480,7 @@
    "atif_dokumanlari": [
     "brother-s7300b"
    ],
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "DeepInfra",
@@ -7498,7 +7498,8 @@
    "dusunce_token": 0,
    "maliyet": 0.0002766,
    "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alintilar\": [{\"kaynak_no\": 3, \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with\"}, {\"kaynak_no\": 4, \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush\"}], \"metin\": \"İplik kesme kamı (thread trimmer cam) ayarlanırken iğne milinin en alt konumdan ne kadar kaldırılacağı konusunda kaynaklarda çelişki bulunmaktadır: bir kaynakta 6 mm, diğer kaynakta ise 5 mm olarak belirtilmiştir.\"}], \"sesli_metin\": \"İplik kesme kamı ayarlanırken iğne milinin en alt konumdan 6 mm veya 5 mm kaldırılması gerektiğine dair kaynaklarda çelişki bulunmaktadır.\", \"celiski_var\": true}",
-   "ilk_cumle_yaklasik": true
+   "ilk_cumle_yaklasik": true,
+   "onceki_deger_varyantsiz": true
   },
   "aday_sorular:A071": {
    "cikis": "cevap",

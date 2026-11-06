@@ -1614,7 +1614,7 @@
    "atif_dokumanlari": [
     "gl-pd-07-14a"
    ],
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "DeepInfra",
@@ -1631,7 +1631,8 @@
    "cikis_token": 200,
    "dusunce_token": 0,
    "maliyet": 0.0004216,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"\n      },\n      \"metin\": \"Pantolonun overlok (ham kenar) dikişlerinde iğne ve makara/looper ipliği için Tex 31-35 aralığında iplik kullanılır.\"\n    }\n  ],\n  \"sesli_metin\": \"Overlok dikişlerinde Tex 31-35 iplik kullanılır.\"\n,\n  \"celiski_var\": false\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 1,\n        \"metin\": \"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"\n      },\n      \"metin\": \"Pantolonun overlok (ham kenar) dikişlerinde iğne ve makara/looper ipliği için Tex 31-35 aralığında iplik kullanılır.\"\n    }\n  ],\n  \"sesli_metin\": \"Overlok dikişlerinde Tex 31-35 iplik kullanılır.\"\n,\n  \"celiski_var\": false\n}",
+   "onceki_deger_varyantsiz": true
   },
   "questions_ek:Q27": {
    "cikis": "bulunamadi",
@@ -7272,7 +7273,7 @@
    "atif_dokumanlari": [
     "brother-s7300b"
    ],
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "DeepInfra",
@@ -7289,7 +7290,8 @@
    "cikis_token": 299,
    "dusunce_token": 0,
    "maliyet": 0.00057485,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 3,\n        \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"\n      },\n      \"metin\": \"İplik kesme kamı ayarlanırken iğne mili en alt konumdan 6 mm kaldırılır.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 4,\n        \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush, and then push the plunger (1) of the thread trimmer solenoid in the direction of the arrow with your finger.\"\n      },\n      \"metin\": \"Bazı durumlarda iğne mili en alt konumdan 5 mm kaldırılır.\"\n    }\n  ],\n  \"sesli_metin\": \"İplik kesme kamı ayarlanırken iğne mili en alt konumdan 5 mm veya 6 mm kaldırılır.\",\n  \"celiski_var\": true\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 3,\n        \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"\n      },\n      \"metin\": \"İplik kesme kamı ayarlanırken iğne mili en alt konumdan 6 mm kaldırılır.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 4,\n        \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush, and then push the plunger (1) of the thread trimmer solenoid in the direction of the arrow with your finger.\"\n      },\n      \"metin\": \"Bazı durumlarda iğne mili en alt konumdan 5 mm kaldırılır.\"\n    }\n  ],\n  \"sesli_metin\": \"İplik kesme kamı ayarlanırken iğne mili en alt konumdan 5 mm veya 6 mm kaldırılır.\",\n  \"celiski_var\": true\n}",
+   "onceki_deger_varyantsiz": true
   },
   "aday_sorular:A071": {
    "cikis": "cevap",

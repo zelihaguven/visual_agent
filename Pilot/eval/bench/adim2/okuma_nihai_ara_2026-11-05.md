@@ -178,3 +178,27 @@ Kabul ölçütü: süre kısalırken beklenen değer ve yanlış ret kötüleşm
 - Cevap modeli Gemma 4 26B A4B; sağlayıcılar yalnız Venice (birincil) ve DeepInfra (ikincil).
 - Şema C'nin çalışma biçimi **c150b**.
 - **Açık fark:** c150b, bugünkü şemaya göre yanlış ret 18 → 24 (+6) ve ✖ 12 → 18 (+6) (Gemma 4 DeepInfra, aynı 159 soru). İkisi de güvenli yönde. c150b bundan sonra bugünkü şemayla da karşılaştırılacak (devir notu, madde d).
+
+## 2026-11-06 (a): Q26 ve A070 varyant etiketiyle, kayıtlardan yeniden puanlama (model çağrısı yok)
+
+**Beklenen cevaplar, varyant etiketiyle:**
+
+| Soru | Varyant | Değer | Kaynak |
+|---|---|---|---|
+| A070 (S-7300B iplik kesme kamı, iğne mili) | standart | 5 mm | s.98 `<Thread trimming cam position adjustment>` |
+| | **Premier** spesifikasyonu | 6 mm | s.102–103, "12-11-1. Thread trimming (Premier specifications)" |
+| Q26 (pantolon overlok Tex) | **Type I** pantolon | 31–35 | TABLE I, s.8: Overedge stitching (raw edges) |
+| | **Type II** pantolon | 40 (/ 39 / 16 / 24–27) | TABLE II, s.9: Overedge/Serge … raw edge cover |
+
+**Eşleştirici** (`bench.common.variants_in`, testli):
+- Her değer kendi etiketiyle aynı yan cümlede ya da öğede geçmeli. Etiketsiz "5 / 6 mm" ve ters eşleşme ("Premier 5 mm, standart 6 mm") doğru sayılmaz.
+- Belge içi varyantta doğru = netleştirme YA DA iki varyantın da etiketiyle verilmesi.
+
+**Yeniden puanlama sonucu (bütün kayıtlar):**
+- **Bugünkü şema:** cevap veren her model iki soruda da yalnız tek varyantı veriyordu (31–35 ya da 5 mm). Önceki eşleştiricide "beklenen değer doğru" sayılan bu cevaplar artık doğru değil. Tek istisna Qwen3.6 ilk turda Q26: iki tipi etiketiyle verdi.
+- **Şema C:**
+  - Gemma 4 DeepInfra ve Venice, Gemma 4 NextBit (A070) ile c150 ve c150b Venice: netleştirme sordu, doğru.
+  - c150b DeepInfra A070'te ve Gemma 4 31B A070'te yalnız 5 mm verdi, yanlış.
+  - GPT-5.4 mini, Mistral ve Qwen3.6 tek varyantı verdi.
+- Raporlar yeniden üretildi; beklenen değer sayıları bu iki soru kadar (≤ 2) değişebilir.
+- Gemma 4 DeepInfra/Venice şema C: belge içi varyant 2/2, gereksiz netleştirme 0.

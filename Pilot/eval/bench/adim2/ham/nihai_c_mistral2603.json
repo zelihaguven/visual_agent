@@ -1618,7 +1618,7 @@
    "atif_dokumanlari": [
     "gl-pd-07-14a"
    ],
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Mistral",
@@ -1635,7 +1635,8 @@
    "cikis_token": 154,
    "dusunce_token": 0,
    "maliyet": 0.00023121,
-   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"}, \"metin\": \"Overlok (ham kenar) dikişlerinde iplik numarası Tex 31-35 olmalıdır.\"}], \"sesli_metin\": \"Overlok dikişlerinde Tex 31-35 iplik kullanılır.\", \"celiski_var\": false}"
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 1, \"metin\": \"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"}, \"metin\": \"Overlok (ham kenar) dikişlerinde iplik numarası Tex 31-35 olmalıdır.\"}], \"sesli_metin\": \"Overlok dikişlerinde Tex 31-35 iplik kullanılır.\", \"celiski_var\": false}",
+   "onceki_deger_varyantsiz": true
   },
   "questions_ek:Q27": {
    "cikis": "cevap",
@@ -7424,7 +7425,7 @@
    "atif_dokumanlari": [
     "brother-s7300b"
    ],
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Mistral",
@@ -7441,7 +7442,8 @@
    "cikis_token": 239,
    "dusunce_token": 0,
    "maliyet": 0.00037845,
-   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 3, \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"}, \"metin\": \"İğne milini en alt konumundan 6 mm kaldırınız.\"}, {\"alinti\": {\"kaynak_no\": 4, \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush,\"}, \"metin\": \"Kaynaklarda 5 mm ve 6 mm olmak üzere iki farklı değer bulunmaktadır.\"}], \"sesli_metin\": \"S-7300B'de iplik kesme kamı ayarlanırken iğne milini en alt konumundan 5 mm veya 6 mm kaldırınız. Kaynaklarda iki farklı değer mevcuttur.\", \"celiski_var\": true}"
+   "ham": "{\"tur\": \"cevap\", \"cevap\": [{\"alinti\": {\"kaynak_no\": 3, \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"}, \"metin\": \"İğne milini en alt konumundan 6 mm kaldırınız.\"}, {\"alinti\": {\"kaynak_no\": 4, \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush,\"}, \"metin\": \"Kaynaklarda 5 mm ve 6 mm olmak üzere iki farklı değer bulunmaktadır.\"}], \"sesli_metin\": \"S-7300B'de iplik kesme kamı ayarlanırken iğne milini en alt konumundan 5 mm veya 6 mm kaldırınız. Kaynaklarda iki farklı değer mevcuttur.\", \"celiski_var\": true}",
+   "onceki_deger_varyantsiz": true
   },
   "aday_sorular:A071": {
    "cikis": "bulunamadi",

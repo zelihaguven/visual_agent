@@ -6,7 +6,7 @@ Arama sabit: uygulamanın varsayılan yolu (bge-m3 + BM25, rerank kapalı, ilke 
 
 **Rozetler `verify.py` A+B (2026-11-05): çoklu atıf, liste numarası, değer biçimi, alıntıda yazıyla sayı ile.** Rozet davranışı değişti: çoklu atıf (`[1, 2]`) atıf sayılıyor ve içindeki rakamlar değer sayılmıyor; atıftan sonra, `<br>` sonrası ve Markdown kalın madde numaraları liste numarası; `2.00` = `2`, `.5` = `0.5`; alıntıda yazıyla geçen 1–12 (`six months`) alıntı sayısı. Birim dönüşümü, türetilmiş sayı ve alıntıda olmayan değer yine ✖. Gerekçe ve önce/sonra: [okuma_sayi_uzunluk_2026-11-05.md](okuma_sayi_uzunluk_2026-11-05.md). Önceki sürümle koşulan kayıtlar model çağrısı olmadan yeniden puanlandı (`--rescore`): gemma4 rozeti değişen 0, kesik kayıt 5, gpt54mini rozeti değişen 0, kesik kayıt 6, mistral2603 rozeti değişen 0, kesik kayıt 8, qwen36 rozeti değişen 0, kesik kayıt 3. Kesik kayıt: ham çıktı 1500 karakterde kesik kaydedilmiş, rozeti yaklaşık (sayı ve atıf kontrolleri kayıttaki cevabın ilk 600 karakterinden); tablolarda ayrı sütunda.
 
-**Kural çıkışları (modelden bağımsız, bir kez):** {'yabanci_marka': 2, 'kod_yok': 2, 'netlestirme_sonra': 3}; "bulunamadı" beklenen 21 sorudan 4 kuralla çıkıyor.
+**Kural çıkışları (modelden bağımsız, bir kez):** {'yabanci_marka': 2, 'kod_yok': 3, 'netlestirme_sonra': 9}; "bulunamadı" beklenen 21 sorudan 4 kuralla çıkıyor.
 
 ## Dayanıklılık
 
@@ -32,13 +32,13 @@ Taban (2026-10-27, yerel qwen2.5:7b, aynı 21 soru, o günkü arama): doğru "bu
 
 | Model | Set | soru | yanlış ret | … kaynak ilk 5'teydi (model hatası) | … arama getirmedi | netleştirme | ✓ / ⚠ / ✖ | … kesik kayıt (yaklaşık) | beklenen değer cevapta | atıf: en az biri doğru sayfa | atıf: hepsi doğru | JSON hatası |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gemma4 | onaylı | 159 | 18/159 (11%) | 4 | 14 | 0 | 118 / 11 / 12 | 5 | 93/99 (94%) | 127/141 (90%) | 115/141 (82%) | 0 |
+| gemma4 | onaylı | 159 | 18/159 (11%) | 4 | 14 | 0 | 118 / 11 / 12 | 5 | 91/99 (92%) | 127/141 (90%) | 115/141 (82%) | 0 |
 | gemma4 | … onaylı, OCR soruları | 14 | 4/14 (29%) | 2 | 2 | 0 | 6 / 0 / 4 | 0 | 7/9 (78%) | 9/10 (90%) | 8/10 (80%) | 0 |
-| qwen36 | onaylı | 159 | 8/159 (5%) | 2 | 6 | 0 | 120 / 12 / 19 | 3 | 89/105 (85%) | 130/151 (86%) | 111/151 (74%) | 0 |
+| qwen36 | onaylı | 159 | 8/159 (5%) | 2 | 6 | 0 | 120 / 12 / 19 | 3 | 88/105 (84%) | 130/151 (86%) | 111/151 (74%) | 0 |
 | qwen36 | … onaylı, OCR soruları | 14 | 2/14 (14%) | 1 | 1 | 0 | 6 / 0 / 6 | 0 | 7/10 (70%) | 9/12 (75%) | 8/12 (67%) | 0 |
-| gpt54mini | onaylı | 159 | 9/159 (6%) | 3 | 6 | 0 | 129 / 14 / 7 | 5 | 90/105 (86%) | 129/150 (86%) | 105/150 (70%) | 0 |
+| gpt54mini | onaylı | 159 | 9/159 (6%) | 3 | 6 | 0 | 129 / 14 / 7 | 5 | 88/105 (84%) | 129/150 (86%) | 105/150 (70%) | 0 |
 | gpt54mini | … onaylı, OCR soruları | 14 | 2/14 (14%) | 1 | 1 | 0 | 12 / 0 / 0 | 0 | 5/10 (50%) | 8/12 (67%) | 7/12 (58%) | 0 |
-| mistral2603 | onaylı | 159 | 12/159 (8%) | 4 | 8 | 0 | 58 / 49 / 35 | 8 | 83/101 (82%) | 125/142 (88%) | 101/142 (71%) | 5 |
+| mistral2603 | onaylı | 159 | 12/159 (8%) | 4 | 8 | 0 | 58 / 49 / 35 | 8 | 81/101 (80%) | 125/142 (88%) | 101/142 (71%) | 5 |
 | mistral2603 | … onaylı, OCR soruları | 14 | 2/14 (14%) | 1 | 1 | 0 | 3 / 3 / 6 | 0 | 7/10 (70%) | 10/12 (83%) | 8/12 (67%) | 0 |
 
 Soru metni sonradan yeniden yazılan sorular (A008, 2026-11-05) bu turun kalite tablolarında yok: kayıtlı cevap eski soruya ait. Atıf doğruluğu: cevabın alıntı yaptığı kaynak numaralarının parçaları beklenen doküman ve sayfayla (`is_match`) eşleşiyor mu; alıntısız cevap paydada yok.
@@ -89,4 +89,4 @@ qwen2.5:7b yerelde (dizüstü CPU): süreleri bulutla karşılaştırılamaz.
 | mistral2603 | ana | 0.0608 | 0.00034 |
 | mistral2603 | ikinci | 0.0123 | 0.00041 |
 
-Bu rapordaki koşular: 0.6393 USD. Adım 2 turunun toplam harcaması (geçersiz sayılan koşular dahil, `ham/` altındaki bütün dosyalar): 1.1720 USD (sınır 1,5 USD).
+Bu rapordaki koşular: 0.6393 USD. Adım 2 turunun toplam harcaması (geçersiz sayılan koşular dahil, `ham/` altındaki bütün dosyalar): 2.5799 USD (sınır 1,5 USD).

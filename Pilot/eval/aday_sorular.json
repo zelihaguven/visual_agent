@@ -2554,15 +2554,18 @@
    "sayi"
   ],
   "dogrulandi": true,
-  "note": "onaylandı 2026-11-05 (geliştirme ekibi): kanıt beklenen sayfada",
+  "note": "onaylandı 2026-11-05 (geliştirme ekibi); 2026-11-06 belge içi varyant: doğru = netleştirme YA DA iki varyantı etiketiyle vermek (standart 5 mm, Premier 6 mm)",
   "expect_docs": [
    "brother-s7300b"
   ],
   "expect_pages": [
-   98
+   98,
+   102,
+   103
   ],
   "expect_chunk_ids": [
-   "brother-s7300b-00430"
+   "brother-s7300b-00430",
+   "brother-s7300b-00434"
   ],
   "kabul": [
    {
@@ -2571,16 +2574,43 @@
      98
     ],
     "chunk_id": "brother-s7300b-00430"
+   },
+   {
+    "doc": "brother-s7300b",
+    "pages": [
+     102,
+     103
+    ],
+    "chunk_id": "brother-s7300b-00434"
    }
   ],
   "expect_in_answer": [
-   "5"
+   "5",
+   "6"
   ],
-  "cevap": "5 mm",
+  "cevap": "Standart: 5 mm (s.98) · Premier spesifikasyonu: 6 mm (s.102–103, 12-11-1 Thread trimming (Premier specifications))",
   "kanit": "Raise the needle bar 5 mm from its lowest position",
   "bolum": "<Thread trimming cam position adjustment>",
   "onaylayan": "geliştirme ekibi",
-  "onay_tarihi": "2026-11-05"
+  "onay_tarihi": "2026-11-05",
+  "varyantlar": [
+   {
+    "etiket": "standart",
+    "etiket_re": "standart|standard|normal|premier olmayan|premier dışı|premier (?:özelliği )?olmayan",
+    "degerler": [
+     "5"
+    ],
+    "kaynak": "s.98 <Thread trimming cam position adjustment>"
+   },
+   {
+    "etiket": "Premier",
+    "etiket_re": "premier(?! olmayan)(?! dışı)",
+    "degerler": [
+     "6"
+    ],
+    "kaynak": "s.102–103, 12-11-1. Thread trimming (Premier specifications)"
+   }
+  ]
  },
  {
   "id": "A071",

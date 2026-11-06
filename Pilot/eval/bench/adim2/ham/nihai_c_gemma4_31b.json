@@ -7278,7 +7278,7 @@
    "atif_dokumanlari": [
     "brother-s7300b"
    ],
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Crusoe",
@@ -7295,7 +7295,8 @@
    "cikis_token": 324,
    "dusunce_token": 0,
    "maliyet": 0.00052202,
-   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 3,\n        \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"\n      },\n      \"metin\": \"İğne mili, referans çizgisi (b) iğne mili burcunun (needle bar bush) alt kenarıyla hizalanacak şekilde en alt konumundan (referans çizgisi (a) konumu) 6 mm kaldırılır.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 4,\n        \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush\"\n      },\n      \"metin\": \"İğne mili, referans çizgisi (b) iğne mili burcunun (needle bar bush) alt kenarıyla hizalanacak şekilde en alt konumundan 5 mm kaldırılır.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300B iplik kesme kamı ayarında iğne mili en alt konumdan 5 mm veya 6 mm kaldırılır.\",\n  \"celiski_var\": true\n}"
+   "ham": "{\n  \"tur\": \"cevap\",\n  \"cevap\": [\n    {\n      \"alinti\": {\n        \"kaynak_no\": 3,\n        \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"\n      },\n      \"metin\": \"İğne mili, referans çizgisi (b) iğne mili burcunun (needle bar bush) alt kenarıyla hizalanacak şekilde en alt konumundan (referans çizgisi (a) konumu) 6 mm kaldırılır.\"\n    },\n    {\n      \"alinti\": {\n        \"kaynak_no\": 4,\n        \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush\"\n      },\n      \"metin\": \"İğne mili, referans çizgisi (b) iğne mili burcunun (needle bar bush) alt kenarıyla hizalanacak şekilde en alt konumundan 5 mm kaldırılır.\"\n    }\n  ],\n  \"sesli_metin\": \"S-7300B iplik kesme kamı ayarında iğne mili en alt konumdan 5 mm veya 6 mm kaldırılır.\",\n  \"celiski_var\": true\n}",
+   "onceki_deger_varyantsiz": true
   },
   "aday_sorular:A071": {
    "durum": "failed",

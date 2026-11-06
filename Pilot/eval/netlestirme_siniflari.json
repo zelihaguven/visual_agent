@@ -74,19 +74,11 @@
  },
  "questions_ek:Q26": {
   "sinif": "belge_ici_varyant",
-  "varyant_degerleri": [
-   "31-35",
-   "40"
-  ],
-  "gerekce": "pantolon s.8 ham kenar overlok Tex 31–35; s.9 emniyet dikişi kenar örtüsü 40 / 39 / 16 / 24–27. Beklenen cevap yalnız 31–35 (varyantı kapsamıyor)"
+  "gerekce": "pantolon s.8 ham kenar overlok Tex 31–35; s.9 emniyet dikişi kenar örtüsü 40 / 39 / 16 / 24–27. Beklenen cevap yalnız 31–35 (varyantı kapsamıyor) — 2026-11-06: beklenen cevap varyant etiketiyle güncellendi (sorudaki varyantlar alanı)"
  },
  "aday_sorular:A070": {
   "sinif": "belge_ici_varyant",
-  "varyant_degerleri": [
-   "5",
-   "6"
-  ],
-  "gerekce": "S-7300B s.98: iğne mili 5 mm; s.102–103: 6 mm. Beklenen cevap yalnız 5 mm (varyantı kapsamıyor)"
+  "gerekce": "S-7300B s.98: iğne mili 5 mm; s.102–103: 6 mm. Beklenen cevap yalnız 5 mm (varyantı kapsamıyor) — 2026-11-06: beklenen cevap varyant etiketiyle güncellendi (sorudaki varyantlar alanı)"
  },
  "aday_sorular_ek:C001": {
   "sinif": "deger_farkli",

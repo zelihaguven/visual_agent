@@ -1985,7 +1985,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "DeepInfra",
@@ -2021,7 +2021,8 @@
     "atif_dogru_biri": true,
     "atif_dogru_hepsi": true,
     "deger_dogru": true
-   }
+   },
+   "onceki_deger_varyantsiz": true
   },
   "questions_ek:Q27": {
    "durum": "failed",
@@ -9584,7 +9585,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": false,
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "DeepInfra",
@@ -9620,7 +9621,8 @@
     "atif_dogru_biri": true,
     "atif_dogru_hepsi": false,
     "deger_dogru": true
-   }
+   },
+   "onceki_deger_varyantsiz": true
   },
   "aday_sorular:A071": {
    "durum": "partial",

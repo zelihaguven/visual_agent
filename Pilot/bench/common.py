@@ -147,6 +147,23 @@ def value_in(expected: str, text: str) -> bool:
     return "±" not in expected or "±" in t or "artı eksi" in t or "plus or minus" in t
 
 
+def _units(text: str | list[str]) -> list[str]:
+    """Cümleler (metin) ya da öğeler (şema C listesi): varyant etiketi ile değeri aynı birimde aranır."""
+    if isinstance(text, list):
+        return [t for t in text if t]
+    t = re.sub(r"<br\s*/?>", "\n", text, flags=re.I)
+    return [u for u in re.split(r"(?<=[.!?;])\s+|\n+", t) if u.strip()]
+
+
+def variants_in(variants: list[dict[str, Any]], text: str | list[str]) -> bool:
+    """Belge içi varyant (2026-11-06 kararı): her varyantın değerleri, KENDİ etiketiyle aynı cümlede ya da öğede.
+    Etiketsiz "5 / 6 mm" doğru sayılmaz. variants: [{"etiket": .., "etiket_re": .., "degerler": [..]}]."""
+    # Yan cümle düzeyi: "Type II … 31-35, Type I'de 40" tek cümlede iki etiketi karıştırmasın (ondalık virgül bölünmez)
+    clauses = [c for u in _units(text) for c in re.split(r"(?<!\d),|,(?!\d)|;|·|\s+ve\s+|\s+and\s+", u) if c.strip()]
+    return all(any(re.search(v["etiket_re"], c, re.I) and all(value_in(d, c) for d in v["degerler"]) for c in clauses)
+               for v in variants)
+
+
 def sse_events(response: Any) -> Iterable[dict[str, Any]]:
     """OpenRouter akışının (text/event-stream) olayları. Satırlar bayt olarak okunup UTF-8 çözülür: Yanıtta charset yok,
     requests'in decode_unicode'u Latin-1 varsayıyor; "±" ve Türkçe harfler bozuluyor, 0x85 baytı satırı bölüyordu

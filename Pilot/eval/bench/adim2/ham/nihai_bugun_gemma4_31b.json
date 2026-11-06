@@ -1768,7 +1768,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": true,
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Crusoe",
@@ -1785,7 +1785,8 @@
    "cikis_token": 534,
    "dusunce_token": 0,
    "maliyet": 0.0005265,
-   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"\n    },\n    {\n      \"kaynak_no\": 2,\n      \"metin\": \"Component area: Overedge/Serge/ for portions of safety stitch operation for raw edge cover | Tlu·ead· specification: A-A-50195 (Soft or Bonded) A-A-55195, Type I A-A-55195, Type II A-A-55217, Type I | Needle thread (Tex size): 40 39 16 24-27 | Bobbin! Looper thread (Tex size): 40 39 16 24-27\"\n    }\n  ],\n  \"cevap\": \"Pantolon tipine göre kullanılan Tex iplik değerleri şöyledir: Type I pantolon için overlok (overedge stitching) dikişlerinde iğne ve bobin/looper ipliği Tex boyutu 31-35'tir [1]. Type II pantolon için ham kenar örtme (raw edge cover) işleminin emniyet dikişi kısımlarında (overedge/serge) iğne ve bobin/looper ipliği Tex boyutları, seçilen iplik spesifikasyonuna göre 40, 39, 16 veya 24-27 olarak belirlenmiştir [2].\",\n  \"sesli_metin\": \"Type 1 pantolon için Tex boyutu 31 ile 35 arasıdır. Type 2 pantolon için ise seçilen ipliğe göre 40, 39, 16 veya 24 ile 27 arası Tex değerleri kullanılır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"Hangi pantolon tipi için bilgi istiyorsunuz?\",\n  \"netlestirme_secenekleri\": [\n    \"Type I trouser\",\n    \"Type II trouser\"\n  ],\n  \"bulunamadi\": false\n}"
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 1,\n      \"metin\": \"Component area: Overedge stitching (raw edges) | Thread specification: A-A-50199, Type II | Needle thread (Tex size): 31-35 | Bobbin! Looper thread (Tex size): 31-35\"\n    },\n    {\n      \"kaynak_no\": 2,\n      \"metin\": \"Component area: Overedge/Serge/ for portions of safety stitch operation for raw edge cover | Tlu·ead· specification: A-A-50195 (Soft or Bonded) A-A-55195, Type I A-A-55195, Type II A-A-55217, Type I | Needle thread (Tex size): 40 39 16 24-27 | Bobbin! Looper thread (Tex size): 40 39 16 24-27\"\n    }\n  ],\n  \"cevap\": \"Pantolon tipine göre kullanılan Tex iplik değerleri şöyledir: Type I pantolon için overlok (overedge stitching) dikişlerinde iğne ve bobin/looper ipliği Tex boyutu 31-35'tir [1]. Type II pantolon için ham kenar örtme (raw edge cover) işleminin emniyet dikişi kısımlarında (overedge/serge) iğne ve bobin/looper ipliği Tex boyutları, seçilen iplik spesifikasyonuna göre 40, 39, 16 veya 24-27 olarak belirlenmiştir [2].\",\n  \"sesli_metin\": \"Type 1 pantolon için Tex boyutu 31 ile 35 arasıdır. Type 2 pantolon için ise seçilen ipliğe göre 40, 39, 16 veya 24 ile 27 arası Tex değerleri kullanılır.\",\n  \"celiski_var\": false,\n  \"netlestirme_sorusu\": \"Hangi pantolon tipi için bilgi istiyorsunuz?\",\n  \"netlestirme_secenekleri\": [\n    \"Type I trouser\",\n    \"Type II trouser\"\n  ],\n  \"bulunamadi\": false\n}",
+   "onceki_deger_varyantsiz": true
   },
   "questions_ek:Q27": {
    "durum": "not_found",
@@ -7954,7 +7955,7 @@
    "cikis": "cevap",
    "atif_dogru_biri": true,
    "atif_dogru_hepsi": false,
-   "deger_dogru": true,
+   "deger_dogru": false,
    "json": "ok",
    "dusunce_blogu": false,
    "provider": "Crusoe",
@@ -7971,7 +7972,8 @@
    "cikis_token": 319,
    "dusunce_token": 0,
    "maliyet": 0.00052016,
-   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 3,\n      \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"\n    },\n    {\n      \"kaynak_no\": 4,\n      \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush\"\n    }\n  ],\n  \"cevap\": \"S-7300B modelinde iplik kesme kamı (thread trimmer cam) ayarlanırken iğne milinin en alt konumdan ne kadar kaldırılacağı konusunda kaynaklar arasında çelişki bulunmaktadır: Bir kaynakta iğne milinin 6 mm kaldırılması gerektiği belirtilirken [3], diğer kaynakta 5 mm kaldırılması gerektiği belirtilmiştir [4].\",\n  \"sesli_metin\": \"İplik kesme kamı ayarı için iğne milinin en alt konumdan 5 veya 6 milimetre kaldırılması gerektiği belirtilmiştir, kaynaklar arasında değer farkı vardır.\",\n  \"celiski_var\": true,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}"
+   "ham": "{\n  \"alintilar\": [\n    {\n      \"kaynak_no\": 3,\n      \"metin\": \"Turn the machine pulley to raise the needle bar 6 mm from its lowest position (reference line (a) position) so that reference line (b) is aligned with the bottom edge of the needle bar bush.\"\n    },\n    {\n      \"kaynak_no\": 4,\n      \"metin\": \"Raise the needle bar 5 mm from its lowest position so that the reference line (b) is aligned with the bottom edge of the needle bar bush\"\n    }\n  ],\n  \"cevap\": \"S-7300B modelinde iplik kesme kamı (thread trimmer cam) ayarlanırken iğne milinin en alt konumdan ne kadar kaldırılacağı konusunda kaynaklar arasında çelişki bulunmaktadır: Bir kaynakta iğne milinin 6 mm kaldırılması gerektiği belirtilirken [3], diğer kaynakta 5 mm kaldırılması gerektiği belirtilmiştir [4].\",\n  \"sesli_metin\": \"İplik kesme kamı ayarı için iğne milinin en alt konumdan 5 veya 6 milimetre kaldırılması gerektiği belirtilmiştir, kaynaklar arasında değer farkı vardır.\",\n  \"celiski_var\": true,\n  \"netlestirme_sorusu\": \"\",\n  \"netlestirme_secenekleri\": [],\n  \"bulunamadi\": false\n}",
+   "onceki_deger_varyantsiz": true
   },
   "aday_sorular:A071": {
    "durum": "partial",
