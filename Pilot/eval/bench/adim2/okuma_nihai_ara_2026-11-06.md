@@ -321,3 +321,24 @@ Rapor ve soru soru tablo: [nihai_juki_hat_rapor_2026-11-06.md](nihai_juki_hat_ra
   - Ölçülecekler: değer farklı / aynı netleştirme ve gereksiz netleştirme, kural açık/kapalı.
   - Arama öncesi kural için ayrıca "US Army" ve aliases eşleşmeli sorulardan küçük bir set gerekir; bugünkü sette yok.
 - "Jacket" türü için genel çözüm önerisi (koşulmadı): kayıtlı adlar yükleme formundaki ürün adı ve model kodundan alınır, eşanlamlı çevirisi otomatik yapılır (çeviri modeli, yükleme anında bir kez). Elle yazılmış eşanlamlı listesi yerine.
+
+## 12. Sonraki adımlar (özet; koşulmadı)
+
+**PRD yol haritası, Adım 2'den sonra.** Yol haritası PRD'de görsel olarak duruyor. Adımların içeriğini "Açık kararlar" tablosunun "Engellediği adım" sütunundan ve bileşen notlarından çıkardım:
+- **Adım 3:** arka uç servisi (Streamlit test arayüzü servise bağlanır), giriş (A5), üretim sunucusu (A6).
+- **Adım 4:** yetki ve doküman yönetimi: iki katmanlı yetki, yükleme ve kapsam raporu, departmanlar arası paylaşım (G11–G13, A4).
+- **Adım 5:** ses: akışlı sesli cevap (G5), STT / TTS / VLM yerleşimi (A3), kodların okunuşu (A10).
+- **Adım 6:** gerçek veri ve K1 kapısı: uzman onaylı soru seti (A2), denetim kaydı (G14, A8), sözleşme izni (A9).
+
+**Açık işler, öncelik önerisiyle:**
+
+| Öncelik | İş | Neden şimdi / ne zaman | Maliyet |
+|---|---|---|---|
+| 1 | **Gri "doğrulanıyor" akışı (devir f): ürün kararı** | PRD "ilk cümle ≤ 3 sn" p95'te tutmuyor (3,32–3,63 sn). Metnin hemen akması ilk görünen kelimeyi ~1,1 sn'ye indirir. Adım 3'te servis API'sinin akış biçimi buna göre tasarlanır; karar API'den önce gerekir | karar; ölçüm planı f'de |
+| 2 | **K7 / aliases kararı** (§11) | Netleştirme davranışını belirliyor. Elle yazılmış listeler ilke ihlali. "Jacket" türü kaçış kullanıcıya görünür | ölçüm ~0,003 USD |
+| 3 | **§23 niteleyici uyuşmazlığı, adım 1** (ölçüme ekleme) | Kod, çağrı yok; her raporda otomatik tarama. İstem varyantı (adım 2) sonra | 0; varyant ~0,12 USD |
+| 4 | **Sunucu: Qwen embed, B3a / B3c** | Adım 3'ü engelliyor (A6). Sunucu gelince paralel yürür; süre bütçesinin arama kısmı ve eşzamanlı kullanıcı kapasitesi orada ölçülür | sunucuya bağlı |
+| 5 | **J12 türü liste / şekil sayfaları** (arama) | Parça listesi, şekil sayfaları ilk 5'e girmiyor (J12, G-soruları). Gerçek belgelerle kurulacak sette ölçülmeli; tek JUKI sorusuyla ayar yapılmaz | yeni set |
+| 6 | **C009 türü çeviri hataları** | Teknik terimin yanlış çevirisi BM25'i boşa düşürüyor ("baskı" → "print"). Genel çözüm adayı: çeviriye korpus terim listesinden ipucu ya da çevirisiz BM25'i ek kol olarak tutmak. Yeni sette sıklığı ölçülmeli | yeni set |
+| 7 | **"bugun" kipinin silinmesi** | Bir sürüm tutulacak (karar). Öneri: Adım 3'ün ilk servis sürümüyle birlikte silinsin; `verify.py`'nin serbest metin yamaları (§15.1) da onunla gider | kod |
+| 8 | **c150b-O** (`ilgili_kaynaklar`, erken ret) | İkili yolla yanlış ret 25'ten 11'e indi; kalan erken retler (A102, A106) azaldı. Getirisi düştü | ~0,12 USD |
