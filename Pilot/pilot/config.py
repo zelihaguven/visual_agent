@@ -102,7 +102,7 @@ MIN_RERANK_SCORE: float | None = None   # None: eşik kapalı. Test setiyle kali
 #         tutulup silinecek. Bulut erişilemezse yerel modele otomatik düşüş YOK: kullanıcıya "servis kullanılamıyor".
 ANSWER_MODE = os.environ.get("PILOT_ANSWER_MODE", "c")       # varsayılan c: duman testi geçti (2026-11-06)
 ANSWER_MODEL = "google/gemma-4-26b-a4b-it"
-ANSWER_SCHEMA_VARIANT = "c150bJS"      # 2026-11-06: sesli_metin yok; ses doğrulanmış öğelerden
+ANSWER_SCHEMA_VARIANT = "c150bJSN"     # 2026-11-06: c150b-JS (sesli_metin yok; ses doğrulanmış öğelerden) + niteleyici kuralı (B012; kalıcı karar)
 # Birincil sağlayıcı ve yedekler, sırayla (ZDR). Yedeğe yalnız kesintide geçilir: HTTP hatası/429, ilk token
 # ANSWER_FIRST_TOKEN_S içinde gelmezse ya da akış bekçisi tetiklenirse (sıradakine bir kez). Sağlayıcı her cevapta kayıtlı.
 ANSWER_PROVIDERS: tuple[str, ...] = tuple(os.environ.get("PILOT_ANSWER_PROVIDERS", "deepinfra,venice,parasail").split(","))

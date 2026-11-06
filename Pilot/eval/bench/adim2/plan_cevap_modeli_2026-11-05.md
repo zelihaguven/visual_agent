@@ -866,7 +866,7 @@ Bu bölüm §21, §25, §27 ve §28'in yerine geçer. Dayanaklar:
 - **Taranmış belgeler:** sistem bugün OCR yapmıyor, PDF'in OCR metin katmanını kullanıyor. Metin katmanı olmayan tarama aranamaz. Bilinen OCR hataları ("112" = ½, "IS" = 15) doğrulayıcıda yanlış değer olarak geçmez, soru cevapsız kalır. Adım 6 işi: gerçek taranmış belgede cevapsız kalma ölçümü ve OCR iyileştirme planı (görüntüden OCR, sayfayı görsel modelle okuma).
 - **Yanlış değer toleransı SIFIR:** değer (ölçü, tork, vida, ayar, kod) içeren cevaplarda. Emin değilse "bulunamadı / doğrulanamadı"; bedeli cevapsız kalan sorular.
 
-## 33. Gün içi süre profili (PLAN; koşulmadı, onay bekliyor)
+## 33. Gün içi süre profili (onaylandı 2026-11-06; şema c150b-JSN ile)
 
 **Soru:** Süre ölçümleri saate göre değişiyor (sabah c150b-J ilk doğrulanmış cümle p95 3,63 sn, öğleden sonra c150b-JS 5,08 sn; aynı saatte yan yana ölçülmedi). Öğleden sonra p95 hedefi (≤ 3 sn) aşıyor mu?
 
@@ -885,3 +885,30 @@ Bu bölüm §21, §25, §27 ve §28'in yerine geçer. Dayanaklar:
 **Rapor:** saat dilimine göre p50 / p95 (09–11, 11–13, 13–15, 15–17) ve adım dökümü (arama, çeviri, model ilk token, ilk doğrulanmış cümle). Öğleden sonra p95 > 3 sn ise hangi adımda arttığı görülür (model sağlayıcısı mı, çeviri mi).
 
 **Maliyet:** ölçüm başına 10 cevap + 10 çeviri ≈ 0,003 USD. Günde 4 ölçüm × 5 gün = 20 ölçüm ≈ **0,06–0,07 USD**.
+
+## 34. c150b-JSN kalıcı çalışma biçimi; yeni 4 ret (2026-11-06)
+
+**Karar:** c150b-JSN kalıcı (`config.ANSWER_SCHEMA_VARIANT = "c150bJSN"`). Doğrulanmış görünen yanlış 1 → 0; sıfır tolerans kararına uygun.
+
+**JS'de cevaplı, JSN'de "bulunamadı" olan cevaplanabilir sorular** (yanlış ret 6 → 10):
+
+| Soru | Sorudaki niteleyici | Kaynakta | JS sonucu | Neden |
+|---|---|---|---|---|
+| G9 "Ceketin ön görünüşünde kimlik etiketi (ID marker) nerede?" | yok (ayırt edici varyant yok; "ön görünüş" bir yer/görünüm sözcüğü) | s.51 "See pocket detail ID Marker for **Type II III** left side only" | ⚠ | Kural fazla geniş uygulanmış: görünüm/yer sözcüğü niteleyici sayılmış ya da kaynaktaki "Type II III" soruda olmadığı için |
+| A072 "**S-7300B**'de başlangıç punterizi B adım düzeltme oranı hangi bellek anahtarında?" | model kodu S-7300B | kaynak metninde yok; **kaynak etiketinde** var (`ürün="S-7300B düz dikiş makinesi"`) | ✓ | Model niteleyiciyi yalnız kaynak metninde aramış; etiketteki ürün adını saymamış |
+| A086 "Terzilik kitabına göre pantolon cebinin yün yüz parçası kaç inç kesilir?" | yok | beklenen sayfa (s.155) ilk 8 kaynakta yok | ✖ (başka cebin ölçüsü) | **Ret doğru davranış:** JS yanlış parçadan cevap vermişti (doğrulayıcı ✖). Arama sorunu, kural değil |
+| A106 "**Freze tablası**yla çalışırken hangi kişisel koruyucu ekipmanlar kullanılmalı?" | ürün türü "freze tablası" | etikette `ürün="RA1171 freze tezgâhı"`; metinde "router table" | ✓ | Aynı şeyin farklı adı (tabla / tezgâh; Türkçe soru / İngilizce kaynak) niteleyici eksikliği sayılmış |
+
+Kullanıcının tahmin ettiği yazım farkı vakası ("Type II" / "Types II and III", "-3" / "-[][]3") bu 4 retin hiçbirinde doğrudan değil. Ama aynı türden: niteleyicinin **eşdeğer** biçimi (etiketteki ürün adı, çeviri, farklı ad) "yok" sayılıyor.
+
+**Önerilen genel eşleştirme düzeltmesi** (yalnız kural metni; belgeye özel değil; koşulmadı, onay bekliyor). JSN kuralına eklenecek:
+1. "Kaynak etiketindeki doküman, marka, ürün ve bölüm adı da kaynaktır: niteleyici orada geçiyorsa kaynakta var sayılır."
+2. "Niteleyicinin eşdeğer yazımı da eşleşir: tekil/çoğul ve birleşik yazım (Type II ↔ Types II and III), ayırıcı ya da OCR farkı (-3 ↔ -[][]3), başka dildeki karşılığı ya da eş anlamlısı (freze tablası ↔ router table)."
+3. "Niteleyici, aynı konunun farklı bir varyantını ayıran sözcüktür (model, tip, sürüm, beden, dijital/mekanik). Yer, görünüm ya da konu sözcükleri (ön görünüş, sol taraf, cep) niteleyici değildir."
+
+**Ölçüm (onaylanırsa):**
+- B012 10 tekrar: 0/10 kalmalı;
+- yeni 4 ret + JSN'de değişen sorular;
+- tam set regresyonu (~0,06 USD; JSN koşusuyla aynı düzenek).
+
+Kabul ölçütü: doğrulanmış görünen yanlış 0 kalır; yanlış ret 10'dan aşağı iner.
